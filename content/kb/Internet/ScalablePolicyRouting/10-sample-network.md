@@ -8,7 +8,7 @@ The sample network that will be used in all the printouts and configuration exam
 
 The central site has two core routers (one concentrating the Internet connections, the other one serving as the Frame Relay hub) and two distribution-layer routers. The network schematics are displayed in the next figure.
 
-{{<figure src="../network-diagram.jpg" caption="Network diagram">}}
+{{<figure src="/kb/Internet/ScalablePolicyRouting/network-diagram.jpg" caption="Network diagram">}}
 
 {{<note note>}}In a live network, you’d use IPSec in combination with GRE tunnels, but it’s not included in the configuration samples to reduce the overall complexity.{{</note>}}
 

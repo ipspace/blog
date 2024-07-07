@@ -8,7 +8,7 @@ The IP protocol stack never had a reliable mechanism by which the end hosts coul
 
 IPv4 and IPv6 protocols provide a convenient solution: the IP fragmentation, a mechanism where a single inbound IP datagram is split into two or more outbound IP datagrams. The IP header is copied from the original IP datagram into the fragments, special bits are set in the fragments’ IPv4 headers to indicate that they are not complete IP packets (IPv6 uses extension headers), and the payload is spread across the fragments (see the following diagram). IPv4 routers can fragment IP packets in transit; that capability was removed from IPv6 for performance reasons - the sending host has to perform IPv6 fragmentation if needed.
 
-<img src="../Fragments.jpg" />
+<img src="/kb/Internet/PMTUD/Fragments.jpg" />
 
 {{<note note>}}The IP fragmentation was particularly bad in the earlier Cisco IOS releases, as the routers had to make copies of the original IP packets to generate the fragments, thus forcing the IP fragmentation into the process switching path (which is significantly slower than any other switching mechanism). Later IOS releases introduced particle-based fragmentation, which allows IP fragmentation to be performed within Cisco Express Forwarding (CEF).{{</note>}}
 

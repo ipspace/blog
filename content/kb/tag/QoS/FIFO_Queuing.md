@@ -5,7 +5,7 @@ pre_scroll: true
 title: FIFO Queuing
 url: /kb/tag/QoS/FIFO_Queuing/
 ---
-Without any QoS-related interface configuration, Cisco IOS uses [fair queuing](Fair_Queuing.html) on low-speed interface (up to a few megabits) and FIFO queuing on higher-speed interfaces. Fair queuing is also used whenever a **service-policy** using a queuing action (**bandwidth**, **priority** or **fair-queue**) is applied to an interface. The actual queuing mechanism can be inspected with the **show queueing interface *name*** command.
+Without any QoS-related interface configuration, Cisco IOS uses [fair queuing](/kb/tag/QoS/Fair_Queuing/) on low-speed interface (up to a few megabits) and FIFO queuing on higher-speed interfaces. Fair queuing is also used whenever a **service-policy** using a queuing action (**bandwidth**, **priority** or **fair-queue**) is applied to an interface. The actual queuing mechanism can be inspected with the **show queueing interface *name*** command.
 
 With no QoS configuration, serial interfaces on ISR routers (2811 was used to generate the printouts) use fair queuing and the Fast Ethernet interfaces use FIFO queuing. Expect defaults to vary across router platforms.
 

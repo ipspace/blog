@@ -52,4 +52,4 @@ You cannot use [Phase 1 DMVPN](/2011/01/dmvpn-phase-1-fundamentals/) with multip
 -   One hub router per DMVPN subnet is the ideal design for Phase 2 DMVPN deployments \... unless you have Catalyst 6500 as your hub router, in which case you must use one DMVPN subnet due to lack of hardware GRE key support. That's also the only design you can use with Phase 1 DMVPN.
 -   One DMVPN subnet is probably the best design for Phase 3 DMVPN and it's mandatory if you have partial spoke-to-hub NHRP connectivity.
 
-Coming next: [spoke routers with multiple uplinks and spoke sites with redundant routers](redundant-dmvpn-designs-part-2-multiple/).
+Coming next: [spoke routers with multiple uplinks and spoke sites with redundant routers](/2012/01/redundant-dmvpn-designs-part-2-multiple/).

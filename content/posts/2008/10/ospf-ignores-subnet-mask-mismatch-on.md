@@ -11,7 +11,7 @@ The common wisdom says that the [subnet mask mismatch will stop the OSPF adjacen
 
 > The generic input processing of OSPF packets will have checked the validity of the IP header and the OSPF packet header. **Next, the values of the Network Mask, HelloInterval, and RouterDeadInterval fields in the received Hello packet must be checked against the values configured for the receiving interface. Any mismatch causes processing to stop and the packet to be dropped.** In other words, the above fields are really describing the attached network\'s configuration. **However, there is one exception to the above rule: on point-to-point networks and on virtual links, the Network Mask in the received Hello Packet should be ignored.**
 <!--more-->
-Cisco conforms strictly to the RFC and allows OSPF neighbors to form adjacency over a point-to-point link (for example, Frame Relay subinterfaces, but also [unnumbered Ethernet interfaces](../series/unnumbered-interfaces/)) even when the subnet masks don't match. The routers in my lab happily formed the OSPF adjacency even though I've used a /24 mask on one end of the link and a /30 mask on the other end:
+Cisco conforms strictly to the RFC and allows OSPF neighbors to form adjacency over a point-to-point link (for example, Frame Relay subinterfaces, but also [unnumbered Ethernet interfaces](/series/unnumbered-interfaces/)) even when the subnet masks don't match. The routers in my lab happily formed the OSPF adjacency even though I've used a /24 mask on one end of the link and a /30 mask on the other end:
 
 ``` code
 S1#show ip ospf interface brief

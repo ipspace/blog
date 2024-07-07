@@ -48,7 +48,7 @@ Cisco has yet another solution for your data center woes: [LISP for Virtual Mach
 
 LISP for VM Mobility won't pollute the core IP routing tables with VM host routes because LISP uses another layer of indirection (and IP-over-IP tunneling), but is still hasn't solved the fundamental problem: since there's no protocol between hypervisors and xTRs (LISP terminology for PE-router), LISP relies on traffic snooping to figure out a VM has moved.
 
-{{<note>}}[LISP on Nexus 1000V would be a great solution](/2011/06/inter-dc-ip-based-vmotion-with-lisp/) (because Nexus 1000V knows exactly what's going on with VMs, and could update LISP mapping database accordingly), but that code mysteriously disappeared almost two years ago.{{</note>}}
+{{<note>}}LISP on Nexus 1000V could have been a great solution (because Nexus 1000V knows exactly what's going on with VMs, and could update LISP mapping database accordingly), but that code mysteriously disappeared almost two years ago.{{</note>}}
 
 ### Short summary
 

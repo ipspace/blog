@@ -20,7 +20,7 @@ The SNTP process will not synchronize to the configured SNTP servers if you’ve
 
 We'll configure SNTP on the WAN edge router (S1) used on a non-redundant small site small-site:
 
-{{<figure src="../design-non-redundant.png" caption="Simple remote site using SNTP synchronization">}}
+{{<figure src="/kb/Internet/NTP/design-non-redundant.png" caption="Simple remote site using SNTP synchronization">}}
 
 The configuration commands are as simple as they can get:
 

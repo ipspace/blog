@@ -7,35 +7,35 @@ Did you experience difficulties solving the exercises in the EIGRP Network Desig
 <!--more-->
 ### EIGRP Concepts and Technology
 
-* [Exercise 1-1](ex_1_1.html)
-* [Exercise 1-3](ex_1_3.html)
-* [Exercise 1-6](ex_1_6.html)
+* [Exercise 1-1](/eigrp/ex_1_1/)
+* [Exercise 1-3](/eigrp/ex_1_3/)
+* [Exercise 1-6](/eigrp/ex_1_6/)
 
 ### Advanced EIGRP Concepts, Data Structures, and Protocols
 
-* [Exercise 2-2](ex_2_2.html)
+* [Exercise 2-2](/eigrp/ex_2_2/)
 
 ### Scalability Issues in Large Enterprise Networks
 
-* [Exercise 5-4](ex_5_4.html)
+* [Exercise 5-4](/eigrp/ex_5_4/)
 
 ### Route Filters
 
-* [Exercise 7-2](ex_7_2.html)
+* [Exercise 7-2](/eigrp/ex_7_2/)
 
 ### Default Routes
 
-* [Exercise 8-2](ex_8_2.html)
+* [Exercise 8-2](/eigrp/ex_8_2/)
 
 ### Integrating EIGRP with Other Enterprise Routing Protocols
 
-* [Exercise 9-3](ex_9_3.html)
+* [Exercise 9-3](/eigrp/ex_9_3/)
 
 ### Designing Scalable IPX EIGRP Networks
 
-* [Exercise 10-2](ex_10_2.html)
-* [Exercise 10-3](ex_10_3.html)
+* [Exercise 10-2](/eigrp/ex_10_2/)
+* [Exercise 10-3](/eigrp/ex_10_3/)
 
 ### Designing Scalable AppleTalk EIGRP Networks
 
-* [Exercise 11-1](ex_11_1.html)
+* [Exercise 11-1](/eigrp/ex_11_1/)

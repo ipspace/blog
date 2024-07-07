@@ -7,7 +7,7 @@ url: /kb/Internet/ScalablePolicyRouting/20-routing-design/
 ---
 The whole network uses BGP as its core routing protocol, giving us a highly-scalable solution with the inherent capability to implement policy-based routing (most of the BGP’s complexity is a direct result of its abilities to perform policy-based routing decisions). Each site is a separate autonomous system (AS); remote sites have one or two routers in their AS and the central site can have as many routers as needed, using the two core routers as BGP route reflectors. OSPF is also deployed in the core site to ensure fast convergence and solve the BGP next-hop problems. The overall routing design is displayed in the next diagram:
 
-{{<figure src="../routing-design.jpg" caption="Basic Routing Design">}}
+{{<figure src="/kb/Internet/ScalablePolicyRouting/routing-design.jpg" caption="Basic Routing Design">}}
 
 You could decide to simplify the router configuration by redistributing directly connected routes into the BGP on each router, but this would just pollute the BGP tables with the point-to-point WAN subnets that are usually not needed for proper network operation. It’s thus better to manually list the networks you want to announce in the BGP routing process. The sample configuration from one of the remote sites is included in the next listing:
 

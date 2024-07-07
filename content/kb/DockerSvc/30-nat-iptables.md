@@ -82,7 +82,7 @@ The *DOCKER* chain is used in PREROUTING and OUTPUT chains. In the PREROUTING ch
 -A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
 ```
 
-The OUTPUT chain is a bit more convoluted: DOCKER chain is invoked only if the destination is a local address *and not a loopback address*. The interesting question we're facing is thus "_how can we connect to a published port through loopback address_" as we did when [exploring published ports](20-Published.html). We'll address this question in the next section.
+The OUTPUT chain is a bit more convoluted: DOCKER chain is invoked only if the destination is a local address *and not a loopback address*. The interesting question we're facing is thus "_how can we connect to a published port through loopback address_" as we did when [exploring published ports](/kb/DockerSvc/20-Published/). We'll address this question in the next section.
 
 {{<cc>}}DOCKER chain used in OUTPUT chain{{</cc>}}
 ```

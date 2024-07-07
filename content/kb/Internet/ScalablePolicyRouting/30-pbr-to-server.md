@@ -18,11 +18,11 @@ The following MED values are used in the sample network:
 * MED=200 is set on all IP prefixes advertised from the *CoreInet* router to the remote sites.
 *	MED=300 is set on IP prefixes advertised from the *CoreFR* router to the remote sites to ensure the backup path is only used when the primary link fails (lower MED values are preferred)
 
-{{<figure src="../corenet-preferred-web.jpg" caption="CoreInet router is preferred for the Web LAN">}}
+{{<figure src="/kb/Internet/ScalablePolicyRouting/corenet-preferred-web.jpg" caption="CoreInet router is preferred for the Web LAN">}}
 
 *	MED=100 is set on IP prefixes of the legacy servers when they are advertised from the *CoreFR* router, making them more preferred over the slower link.
 
-{{<figure src="../corefr-preferred-legacy.jpg" caption="CoreFR router is preferred for the Legacy LAN">}}
+{{<figure src="/kb/Internet/ScalablePolicyRouting/corefr-preferred-legacy.jpg" caption="CoreFR router is preferred for the Legacy LAN">}}
 
 You can use the **show ip bgp _prefix_** command on the remote site router to see the impact of the MED settings:
 
@@ -59,6 +59,6 @@ You could set the MED with an access-list or a prefix-list on the *CoreFR* route
 * The originating router (the *Legacy* router in our network) would set a BGP community (65000:100 is used in the sample network) to indicate that the IP prefix belongs to the legacy servers
 * The *CoreFR* router would use the community to set the MED values. 
 
-{{<figure src="../legacy-route-propagation.jpg" caption="BGP route propagation from the Legacy router to the Site router">}}
+{{<figure src="/kb/Internet/ScalablePolicyRouting/legacy-route-propagation.jpg" caption="BGP route propagation from the Legacy router to the Site router">}}
 
 <!-- end -->

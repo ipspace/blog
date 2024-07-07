@@ -4,7 +4,7 @@ comment: 'One of the major talking points of the SDN Hype Crusade was the CLI ba
   That''s total nonsense (ask anyone who had the privilege to [suffer through a GUI-based
   deployment](/2011/01/vmware-cluster-up-and-running-in-three/)),
   but the myth refuses to die. I wrote more than a dozen follow-up posts [focusing
-  on REST API versus CLI](/kb/tag/cli-or-api/).
+  on REST API versus CLI](/series/cli/).
 
   '
 date: 2013-07-03 07:08:00+02:00

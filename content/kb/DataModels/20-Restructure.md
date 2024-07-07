@@ -5,7 +5,7 @@ title: Nodes-and-Links Data Model
 url: /kb/DataModels/20-Restructure/
 pre_scroll: true
 ---
-[After rigorous deduplication](10-Removing%20Duplicate%20Data.html) we got a pretty clean data model, but still has a significant drawback: it's not the best representation of reality.
+[After rigorous deduplication](/kb/DataModels/10-Removing%20Duplicate%20Data/) we got a pretty clean data model, but still has a significant drawback: it's not the best representation of reality.
 
 Based on our history of dealing with independent device configurations we usually model our networks as a set of nodes with interfaces. In reality, networks are *graphs* with nodes and edges (and interfaces happen to connect the two).
 

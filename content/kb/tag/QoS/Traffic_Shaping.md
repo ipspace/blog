@@ -8,7 +8,7 @@ url: /kb/tag/QoS/Traffic_Shaping/
 
 In Cisco IOS Modular QoS CLI framework you configure traffic shaping with the **shape** command within a **policy-map class**. 
 
-Both shaping and [policing](QoS_Policing.html) can be used to in Cisco IOS to enforce the traffic contract. Policing drops or relabels out-of-contract packets without incurring any transmission delay or processing overhead while shaping delays out-of-contract packets, resulting in increased delay and jitter. Most TCP implementations respond much better to shaping of excess traffic (increased transmission delay) than policing which result in packet drops, retransmissions, and drastic reduction in transmission rate. On the other hand, excessive amount of shaping and buffering results in [buffer bloat](https://en.wikipedia.org/wiki/Bufferbloat).
+Both shaping and [policing](/kb/tag/QoS/QoS_Policing/) can be used to in Cisco IOS to enforce the traffic contract. Policing drops or relabels out-of-contract packets without incurring any transmission delay or processing overhead while shaping delays out-of-contract packets, resulting in increased delay and jitter. Most TCP implementations respond much better to shaping of excess traffic (increased transmission delay) than policing which result in packet drops, retransmissions, and drastic reduction in transmission rate. On the other hand, excessive amount of shaping and buffering results in [buffer bloat](https://en.wikipedia.org/wiki/Bufferbloat).
 
 The configuration details of this article apply to Cisco IOS traffic shaping on non-distributed software switching architecture (low-end and midrange routers). High-speed routers and devices using hardware packet switching use a variety of device-specific shaping mechanisms (assuming the hardware is complex enough to support traffic shaping).
 
@@ -20,7 +20,7 @@ Traffic shaping is commonly used when the traffic has to be prioritized on a lin
 * On a hub site in a DMVPN network
 * On a virtual machine connected to a virtual switch
 
-{{<figure src="../Shaping_Usage.png" caption="Using traffic shaping on a DMVPN hub site">}}
+{{<figure src="/kb/tag/QoS/Shaping_Usage.png" caption="Using traffic shaping on a DMVPN hub site">}}
 
 The obvious bottleneck in the above DMVPN network is the uplink of the *Spoke* router, and if the provider does not implement the desired QoS mechanisms on this link, the high-priority traffic sent from the *Hub* site to the *Spoke* site might be delayed due to the output queue congestion on outbound interface of the service provider router on which the customer has no influence.
 
@@ -40,7 +40,7 @@ All traffic shaping mechanisms use identical technology, they differ in their tr
 
 Cisco IOS shapes outbound traffic using the following steps:
 
--   If shaping is not yet active (forwarded traffic has not exceeded the traffic contract), the traffic is measured with a [token bucket algorithm](QoS_Policing.html). If a packet exceeds the token bucket capacity, it’s queued in the shaping queue structures (activating the shaping mechanism).
+-   If shaping is not yet active (forwarded traffic has not exceeded the traffic contract), the traffic is measured with a [token bucket algorithm](/kb/tag/QoS/QoS_Policing/). If a packet exceeds the token bucket capacity, it’s queued in the shaping queue structures (activating the shaping mechanism).
 -   If shaping is active (the shaping queues are not empty), forwarded traffic is not measured but queued directly into the shaping queues.
 -   Every *Tc*, the router removes up to *Bc* packets (or bytes) from the shaping queues and re-queues them into the interface queue.
 
@@ -48,7 +48,7 @@ Cisco IOS shapes outbound traffic using the following steps:
 
 The complete algorithm is illustrated in the following diagram:
 
-{{<figure src="../Shaping_Mechanism.png" caption="Traffic shaping mechanisms in Cisco IOS">}}
+{{<figure src="/kb/tag/QoS/Shaping_Mechanism.png" caption="Traffic shaping mechanisms in Cisco IOS">}}
 
 {{<note note>}}The *Bc* and *Be* parameters can be specified in the **shape** command. If you don't specify them, Cisco IOS selects reasonable values. *Tc* is always computed from the shaping rate and *Bc*.{{</note>}}
 

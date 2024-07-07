@@ -43,7 +43,7 @@ SMB customers not having their own IP address space would most often deploy hub 
 
 You can never be sure whether the upstream ISPs use RPF filters or other filtering mechanisms. It's thus mandatory to ensure proper outbound packet forwarding over the spoke uplinks: tunnel interface associated with IP address belonging to ISP-A can send packets only over the uplink connecting the spoke router to ISP-A.
 
-You can use [**tunnel route-via** feature](/2010/09/tunnel-route-selection-recording-from/) to force the tunnel interfaces to use correct uplinks (but it [doesn't work if you use IPsec](/2010/06/tunnel-route-selection-and-dmvpn-tunnel/)), or you could use VRF-based tunnel interfaces:
+You can use **tunnel route-via** feature to force the tunnel interfaces to use correct uplinks (but it [doesn't work if you use IPsec](/2010/06/tunnel-route-selection-and-dmvpn-tunnel/)), or you could use VRF-based tunnel interfaces:
 
 -   Create multiple VRFs on the spoke router, one per uplink;
 -   Create a static default route in each VRF pointing to the associated uplink;

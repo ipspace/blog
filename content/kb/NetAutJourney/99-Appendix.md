@@ -67,4 +67,4 @@ formatting of output messages, greatly enhancing the readability of the Ansible 
 a web browser. I am now playing with outputting HTML text where each output category
 (‘changed’, ‘failed’, ‘skipped’, etc.) is mapped to its own CSS **div** class.
 
-{{<figure src="../Playbook-Output.png" caption="Ansible playbook output">}}
+{{<figure src="/kb/NetAutJourney/Playbook-Output.png" caption="Ansible playbook output">}}

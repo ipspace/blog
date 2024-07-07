@@ -16,7 +16,7 @@ The main issue you face when running OSPF over DMVPN is scalability: OSPF does n
 <!--more-->
 Because OSPF is a link-state protocol, the topology database of every spoke router has to contain full topology of the DMVPN area (and LSAs for all IP prefixes inserted into the area by ABRs) and if you believe a low-end router cannot handle more than 50 routers in an OSPF area (that's the "classic" OSPF design recipe), you see how limited we are. Furthermore, DMVPN cloud has to be a single subnet, so all the spoke routers attached to the same DMVPN cloud have to be in the same OSPF area.
 
-{{<note info>}}You can implement [OSPF flood reduction](/2010/01/ospf-flooding-filters-in-hub-and-spoke/) on the hub router in combination with reliable static default routing on the spokes to increase OSPF scalability.{{</note>}}
+{{<note info>}}You can implement [OSPF flood reduction](/kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke/) on the hub router in combination with reliable static default routing on the spokes to increase OSPF scalability.{{</note>}}
 
 You can make things a bit better by making the DMVPN area totally stubby (in which case you need Internet VRF for Phase 2 DMVPN), so at least the changes in the non-DMVPN part of the network are not causing SPFs (or partial SPFs).
 

@@ -17,5 +17,5 @@ Low-end routers that do not support NTP can be configured to use SNTP (a strippe
 * [NTP v4 (RFC 5905)](https://datatracker.ietf.org/doc/html/rfc5905)
 * [Simple Network Time Protocol (RFC 4330)](https://datatracker.ietf.org/doc/html/rfc4330) (obsoleted by NTPv4)
 * [Logging to a local file system](http://blog.ipspace.net/2007/09/logging-to-flash-disk.html)
-* [Pros and cons of using NTP logging](http://blog.ipspace.net/2007/10/log-ntp-events.html) (read the comments)
-* [More NTP-related hints](/tag/ntp.html)
+* [Pros and cons of using NTP logging](/2007/10/log-ntp-events/) (read the comments)
+* [More NTP-related hints](/tag/ntp/)

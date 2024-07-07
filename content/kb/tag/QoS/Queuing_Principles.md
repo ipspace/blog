@@ -23,19 +23,19 @@ The hardware queue shared between the CPU and the interface chipset cannot be re
 
 The various queuing mechanisms offered by Cisco IOS are implemented in software queues beyond the hardware queue. If the hardware queue is full at the time a packet is routed to an interface, the packet is entered into one of the software queues; otherwise it’s appended at the end of the hardware FIFO queue. The CPU transfers the packets from the software queues to the hardware queue when the interface interrupts it asking for more output packets. Based on the hardware queue size, more than one packet can be transferred from the software queues into the hardware queue on each interrupt.
 
-{{<figure src="../Queuing_Software_Queues.png" caption="Software and hardware queues">}}
+{{<figure src="/kb/tag/QoS/Queuing_Software_Queues.png" caption="Software and hardware queues">}}
 
-The hardware queue size is computed automatically by Cisco IOS; the queue size depends on the interface hardware, its line speed and the router model (CPU speed). The router tries to minimize the hardware queue size (to minimize the FIFO part of the queuing model) while ensuring that the increased interrupt rate will not overwhelm the main CPU. Usually, the hardware queue has only one or two entries on low-speed (< 2 Mbps) links and can be as long as 128 entries on high-speed (> 100 Mbps) interfaces ([more details](Fair_Queuing.html)).
+The hardware queue size is computed automatically by Cisco IOS; the queue size depends on the interface hardware, its line speed and the router model (CPU speed). The router tries to minimize the hardware queue size (to minimize the FIFO part of the queuing model) while ensuring that the increased interrupt rate will not overwhelm the main CPU. Usually, the hardware queue has only one or two entries on low-speed (< 2 Mbps) links and can be as long as 128 entries on high-speed (> 100 Mbps) interfaces ([more details](/kb/tag/QoS/Fair_Queuing/)).
 
-The size of the hardware queue can be configured with the **tx-ring-limit** interface configuration command and inspected with the **show controllers _interface_** command (look for the **tx\_limit** field or the TX ring size). This setting should be changed only if the [long hardware queue size causes unacceptable jitter or delay on QoS-sensitive applications](TX-Ring-Limit.html)) (for example, VoIP traffic).
+The size of the hardware queue can be configured with the **tx-ring-limit** interface configuration command and inspected with the **show controllers _interface_** command (look for the **tx\_limit** field or the TX ring size). This setting should be changed only if the [long hardware queue size causes unacceptable jitter or delay on QoS-sensitive applications](/kb/tag/QoS/TX-Ring-Limit/)) (for example, VoIP traffic).
 
-If no fancy queuing is configured on the interface, [FIFO queuing](https://en.wikipedia.org/wiki/FIFO) is used on the interface and the packets sent to the interface are enqueued directly into the hardware transmit ring ([more details](FIFO_Queuing.html)). The size of the FIFO output queue is controlled with the **hold-queue out** interface configuration command.
+If no fancy queuing is configured on the interface, [FIFO queuing](https://en.wikipedia.org/wiki/FIFO) is used on the interface and the packets sent to the interface are enqueued directly into the hardware transmit ring ([more details](/kb/tag/QoS/FIFO_Queuing/)). The size of the FIFO output queue is controlled with the **hold-queue out** interface configuration command.
 
 ### Implementation Details
 
 The FIFO queue shared between the main CPU and the interface hardware is almost always implemented with a structure of transmit buffer descriptors. To minimize the hardware complexity, the descriptors are logically organized in a *tx-ring* (actually it's a wrap-around array) and the FIFO queue is implemented as a moving set of buffer descriptors.
 
-{{<figure src="../Queuing_Transmit_Ring.png" caption="Transmit ring between CPU and output interface">}}
+{{<figure src="/kb/tag/QoS/Queuing_Transmit_Ring.png" caption="Transmit ring between CPU and output interface">}}
 
 The main CPU inserts a packet in the FIFO queue by:
 
@@ -53,7 +53,7 @@ In the idle state, the interface hardware periodically polls the next descriptor
 
 ## Software-Only Queuing
 
-As explained in the _When to Queue_ section, software-only interfaces don’t support queuing mechanisms as their packet departure rate is undefined (packets sent to a software interface are always transferred immediately to a hardware interface). If you want to implement queuing on a software interface, you have to introduce artificial backpressure in form of *[traffic shaping](Traffic_Shaping.html)*.
+As explained in the _When to Queue_ section, software-only interfaces don’t support queuing mechanisms as their packet departure rate is undefined (packets sent to a software interface are always transferred immediately to a hardware interface). If you want to implement queuing on a software interface, you have to introduce artificial backpressure in form of *[traffic shaping](/kb/tag/QoS/Traffic_Shaping/)*.
 
 Traffic shaping always introduces additional latency and jitter. Furthermore, it imposes a hard limit on packet departure rate; even if the underlying physical interface is not busy, the shaped traffic will be rate-limited to the configured shaping rate.
 

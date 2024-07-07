@@ -22,7 +22,7 @@ The "original" (or shall I say orthodox) [SDN definition](https://www.opennetwor
 
 That definition, while [serving the goals of some ONF founding members](/2014/01/what-exactly-is-sdn-and-does-it-make/), is at the moment mostly irrelevant for most enterprise or service provider organizations, who cannot afford to [become a router manufacturer](/2012/05/openflow-google-brilliant-but-not/) to build a few dozens of WAN edge routers. Also, [almost nobody is using OpenFlow](/2022/05/openflow-still-kicking/) and [Open Daylight seemed to be pretty much dead in 2017](/2017/05/is-anyone-using-open-daylight/) (assuming you'd want to use an architecture with a [single central failure point](/2014/09/controller-cluster-is-single-failure/) in the first place).
 
-FYI, I'm not blaming OpenFlow. [OpenFlow is just a low level tool](/2014/05/is-openflow-useful_12/) that could be extremely handy when you're trying to implement unusual ideas... if only it were implemented on recent gear.
+FYI, I'm not blaming OpenFlow. OpenFlow is just a low level tool that could be extremely handy when you're trying to implement unusual ideas... if only it were implemented on recent gear.
 
 I am positive there will always be people building [OpenFlow controllers controlling forwarding fabrics](/2013/09/openflow-fabric-controllers-are-light/) (see also: [Faucet](/2020/10/faucet-deep-dive/)), but they might eventually realize what a monumental task they undertook when they'll have to reinvent all the wheels networking industry invented in the last 30 years including:
 

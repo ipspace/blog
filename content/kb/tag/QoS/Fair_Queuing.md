@@ -7,7 +7,7 @@ url: /kb/tag/QoS/Fair_Queuing/
 ---
 Fair queuing is enabled by default on all low-speed interfaces on Cisco IOS devices (high-speed interfaces use FIFO queuing as the default mechanism). It's also used to implement the queuing actions (**bandwidth** and **fair-queue**) offered by the Modular QoS CLI (MQC).
 
-The default queuing mechanism on a LAN interface of a Cisco 2811 router (the platform used to generate the following printouts) is thus [FIFO queuing](FIFO_Queuing.html). However, as soon as a simple queuing policy is applied to the interface with the **service-policy** interface configuration command, the queuing mechanism changes to fair queuing.
+The default queuing mechanism on a LAN interface of a Cisco 2811 router (the platform used to generate the following printouts) is thus [FIFO queuing](/kb/tag/QoS/FIFO_Queuing/). However, as soon as a simple queuing policy is applied to the interface with the **service-policy** interface configuration command, the queuing mechanism changes to fair queuing.
 
 {{<cc>}}Service policy is configured on an Ethernet interface{{</cc>}}
 ```

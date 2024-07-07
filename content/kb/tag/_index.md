@@ -6,8 +6,8 @@ title: Technology Resources
 index_title: Technology Resources
 index: true
 kb_tag: more
-redirect: /series.html
+redirect: /series/
 ---
-[This page has moved](/series.html) and now serves just as an anchor for migrated short articles:
+[This page has moved](/series/) and now serves just as an anchor for migrated short articles:
 
 {{<kb-toc>}}

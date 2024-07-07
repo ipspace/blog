@@ -35,7 +35,7 @@ And finally, a router will not be able to act as a standalone NTP server (in cas
 
 We'll configure NTP on a remote site router (S1) running Cisco IOS in the following sample network:
 
-{{<figure src="../config-network.png" caption="Sample network using NTP synchronization">}}
+{{<figure src="/kb/Internet/NTP/config-network.png" caption="Sample network using NTP synchronization">}}
 
 We'll configure the following NTP parameters:
 

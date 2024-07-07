@@ -7,7 +7,7 @@ url: /kb/Internet/EIGRP_stub/20-resilient-remote-sites/
 ---
 Network designers aiming to increase overall network reliability usually deploy two routers at the remote offices, each one of them being connected to one of the upstream links:
 
-{{<figure src="EIGRP_5.gif" caption="Dual-homed hub-and-spoke WAN network">}}
+{{<figure src="/kb/Internet/EIGRP_stub/EIGRP_5.gif" caption="Dual-homed hub-and-spoke WAN network">}}
 
 Heavy route summarization is usually deployed on the links between the core routers and remote offices to reduce the amount of routing information exchange. In our example, the core routers announce only a summary default route toward the remote offices:
 
@@ -55,7 +55,7 @@ router eigrp 1
 
 The introduction of the EIGRP stub functionality in this design poses an interesting challenge: while the DUAL traffic is reduced (as expected), the routing might stop working when one of the upstream connections fails. For example, consider the scenario when the link between A2 and B2 fails.
 
-{{<figure src="EIGRP_6.gif" caption="Remote site routing stops working after a WAN link failure">}}
+{{<figure src="/kb/Internet/EIGRP_stub/EIGRP_6.gif" caption="Remote site routing stops working after a WAN link failure">}}
 
 B2 will still advertise its loopback interface to B1, but the host route will not be propagated to the core router (A1), making B2’s loopback inaccessible. If you use loopback interfaces for network management (and you should do that in any well-designed network), you’d lose access to B2 from the network management station.
 

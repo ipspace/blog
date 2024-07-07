@@ -4,7 +4,7 @@ minimal_sidebar: true
 title: Published Ports
 url: /kb/DockerSvc/20-Published/
 ---
-As mentioned in the [overview](index.html) part of this article, the default Docker networking implementation makes it hard to reach a service running in a container from an external client; the usual solution is to *publish* a container port (map a container port into a port on the Docker host).
+As mentioned in the [overview](/kb/DockerSvc/) part of this article, the default Docker networking implementation makes it hard to reach a service running in a container from an external client; the usual solution is to *publish* a container port (map a container port into a port on the Docker host).
 
 {{<note info>}}Other containers connected to the same Docker network can reach container services without additional configuration - unless configured otherwise Docker does not limit intra-network communication.{{</note>}}
 
@@ -12,7 +12,7 @@ As mentioned in the [overview](index.html) part of this article, the default Doc
 
 You can publish a container port when starting the container, for example with the **-p** parameter of the **docker run** command. It's impossible to publish a port once the container is running.
 
-Although it's recommended for documentation purposes, a published container port does not have to be listed as an *exposed* port. For example, using our [Flask application](10-Exposed.html) it's perfectly OK to map container port 80 into host port 8080 even though the container port 80 is not declared as an exposed port.
+Although it's recommended for documentation purposes, a published container port does not have to be listed as an *exposed* port. For example, using our [Flask application](/kb/DockerSvc/10-Exposed/) it's perfectly OK to map container port 80 into host port 8080 even though the container port 80 is not declared as an exposed port.
 
 {{<cc>}}Publishing container port 80 to host port 8080{{</cc>}}
 ```

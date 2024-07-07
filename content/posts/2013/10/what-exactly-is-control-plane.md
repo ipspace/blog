@@ -15,7 +15,7 @@ tags:
 title: What Exactly Is The Control Plane?
 url: /2013/10/what-exactly-is-control-plane/
 ---
-Tassos opened an [interesting can of worms](/2013/08/management-control-and-data-planes-in/#c568301941276652542) in a comment to my [*Management, Control and Data Planes*](/2013/08/management-control-and-data-planes-in.html?showComment=1378762930370) post: *Is ICMP response to a forwarded packet (TTL exceeded, fragmentation needed or destination unreachable) a control- or data-plane activity?*
+Tassos opened an [interesting can of worms](/2013/08/management-control-and-data-planes-in/#c568301941276652542) in a comment to my [*Management, Control and Data Planes*](/2013/08/management-control-and-data-planes-in/) post: *Is ICMP response to a forwarded packet (TTL exceeded, fragmentation needed or destination unreachable) a control- or data-plane activity?*
 <!--more-->
 Other control plane protocols (BGP, OSPF, LDP, LACP, BFD \...) are more clear-cut -- they run between individual network devices (usually adjacent, but there's also targeted LDP and multihop BGP) and could be (at least in theory) made to run across a separate control plane network (or VRF).
 

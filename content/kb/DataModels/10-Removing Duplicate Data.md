@@ -5,11 +5,11 @@ title: Removing Duplicate Data
 url: /kb/DataModels/10-Removing Duplicate Data/
 pre_scroll: true
 ---
-I started this article with a typical first attempt at describing a leaf-and-spine fabric using BGP as the routing protocol. Before moving on, make sure you [understand the original data model](index.html). Now let's see how we can reduce the amount of duplicate data.
+I started this article with a typical first attempt at describing a leaf-and-spine fabric using BGP as the routing protocol. Before moving on, make sure you [understand the original data model](/kb/DataModels/). Now let's see how we can reduce the amount of duplicate data.
 
 ## Removing Duplicate AS Numbers
 
-Assuming we’re designing a reasonable EBGP-based fabric (as opposed to [IBGP-over-EBGP monstrosity](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics#IBGP-Based_EVPN_on_Top_of_EBGP-Based_Fabric_Routing) with [**neighbor local-as** cheating all over the place](https://blog.ipspace.net/2018/05/dissecting-ibgpebgp-junos-configuration.html)) each switch in the fabric has a single AS number.
+Assuming we’re designing a reasonable EBGP-based fabric (as opposed to [IBGP-over-EBGP monstrosity](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics#IBGP-Based_EVPN_on_Top_of_EBGP-Based_Fabric_Routing) with [**neighbor local-as** cheating all over the place](/2018/05/dissecting-ibgpebgp-junos-configuration/)) each switch in the fabric has a single AS number.
 
 Specifying AS numbers for the BGP peers is thus unnecessary - all you need to do is to specify the peer name and look up the AS number specified in the peer data structure when creating BGP configuration.
 
@@ -53,7 +53,7 @@ Making just that one change, we already reduced the amount of duplicate data in 
      neighbor {{ n.ip }} description {{ n.name }}
     {% endfor %}
 
-On the other hand, having explicit neighbor information (instead of neighbor IP address and AS number) in the data model allows us to generate neighbor descriptions. Getting BGP neighbor name in the [old data model](index.html) where all we had were neighbor IP addresses would require interestingly-complex lookup code.
+On the other hand, having explicit neighbor information (instead of neighbor IP address and AS number) in the data model allows us to generate neighbor descriptions. Getting BGP neighbor name in the [old data model](/kb/DataModels/) where all we had were neighbor IP addresses would require interestingly-complex lookup code.
 
 ## Removing Peer IP Addresses
 

@@ -72,4 +72,4 @@ Do I have to tell you not to use this feature with untrusted neighbors? It's OK 
 
 Regardless of what I think about the whole concept of whitebox switching, I love creative solutions;) It's refreshing to see how startups with no legacy codebase to protect solve annoyances that have been bothering us for decades. Great job!
 
-**Disclosure**: Cumulus Networks was indirectly covering some of the costs of my attendance at the Network Field Day 9 event. [More...](/p/networking-tech-field-day-disclaimer/)
+**Disclosure**: Cumulus Networks was indirectly covering some of the costs of my attendance at the Network Field Day 9 event.
