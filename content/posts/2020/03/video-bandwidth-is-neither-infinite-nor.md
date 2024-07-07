@@ -6,7 +6,7 @@ tags:
 - video
 - WAN
 title: 'Video: Bandwidth Is Neither Infinite Nor Cheap'
-url: /2020/03/video-bandwidth-is-neither-infinite-nor.html
+url: /2020/03/video-bandwidth-is-neither-infinite-nor/
 video_tag: net101
 ---
 After decades of riding Moore's law curve, the networking bandwidth should be (almost) infinite and (almost) free, right? WRONG, as I explained in the *[Bandwidth Is (Not) Infinite and Free](https://my.ipspace.net/bin/get/Net101/F2.3%20-%20Bandwidth%20Is%20%28Not%29%20Infinite%20and%20Free.mp4?doccode=Net101)* video (part of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar).

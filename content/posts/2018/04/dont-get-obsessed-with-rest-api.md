@@ -6,7 +6,7 @@ series:
 tags:
 - automation
 title: Don't Get Obsessed with REST API
-url: /2018/04/dont-get-obsessed-with-rest-api.html
+url: /2018/04/dont-get-obsessed-with-rest-api/
 ---
 REST API is the way of the world and all network devices should support it, right? Well, Ken Duda (Arista) [disagreed with this idea during his Networking Field Day presentation](http://techfieldday.com/video/arista-eos-programmability-with-ken-duda/), but unfortunately there wasn't enough time to go into the details that would totally derail the presentation anyway.
 
@@ -19,7 +19,7 @@ Before going into the details:
 
 Now consider how you'd like to manage a network device. Would you like to create/update/delete individual objects (interfaces, neighbors, ACL entries, static routes) the way we're doing today with the CLI, or would it be better to treat the network device as a single-purpose system with a configuration that can be replaced and reloaded as needed?
 
-If you think we need REST API to manage network devices, then you're effectively trying to replicate existing workflow where we spend inordinate amount of time considering the right sequence of steps to get from here to there, and replace it with a faster version of the same choreography. See also: [CRUD hell](/2018/09/infrastructure-as-code-netconf-and-rest.html).
+If you think we need REST API to manage network devices, then you're effectively trying to replicate existing workflow where we spend inordinate amount of time considering the right sequence of steps to get from here to there, and replace it with a faster version of the same choreography. See also: [CRUD hell](/2018/09/infrastructure-as-code-netconf-and-rest/).
 
 Wouldn't it be better to tell the device how it should work (intent, anyone?), and tell it to reload the "how it should work" document as needed?
 

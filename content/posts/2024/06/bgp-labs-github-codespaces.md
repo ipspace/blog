@@ -15,7 +15,7 @@ Not too long ago, the containerlab team [launched the ability](https://container
 
 Alas, nothing is as simple as it looks. Building a *dev container* is a bit more complex than **docker build**, so I decided to reuse GitHub's work and do it in a GitHub action. I also had to tweak the **netlab** installation scripts a bit (they have to install *containerlab* but not Docker/Moby), but after a few hours, I had a running proof-of-concept. Unfortunately, the initial configuration crashed every time I started the lab due to [yet another Ansible glitch](https://github.com/ipspace/netlab/issues/1219).
 
-Anyway, after a lengthy [yak-shaving exercise](https://www.hanselman.com/blog/yak-shaving-defined-ill-get-that-done-as-soon-as-i-shave-this-yak), I [pushed out *netlab* release 1.8.4](/2024/06/netlab-1-8-4-vrnetlab-cat8000.html), a GitHub action built the container and pushed it to [GitHub container registry](https://github.com/ipspace/netlab/pkgs/container/netlab%2Fdevcontainer), and I could use it in BGP labs.
+Anyway, after a lengthy [yak-shaving exercise](https://www.hanselman.com/blog/yak-shaving-defined-ill-get-that-done-as-soon-as-i-shave-this-yak), I [pushed out *netlab* release 1.8.4](/2024/06/netlab-1-8-4-vrnetlab-cat8000/), a GitHub action built the container and pushed it to [GitHub container registry](https://github.com/ipspace/netlab/pkgs/container/netlab%2Fdevcontainer), and I could use it in BGP labs.
 
 The results were well worth the effort. Running BGP labs in a GitHub codespaces container is as easy as it gets:
 

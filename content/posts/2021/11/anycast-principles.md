@@ -8,7 +8,7 @@ tags:
 - IP routing
 title: Anycast Fundamentals
 ---
-I got into an interesting debate after I published the _[Anycast Works Just Fine with MPLS/LDP](/2021/11/anycast-mpls.html)_ blog post, and after a while it turned out we have a slightly different understanding what *anycast* means. Time to fall back to a [Wikipedia definition](https://en.wikipedia.org/wiki/Anycast):
+I got into an interesting debate after I published the _[Anycast Works Just Fine with MPLS/LDP](/2021/11/anycast-mpls/)_ blog post, and after a while it turned out we have a slightly different understanding what *anycast* means. Time to fall back to a [Wikipedia definition](https://en.wikipedia.org/wiki/Anycast):
 
 > Anycast is a network addressing and routing methodology in which a single destination IP address is shared by devices (generally servers) in multiple locations. Routers direct packets addressed to this destination to the location nearest the sender, using their normal decision-making algorithms, typically the lowest number of BGP network hops.
 
@@ -40,6 +40,6 @@ But the most important part is: MPLS is more general than both VC and packet-swi
 
 And I never understand what the excitement is with SR, given that it's a product of SDN, itself a misconception(or a flight of fantasy) from the start[^SR]. SR is more like a point solution for a few special cases, and it tries to overcome the state problems by introducing more constructs into the network, like SRGB and global segments, that can lead to tight binding and confusion, esp. at large scale.
 
-[^SR]: As I explained in [other blog posts](/tag/segment-routing.html) (and videos), [SR-MPLS does make sense](/2019/04/why-is-mpls-segment-routing-better-than.html) if you want to run MPLS transport as it simplifies the MPLS control plane (no IGP-LDP dependencies). [SRv6 is obviously a different story](/2019/01/srv6-one-tool-to-rule-them-all.html).
+[^SR]: As I explained in [other blog posts](/tag/segment-routing/) (and videos), [SR-MPLS does make sense](/2019/04/why-is-mpls-segment-routing-better-than/) if you want to run MPLS transport as it simplifies the MPLS control plane (no IGP-LDP dependencies). [SRv6 is obviously a different story](/2019/01/srv6-one-tool-to-rule-them-all/).
 
 In fact Dmytro's post already mentioned 3 deficiencies of SRGB mismatch. Introducing more moving parts, esp. global ones, into big distributed systems, always leads to complexity and unintended consequences. SR will run into problem with MPLS network where label is no longer just an abstract concept with no physical reality, but has to match the underlying resources. This 'fitting the data' requirement and SRGB can contradict each other, leading to much headache. And if one has to add a controller to SR to do TE, then one will run into all the scaling problems of centralized routing that SDN proponents have learnt the hard way.

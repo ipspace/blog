@@ -19,7 +19,7 @@ We'll start with the most straightforward design:
 * VXLAN is used to transport Ethernet frames across the fabric
 * The fabric uses ingress replication on leaf switches and does not run EVPN.
 
-Yes, that's right: [you don't have to run EVPN](/2022/09/mlag-bridging-evpn.html) to have a working VXLAN-based fabric. However, networking vendors sometimes don't want to be too explicit about this simple fact.
+Yes, that's right: [you don't have to run EVPN](/2022/09/mlag-bridging-evpn/) to have a working VXLAN-based fabric. However, networking vendors sometimes don't want to be too explicit about this simple fact.
 
 {{<figure src="/2024/04/evpn-design-vxlan.png" caption="Leaf-and-Spine Fabric Using VXLAN without EVPN">}}
 
@@ -33,7 +33,7 @@ Yes, that's right: [you don't have to run EVPN](/2022/09/mlag-bridging-evpn.html
 
 * You must manage the ingress replication lists[^NOMC] on the leaf switches. Not a big deal if your fabric never grows or if you use a configuration generation tool (including Excel ;)
 * You cannot use the fancy stuff like ARP suppression or EVPN-based MLAG (but maybe you're better off not using them anyway).
-* Some vendors support [anycast first-hop gateway](/2013/05/optimal-l3-forwarding-with-varp-and.html) (which is a good thing) only with EVPN.
+* Some vendors support [anycast first-hop gateway](/2013/05/optimal-l3-forwarding-with-varp-and/) (which is a good thing) only with EVPN.
 
 [^NOMC]: Please don't tell me you can use IP multicast. I would prefer EVPN over IP multicast and PIM any day of the week, including a troubleshooting exercise at 2 AM on a Sunday.
 
@@ -75,7 +75,7 @@ tools:
 Let's go through it line-by-line:
 
 * Lines 1-2: I will use Arista cEOS containers. More details [later](#lab)
-* Lines 4-6: The topology uses the [**fabric** plugin](/2024/03/netlab-fabric-plugin.html) to generate a leaf-and-spine fabric. The node names of the fabric switches will be L1 through L4 and S1/S2.
+* Lines 4-6: The topology uses the [**fabric** plugin](/2024/03/netlab-fabric-plugin/) to generate a leaf-and-spine fabric. The node names of the fabric switches will be L1 through L4 and S1/S2.
 * Line 8: Due to the large number of nodes, we'll use groups to manage node parameters.
 * Line 9: We want _netlab_ to [creates nodes](https://netlab.tools/groups/#create-nodes-from-group-members) based on the group's **members** list so we won't have to specify them manually.
 * Line 10-11: The **fabric** plugin puts all leaf switches in the **leafs** group. The leaf switches will use VLANs and VXLAN, and run OSPF.
@@ -95,7 +95,7 @@ I prefer using Arista cEOS containers on Ubuntu to run EVPN labs:
 * The cEOS containers consume approximately 1G of RAM per container. You can run a fabric with six switches on a 16GB laptop.
 * You don't need nested virtualization when using containers inside a VM.
 
-Using cEOS containers, you can run your tests on any x86 VM running on your laptop, your virtualization cluster[^VMW], or in a public cloud. Alternatively, if you want to [run EVPN labs on recent Apple laptops](/2024/03/netlab-bgp-apple-silicon.html), use the FRR containers.
+Using cEOS containers, you can run your tests on any x86 VM running on your laptop, your virtualization cluster[^VMW], or in a public cloud. Alternatively, if you want to [run EVPN labs on recent Apple laptops](/2024/03/netlab-bgp-apple-silicon/), use the FRR containers.
 
 {{<note info>}}
 Starting with *netlab* release 1.8.0, you can [override the default device- and provider with environment variables](https://netlab.tools/defaults/#changing-defaults-with-environment-variables). To use my EVPN lab topologies with FRR containers, execute **export NETLAB_DEVICE=frr** in your Ubuntu VM.
@@ -113,7 +113,7 @@ export NETLAB_PROVIDER=libvirt
 If you're new to _netlab_, use these simple steps to set up your lab in a Ubuntu VM running on your laptop. If you want something more complex, read the [netlab installation instructions](https://netlab.tools/install/).
 
 * Download and install [multipass](https://multipass.run/)
-* [Install netlab, Ansible, Docker, and Containerlab](/2024/03/netlab-bgp-apple-silicon.html).
+* [Install netlab, Ansible, Docker, and Containerlab](/2024/03/netlab-bgp-apple-silicon/).
 * If you're running on x86 hardware, [download and install the Arista cEOS container](https://netlab.tools/labs/ceos/). If you're running your Ubuntu VM on Apple silicon, tell _netlab_ you want to use FRR containers:
 
 ```

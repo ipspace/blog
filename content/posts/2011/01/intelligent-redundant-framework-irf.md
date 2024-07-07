@@ -7,7 +7,7 @@ tags:
 - link aggregation
 - switching
 title: Intelligent Redundant Framework (IRF) – Stacking as Usual
-url: /2011/01/intelligent-redundant-framework-irf.html
+url: /2011/01/intelligent-redundant-framework-irf/
 ---
 When I was listening to the Intelligent Redundant Framework (IRF) presentation from HP during the Tech Field Day 2010 and read the [HP/H3C IRF 2.0 whitepaper](http://www.h3c.com/portal/download.do?id=1027834) afterwards, IRF looked like a technology sent straight from Data Center heavens: you could build a single unified fabric with optimal L2 and L3 forwarding that spans the whole data center (I was somewhat skeptical about their multi-DC vision) and behaves like a single managed entity.
 
@@ -20,7 +20,7 @@ However, the worm of doubt was continuously nagging somewhere deep in my subcons
 [^NOLINK]: Had to remove the links to HP web sites when cleaning up this article in May 2022 -- HP can't be bothered to have valid TLS certificates on their web sites. If you really want to find those links, search through the commit history on [ipSpace.net blog repository](https://github.com/ipspace/blog).
 
 -   **Only devices of the same series can form an IRF**. How is that different from any other stackable switch vendor?
--   **Only two core switches can form an IRF**. How is that different from [Cisco's VSS](/2010/10/multi-chassis-link-aggregation-stacking.html) or [Juniper's XRE200](/2010/11/multi-chassis-link-aggregation-mlag.html)?
+-   **Only two core switches can form an IRF**. How is that different from [Cisco's VSS](/2010/10/multi-chassis-link-aggregation-stacking/) or [Juniper's XRE200](/2010/11/multi-chassis-link-aggregation-mlag/)?
 -   **One device in the IRF is the master, others are slaves**. Same as Cisco's VSS.
 -   **Numerous stackable switches can form an IRF**. Everyone else is calling that a stack.
 -   **IRF partition is detected through proprietarily modified LACP or BFD.** Same as Cisco's VSS.

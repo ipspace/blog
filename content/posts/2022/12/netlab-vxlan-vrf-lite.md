@@ -8,16 +8,16 @@ tags:
 - VXLAN
 title: 'netlab: VRF Lite over VXLAN Transport'
 ---
-One of the comments I received after publishing the _[Use VRFs for VXLAN-Enabled VLANs](/2022/10/use-vrf-for-vxlan-vlans.html)_ claimed that:
+One of the comments I received after publishing the _[Use VRFs for VXLAN-Enabled VLANs](/2022/10/use-vrf-for-vxlan-vlans/)_ claimed that:
 
 > I'm firmly of the belief that VXLAN should be solely an access layer/edge technology and if you are running your routing protocols within the tunnel, you've already lost the plot.
 
-That's a pretty good guideline for typical data center fabric deployments, but VXLAN is just a tool that allows you to build multi-access Ethernet networks on top of IP infrastructure. You can use it to emulate E-LAN service or to build networks similar to what you can get with DMVPN ([without any built-in security](/2018/11/omg-vxlan-is-still-insecure.html)). Today we'll use it to build a VRF Lite topology with two tenants (*red* and *blue*).
+That's a pretty good guideline for typical data center fabric deployments, but VXLAN is just a tool that allows you to build multi-access Ethernet networks on top of IP infrastructure. You can use it to emulate E-LAN service or to build networks similar to what you can get with DMVPN ([without any built-in security](/2018/11/omg-vxlan-is-still-insecure/)). Today we'll use it to build a VRF Lite topology with two tenants (*red* and *blue*).
 
 <!--more-->
 {{<figure src="/2022/12/netlab-vxlan-vrf-lite.png" caption="Lab topology">}}
 
-In our lab topology, we'll define two VRFs, two transport VLANs, and enable VXLAN transport for those VLANs (more details in _[Creating VRF Lite Labs With netlab](/2022/04/netsim-vrf-lite.html)_, _[VRF Lite Topology with VLAN Trunks](/2022/09/netlab-vrf-lite.html)_ and _[VXLAN Bridging Example](/2022/09/netlab-vxlan-bridging.html)_):
+In our lab topology, we'll define two VRFs, two transport VLANs, and enable VXLAN transport for those VLANs (more details in _[Creating VRF Lite Labs With netlab](/2022/04/netsim-vrf-lite/)_, _[VRF Lite Topology with VLAN Trunks](/2022/09/netlab-vrf-lite/)_ and _[VXLAN Bridging Example](/2022/09/netlab-vxlan-bridging/)_):
 
 ```
 vrfs:
@@ -53,7 +53,7 @@ groups:
     module: [ ospf ]
 ```
 
-Now for a trick: we'll define a group of PE-devices that provides services to the *red* tenant and another group of PE-devices that provides services to the *blue* tenant[^RSV] (more details in _[VXLAN Router-on-a-Stick](/2022/11/netlab-vxlan-router-stick.html)_):
+Now for a trick: we'll define a group of PE-devices that provides services to the *red* tenant and another group of PE-devices that provides services to the *blue* tenant[^RSV] (more details in _[VXLAN Router-on-a-Stick](/2022/11/netlab-vxlan-router-stick/)_):
 
 [^RSV]: This bit of the lab topology relies on merging configuration modules between groups, and requires *netlab* release 1.4.1 to work properly.
 

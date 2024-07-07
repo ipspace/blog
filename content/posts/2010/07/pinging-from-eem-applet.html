@@ -1,11 +1,11 @@
 ---
-url: /2010/07/pinging-from-eem-applet.html
+url: /2010/07/pinging-from-eem-applet/
 title: "Pinging from an EEM applet"
 date: "2010-07-07T07:18:00.000+02:00"
 tags: [ EEM ]
 ---
 
-<p>A while ago one of my readers wanted to perform an extended ping from an EEM applet. For whatever reason the <a href="/2007/03/one-line-extended-ping.html">extended ping syntax</a> wasn’t good enough for him, so I told him to use the <a href="/2007/12/execute-cli-commands-with-prompts-in.html"><strong>pattern </strong>parameter of the <strong>action cli command</strong></a><strong> </strong>EEM applet statement.</p>
+<p>A while ago one of my readers wanted to perform an extended ping from an EEM applet. For whatever reason the <a href="/2007/03/one-line-extended-ping/">extended ping syntax</a> wasn’t good enough for him, so I told him to use the <a href="/2007/12/execute-cli-commands-with-prompts-in/"><strong>pattern </strong>parameter of the <strong>action cli command</strong></a><strong> </strong>EEM applet statement.</p>
 <!--more--><p>Here’s the final result … ugly, but working:</p>
 <pre class="code">event manager applet ping<br/> event none sync yes<br/> action 100 cli command "enable"<br/> action 101 cli command "ping" pattern "[ip]"<br/> action 102 cli command "ip" pattern "address"<br/> action 103 cli command "10.10.10.10" pattern "count"<br/> action 104 cli command "5" pattern "size"<br/> action 105 cli command "100" pattern "seconds"<br/> action 106 cli command "2" pattern "commands"<br/> action 107 cli command "y" pattern "interface"<br/> action 108 cli command "20.20.20.20" pattern "service"<br/> action 109 cli command "0" pattern "header"<br/> action 110 cli command "no" pattern "data"<br/> action 111 cli command "no" pattern "pattern"<br/> action 112 cli command "0xABCD" pattern "Verbose"<br/> action 113 cli command " " pattern "size"<br/> action 114 cli command "n"</pre>
 

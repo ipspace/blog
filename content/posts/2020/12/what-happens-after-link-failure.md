@@ -105,7 +105,7 @@ pe1#show ip ospf | inc SPF
 	SPF algorithm executed 17 times
 ```
 
-If you really care about convergence, you could lower the initial SPF timers *and the LSA origination timer* down to 1 msec, and get the new routes calculated and installed in a few milliseconds... but if you [really think you need that kind of performance](/2020/11/fast-failover-challenge.html), you just might consider a [more redundant network design](/2020/11/fast-failover-topologies.html) and [fast failover technologies](/2020/12/fast-failover-techniques.html).
+If you really care about convergence, you could lower the initial SPF timers *and the LSA origination timer* down to 1 msec, and get the new routes calculated and installed in a few milliseconds... but if you [really think you need that kind of performance](/2020/11/fast-failover-challenge/), you just might consider a [more redundant network design](/2020/11/fast-failover-topologies/) and [fast failover technologies](/2020/12/fast-failover-techniques/).
 
 {{<note>}}Why do we have to adjust the LSA origination timer? Send me your thoughts, preferably not in the comments -- that would just spoil the challenge for everyone else.{{</note>}}
 

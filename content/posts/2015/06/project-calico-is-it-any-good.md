@@ -7,7 +7,7 @@ tags:
 - IP routing
 - virtualization
 title: 'Project Calico: Is It Any Good?'
-url: /2015/06/project-calico-is-it-any-good.html
+url: /2015/06/project-calico-is-it-any-good/
 ---
 At least a dozen engineers sent me emails or tweets mentioning [Project Calico](http://www.projectcalico.org) in the last few weeks -- obviously the project is getting some real traction, so it was high time to look at what it's all about.
 
@@ -15,12 +15,12 @@ At least a dozen engineers sent me emails or tweets mentioning [Project Calico](
 <!--more-->
 **What is Project Calico**? It's a virtual networking implementation for Linux, targeting high-density virtualization and container (Docker) environments. It comes with Neutron plug-in (and a few other plugins), making it immediately usable in OpenStack deployments.
 
-**How does it work**? The virtual network is modeled as a single [microsegmented](/2015/03/microsegmentation-in-vmware-nsx-on.html) flat VLAN with shared IP address space. *iptables* (packet filters implemented in Linux hosts) are used to implement tenant separation.
+**How does it work**? The virtual network is modeled as a single [microsegmented](/2015/03/microsegmentation-in-vmware-nsx-on/) flat VLAN with shared IP address space. *iptables* (packet filters implemented in Linux hosts) are used to implement tenant separation.
 
-However, the creators of Calico know that a single flat VLAN doesn't scale, so they added an [interesting twist](http://docs.projectcalico.org/en/latest/datapath.html) almost identical to my [IPv6 microsegmentation](/2015/04/video-ipv6-microsegmentation.html) ideas:
+However, the creators of Calico know that a single flat VLAN doesn't scale, so they added an [interesting twist](http://docs.projectcalico.org/en/latest/datapath.html) almost identical to my [IPv6 microsegmentation](/2015/04/video-ipv6-microsegmentation/) ideas:
 
 -   Every Linux host is an IP router running BGP;
--   Virtual machines (or containers) are attached to a virtual router, not a bridge (similar to what Juniper Contrail or [Microsoft Hyper-V](/2013/12/hyper-v-network-virtualization-packet.html) are doing);
+-   Virtual machines (or containers) are attached to a virtual router, not a bridge (similar to what Juniper Contrail or [Microsoft Hyper-V](/2013/12/hyper-v-network-virtualization-packet/) are doing);
 -   Host routes are used for end-to-end packet forwarding between customer endpoints and distributed between Linux hosts with BGP;
 -   BGP route reflectors (also running on Linux hosts) are used to build a scalable routing control plane.
 
@@ -30,21 +30,21 @@ The flooding across the physical layer-2 network is also reduced to a minimum. U
 
 ### The Obvious Problems
 
-Project Calico uses a single microsegmented network, resulting in the [obvious drawbacks of microsegmentation](/2015/06/do-we-still-need-subnets-in-virtualized.html):
+Project Calico uses a single microsegmented network, resulting in the [obvious drawbacks of microsegmentation](/2015/06/do-we-still-need-subnets-in-virtualized/):
 
--   **Single forwarding domain**, which makes [service insertion](/2014/02/service-insertion-with-openflow.html) way harder to implement than multiple forwarding domains. You could (in theory) use *iptables* on Linux hosts to implement service insertion with PBR, but I'm positive I don't want to see the results or be involved in a troubleshooting session;
+-   **Single forwarding domain**, which makes [service insertion](/2014/02/service-insertion-with-openflow/) way harder to implement than multiple forwarding domains. You could (in theory) use *iptables* on Linux hosts to implement service insertion with PBR, but I'm positive I don't want to see the results or be involved in a troubleshooting session;
 -   **Provider-coordinated IP addresses**. When multiple tenants share the same IP address space, someone has to coordinate the addresses, which means that you cannot simply migrate your existing workload into such a cloud (unless you're running new-age applications that rely exclusively on DNS and mechanisms like service registration and discovery);
 -   **No overlapping IP addresses**. The creators of Project Calico recognized the problem and [proposed a "solution" using 464XLAT](http://docs.projectcalico.org/en/latest/overlap-ips.html) (emulating end-to-end IPv4 with a sequence of NAT46 and NAT64). I definitely wouldn't want to be anywhere nearby a cloud that uses this approach (see also RFC 1925, section 2.3);
 
 If you're willing to accept these limitations, and offer cloud services where you force the tenants to use provider-supplied IP addresses (Amazon figured out years ago that they cannot do that), Project Calico might be a perfect fit for your private or public cloud... unless you want to build a scalable environment.
 
-{{<note>}}I'm also wondering about the performance of the solution, as (based on my experience with virtual appliances) Linux IP stack isn't exactly the fastest IP forwarding mechanism in the universe, but maybe I'm wrong... or maybe few Gbps per host (which hopefully has 2 10Gbps uplinks) is [still ludicrous speed](/2015/02/performance-of-hypervisor-based-overlay.html).{{</note>}}
+{{<note>}}I'm also wondering about the performance of the solution, as (based on my experience with virtual appliances) Linux IP stack isn't exactly the fastest IP forwarding mechanism in the universe, but maybe I'm wrong... or maybe few Gbps per host (which hopefully has 2 10Gbps uplinks) is [still ludicrous speed](/2015/02/performance-of-hypervisor-based-overlay/).{{</note>}}
 
 ### The Big Problems
 
-The [router-in-hypervisor approach](/2011/04/vcloud-architects-ever-heard-of-mpls.html) is definitely the right way to go (it's used by reasonably-scalable networks like [Amazon VPC](/2013/12/packet-forwarding-in-amazon-vpc.html)), but the flat VLAN transport between hypervisor hosts kills the beauty of the concept for environments that need more than one or two switches -- you're forced to deploy fragile kludges like MLAG, proprietary layer-2 fabrics, or [concoctions that would make MacGyver proud](http://docs.projectcalico.org/en/latest/l2-interconnectFabric.html).
+The [router-in-hypervisor approach](/2011/04/vcloud-architects-ever-heard-of-mpls/) is definitely the right way to go (it's used by reasonably-scalable networks like [Amazon VPC](/2013/12/packet-forwarding-in-amazon-vpc/)), but the flat VLAN transport between hypervisor hosts kills the beauty of the concept for environments that need more than one or two switches -- you're forced to deploy fragile kludges like MLAG, proprietary layer-2 fabrics, or [concoctions that would make MacGyver proud](http://docs.projectcalico.org/en/latest/l2-interconnectFabric.html).
 
-{{<note>}}Do I have to emphasize yet again that [every layer-2 domain represents a single failure domain](/2012/05/layer-2-network-is-single-failure.html) and that [it inevitably fails sooner or later](/2015/06/another-spectacular-layer-2-failure.html)?{{</note>}}
+{{<note>}}Do I have to emphasize yet again that [every layer-2 domain represents a single failure domain](/2012/05/layer-2-network-is-single-failure/) and that [it inevitably fails sooner or later](/2015/06/another-spectacular-layer-2-failure/)?{{</note>}}
 
 Alternatively, you could use a real IP fabric and dump all host routes into physical switches using BGP between hypervisor hosts and physical switches... and kill scalability because you'd become dependent on the L3 table sizes in physical switches.
 

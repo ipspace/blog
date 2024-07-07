@@ -4,7 +4,7 @@ tags:
 - SD-WAN
 - SDN
 title: 'Lock-In and SD-WAN: a Match Made in Heaven'
-url: /2019/03/lock-in-and-sd-wan-match-made-in-heaven.html
+url: /2019/03/lock-in-and-sd-wan-match-made-in-heaven/
 sd-wan_tag: myth
 ---
 *This blog post was initially sent to subscribers of my SDN and Network Automation mailing list. *[*Subscribe here*](http://www.ipspace.net/Subscribe/Five_SDN_Tips)*.*

@@ -1,21 +1,21 @@
 ---
-url: /2008/11/control-plane-protection-overview.html
+url: /2008/11/control-plane-protection-overview/
 title: "Control Plane Protection Overview"
 date: "2008-11-12T06:57:00.003+01:00"
 tags: [ switching,IP routing ]
 lastmod: 2020-11-18 17:32:00
 ---
-The *[control and management planes](/2013/08/management-control-and-data-planes-in.html)* in a network device run numerous mission-critical processes, including routing protocols and network management services (SNMP, telnet or SSH access to the router, web access to the router), and is thus the most vulnerable part of any network device.
+The *[control and management planes](/2013/08/management-control-and-data-planes-in/)* in a network device run numerous mission-critical processes, including routing protocols and network management services (SNMP, telnet or SSH access to the router, web access to the router), and is thus the most vulnerable part of any network device.
 
 A determined attacker can quickly overload the CPU of any router (or switch) with a targeted denial-of-service attack, either by sending IP packets that are propagated from the switching fabric (or interrupt code on software-only platforms) to the control plane processes or by targeting individual services running on the router. The situation is becoming worse with widespread use of high-speed hardware switching platforms that are connected to an underpowered CPU over a PCI bus; getting enough traffic to a network device to saturate the ASIC-to-CPU connection, or the CPU, is becoming trivial.
 <!--more-->
-The results of control plane CPU overload due to a denial-of-service attack could be disastrous: without adequate share of CPU and memory resources, the routing protocols cannot maintain sessions with adjacent routers, resulting in routing and packet forwarding disruptions. Likewise, attacks on individual control- or management-plane services could result in compromised network devices, impersonation attacks or denial-of-service attacks due to [incorrect routing information](/2011/11/ipv6-security-getting-bored-bru-airport.html) or routing instabilities.
+The results of control plane CPU overload due to a denial-of-service attack could be disastrous: without adequate share of CPU and memory resources, the routing protocols cannot maintain sessions with adjacent routers, resulting in routing and packet forwarding disruptions. Likewise, attacks on individual control- or management-plane services could result in compromised network devices, impersonation attacks or denial-of-service attacks due to [incorrect routing information](/2011/11/ipv6-security-getting-bored-bru-airport/) or routing instabilities.
 
 The denial of service can target router-based processes (for example, Telnet server or OSPF routing protocol), control-plane mechanisms like ARP or IPv6 ND, or the shortcomings of data plane implementation that forces the control plane to handle parts of the switching load. For example, all IP datagrams with IP options are forwarded to the control plane unless you’ve the **ip options drop** global configuration option has been used.
 
 Most modern network devices offer some form of _control plane protection_ -- filters and rate-limiters installed between the packet switching mechanisms, and the control-plane CPU
 
-{{<figure src="ControlPlaneProtection.png" caption="Control-plane protection between switching ASIC and control plane CPU">}}
+{{<figure src="/2008/11/ControlPlaneProtection.png" caption="Control-plane protection between switching ASIC and control plane CPU">}}
 
 ### Cisco IOS Control-Plane Protection Mechanisms
 
@@ -29,7 +29,7 @@ You can use access lists to drop all traffic sent to the router’s IP addresses
 -   Management plane protection (introduced in IOS release 12.4(6)T) limits access to network management services.
 -   Several IOS applications use per-application access lists to further limit their usage.
 
-{{<figure src="CoPPMechanisms.png" caption="An overview of control plane protection mechanisms in Cisco IOS">}}
+{{<figure src="/2008/11/CoPPMechanisms.png" caption="An overview of control plane protection mechanisms in Cisco IOS">}}
 
 ### Protection Granularity and Filtering Functionality
 

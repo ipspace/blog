@@ -6,7 +6,7 @@ tags:
 - IOS fossils
 - BGP
 title: 'IOS Fossils: OSPF-to-BGP Redistribution'
-url: /2009/05/ios-fossils-ospf-to-bgp-redistribution.html
+url: /2009/05/ios-fossils-ospf-to-bgp-redistribution/
 ---
 Here's a weird requirement that you could get on a really hard CCIE preparation lab (and hopefully never in a live network): redistribute external OSPF routes from selected ASBRs into BGP without using a route map on the redistribution router.
 

@@ -5,11 +5,11 @@ tags:
 - MPLS VPN
 - GRE
 title: MPLS/VPN over mGRE strikes again
-url: /2011/01/mplsvpn-over-mgre-strikes-again.html
+url: /2011/01/mplsvpn-over-mgre-strikes-again/
 ---
 
 <p>More than five years after the MPLS/VPN-in-mGRE encapsulation was <a href="http://tools.ietf.org/html/rfc4023">standardized</a> (add a few more years for the work-in-progress and IETF draft stages), it <a href="http://www.cisco.com/en/US/docs/ios/interface/configuration/guide/ir_mplsvpnomgre.html">finally debuted in a mainstream-wannabe IOS release running on ISR routers</a> (15.1(2)T), making it usable for the enterprise WAN designers, who are probably its best target audience.</p>
-<p>I was <a href="/2010/04/is-anyone-using-mplsvpn-over-mgre.html">writing about the two conflicting MPLS/VPN over mGRE implementations</a> a while ago and got the impression the Service Providers aren’t too excited about this option. No wonder – most of them use full-blown MPLS backbones, so they have no need for GRE tunnels. </p>
+<p>I was <a href="/2010/04/is-anyone-using-mplsvpn-over-mgre/">writing about the two conflicting MPLS/VPN over mGRE implementations</a> a while ago and got the impression the Service Providers aren’t too excited about this option. No wonder – most of them use full-blown MPLS backbones, so they have no need for GRE tunnels. </p>
 <!--more--><p>I always thought the MPLS-over-mGRE encapsulation would be more useful in an enterprise environment, but the feature just wasn’t supported on the right platforms (it’s somewhat hard to build a whole enterprise network using just the 7600s and 7200s). All that has changed with the 15.1(2)T release, which allows you to run MPLS/VPN-over-mGRE on ISR and ISR-G2 routers (I got it up and running on a bunch of 2800s in less than half an hour, including the software upgrade).</p>
 <p>MPLS/VPN-over-mGRE gives you a lightweight MPLS/VPN transport directly between the PE-routers without the need to configure end-to-end MPLS in your WAN backbone or GRE tunnels on the PE-routers. All you need is VPNv4-enabled BGP infrastructure; the mGRE tunnel interface needed by this feature is created automagically by Cisco IOS and the GRE encapsulation is quietly performed behind-the-scenes – the CEF entries for the remote VPN destinations point to the hidden tunnel interface, the GRE next-hop is set to the BGP next-hop and the MPLS label applied on the ingress PE-router is taken directly from the VPNv4 BGP route.</p>
 <p>The following printouts were taken from my simple lab network. Remote PE-router with loopback IP address 172.16.0.12 is advertising a VPN prefix 10.0.0.2/32. The VPNv4 BGP route goes through a route reflector with IP address 172.16.0.11. </p>

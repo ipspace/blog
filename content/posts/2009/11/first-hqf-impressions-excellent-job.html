@@ -1,11 +1,11 @@
 ---
-url: /2009/11/first-hqf-impressions-excellent-job.html
+url: /2009/11/first-hqf-impressions-excellent-job/
 title: "First HQF impressions: excellent job"
 date: "2009-11-11T07:19:00.001+01:00"
 tags: [ QoS ]
 ---
 
-<p>Several readers <a href="/2009/11/cb-wfq-misconceptions.html">told me</a> that the <a href="http://www.cisco.com/en/US/docs/ios/qos/configuration/guide/qos_frhqf_support.html">Hierarchical Queuing Framework</a> introduced in IOS releases 12.4(20)T and 15.0 (why do I always have the urge to write 12.5?) works <a href="/2009/11/cb-wfq-misconceptions.html">much better than CB-WFQ</a>. After spending several hours trying to break HQF, I have to concur with them: Cisco’s engineers did a splendid job. However, the HQF behavior might be slightly counterintuitive to those that became too familiar with CB-WFQ. </p>
+<p>Several readers <a href="/2009/11/cb-wfq-misconceptions/">told me</a> that the <a href="http://www.cisco.com/en/US/docs/ios/qos/configuration/guide/qos_frhqf_support.html">Hierarchical Queuing Framework</a> introduced in IOS releases 12.4(20)T and 15.0 (why do I always have the urge to write 12.5?) works <a href="/2009/11/cb-wfq-misconceptions/">much better than CB-WFQ</a>. After spending several hours trying to break HQF, I have to concur with them: Cisco’s engineers did a splendid job. However, the HQF behavior might be slightly counterintuitive to those that became too familiar with CB-WFQ. </p>
 <!--more--><p>For example, faced with this configuration …</p>
 <pre class="code">policy-map WAN<br/> class P5001<br/>    bandwidth percent 20<br/>    fair-queue<br/> class P5003<br/>    bandwidth percent 30<br/> class class-default<br/>    fair-queue</pre><p>… one might assume that all three classes will get a proportional part of the remaining bandwidth (50%). Not true. An HQF class with a <strong>bandwidth </strong>allocation gets as much as it’s asked for. It might get more, but if all classes are fully congested, the remaining bandwidth is distributed equally between classes without explicit bandwidth allocation.</p>
 <p>When I ran 30 parallel TCP sessions across a 2 Mbps link (10 TCP sessions in each class), I’ve got these results:</p>

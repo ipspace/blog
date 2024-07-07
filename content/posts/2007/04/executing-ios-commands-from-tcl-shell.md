@@ -1,11 +1,11 @@
 ---
-url: /2007/04/executing-ios-commands-from-tcl-shell.html
+url: /2007/04/executing-ios-commands-from-tcl-shell/
 title: "Executing IOS Commands from Tcl Shell"
 date: "2007-04-02T19:43:00.001+02:00"
 tags: [ Tcl ]
 ---
 
-The Tcl procedures used to execute IOS commands in Embedded Event Manager (cli\_open, cli\_write ...) don't work when you [start Tcl shell from command line interface](/2007/03/running-tcl-procedures-from-command.html). To execute IOS commands in this context, use:
+The Tcl procedures used to execute IOS commands in Embedded Event Manager (cli\_open, cli\_write ...) don't work when you [start Tcl shell from command line interface](/2007/03/running-tcl-procedures-from-command/). To execute IOS commands in this context, use:
 
 -   **exec *command*** to execute an exec-level command, for example **exec "show ip route"**
 -   **ios\_config *mode* *command*** to configure the router

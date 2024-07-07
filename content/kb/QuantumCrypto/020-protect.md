@@ -2,7 +2,7 @@
 kb_section: QuantumCrypto
 minimal_sidebar: true
 title: Protecting Against Future Quantum Computers
-url: /kb/QuantumCrypto/020-protect.html
+url: /kb/QuantumCrypto/020-protect/
 ---
 There are four options you can use to protect your keys and encrypted data against successful attacks from both classical and quantum computers:
 

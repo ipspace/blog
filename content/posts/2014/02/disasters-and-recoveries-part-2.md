@@ -8,9 +8,9 @@ tags:
 - data center
 - high availability
 title: Disasters and Recoveries, Part 2
-url: /2014/02/disasters-and-recoveries-part-2.html
+url: /2014/02/disasters-and-recoveries-part-2/
 ---
-You wouldn't believe what your second most pressing problem is when you [lose electricity for a few days in the middle of a winter storm](/2014/02/disasters-and-recoveries-part-1.html): freezer. Being a good engineer focused on redundant solutions, I bought a diesel generator before moving into the hills to keep the freezer at a reasonably low temperature in case of a long-term power loss.
+You wouldn't believe what your second most pressing problem is when you [lose electricity for a few days in the middle of a winter storm](/2014/02/disasters-and-recoveries-part-1/): freezer. Being a good engineer focused on redundant solutions, I bought a diesel generator before moving into the hills to keep the freezer at a reasonably low temperature in case of a long-term power loss.
 
 I also thought about using the same generator to run our central heating. As always, I found a huge disconnect between theory and practice.
 <!--more-->

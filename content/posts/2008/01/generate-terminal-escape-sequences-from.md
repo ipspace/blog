@@ -1,5 +1,5 @@
 ---
-url: /2008/01/generate-terminal-escape-sequences-from.html
+url: /2008/01/generate-terminal-escape-sequences-from/
 title: "Generate terminal escape sequences from Tcl"
 date: "2008-01-14T06:33:00.001+01:00"
 tags: [ Tcl ]

@@ -3,7 +3,7 @@ kb_section: EIGRP_stub
 minimal_sidebar: true
 pre_scroll: true
 title: Resilient Remote Sites
-url: /kb/Internet/EIGRP_stub/20-resilient-remote-sites.html
+url: /kb/Internet/EIGRP_stub/20-resilient-remote-sites/
 ---
 Network designers aiming to increase overall network reliability usually deploy two routers at the remote offices, each one of them being connected to one of the upstream links:
 

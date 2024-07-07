@@ -2,8 +2,8 @@
 date: 2007-09-19 07:56:00.001000+02:00
 tags:
 - DHCP
-title: Assigning server IP addresses with DHCP
-url: /2007/09/assigning-server-ip-addresses-with-dhcp.html
+title: Assigning Server IP addresses with DHCP
+url: /2007/09/assigning-server-ip-addresses-with-dhcp/
 ---
 Using DHCP to assign server IP addresses is usually not a wise decision. To start with, you have to define static DHCP mappings, which rely on client-id attribute in the DHCP request (usually the MAC address of the client). For me, the easiest way to find the correct client ID is as follows:
 
@@ -14,7 +14,7 @@ Using DHCP to assign server IP addresses is usually not a wise decision. To star
 <!--more-->
 Of course, if the Ethernet adapter in the server is replaced, the static mapping stops working. The only reliable workaround I\'ve found so far is to assign a locally-administered MAC address to the server\'s LAN adapter (if anyone has figured out a way to assign ASCII client-ID to a Windows server, let me know). To do it on Windows XP, use the Advanced properties in the adapter configuration window.
 
-{{<figure src="LanAdapter.jpg">}}
+{{<figure src="/2007/09/LanAdapter.jpg">}}
 
 **Remember**: locally administered MAC addresses on Ethernet networks start with 02xx. More precisely, second bit in first byte must be set, thus 02 in the previous sentence. AA00-0000-0001 is also a locally administered MAC address.
 

@@ -8,7 +8,7 @@ tags:
 - LISP
 - virtualization
 title: 'Networking Tech Field Day #3: First Impressions'
-url: /2012/04/networking-tech-field-day-3-first.html
+url: /2012/04/networking-tech-field-day-3-first/
 ---
 Last week [Stephen Foskett](http://blog.fosketts.net/about/stephen-foskett/) and [Greg Ferro](http://etherealmind.com/) brought back their merry crew of geeks (and a [network security princess](http://twitter.com/MrsYisWhy)) for the [third Networking Tech Field Day](http://techfieldday.com/2012/nfd3/). We've met some exciting new vendors (Infineta and Spirent) and a few long-time friends (Arista, Cisco, NEC and Solarwinds).
 
@@ -16,7 +16,7 @@ Infineta gave us a fantastic deep-dive into deduplication math, and Spirent blew
 <!--more-->
 > I really did not see anything new, just more of the same. Presenters should be banned if they reuse an old presentation. Innovation seems dormant and no amount of science projects and Crossing the Chasm buttering will take the place of bold innovation.
 
-To make matters worse, some vendors seem to promote ["monkey wiring" design](/2012/04/monkey-design-still-doesnt-work-well.html) along the lines of "our fabrics are so versatile you can just wire switches together and everything will work". Not sure why I remain skeptical -- maybe I've seen too many such designs in the past explode in their owner's face (after the "architect" had been long paid and gone).
+To make matters worse, some vendors seem to promote ["monkey wiring" design](/2012/04/monkey-design-still-doesnt-work-well/) along the lines of "our fabrics are so versatile you can just wire switches together and everything will work". Not sure why I remain skeptical -- maybe I've seen too many such designs in the past explode in their owner's face (after the "architect" had been long paid and gone).
 
 However, all is not bleak. Here are the (positive) highlights:
 

@@ -5,7 +5,7 @@ date: 2023-09-04 06:26:00
 tags: [ BGP, netlab ]
 netlab_tag: bgplab
 ---
-The first set of [BGP labs](https://bgplabs.net/) covered [the basics](/2023/08/bgp-labs-basic-setup.html); the next four will help you master simple routing policy tools (BGP weights, AS-path filters, prefix filters) using real-life examples:
+The first set of [BGP labs](https://bgplabs.net/) covered [the basics](/2023/08/bgp-labs-basic-setup/); the next four will help you master simple routing policy tools (BGP weights, AS-path filters, prefix filters) using real-life examples:
 
 * [Use BGP weights](https://bgplabs.net/policy/1-weights/) to prefer one of the upstream providers
 * [Prevent route leaking between upstream providers](https://bgplabs.net/policy/2-stop-transit/) with an AS-path filter

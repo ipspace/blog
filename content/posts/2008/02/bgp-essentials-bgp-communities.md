@@ -3,7 +3,7 @@ date: 2008-02-04 07:19:00+01:00
 tags:
 - BGP
 title: 'BGP Essentials: BGP Communities'
-url: /2008/02/bgp-essentials-bgp-communities.html
+url: /2008/02/bgp-essentials-bgp-communities/
 ---
 BGP communities are extra attributes you can attach to an IP route carried by BGP. You can use communities to indicate which routes should be propagated or filtered (for example, the well-known *NO_EXPORT* community signifies that the route it's attached to shall not be sent outside of the local AS), to influence route selection on remote routers or to trigger other BGP-dependent IOS features (for example, quality-of-service marking based on BGP).
 

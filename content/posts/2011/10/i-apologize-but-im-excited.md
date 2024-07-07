@@ -1,7 +1,7 @@
 ---
 cdate: 2022-07-06
 comment: 'The real-life approach of numerous vendors I’ve seen during [Networking
-  Field Day 2 and OpenFlow Symposium](/2011/10/network-field-day-first-impressions.html)
+  Field Day 2 and OpenFlow Symposium](/2011/10/network-field-day-first-impressions/)
   made me overly optimistic – I thought we just might be able to get to real-life
   OpenFlow and SDN use cases without the usual vendor jousting and get-rich-quick
   startup mentality.
@@ -19,11 +19,11 @@ tags:
 - SDN
 - OpenFlow
 title: I Apologize, but I’m Excited
-url: /2011/10/i-apologize-but-im-excited.html
+url: /2011/10/i-apologize-but-im-excited/
 ---
 The last few days were exquisite fun: it was great meeting so many people focusing on a single technology (OpenFlow) and concept (Software-Defined Networking, whatever that means) that just might overcome some of the old obstacles (and introduce new ones). You should be at least a bit curious what this is all about, and even if you don't see yourself ever using OpenFlow or any other incarnation of SDN in your network, it never hurts to enhance your resume with another technology (as long as it's relevant; don't put CICS programmer at the top of it).
 <!--more-->
-Watching the [presentations from the OpenFlow symposium](http://techfieldday.com/2011/openflow-symposium/) is a great starting point. I would start [with the ones from Igor Gashinsky (Yahoo!) and Ed Crabbe (Google)](http://techfieldday.com/2011/yahoo-google-openflow-technology/) -- they succinctly explained the problems they're facing in their networks and how they feel OpenFlow could solve them. If you're an IaaS cloud provider, this is the time to start thinking about potentials OpenFlow could bring to your network, and if you're not talking to NEC, BigSwitch or [Nicira](/2011/10/what-is-nicira-really-up-to.html), you're missing out. I would also talk with Juniper (more about that later).
+Watching the [presentations from the OpenFlow symposium](http://techfieldday.com/2011/openflow-symposium/) is a great starting point. I would start [with the ones from Igor Gashinsky (Yahoo!) and Ed Crabbe (Google)](http://techfieldday.com/2011/yahoo-google-openflow-technology/) -- they succinctly explained the problems they're facing in their networks and how they feel OpenFlow could solve them. If you're an IaaS cloud provider, this is the time to start thinking about potentials OpenFlow could bring to your network, and if you're not talking to NEC, BigSwitch or [Nicira](/2011/10/what-is-nicira-really-up-to/), you're missing out. I would also talk with Juniper (more about that later).
 
 Next step: watch the [vendor presentations from the OpenFlow symposium](http://techfieldday.com/2011/openflow-presentations-bigswitch-brocade-cisco-nec-juniper/). Kyle Forster presented a [high-level overview of Big Switch architecture](http://static.techfieldday.com/wp-content/uploads/2011/10/BSN+Concept+PP+15+mins+10-24-11.pdf), Curt Beckmann from Brocade added a [healthy dose of reality check](http://static.techfieldday.com/wp-content/uploads/2011/10/BrocadeAppliedOpenFlow10-26-11.pdf) (highly appreciated), David Meyer (Cisco) presented an [interesting perspective on robustness and complexity](http://static.techfieldday.com/wp-content/uploads/2011/10/dmm-symposium.pdf) (and several OpenFlow use cases), Don Clark from NEC talked about their OpenFlow products (watch the video, PDF is not online) and finally David Ward from Juniper presented the hybrid approach: [use OpenFlow *in combination* (not as a replacement) with existing technologies](http://static.techfieldday.com/wp-content/uploads/2011/10/jnpr-dward.pdf).
 

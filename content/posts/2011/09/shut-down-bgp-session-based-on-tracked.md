@@ -4,9 +4,9 @@ tags:
 - BGP
 - EEM
 title: Shut Down BGP Session Based on Tracked Object
-url: /2011/09/shut-down-bgp-session-based-on-tracked.html
+url: /2011/09/shut-down-bgp-session-based-on-tracked/
 ---
-In responses to my [*The Road to Complex Designs is Paved With Great Recipes*](/2011/08/road-to-complex-designs-is-paved-with.html) post Daniel suggested shutting down EBGP session if your BGP router cannot reach the DMZ firewall and Cristoph guessed that it might be done without changing the router configuration with the **neighbor fall-over route-map** BGP configuration command. He was sort-of right, but the solution is slightly more convoluted than he imagined.
+In responses to my [*The Road to Complex Designs is Paved With Great Recipes*](/2011/08/road-to-complex-designs-is-paved-with/) post Daniel suggested shutting down EBGP session if your BGP router cannot reach the DMZ firewall and Cristoph guessed that it might be done without changing the router configuration with the **neighbor fall-over route-map** BGP configuration command. He was sort-of right, but the solution is slightly more convoluted than he imagined.
 <!--more-->
 Cristoph's original idea was simple enough: create a fake static route based on a **track** object (that can track anything you want) and match that route with the **fall-over route-map**. Unfortunately, that's not how the fast fall-over functionality works -- it takes the neighbor's IP address, finds all routes that can be used to reach the neighbor, and tests them with the specified **route-map** (more details in my *Designing Fast Converging BGP Networks* article -- search for it somewhere in [this list](/kb/Internet/)).
 
@@ -23,7 +23,7 @@ router bgp 65100
 
 First we have to create the track object that will cause the BGP session termination. It can track anything -- you can track interface state, use IP SLA and ping the firewall, or even use EEM to trigger time-based (or other event-based) session shutdown. I decided to track the state of the LAN interface.
 
-There are simpler solutions if you want to originate a BGP route only when the LAN interface is operational. Read [this blog post](/2011/08/road-to-complex-designs-is-paved-with.html) for more information.
+There are simpler solutions if you want to originate a BGP route only when the LAN interface is operational. Read [this blog post](/2011/08/road-to-complex-designs-is-paved-with/) for more information.
 
 ``` {.code}
 track 10 interface FastEthernet0/0 ip routing
@@ -32,7 +32,7 @@ track 10 interface FastEthernet0/0 ip routing
 
 Next, create a host route for the BGP next hop pointing to the next hop itself.
 
-If you use a PPP interface to connect to the BGP next hop, make sure you disable **peer neighbor-route**, otherwise the router [creates a competing host route](/2008/02/remove-unwanted-ppp-peer-route.html) for the BGP next hop.
+If you use a PPP interface to connect to the BGP next hop, make sure you disable **peer neighbor-route**, otherwise the router [creates a competing host route](/2008/02/remove-unwanted-ppp-peer-route/) for the BGP next hop.
 
 ``` {.code}
 ip route 10.0.7.10 255.255.255.255 Serial1/0 10.0.7.10 track 10

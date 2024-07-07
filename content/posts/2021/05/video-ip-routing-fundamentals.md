@@ -8,7 +8,7 @@ tags:
 title: 'Video: IP Routing Fundamentals'
 video_tag: net101
 ---
-A few weeks ago we covered [transparent bridging fundamentals](/2021/04/video-transparent-bridging-fundamentals.html), now it's time to recap IP routing fundamentals... and then we'll be ready to compare the two.
+A few weeks ago we covered [transparent bridging fundamentals](/2021/04/video-transparent-bridging-fundamentals/), now it's time to recap IP routing fundamentals... and then we'll be ready to compare the two.
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/BR1.2%20-%20IP%20Routing%20Fundamentals.mp4?doccode=Net101){{</jump>}}
 

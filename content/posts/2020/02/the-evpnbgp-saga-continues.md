@@ -9,19 +9,19 @@ tags:
 - BGP
 - EVPN
 title: The EVPN/EBGP Saga Continues
-url: /2020/02/the-evpnbgp-saga-continues.html
+url: /2020/02/the-evpnbgp-saga-continues/
 ---
-[Aldrin](http://aldrinisaac.blogspot.com/) wrote a well-thought-out comment to my *[EVPN Dilemma](/2019/11/the-evpn-dilemma.html)* blog post explaining why he thinks it makes sense to use [Juniper's IBGP (EVPN) over EBGP (underlay) design](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics#IBGP-Based_EVPN_on_Top_of_EBGP-Based_Fabric_Routing). The only problem I have is that I forcefully disagree with many of his assumptions.
+[Aldrin](http://aldrinisaac.blogspot.com/) wrote a well-thought-out comment to my *[EVPN Dilemma](/2019/11/the-evpn-dilemma/)* blog post explaining why he thinks it makes sense to use [Juniper's IBGP (EVPN) over EBGP (underlay) design](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics#IBGP-Based_EVPN_on_Top_of_EBGP-Based_Fabric_Routing). The only problem I have is that I forcefully disagree with many of his assumptions.
 
 He started with an in-depth explanation of why EBGP over directly-connected interfaces makes little sense:
 <!--more-->
-> Following [blog](https://blog.noc.grnet.gr/2016/09/28/lab-on-evpn-vxlan-on-juniper-qfx5100-switches-3/) captures in detail EVPN over EBGP using Junos dating back to 2016. You can see the multi-hop EBGP sessions for EVPN required to set the loopback as the VTEP IP (i.e. BGP protocol next-hop). \[More about BGP next hop handling in the [original comment](/2019/11/the-evpn-dilemma.html?showComment=1575861244172#c3854070778949161857)\].
+> Following [blog](https://blog.noc.grnet.gr/2016/09/28/lab-on-evpn-vxlan-on-juniper-qfx5100-switches-3/) captures in detail EVPN over EBGP using Junos dating back to 2016. You can see the multi-hop EBGP sessions for EVPN required to set the loopback as the VTEP IP (i.e. BGP protocol next-hop). \[More about BGP next hop handling in the [original comment](/2019/11/the-evpn-dilemma/#c3854070778949161857)\].
 
 I agree with Aldrin that the best way to get the desired BGP next hop *in Junos EVPN implementation* is to use a BGP session between loopback interfaces (to be more precise, you have to use the same loopback interface for BGP session and VTEP IP)... but that's just because *they decided not to set the correct BGP next hop when inserting the local EVPN route into the local BGP table*.
 
 Setting BGP next hop to a specific value when originating a BGP route is not a novel idea - it took me about 30 seconds to [find it in RFC 1403](https://tools.ietf.org/html/rfc1403#page-14) (OK, I'm old enough to know where to look). Assuming an EVPN device wants to receive VXLAN packets with a specific destination IP address, I can't figure out a good reason why it wouldn't set that IP address as the BGP next hop *when originating the route*. Asking the network operator to run BGP sessions between loopback interfaces just so the BGP next hop would be set to the right value is stupid.
 
-{{<note>}}There might be something in Junos EVPN implementation that prevents them from setting the BGP next hop on route origination, but if that's the case please [document that limitation and move on](/2019/04/dont-sugarcoat-challenges-you-have.html). Trying to persuade me why I should consider a workaround a sane design won't work.{{</note>}}
+{{<note>}}There might be something in Junos EVPN implementation that prevents them from setting the BGP next hop on route origination, but if that's the case please [document that limitation and move on](/2019/04/dont-sugarcoat-challenges-you-have/). Trying to persuade me why I should consider a workaround a sane design won't work.{{</note>}}
 
 Moving on, Aldrin mentioned BGP next hop handling on EBGP sessions:
 
@@ -33,11 +33,11 @@ For example, FRRouting implementation decided to go all-in, and uses **next-hop-
 
 > All considered, IMO it's more straight-forward to use IBGP with RRs for EVPN, rather than to force-fit EVPN into hop-by-hop EBGP route propagation.
 
-If you want to use the same defaults you used for the last 30 years, then YES, please use IBGP... but also stick to the designs we've been using during those 30 years, like running IBGP over OSPF or IS-IS. Those designs were good enough for largest ISPs on this planet... and now all of a sudden they're not [good enough for enterprise data centers with a few dozen switches](/2017/11/bgp-as-better-igp-when-and-where.html)? Could someone please stop this lemming run before everyone hits the cliff?
+If you want to use the same defaults you used for the last 30 years, then YES, please use IBGP... but also stick to the designs we've been using during those 30 years, like running IBGP over OSPF or IS-IS. Those designs were good enough for largest ISPs on this planet... and now all of a sudden they're not [good enough for enterprise data centers with a few dozen switches](/2017/11/bgp-as-better-igp-when-and-where/)? Could someone please stop this lemming run before everyone hits the cliff?
 
 > Anyway it has been a long-standing convention to use IBGP for overlays within an instance of a transport domain.
 
-And it has been a long-standing convention to use OSPF or IS-IS as the underlying routing protocol in said transport domain. Unfortunately most data center switching vendors [think they need to be hip](/2018/05/is-ospf-or-is-is-good-enough-for-my.html), and try to persuade us how well star-shaped pegs fit into round holes (hint: they do if you have a big-enough hammer).
+And it has been a long-standing convention to use OSPF or IS-IS as the underlying routing protocol in said transport domain. Unfortunately most data center switching vendors [think they need to be hip](/2018/05/is-ospf-or-is-is-good-enough-for-my/), and try to persuade us how well star-shaped pegs fit into round holes (hint: they do if you have a big-enough hammer).
 
 > FYI, Junos leans toward being explicit about configuration leaving it to automation to simplify management of network.
 

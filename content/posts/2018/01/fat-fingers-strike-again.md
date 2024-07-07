@@ -9,7 +9,7 @@ tags:
 - Internet
 - IP routing
 title: Fat Fingers Strike Again…
-url: /2018/01/fat-fingers-strike-again.html
+url: /2018/01/fat-fingers-strike-again/
 ---
 Level3 had a pretty bad bad-hair-day just a day before [Pete Lumbis talked about Continuous Integration](https://my.ipspace.net/bin/list?id=NetAutSol&module=5#M5S3A) on the [Building Network Automation Solutions](http://www.ipspace.net/Building_Network_Automation_Solutions) online course (yes, it was a great lead-in for Pete).
 
@@ -27,4 +27,4 @@ Also, it might be a good idea to start thinking about the costs of doing excepti
 
 That customer definitely costed them a lot...
 
-Meanwhile in the [network automation online class](http://www.ipspace.net/Building_Network_Automation_Solutions): some students are [working on building automation solutions](https://www.ipspace.net/NetAutSol/Solutions) that deploy IP routing protocols, MPLS fabric, L2VPN and L3VPN from service definition files, while others are [already deploying new WAN sites using automatically-generated configurations](/2017/12/automate-remote-site-hardware-refresh.html).
+Meanwhile in the [network automation online class](http://www.ipspace.net/Building_Network_Automation_Solutions): some students are [working on building automation solutions](https://www.ipspace.net/NetAutSol/Solutions) that deploy IP routing protocols, MPLS fabric, L2VPN and L3VPN from service definition files, while others are [already deploying new WAN sites using automatically-generated configurations](/2017/12/automate-remote-site-hardware-refresh/).

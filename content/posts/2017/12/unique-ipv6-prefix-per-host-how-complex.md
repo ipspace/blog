@@ -3,7 +3,7 @@ date: 2017-12-20 09:38:00+01:00
 tags:
 - IPv6
 title: Unique IPv6 Prefix Per Host – How Complex Do You Want IPv6 to Be?
-url: /2017/12/unique-ipv6-prefix-per-host-how-complex.html
+url: /2017/12/unique-ipv6-prefix-per-host-how-complex/
 ---
 In December 2017, IETF published [RFC 8273](https://tools.ietf.org/html/rfc8273) created by the v6ops working group (which means there must have been significant consensus within the working group that we need the solution and that it makes at least marginal sense).
 
@@ -13,7 +13,7 @@ The first thought of anyone even vaguely familiar with [how complex IPv6 already
 <!--more-->
 ### Why Do We Need This?
 
-There are legal and commercial reasons why Internet Service Providers need to be able to identify individual customers based on their IPv6 addresses. Whenever the ISP is using a P2P access network (DSL or anything that [looks like dialup](/2008/10/internet-access-russian-dolls.html)), each customer gets an IPv6 prefix (or a combo of a /64 access prefix and another delegated prefix) anyway.
+There are legal and commercial reasons why Internet Service Providers need to be able to identify individual customers based on their IPv6 addresses. Whenever the ISP is using a P2P access network (DSL or anything that [looks like dialup](/2008/10/internet-access-russian-dolls/)), each customer gets an IPv6 prefix (or a combo of a /64 access prefix and another delegated prefix) anyway.
 
 There was no such mechanism available for shared access networks like switched Ethernet, PON, or WiFi.
 
@@ -33,7 +33,7 @@ You could always use RA and DHCPv6 to tell compliant hosts that they should send
 
 ### So What's the Impact of This Idea?
 
-You mean beyond wasting half of the address bits and [reverting IPv6 to how it was originally designed](/2017/09/coming-full-circle-on-ipv6-address.html) (the first proposal used 64-bit addresses) after wasting two decades arguing about nuances of SLAAC and ND?
+You mean beyond wasting half of the address bits and [reverting IPv6 to how it was originally designed](/2017/09/coming-full-circle-on-ipv6-address/) (the first proposal used 64-bit addresses) after wasting two decades arguing about nuances of SLAAC and ND?
 
 Admittedly, this change keeps the client stack simpler (because there's no need to run DHCPv6) but does not reduce any complexity on the first-hop router. Someone still needs to keep a stateful mapping between clients and their prefixes, and if you have two or more first-hop routers you still have to synchronize the mapping between them.
 
@@ -44,7 +44,7 @@ I have a vague feeling that the state synchronization between redundant first-ho
 
 ### An Alternative Perspective
 
-I sent the draft of this blog post to my good friend Gunther Van De Velde (who, among other things, pushed me to participate in writing my [one-and-only RFC](/2015/02/rfc-7454-bgp-operations-and-security.html)). Here's his perspective on the topic
+I sent the draft of this blog post to my good friend Gunther Van De Velde (who, among other things, pushed me to participate in writing my [one-and-only RFC](/2015/02/rfc-7454-bgp-operations-and-security/)). Here's his perspective on the topic
 
 ---
 

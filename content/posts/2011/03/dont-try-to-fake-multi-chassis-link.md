@@ -7,7 +7,7 @@ tags:
 - bridging
 - link aggregation
 title: Don’t Try to Fake Multi-chassis Link Aggregation (MLAG)
-url: /2011/03/dont-try-to-fake-multi-chassis-link.html
+url: /2011/03/dont-try-to-fake-multi-chassis-link/
 ---
 Martin sent me an interesting challenge: he needs to connect an HP switch in a blade enclosure to a pair of Catalyst 3500G switches. His Catalysts are not stackable and he needs the full bandwidth between the switches, so he decided to fake the multi-chassis link aggregation functionality by configuring static LAG on the HP switch and disabling STP on it (the Catalysts have no idea they're talking to the same switch):
 <!--more-->
@@ -22,7 +22,7 @@ In my opinion that should have been more than enough to run away from this "solu
 
 **Forwarding loop following a configuration change.** An overworked engineer trying to troubleshoot connectivity problems at 2AM might decide to disable LAG on the HP switch after an inter-switch link failure. The following morning, someone else (unaware of the configuration change) fixes the physical link and the whole network starts glowing in the dark.
 
-**Load balancing on the static LAG**. If you configure source-MAC-based load balancing on the HP switch (X in my diagram), things just might work (of course we still won't be able to survive a single link failure). However, if someone figures out a server is overloading its uplink and configures source-destination-MAC-based load balancing or (even worse) per-session load balancing on the LAG, the Catalysts (C1 and C2 in my diagram) will go crazy screaming about flapping MAC addresses (yet again, thanks to all of you who [helped me understand this particular problem](/2011/01/vmware-vswitch-does-not-support-lacp.html)).
+**Load balancing on the static LAG**. If you configure source-MAC-based load balancing on the HP switch (X in my diagram), things just might work (of course we still won't be able to survive a single link failure). However, if someone figures out a server is overloading its uplink and configures source-destination-MAC-based load balancing or (even worse) per-session load balancing on the LAG, the Catalysts (C1 and C2 in my diagram) will go crazy screaming about flapping MAC addresses (yet again, thanks to all of you who [helped me understand this particular problem](/2011/01/vmware-vswitch-does-not-support-lacp/)).
 
 **Suboptimal traffic flow**. Assuming load balancing in X associates server B is with the X-C1 link, the traffic between D and B will flow over C2, C1 and X due to the way MAC address learning works.
 

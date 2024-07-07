@@ -12,7 +12,7 @@ title: Graceful Restart and Routing Protocol Convergence
 ---
 I'm always amazed when I encounter networking engineers who want to have a fast-converging network using Non-Stop Forwarding (which implies Graceful Restart). It's even worse than asking for smooth-running heptagonal wheels.
 
-As we [discussed in the Fast Failover series](/2020/11/detecting-network-failure.html), any decent router uses a variety of mechanisms to detect adjacent device failure:
+As we [discussed in the Fast Failover series](/2020/11/detecting-network-failure/), any decent router uses a variety of mechanisms to detect adjacent device failure:
 
 * Physical link failure;
 * Routing protocol timeouts;
@@ -28,7 +28,7 @@ What happens next depends on the routing protocol.
 
 **BGP** advertises *Graceful Restart* capability in the BGP OPEN message. If a helper device wants to play along, it should wait for the *Restart Timer* interval (advertised in the same BGP OPEN message) until it flushes the BGP routes advertised by the failed neighbor and starts the convergence process. The default value of the *restart timer* on Cisco IOS XE is 120 seconds; the minimum sane value is the time it takes the remote device to recover. Regardless of the *restart timer* value, the helper device is in routing convergence limbo until that timer expires.
 
-**Conclusion**: When using *Graceful Restart*, BGP convergence could take at least as long as it takes for the slowest device participating in this scheme to restart. The time to react to any topology changes that might have occurred in the meantime is even longer due to how BGP updates are processed when undergoing a *Graceful Restart* (see *[Graceful Restart 101](/2021/09/graceful-restart.html)* blog post for details).
+**Conclusion**: When using *Graceful Restart*, BGP convergence could take at least as long as it takes for the slowest device participating in this scheme to restart. The time to react to any topology changes that might have occurred in the meantime is even longer due to how BGP updates are processed when undergoing a *Graceful Restart* (see *[Graceful Restart 101](/2021/09/graceful-restart/)* blog post for details).
 
 **OSPF** starts the *Graceful Restart* procedure with an opaque LSA that has to be sent by the restarting device. When undergoing a planned restart, the restarting device specifies the desired timeout in the opaque LSA, but at least we know what's going on -- it's a planned procedure, not a device failure.
 

@@ -1,9 +1,9 @@
 ---
-url: /2007/06/re-enable-debugging-on-router-reload.html
+url: /2007/06/re-enable-debugging-on-router-reload/
 title: "Re-enable debugging on router reload"
 date: "2007-06-11T10:35:00.000+02:00"
 tags: [ command line interface,EEM ]
 ---
 
-It's a bit embarrassing: I've posted a hint on how to <a href="/2007/04/fix-router-configuration-after-reload.html">execute commands after a router reload</a> and <a href="http://aamer.vox.com/">Aamer</a> <a href="http://aamer.vox.com/library/post/running-ios-commands-on-relod.html">figured out something I've wanted to have for years</a>: the ability to automatically start debugging after the router reload.<!--more-->For example, to enable debugging of incoming SSH connections, use the following EEM applet:<pre class="code">event manager applet EnableDebugging<br/>event syslog occurs 1 pattern "%SYS-5-RESTART"<br/>action 1.0 cli command "enable"<br/>action 2.0 cli command "debug ip ssh"</pre>
+It's a bit embarrassing: I've posted a hint on how to <a href="/2007/04/fix-router-configuration-after-reload/">execute commands after a router reload</a> and <a href="http://aamer.vox.com/">Aamer</a> <a href="http://aamer.vox.com/library/post/running-ios-commands-on-relod.html">figured out something I've wanted to have for years</a>: the ability to automatically start debugging after the router reload.<!--more-->For example, to enable debugging of incoming SSH connections, use the following EEM applet:<pre class="code">event manager applet EnableDebugging<br/>event syslog occurs 1 pattern "%SYS-5-RESTART"<br/>action 1.0 cli command "enable"<br/>action 2.0 cli command "debug ip ssh"</pre>
 

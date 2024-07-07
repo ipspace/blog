@@ -3,7 +3,7 @@ date: 2008-03-13 07:11:00.001000+01:00
 tags:
 - BGP
 title: The Mysteries of the “Internet” BGP Community
-url: /2008/03/misteries-of-internet-bgp-community.html
+url: /2008/03/misteries-of-internet-bgp-community/
 ---
 [Cisco documentation has always claimed there were four well-known communities](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/command/irg-cr-book/bgp-n1.html#wp2607806244) (the *Internet* community being one of them), while the [RFC 1997 lists three well-known values](http://tools.ietf.org/html/rfc1997). Unfortunately, many people blindly copy the IOS documentation without asking themselves "what the heck is the *Internet* community".
 
@@ -25,4 +25,4 @@ Digging through old materials finally gave me the answer I was looking for: some
 \
 And just for the sake of completeness, let me conclude with a slide from late 1990s explaining this phenomenon:
 
-{{<figure src="bgpCommunity.jpg">}}
+{{<figure src="/2008/03/bgpCommunity.jpg">}}

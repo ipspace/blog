@@ -4,7 +4,7 @@ tags:
 - IPv6
 - workshop
 title: 'IPv6 Addressing: How Wrong Can You Get It?'
-url: /2010/11/ipv6-addressing-how-wrong-can-you-get.html
+url: /2010/11/ipv6-addressing-how-wrong-can-you-get/
 ---
 Mike was wondering whether his ISP is giving him what he needs to start an IPv6 pilot within his enterprise network. He wrote:
 

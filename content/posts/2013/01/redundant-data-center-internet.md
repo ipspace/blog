@@ -8,7 +8,7 @@ tags:
 - IP routing
 - high availability
 title: Redundant Data Center Internet Connectivity – Problem Overview
-url: /2013/01/redundant-data-center-internet.html
+url: /2013/01/redundant-data-center-internet/
 ---
 During one of my [ExpertExpress](http://www.ipspace.net/ExpertExpress) [consulting engagements](http://www.ipspace.net/Consulting) I encountered an interesting challenge:
 
@@ -27,11 +27,11 @@ Todd Hoff wrote a [great in-depth commentary of this video](http://highscalabili
 And here are a few other relevant blog posts:
 
 -   [High-level design document](http://www.ipspace.net/Redundant_Data_Center_Internet_Connectivity) in [ipSpace solutions corner](http://www.ipspace.net/Solutions_Corner)
--   [Distributed firewalls -- how badly do you want to fail?](/2011/04/distributed-firewalls-how-badly-do-you.html)
--   [Long-distance vMotion for disaster avoidance? Do the math first!](/2011/09/long-distance-vmotion-for-disaster.html)
--   [Is layer-3 DCI safe?](/2012/10/is-layer-3-dci-safe.html)
--   [Stretched layer-2 subnets -- the server engineer perspective](/2012/03/stretched-layer-2-subnets-server.html)
--   [Layer-2 DCI and the infinite wisdom of ACM Queue](/2012/08/layer-2-dci-and-infinite-wisdom-of.html)
+-   [Distributed firewalls -- how badly do you want to fail?](/2011/04/distributed-firewalls-how-badly-do-you/)
+-   [Long-distance vMotion for disaster avoidance? Do the math first!](/2011/09/long-distance-vmotion-for-disaster/)
+-   [Is layer-3 DCI safe?](/2012/10/is-layer-3-dci-safe/)
+-   [Stretched layer-2 subnets -- the server engineer perspective](/2012/03/stretched-layer-2-subnets-server/)
+-   [Layer-2 DCI and the infinite wisdom of ACM Queue](/2012/08/layer-2-dci-and-infinite-wisdom-of/)
 
 ### Related Webinars
 

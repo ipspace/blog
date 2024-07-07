@@ -2,7 +2,7 @@
 kb_section: QoS
 minimal_sidebar: true
 title: Traffic Shaping
-url: /kb/tag/QoS/Traffic_Shaping.html
+url: /kb/tag/QoS/Traffic_Shaping/
 ---
 *Traffic shaping* is a QoS mechanism that creates an artificial congestion point and sends packets at a predefined (shaping) rate regardless of the output interface congestion state. You can use it to enforce a traffic contract even when the bandwidth of the outbound interface far exceeds the contractual rate.
 
@@ -20,7 +20,7 @@ Traffic shaping is commonly used when the traffic has to be prioritized on a lin
 * On a hub site in a DMVPN network
 * On a virtual machine connected to a virtual switch
 
-{{<figure src="Shaping_Usage.png" caption="Using traffic shaping on a DMVPN hub site">}}
+{{<figure src="../Shaping_Usage.png" caption="Using traffic shaping on a DMVPN hub site">}}
 
 The obvious bottleneck in the above DMVPN network is the uplink of the *Spoke* router, and if the provider does not implement the desired QoS mechanisms on this link, the high-priority traffic sent from the *Hub* site to the *Spoke* site might be delayed due to the output queue congestion on outbound interface of the service provider router on which the customer has no influence.
 
@@ -48,7 +48,7 @@ Cisco IOS shapes outbound traffic using the following steps:
 
 The complete algorithm is illustrated in the following diagram:
 
-{{<figure src="Shaping_Mechanism.png" caption="Traffic shaping mechanisms in Cisco IOS">}}
+{{<figure src="../Shaping_Mechanism.png" caption="Traffic shaping mechanisms in Cisco IOS">}}
 
 {{<note note>}}The *Bc* and *Be* parameters can be specified in the **shape** command. If you don't specify them, Cisco IOS selects reasonable values. *Tc* is always computed from the shaping rate and *Bc*.{{</note>}}
 

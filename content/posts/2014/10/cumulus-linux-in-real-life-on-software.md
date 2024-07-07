@@ -7,7 +7,7 @@ tags:
 - Software Gone Wild
 - podcast
 title: Cumulus Linux in Real Life on Software Gone Wild
-url: /2014/10/cumulus-linux-in-real-life-on-software.html
+url: /2014/10/cumulus-linux-in-real-life-on-software/
 ---
 A year ago Matthew Stone first heard about Cumulus Linux when I [ranted about it on a Packet Pushers podcast](http://packetpushers.net/show-162-the-bourbonator-rises-at-nfd6/) (which only proves that any publicity is good publicity even though some people thought otherwise at that time), and when his cloud service provider company started selecting ToR switches he considered Cumulus together with Cisco and Arista... and chose Cumulus.
 <!--more-->

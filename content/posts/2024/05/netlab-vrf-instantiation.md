@@ -5,7 +5,7 @@ tags: [ netlab ]
 netlab_tag: vlan_vrf
 series_title: VRF Instantiation on Lab Devices
 ---
-In the [previous blog post on this topic](/2024/04/netlab-global-node-vrf.html), I described how *node* and *global* VRFs work in *[netlab](https://netlab.tools/)*.
+In the [previous blog post on this topic](/2024/04/netlab-global-node-vrf/), I described how *node* and *global* VRFs work in *[netlab](https://netlab.tools/)*.
 
 **TL&DR:** If you use the same VRF on multiple devices, it's better to define it globally.
 
@@ -15,7 +15,7 @@ However, you might not need every VRF on every lab device in a more complex lab 
 
 Let's start with the simplest scenario: two PE routers using a single VRF[^AS].
 
-[^AS]: The topology is simple enough to run on [Apple silicon](/2024/03/netlab-bgp-apple-silicon.html).
+[^AS]: The topology is simple enough to run on [Apple silicon](/2024/03/netlab-bgp-apple-silicon/).
 
 {{<printout>}}
 provider: clab

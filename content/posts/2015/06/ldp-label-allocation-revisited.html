@@ -1,5 +1,5 @@
 ---
-url: /2015/06/ldp-label-allocation-revisited.html
+url: /2015/06/ldp-label-allocation-revisited/
 title: "LDP Label Allocation Revisited"
 date: "2015-06-29T08:05:00.000+02:00"
 tags: [ MPLS,BGP ]
@@ -7,13 +7,13 @@ tags: [ MPLS,BGP ]
 
 <p>One of my readers was having an LDP argument with his colleague:</p>
 <blockquote class="cite">Yesterday I was arguing with someone who works for a large MPLS provider about LDP label allocation. He kept saying that LDP assigns a label to each next-hop, not to each prefix. Reading your blog, I believe this is the default behavior on Juniper but on Cisco LDP assigns a unique label for each IGP (non-BGP) prefix. </blockquote>
-<p>He’s absolutely right; Cisco and Juniper use <a href="/2011/11/junos-versus-cisco-ios-mpls-and-ldp.html">different rules when allocating MPLS labels</a>.<!--more--></p>
+<p>He’s absolutely right; Cisco and Juniper use <a href="/2011/11/junos-versus-cisco-ios-mpls-and-ldp/">different rules when allocating MPLS labels</a>.<!--more--></p>
 <p>Cisco IOS allocates a label to every IGP prefix in the IP routing table (not to BGP prefixes). Junos allocates a label to every local loopback interface and to all prefixes that have label assigned by the downstream router, resulting in labels assigned to all loopback interfaces. </p>
 <p>Loopback interfaces happen to be BGP next hops in MPLS/VPN environments, and for regular BGP destinations if you’re using <strong>next-hop-self </strong>on IBGP sessions, so his colleague was probably used to Junos way of doing things.</p>
 <blockquote class="cite">But then that brings up an interesting question. The max number of labels you can have is close to 1 million (2 to the power of 20) which is not enough if you want to assign a label to reach internet prefix. </blockquote>
-<p>Nobody is allocating prefixes to BGP routes unless you’re using <strong>send-label</strong> with a BGP neighbor. Cisco IOS is using <a href="/2010/09/ribs-and-fibs.html">recursive route lookup</a> and uses <a href="/2012/01/bgp-free-service-provider-core-in.html">MPLS label for BGP next hop</a> for BGP prefixes.</p>
+<p>Nobody is allocating prefixes to BGP routes unless you’re using <strong>send-label</strong> with a BGP neighbor. Cisco IOS is using <a href="/2010/09/ribs-and-fibs/">recursive route lookup</a> and uses <a href="/2012/01/bgp-free-service-provider-core-in/">MPLS label for BGP next hop</a> for BGP prefixes.</p>
 <blockquote class="cite">I know it’s crazy thought to carry a full Internet routing table in IGP, but assuming that is the case how is LDP going to scale? </blockquote>
 <p>Nobody is doing that either. Dumping BGP table into IGP successfully kills every IGP known to mankind at this moment. </p>
 <blockquote class="cite">I wonder why Cisco chose this approach as the default? Does allocating a label per prefix have some advantages I’m not seeing? </blockquote>
-<p>I guess it’s mostly for <a href="/2011/01/campfire-true-story-of-mpls.html">historic reasons</a>. I don’t see other advantages… and of course I’m probably missing something obvious, so please write a comment and fix it.</p>
+<p>I guess it’s mostly for <a href="/2011/01/campfire-true-story-of-mpls/">historic reasons</a>. I don’t see other advantages… and of course I’m probably missing something obvious, so please write a comment and fix it.</p>
 

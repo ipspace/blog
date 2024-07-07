@@ -4,7 +4,7 @@ minimal_sidebar: true
 pre_scroll: true
 title: Restoring or Provisioning Devices with ZTP
 toc_title: Restoring or Provisioning Devices with ZTP
-url: /kb/NetAutJourney/50-ZTP.html
+url: /kb/NetAutJourney/50-ZTP/
 ---
 The latest functionality that I added to the web interface is the ability to
 restore a switch based on a configuration backup from Oxidized. The web
@@ -12,7 +12,7 @@ frontend starts a playbook on the Ansible server that sets up FreeZTP
 server with the correct configuration and DHCP options (which determine whether
 ZTP process on a switch starts an IOS upgrade).
 
-{{<figure src="ZTP-Configuration-Restore.png" caption="ZTP configuration restore">}}
+{{<figure src="../ZTP-Configuration-Restore.png" caption="ZTP configuration restore">}}
 <div class='caption figure'>Figure 7: Combining ZTP with a simple configuration setup in the frontend means
 that anyone can restore or provision a switch.</div>
 
@@ -63,5 +63,5 @@ command-line configuration. Options include a button to review the input CSV, ru
 playbook in checkmode, update the inventory DB, and display the status of the ports supplied in the
 CSV as they currently appear in the database.
 
-{{<figure src="Bulk-Configuration.png" caption="Bulk configuration screenshot">}}
+{{<figure src="../Bulk-Configuration.png" caption="Bulk configuration screenshot">}}
 <div class='caption figure'>Figure 8: The interface for bulk configuring switch ports.</div>

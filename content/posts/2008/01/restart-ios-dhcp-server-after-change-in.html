@@ -1,5 +1,5 @@
 ---
-url: /2008/01/restart-ios-dhcp-server-after-change-in.html
+url: /2008/01/restart-ios-dhcp-server-after-change-in/
 title: "Restart IOS DHCP server after a change in DHCP pools"
 date: "2008-01-16T07:08:00.000+01:00"
 tags: [ DHCP ]
@@ -7,8 +7,8 @@ tags: [ DHCP ]
 
 I've stumbled across an interesting problem recently:<ul><li>I've added a Linux box to my home network;</li>
 <li>It used my Cisco router to get a dynamic DHCP address;</li>
-<li>I've inspected the DHCP bindings on the Cisco router to find the new MAC address and configured a <a href="/2007/09/assigning-server-ip-addresses-with-dhcp.html">host DHCP pool</a> as I'm using the Linux box as a server;</li>
+<li>I've inspected the DHCP bindings on the Cisco router to find the new MAC address and configured a <a href="/2007/09/assigning-server-ip-addresses-with-dhcp/">host DHCP pool</a> as I'm using the Linux box as a server;</li>
 <li>Even after multiple configuration changes, the IOS would fail to use the host DHCP pool.</li>
 </ul>
-<p>The only solution I've found was to restart the IOS DHCP server with the <strong>no service dhcp</strong> followed by <strong>service dhcp</strong> configuration commands. Obviously, you lose all DHCP bindings when you restart the DHCP server (which could be <a href="/2007/08/dhcp-conflict-logging-true-story.html">a problem if you use conflict logging</a>) unless you've <a href="/2007/09/persistent-dhcp-bindings-stored-in.html">configured the router to store them in an external file</a>.</p>
+<p>The only solution I've found was to restart the IOS DHCP server with the <strong>no service dhcp</strong> followed by <strong>service dhcp</strong> configuration commands. Obviously, you lose all DHCP bindings when you restart the DHCP server (which could be <a href="/2007/08/dhcp-conflict-logging-true-story/">a problem if you use conflict logging</a>) unless you've <a href="/2007/09/persistent-dhcp-bindings-stored-in/">configured the router to store them in an external file</a>.</p>
 

@@ -1,11 +1,11 @@
 ---
-url: /2011/02/eem-qa-what-were-they-not-doing.html
+url: /2011/02/eem-qa-what-were-they-not-doing/
 title: "EEM QA: what were they (not) doing?"
 date: "2011-02-04T06:59:00.004+01:00"
 tags: [ EEM ]
 ---
 
-<p>When I was writing the applet that should <a href="/2011/01/stop-accidental-scheduled-router.html">stop accidental scheduled router reloads</a>, I wanted to use the <strong>action string match</strong> command to perform pattern matching on the output of the <strong>show reload </strong>command. Somehow the applet didn’t want to work as expected, so I <a href="http://www.cisco.com/en/US/docs/ios/netmgmt/command/reference/nm_02.html#wp1180108">checked the documentation on Cisco’s web site</a>.</p>
+<p>When I was writing the applet that should <a href="/2011/01/stop-accidental-scheduled-router/">stop accidental scheduled router reloads</a>, I wanted to use the <strong>action string match</strong> command to perform pattern matching on the output of the <strong>show reload </strong>command. Somehow the applet didn’t want to work as expected, so I <a href="http://www.cisco.com/en/US/docs/ios/netmgmt/command/reference/nm_02.html#wp1180108">checked the documentation on Cisco’s web site</a>.</p>
 <p>Reading the command description, I should have realized the whole thing must be broken. It looks like the documentation writer was fast asleep; even someone with a major in classical philosophy and zero exposure to networking should be able to spot the glaring logical inconsistencies.</p>
 <!--more--><p>Judging by the quality of the documentation, I started wondering if someone mixed up the order of parameters, so I swapped the pattern and the string. No luck. Totally fed up, I spent 30 seconds cut-and-pasting together a short test case:</p>
 <pre class="code">event manager applet CheckMatchCommand<br/> event none<br/> action 1.0 string match "a" "a"<br/> action 1.1 puts "match: -a- versus -a- result: $_string_result"<br/> action 2.0 string match "aa" "a"<br/> action 2.1 puts "match: -aa- versus -a- result: $_string_result"<br/> action 3.0 string match "a" "aa"<br/> action 3.1 puts "match: -a- versus -aa- result: $_string_result"<br/> action 4.0 string match "a." "aa"<br/> action 4.1 puts "match: -a.- versus -aa- result: $_string_result"<br/> action 5.0 string match "aa" "a."<br/> action 5.1 puts "match: -aa- versus -a.- result: $_string_result"<br/> action 6.0 string match "." "a"<br/> action 6.1 puts "match: -.- versus -a- result: $_string_result"<br/> action 7.0 string match "a" "."<br/> action 7.1 puts "match: -a- versus -.- result: $_string_result"</pre><p>Here are the results:</p>

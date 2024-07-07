@@ -7,7 +7,7 @@ tags:
 - automation
 - firewall
 title: Firewall Ruleset Automation with CI Pipeline
-url: /2019/01/firewall-ruleset-automation-with-ci.html
+url: /2019/01/firewall-ruleset-automation-with-ci/
 ---
 One of my readers sent me a description of their automation system that manages firewall rulesets on Fortigate firewalls [using NAPALM to manage device configurations](https://my.ipspace.net/bin/list?id=Ansible#NAPALM).
 
@@ -15,7 +15,7 @@ In his own words:
 
 > We are now managing thousands of address objects, services and firewall policies using David Barroso's FortiOS Napalm module. This works very well and with a few caveats (such as finding a way to enforce the ordering of firewall policies) we are able to manage all the configuration of our firewalls from a single Ansible playbook.
 
-The did the right thing and implemented an abstracted data model using [GitOps](/2018/08/gitops-in-networking.html) to manage it:
+The did the right thing and implemented an abstracted data model using [GitOps](/2018/08/gitops-in-networking/) to manage it:
 <!--more-->
 > We manage our Ansible code in git using an on-premises git repository system. We have YAML documents that describe firewall objects (addresses, subnets, groups), services, and policies We transform these data structures into firewall configurations using Jinja2 templates.
 

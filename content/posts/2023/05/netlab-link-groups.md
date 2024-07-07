@@ -6,7 +6,7 @@ tags:
 - netlab
 title: 'Simplify netlab Topologies with Link Groups'
 ---
-Last month I described how you can simplify your VLAN- or VRF lab topologies with [VRF- and VLAN links](/2023/04/netlab-vrf-vlan-links.html), automatically setting **vlan.access** or **vrf** attribute on a set of links. [Link groups](https://netlab.tools/links/#link-groups) allow you to do the same for any set of link attributes.
+Last month I described how you can simplify your VLAN- or VRF lab topologies with [VRF- and VLAN links](/2023/04/netlab-vrf-vlan-links/), automatically setting **vlan.access** or **vrf** attribute on a set of links. [Link groups](https://netlab.tools/links/#link-groups) allow you to do the same for any set of link attributes.
 
 ### Sample Topology
 

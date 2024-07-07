@@ -1,11 +1,11 @@
 ---
-url: /2011/11/junos-versus-cisco-ios-mpls-and-ldp.html
+url: /2011/11/junos-versus-cisco-ios-mpls-and-ldp/
 title: "Junos Versus Cisco IOS: MPLS and LDP"
 date: "2011-11-16T06:55:00.000+01:00"
 tags: [ MPLS,LDP,Junos ]
 ---
 
-<p>The comments <em>igp2bgp</em> and <a href="http://www.linkedin.com/pub/tiziano-tofoni/9/175/136">Tiziano Tofoni</a> made to my <a href="/2011/11/ldp-igp-synchronization-in-mpls.html"><em>LDP-IGP Synchronization in MPLS Networks</em></a> post prompted me to look deeper into basic Junos MPLS configuration and LDP behavior. As expected, there are some significant differences between Cisco’s and Juniper’s LDP implementations (and, as is usually the case, they’re both strictly conformant with <a href="http://tools.ietf.org/html/rfc5036">RFC 5036</a>).<!--more--></p>
+<p>The comments <em>igp2bgp</em> and <a href="http://www.linkedin.com/pub/tiziano-tofoni/9/175/136">Tiziano Tofoni</a> made to my <a href="/2011/11/ldp-igp-synchronization-in-mpls/"><em>LDP-IGP Synchronization in MPLS Networks</em></a> post prompted me to look deeper into basic Junos MPLS configuration and LDP behavior. As expected, there are some significant differences between Cisco’s and Juniper’s LDP implementations (and, as is usually the case, they’re both strictly conformant with <a href="http://tools.ietf.org/html/rfc5036">RFC 5036</a>).<!--more--></p>
 <h4>Configuration Details</h4><p>When you configure <strong>mpls ip </strong>on an interface in a Cisco router, you implicitly start LDP. In Junos, you have to start LDP explicitly by creating <strong>protocols ldp </strong>and list all interfaces on which LDP should run with <strong>interface </strong>commands within <strong>protocol ldp</strong>. Even that’s not enough; you have to enable MPLS family on each interface listed in the <strong>protocols ldp </strong>section.</p>
 <p class="codecaption">Cisco IOS configuration</p>
 <pre class="code">interface GigabitEthernet0/0/2<br/> mpls ip<br/>interface GigabitEthernet0/0/3<br/> mpls ip<br/>interface GigabitEthernet0/0/4<br/> mpls ip<br/>interface GigabitEthernet0/0/5<br/> mpls ip</pre><p class="codecaption">Equivalent Junos configuration</p>

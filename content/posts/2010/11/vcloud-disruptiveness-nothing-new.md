@@ -4,10 +4,10 @@ tags:
 - data center
 - virtualization
 title: 'vCloud Disruptiveness: Nothing New'
-url: /2010/11/vcloud-disruptiveness-nothing-new.html
+url: /2010/11/vcloud-disruptiveness-nothing-new/
 lastmod: 2020-12-27 17:54:00
 ---
-The [*vCloud Director: hand the network over to server admins*](/2010/11/vcloud-director-hand-network-over-to.html) post received several fantastic well-reasoned comments that you should read in their entirety. [Jónatan Natti correctly pointed out](/2010/11/vcloud-director-hand-network-over-to.html#2027997548220886932) (among other things) that we've often heard "*And now a networking vendor is trying to persuade people with limited exposure to \[...\] issues to rebuild \[...\]*\" where \[...\] could stand for Voice/PBX, SNA or storage.
+The [*vCloud Director: hand the network over to server admins*](/2010/11/vcloud-director-hand-network-over-to/) post received several fantastic well-reasoned comments that you should read in their entirety. [Jónatan Natti correctly pointed out](/2010/11/vcloud-director-hand-network-over-to/#2027997548220886932) (among other things) that we've often heard "*And now a networking vendor is trying to persuade people with limited exposure to \[...\] issues to rebuild \[...\]*\" where \[...\] could stand for Voice/PBX, SNA or storage.
 
 ---
 
@@ -19,7 +19,7 @@ Regardless, some of us learned a few lessons, including how much you could trust
 
 ---
 
-Unfortunately, in a retrospective, although a lot of that noise was FUD (or resulted from excessive complexity of legacy technology), the core of those claims was often spot-on. [Ronan McGurn underestimated voice](/2010/11/vcloud-director-hand-network-over-to.html#4101521757484393753) (he was part of a very large crowd, including a certain five-letter vendor) and I also have a few personal Voice/SNA campfire stories to share.
+Unfortunately, in a retrospective, although a lot of that noise was FUD (or resulted from excessive complexity of legacy technology), the core of those claims was often spot-on. [Ronan McGurn underestimated voice](/2010/11/vcloud-director-hand-network-over-to/#4101521757484393753) (he was part of a very large crowd, including a certain five-letter vendor) and I also have a few personal Voice/SNA campfire stories to share.
 <!--more-->
 When Cisco started the push to integrate SNA with IP, they knew they weren't ready (that was also the last time I've seen a vendor documenting a long-term integration strategy) and approached the subject cautiously. We were also fortunate: I knew a bit about SNA (I wrote a 3174 control unit emulator and 3270 terminal emulator a long time ago), we had an engineer who was working with SNA for years... and even then we encountered numerous unexpected problems. They ranged from buffer overflows (and SNA session resets) on low-end boxes to scalability and resilience issues with RSRB/DLSw. It took Cisco years to fix the DLSw+ TCP code, not to mention the fun we had with the Channel Interface Processor.
 
@@ -37,6 +37,6 @@ Is this relevant to the vCloud discussion? It probably is -- I'm positive many s
 
 In an ideal situation, the server administrators will sit down with the networking engineers and figure out how to make the whole thing work once the product becomes stable (as I wrote, the architecture is not necessarily bad). And then (as Odd Stoltenberg nicely explained) there will be those that will decide this is an ideal opportunity to get rid of the troublesome networking people... and a few of them will experience unexpected results.
 
-[Matthew Lodge also made an excellent point](/2010/11/vcloud-director-hand-network-over-to.html#2367370681251890125): we need to solve the problem of integrating private and public clouds. I just fail to see how a technology that has MAC-in-MAC encapsulation at its pinnacle serves that need -- if they had decided to use IP encapsulation, I would have applauded, as that would have nicely solved underlying transport scalability (not to mention that it would get rid of inter-DC layer-2 madness we have to deal with today).
+[Matthew Lodge also made an excellent point](/2010/11/vcloud-director-hand-network-over-to/#2367370681251890125): we need to solve the problem of integrating private and public clouds. I just fail to see how a technology that has MAC-in-MAC encapsulation at its pinnacle serves that need -- if they had decided to use IP encapsulation, I would have applauded, as that would have nicely solved underlying transport scalability (not to mention that it would get rid of inter-DC layer-2 madness we have to deal with today).
 
 Last but maybe not least -- just in case you're wondering how far off the mark I was when I wrote the whole thing goes beyond a technology solution, [read this tweet](https://twitter.com/OVHcloud_US/status/2445278263123968).

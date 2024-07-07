@@ -5,7 +5,7 @@ pre_scroll: true
 title: OSPF Flooding Filters in Hub-and-Spoke Environments
 tags: [ OSPF ]
 ospf_tag: dmvpn
-url: /kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke.html
+url: /kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke/
 ---
 The OSPF flood reduction functionality configured with the **ip ospf database-filter all out** interface configuration command can be used to reduce OSPF traffic and minimize the OSPF database size on small remote routers in hub-and-spoke environments.
 
@@ -17,7 +17,7 @@ Since no LSAs are propagated from the hub router to the spoke routers, the spoke
 
 The OSPF flood reduction is best illustrated with a sample hub-and-spoke network. A network with three spoke sites and a hub site (see the following figure) was used to generate the printouts.
 
-{{<figure src="OSPF_Flood_Reduction.png" caption="The topology and IP addressing of the sample network">}}
+{{<figure src="../OSPF_Flood_Reduction.png" caption="The topology and IP addressing of the sample network">}}
 
 Before the **ip ospf database-filter all out** command has been configured on the hub router, the OSPF database on the spoke routers contained all LSAs originated within the area (no out-of-area LSAs were originated by the hub router as the area 1 was configured with the **area 1 nssa no-summary** router configuration command on the hub router).
 

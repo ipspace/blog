@@ -3,7 +3,7 @@ title: "Duty Calls: CPU Is Not Designed for Packet Forwarding"
 date: 2020-09-13 10:38:00
 tags: [ switching ]
 ---
-Junhui Liu added [this comment](/2020/09/need-smart-nic.html#124) to my _[Where Do We Need Smart NICs?](/2020/09/need-smart-nic.html)_ blog post:
+Junhui Liu added [this comment](/2020/09/need-smart-nic/#124) to my _[Where Do We Need Smart NICs?](/2020/09/need-smart-nic/)_ blog post:
 
 > CPU is not designed for the purpose of packet forwarding. One example is packet order retaining. It is impossible for a multicore CPU to retain the packet order as is received after parallel processing by multiple cores. Another example is scheduling. Yes CPU can do scheduling, but at a very high tax of CPU cycles.
 
@@ -15,7 +15,7 @@ Also, do keep in mind that most low-speed packet forwarding (up to a few gigabit
 
 How about "_it's impossible to retain packet order in multi-core packet processing_". Doing a bit of research (it took me about 10 minutes, but then I knew where to look) before making broad claims usually helps.
 
-Let's define the problem first. Retaining strict source-to-destination packet ordering across a generic IP network is usually a Mission Impossible, and if [your application requires that, you might be using the wrong transport technology](/2020/05/ip-packet-reordering.html). What we're usually looking for is in-session packet order: packets of a single TCP or UDP session are not reordered while traversing a network.
+Let's define the problem first. Retaining strict source-to-destination packet ordering across a generic IP network is usually a Mission Impossible, and if [your application requires that, you might be using the wrong transport technology](/2020/05/ip-packet-reordering/). What we're usually looking for is in-session packet order: packets of a single TCP or UDP session are not reordered while traversing a network.
 
 Now for a tiny dose of reality. I downloaded the [Intel Ethernet Controller I350 Datasheet](https://www.intel.com/content/www/us/en/design/products-and-solutions/networking-and-io/ethernet-controller-i350/technical-library.html?grouping=EMT_Content%20Type&sort=title:asc) (because I couldn't be bothered going through the 1700 pages of XL710 data sheet), browsed through it to find Receive Side Scaling (the functionality that assigns incoming packets to multiple queues which can then be assigned to multiple cores) and found this in the section 7.1.2 of the data sheet:
 
@@ -29,10 +29,10 @@ Now for a tiny dose of reality. I downloaded the [Intel Ethernet Controller I350
 
 What about "_very high tax for scheduling_"? Even my sense of duty is time-limited (and I have a lunch to make), but if you want to know how people with long-time experience in fast CPU-based packet forwarding solve this problem, listen to these Software Gone Wild podcasts:
 
-* [Snabb Switch and NFV on OpenStack](/2014/06/snabb-switch-and-nfv-on-openstack-in.html)
-* [Snabb Switch Deep Dive](/2014/09/snabb-switch-deep-dive-on-software-gone.html)
-* [PF_RING Deep Dive with Luca Deri](/2015/04/pfring-deep-dive-with-luca-deri-on.html)
-* [x86-Based Switching at Ludicrous Speed](/2016/03/x86-based-switching-at-ludicrous-speed.html)
-* [Fast Linux Packet Forwarding with Thomas Graf](/2016/10/fast-linux-packet-forwarding-with.html)
+* [Snabb Switch and NFV on OpenStack](/2014/06/snabb-switch-and-nfv-on-openstack-in/)
+* [Snabb Switch Deep Dive](/2014/09/snabb-switch-deep-dive-on-software-gone/)
+* [PF_RING Deep Dive with Luca Deri](/2015/04/pfring-deep-dive-with-luca-deri-on/)
+* [x86-Based Switching at Ludicrous Speed](/2016/03/x86-based-switching-at-ludicrous-speed/)
+* [Fast Linux Packet Forwarding with Thomas Graf](/2016/10/fast-linux-packet-forwarding-with/)
 
 **TL&DL**: CPU cores dedicated to poll-based packet processing

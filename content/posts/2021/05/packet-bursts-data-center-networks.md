@@ -4,7 +4,7 @@ date: 2021-05-18 07:40:00
 lastmod: 2021-05-24 12:05:00
 tags: [ data center, switching, QoS ]
 ---
-When I wrote about the [(non)impact of switching latency](/2021/04/switching-latency-relevant.html), I was (also) thinking about packet bursts jamming core data center fabric links when I mentioned the elephants in the room... but when I started writing about them, I realized they might be yet another red herring (together with the [supposed need for large buffers in data center switches](/2019/06/switch-buffer-sizes-and-fermi-estimates.html)).
+When I wrote about the [(non)impact of switching latency](/2021/04/switching-latency-relevant/), I was (also) thinking about packet bursts jamming core data center fabric links when I mentioned the elephants in the room... but when I started writing about them, I realized they might be yet another red herring (together with the [supposed need for large buffers in data center switches](/2019/06/switch-buffer-sizes-and-fermi-estimates/)).
 
 Here's how it looks like from my ignorant perspective when considering a simple leaf-and-spine network like the one in the following diagram. Please feel free to set me straight, I honestly can't figure out where I went astray.
 <!--more-->
@@ -17,11 +17,11 @@ TCP stacks can generate large bursts of packets (1MB+), and we always worried ab
 * Output queue can build (eventually resulting in interface congestion) only when the packet arrival rate is higher than the packet departure rate.
 * In a data center fabric, the leaf-to-spine link is usually four times faster than the server-to-leaf link, so individual server bursts can never saturate the uplink.
 * Even when bursts from multiple servers land on the same uplink, their packets are nicely interspersed, so there's minimal latency increase and jitter. The proof is left as an exercise for the reader.
-* Bad things start happening when simultaneous bursts from numerous servers (N >> 4) land on a single uplink. That's when you might need buffering. I'm saying *might* because people familiar with TCP [keep telling me it's better to drop than to buffer](/2019/06/do-packet-drops-matter-for-tcp.html).
+* Bad things start happening when simultaneous bursts from numerous servers (N >> 4) land on a single uplink. That's when you might need buffering. I'm saying *might* because people familiar with TCP [keep telling me it's better to drop than to buffer](/2019/06/do-packet-drops-matter-for-tcp/).
 * It's obvious that it helps if the packet dropping mechanism is better than *drop everything that won't fit*, although even with the tail drop on leaf-to-spine links all currently active bursts get affected in approximately the same way (yet another exercise for the reader).
 * TCP sessions might get synchronized resulting in the sawtooth behavior (so some sort of *Random Early Drop* can't hurt), but at least there shouldn't be excessive retransmission like what we're seeing on Internet uplinks.
 
-In any case, as [I explained two years ago](/2019/06/switch-buffer-sizes-and-fermi-estimates.html), you still don't need deep buffers to handle uplink congestion. 
+In any case, as [I explained two years ago](/2019/06/switch-buffer-sizes-and-fermi-estimates/), you still don't need deep buffers to handle uplink congestion. 
 
 Let's redo the math based on Broadcom Trident-4: it has 128 100GE ports (or 32 400GE ports) and 132MB of packet buffers, resulting in more than 1MB per port without any buffer sharing. Assuming you're not using jumbo frames, that's more than 600 1500-byte packets in the output queue *of every single port at the same time*. When you see congestion like that, please let me know.
 
@@ -37,9 +37,9 @@ Coming back to the *it's better to drop* mantra, you probably don't need large b
 
 *Incast* is supposedly a huge problem in data center fabrics. When many sources send data to a single destination, packet drops occur because the switch-to-server link becomes severely overloaded, and bad things happen (see the next section).
 
-You could "solve" this problem by connecting servers experiencing incast to large-buffer leaf switches, but as [most TCP congestion algorithms aren't delay-sensitive](/2017/01/to-drop-or-to-delay-thats-question-on.html) (the only thing they understand are drops), you're effectively increasing end-to-end latency (resulting in people yelling at you) trying to fix other people's problems.
+You could "solve" this problem by connecting servers experiencing incast to large-buffer leaf switches, but as [most TCP congestion algorithms aren't delay-sensitive](/2017/01/to-drop-or-to-delay-thats-question-on/) (the only thing they understand are drops), you're effectively increasing end-to-end latency (resulting in people yelling at you) trying to fix other people's problems.
 
-There are [obvious pathological cases](/2019/06/do-packet-drops-matter-for-tcp.html?showComment=1559741783128#c5449698275033265922) like a large number of nodes with broken TCP stacks writing humongous amounts of data to a single iSCSI target. There will always be pathological cases, but that doesn't mean we have to design every network to cope with them, although it does help if you can identify them and figure out what's going on when you stumble on one (see also: House MD).
+There are [obvious pathological cases](/2019/06/do-packet-drops-matter-for-tcp/#c5449698275033265922) like a large number of nodes with broken TCP stacks writing humongous amounts of data to a single iSCSI target. There will always be pathological cases, but that doesn't mean we have to design every network to cope with them, although it does help if you can identify them and figure out what's going on when you stumble on one (see also: House MD).
 
 ### All Is Not Rosy in TCP Land
 
@@ -48,7 +48,7 @@ Speaking of pathological cases, someone told me about a pretty common one:
 * While it's true that TCP Selective Acknowledgement solves most of the packet drop issues, there's a corner case: if the last packet in a request is dropped, the receiver won't send a Selective ACK response, and as the sender keeps quiet (waiting for a response), we'll have to wait for the regular TCP timeout to kick in.
 * The default minimum TCP retransmission timeout (RTO) in Linux is 200 msec -- ridiculously large for environments where we love nagging about microsecond latencies. 
 
-**End result**: if the network manages to lose just the right packet, end-to-end application latency can go through the roof. Even worse, it probably [won't show in the averages](/2020/08/measuring-latency.html) your lovely single-pain-of-glass displays, but the users will definitely notice it.
+**End result**: if the network manages to lose just the right packet, end-to-end application latency can go through the roof. Even worse, it probably [won't show in the averages](/2020/08/measuring-latency/) your lovely single-pain-of-glass displays, but the users will definitely notice it.
 
 Most operating systems try to do their best estimating retransmission timeout ([here's a lengthy description of what Linux does](http://sgros.blogspot.com/2012/02/calculating-tcp-rto.html)), and if you care enough, you can set the minimum RTO in Linux routing table, [effectively eliminating incast collapse](https://www.cs.cmu.edu/~dga/papers/incast-sigcomm2009.pdf) and the need for big buffers. That's been known for over a decade, but of course it's easier to blame the network and demand large buffers everywhere. It might also be more expensive, but who cares -- it's some other teams' budget anyway.
 

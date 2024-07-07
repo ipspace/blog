@@ -1,12 +1,12 @@
 ---
-url: /2013/03/happy-eyeballs-happiness-defined-by.html
+url: /2013/03/happy-eyeballs-happiness-defined-by/
 title: "Happy Eyeballs – Happiness Defined by Your Perspective"
 date: "2013-03-18T09:58:00.000+01:00"
 tags: [ IPv6,Internet ]
 ---
 
-<p>It seems that most people not having a vested interest in status quo agree the <a href="/2009/08/what-went-wrong-socket-api.html">socket API is broken</a>. After all, why should every single application ever written have to deal with the idiosyncrasies of two address families? </p>
-<p>Not surprisingly, the browser vendors got sick and tired of waiting for a fixed API or a <a href="/2009/08/what-went-wrong-tcpip-lacks-session.html">standardized session layer</a> (nothing happened in the last two decades) and decided to implement <a href="http://tools.ietf.org/html/rfc6555">happy eyeballs</a> – a simple mechanism that creates two TCP sessions (one over IPv4, another one over IPv6) and uses whichever one works better.<!--more--></p>
+<p>It seems that most people not having a vested interest in status quo agree the <a href="/2009/08/what-went-wrong-socket-api/">socket API is broken</a>. After all, why should every single application ever written have to deal with the idiosyncrasies of two address families? </p>
+<p>Not surprisingly, the browser vendors got sick and tired of waiting for a fixed API or a <a href="/2009/08/what-went-wrong-tcpip-lacks-session/">standardized session layer</a> (nothing happened in the last two decades) and decided to implement <a href="http://tools.ietf.org/html/rfc6555">happy eyeballs</a> – a simple mechanism that creates two TCP sessions (one over IPv4, another one over IPv6) and uses whichever one works better.<!--more--></p>
 <h4>What’s wrong with Happy Eyeballs?</h4><p>Happy Eyeballs seems to be a highly successful kludge – after all, it ensures web browsing works no matter what. Unfortunately, the implementation details vary by browser and even by operating system, ranging from what Geoff Huston calls “Moderately Happy Eyeballs” to “Bemused Eyeballs.” For more details, read the <a href="http://www.potaroo.net/ispcol/2012-05/notquite.pdf">May 2012 issue of The ISP Column</a> and <a href="https://ripe64.ripe.net/archives/video/35/">watch Geoff describe Happy(er) Eyeballs</a> @ RIPE64 (<a href="https://ripe64.ripe.net/presentations/78-2012-04-16-ripe64.pdf">PDF</a>).</p>
 <p>Happy Eyeballs also make browser behavior non-deterministic: you never know which protocol the browser uses to access the server. I’m positive we’ll face interesting <a href="http://en.wikipedia.org/wiki/Uncertainty_principle">Heisenbergian challenges</a> in the near future as our users start experiencing intermittent irreproducible problems caused by partially failed end-to-end connectivity or web servers (the fact <a href="http://tools.ietf.org/html/rfc6555#section-5.2">duly acknowledged by RFC 6555</a>). For more fun, add NAT444 caused by (user) CPE NAT44 + (provider) CGN NAT44 to the mix.</p>
 <div class="info"><p>NAT44 = Network Address Translation from IPv4 to IPv4 (the NAT and PAT duct tape we’ve been using for the last 20 years).</p>

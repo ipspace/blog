@@ -52,7 +52,7 @@ The worst (or the scariest) part of my interaction with ChatGPT: it all looked r
 
 ### GPT-4 Is Still Hallucinating
 
-The obvious question after being faced with ChatGPT nonsense is "_would GPT-4 fare any better?_" I'm in no hurry to know that, and am therefore not willing to pay for the privilege of discovering the answer, but Andrew Yourtchenko (of the [Happy Eyeballs](/2013/03/happy-eyeballs-happiness-defined-by.html) fame) kindly offered to run the queries for me. GPT-4 survived the first query but ([like any decent salesperson](/2023/03/worth-reading-dangers-knowing-everything.html)) couldn't resist adding irrelevant information:
+The obvious question after being faced with ChatGPT nonsense is "_would GPT-4 fare any better?_" I'm in no hurry to know that, and am therefore not willing to pay for the privilege of discovering the answer, but Andrew Yourtchenko (of the [Happy Eyeballs](/2013/03/happy-eyeballs-happiness-defined-by/) fame) kindly offered to run the queries for me. GPT-4 survived the first query but ([like any decent salesperson](/2023/03/worth-reading-dangers-knowing-everything/)) couldn't resist adding irrelevant information:
 
 {{<figure src="/2023/03/gpt4-1.jpg">}}
 

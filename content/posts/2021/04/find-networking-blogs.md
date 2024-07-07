@@ -28,6 +28,6 @@ Obviously you need a starting point for the above process. Here are a few:
 * [APNIC blog](https://blog.apnic.net/)
 * [Olivier Bonaventure's Networking Notes](http://blog.computer-networking.info/)
 * [Packet Pushers' Newsletter](https://packetpushers.net/newsletter/)
-* I publish [Worth Reading](/tag/worth-reading.html) articles almost every weekend.
+* I publish [Worth Reading](/tag/worth-reading/) articles almost every weekend.
 
 I know I've missed some good ones -- write a comment ;)

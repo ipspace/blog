@@ -4,9 +4,9 @@ tags:
 - bridging
 - IP routing
 title: What Is Layer-2 and Why Do We Need It?
-url: /2015/04/what-is-layer-2-and-why-do-we-need-it.html
+url: /2015/04/what-is-layer-2-and-why-do-we-need-it/
 ---
-I'm constantly [ranting against large layer-2 domains](/2012/05/layer-2-network-is-single-failure.html); recently going as far as saying "[*we don't really need all that stuff.*](/2015/02/lets-get-rid-of-thick-yellow-cable.html)" Unfortunately, the IP+Ethernet mentality is so deeply ingrained in every networking engineer's mind that we rarely ever stop to question its validity.
+I'm constantly [ranting against large layer-2 domains](/2012/05/layer-2-network-is-single-failure/); recently going as far as saying "[*we don't really need all that stuff.*](/2015/02/lets-get-rid-of-thick-yellow-cable/)" Unfortunately, the IP+Ethernet mentality is so deeply ingrained in every networking engineer's mind that we rarely ever stop to question its validity.
 
 Let's fix that and start with the fundamental question: **What is Layer-2**?
 <!--more-->
@@ -29,7 +29,7 @@ Have you noticed that I haven't mentioned *layer-2 addresses* (known as *MAC add
 
 {{<figure src="/2015/04/s550-00+-+Thick+Coax+Cable.png" caption="Emulating coax cable with Ethernet gear">}}
 
-{{<note info>}}Use of point-to-point links is the [primary reason for lack of layer-2 addresses in Fibre Channel networks](/2011/07/is-fibre-channel-switching-bridging-or.html) (regardless of the violent disagreement I get every time I mention this).{{</note>}}
+{{<note info>}}Use of point-to-point links is the [primary reason for lack of layer-2 addresses in Fibre Channel networks](/2011/07/is-fibre-channel-switching-bridging-or/) (regardless of the violent disagreement I get every time I mention this).{{</note>}}
 
 The first time you truly need unique addresses is layer-3, which should provide end-to-end packet delivery across the network.
 
@@ -43,7 +43,7 @@ Now let's answer some interesting questions:
 
 **Do we still need layer-2**? In many cases, the answer is **no**. Every device that uses software-based forwarding can act as a layer-3 forwarding device (properly known as *router* but called *layer-3 switch* by almost everyone). Hardware in many high-speed forwarding devices (particularly switches deployed in data centers) already supports layer-3 forwarding.
 
-**Why are we still using layer-2**? Because every vendor (apart from Amazon and [initial heroic attempts by Hyper-V Network Virtualization team](/2013/12/hyper-v-network-virtualization-packet.html)) thinks they need to support really bad practices that originated from the thick yellow coax cable environment, like [protocols without layer-3](/2010/07/bridges-kludge-that-shouldnt-exist.html) (and thus no usable end-to-end addresses) or [solutions that misuse the properties of shared medium](/2012/02/microsoft-network-load-balancing-behind.html) in ways nobody ever envisioned.
+**Why are we still using layer-2**? Because every vendor (apart from Amazon and [initial heroic attempts by Hyper-V Network Virtualization team](/2013/12/hyper-v-network-virtualization-packet/)) thinks they need to support really bad practices that originated from the thick yellow coax cable environment, like [protocols without layer-3](/2010/07/bridges-kludge-that-shouldnt-exist/) (and thus no usable end-to-end addresses) or [solutions that misuse the properties of shared medium](/2012/02/microsoft-network-load-balancing-behind/) in ways nobody ever envisioned.
 
 Finally, **why is everyone using frame format from 40 year old technology**? Because nobody wants to change the device drivers in every host deployed in a data center (or in the global Internet).
 
@@ -51,10 +51,10 @@ Finally, **why is everyone using frame format from 40 year old technology**? Bec
 
 Read these blog posts and watch the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar
 
--   [Bridging and routing -- is there a difference?](/2010/07/bridging-and-routing-is-there.html)
--   [Bridging and routing -- part II](/2010/07/bridging-and-routing-part-ii.html)
--   [Transparent bridging scalability issues](/2012/05/transparent-bridging-aka-l2-switching.html)
--   [Layer-2 network is a single failure domain](/2012/05/layer-2-network-is-single-failure.html)
--   [Why is TRILL not routing at layer-2?](/2010/07/why-is-trill-not-routing-at-layer-2.html)
--   [Is layer-3 switch more than a router?](/2012/08/is-layer-3-switch-more-than-router.html)
--   [Is Fibre Channel switching bridging or routing?](/2011/07/is-fibre-channel-switching-bridging-or.html)
+-   [Bridging and routing -- is there a difference?](/2010/07/bridging-and-routing-is-there/)
+-   [Bridging and routing -- part II](/2010/07/bridging-and-routing-part-ii/)
+-   [Transparent bridging scalability issues](/2012/05/transparent-bridging-aka-l2-switching/)
+-   [Layer-2 network is a single failure domain](/2012/05/layer-2-network-is-single-failure/)
+-   [Why is TRILL not routing at layer-2?](/2010/07/why-is-trill-not-routing-at-layer-2/)
+-   [Is layer-3 switch more than a router?](/2012/08/is-layer-3-switch-more-than-router/)
+-   [Is Fibre Channel switching bridging or routing?](/2011/07/is-fibre-channel-switching-bridging-or/)

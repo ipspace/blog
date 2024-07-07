@@ -4,7 +4,7 @@ minimal_sidebar: true
 pre_scroll: true
 title: 'Next Step: Network Inventory Database'
 toc_title: Network Inventory Database
-url: /kb/NetAutJourney/20-Inventory.html
+url: /kb/NetAutJourney/20-Inventory/
 ---
 It's easy to collect live inventory data with Ansible and NAPALM, and it's just as
 easy to store the collected data in a database. Initially, I used sqlite3, which

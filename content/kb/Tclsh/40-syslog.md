@@ -2,7 +2,7 @@
 kb_section: Tclsh
 minimal_sidebar: true
 title: Generating Syslog messages from Tclsh
-url: /kb/Tclsh/40-syslog.html
+url: /kb/Tclsh/40-syslog/
 ---
 Tcl policies run within the Embedded Event Manager (EEM) environment can use the **action\_syslog** command to generate logging messages. Other Tcl environments within Cisco IOS (for example, **tclsh**) do not provide a *syslog* message API to Tcl scripts. You can use the **syslog:** opaque write-only file system introduced in IOS release 12.4T in these environments to generate debugging *syslog* messages from the Tcl script.
 

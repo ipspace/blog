@@ -18,7 +18,7 @@ Once you grasp these fundamentals, it's perfectly possible to design and deploy 
 
 {{<series-listing tag="design">}}
 
-Not surprisingly, solutions created by networking vendors (including [multi-chassis link aggregation](/series/mlag.html) clusters) ignore all of the above. This is what I had to say about the sad state of affairs:
+Not surprisingly, solutions created by networking vendors (including [multi-chassis link aggregation](/series/mlag/) clusters) ignore all of the above. This is what I had to say about the sad state of affairs:
 
 {{<series-listing tag="overview">}}
 

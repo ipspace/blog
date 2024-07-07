@@ -2,7 +2,7 @@
 kb_section: Tclsh
 minimal_sidebar: true
 title: Tclsh Command Line Parameters
-url: /kb/Tclsh/30-parameters.html
+url: /kb/Tclsh/30-parameters/
 ---
 A Tcl script executed with the **tclsh** command can receive command line parameters: all words entered after the file name in the **tclsh** command line are passed to the Tcl script in the *$argv* list.
 

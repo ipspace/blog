@@ -3,10 +3,10 @@ date: 2014-03-19T07:01:00.000+01:00
 tags:
 - data center
 title: Per-packet Load Balancing Interferes with TCP Offload
-url: /2014/03/per-packet-load-balancing-interferes.html
+url: /2014/03/per-packet-load-balancing-interferes/
 ---
 
-<p>A reader left the following comment on my <a href="/2014/03/ios-uses-multipath-tcp-does-it-matter.html"><em>Does Multipath TCP Matter</em></a> blog post: “<em>Why would I use MP-TCP in a data center? Couldn’t you use packet spraying at each hop and take care of re-ordering at the destination?</em>”</p>
+<p>A reader left the following comment on my <a href="/2014/03/ios-uses-multipath-tcp-does-it-matter/"><em>Does Multipath TCP Matter</em></a> blog post: “<em>Why would I use MP-TCP in a data center? Couldn’t you use packet spraying at each hop and take care of re-ordering at the destination?</em>”</p>
 <p><strong>Short answer</strong>: You could, but you might not want to.<!--more--></p>
 <p>Packet reordering can cause several interesting problems:</p>
 <ul class="ListParagraph"><li>There are (<del>badly written</del> highly optimized) applications running over UDP that cannot tolerate packet reordering because they don’t buffer packets (example: VoIP);</li>
@@ -20,6 +20,6 @@ url: /2014/03/per-packet-load-balancing-interferes.html
 </ul>
 <p>More information on this topic would definitely be most welcome. Please share in the comments section. Thank you!</p>
 <h4>Impact on TCP offload</h4><p>On top of the performance problems listed above, packet reordering interferes with TCP offload (in particular with the <a href="http://technet.microsoft.com/en-us/library/hh997024.aspx">receive segment coalescing</a> functionality). </p>
-<p>Receive segment coalescing is not relevant to traditional data center workloads (with most of the traffic being <em>sent</em> from servers toward remote clients), but can significantly improve the performance of elephant flows sent <em>toward </em>the server (example: <a href="/2013/03/does-dedicated-iscsi-infrastructure.html">iSCS</a>I or NFS traffic). I don’t think you want to play with that, do you?</p>
-<h4>Summary</h4><p>There are several really good reasons almost nobody does per-packet ECMP load sharing by default (Brocade being a notable exception <a href="/2011/04/brocade-vcs-fabric-has-almost-perfect.html">solving the packet reordering challenges in their switch hardware</a>). </p>
+<p>Receive segment coalescing is not relevant to traditional data center workloads (with most of the traffic being <em>sent</em> from servers toward remote clients), but can significantly improve the performance of elephant flows sent <em>toward </em>the server (example: <a href="/2013/03/does-dedicated-iscsi-infrastructure/">iSCS</a>I or NFS traffic). I don’t think you want to play with that, do you?</p>
+<h4>Summary</h4><p>There are several really good reasons almost nobody does per-packet ECMP load sharing by default (Brocade being a notable exception <a href="/2011/04/brocade-vcs-fabric-has-almost-perfect/">solving the packet reordering challenges in their switch hardware</a>). </p>
 

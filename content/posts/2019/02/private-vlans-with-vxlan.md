@@ -6,9 +6,9 @@ tags:
 - data center
 - EVPN
 title: Private VLANs With VXLAN
-url: /2019/02/private-vlans-with-vxlan.html
+url: /2019/02/private-vlans-with-vxlan/
 ---
-I got this remark from a reader after he read the [VXLAN and Q-in-Q blog post](/2019/01/q-in-q-support-in-multi-site-evpn.html):
+I got this remark from a reader after he read the [VXLAN and Q-in-Q blog post](/2019/01/q-in-q-support-in-multi-site-evpn/):
 
 > Another area with a feature gap with EVPN VXLAN is Private VLANs with VXLAN. They're not supported on either Nexus or Juniper switches.
 

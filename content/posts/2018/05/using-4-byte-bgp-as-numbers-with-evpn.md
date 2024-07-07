@@ -5,7 +5,7 @@ pre_scroll: true
 tags:
 - EVPN
 title: Using 4-Byte BGP AS Numbers With EVPN on Junos
-url: /2018/05/using-4-byte-bgp-as-numbers-with-evpn.html
+url: /2018/05/using-4-byte-bgp-as-numbers-with-evpn/
 ---
 After documenting the [basic challenges of using EBGP and 4-byte AS numbers with EVPN automatic route targets](http://www.ipspace.net/Data_Center_BGP/EVPN_Route_Target_Considerations), I asked my friends working for various vendors how their implementation solves these challenges. This is what [Krzysztof Szarkowicz](https://www.oreilly.com/pub/au/6140) sent me on specifics of Junos implementation:
 <!--more-->

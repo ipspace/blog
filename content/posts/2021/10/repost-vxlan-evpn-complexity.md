@@ -6,7 +6,7 @@ tags:
 - EVPN
 title: EVPN/VXLAN Complexity
 ---
-_We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Minh Ha on [complexity of emulating layer-2 networks with VXLAN and EVPN](/2021/10/worth-reading-arp-problems-evpn.html#801)_.
+_We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Minh Ha on [complexity of emulating layer-2 networks with VXLAN and EVPN](/2021/10/worth-reading-arp-problems-evpn/#801)_.
 
 ---
 

@@ -10,7 +10,7 @@ One of my readers worried about the control-plane-induced MAC learning lag in EV
 
 > In all discussions about the advantages/disadvantages of VXLAN/EVPN, I can't find any regarding the lag in learning new macs when you use the control plane for mac learning.
 
-EVPN is definitely slower than data plane-based dynamic MAC learning (regardless of [whether it's done in hardware or software](/2023/03/dynamic-mac-learning-hw-cpu.html)), but so is [MLAG](/series/mlag.html).
+EVPN is definitely slower than data plane-based dynamic MAC learning (regardless of [whether it's done in hardware or software](/2023/03/dynamic-mac-learning-hw-cpu/)), but so is [MLAG](/series/mlag/).
 <!--more-->
 {{<note "content-box small-margin">}}**Aside:** I had a customer that used an MLAG cluster with thousands of MAC addresses (VMs) reachable through an orphan (single-node) trunk link. It took minutes for the network to converge after a link failure that moved all those nodes to another orphan link due to the control-plane propagation of MAC reachability information.
 
@@ -25,7 +25,7 @@ The BUM traffic concern is valid, but I wonder how often we see silent hosts the
 
 [^PLE]: ... or TCP sessions with no idle detection.
 
-The vMotion argument is more worrying, until you realize the "_at most one ping lost_" claim people love to make is nonsense[^SPL]. vMotion is [neither instantaneous nor lossless](/2020/03/the-myth-of-lossless-vmotion.html), and while nobody wants to publish the measurements[^PM], the final step of the vMotion process (freeze-transfer-thaw-resume) takes milliseconds.
+The vMotion argument is more worrying, until you realize the "_at most one ping lost_" claim people love to make is nonsense[^SPL]. vMotion is [neither instantaneous nor lossless](/2020/03/the-myth-of-lossless-vmotion/), and while nobody wants to publish the measurements[^PM], the final step of the vMotion process (freeze-transfer-thaw-resume) takes milliseconds.
 
 [^SPL]: Ping packets are usually sent once per second. If vMotion-induced outage takes half a second you have a 50% chance of not losing a ping. Furthermore, the usual ping timeout is two seconds. If you do lose a packet, it's likely you won't lose the next one two seconds later.
 

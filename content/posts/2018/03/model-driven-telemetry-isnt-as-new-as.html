@@ -1,11 +1,11 @@
 ---
-url: /2018/03/model-driven-telemetry-isnt-as-new-as.html
+url: /2018/03/model-driven-telemetry-isnt-as-new-as/
 title: "Model-Driven Telemetry Isn’t as New as Some People Think"
 date: "2018-03-06T09:15:00.000+01:00"
 tags: [ SNMP,network management ]
 ---
 
-<p>During the <a href="http://techfieldday.com/appearance/cisco-campus-evolution-with-cat9k-presents-at-tech-field-day-extra-at-cisco-live-europe/">Campus Evolution with Cat9K presentation</a> (I hope I got it right - the whole event was an <a href="/2018/02/brief-recap-tech-field-day-at-cisco.html">absolute overload</a>) the presenter mentioned the benefits of brand-new model-driven telemetry, which immediately caused me to put my academic hat on and state that we had model-driven telemetry for at least 30 years.</p>
+<p>During the <a href="http://techfieldday.com/appearance/cisco-campus-evolution-with-cat9k-presents-at-tech-field-day-extra-at-cisco-live-europe/">Campus Evolution with Cat9K presentation</a> (I hope I got it right - the whole event was an <a href="/2018/02/brief-recap-tech-field-day-at-cisco/">absolute overload</a>) the presenter mentioned the benefits of brand-new model-driven telemetry, which immediately caused me to put my academic hat on and state that we had model-driven telemetry for at least 30 years.</p>
 <p>Don’t believe me? Have you ever looked at an SNMP MIB description? Did it look like random prose to you or did it seem to have some internal structure?<!--more--></p>
 <p>As I explained in the <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=3#M3S1">Data Models and Data Stores</a> part of <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course and in <a href="https://my.ipspace.net/bin/list?id=NetAutUC#CS_INTENT">Intent-Driven Networking and Data Models</a> part of <a href="http://www.ipspace.net/Network_Automation_Use_Cases">Network Automation Use Cases</a> webinar (included in <a href="https://www.ipspace.net/Subscription">ipSpace.net webinar subscription</a>), data model is nothing more (and nothing less) than a description of a data structure, and the first data models we had in networking were SNMP MIBs, currently described in a data description language called SMIv2.</p>
 <p><strong>Long story short</strong>: please stop talking about the beauties of model-driven telemetry in 2017. It makes you look silly to anyone who actually understands what you’re talking about.</p>
@@ -15,7 +15,7 @@ tags: [ SNMP,network management ]
 <p>Streaming telemetry reduces the load on both network management system (because the periodic polling is gone) and the network device (because it doesn't have to parse the same request for the same set of variables every few seconds).</p>
 <p>Other fringe benefits: YANG has richer data structures than SMIv2 (not everything is a tree), making a few things a bit easier.</p>
 <h4>Which standards do you want to use today?</h4><p>The streaming telemetry is becoming standardized and as is often the case, the <a href="http://wiki.c2.com/?AndrewTanenbaum">beauty of having standards</a> is that there are so <a href="https://xkcd.com/927/">many to choose from</a>:</p>
-<ul><li>The data model describing the telemetry data is usually described in a YANG data model. In the ideal world that model would be defined by an independent organization (where you can choose between IETF and OpenConfig). In <a href="/2018/01/use-yang-data-models-to-configure.html">reality</a>, a lot of stuff uses vendor data models (think vendor-specific MIBs);</li>
+<ul><li>The data model describing the telemetry data is usually described in a YANG data model. In the ideal world that model would be defined by an independent organization (where you can choose between IETF and OpenConfig). In <a href="/2018/01/use-yang-data-models-to-configure/">reality</a>, a lot of stuff uses vendor data models (think vendor-specific MIBs);</li>
 <li>The encoding of data could be done using JSON, XML (both are text formats) or Protocol Buffers (a binary format);</li>
 <li>The data could be sent over NETCONF, RESTCONF or gRPC transport.</li>
 </ul>

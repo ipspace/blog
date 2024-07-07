@@ -5,9 +5,9 @@ tags:
 - DMVPN
 - BGP
 title: Changes in IBGP Next Hop Processing Drastically Improve BGP-based DMVPN Designs
-url: /2014/04/changes-in-ibgp-next-hop-processing.html
+url: /2014/04/changes-in-ibgp-next-hop-processing/
 ---
-I always [recommended EBGP-based designs for DMVPN networks](/2014/03/scaling-bgp-based-dmvpn-networks.html) due to the significant complexity of running IBGP without an underlying IGP. The **neighbor next-hop-self all** feature introduced in recent Cisco IOS releases has totally changed my perspective -- it makes IBGP-over-DMVPN the best design option unless you want to [use DMVPN network as a backup for MPLS/VPN network](http://www.ipspace.net/Integrating_Internet_VPN_with_MPLS_VPN_WAN).
+I always [recommended EBGP-based designs for DMVPN networks](/2014/03/scaling-bgp-based-dmvpn-networks/) due to the significant complexity of running IBGP without an underlying IGP. The **neighbor next-hop-self all** feature introduced in recent Cisco IOS releases has totally changed my perspective -- it makes IBGP-over-DMVPN the best design option unless you want to [use DMVPN network as a backup for MPLS/VPN network](http://www.ipspace.net/Integrating_Internet_VPN_with_MPLS_VPN_WAN).
 <!--more-->
 ### What Was the Problem?
 
@@ -107,7 +107,7 @@ While this solution works, it requires additional configuration on all spoke rou
 
 ### Changing BGP Next Hop on the Hub Router
 
-Ideally, the hub router would set the BGP next hop to its own IP address on all outbound updates sent to DMVPN spokes. Unfortunately a [BGP route reflector doesn't change the attributes of reflected routes](/2011/08/bgp-next-hop-processing.html), even when configured to do so with a route map or **neighbor next-hop-self**.
+Ideally, the hub router would set the BGP next hop to its own IP address on all outbound updates sent to DMVPN spokes. Unfortunately a [BGP route reflector doesn't change the attributes of reflected routes](/2011/08/bgp-next-hop-processing/), even when configured to do so with a route map or **neighbor next-hop-self**.
 
 Recent IOS releases got a tweak on the **neighbor next-hop-self** command -- the **all** option changes BGP next hop on all routes, including reflected routes. Problem solved.
 

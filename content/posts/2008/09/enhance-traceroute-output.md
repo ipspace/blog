@@ -4,7 +4,7 @@ tags:
 - MPLS
 - command line interface
 title: Enhance the Traceroute Output
-url: /2008/09/enhance-traceroute-output.html
+url: /2008/09/enhance-traceroute-output/
 ---
 After working with MPLS Traffic Engineering lab for a few days and interpreting IP addresses from various **traceroute** outputs, I finally had enough and wrote a simple Perl script (below) that parses router configurations and produces **ip host** configuration commands for every interface IP address it encounters. When you paste the **ip host** commands into the configuration of the edge router from which you do the tests, the meaningless numbers finally make sense.
 <!--more-->

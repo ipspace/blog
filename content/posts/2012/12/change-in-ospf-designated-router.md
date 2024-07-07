@@ -4,7 +4,7 @@ ospf_tag: details
 tags:
 - OSPF
 title: Change in OSPF Designated Router Creates Extra Network LSAs
-url: /2012/12/change-in-ospf-designated-router.html
+url: /2012/12/change-in-ospf-designated-router/
 ---
 When testing the OSPF graceful shutdown feature, I've encountered an interesting OSPF feature: if you force a change in LAN DR router (other than rebooting the current DR), you'll end up with two network LSAs describing the same LAN.
 

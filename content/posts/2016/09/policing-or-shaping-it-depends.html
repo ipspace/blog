@@ -1,5 +1,5 @@
 ---
-url: /2016/09/policing-or-shaping-it-depends.html
+url: /2016/09/policing-or-shaping-it-depends/
 title: "Policing or Shaping? It Depends"
 date: "2016-09-28T09:04:00.000+02:00"
 tags: [ TCP,QoS,WAN ]
@@ -19,7 +19,7 @@ tags: [ TCP,QoS,WAN ]
 <blockquote class="cite">I would think, in this example, had Stretch run longer, he would eventually fill up his output queues anyway and you would start to see tcp rate changes.</blockquote>
 <p>Stretch connected two Ethernet segments with a router. RTT was below a millisecond, so one would hope that the queues would be pretty stable after 45 seconds of continuous transfer.</p>
 <blockquote class="cite">TCP should always be trying to increase its rate to see if it can run faster, but a big buffer slows this down by increasing RTT.</blockquote>
-<p>There are at least two signals TCP can use to figure out it should slow down: packet drops (example: <a href="#Algorithms">TCP Reno</a>) or increasing RTT (example: <a href="https://en.wikipedia.org/wiki/TCP_Vegas">TCP Vegas</a>). Some implementations also listen to ECN bits. Response to increased RTT is usually less drastic than response to packet drop (Disagree? Please write a comment!)</p>
+<p>There are at least two signals TCP can use to figure out it should slow down: packet drops (example: TCP Reno) or increasing RTT (example: <a href="https://en.wikipedia.org/wiki/TCP_Vegas">TCP Vegas</a>). Some implementations also listen to ECN bits. Response to increased RTT is usually less drastic than response to packet drop (Disagree? Please write a comment!)</p>
 <p>Finally, there are the <a href="https://en.wikipedia.org/wiki/Bufferbloat">bufferbloat</a> disasters. While a lot of progress has been made in understanding what causes them and addressing the problem, it’s hard to solve the bufferbloat within the network if the host TCP stack uses huge TCP window sizes and sends way too large bursts. We’ll face bufferbloat challenges till the host TCP stacks are fixed.</p>
 <p class="more">FlowQueueCodel seems to be the network-side answer to bufferbloat, but it seems to require per-flow queues (no surprise there, so does WFQ), which are usually expensive to implement in hardware. OTOH, some software implementations <a href="http://blog.cerowrt.org/post/fq_codel_on_ath10k/">work great</a>.</p>
 <p>The moral of this story is: there’s no right answer that works for everyone, and just because some implementations are badly broken (storing seconds worth of traffic in an output queue makes absolutely no sense, for example) it doesn’t mean that the idea of delaying packets instead of dropping them is a bad one.</p>

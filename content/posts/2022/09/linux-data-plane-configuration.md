@@ -9,7 +9,7 @@ tags:
 - Cumulus Linux
 title: Linux Networking Data Plane Configuration
 ---
-I spent a rainy day [implementing VLANs, VRFs, and VXLAN on Cumulus Linux VX](/2022/09/netlab-1-3-1.html) and came to "appreciate" the beauties of Linux networking configuration.
+I spent a rainy day [implementing VLANs, VRFs, and VXLAN on Cumulus Linux VX](/2022/09/netlab-1-3-1/) and came to "appreciate" the beauties of Linux networking configuration.
 
 **TL&DR**: It sucks
 
@@ -24,9 +24,9 @@ You don't want to use the CLI commands to manipulate network devices; it's a hig
 
 To make matters even more interesting, you can choose among a plethora of intent-based systems, all solving the same problem in slightly different ways. Focusing on Cumulus Linux made my life easier: it uses an improved version of *[ifupdown](https://manpages.ubuntu.com/manpages/bionic/man5/interfaces.5.html)* that knows how to handle the newer networking constructs like VRFs.
 
-As [expected from a Linux system utility](/2020/09/grasping-linux-networking.html), the documentation sucks. While the _ifupdown_ documentation does a great job explaining the basics, once you try to configure bridges, VXLAN interfaces, or VRFs, you get into a maze of underdocumented commands, some mentioned only in the source code on GitHub. Fortunately, the Cumulus Linux documentation always describes multiple ways of configuring Linux networking objects, giving me at least some hints of what I should be searching for.
+As [expected from a Linux system utility](/2020/09/grasping-linux-networking/), the documentation sucks. While the _ifupdown_ documentation does a great job explaining the basics, once you try to configure bridges, VXLAN interfaces, or VRFs, you get into a maze of underdocumented commands, some mentioned only in the source code on GitHub. Fortunately, the Cumulus Linux documentation always describes multiple ways of configuring Linux networking objects, giving me at least some hints of what I should be searching for.
 
-Next problem: _netlab_ [cannot build an aggregate configuration file](/2020/12/ansible-config-sections.html). It uses a system of [configurable modules](https://netlab.tools/module-reference/) (each implementing a technology or a protocol) and plugins, and every one of those could modify any part of the device configuration. For example:
+Next problem: _netlab_ [cannot build an aggregate configuration file](/2020/12/ansible-config-sections/). It uses a system of [configurable modules](https://netlab.tools/module-reference/) (each implementing a technology or a protocol) and plugins, and every one of those could modify any part of the device configuration. For example:
 
 * The initial setup creates interfaces and assigns IP addresses to them
 * The VLAN module creates bridges and adds access and trunk VLANs to interfaces

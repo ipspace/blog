@@ -7,7 +7,7 @@ A random tweet[^DT] pointed me to [Vulnerability Note VU#855201](https://kb.cert
 
 {{<note warn>}}Before anyone starts jumping up and down -- even though the VLAN header is mentioned, this is NOT VLAN hopping.{{</note>}}
 
-The security researcher who found the vulnerability also [provided an excellent in-depth description](https://blog.champtar.fr/VLAN0_LLC_SNAP/) focused on the way operating systems like Linux and Windows handle LLC-encapsulated IP packets. Here's the CliffNotes version focused more on the hardware switches. Even though I tried to keep it simple, you might want to read the [History of Ethernet Encapsulation](/2022/10/ethernet-encapsulations.html) before moving on.
+The security researcher who found the vulnerability also [provided an excellent in-depth description](https://blog.champtar.fr/VLAN0_LLC_SNAP/) focused on the way operating systems like Linux and Windows handle LLC-encapsulated IP packets. Here's the CliffNotes version focused more on the hardware switches. Even though I tried to keep it simple, you might want to read the [History of Ethernet Encapsulation](/2022/10/ethernet-encapsulations/) before moving on.
 <!--more-->
 [^DT]: ... making fun of Deutsche Telekom responding to the vulnerability with "_We have no Switches produced by any vendors for us_". It's really hard to [top Scott Adams](https://dilbert.com/strip/2010-04-24), but DT is doing their best.
 
@@ -47,7 +47,7 @@ What do you think would happen if someone sends WiFi-formatted packet on Etherne
 
 What's the impact of that parsing failure? You can't get anything forwarded into another subnet if the forwarding device doesn't parse the incoming frame as containing a layer-3 packet, but you can get an obfuscated packet past a layer-2 ACL that does not have a "deny all" at the end.
 
-Unfortunately, the defaults that switch vendors have to implement to reduce their support costs[^CA] is to forward all packets within a layer-2 segment and drop only those malicious packets that they recognize (for example, [IPv6 RA messages coming from an untrusted source](/2011/11/ipv6-security-getting-bored-bru-airport.html)). The unusual (and probably invalid, but who's counting) stacking of protocol headers thus allows an intruder to bypass any layer-2 security measure like layer-3 ACLs on layer-2 ports, ARP/ND inspection, DHCP guard or RA guard.
+Unfortunately, the defaults that switch vendors have to implement to reduce their support costs[^CA] is to forward all packets within a layer-2 segment and drop only those malicious packets that they recognize (for example, [IPv6 RA messages coming from an untrusted source](/2011/11/ipv6-security-getting-bored-bru-airport/)). The unusual (and probably invalid, but who's counting) stacking of protocol headers thus allows an intruder to bypass any layer-2 security measure like layer-3 ACLs on layer-2 ports, ARP/ND inspection, DHCP guard or RA guard.
 
 [Arista's security advisory](https://www.arista.com/en/support/advisories-notices/security-advisory/16276-security-advisory-0080) clearly identifies these challenges (if you know where to look) and recommends using a layer-2 ACL that drops any frames where the hardware parser stopped at 802.1q or 802.1ad EtherType. They also recommend a much better solution to block another vulnerability -- stricter ACL that permits only IPv4, IPv6, and ARP.
 

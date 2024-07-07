@@ -9,7 +9,7 @@ tags:
 - WAN
 - Software Gone Wild
 title: 'Viptela SEN: Hybrid WAN Connectivity with an SDN Twist'
-url: /2014/11/viptela-sen-hybrid-wan-connectivity.html
+url: /2014/11/viptela-sen-hybrid-wan-connectivity/
 ---
 Like many of us Khalid Raza wasted countless hours sitting in meetings discussing [hybrid WAN connectivity designs](http://www.ipspace.net/Integrating_Internet_VPN_with_MPLS_VPN_WAN) using a random combination of [DMVPN](http://www.ipspace.net/DMVPN), IPsec, PfR, and one or more routing protocols... and decided to try to create a better solution to the problem.
 
@@ -21,6 +21,6 @@ Like everyone else these days, they decided to use an SDN controller, which gave
 
 -   Simple edge router configuration -- all an edge router (vEdge Router) has to do is to report its local connectivity (subnets, VLANs, local IP prefixes) to the controller and get the WAN connectivity information from it;
 -   Simplified policy distribution -- the WAN policy is no longer configured on every WAN edge device, but distributed from the controller cluster;
--   Simple control plane -- SEN vEdge Routers still run traditional routing protocols (there's nothing wrong with using a technology that works well), but have a small set of adjacencies -- they talk with the controllers, not with the other routers. While this approach lacks [shared fate property](/2014/08/fate-sharing-in-ip-networks.html) and thus complicates the data plane failure detection, it scales much better; the size of the WAN network is no longer limited by the CPU capabilities of the hub router (if you ever implemented large-scale DMVPN with Catalyst 6500 as the hub router you probably know what I'm talking about).
+-   Simple control plane -- SEN vEdge Routers still run traditional routing protocols (there's nothing wrong with using a technology that works well), but have a small set of adjacencies -- they talk with the controllers, not with the other routers. While this approach lacks [shared fate property](/2014/08/fate-sharing-in-ip-networks/) and thus complicates the data plane failure detection, it scales much better; the size of the WAN network is no longer limited by the CPU capabilities of the hub router (if you ever implemented large-scale DMVPN with Catalyst 6500 as the hub router you probably know what I'm talking about).
 
 {{<jump>}}[Listen to the podcast](http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_15-Viptela_Secure_Extensible_Network.mp3){{</jump>}}

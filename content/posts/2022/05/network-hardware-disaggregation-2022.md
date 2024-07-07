@@ -48,7 +48,7 @@ You need at least two software components to glue a network operating system to 
 There are two competing approaches to ASIC device drivers:
 
 * [Switch Abstraction Interface](https://www.opencompute.org/documents/switch-abstraction-interface-ocp-specification-v0-2-pdf) (SAI) -- standardized ASIC programming API embraced by Open Compute Project (OCP)
-* [switchdev](https://www.kernel.org/doc/html/latest/networking/switchdev.html) -- a Linux kernel API that [offloads data plane processing from Linux kernel to an ASIC](/2018/01/packet-forwarding-on-linux-on-software.html).
+* [switchdev](https://www.kernel.org/doc/html/latest/networking/switchdev.html) -- a Linux kernel API that [offloads data plane processing from Linux kernel to an ASIC](/2018/01/packet-forwarding-on-linux-on-software/).
 
 {{<note info>}}Want to know what's the difference between SAI and switchdev? Dinesh Dutt covered this topic in the _[Network Operating System Models](https://www.ipspace.net/Network_Operating_System_Models)_ webinar.{{</note>}}
 
@@ -81,7 +81,7 @@ The previous section should have made it abundantly clear that traditional netwo
 
 * You could run [Cisco IOS-XR on third-party hardware](https://xrdocs.io/cloud-scale-networking/blogs/2018-03-08-enabling-ios-xr-on-third-party-network-hardware/)
 * Juniper is talking about _disaggregated Junos_, but all I could find was a [way to run Junos VM on their NFX150 CPE platform](https://www.juniper.net/documentation/us/en/software/junos/nfx150-getting-started/topics/topic-map/nfx150-overview.html), and a datasheet [claiming you can run Junos on a single Accton Edgecore switch](https://www.juniper.net/assets/us/en/local/pdf/datasheets/1000641-en.pdf).
-* Supposedly you could run Arista cEOS (EOS in a container) on third-party whitebox switches. Based on my [recent cEOS experience](/2022/03/dataplane-quirks-virtual-devices.html) I have to wonder how much functionality you'd get beyond the basic L2+L3 forwarding. The only other reasonable hit I got for "Arista EOS whitebox" was a pointer to my [2015 April 1st blog post](/2015/04/arista-eos-available-on-whitebox.html).
+* Supposedly you could run Arista cEOS (EOS in a container) on third-party whitebox switches. Based on my [recent cEOS experience](/2022/03/dataplane-quirks-virtual-devices/) I have to wonder how much functionality you'd get beyond the basic L2+L3 forwarding. The only other reasonable hit I got for "Arista EOS whitebox" was a pointer to my [2015 April 1st blog post](/2015/04/arista-eos-available-on-whitebox/).
 
 Then there's a plethora of niche vendors offering their network operating systems on whitebox hardware, including Arrcus (ArcOS), DriveNets (DNOS), IP Infusion (OcNOS), NoviFlow (NoviWare)[^NF], Pluribus, and RtBrick.
 

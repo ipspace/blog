@@ -4,7 +4,7 @@ tags:
 - IP services
 - PPP
 title: TCP MSS Clamping – What Is It and Why Do We Need It?
-url: /2013/01/tcp-mss-clamping-what-is-it-and-why-do.html
+url: /2013/01/tcp-mss-clamping-what-is-it-and-why-do/
 ---
 This (not so very) short video explains what TCP MSS clamping is and why we're almost forced to use it on xDSL (PPPoE) and tunnel interfaces.
 

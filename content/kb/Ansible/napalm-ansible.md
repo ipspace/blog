@@ -2,7 +2,7 @@
 kb_section: Ansible
 minimal_sidebar: true
 title: Using NAPALM with Ansible
-url: /kb/Ansible/napalm-ansible.html
+url: /kb/Ansible/napalm-ansible/
 ---
 Ansible 2.8 includes NAPALM connection plugin, making engineers trying to use NAPALM with Ansible wonder how to do it correctly. This article should provide an overview of your options.
 

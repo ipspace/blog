@@ -11,7 +11,7 @@ I got this question from one of ipSpace.net subscribers:
 
 There are several reasons (apart from RFC 1925 Rule 6a) why you might want to add another layer of abstraction (that's what overlay networks are in a nutshell) to your network.
 <!--more-->
-You want to **keep the forwarding tables on interim devices small and stable** and don't want to insert endpoint addresses or prefixes into them. That's why we use VXLAN or Provider Backbone Bridging (PBB) to build layer-2 fabrics. Service providers use [MPLS-based BGP-free core](/2012/01/bgp-free-service-provider-core-in.html) for the same reason.
+You want to **keep the forwarding tables on interim devices small and stable** and don't want to insert endpoint addresses or prefixes into them. That's why we use VXLAN or Provider Backbone Bridging (PBB) to build layer-2 fabrics. Service providers use [MPLS-based BGP-free core](/2012/01/bgp-free-service-provider-core-in/) for the same reason.
 
 **Path separation**. Most network devices (including bridges and routers) perform hop-by-hop destination-only forwarding. To separate two traffic streams, you must implement parallel forwarding domains on every device in the path or hide the user payload into a transport envelope (tunneling).
 

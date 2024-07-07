@@ -9,7 +9,7 @@ tags:
 - TCP
 - Software Gone Wild
 title: Multipath TCP on Software Gone Wild
-url: /2019/03/multipath-tcp-on-software-gone-wild.html
+url: /2019/03/multipath-tcp-on-software-gone-wild/
 ---
 I mentioned Multipath TCP (MP-TCP) numerous times in the past but I never managed to get beyond "*this is the thing that might solve some TCP multihoming challenges*" We fixed this omission in [Episode 100](http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_100-Multipath_TCP.mp3) of [Software Gone Wild](https://www.ipspace.net/Podcast/Software_Gone_Wild) with [Christoph Paasch](https://www.linkedin.com/in/christophpaasch/) (software engineer @ Apple) and [Mat Martineau](https://www.linkedin.com/in/matmartineau/) from Open Source Technology Center @ Intel.
 <!--more-->

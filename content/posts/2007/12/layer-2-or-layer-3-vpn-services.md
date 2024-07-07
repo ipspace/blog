@@ -5,7 +5,7 @@ tags:
 - WAN
 - LAN
 title: Making the case for Layer 2 and Layer 3 VPNs
-url: /2007/12/layer-2-or-layer-3-vpn-services.html
+url: /2007/12/layer-2-or-layer-3-vpn-services/
 ---
 
 Occasionally someone would try to persuade me that the layer-2 VPN services are like aspirin (you know, totally harmless plus it could get rid of all your headaches). OK, that might be true if you take the layer-2 VPN offering as a pure transport solution and plug in an extra router (sometimes also called a layer-3 switch by marketing people) between the Service Provider's Ethernet (or whatever they give you) and your LAN. But there are people who don't know the details and plug the SP Ethernet straight into their L2 switch … and things might even work for a while … until the whole network collapses.  

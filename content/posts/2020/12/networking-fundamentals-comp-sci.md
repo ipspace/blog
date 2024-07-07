@@ -13,7 +13,7 @@ I checked the [curriculum of my alma mater](https://www.fri.uni-lj.si/upload/Sli
 
 Also keep in mind that [each CCNA-level course](https://www.netacad.com/courses/networking) has approximately the same length as one of those courses, so you can't expect someone finishing them to be much beyond the CCNA level of understanding.
 
-On the other hands, Physics is a mandatory course, so after getting a Computer Science degree you'll know how to compute acceleration, forces, and momentum (maybe that's really important if you decide to start developing first-person shooter games), but not how to build a well-behaved distributed application. No wonder the problems [keep getting pushed down the stack](/2013/04/this-is-what-makes-networking-so-complex.html) and [software developers keep reinventing networking](/2020/02/the-never-ending-my-overlay-is-better.html) using [NAT and PBR](https://rule11.tech/the-experience-has-shown-that-keyword-rfc2915-rule-4/). Good job.
+On the other hands, Physics is a mandatory course, so after getting a Computer Science degree you'll know how to compute acceleration, forces, and momentum (maybe that's really important if you decide to start developing first-person shooter games), but not how to build a well-behaved distributed application. No wonder the problems [keep getting pushed down the stack](/2013/04/this-is-what-makes-networking-so-complex/) and [software developers keep reinventing networking](/2020/02/the-never-ending-my-overlay-is-better/) using [NAT and PBR](https://rule11.tech/the-experience-has-shown-that-keyword-rfc2915-rule-4/). Good job.
 
 I wonder whether the situation is better elsewhere -- your comments are most welcome.
 

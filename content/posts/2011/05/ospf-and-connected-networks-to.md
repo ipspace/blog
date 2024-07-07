@@ -4,7 +4,7 @@ ospf_tag: config
 tags:
 - OSPF
 title: 'OSPF and Connected Networks: To Redistribute or Not?'
-url: /2011/05/ospf-and-connected-networks-to.html
+url: /2011/05/ospf-and-connected-networks-to/
 ---
 A few days ago, I was discussing a data center design with a seasoned network architect. During the MPLS discussions, he made an offhand remark "There are still some switches running OSPF and using **network 0.0.0.0** and **redistribute connected.**" My first thought was, "This can't be good," but I had no idea how bad it was until I ran a lab test.
 

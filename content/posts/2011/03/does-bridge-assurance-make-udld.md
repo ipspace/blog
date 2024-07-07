@@ -5,7 +5,7 @@ tags:
 - data center
 - workshop
 title: Does Bridge Assurance Make UDLD Obsolete?
-url: /2011/03/does-bridge-assurance-make-udld.html
+url: /2011/03/does-bridge-assurance-make-udld/
 ---
 I got an interesting question from Andrew:
 

@@ -5,7 +5,7 @@ tags:
 - workshop
 - load balancing
 title: Microsoft Network Load Balancing Behind the Scenes
-url: /2012/02/microsoft-network-load-balancing-behind.html
+url: /2012/02/microsoft-network-load-balancing-behind/
 ---
 I figured out I [wrote a lot about Microsoft Network Load Balancing (NLB)](http://www.google.com/search?q=nlb+site:ipspace.net) without ever explaining how that marvel of engineering works. To fix that omission, here's a [short video](http://demo.ipspace.net/bin/watch?id=8050da3e-5655-11e1-96be-005056880254) taken from the [Data Center 3.0 webinar](http://www.ipspace.net/Data_Center_3.0_for_Networking_Engineers).
 

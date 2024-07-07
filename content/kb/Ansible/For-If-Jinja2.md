@@ -2,7 +2,7 @@
 kb_section: Ansible
 minimal_sidebar: true
 title: Use FOR-IF Construct in Jinja2 Loops
-url: /kb/Ansible/For-If-Jinja2.html
+url: /kb/Ansible/For-If-Jinja2/
 ---
 A networking engineer attending the [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course sent me a solution that included a pretty common (but somewhat suboptimal) way of iterating through a data structure that contains some elements you're not interested in.
 

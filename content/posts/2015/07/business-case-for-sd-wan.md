@@ -5,10 +5,10 @@ tags:
 - SDN
 - WAN
 title: Business Case for SD-WAN
-url: /2015/07/business-case-for-sd-wan.html
+url: /2015/07/business-case-for-sd-wan/
 sd-wan_tag: bc
 ---
-An anonymous commenter wrote this comment to my [initial SD-WAN post](/2015/06/software-defined-wanwell-orchestrated.html):
+An anonymous commenter wrote this comment to my [initial SD-WAN post](/2015/06/software-defined-wanwell-orchestrated/):
 
 > I can still hardly imagine the business case behind SD-WAN. Any thoughts?
 

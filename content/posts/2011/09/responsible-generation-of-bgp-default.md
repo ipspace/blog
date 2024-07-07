@@ -3,7 +3,7 @@ date: 2011-09-16 07:14:00+02:00
 tags:
 - BGP
 title: Responsible Generation of BGP Default Route
-url: /2011/09/responsible-generation-of-bgp-default.html
+url: /2011/09/responsible-generation-of-bgp-default/
 ---
 Chris sent me the following question a while ago:
 
@@ -13,7 +13,7 @@ He'd already figured out the **neighbor default-originate route-map** command, b
 <!--more-->
 Let's start with the easy part: conditional origination of a BGP default route. If you attach a route map to the **neighbor default-originate** router configuration command then the default route will be sent to the specified neighbor only when the configured route map matches at least one prefix in the *IP routing table*. The catch is in the "*match in the IP routing table*" part -- you cannot use any of the BGP attributes as matching criteria in the route map.
 
-Here's a simple example: if the IP prefix 10.255.255.7/32 is in the IP routing table, the BGP default route will be sent to BGP neighbor 10.0.7.9. I'm using a loopback interface to generate the host route; you could easily create a [track-object-based static route to *null 0*](/2011/09/shut-down-bgp-session-based-on-tracked.html) and use EEM (or any other mechanism) to change the state of the track object.
+Here's a simple example: if the IP prefix 10.255.255.7/32 is in the IP routing table, the BGP default route will be sent to BGP neighbor 10.0.7.9. I'm using a loopback interface to generate the host route; you could easily create a [track-object-based static route to *null 0*](/2011/09/shut-down-bgp-session-based-on-tracked/) and use EEM (or any other mechanism) to change the state of the track object.
 
 ``` {.code}
 interface Loopback202

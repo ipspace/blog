@@ -9,9 +9,9 @@ tags:
 - IP routing
 - LAN
 title: VRRP, Anycasts, Fabrics and Optimal Forwarding
-url: /2013/06/vrrp-anycasts-fabrics-and-optimal.html
+url: /2013/06/vrrp-anycasts-fabrics-and-optimal/
 ---
-The [Optimal L3 Forwarding with VARP/VRRP](/2013/05/optimal-l3-forwarding-with-varp-and.html) post generated numerous comments, ranging from technical questions about VARP (more about that in a few days) to remarks along the lines of "you can do that with X" or "vendor Y supports Z, which does the same thing." It seems I've opened yet another can of worms, let's try to tame and sort them.
+The [Optimal L3 Forwarding with VARP/VRRP](/2013/05/optimal-l3-forwarding-with-varp-and/) post generated numerous comments, ranging from technical questions about VARP (more about that in a few days) to remarks along the lines of "you can do that with X" or "vendor Y supports Z, which does the same thing." It seems I've opened yet another can of worms, let's try to tame and sort them.
 <!--more-->
 ### FHRP Basics
 
@@ -31,13 +31,13 @@ The *active MAC address* requirement usually limits the number of active FHRP fo
 
 ### Data Center Use Case
 
-The primary goal of [optimal layer-3 forwarding in a data center environment](/2012/05/does-optimal-l3-forwarding-matter-in.html) is to minimize the leaf-to-spine traffic in environments where the amount of east-west (server-to-server) traffic significantly exceeds the amount of north-south (server-to-client) traffic. The only way to reach this goal is to introduce layer-3 forwarding functionality into hypervisors or (failing that) the top-of-rack (ToR) switches.
+The primary goal of [optimal layer-3 forwarding in a data center environment](/2012/05/does-optimal-l3-forwarding-matter-in/) is to minimize the leaf-to-spine traffic in environments where the amount of east-west (server-to-server) traffic significantly exceeds the amount of north-south (server-to-client) traffic. The only way to reach this goal is to introduce layer-3 forwarding functionality into hypervisors or (failing that) the top-of-rack (ToR) switches.
 
 {{<figure src="/2013/06/s320-FHRP_DC.jpg" caption="High-level view of an optimal data center fabric">}}
 
-{{<note info>}}After more than a decade, the only shipping enterprise network virtualization product supporting layer-3 forwarding a hypervisor remains [Hyper-V Network Virtualization](/2012/12/hyper-v-network-virtualization-wnvnvgre.html).{{</note>}}
+{{<note info>}}After more than a decade, the only shipping enterprise network virtualization product supporting layer-3 forwarding a hypervisor remains [Hyper-V Network Virtualization](/2012/12/hyper-v-network-virtualization-wnvnvgre/).{{</note>}}
 
-The ability to [migrate a running VM between physical hosts](/2010/09/vmotion-elephant-in-data-center-room.html) (and ToR switches) introduces additional requirements: all ToR switches have to share the same MAC address; nobody likes to see the [traffic trombones](/2011/02/traffic-trombone-what-it-is-and-how-you.html) that result from a VM being pinned to a MAC address of a remote ToR switch.
+The ability to [migrate a running VM between physical hosts](/2010/09/vmotion-elephant-in-data-center-room/) (and ToR switches) introduces additional requirements: all ToR switches have to share the same MAC address; nobody likes to see the [traffic trombones](/2011/02/traffic-trombone-what-it-is-and-how-you/) that result from a VM being pinned to a MAC address of a remote ToR switch.
 
 ### The Solutions
 
@@ -49,25 +49,25 @@ As always the networking industry tried to "solve" the problem by introducing al
 
 More creative solutions are described in other blog posts:
 
--   [Optimal L3 forwarding with VARP or active/active VRRP](/2013/05/optimal-l3-forwarding-with-varp-and.html)
--   [QFabric part 3 - forwarding](/2011/09/qfabric-part-3-forwarding.html) (now mostly obsolete)
--   [Building large L3 fabrics with Brocade VDX switches](/2012/09/building-large-l3-fabrics-with-brocade.html) (completely obsolete/EoL)
+-   [Optimal L3 forwarding with VARP or active/active VRRP](/2013/05/optimal-l3-forwarding-with-varp-and/)
+-   [QFabric part 3 - forwarding](/2011/09/qfabric-part-3-forwarding/) (now mostly obsolete)
+-   [Building large L3 fabrics with Brocade VDX switches](/2012/09/building-large-l3-fabrics-with-brocade/) (completely obsolete/EoL)
 
 ### No FHRP with Single Control Plane
 
-Vendors that implement redundant switching fabrics with a [single control plane](/2010/10/multi-chassis-link-aggregation-stacking.html) (Cisco's VSS, HP's IRF, Juniper Virtual Chassis) don't need FHRP. After all, the whole cluster of boxes acts as a single logical device with a single set of IP and MAC addresses.
+Vendors that implement redundant switching fabrics with a [single control plane](/2010/10/multi-chassis-link-aggregation-stacking/) (Cisco's VSS, HP's IRF, Juniper Virtual Chassis) don't need FHRP. After all, the whole cluster of boxes acts as a single logical device with a single set of IP and MAC addresses.
 
 {{<note info>}}Juniper's Virtual Chassis looks exactly the same as Cisco's VSS or HP's IRF from the outside, but uses a slightly different implementation mechanism: somewhat independent control planes coordinated through a shared management plane.{{</note>}}
 
-Before someone persuades you to solve optimal L3 forwarding problem with a virtual stack of ToR switches spread all over your data center (and I've seen consultants peddling this "design" to unsuspecting customers), consider [how the traffic will flow](/2012/11/stackable-data-center-switches-do-math.html).
+Before someone persuades you to solve optimal L3 forwarding problem with a virtual stack of ToR switches spread all over your data center (and I've seen consultants peddling this "design" to unsuspecting customers), consider [how the traffic will flow](/2012/11/stackable-data-center-switches-do-math/).
 
 #### Active/Active FHRP over MLAG
 
-Almost every vendor offering [MLAG functionality](/2010/10/multi-chassis-link-aggregation-basics.html) across a pair of independent core switches (Cisco's vPC, Arista, Nokia...) supports active/active FHRP forwarding on the core switches:
+Almost every vendor offering [MLAG functionality](/2010/10/multi-chassis-link-aggregation-basics/) across a pair of independent core switches (Cisco's vPC, Arista, Nokia...) supports active/active FHRP forwarding on the core switches:
 
 {{<figure src="/2013/06/s320-FHRP_VPC.jpg" caption="Active/Active FHRP">}}
 
-This solution is almost a no-brainer, although the [implementation details must be pretty complex](/2022/06/mlag-active-active-layer3.html), otherwise it's hard to understand why it took some vendors years to implement it. Here's how it works:
+This solution is almost a no-brainer, although the [implementation details must be pretty complex](/2022/06/mlag-active-active-layer3/), otherwise it's hard to understand why it took some vendors years to implement it. Here's how it works:
 
 -   FHRP is configured on the members of the MLAG group. One of the members is elected as the active FHRP gateway and advertises the FHRP MAC address.
 -   All members of the MLAG group listen to the FHRP MAC address;

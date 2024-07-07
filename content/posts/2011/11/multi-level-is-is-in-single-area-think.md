@@ -3,7 +3,7 @@ date: 2011-11-23 06:53:00+01:00
 tags:
 - IS-IS
 title: Multi-Level IS-IS in a Single Area? Think Again!
-url: /2011/11/multi-level-is-is-in-single-area-think.html
+url: /2011/11/multi-level-is-is-in-single-area-think/
 lastmod: 2020-12-26 07:03:00
 ---
 Many service providers choosing IS-IS as their IGP use it within a single area (or at least run all routers as L1L2 routers). Multi-level IS-IS design is a royal pain, more so in MPLS environments where every PE-router needs a distinct route for every BGP next hop (but of course there's a nerd knob to disable L1 default route in IS-IS). Moreover, MPLS TE is reasonably simple only within a single level (L1 or L2).

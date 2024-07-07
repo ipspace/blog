@@ -16,7 +16,7 @@ They measured the failover times caused by the primary uplink loss and figured o
 <!--more-->
 {{<figure src="https://bgplabs.net/policy/topology-policy-2isp.png" caption="Approximate network diagram">}}
 
-Such a long convergence time is unusual and often indicates a failure to [detect link- or neighbor loss in a timely manner](/2020/11/detecting-network-failure.html). [BFD is the best alternative](/2017/10/to-bfd-or-not-to-bfd.html) when the link loss is not signaled correctly to the higher-layer protocols. Unfortunately, one has to configure it on both ends of a connection, and some ISPs still haven't got the "*BFD is better than BGP timers*" memo.
+Such a long convergence time is unusual and often indicates a failure to [detect link- or neighbor loss in a timely manner](/2020/11/detecting-network-failure/). [BFD is the best alternative](/2017/10/to-bfd-or-not-to-bfd/) when the link loss is not signaled correctly to the higher-layer protocols. Unfortunately, one has to configure it on both ends of a connection, and some ISPs still haven't got the "*BFD is better than BGP timers*" memo.
 
 {{<long-quote>}}
 BFD Echo mode might seem to be a workaround; using it, a router sends packets to itself and uses layer-2 encapsulation to route them through the adjacent device. However:
@@ -37,14 +37,14 @@ However, the default BGP timers cause a three-minute convergence delay. Two minu
 
 Here's what's going on behind the scenes:
 
-* Any recent BGP implementation will accept that its neighbor uses [Graceful Restart](/2021/09/graceful-restart.html) regardless of whether the Graceful Restart is configured locally.
+* Any recent BGP implementation will accept that its neighbor uses [Graceful Restart](/2021/09/graceful-restart/) regardless of whether the Graceful Restart is configured locally.
 * After losing a BGP neighbor, the Graceful Restart procedure keeps BGP routes in the BGP table until the Graceful Restart timer expires, effectively prolonging the convergence process.
 * The default Cisco IOS Graceful Restart timer is two minutes. Bingo -- we figured out the root cause for the five-minute convergence time.
 
 **Takeaway:**
 
 * Don't configure BGP Graceful Restart until you know full well what you're doing and what the implications are[^AMOT]
-* Graceful Restart is a good idea *if and only if* you can [reliably detect forwarding path failures using a mechanism like BFD](/2021/10/graceful-restart-bfd.html) ([more caveats](/2021/10/repost-bfd-gr.html)).
+* Graceful Restart is a good idea *if and only if* you can [reliably detect forwarding path failures using a mechanism like BFD](/2021/10/graceful-restart-bfd/) ([more caveats](/2021/10/repost-bfd-gr/)).
 * Using Graceful Restart when relying on BGP timers to detect BGP neighbor loss is useless. All it does is prolong the inevitable pain unless you experience control-plane failures more often than link failures, in which case you're dealing with a more severe challenge than convergence speed.
 
 [^AMOT]: That same rule can be applied to many other things. It is consistently ignored in the blatant throwing-spaghetti-at-the-wall style by people indiscriminately using Google or AI to solve their challenges.

@@ -3,7 +3,7 @@ title: "When a Device Without an IP Address Wants to Play the IP Game"
 date: 2023-06-20 06:41:00
 tags: [ IP routing ]
 ---
-After I published the [Source IP Address in Multicast Packets](/2023/06/multicast-source-address.html) blog post, [Erik Auerswald](https://www.linkedin.com/in/erik-auerswald-2b8b73171) sent me several examples of network devices sending IP packets with source IP address set to 0.0.0.0:
+After I published the [Source IP Address in Multicast Packets](/2023/06/multicast-source-address/) blog post, [Erik Auerswald](https://www.linkedin.com/in/erik-auerswald-2b8b73171) sent me several examples of network devices sending IP packets with source IP address set to 0.0.0.0:
 
 * Cisco wireless access points [using 0.0.0.0 as the source IP address in VRRP packets](https://extremeportal.force.com/ExtrArticleDetail?an=000111647).
 * Extreme (formerly Avaya) switches sending IGMP queries with source IP address 0.0.0.0 on VLANs on which they have no IP address.

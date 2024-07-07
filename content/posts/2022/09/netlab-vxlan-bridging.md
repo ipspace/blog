@@ -7,7 +7,7 @@ tags:
 - netlab
 title: netlab VXLAN Bridging Example
 ---
-[netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netlab.tools/module/vxlan/). Time to check how easy it is to replace a VLAN trunk with VXLAN transport. We'll use the lab topology from the [VLAN trunking example](/2022/06/netsim-vlan-trunk.html), replace the VLAN trunk between S1 and S2 with an IP underlay network, and [transport Ethernet frames across that network with VXLAN](https://github.com/ipspace/netlab-examples/tree/master/VXLAN/vxlan-bridging).
+[netlab release 1.3](/2022/09/netlab-1-3/) introduced support for [VXLAN transport with static ingress replication](https://netlab.tools/module/vxlan/). Time to check how easy it is to replace a VLAN trunk with VXLAN transport. We'll use the lab topology from the [VLAN trunking example](/2022/06/netsim-vlan-trunk/), replace the VLAN trunk between S1 and S2 with an IP underlay network, and [transport Ethernet frames across that network with VXLAN](https://github.com/ipspace/netlab-examples/tree/master/VXLAN/vxlan-bridging).
 
 {{<figure src="/2022/09/vxlan-bridging.png" caption="Lab topology">}}
 <!--more-->

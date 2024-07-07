@@ -6,9 +6,9 @@ series:
 tags:
 - SDN
 title: We Have to Get Away from the Box-Focused Mentality
-url: /2015/03/we-have-to-get-away-from-box-focused.html
+url: /2015/03/we-have-to-get-away-from-box-focused/
 ---
-I had a great SDN-focused conversation with Terry Slattery during last Interop New York, ago and of course we came to the argument that the CLI is the root of all evil, which started my [usual rant](/2014/02/is-cli-in-my-way-or-is-it-just-symptom.html). Guess what: not surprisingly that wasn't what Terry had in mind. He was using the "CLI mentality is bad" as a synonym for "we're used to configuring our networks one box at a time" (so we should really be talking about box-focused mentality).
+I had a great SDN-focused conversation with Terry Slattery during last Interop New York, ago and of course we came to the argument that the CLI is the root of all evil, which started my [usual rant](/2014/02/is-cli-in-my-way-or-is-it-just-symptom/). Guess what: not surprisingly that wasn't what Terry had in mind. He was using the "CLI mentality is bad" as a synonym for "we're used to configuring our networks one box at a time" (so we should really be talking about box-focused mentality).
 <!--more-->
 ### How Did We Ever Get to this Point?
 
@@ -16,8 +16,8 @@ What we're doing is not so much different from the way server people were config
 
 There are a few usual reasons why you'd go outside of your comfort zone:
 
--   You have to start from scratch (read: startups), in which case you'd do anything to make you different (and hopefully more efficient) so you could compete with the incumbents, which is why the [Netflixes](/2014/08/toolsmith-netflix-on-software-gone-wild.html) and [Spotifys](/2014/07/network-automation-spotify-on-software.html) of the world are heavy users of network automation;
--   You grow so big and have so many problems that you simply snap, have a mental breakdown, and start doing things some other way, which is why people like [Google](/2012/05/openflow-google-brilliant-but-not.html) and [Amazon](/2013/12/packet-forwarding-in-amazon-vpc.html) started doing things the sensible way;
+-   You have to start from scratch (read: startups), in which case you'd do anything to make you different (and hopefully more efficient) so you could compete with the incumbents, which is why the [Netflixes](/2014/08/toolsmith-netflix-on-software-gone-wild/) and [Spotifys](/2014/07/network-automation-spotify-on-software/) of the world are heavy users of network automation;
+-   You grow so big and have so many problems that you simply snap, have a mental breakdown, and start doing things some other way, which is why people like [Google](/2012/05/openflow-google-brilliant-but-not/) and [Amazon](/2013/12/packet-forwarding-in-amazon-vpc/) started doing things the sensible way;
 -   You slowly get lured into this new world by [stories of other people](http://www.ipspace.net/Podcast/Software_Gone_Wild) who successfully made the transition that made their life easier, and this is probably how most enterprise networking engineers will slowly get more comfortable with the SDN concepts -- this was also how many server admins started embracing Chef, Puppet and other tools, and figured out that those tools actually solve their problems.
 
 Of course there's another path: a new technology is dumped into your lap by an over-naive CxO who likes to read industry press or analyst reports and believes that vendors or analysts know more about his business and his network (without ever seeing it) than his own engineers.

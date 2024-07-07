@@ -17,7 +17,7 @@ I was fortunate enough never having to apply for a job (I was either a co-owner 
 * They understood the fundamentals;
 * They could get a (relatively) simple job done given all the documentation they need (we gave them a few hours for that part).
 
-For that last bit, one could build a lab with preconfigured IP routing, and ask the candidate claiming to be fluent with boxes from vendor X to build EVPN/VXLAN fabric on top of that lab[^LG] given the vendor product documentation[^CG]. [_netlab_](/tag/netlab.html) would be an easy way to set up that lab.
+For that last bit, one could build a lab with preconfigured IP routing, and ask the candidate claiming to be fluent with boxes from vendor X to build EVPN/VXLAN fabric on top of that lab[^LG] given the vendor product documentation[^CG]. [_netlab_](/tag/netlab/) would be an easy way to set up that lab.
 
 [^LG]: I vaguely remember someone telling me that approach might not be legal in some parts of the world. Comments from someone more familiar with such restrictions (should they happen to be real) would be appreciated!
 

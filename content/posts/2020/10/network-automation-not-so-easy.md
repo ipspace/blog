@@ -3,7 +3,7 @@ title: "Network Automation Isn’t Easy"
 tags: [ automation ]
 date: 2020-10-01 11:02:00
 ---
-Contrary to what some evangelists would love you to believe, getting fluent in network automation is a bit harder than watching 3-minute videos and cobbling playbooks together with [google-and-paste](/2018/03/dunning-kruger-in-it-infrastructure.html)… but then nothing really worth doing is ever easy, or everyone else would be doing it already.
+Contrary to what some evangelists would love you to believe, getting fluent in network automation is a bit harder than watching 3-minute videos and cobbling playbooks together with [google-and-paste](/2018/03/dunning-kruger-in-it-infrastructure/)… but then nothing really worth doing is ever easy, or everyone else would be doing it already.
 
 Here’s a typical comment from a [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) attendee:
 

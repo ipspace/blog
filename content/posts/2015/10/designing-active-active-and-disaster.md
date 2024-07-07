@@ -10,7 +10,7 @@ tags:
 - cloud
 - high availability
 title: Designing Active-Active and Disaster Recovery Data Centers
-url: /2015/10/designing-active-active-and-disaster.html
+url: /2015/10/designing-active-active-and-disaster/
 ---
 A year ago I was a firm believer in the unlimited powers of Software-Defined Data Centers and their ability to simplify workload migrations. After all, if you can use an API to create any data center object, what's stopping you from moving the workload running in a data center to another location.
 
@@ -26,7 +26,7 @@ During the workshop we identified numerous obstacles and missing orchestration c
 
 The *only* approach that would do what my customer wanted at that time was automated application deployment using tools like [Cloudify](http://getcloudify.org/), but that solution was further away from their grasp than Alpha Centauri -- they were a traditional enterprise IT shop with manual non-repeatable server creation and application deployment processes.
 
-After three days we had to conclude that there's nothing SDDC could do for them to solve their immediate workload migration problems, and that they should focus on [automating application development and deployment processes](/2013/11/typical-enterprise-application.html) (yeah, I know I [sound like Captain Obvious](/2014/09/youve-been-doing-same-thing-for-last-20.html)).
+After three days we had to conclude that there's nothing SDDC could do for them to solve their immediate workload migration problems, and that they should focus on [automating application development and deployment processes](/2013/11/typical-enterprise-application/) (yeah, I know I [sound like Captain Obvious](/2014/09/youve-been-doing-same-thing-for-last-20/)).
 
 {{<note>}}Combining NSX-T and SRM might be a step in the right direction, but I never read the documentation to find out the potential "minor" details.{{</note>}}
 

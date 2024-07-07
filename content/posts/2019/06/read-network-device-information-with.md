@@ -9,7 +9,7 @@ tags:
 - automation
 - data models
 title: Read Network Device Information with REST API and Store It Into a Database
-url: /2019/06/read-network-device-information-with.html
+url: /2019/06/read-network-device-information-with/
 ---
 One of my readers sent me this question:
 

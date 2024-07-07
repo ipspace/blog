@@ -5,10 +5,10 @@ tags:
 - networking fundamentals
 - video
 title: 'Video: The Network Is Not Reliable'
-url: /2020/02/video-network-is-not-reliable.html
+url: /2020/02/video-network-is-not-reliable/
 video_tag: net101
 ---
-After [introducing the fallacies of distributed computing](/2020/01/video-fallacies-of-distributed-computing.html) in the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar, I focused on the first one: [the network is (not) reliable](https://my.ipspace.net/bin/get/Net101/F2.1%20-%20Network%20Is%20%28Not%29%20Reliable.mp4?doccode=Net101).
+After [introducing the fallacies of distributed computing](/2020/01/video-fallacies-of-distributed-computing/) in the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar, I focused on the first one: [the network is (not) reliable](https://my.ipspace.net/bin/get/Net101/F2.1%20-%20Network%20Is%20%28Not%29%20Reliable.mp4?doccode=Net101).
 
 While that might be understood by most networking professionals (and ignored by many developers), here's an interesting shocker: even TCP is not always reliable (see also: [Joel Spolsky's take on Leaky Abstractions](https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/)).
 

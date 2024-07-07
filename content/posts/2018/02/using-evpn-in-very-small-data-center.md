@@ -7,7 +7,7 @@ tags:
 - fabric
 - EVPN
 title: Using EVPN in Very Small Data Center Fabrics
-url: /2018/02/using-evpn-in-very-small-data-center.html
+url: /2018/02/using-evpn-in-very-small-data-center/
 ---
 I had an interesting "*how do you build a small fabric without throwing every technology in the mix*" discussion with [Nicola Modena](http://www.ipspace.net/Expert:Nicola_Modena) and mentioned that I don't see a reason to use EVPN in fabrics with just a few switches. He disagreed and gave me a few good scenarios where EVPN might be handy. Before discussing them let's establish a baseline.
 

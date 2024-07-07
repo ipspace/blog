@@ -4,15 +4,15 @@ tags:
 - MPLS
 - you've asked for it
 title: Why are there no Untagged entries in my LFIB?
-url: /2009/04/why-are-there-no-untagged-entries-in-my.html
+url: /2009/04/why-are-there-no-untagged-entries-in-my/
 ---
 
-<div class="bloggerBody"><p>One of the readers of my “<a href="/2008/12/when-would-mpls-lsr-have-untagged.html">When would an MPLS LSR have Untagged output label?</a>” post <a href="/2008/12/when-would-mpls-lsr-have-untagged.html?showComment=1239173940000">made an interesting comment</a>:</p>
+<div class="bloggerBody"><p>One of the readers of my “<a href="/2008/12/when-would-mpls-lsr-have-untagged/">When would an MPLS LSR have Untagged output label?</a>” post <a href="/2008/12/when-would-mpls-lsr-have-untagged/#comments">made an interesting comment</a>:</p>
 <blockquote class="cite"><span style="color: 333333;">When a loopback network is advertised as 1.1.0.0/16, it's seen as »pop tag« on the neighboring router and I can't see it in the »show mpls forwarding« printout on the local router. What's going on?</span></blockquote>
-<p>As explained in the “<a href="/2008/12/when-would-mpls-lsr-have-untagged.html">When would an MPLS LSR have Untagged output label?</a>” post, the <em>Untagged </em>(also displayed as <em>No label</em> in recent IOS releases) value means that the Label Switch Router (LSR) cannot use the inbound label to decide what to do with the packet and has to perform layer-3 lookup. </p>
+<p>As explained in the “<a href="/2008/12/when-would-mpls-lsr-have-untagged/">When would an MPLS LSR have Untagged output label?</a>” post, the <em>Untagged </em>(also displayed as <em>No label</em> in recent IOS releases) value means that the Label Switch Router (LSR) cannot use the inbound label to decide what to do with the packet and has to perform layer-3 lookup. </p>
 <!--more--><p>In most cases, an LSR using MPLS for IP routing can advertise an <em>implicit null </em>label to its upstream neighbors to indicate it wants to receive an IP packet, not a labeled packet. The upstream LSR performs <em>Penultimate Hop Popping (PHP)</em> as indicated by a <em>Pop tag </em>(recently <em>Pop Label</em>) entry in its LFIB. The LSR we’re discussing has just saved a lookup operation, as it doesn’t have to perform label lookup followed by an IP lookup. </p>
 <p>In these cases, the LSR is allocating labels to IP prefixes only if it has received corresponding labels from downstream LSRs. The <em>untagged </em>IP prefixes thus never appear in the Label Forwarding Information Base (LFIB) and in the <strong>show mpls forwarding </strong>display.</p>
 <p>Sometimes a router must receive a labeled packet from the upstream LSR (PHP is not an option). There are two well-known scenarios: Label-controlled ATM (LC-ATM) where the MPLS label is part of ATM cell headers and MPLS VPN, where the inbound label (also) indicates the VRF to use. In both cases, you’ll see <em>No label </em>entries in LFIB for directly connected or aggregate routes. In the LC-ATM case, you’ll also see <em>No label </em>entries associated with all IP destinations for which the next-hop router has not advertised a label.</p>
-<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.</p>
+<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>
 </div>
 

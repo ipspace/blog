@@ -3,7 +3,7 @@ title: "Repost: LISP Is a False Economy"
 date: 2022-03-01 07:13:00
 tags: [ LISP ]
 ---
-_Minh Ha left this comment on the *[Packet Forwarding 101](/2022/02/packet-forwarding-header-lookup.html)* blog post. As is usually the case, it's fun reading and it would be a shame not to repost it as a standalone blog post (even though I don't necessarily agree with all his conclusions)._
+_Minh Ha left this comment on the *[Packet Forwarding 101](/2022/02/packet-forwarding-header-lookup/)* blog post. As is usually the case, it's fun reading and it would be a shame not to repost it as a standalone blog post (even though I don't necessarily agree with all his conclusions)._
 
 ---
 
@@ -21,6 +21,6 @@ Just as the key with CC is understanding that end-to-end CC attempts to solve pr
 
 As it stands, IP is missing more than half the structure, with IP and MAC redundantly naming the same thing (the interface). This, coupled with provider-based addressing, plus one global address space for the entire Internet, will always lead to unbounded RIB sizes, and routing update explosion. Topological addressing can deal with that, and when we think in terms of topology, new structures start to emerge, including the understanding that provider-independent address assignment, is the right way to go. Topological PI addressing will help set up the proper boundary conditions, and RIB size can go down by several times and potentially be bounded too.
 
-[Tony P's comments on valley-free routing](/2018/09/repost-tony-przygienda-on-valley-free.html)  is essentially a description of topology-based (resilient) addressing, where distortion on the network graph has no impact on underlying addressing structure -- it's topologically protected.
+[Tony P's comments on valley-free routing](/2018/09/repost-tony-przygienda-on-valley-free/)  is essentially a description of topology-based (resilient) addressing, where distortion on the network graph has no impact on underlying addressing structure -- it's topologically protected.
 
 Since this scaling metric is universal enough, the same solution applies equally to DC networks, which essentially are just one type of SP network. It can lead to better simplification and less pain.

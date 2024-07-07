@@ -7,13 +7,13 @@ title: netsim-tools Release 1.1.3
 ---
 *netsim-tools* release 1.1.3 brings a number of goodies, including:
 
-* [OSPFv3 support](https://netlab.tools/module/ospf/) on a few platforms (we're still [looking for contributors to implement OSPFv3 on other platforms](/2022/03/contribute-netsim-ospf.html))
+* [OSPFv3 support](https://netlab.tools/module/ospf/) on a few platforms (we're still [looking for contributors to implement OSPFv3 on other platforms](/2022/03/contribute-netsim-ospf/))
 * EIGRP implementation of [common routing protocol features](https://netlab.tools/module/routing/) (router ID, passive and external interfaces)
 * [Configurable address family support](https://netlab.tools/module/routing/#af) for IS-IS, OSPF and EIGRP
 * Support for /31 IPv4 P2P links
 * Configurable MTU for VyOS and RouterOS
 
-{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab.html).{{</note>}}
+{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab/).{{</note>}}
 <!--more-->
 If you're building your own *libvirt* boxes, you might also appreciate:
 

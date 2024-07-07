@@ -1,5 +1,5 @@
 ---
-url: /2012/12/secondary-mpls-te-tunnels-and-fast.html
+url: /2012/12/secondary-mpls-te-tunnels-and-fast/
 title: "Secondary MPLS-TE Tunnels and Fast Reroute"
 date: "2012-12-04T07:40:00.000+01:00"
 tags: [ MPLS,traffic engineering ]
@@ -12,7 +12,7 @@ tags: [ MPLS,traffic engineering ]
 <p>In the meantime, the user traffic could follow LDP-signaled LSPs (if you’re using LDP in your network); in networks using exclusively RSVP to establish LSPs, the user traffic would be dropped.</p>
 <h4>The Backup Tunnel</h4><p>Prior to FRR, network operators concerned about potential service disruptions used backup MPLS TE tunnels – head-end LSR would pre-establish a second MPLS TE tunnel to the same tail-end LSR using an alternate path.</p>
 <p class="note">I haven’t seen an MPLS TE implementation where you could say “use an alternate path for this tunnel”. In real life, you’d have to use affinity bits, loose source routing or explicit paths to force the second tunnel onto an alternate path. You’d also have to play with tunnel metrics if you wanted the backup tunnel to be idle while the primary tunnel was active.</p>
-<p>After the primary tunnel failure, the head-end LSR had an alternate path in its topology database; all it had to do was to switch over to the alternate path (even better, the alternate path <a href="/2012/01/prefix-independent-convergence-pic.html">could have been pre-installed in the FIB</a>).</p>
+<p>After the primary tunnel failure, the head-end LSR had an alternate path in its topology database; all it had to do was to switch over to the alternate path (even better, the alternate path <a href="/2012/01/prefix-independent-convergence-pic/">could have been pre-installed in the FIB</a>).</p>
 <p>Managing manual backup tunnels is obviously a major pain; not surprisingly I haven’t seen them widely deployed.</p>
 <h4>Fast Reroute</h4><p>Fast reroute (usually using <a href="http://tools.ietf.org/html/rfc4090#section-3.2"><em>facility backup</em></a><em> </em>defined in <a href="http://tools.ietf.org/html/rfc4090">RFC 4090</a>) provides a temporary detour around a link or node failure. The tunnel headends get a PathErr notification when the backup path becomes active, but the tunnels are not torn down.</p>
 <p>With the traffic flowing over a local detour, the head-end LSRs have enough time to recompute an optimal alternate path, and change the MPLS TE tunnel path with make-before-break RSVP signaling.</p>

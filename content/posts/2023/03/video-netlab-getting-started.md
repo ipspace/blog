@@ -8,7 +8,7 @@ tags:
 title: 'Video: Getting Started with netlab'
 video_tag: netlab
 ---
-After explaining [how _netlab_ fits into the _virtual lab orchestration_ picture](/2022/10/replacing-gns3-netlab.html) and [what exactly it can do](https://my.ipspace.net/bin/get/NetTools/N2%20-%20What%20Can%20netlab%20Do.mp4?doccode=NetTools), let's focus on _what's the easiest way to get started_.
+After explaining [how _netlab_ fits into the _virtual lab orchestration_ picture](/2022/10/replacing-gns3-netlab/) and [what exactly it can do](https://my.ipspace.net/bin/get/NetTools/N2%20-%20What%20Can%20netlab%20Do.mp4?doccode=NetTools), let's focus on _what's the easiest way to get started_.
 
 The [next video](https://my.ipspace.net/bin/get/NetTools/N3%20-%20Getting%20Started%20with%20netlab.mp4?doccode=NetTools) in the _[Using netlab to Build Networking Labs](https://my.ipspace.net/bin/list?id=NetTools#NETLAB)_ series describes:
 

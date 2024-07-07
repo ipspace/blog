@@ -4,7 +4,7 @@ ospf_tag: default
 tags:
 - OSPF
 title: Inserting Default Route Into OSPF
-url: /2007/06/inserting-default-route-into-ospf.html
+url: /2007/06/inserting-default-route-into-ospf/
 ---
 Another Cisco IOS OSPF implementation trivia: if you're redistributing a default route into OSPF (for example, you have a static default route configured with **ip route 0.0.0.0 0.0.0.0 ...** and you use **redistribute static subnets** within the OSPF process), the default route will not be entered into the OSPF database unless you configure **default-information originate** within the router ospf configuration.
 

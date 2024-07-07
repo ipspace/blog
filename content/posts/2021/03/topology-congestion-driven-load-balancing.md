@@ -8,7 +8,7 @@ When preparing an answer to an interesting idea left as a comment to my unequal-
 
 To keep things simple, let's start with an easy leaf-and-spine fabric:
 <!--more-->
-{{<figure src="leaf-spine-fabric.png">}}
+{{<figure src="/2021/03/leaf-spine-fabric.png">}}
 
 ### Topology-Based Load Balancing
 
@@ -18,13 +18,13 @@ Now imagine the link S1-L2 is slower than the link S2-L2. A routing protocol cap
 
 In both cases, the decision to use multiple paths (and the traffic ratio) was made based on *network topology*.
 
-Going back to the first scenario: L1 has two equal-cost paths to L2, and can balance outgoing traffic across both of them. The usual implementation would use ECMP hash buckets ([high-level overview](/2020/11/fast-failover-implementation.html), [more details](/2015/01/improving-ecmp-load-balancing-with.html)). Assuming the forwarding hardware supports 128 hash buckets per next-hop group, 64 of those would point to L1-S1 and the other 64 would point to L1-S2.
+Going back to the first scenario: L1 has two equal-cost paths to L2, and can balance outgoing traffic across both of them. The usual implementation would use ECMP hash buckets ([high-level overview](/2020/11/fast-failover-implementation/), [more details](/2015/01/improving-ecmp-load-balancing-with/)). Assuming the forwarding hardware supports 128 hash buckets per next-hop group, 64 of those would point to L1-S1 and the other 64 would point to L1-S2.
 
 ### Congestion-Based Load Balancing
 
 Let's add some heavy hitters to the mix: a few backup jobs are started and for whatever crazy reason the all land on L1-S1 link. That link becomes congested, and when another session gets assigned to that link, it will experience lower throughput and higher latency. Wouldn't it be possible to avoid the congested link even though it has equal cost as the uncongested one? Welcome to the dynamic world of *congestion-driven load balancing* (or whatever it's properly called).
 
-Modern forwarding hardware supports dynamic reassignment of output interfaces to hash buckets in a next-hop group. With per-bucket traffic counters and proper software support, L1 could rearrange the hash buckets so that the traffic across both uplinks becomes more balanced (fewer hash buckets pointing to S1 than to S2). In a best-case scenario the reshuffling could be done without reordering in-transit packets (hint: move a bucket when it's empty -- see also [flowlets](/2015/01/improving-ecmp-load-balancing-with.html)).
+Modern forwarding hardware supports dynamic reassignment of output interfaces to hash buckets in a next-hop group. With per-bucket traffic counters and proper software support, L1 could rearrange the hash buckets so that the traffic across both uplinks becomes more balanced (fewer hash buckets pointing to S1 than to S2). In a best-case scenario the reshuffling could be done without reordering in-transit packets (hint: move a bucket when it's empty -- see also [flowlets](/2015/01/improving-ecmp-load-balancing-with/)).
 
 {{<note info>}}Recent Broadcom data center switching silicon [includes the hardware support for the *Dynamic Load Balancing*](https://www.broadcom.com/blog/broadcom-s-trident-3-enhances-ecmp-with-dynamic-load-balancing) (HT: Jeroen van Bemmel) or *Adaptive Load Balancing* (choose your marketing lingo), it's just a question of whether it's implemented in the operating system. Arista EOS has it since at least 4.24.2F release.{{</note>}}
 
@@ -34,11 +34,11 @@ Now for a really interesting scenario: imagine someone runs a bunch of backup jo
 
 To change the forwarding behavior on L1 based on downstream congestion, there would have to be a mechanism telling L1 to reduce its utilization of one of the end-to-end paths. While that could be done with a routing protocol, no major vendor ever implemented anything along those lines for a good reason -- the positive feedback loop introduced by load-aware routing and resulting oscillations would be fun to troubleshoot. 
 
-Ignoring the early IGRP implementations from early 1980s, I heard of [one implementation of QoS-aware routing protocol](/2015/09/dlsp-qos-aware-routing-protocol-on.html), and I've never seen it used in real life. Please also note that SD-WAN [uses a different mechanism to get the job done](/2015/07/routing-protocols-and-sd-wan-apples-and.html): it's not using a routing protocol but end-to-end path measurement. That approach works because SD-WAN solutions ignore the complexities of the transport network; they assume the transport network is a single-hop cloud full of magic beans.
+Ignoring the early IGRP implementations from early 1980s, I heard of [one implementation of QoS-aware routing protocol](/2015/09/dlsp-qos-aware-routing-protocol-on/), and I've never seen it used in real life. Please also note that SD-WAN [uses a different mechanism to get the job done](/2015/07/routing-protocols-and-sd-wan-apples-and/): it's not using a routing protocol but end-to-end path measurement. That approach works because SD-WAN solutions ignore the complexities of the transport network; they assume the transport network is a single-hop cloud full of magic beans.
 
 ### Could We Fix It?
 
-Ignoring the crazy ideas of SDN controller dynamically reprogramming edge switches, the best way to solve the problem is ([yet again](/2011/05/complexity-belongs-to-network-edge.html)) an end-host implementation:
+Ignoring the crazy ideas of SDN controller dynamically reprogramming edge switches, the best way to solve the problem is ([yet again](/2011/05/complexity-belongs-to-network-edge/)) an end-host implementation:
 
 * Connect hosts to the network with multiple IP interfaces, not MLAG kludges.
 * Use MP-TCP or similar to establish parallel TCP sessions across multiple paths using different pairs of source-destination IP addresses.

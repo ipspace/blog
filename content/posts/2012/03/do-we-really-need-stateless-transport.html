@@ -6,10 +6,10 @@ tags:
 - overlay networks
 - virtualization
 title: Do we really need Stateless Transport Tunneling (STT)
-url: /2012/03/do-we-really-need-stateless-transport.html
+url: /2012/03/do-we-really-need-stateless-transport/
 ---
 
-<p>The first question everyone asked after Nicira had published <a href="http://tools.ietf.org/html/draft-davie-stt-01">yet another MAC-over-IP tunneling</a> draft was probably “do we really need yet another encapsulation scheme? Aren’t <a href="/2011/08/finally-mac-over-ip-based-vcloud.html">VXLAN</a> or <a href="/2011/09/nvgre-because-one-standard-just-wouldnt.html">NVGRE</a> enough?” Bruce Davie <a href="http://nicira.com/blog/opening-the-tunnels">tried to answer that question</a> in his blog post (and <a href="http://networkheresy.wordpress.com/2012/03/04/network-virtualization-encapsulation-and-stateless-tcp-transport-stt/">provided more details in another one</a>), and I’ll try to make the answer a bit more graphical.<!--more--></p>
+<p>The first question everyone asked after Nicira had published <a href="http://tools.ietf.org/html/draft-davie-stt-01">yet another MAC-over-IP tunneling</a> draft was probably “do we really need yet another encapsulation scheme? Aren’t <a href="/2011/08/finally-mac-over-ip-based-vcloud/">VXLAN</a> or <a href="/2011/09/nvgre-because-one-standard-just-wouldnt/">NVGRE</a> enough?” Bruce Davie <a href="http://nicira.com/blog/opening-the-tunnels">tried to answer that question</a> in his blog post (and <a href="http://networkheresy.wordpress.com/2012/03/04/network-virtualization-encapsulation-and-stateless-tcp-transport-stt/">provided more details in another one</a>), and I’ll try to make the answer a bit more graphical.<!--more--></p>
 <p>The three drafts (VXLAN, NVGRE and STT) have the same goal: provide emulated layer-2 Ethernet networks over scalable IP infrastructure. The main difference between them is the encapsulation format and their approach to the control plane:</p>
 <ul class="ListParagraph"><li>VXLAN ignores the control plane problem and relies on flooding emulated with IP multicast;</li>
 <li>NVGRE authors handwave over the control plane issue (“the way to obtain [MAC-to-IP mapping] information is not covered in this document”);</li>

@@ -3,7 +3,7 @@ title: "Making LLDP Work with Linux Bridge"
 date: 2020-12-16 07:05:00
 tags: [ switching, virtualization ]
 ---
-Last week I described how I [configured PVLAN on a Linux bridge](/2020/12/pvlan-libvirt.html). After checking the desired partial connectivity with **ios_ping** I wanted to verify it with LLDP neighbors. Ansible **ios_facts** module collects LLDP neighbor information, and it should be really easy using those facts to check whether port isolation works as expected.
+Last week I described how I [configured PVLAN on a Linux bridge](/2020/12/pvlan-libvirt/). After checking the desired partial connectivity with **ios_ping** I wanted to verify it with LLDP neighbors. Ansible **ios_facts** module collects LLDP neighbor information, and it should be really easy using those facts to check whether port isolation works as expected.
 
 {{<cc>}}Ansible playbook displaying LLDP neighbors on selected interface{{</cc>}}
 ```
@@ -38,7 +38,7 @@ sudo sh -c "echo 0x4000 >/sys/class/net/${bridge}/bridge/group_fwd_mask"
 
 After changing the **group_fwd_mask**, LLDP works like a charm:
 
-{{<figure src="pvlan-lldp.png" caption="LLDP neighbors on a hub-and-spoke PVLAN bridge">}}
+{{<figure src="/2020/12/pvlan-lldp.png" caption="LLDP neighbors on a hub-and-spoke PVLAN bridge">}}
 
 ### More Information
 

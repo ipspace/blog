@@ -4,7 +4,7 @@ ospf_tag: config
 tags:
 - OSPF
 title: Display Interfaces Belonging to a Single OSPF Process
-url: /2008/10/display-interfaces-belonging-to-single.html
+url: /2008/10/display-interfaces-belonging-to-single/
 ---
 I'm constantly receiving interesting OSPF-related queries -- the many hidden details of the OSPF specs result in slightly unexpected behavior and constant amazement of engineers studying OSPF. During this week, I'll focus on a few intriguing OSPF details.
 

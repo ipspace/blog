@@ -156,7 +156,7 @@ The root cause of this weird behavior turns out to be IP forwarding enabled on t
 
 [^IPv6K]: Don't get me started on IPv6 kernel options ;)
 
-**isc-dhcp-relay** is one of the most [underdocumented](https://www.youtube.com/watch?v=oebqlzblfyo&t=341s) bits of [Linux networking software](/2020/09/grasping-linux-networking.html) I've seen so far[^IPv6K], so I can only guess what exactly they wanted to achieve. However, Sebastian Schrader [provided a great explanation of the observed behavior](/2024/02/dhcp-relaying-linux-host.html#2119) in the comments (slightly reworded):
+**isc-dhcp-relay** is one of the most [underdocumented](https://www.youtube.com/watch?v=oebqlzblfyo&t=341s) bits of [Linux networking software](/2020/09/grasping-linux-networking/) I've seen so far[^IPv6K], so I can only guess what exactly they wanted to achieve. However, Sebastian Schrader [provided a great explanation of the observed behavior](/2024/02/dhcp-relaying-linux-host/#2119) in the comments (slightly reworded):
 
 {{<long-quote>}}
 
@@ -197,7 +197,7 @@ Unfortunately, a lot of smaller networking companies adopted the "_let's grab so
 
 [^SW]: You're allowed to call them *switches* if you work for a marketing department or when creating a PowerPoint slide deck.
 
-[^CL]: I did not try out how Cumulus Linux 5.x behaves because I'm trying to [stay as far away from NVUE](/2022/10/cumulus-linux-nvue.html) as I can these days, and nobody seems to be willing to step up and write the _netlab_ NVUE configuration templates.
+[^CL]: I did not try out how Cumulus Linux 5.x behaves because I'm trying to [stay as far away from NVUE](/2022/10/cumulus-linux-nvue/) as I can these days, and nobody seems to be willing to step up and write the _netlab_ NVUE configuration templates.
 
 [^SDWAN]: And if you connect those Linux-based routers to WAN interfaces, you get SD-WAN because the behavior of the whole thing is *defined* by whatever *software* you threw together in a hurry to get VC funding or to get acquired.
 

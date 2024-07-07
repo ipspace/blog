@@ -9,11 +9,11 @@ tags:
 - data center
 - high availability
 title: Unexpected Recovery Might Kill Your Data Center
-url: /2016/05/unexpected-recovery-might-kill-your.html
+url: /2016/05/unexpected-recovery-might-kill-your/
 ---
 Here's an interesting story I got from one of my friends:
 
--   A large organization used a disaster recovery strategy based on [stretched IP subnets](/2013/01/long-distance-vmotion-stretched-ha.html) and restarting workloads with unchanged IP addresses in a secondary data center;
+-   A large organization used a disaster recovery strategy based on [stretched IP subnets](/2013/01/long-distance-vmotion-stretched-ha/) and restarting workloads with unchanged IP addresses in a secondary data center;
 -   Once they experienced a WAN connectivity failure in the primary data center and their disaster recovery plan kicked in.
 
 However, while they were busy restarting the workloads in the secondary data center, and managed to get most of them up and running, the DCI link unexpectedly came back to life.

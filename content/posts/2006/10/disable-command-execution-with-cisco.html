@@ -6,10 +6,10 @@ tags:
 - network management
 - web
 title: Disable command execution with Cisco IOS web server
-url: /2006/10/disable-command-execution-with-cisco.html
+url: /2006/10/disable-command-execution-with-cisco/
 ---
 
-If you give your users <a href="/2006/10/multilevel-web-http-access-to-router.html">guest access to a router</a>, you might want to disable some web-based applications the router usually offers (for example, <a href="/2006/10/include-default-usernamepassword-in.html">command execution</a>). To do this, use the following steps (first supported in IOS release 12.3(14)T, integrated in 12.4):<br/><ol><li>List all the web applications your Cisco IOS supports with the <strong>show ip http server session-module</strong> command. By default, all web applications should be active.</li>
+If you give your users <a href="/2006/10/multilevel-web-http-access-to-router/">guest access to a router</a>, you might want to disable some web-based applications the router usually offers (for example, <a href="/2006/10/include-default-usernamepassword-in/">command execution</a>). To do this, use the following steps (first supported in IOS release 12.3(14)T, integrated in 12.4):<br/><ol><li>List all the web applications your Cisco IOS supports with the <strong>show ip http server session-module</strong> command. By default, all web applications should be active.</li>
 <li>Create a subset of applications you want to activate with the <strong>ip http session-module-list <em>list-name module-list.</em></strong> global configuration command, for example.</li>
 <blockquote class="code">ip http session-module-list NoExec HTTP_IFS,HOME_PAGE,QDM,QDM_SA,XML_Api,EzVPN-Web-Intercept</blockquote>
 <li>Activate the desired applications with the <strong>ip http active-session-modules <em>list-name</em></strong> configuration command (you should also use the <strong>ip http secure-active-session-modules</strong> command if you've enabled HTTPS server). </li>

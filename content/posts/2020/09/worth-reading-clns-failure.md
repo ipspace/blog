@@ -18,4 +18,4 @@ However, while Russ was trying to remain diplomatic, the real reason CLNS/CLNP f
 
 Religious wars between the two camps didn't help either, and the bitter resentment they created in the TCP/IP camp (the rebel alliance of the day) sank the proposal to use a sane version of CLNP as the next-generation IP protocol.
 
-Nonetheless, we're still using ideas first introduced in CLNP. I already mentioned host registration (DAD) and router advertisements; we also reinvented routing on host addresses, and often use unnumbered physical interfaces in combination with a loopback address. For more details, read my [CLNP-related blog posts](/tag/clnp.html).
+Nonetheless, we're still using ideas first introduced in CLNP. I already mentioned host registration (DAD) and router advertisements; we also reinvented routing on host addresses, and often use unnumbered physical interfaces in combination with a loopback address. For more details, read my [CLNP-related blog posts](/tag/clnp/).

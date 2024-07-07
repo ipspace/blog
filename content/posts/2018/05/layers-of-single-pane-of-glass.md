@@ -8,7 +8,7 @@ tags:
 - automation
 - intent-based networking
 title: Layers of Single-Pane-of-Glass Abstractions Won’t Solve Your Problems
-url: /2018/05/layers-of-single-pane-of-glass.html
+url: /2018/05/layers-of-single-pane-of-glass/
 ---
 *This blog post was initially sent to the subscribers of my SDN and Network Automation mailing list. [Subscribe here](http://www.ipspace.net/Subscribe/Five_SDN_Tips).*
 

@@ -7,7 +7,7 @@ tags:
 - VXLAN
 title: 'Repost: On the Viability of EVPN'
 ---
-Jordi left an [interesting comment](/2022/09/mlag-bridging-evpn.html#1375) to my *[EVPN/VXLAN or Bridged Data Center Fabrics](/2022/09/mlag-bridging-evpn.html)* blog post discussing the viability of using VXLAN and EVPN in times when the equipment lead times can exceed 12 months. Here it is:
+Jordi left an [interesting comment](/2022/09/mlag-bridging-evpn/#1375) to my *[EVPN/VXLAN or Bridged Data Center Fabrics](/2022/09/mlag-bridging-evpn/)* blog post discussing the viability of using VXLAN and EVPN in times when the equipment lead times can exceed 12 months. Here it is:
 
 ---
 
@@ -41,4 +41,4 @@ The reality is a bit different. As Dinesh Dutt pointed out in the *[Multivendor 
 
 [^BIW]: ...because it's simple and works reasonably well in multi-vendor setup? Nah, that's just a conspiracy theory 😜
 
-You might get an interesting blob of complexity if you blindly follow vendor recommendations and build [EBGP-only fabric](/series/dcbgp.html) or [run EVPN IBGP between loopback interfaces advertised with underlay EBGP](/2020/02/the-evpnbgp-saga-continues.html). At the very minimum, you will have to configure route targets as every EVPN implementation uses a different approach to deal with route targets of EVPN instances spanning multiple autonomous systems. Finally, building a multi-vendor IBGP-over-EBGP fabric with EVPN-based multihoming seems to be a decent bet if you're looking for a long-time job security.
+You might get an interesting blob of complexity if you blindly follow vendor recommendations and build [EBGP-only fabric](/series/dcbgp/) or [run EVPN IBGP between loopback interfaces advertised with underlay EBGP](/2020/02/the-evpnbgp-saga-continues/). At the very minimum, you will have to configure route targets as every EVPN implementation uses a different approach to deal with route targets of EVPN instances spanning multiple autonomous systems. Finally, building a multi-vendor IBGP-over-EBGP fabric with EVPN-based multihoming seems to be a decent bet if you're looking for a long-time job security.

@@ -3,7 +3,7 @@ date: 2008-09-18 07:05:00.001000+02:00
 tags:
 - MPLS VPN
 title: PE-to-PE Troubleshooting in MPLS VPN Networks
-url: /2008/09/pe-to-pe-troubleshooting-in-mpls-vpn.html
+url: /2008/09/pe-to-pe-troubleshooting-in-mpls-vpn/
 lastmod: 2020-12-28 18:03:00
 ---
 End-to-end troubleshooting of MPLS VPN solutions is one of the more complex network troubleshooting tasks. On top of several sophisticated technologies and protocols used in MPLS VPN solutions, we have to deal with customer-to-provider interaction on the IP routing protocol level, which makes the troubleshooting efforts even more convoluted.
@@ -30,13 +30,13 @@ Perform these steps to verify PE-to-PE connectivity for the new VRF:
 
 1.  Inspect the BGP table associated with the new VRF on all PE routers under test and verify that they contain all loopback addresses you’ve configured. Missing prefixes indicate BGP-related route propagation problems.
 2.  Perform **traceroute** within the VRF with the **traceroute vrf _name destination_ source _source_** command. The **traceroute vrf** command will either display hop-by-hop path through the network or fail at the first hop regardless of the actual location of the problem.
-3.  If the **traceroute** command fails, use the BGP table in the new VRF to find the next-hop addresses of the remote PE-routers. Perform [MPLS traceroute](/2007/06/mpls-ping-and-traceroute.html) toward the next-hop addresses to identify the actual location of the broken end-to-end LSP.
+3.  If the **traceroute** command fails, use the BGP table in the new VRF to find the next-hop addresses of the remote PE-routers. Perform [MPLS traceroute](/2007/06/mpls-ping-and-traceroute/) toward the next-hop addresses to identify the actual location of the broken end-to-end LSP.
 
 ### Sample troubleshooting session
 
 Sample MPLS VPN troubleshooting illustrated in this section is performed between the routers PE-A and PE-C in the following network.
 
-{{<figure src="MPLS_Ping_Testbed.png" caption="Sample MPLS VPN network">}}
+{{<figure src="/2008/09/MPLS_Ping_Testbed.png" caption="Sample MPLS VPN network">}}
 
 New RD (65000:101) and RT (65000:101) were allocated for test purposes. VRF *Test* is created on the PE-A:
 
@@ -127,7 +127,7 @@ Tracing the route to 192.168.0.2
   1  *  *  *
 ```
 
-The **traceroute mpls** command should [reveal the source of the problem](/2007/06/mpls-ping-and-traceroute.html): in our scenario, it was an unlabeled interface between C4 and C3:
+The **traceroute mpls** command should [reveal the source of the problem](/2007/06/mpls-ping-and-traceroute/): in our scenario, it was an unlabeled interface between C4 and C3:
 
 {{<cc>}}MPLS **traceroute** identified an unlabeled interface{{</cc>}}
 ```

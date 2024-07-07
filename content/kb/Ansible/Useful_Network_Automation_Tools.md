@@ -2,7 +2,7 @@
 kb_section: Ansible
 minimal_sidebar: true
 title: Useful Network Automation Tools
-url: /kb/Ansible/Useful_Network_Automation_Tools.html
+url: /kb/Ansible/Useful_Network_Automation_Tools/
 ---
 List of useful network automation tools found on the 'net:
 

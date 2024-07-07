@@ -4,7 +4,7 @@ ospf_tag: details
 tags:
 - OSPF
 title: More Details on OSPF Route Filters
-url: /2007/10/more-details-on-ospf-route-filters.html
+url: /2007/10/more-details-on-ospf-route-filters/
 ---
 I did a few follow-up tests with the **distribute-list in** OSPF configuration command and stumbled across a few interesting facts (IOS release 12.4(15)T1 on a 3725 platform):
 

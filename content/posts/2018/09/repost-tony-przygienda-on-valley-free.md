@@ -7,9 +7,9 @@ tags:
 - data center
 - IP routing
 title: 'Repost: Tony Przygienda on Valley-Free (or Non-ZigZag) Routing'
-url: /2018/09/repost-tony-przygienda-on-valley-free.html
+url: /2018/09/repost-tony-przygienda-on-valley-free/
 ---
-Most blog posts generate the usual noise from the anonymous peanut gallery (if only they'd have at least a sliver of Statler and Waldorf in them), but every now and then there's a comment that's pure gold. The one [made by Tony Przygienda](/2018/09/valley-free-routing.html?showComment=1536260167668#c9162579753181718524) (of [RIFT fame](/2018/03/data-center-routing-with-rift-on.html)) on [Valley-Free Routing](/2018/09/valley-free-routing.html) post is so good and relevant that I decided to republish it as a separate blog post. Enjoy!
+Most blog posts generate the usual noise from the anonymous peanut gallery (if only they'd have at least a sliver of Statler and Waldorf in them), but every now and then there's a comment that's pure gold. The one [made by Tony Przygienda](/2018/09/valley-free-routing/#c9162579753181718524) (of [RIFT fame](/2018/03/data-center-routing-with-rift-on/)) on [Valley-Free Routing](/2018/09/valley-free-routing/) post is so good and relevant that I decided to republish it as a separate blog post. Enjoy!
 <!--more-->
 
 ---

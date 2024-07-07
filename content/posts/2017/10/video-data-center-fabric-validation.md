@@ -6,10 +6,10 @@ tags:
 - video
 title: 'Video: Data Center Fabric Validation'
 series_title: 'Data Center Fabric Validation'
-url: /2017/10/video-data-center-fabric-validation.html
+url: /2017/10/video-data-center-fabric-validation/
 video_tag: clos
 ---
-Validating the expected network behavior is (according to the intent-driven pundits) a fundamental difference that makes intent-driven products more than [glorified orchestration systems](/2017/09/intent-based-hype.html).
+Validating the expected network behavior is (according to the intent-driven pundits) a fundamental difference that makes intent-driven products more than [glorified orchestration systems](/2017/09/intent-based-hype/).
 
 Guess what: smart people knew that for ages and validated their deployments even when using simple tools like Ansible playbooks.
 

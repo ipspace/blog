@@ -6,7 +6,7 @@ tags:
 - data center
 - video
 title: 'Video: Simplify BGP Configurations'
-url: /2017/02/video-simplify-bgp-configurations.html
+url: /2017/02/video-simplify-bgp-configurations/
 video_tag: bgp
 ---
 Running BGP instead of an IGP in your leaf-and-spine fabric sounds interesting (mainly if your fabric is large enough). Configuring a zillion BGP knobs on every box doesn't.

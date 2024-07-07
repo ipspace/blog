@@ -35,7 +35,7 @@ netlab create -o graph
 dot graph.dot -T png -o netsim-graph-topo.png
 ```
 
-{{<figure src="netsim-graph-topo.png" caption="Lab topology (nodes and links)">}}
+{{<figure src="/2021/09/netsim-graph-topo.png" caption="Lab topology (nodes and links)">}}
 
 **Notes:**
 
@@ -49,7 +49,7 @@ netlab create -o graph:bgp
 dot graph.dot -T png -o netsim-graph-bgp.png
 ```
 
-{{<figure src="netsim-graph-bgp.png" caption="BGP sessions">}}
+{{<figure src="/2021/09/netsim-graph-bgp.png" caption="BGP sessions">}}
 
 For more details, please read the [netlab documentation](https://netlab.tools/), in particular the [graph output module](https://netlab.tools/outputs/graph/) page.
 

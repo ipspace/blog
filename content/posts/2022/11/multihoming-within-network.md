@@ -8,7 +8,7 @@ tags:
 - LISP
 title: Multihoming Cannot Be Solved within a Network
 ---
-Henk made an [interesting comment](/2022/11/worth-reading-routing-never-solved-problem.html#1487) that finally triggered me to organize my thoughts about network-level host multihoming[^SM]:
+Henk made an [interesting comment](/2022/11/worth-reading-routing-never-solved-problem/#1487) that finally triggered me to organize my thoughts about network-level host multihoming[^SM]:
 
 [^SM]: Site multihoming is an even more gruesome beast that we'll carefully avoid in this blog post.
 
@@ -37,7 +37,7 @@ Imagine a mobile phone with a WiFi and 5G connection provided by two different I
 └────┘   └───────────┘    └───────────┘    └─────┘
 {{</ascii>}}
 
-The host (mobile phone) could use node- or interface addresses. Let's start with the assumption that [IPv6 was the worst decision ever](/2022/09/ipv6-worst-decision-ever.html), and that node-level addresses of something like CLNP [would save the world](/2020/09/worth-reading-clns-failure.html) and bring multihoming to the masses.
+The host (mobile phone) could use node- or interface addresses. Let's start with the assumption that [IPv6 was the worst decision ever](/2022/09/ipv6-worst-decision-ever/), and that node-level addresses of something like CLNP [would save the world](/2020/09/worth-reading-clns-failure/) and bring multihoming to the masses.
 
 Under that scenario, host would be known only by its node address (H). Everyone between the bifurcation point (IXP) and the host needs to know that there are two paths toward the host, and what their state is. That includes ISP-A, ISP-B, and all upstream ISPs including upstream ISPs directly connected to IXP[^PER]. Clearly not the brightest idea for ISPs with millions of customers.
 
@@ -53,11 +53,11 @@ Let's stick with the network-based solution for a moment. Regardless of how you 
 
 On top of that, you'll have to deal with two small details: path liveliness checks (is the remote underlay address reachable?) and cache invalidation (is the remote host mapping still valid?). The latter is supposedly one of the [hard problems in computer science](https://martinfowler.com/bliki/TwoHardThings.html). For more details, read the _[Architectural Implications of Locator/ID Separation](https://datatracker.ietf.org/doc/html/draft-meyer-loc-id-implications-01)_ IETF draft[^NORFC].
 
-[^NORFC]: Reading it, you'll probably realize why (like the _[Operators and the IETF](/2021/10/worth-reading-ietf-operators.html)_ draft) it was never published as an RFC ;)
+[^NORFC]: Reading it, you'll probably realize why (like the _[Operators and the IETF](/2021/10/worth-reading-ietf-operators/)_ draft) it was never published as an RFC ;)
 
-Back to the drawing board (take two). What if we'd implement multihoming within the hosts? Congratulations, finally you realized that _[complexity belongs to the network edge](/2011/05/complexity-belongs-to-network-edge.html)_ (see also: [RFC 3439](https://www.rfc-editor.org/rfc/rfc3439)). Not surprisingly, there are widely-deployed solutions using this approach, for example [MP-TCP](/2019/03/multipath-tcp-on-software-gone-wild.html)[^SIRI].
+Back to the drawing board (take two). What if we'd implement multihoming within the hosts? Congratulations, finally you realized that _[complexity belongs to the network edge](/2011/05/complexity-belongs-to-network-edge/)_ (see also: [RFC 3439](https://www.rfc-editor.org/rfc/rfc3439)). Not surprisingly, there are widely-deployed solutions using this approach, for example [MP-TCP](/2019/03/multipath-tcp-on-software-gone-wild/)[^SIRI].
 
-As much as I like MP-TCP, the limitations of its environment force it to remain a half-baked solution. It has to emulate the TCP socket API and thus has to establish the first TCP session with a well-known server IP address, so the server cannot be multihomed to multiple providers. The only way to fix that is to [change the socket API](/2009/08/what-went-wrong-socket-api.html) (fat chance) and hopefully [add session layer to TCP/IP protocol stack ](/2009/08/what-went-wrong-tcpip-lacks-session.html)while doing that.
+As much as I like MP-TCP, the limitations of its environment force it to remain a half-baked solution. It has to emulate the TCP socket API and thus has to establish the first TCP session with a well-known server IP address, so the server cannot be multihomed to multiple providers. The only way to fix that is to [change the socket API](/2009/08/what-went-wrong-socket-api/) (fat chance) and hopefully [add session layer to TCP/IP protocol stack ](/2009/08/what-went-wrong-tcpip-lacks-session/)while doing that.
 
 [^SIRI]: Not sure whether MP-TCP is widely deployed? When was the last time you've seen [someone using Siri](https://support.apple.com/en-us/HT201373)?
 

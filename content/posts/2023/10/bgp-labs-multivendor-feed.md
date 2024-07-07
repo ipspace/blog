@@ -5,7 +5,7 @@ date: 2023-10-25 05:50:00
 tags: [ BGP, netlab ]
 netlab_tag: bgplab
 ---
-Here's a quick update on the [BGP Labs project](https://bgplabs.net/) status: now that [netlab release 1.6.4](/2023/10/netlab-1-6-4-more-bgp-nerd-knobs.html) is out, I could remove the dependency on using Cumulus Linux as the external BGP router.
+Here's a quick update on the [BGP Labs project](https://bgplabs.net/) status: now that [netlab release 1.6.4](/2023/10/netlab-1-6-4-more-bgp-nerd-knobs/) is out, I could remove the dependency on using Cumulus Linux as the external BGP router.
 
 You can use any device that is supported by **[bgp.session](https://netlab.tools/plugins/bgp.session/)** and **[bgp.policy](https://netlab.tools/plugins/bgp.policy/)** plugins as the external BGP router. You could use Arista EOS, Aruba AOS-CX, Cisco IOSv, Cisco IOS-XE, Cumulus Linux or FRR as external BGP routers with netlab release 1.6.4, and I'm positive Jeroen van Bemmel will add Nokia SR Linux to that list.
 

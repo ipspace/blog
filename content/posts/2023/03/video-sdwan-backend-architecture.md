@@ -8,7 +8,7 @@ tags:
 title: 'Video: SD-WAN Backend Architecture'
 video_tag: sd-wan
 ---
-After [describing the SD-WAN reference design](/2018/11/video-sdwan-reference-design.html), [Pradosh Mohapatra](https://www.ipspace.net/Author:Pradosh_Mohapatra) focused on individual components of an SD-WAN solution, [starting with the backend architecture](https://my.ipspace.net/bin/get/SDWAN/3%20-%20Backend%20Architecture.mp4?doccode=SDWAN).
+After [describing the SD-WAN reference design](/2018/11/video-sdwan-reference-design/), [Pradosh Mohapatra](https://www.ipspace.net/Author:Pradosh_Mohapatra) focused on individual components of an SD-WAN solution, [starting with the backend architecture](https://my.ipspace.net/bin/get/SDWAN/3%20-%20Backend%20Architecture.mp4?doccode=SDWAN).
 
 {{<jump>}}
 [Watch the video](https://my.ipspace.net/bin/get/SDWAN/3%20-%20Backend%20Architecture.mp4?doccode=SDWAN)

@@ -5,7 +5,7 @@ tags: [ networking fundamentals ]
 comment: |
   In early 2020 I created the _[Local Area Network Addressing](https://my.ipspace.net/bin/get/Net101/NA2.2%20-%20Local%20Area%20Network%20Addressing.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of the second part of that video.
 ---
-Last week, we discussed [Fibre Channel addressing](/2023/11/fibre-channel-addressing.html).  This time, we'll focus on data link layer technologies used in multi-access networks: Ethernet, Token Ring, FDDI, and other local area- or Wi-Fi technologies.
+Last week, we discussed [Fibre Channel addressing](/2023/11/fibre-channel-addressing/).  This time, we'll focus on data link layer technologies used in multi-access networks: Ethernet, Token Ring, FDDI, and other local area- or Wi-Fi technologies.
 
 The first local area networks (LANs) ran on a physical multi-access medium. The first one (original Ethernet) started as a thick coaxial cable[^HTBY] that you had to drill into to connect a transceiver to the cable core.
 

@@ -4,7 +4,7 @@ date: 2023-08-30 06:30:00
 tags: [ ARP ]
 pre_scroll: True
 ---
-A few days ago, I [described how ARP behaves when the source- and destination IP addresses are not on the same subnet](/2023/08/arp-details.html) (TL&DR: it doesn't care). Now, let's see how routers use ARP to get the destination MAC address for various entries in the IP routing table. To keep things simple, we'll use static routes to insert entries in the IP routing table.
+A few days ago, I [described how ARP behaves when the source- and destination IP addresses are not on the same subnet](/2023/08/arp-details/) (TL&DR: it doesn't care). Now, let's see how routers use ARP to get the destination MAC address for various entries in the IP routing table. To keep things simple, we'll use static routes to insert entries in the IP routing table.
 
 We'll run our tests in a small virtual lab with two Linux hosts and an Arista vEOS switch. The link between H1 and RTR is a regular subnet. H2 has an IP address on the Ethernet interface, but RTR uses an unnumbered interface.
 <!--more-->
@@ -90,7 +90,7 @@ rtr#show ip route 10.1.0.5|begin ^ S
  S        10.1.0.5/32 is directly connected, Ethernet2
 ```
 
-[^CCS]: A static route pointing to an interface can cover any IP prefix you wish including the default route. You [DO NOT want to do that though](/2009/10/follow-up-interface-default-route.html).
+[^CCS]: A static route pointing to an interface can cover any IP prefix you wish including the default route. You [DO NOT want to do that though](/2009/10/follow-up-interface-default-route/).
 
 When trying to reach 10.1.0.5, the router attempts to reach a directly connected IP address and sends an ARP request for 10.1.0.5. The source IP address in the ARP request is the IP address of the loopback interface that is loaning the IP address to the outgoing interface (10.0.0.1). With the default `arp_ignore` *sysctl* settings, the Linux host has no problem replying to that ARP request.
 

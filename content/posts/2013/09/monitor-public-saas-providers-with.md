@@ -5,7 +5,7 @@ tags:
 - cloud
 - web
 title: Monitor Public SaaS Providers with ThousandEyes
-url: /2013/09/monitor-public-saas-providers-with.html
+url: /2013/09/monitor-public-saas-providers-with/
 ---
 If you've ever tried to troubleshoot web application performance issues, you've probably seen it all -- browser waterfall diagrams, visual traceroute tools, network topologies produced by network management systems ... but I haven't seen them packaged in a comprehensive, easy-to-use and visually compelling package before. Welcome to [ThousandEyes](http://www.thousandeyes.com).
 <!--more-->

@@ -8,7 +8,7 @@ tags:
 - IP routing
 - segment routing
 title: Synchronizing BGP and OSPF (or OSPF and LDP)
-url: /2017/08/synchronizing-bgp-and-ospf-or-ospf-and.html
+url: /2017/08/synchronizing-bgp-and-ospf-or-ospf-and/
 ---
 Rich sent me a question about temporary traffic blackholing in networks where every router is running IGP (OSPF or IS-IS) and iBGP.
 
@@ -41,7 +41,7 @@ A few minutes later, C1 recovers. IGP establishes adjacencies between C1 and its
 
 In the meantime, E1 sees two equal-cost paths toward E2. It starts sending traffic toward external destinations to C1, which immediately drops it, resulting in a temporary traffic black hole until C1 receives all the BGP updates and installs BGP prefixes into its IP routing and forwarding tables.
 
-You'll experience the same problem any time you're trying to use functionality (IP forwarding) that relies on information supplied by two independent eventually-consistent systems (OSPF and BGP). [MPLS forwarding using LDP exhibits very similar behavior](/2011/11/ldp-igp-synchronization-in-mpls.html); see also [this blog post](/2008/02/use-slow-igp-startup-in-ldp-only-mpls.html).
+You'll experience the same problem any time you're trying to use functionality (IP forwarding) that relies on information supplied by two independent eventually-consistent systems (OSPF and BGP). [MPLS forwarding using LDP exhibits very similar behavior](/2011/11/ldp-igp-synchronization-in-mpls/); see also [this blog post](/2008/02/use-slow-igp-startup-in-ldp-only-mpls/).
 
 Rich's question: how can I fix that?
 
@@ -49,7 +49,7 @@ As always, it depends. The "canonical" answer (probably expected in the CCIE lab
 
 The **max-metric router-lsa** command makes a router advertise its Type-1 (router) LSA with maximum metric allowed by OSPF, making paths through it less preferred than anything else. The **on-startup** option tells the router to do that *after reload* (instead of immediately) and the next parameter tells the router how long it should advertise the maximum metric -- you can specify it in seconds or tell the OSPF routing process to wait for BGP to converge (or at most 10 minutes).
 
-The interesting question at this point should be: *how does the router know when the BGP routing process has converged?* The Cisco IOS XE documentation is totally mum on the topic, but I remember seeing something along the lines of *we assume BGP has converged when we receive a BGP keepalive message from all peers (which means they have nothing more to tell us*). Modern implementations most likely use the BGP End-of-RIB marker introduced with the [Graceful Restart](/2021/09/graceful-restart.html) functionality.
+The interesting question at this point should be: *how does the router know when the BGP routing process has converged?* The Cisco IOS XE documentation is totally mum on the topic, but I remember seeing something along the lines of *we assume BGP has converged when we receive a BGP keepalive message from all peers (which means they have nothing more to tell us*). Modern implementations most likely use the BGP End-of-RIB marker introduced with the [Graceful Restart](/2021/09/graceful-restart/) functionality.
 
 And now for the fun alternatives:
 

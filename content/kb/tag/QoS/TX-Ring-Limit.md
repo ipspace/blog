@@ -3,7 +3,7 @@ kb_section: QoS
 minimal_sidebar: true
 pre_scroll: true
 title: Impact of Transmit Ring Size (tx-ring-limit)
-url: /kb/tag/QoS/TX-Ring-Limit.html
+url: /kb/tag/QoS/TX-Ring-Limit/
 ---
 Output interface queues in most software switching platforms contain a software-only component and a FIFO queue shared between the CPU and the outgoing interface. That FIFO queue is usually organized as a ring structure, and its maximum size can be controlled with the **tx-ring-limit** parameter in Cisco IOS.
 
@@ -113,8 +113,8 @@ The tests were performed at line speeds of 128 and 512 kbps with different **tx
 
 The test result values are triplets: minimum, average and maximum measured value as reported by IP SLA.
 
-{{<figure src="TX-Ring-Result-512.png" caption="Test results at 512 kbps">}}
+{{<figure src="../TX-Ring-Result-512.png" caption="Test results at 512 kbps">}}
 
-{{<figure src="TX-Ring-Result-128.png" caption="Test results at 128 kbps">}}
+{{<figure src="../TX-Ring-Result-128.png" caption="Test results at 128 kbps">}}
 
   

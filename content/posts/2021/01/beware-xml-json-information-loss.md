@@ -14,7 +14,7 @@ JSON is the new cool kid on the block. It's less complex than XML, maps better i
 <!--more-->
 If you're using a recently developed automation platform to deal with network devices that were designed more than a decade ago you'll have to deal with both formats. For example, Junos has always used XML to encode its data structures when sending them over NETCONF (or when requested to do so with **display xml** CLI option) and Ansible relies heavily on JSON and Python data structures. 
 
-Ansible Junos modules do a good job of abstracting the gap. A command executed on a Junos device returns XML document, and you get a Python data structure out of **junos_command** module. Unfortunately, the two data encoding formats are not equivalent, and [most abstractions tend to be leaky](/2019/01/more-on-leaky-abstractions.html) biting you at a most inconvenient moment. The breaking point in this case is a list with a single element.
+Ansible Junos modules do a good job of abstracting the gap. A command executed on a Junos device returns XML document, and you get a Python data structure out of **junos_command** module. Unfortunately, the two data encoding formats are not equivalent, and [most abstractions tend to be leaky](/2019/01/more-on-leaky-abstractions/) biting you at a most inconvenient moment. The breaking point in this case is a list with a single element.
 
 Imagine a Junos device with three IPv4 routes and a single IPv6 route:
 

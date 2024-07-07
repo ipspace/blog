@@ -4,10 +4,10 @@ ospf_tag: areas
 tags:
 - OSPF
 title: 'Nerd Knobs Save the Day: NSSA Saga Continues'
-url: /2017/03/nerd-knobs-save-day-nssa-saga-continues.html
+url: /2017/03/nerd-knobs-save-day-nssa-saga-continues/
 pre_scroll: True
 ---
-Remember the [OSPF NSSA Forwarding Address](/2017/02/the-unintended-consequences-of-nssa.html) kludge and [its consequences](/2017/02/why-ospf-needs-forwarding-address-with.html)? Let's figure out whether the nerd knobs available in Cisco IOS can save the day.
+Remember the [OSPF NSSA Forwarding Address](/2017/02/the-unintended-consequences-of-nssa/) kludge and [its consequences](/2017/02/why-ospf-needs-forwarding-address-with/)? Let's figure out whether the nerd knobs available in Cisco IOS can save the day.
 
 **TL&DR**: Don't use OSPF areas if you can avoid them. Don't use NSSA areas.
 <!--more-->
@@ -15,21 +15,21 @@ Remember the [OSPF NSSA Forwarding Address](/2017/02/the-unintended-consequences
 
 This blog post is the last in a series of six blog posts, and the only reason I published it was a huge *Thank You* I got from one of my friends when we met at Cisco Live Berlin. He said, "*I forwarded your blog posts to a customer who planned on building a network using OSPF NSSA areas. They probably changed his mind.*"
 
-So let's conclude the saga with a [MacGyver fix](/2013/08/temper-your-macgyver-streak.html) -- a series of nerd knobs that have to be adjusted to make the network work. If this won't persuade you to stay away from NSSA areas, nothing will.
+So let's conclude the saga with a [MacGyver fix](/2013/08/temper-your-macgyver-streak/) -- a series of nerd knobs that have to be adjusted to make the network work. If this won't persuade you to stay away from NSSA areas, nothing will.
 
 ### Other Blog Posts in This Saga
 
 You might want to read these blog posts before continuing:
 
--   [OSPF Forwarding Address -- Yet Another Kludge](/2017/01/ospf-forwarding-address-yet-another.html)
--   [OSPF Forwarding Address -- Take 2](/2017/01/ospf-forwarding-address-yak-take-2.html)
--   [Why OSPF Needs Forwarding Address with NSSA Areas](/2017/02/why-ospf-needs-forwarding-address-with.html)
--   [The Unintended Consequences of NSSA Kludges](/2017/02/the-unintended-consequences-of-nssa.html)
--   [More Thoughts on OSPF Forwarding Address](/2017/02/more-thoughts-on-ospf-forwarding-address.html)
+-   [OSPF Forwarding Address -- Yet Another Kludge](/2017/01/ospf-forwarding-address-yet-another/)
+-   [OSPF Forwarding Address -- Take 2](/2017/01/ospf-forwarding-address-yak-take-2/)
+-   [Why OSPF Needs Forwarding Address with NSSA Areas](/2017/02/why-ospf-needs-forwarding-address-with/)
+-   [The Unintended Consequences of NSSA Kludges](/2017/02/the-unintended-consequences-of-nssa/)
+-   [More Thoughts on OSPF Forwarding Address](/2017/02/more-thoughts-on-ospf-forwarding-address/)
 
 ### Breaking the Network
 
-As before, we'll start with what seems to be a perfectly designed network (trust me, [there's a snake in this paradise](/2017/02/why-ospf-needs-forwarding-address-with.html)):
+As before, we'll start with what seems to be a perfectly designed network (trust me, [there's a snake in this paradise](/2017/02/why-ospf-needs-forwarding-address-with/)):
 
 {{<figure src="/2017/03/s500-OSPF_NSSA_1.png">}}
 

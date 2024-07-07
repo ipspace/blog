@@ -4,14 +4,14 @@ tags:
 - DHCP
 - you've asked for it
 title: Flash-based DHCP database
-url: /2009/01/flash-based-dhcp-database.html
+url: /2009/01/flash-based-dhcp-database/
 ---
 
 <div class="bloggerBody"><p>Pete sent me an interesting question a while ago:</p>
 <blockquote class="cite">It might be interesting to write an article about <strong>ip dhcp database flash:dhcp-db</strong> command, documenting the pros of surviving a reboot versus cons of wear on the flash device.</blockquote>
-<p>I’ve already written <a href="/2007/08/dhcp-conflict-logging-true-story.html">about a few problems that can be solved with the DHCP database</a> (but obviously a longer text is warranted … already stored in my to-do list) and it took me a while to find the time to dig out the relevant information on the flash device wear.</p>
+<p>I’ve already written <a href="/2007/08/dhcp-conflict-logging-true-story/">about a few problems that can be solved with the DHCP database</a> (but obviously a longer text is warranted … already stored in my to-do list) and it took me a while to find the time to dig out the relevant information on the flash device wear.</p>
 <!--more--><p>It looks like there’s nothing to worry about. To start with, most modern flash devices can survive millions of write cycles (read the <a href="http://www.storagesearch.com/ssdmyths-endurance.html">article published on StorageResearch.com</a>). The increase in flash reliability caused the manufacturers to <a href="http://www.sandisk.com/Assets/File/OEM/Manuals/OEMCFlashPMv12.0.pdf">stop quoting write cycles in their specifications and focused on MTTF or lifetime</a>. I don’t know which flash cards Cisco ships with the routers, but if you’re really concerned, open the box, find the flash chip and contact the chip manufacturer. </p>
 <p>Furthermore, almost all flash devices with embedded microcontrollers (for example, CF cards, USB flash drives or SSD) use <a href="http://en.wikipedia.org/wiki/Wear_leveling">wear leveling algorithms</a> to reduce the impact of someone continuously rewriting the same sector (DHCP database in Cisco IOS or FAT table in Windows). Wear leveling can <a href="http://www.sandisk.com/Assets/File/OEM/WhitePapersAndBrochures/RS-MMC/WPaperWearLevelv1.0.pdf">significantly increase the usable lifetime of a flash device</a>.</p>
-<p>It looks like the flash devices can be treated as disks if you don’t over-abuse them, so you might wonder why I <a href="/2007/09/persistent-dhcp-bindings-stored-in.html">wrote a post describing how to store DHCP database in NVRAM</a>. At that time, a lot of low-end routers still shipped with flash formatted in the “old” Cisco format and the flash was not really usable to store ever-changing files (of course you can <a href="/2007/10/turn-your-flash-card-into-ata-drive.html">reformat the flash</a> but you have to be careful not to lose the IOS image in the process).</p>
+<p>It looks like the flash devices can be treated as disks if you don’t over-abuse them, so you might wonder why I <a href="/2007/09/persistent-dhcp-bindings-stored-in/">wrote a post describing how to store DHCP database in NVRAM</a>. At that time, a lot of low-end routers still shipped with flash formatted in the “old” Cisco format and the flash was not really usable to store ever-changing files (of course you can <a href="/2007/10/turn-your-flash-card-into-ata-drive/">reformat the flash</a> but you have to be careful not to lose the IOS image in the process).</p>
 </div>
 

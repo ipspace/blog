@@ -2,7 +2,7 @@
 kb_section: EIGRP_stub
 minimal_sidebar: true
 title: Summary
-url: /kb/Internet/EIGRP_stub/99-summary.html
+url: /kb/Internet/EIGRP_stub/99-summary/
 ---
 In this article, you’ve seen how you can use the EIGRP stub router functionality (introduced in Cisco IOS release 12.0T and 12.1) to decrease bandwidth utilization on slow links and dramatically improve EIGRP convergence times and its robustness. This functionality is easiest to deploy in stub sites (remote offices) with a single router.
 

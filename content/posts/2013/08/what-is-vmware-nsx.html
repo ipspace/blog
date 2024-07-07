@@ -6,7 +6,7 @@ tags:
 - overlay networks
 - virtualization
 title: What is VMware NSX?
-url: /2013/08/what-is-vmware-nsx.html
+url: /2013/08/what-is-vmware-nsx/
 ---
 <div class='update'>Update 2021-03-01: NSX MH is long gone, NSX-V went through numerous releases and is now on the retirement track, NSX-T is the new kid on the block. Watch the <a href="https://www.ipspace.net/NSX">NSX webinar</a> for more details.</div>
 <p><strong>Answer#1</strong>: An overlay virtual networking solution providing logical bridging (aka layer-2 forwarding or switching), logical routing (aka layer-3 switching), distributed or centralized firewalls, load balancers, NAT and VPNs.</p>
@@ -14,7 +14,7 @@ url: /2013/08/what-is-vmware-nsx.html
 <p>Oh, and did I mention it’s actually two products, not one?<!--more--></p>
 <p><strong>VMware NSX for multi-hypervisor environment</strong> is Nicira NVP with ESXi and VXLAN enhancements: </p>
 <ul class="ListParagraph"><li>OVS-in-VM approach has been replaced with an NSX vSwitch within the ESXi kernel;</li>
-<li>VMware NSX supports GRE, STT and VXLAN encapsulation, with VXLAN operating in unicast mode with either <a href="/2013/08/nicira-nvp-control-plane.html">source node or service node packet replication</a>. The unicast mode is not compatible with <a href="/2013/07/unicast-only-vxlan-finally-shipping.html">Nexus 1000V VXLAN unicast mode</a>;</li>
+<li>VMware NSX supports GRE, STT and VXLAN encapsulation, with VXLAN operating in unicast mode with either <a href="/2013/08/nicira-nvp-control-plane/">source node or service node packet replication</a>. The unicast mode is not compatible with <a href="/2013/07/unicast-only-vxlan-finally-shipping/">Nexus 1000V VXLAN unicast mode</a>;</li>
 <li>NSX unicast VXLAN implementation will <a href="http://networkheresy.com/2013/08/15/network-virtualization-gets-physical/">eventually work with third-party VTEPs</a> (there’s usually a slight time gap between a press release and a shipping product) using ovsdb-proto as the control plane.   </li>
 </ul>
 <p>Apart from that, the feature list closely matches existing Nicira NVP functionality: distributed L2 forwarding, distributed or centralized L2 or L3 forwarding, reflexive VM NIC ACLs, controllers and L2/L3 gateways as physical appliances.</p>
@@ -29,7 +29,7 @@ url: /2013/08/what-is-vmware-nsx.html
 </ul>
 <p>The Nicira NVP roots of NSX are evident. It’s also pretty easy to map how individual NSX components map into vCNS/vShield Edge: NSX Edge Services Router definitely looks like vShield Edge on steroids and the distributed firewall is probably based on vShield App. </p>
 <p>Unfortunately, it seems that the goodies from vSphere version of NSX (routing protocols, in-kernel firewall) won’t make it to vCNS 5.5 (but let’s wait and see how the packaging/licensing looks when the products launch).</p>
-<h4>Does it all make sense?</h4><p>Sure it does. VMware NSX seems to be a successful blend of two pretty mature products with loads of improvements (some of them <a href="/2011/11/junipers-virtual-gateway-virtual.html">badly needed</a>). </p>
+<h4>Does it all make sense?</h4><p>Sure it does. VMware NSX seems to be a successful blend of two pretty mature products with loads of improvements (some of them <a href="/2011/11/junipers-virtual-gateway-virtual/">badly needed</a>). </p>
 <p>Of course we have to wait to see the actual GA product (Nicira NVP aka NSX for multiple hypervisors is shipping, NSX for vSphere is promised for late 2013), but it seems that once all the wrinkles have been ironed out, VMware NSX for vSphere will be the most comprehensible virtual networking product you can get (unfortunately you can’t get your own copy of Amazon VPC).</p>
 <p>The only problem I see is the breadth of the offering. VMware has three semi-competing partially overlapping products implementing overlay virtual networks:</p>
 <ul class="ListParagraph"><li>NSX for multi-hypervisor environment using NVP controllers, NVP gateways and OVS (for Linux and ESXi environment);</li>

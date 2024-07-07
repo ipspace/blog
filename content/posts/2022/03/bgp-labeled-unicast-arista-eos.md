@@ -4,7 +4,7 @@ date: 2022-03-29 07:50:00
 tags: [ BGP, MPLS ]
 pre_scroll: True
 ---
-A week ago I described how [Cisco IOS implemented BGP Labeled Unicast](bgp-labeled-unicast-cisco-ios.html). In this blog post we'll focus on Arista EOS using [the same lab as before](https://github.com/ipspace/netlab-examples/tree/master/MPLS/ldp-bgp-lu):
+A week ago I described how [Cisco IOS implemented BGP Labeled Unicast](/2022/03/bgp-labeled-unicast-cisco-ios/). In this blog post we'll focus on Arista EOS using [the same lab as before](https://github.com/ipspace/netlab-examples/tree/master/MPLS/ldp-bgp-lu):
 
 {{<figure src="/2022/03/bgp-lu-topology.bgp-eos.jpg" caption="BGP sessions in the BGP-LU lab">}}
 

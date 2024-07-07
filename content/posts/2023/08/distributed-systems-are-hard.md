@@ -13,5 +13,5 @@ high-availability_tag: outage
 <!--more-->
 You REALLY SHOULD watch the video -- it nicely proves two points I've been making for ages (not that anyone would listen):
 
-* [Distributed systems](/series/distributed-systems.html) are hard. Making them [highly available](/tag/high-availability.html) is even harder.
-* A [Disaster Recovery Plan is just wishful thinking](/series/dr.html) until it has been thoroughly tested under realistic conditions.
+* [Distributed systems](/series/distributed-systems/) are hard. Making them [highly available](/tag/high-availability/) is even harder.
+* A [Disaster Recovery Plan is just wishful thinking](/series/dr/) until it has been thoroughly tested under realistic conditions.

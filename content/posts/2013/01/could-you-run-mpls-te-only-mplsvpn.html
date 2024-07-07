@@ -1,5 +1,5 @@
 ---
-url: /2013/01/could-you-run-mpls-te-only-mplsvpn.html
+url: /2013/01/could-you-run-mpls-te-only-mplsvpn/
 title: "Could you run an MPLS-TE-only MPLS/VPN network without LDP?"
 date: "2013-01-17T07:14:00.000+01:00"
 tags: [ MPLS,traffic engineering,MPLS VPN ]
@@ -12,14 +12,14 @@ tags: [ MPLS,traffic engineering,MPLS VPN ]
 <p>Most applications using MPLS break if the LSP is broken (example: route summarization on an ABR) and/or refuse to work if a label for remote peer is not in the local CEF table.</p>
 <p class="note">Junos can <a href="http://www.juniper.net/techpubs/en_US/junos/topics/usage-guidelines/vpns-configuring-gre-tunnels-for-layer-3-vpns.html">automatically use MPLS-in-GRE transport</a> if there’s no LSP toward egress MPLS/VPN PE-router, saving you from broken LSPs and potentially introducing interesting MTU issues.</p>
 <p>It’s thus mandatory that a PE-router always has an LSP toward each one of its peers (in principle, a PE-router does not need a label toward all other PE-routers, a property that seems to be used heavily in <a href="http://tools.ietf.org/html/draft-ietf-mpls-seamless-mpls-02">Seamless MPLS</a>, but let’s not overcomplicate things).</p>
-<h4>What’s wrong with RSVP-only LSPs?</h4><p>LDP-signaled LSPs are always available – if there’s a path to the destination known to the IGP routing protocol you use in your network, there’s always an associated LSP (assuming you <a href="/2011/11/ldp-igp-synchronization-in-mpls.html">configured LDP correctly</a>). </p>
+<h4>What’s wrong with RSVP-only LSPs?</h4><p>LDP-signaled LSPs are always available – if there’s a path to the destination known to the IGP routing protocol you use in your network, there’s always an associated LSP (assuming you <a href="/2011/11/ldp-igp-synchronization-in-mpls/">configured LDP correctly</a>). </p>
 <p>It’s pretty hard to have guaranteed always-established full mesh of LSPs with traffic engineering tunnels. You could configure automatic establishment of full mesh of tunnels, and all sorts of tunnel protection mechanisms, but if the tunnel establishment ever fails, you’ll be faced with an interesting hard-to-troubleshoot problem (do I have to mention you’ll get the call at 2AM on a Sunday morning at the height of a bachelor party?).</p>
 <p>From a more technical perspective, LDP-established LSPs are N-to-1 circuits, whereas RSVP-established LSPs are 1-to-1 circuits. You need O(N) labels in each core router for LDP-established LSPs and (worst case) O(N^2) labels for RSVP-established LSPs. Furthermore, LDP-established LSPs rely on change-driven local signaling (LDP updates), whereas RSVP-established LSPs rely on periodic end-to-end signaling (RSVP soft state has to be refreshed in all nodes along an MPLS TE tunnel).</p>
 <h4>To summarize</h4><ul class="ListParagraph"><li>MPLS TE tunnels are definitely usable, either for traffic steering or fast failover purposes;</li>
 <li>Having a full-mesh of PE-to-PE MPLS TE tunnels in a large network with thousands of PE-routers might not be the best idea you’ve ever had;</li>
-<li>It’s perfectly possible to have a <a href="/2008/09/do-you-need-ldp-with-mpls-te.html">full-mesh of MPLS TE tunnels in network core and run LDP over them</a>;</li>
+<li>It’s perfectly possible to have a <a href="/2008/09/do-you-need-ldp-with-mpls-te/">full-mesh of MPLS TE tunnels in network core and run LDP over them</a>;</li>
 <li>MPLS TE tunnels can fail. LDP-established LSPs provide a convenient readily available backup (both Junos and Cisco IOS prefer MPLS TE tunnels over IGP/LDP anyway) without too much overhead;</li>
-<li>If you’re concerned about the number of labels allocated by LDP, allocate them only for loopback interfaces. <a href="/2011/11/junos-versus-cisco-ios-mpls-and-ldp.html">Default behavior on Junos</a>; easily configurable on Cisco IOS. </li>
+<li>If you’re concerned about the number of labels allocated by LDP, allocate them only for loopback interfaces. <a href="/2011/11/junos-versus-cisco-ios-mpls-and-ldp/">Default behavior on Junos</a>; easily configurable on Cisco IOS. </li>
 </ul>
 <h4>Related webinars</h4><p>None ... but <a href="http://www.ipspace.net/Webinars">check them out</a> anyway, you might find <a href="http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment">something interesting</a> ;)</p>
 

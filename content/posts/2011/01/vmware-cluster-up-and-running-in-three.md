@@ -4,7 +4,7 @@ tags:
 - data center
 - virtualization
 title: 'VMware Cluster: Up and Running in Three Hours'
-url: /2011/01/vmware-cluster-up-and-running-in-three.html
+url: /2011/01/vmware-cluster-up-and-running-in-three/
 cdate: 2022-07-10
 comment: |
   This blog post was written in early 2011. Most of the products mentioned in it are long obsolete, but it's still worth noting the major difference between configuring infrastructure through CLI (or any other form of text configurations) or GUI.

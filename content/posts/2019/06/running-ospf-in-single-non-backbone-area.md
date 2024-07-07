@@ -4,7 +4,7 @@ ospf_tag: areas
 tags:
 - OSPF
 title: Running OSPF in a Single Non-Backbone Area
-url: /2019/06/running-ospf-in-single-non-backbone-area.html
+url: /2019/06/running-ospf-in-single-non-backbone-area/
 ---
 One of my subscribers sent me an interesting puzzle:
 

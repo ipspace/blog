@@ -5,7 +5,7 @@ tags:
 - data center
 - security
 title: I Don’t Need no Stinking Firewall ... or Do I?
-url: /2010/08/i-dont-need-no-stinking-firewall-or-do.html
+url: /2010/08/i-dont-need-no-stinking-firewall-or-do/
 ---
 Brian Johnson started a lively "[*I don't need no stinking firewall*](http://markmail.org/thread/fvordsbnuc74fuu2)" discussion on NANOG mailing list in January 2010. I wanted to write about the topic then, but somehow the post slipped through the cracks... and I'm glad it did, as I've learned a few things in the meantime, including the (now obvious) fact that no two data centers are equal (the original debate had to do with protecting servers in large-scale data center).
 
@@ -13,17 +13,17 @@ First let's rephrase the provocative headline from the discussion. The real ques
 <!--more-->
 ### Quick Overview
 
-{{<figure src="FirewallsOrRouters.jpg" caption="Firewalls or routers with packet filters?">}}
+{{<figure src="/2010/08/FirewallsOrRouters.jpg" caption="Firewalls or routers with packet filters?">}}
 
 Stateless firewalling is implemented quite easily with access lists on routers, switches, and virtual switches. It usually works at line speed. Stateful firewalls implemented in routers are usually suitable for low-speed remote offices; you should use dedicated firewall devices in data centers.
 
-For more details read also *[The Spectrum of Firewall Statefulness](/2013/03/the-spectrum-of-firewall-statefulness.html)*.
+For more details read also *[The Spectrum of Firewall Statefulness](/2013/03/the-spectrum-of-firewall-statefulness/)*.
 
 ### Technology issues
 
 Stateful firewall is the only option if you're trying to tightly protect applications that use dynamic port numbers, including everything from peer-to-peer applications (including SIP) to RPC-based applications (let's try not to call them *broken* \... how about *unpredictable applications*).
 
-{{<note>}}You can [limit the dynamic port range for some of these applications](/2010/05/update-make-ftp-server-slightly-more.html) and allow all ports in that range through the firewall... while hoping that some other service on your server won't grab one of those ports and expose itself unnecessarily.{{</note>}}
+{{<note>}}You can [limit the dynamic port range for some of these applications](/2010/05/update-make-ftp-server-slightly-more/) and allow all ports in that range through the firewall... while hoping that some other service on your server won't grab one of those ports and expose itself unnecessarily.{{</note>}}
 
 If your applications use only well-known fixed port numbers (let's call them *fixed-port applications*), you don't have to inspect the application data stream and can match the applications with access lists; stateless solutions seem appropriate.
 

@@ -3,7 +3,7 @@ title: "Why is RESTful API better than SNMP?"
 date: "2012-08-14T06:23:00.000+02:00"
 tags: [ SNMP,SDN,network management ]
 ---
-Brian Christopher Raaen asked a great question in a comment to my [*OpenStack/Quantum SDN-Based Virtual Networks*](/2012/08/openstackquantum-sdn-based-virtual.html) post:
+Brian Christopher Raaen asked a great question in a comment to my [*OpenStack/Quantum SDN-Based Virtual Networks*](/2012/08/openstackquantum-sdn-based-virtual/) post:
 
 > Other than some syntax difference what do these new HTTP-based APIs add that SNMP couldn't already do?
 
@@ -44,7 +44,7 @@ However, regardless of what our opinions might be, REST is clearly a mainstream 
 
 ### Hands-On Experience
 
-At the time this blog post was published, [John Gruber wrote a great reply to the original question](/2012/08/openstackquantum-sdn-based-virtual.html?showComment=1344219890812#c1415977561055230319):
+At the time this blog post was published, [John Gruber wrote a great reply to the original question](/2012/08/openstackquantum-sdn-based-virtual/#c1415977561055230319):
 
 ---
 

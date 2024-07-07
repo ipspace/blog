@@ -9,7 +9,7 @@ New Year break was probably my busiest time (programming-wise) in years. [Jeroen
 
 To give you an idea of [how fast we were moving](https://github.com/ipspace/netlab/pulse/monthly): issue #84 was created on December 22nd, Sunday's pull request that pushed release 1.1 into the master branch was #135 (GitHub numbers everything you do sequentially).
 
-{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab.html).{{</note>}}
+{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab/).{{</note>}}
 <!--more-->
 In the meantime, we rewrote most of the topology transformation code, changed major data structures, simplified configuration templates, and added BFD support for Arista EOS, Cisco IOS, IOS XE, and Nexus OS, Junos, Nokia SR OS and SR Linux, Mikrotik RouterOS, and VyOS.
 

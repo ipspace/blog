@@ -8,7 +8,7 @@ tags:
 - automation
 - firewall
 title: Anti-Automation from the Antimatter Universe
-url: /2018/02/anti-automation-from-antimatter-universe.html
+url: /2018/02/anti-automation-from-antimatter-universe/
 ---
 One of my readers sent me a vivid description of his interactions with one of the so-called next-generation firewall vendors. Enjoy!
 
@@ -55,7 +55,7 @@ After long discussions with \$vendor sales engineers they tell us: \"*We underst
 
 ### I Couldn't Resist Adding...
 
-And this is what happens when you buy things based on glitzy PowerPoint without [ever considering what you should ask for to make your operations easier](/2016/10/network-automation-rfp-requirements.html).
+And this is what happens when you buy things based on glitzy PowerPoint without [ever considering what you should ask for to make your operations easier](/2016/10/network-automation-rfp-requirements/).
 
 Next step: CxO (who made the purchasing decision in the first place) will complain how expensive his internal security and networking teams are.
 

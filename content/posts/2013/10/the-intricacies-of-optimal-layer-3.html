@@ -6,10 +6,10 @@ tags:
 - fabric
 - IP routing
 title: The Intricacies of Optimal Layer-3 Forwarding
-url: /2013/10/the-intricacies-of-optimal-layer-3.html
+url: /2013/10/the-intricacies-of-optimal-layer-3/
 ---
 
-<p>I must have confused a few readers with my blog posts describing <a href="/2013/06/arista-eos-virtual-arp-varp-behind.html">Arista’s VARP</a> and <a href="/2013/08/optimal-layer-3-forwarding-with.html">Enterasys’ Fabric Routing</a> – I got plenty of questions along the lines of “<em>how does it really work behind the scenes?</em>” Let’s shed some light on those dirty details.<!--more--></p>
+<p>I must have confused a few readers with my blog posts describing <a href="/2013/06/arista-eos-virtual-arp-varp-behind/">Arista’s VARP</a> and <a href="/2013/08/optimal-layer-3-forwarding-with/">Enterasys’ Fabric Routing</a> – I got plenty of questions along the lines of “<em>how does it really work behind the scenes?</em>” Let’s shed some light on those dirty details.<!--more--></p>
 <h4>Sample Network</h4><p>We’ll work with a small network having two edge switches (E1 and E2), a single core switch (C1) and hosts (A, B1 and B2) in two subnets (A and B):</p>
 <div class="separator"><a href="/2013/10/s1600-L3FWD_Topo.jpg" imageanchor="1"><img border="0" src="/2013/10/s400-L3FWD_Topo.jpg"/></a></div>
 <p>Let’s assume we’ve configured some sort of optimal layer-3 forwarding in the network, so E1 and E2 do layer-3 forwarding (the activity formerly known as <em>routing</em>) between subnets A and B. </p>
@@ -26,7 +26,7 @@ url: /2013/10/the-intricacies-of-optimal-layer-3.html
 <p><strong>Conclusions</strong>: E1 must have an ARP entry for B2 (or it wouldn’t know the MAC address of B2) and L2 connectivity to B2 (or it wouldn’t be able to send traffic to B2’s MAC address).</p>
 <p>E1 (ingress switch) thus performs L3 (inter-subnet) forwarding based on destination IP address, all the other switches in the forwarding path perform L2 (intra-subnet) forwarding based on destination MAC address. Every VLAN must span all edge and core switches.</p>
 <h4>Scalability Limitations of Optimal Layer-3 Forwarding</h4><p>Now that we know all the dirty details, it’s easy to figure out the scalability limitations of optimal L3 forwarding:</p>
-<ul class="ListParagraph"><li>Every VLAN must span all edge and core switches in the routing domain. The whole routing domain thus becomes a <a href="/2012/05/layer-2-network-is-single-failure.html">single failure domain</a> with <a href="/2012/05/transparent-bridging-aka-l2-switching.html">well-known scalability issues</a>;</li>
+<ul class="ListParagraph"><li>Every VLAN must span all edge and core switches in the routing domain. The whole routing domain thus becomes a <a href="/2012/05/layer-2-network-is-single-failure/">single failure domain</a> with <a href="/2012/05/transparent-bridging-aka-l2-switching/">well-known scalability issues</a>;</li>
 <li>Every edge switch must know MAC addresses of all active IP hosts;</li>
 <li>Every edge switch must have ARP entries for all active IP hosts.</li>
 </ul>

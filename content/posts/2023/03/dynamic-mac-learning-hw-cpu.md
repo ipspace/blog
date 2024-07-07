@@ -5,7 +5,7 @@ tags: [ switching ]
 ---
 An ipSpace.net subscriber sent me a question along the lines of "_does it matter that EVPN uses BGP to implement dynamic MAC learning whereas in traditional switching that's done in hardware?_" Before going into those details, I wanted to establish the baseline: is dynamic MAC learning really implemented in hardware?
 
-Hardware-based switching solutions usually [use a hash table to implement MAC address lookups](/2022/02/packet-forwarding-header-lookup.html). The above question should thus be rephrased as _is it possible to update the MAC hash table in hardware without punting the packet to the CPU?_ One would expect high-end (expensive) hardware to be able do it, while low-cost hardware would depend on the CPU. It turns out the reality is way more complex than that. 
+Hardware-based switching solutions usually [use a hash table to implement MAC address lookups](/2022/02/packet-forwarding-header-lookup/). The above question should thus be rephrased as _is it possible to update the MAC hash table in hardware without punting the packet to the CPU?_ One would expect high-end (expensive) hardware to be able do it, while low-cost hardware would depend on the CPU. It turns out the reality is way more complex than that. 
 <!--more-->
 ASIC programming guides would be the natural places to find the definitive answer, but those are a bit hard to get, so I [decided to ask around on Twitter](https://twitter.com/ioshints/status/1631319387096399872):
 

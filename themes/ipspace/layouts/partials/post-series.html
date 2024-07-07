@@ -12,7 +12,7 @@
         {{ $scr.Set "intro" "Latest blog posts" }}
       {{ end }}
 <div class="post__content" style='border-bottom: 1px solid #e8e8e8; padding-bottom: 1em;'>
-  <h3>{{ $scr.Get "intro" }} in {{ if in .Title " "}}<a href="{{ $serurl }}.html">{{.Title}}</a>{{else}}this{{end}} series</h3>
+  <h3>{{ $scr.Get "intro" }} in {{ if in .Title " "}}<a href="{{ $serurl }}/">{{.Title}}</a>{{else}}this{{end}} series</h3>
   <div id="related_posts">
       <ul>
         {{ range ($scr.Get "pages") }}
@@ -28,7 +28,7 @@
   </div>
       {{ if gt (len .Pages) 10 }}
   <div class='jump-link'>
-    <a href="{{ $serurl }}.html">More blog posts in this series</a>
+    <a href="{{ $serurl }}/">More blog posts in this series</a>
   </div>
       {{ end }}
 </div>

@@ -4,13 +4,13 @@ tags:
 - access control
 - you've asked for it
 title: Configure local authentication with AAA
-url: /2007/03/configure-local-authentication-with-aaa.html
+url: /2007/03/configure-local-authentication-with-aaa/
 ---
 
-This should be a no-brainer for anyone preparing for the CCIE lab exam (I'll not elaborate why, but you could guess), but here it is for the benefits of everyone else: if you want to enable AAA on Cisco IOS but still retain local usernames (at least for the console access), this is how you do it:<ul><li><a href="/2006/12/local-username-authentication.html">Define local usernames</a> with <strong>username xxx password yyy</strong> command (I would prefer the <strong><a href="/2007/03/enhanced-password-security-for-local.html">secret</a></strong> option if your IOS supports it).<li>Configure <strong>aaa new-model</strong>.</li>
+This should be a no-brainer for anyone preparing for the CCIE lab exam (I'll not elaborate why, but you could guess), but here it is for the benefits of everyone else: if you want to enable AAA on Cisco IOS but still retain local usernames (at least for the console access), this is how you do it:<ul><li><a href="/2006/12/local-username-authentication/">Define local usernames</a> with <strong>username xxx password yyy</strong> command (I would prefer the <strong><a href="/2007/03/enhanced-password-security-for-local/">secret</a></strong> option if your IOS supports it).<li>Configure <strong>aaa new-model</strong>.</li>
 <li>Configure a named AAA authentication list with the <strong>aaa authentication login MyList local</strong>.</li>
 <li>Attach the named AAA authentication list to the console line with the <strong>login authentication MyList</strong> command.</li>
 </li>
 </ul>
-If you want to use the local usernames only as a fallback mechanism in case the AAA servers fail or become unreachable, you could use the <strong>aaa authentication login MyList group [radius|tacacs+|name] local</strong> command.<br/><br/><strong>Note:</strong> this article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.
+If you want to use the local usernames only as a fallback mechanism in case the AAA servers fail or become unreachable, you could use the <strong>aaa authentication login MyList group [radius|tacacs+|name] local</strong> command.<br/><br/><strong>Note:</strong> this article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.
 

@@ -3,7 +3,7 @@ date: 2008-02-29 06:44:00.008000+01:00
 tags:
 - BGP
 title: Building Customer-Resilient BGP networks
-url: /2008/02/building-customer-resilient-bgp.html
+url: /2008/02/building-customer-resilient-bgp/
 ---
 When [Kate Gerwig](http://searchtelecom.techtarget.com/meetEditorial/0,289131,sid103,00.html), my wonderful editor from [SearchTelecom.com](http://searchtelecom.techtarget.com/), and myself agreed on the contents of the "[Building customer-resilient BGP networks](http://searchtelecom.techtarget.com/tip/0,289483,sid103_gci1302784,00.html)" article, we had no idea that it would become extremely relevant just days before it was published. The article describes the tools a Service Provider should use to ensure that its customers cannot harm its BGP routing data (and consequently its other customers and the Internet at large).
 

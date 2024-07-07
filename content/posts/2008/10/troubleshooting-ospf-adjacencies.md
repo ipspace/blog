@@ -4,7 +4,7 @@ ospf_tag: adj
 tags:
 - OSPF
 title: Troubleshooting OSPF Adjacencies
-url: /2008/10/troubleshooting-ospf-adjacencies.html
+url: /2008/10/troubleshooting-ospf-adjacencies/
 ---
 Troubleshooting OSPF adjacencies can be a nightmare: if you've misconfigured the OSPF interface parameters (the timers or the subnet mask), the adjacency will not form, but the router will not tell you why. The only mechanism you can use to detect the mismatch is the **debug ip ospf hello** command ... just don't try to use it on a console session of a router running OSPF across hundreds of interfaces.
 

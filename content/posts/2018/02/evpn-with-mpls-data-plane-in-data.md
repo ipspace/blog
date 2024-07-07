@@ -6,7 +6,7 @@ tags:
 - data center
 - EVPN
 title: EVPN With MPLS Data Plane in Data Centers
-url: /2018/02/evpn-with-mpls-data-plane-in-data.html
+url: /2018/02/evpn-with-mpls-data-plane-in-data/
 ---
 Mr. Anonymous (my most loyal reader and commentator) sent me this question as a comment to one of my blog posts:
 

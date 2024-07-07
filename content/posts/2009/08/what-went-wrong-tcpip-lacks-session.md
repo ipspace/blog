@@ -8,11 +8,11 @@ tags:
 - Internet
 - networking fundamentals
 title: 'What Went Wrong: TCP/IP Lacks a Session Layer'
-url: /2009/08/what-went-wrong-tcpip-lacks-session.html
+url: /2009/08/what-went-wrong-tcpip-lacks-session/
 ---
-One of the biggest challenges facing the Internet core today is the [explosion of the IP routing and forwarding tables](/2009/06/internet-anarchy-ill-advertise-whatever.html), which is caused primarily by traffic engineering and multihoming requirements. Things were supposed to get better when IPv6 introduced strict hierarchical addressing (similar to the phone number addressing, where the first few digits always denote the country code).
+One of the biggest challenges facing the Internet core today is the [explosion of the IP routing and forwarding tables](/2009/06/internet-anarchy-ill-advertise-whatever/), which is caused primarily by traffic engineering and multihoming requirements. Things were supposed to get better when IPv6 introduced strict hierarchical addressing (similar to the phone number addressing, where the first few digits always denote the country code).
 
-Unfortunately, the hierarchical IPv6 addressing idea relied on incredible belief that the world will shape itself according to the wills of the IETF working group members. Not surprisingly, that didn't happen and [the hierarchical IPv6 addressing idea was quietly scrapped](/2009/05/lack-of-ipv6-multihoming-elephant-in.html), giving us plenty more prefixes to play with when trying to pollute the global IPv6 routing tables.
+Unfortunately, the hierarchical IPv6 addressing idea relied on incredible belief that the world will shape itself according to the wills of the IETF working group members. Not surprisingly, that didn't happen and [the hierarchical IPv6 addressing idea was quietly scrapped](/2009/05/lack-of-ipv6-multihoming-elephant-in/), giving us plenty more prefixes to play with when trying to pollute the global IPv6 routing tables.
 <!--more-->
 If we take a step back and ask ourselves: "why do we need IP multihoming in the first place?" the answer is simple: because the client *application* (layer-7 entity) connects to the *IP address* (layer-3 entity) of the server. If we want to have persistent sessions, the server IP address must remain reachable -- the headaches are caused by tight coupling across numerous protocol layers.
 

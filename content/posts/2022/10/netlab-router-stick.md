@@ -6,7 +6,7 @@ tags:
 - netlab
 title: netlab Router-on-a-Stick Example
 ---
-In early June 2022 I described [a netlab topology using VLAN trunks](/2022/06/netsim-vlan-trunk.html) in *netlab*. That topology provided pure bridging service for two IP subnets. Now let's go a step further and add a router-on-a-stick: 
+In early June 2022 I described [a netlab topology using VLAN trunks](/2022/06/netsim-vlan-trunk/) in *netlab*. That topology provided pure bridging service for two IP subnets. Now let's go a step further and add a router-on-a-stick: 
 
 * S1 and S2 are layer-2 switches (no IP addresses on *red* or *blue* VLANs).
 * ROS is a router-on-a-stick routing between *red* and *blue* VLANs.

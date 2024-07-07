@@ -1,5 +1,5 @@
 ---
-url: /2016/01/spanning-tree-stp-on-virtual-switches.html
+url: /2016/01/spanning-tree-stp-on-virtual-switches/
 title: "Spanning Tree (STP) on Virtual Switches"
 date: "2016-01-20T07:26:00.000+01:00"
 tags: [ switching,virtualization ]
@@ -8,11 +8,11 @@ tags: [ switching,virtualization ]
 <p>One of my readers sent me this question:</p>
 <blockquote class="cite">I'm researching NFV/SDN and wonder if the software L2 switches support spanning tree.</blockquote>
 <p>TL&amp;DR: Some do, some don’t.<!--more--></p>
-<p>VMware vSwitch (and distributed switch) are famous for their lack of spanning tree support and <a href="/2011/12/vmware-vswitch-baseline-of-simplicity.html">other shortcuts</a>. They pretend they’re not really switches but <a href="/2010/11/vmware-virtual-switch-no-need-for-stp.html">multiple hosts that just happen to have more than one MAC address on their uplinks</a>.</p>
-<p>Open vSwitch and Hyper-V virtual switch support STP, but one has to wonder whether that’s good or bad. It’s much easier to connect an ESXi host to the network than a host using one of the other virtual switches – properly configured ESXi utilizes all uplinks with no involvement from the physical switches, whereas the virtual switches that don’t pretend to be hosts <a href="http://blog.scottlowe.org/2012/10/19/link-aggregation-and-lacp-with-open-vswitch/">usually require LACP</a> (potentially combined with <a href="/2010/10/multi-chassis-link-aggregation-basics.html">MLAG</a>) unless you want to lose one (or more) of the uplinks to STP blocking.</p>
+<p>VMware vSwitch (and distributed switch) are famous for their lack of spanning tree support and <a href="/2011/12/vmware-vswitch-baseline-of-simplicity/">other shortcuts</a>. They pretend they’re not really switches but <a href="/2010/11/vmware-virtual-switch-no-need-for-stp/">multiple hosts that just happen to have more than one MAC address on their uplinks</a>.</p>
+<p>Open vSwitch and Hyper-V virtual switch support STP, but one has to wonder whether that’s good or bad. It’s much easier to connect an ESXi host to the network than a host using one of the other virtual switches – properly configured ESXi utilizes all uplinks with no involvement from the physical switches, whereas the virtual switches that don’t pretend to be hosts <a href="http://blog.scottlowe.org/2012/10/19/link-aggregation-and-lacp-with-open-vswitch/">usually require LACP</a> (potentially combined with <a href="/2010/10/multi-chassis-link-aggregation-basics/">MLAG</a>) unless you want to lose one (or more) of the uplinks to STP blocking.</p>
 <p>In any case, if you have to rely on STP running on your virtual switches, you’re doing something wrong (here’s a <a href="https://gist.github.com/lantz/7853026">great example of a totally broken approach</a>).</p>
 <p class="info">Properly implemented OVS-based solutions use a control plane (like NSX controller) that programs the OVS forwarding entries instead of STP.</p>
-<p class="warn">Even if a virtual switch doesn’t need STP to get its job done, it’s still crucial that it <a href="/2011/11/virtual-switches-need-bpdu-guard.html">recognizes BPDU frames coming from a VM and blocks that VM</a> (because an ID10T obviously configured bridging on that VM). VMware sadly <a href="/2012/09/dear-vmware-bpdu-filter-bpdu-guard.html">still hasn’t got the memo</a>.</p>
+<p class="warn">Even if a virtual switch doesn’t need STP to get its job done, it’s still crucial that it <a href="/2011/11/virtual-switches-need-bpdu-guard/">recognizes BPDU frames coming from a VM and blocks that VM</a> (because an ID10T obviously configured bridging on that VM). VMware sadly <a href="/2012/09/dear-vmware-bpdu-filter-bpdu-guard/">still hasn’t got the memo</a>.</p>
 <p>In a follow-up question, the same reader asked: </p>
 <blockquote class="cite">How does CPU switching handles broadcast storms? </blockquote>
 <p>This one is simple: by wasting CPU cycles...</p>

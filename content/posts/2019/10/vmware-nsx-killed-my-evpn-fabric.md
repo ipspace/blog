@@ -6,7 +6,7 @@ tags:
 - NSX
 - multicast
 title: VMware NSX Killed My EVPN Fabric
-url: /2019/10/vmware-nsx-killed-my-evpn-fabric.html
+url: /2019/10/vmware-nsx-killed-my-evpn-fabric/
 ---
 I had an interesting discussion with someone running VMware NSX on top of VXLAN+EVPN fabric a while ago. That's a pretty common scenario considering:
 

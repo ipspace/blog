@@ -1,11 +1,11 @@
 ---
-url: /2008/01/configure-default-route-based-on.html
+url: /2008/01/configure-default-route-based-on/
 title: "Configure the default route based on the presence of a BGP session"
 date: "2008-01-07T07:17:00.002+01:00"
 tags: [ BGP,IP routing,EEM ]
 ---
 
-<iframe border="0" frameborder="0" height="240" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-na.amazon-adsystem.com/e/cm?t=cisioshinandt-20&amp;o=1&amp;p=8&amp;l=st1&amp;mode=books&amp;search=Cisco%20CCIE&amp;nou=1&amp;fc1=000000&lt;1=_blank&amp;lc1=3366FF&amp;bg1=FFFFFF&amp;f=ifr" style="border:none; float:right;" width="120"></iframe>You've probably already heard the phrase "<a href="http://en.wikipedia.org/wiki/Golden_hammer">When the only tool you have is a hammer, everything looks like a nail</a>" (and seen people acting according to it). Likewise, if you have an IOS release with EEM support, a lot of things that would require smart design could be solved in a brute-force way with a few EEM applets. For example, the problem of the <a href="/2007/11/bgp-default-route.html">BGP default route</a> could be solved “easily” with a few applets that track syslog messages reporting when the BGP neighbors go up/down.<!--more-->I've set up the following scenario:<ul><li>My router has two BGP neighbors: 10.0.7.2 and 10.0.7.6;</li>
+<iframe border="0" frameborder="0" height="240" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-na.amazon-adsystem.com/e/cm?t=cisioshinandt-20&amp;o=1&amp;p=8&amp;l=st1&amp;mode=books&amp;search=Cisco%20CCIE&amp;nou=1&amp;fc1=000000&lt;1=_blank&amp;lc1=3366FF&amp;bg1=FFFFFF&amp;f=ifr" style="border:none; float:right;" width="120"></iframe>You've probably already heard the phrase "<a href="http://en.wikipedia.org/wiki/Golden_hammer">When the only tool you have is a hammer, everything looks like a nail</a>" (and seen people acting according to it). Likewise, if you have an IOS release with EEM support, a lot of things that would require smart design could be solved in a brute-force way with a few EEM applets. For example, the problem of the <a href="/2007/11/bgp-default-route/">BGP default route</a> could be solved “easily” with a few applets that track syslog messages reporting when the BGP neighbors go up/down.<!--more-->I've set up the following scenario:<ul><li>My router has two BGP neighbors: 10.0.7.2 and 10.0.7.6;</li>
 <li>Internet access through10.0.7.2 is the primary path;</li>
 <li>The default route through 10.0.7.6 should be used as a backup only.</li>
 </ul>

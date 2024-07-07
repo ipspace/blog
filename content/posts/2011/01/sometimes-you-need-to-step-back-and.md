@@ -6,7 +6,7 @@ tags:
 - DMVPN
 - OSPF
 title: Sometimes You Need to Step Back and Change Your Design
-url: /2011/01/sometimes-you-need-to-step-back-and.html
+url: /2011/01/sometimes-you-need-to-step-back-and/
 ---
 A few days ago I received the following e-mail from one of my readers:
 
@@ -28,6 +28,6 @@ Do the same for the backup spoke tunnel, this time using the DMVPN parameters fo
 
 The first problem I'm often encountering with very smart network engineers is the *CCIE mentality* (having nothing to do with actual engineers having that title, but with the way the lab exams are structured): they try to make the implementation work with existing broken design, no matter the complexity. CCIE lab exams (and lab preparation guides) have been pushing us in that direction for years.
 
-Real life is different: you should strive to have a design that results in a minimalistic implementation (which will be easier to roll out, operate and troubleshoot). When the implementation becomes too complex, it's time to step back, rethink and potentially even change the design. Sometimes you have to go as far back as questioning the actual business needs ([long-distance vMotion](/2013/01/long-distance-vmotion-stretched-ha.html) immediately comes to mind).
+Real life is different: you should strive to have a design that results in a minimalistic implementation (which will be easier to roll out, operate and troubleshoot). When the implementation becomes too complex, it's time to step back, rethink and potentially even change the design. Sometimes you have to go as far back as questioning the actual business needs ([long-distance vMotion](/2013/01/long-distance-vmotion-stretched-ha/) immediately comes to mind).
 
 The second problem I see quite often is the lack of fundamental understanding of how networking technologies work. For example: trying to use point-to-multipoint OSPF network type in a Phase 2 DMVPN subnet makes absolutely no sense. You should discard that idea based on your understanding of how OSPF and DMVPN work, not based on a failed lab test.

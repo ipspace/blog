@@ -9,7 +9,7 @@ tags:
 - vMotion
 - high availability
 title: Long-Distance vMotion, Stretched HA Clusters and Business Needs
-url: /2013/01/long-distance-vmotion-stretched-ha.html
+url: /2013/01/long-distance-vmotion-stretched-ha/
 ---
 During a recent [vMotion-over-VXLAN](http://www.yellow-bricks.com/2013/01/29/vmotion-over-vxlan-is-it-supported/) discussion Chris Saunders made a very good point: "*Folks should be asking a better question, like: Can I use VXLAN and vMotion together to meet my business requirements.*"
 
@@ -17,17 +17,17 @@ Yeah, it's always worth exploring the actual business needs.
 
 ### Based on a true story \...
 
-A while ago I was sitting in a roomful of extremely intelligent engineers working for a large data center company. Unfortunately they had been listening to a wrong group of virtualization consultants and ended up with the picture-perfect disaster-in-waiting: two data centers bridged together to support a [stretched VMware HA cluster](/2011/06/stretched-clusters-almost-as-good-as.html).
+A while ago I was sitting in a roomful of extremely intelligent engineers working for a large data center company. Unfortunately they had been listening to a wrong group of virtualization consultants and ended up with the picture-perfect disaster-in-waiting: two data centers bridged together to support a [stretched VMware HA cluster](/2011/06/stretched-clusters-almost-as-good-as/).
 <!--more-->
 {{<note>}}Actually, the disaster was no longer "in-waiting", they had already experienced a perfect bridging storm that took down both data centers.{{</note>}}
 
-During the discussion I tried not to be prejudicial grumpy L3 guru that I'm known to be (at least in vendor marketing circles) and focused on figuring out the actual business needs that triggered that [oh-so-popular design](/2015/02/before-talking-about-vmotion-across.html).
+During the discussion I tried not to be prejudicial grumpy L3 guru that I'm known to be (at least in vendor marketing circles) and focused on figuring out the actual business needs that triggered that [oh-so-popular design](/2015/02/before-talking-about-vmotion-across/).
 
 *Q:* "So what loads would you typically vMotion between the data centers?"
 
 *A:* "We don't use long-distance vMotion, that wouldn't work well... the VM would have to access the disk data residing on the LUN in the other data center"
 
-{{<note>}}Before you write a comment telling me how you could use storage vMotion to move the data and the vMotion to move the VM, do me a favor and [do some math](/2011/09/long-distance-vmotion-for-disaster.html).{{</note>}}
+{{<note>}}Before you write a comment telling me how you could use storage vMotion to move the data and the vMotion to move the VM, do me a favor and [do some math](/2011/09/long-distance-vmotion-for-disaster/).{{</note>}}
 
 *Q:* "So why do you have stretched HA cluster?"
 
@@ -73,4 +73,4 @@ During the discussion I tried not to be prejudicial grumpy L3 guru that I'm know
 
 Does this picture look familiar (particularly the business consultant part)?
 
-{{<figure src="s1600-project.jpg" caption="Source: www.projectcartoon.com">}}
+{{<figure src="/2013/01/s1600-project.jpg" caption="Source: www.projectcartoon.com">}}

@@ -1,11 +1,11 @@
 ---
-url: /2013/05/cisco-ios-tcp-mss-handling-on-ipv6.html
+url: /2013/05/cisco-ios-tcp-mss-handling-on-ipv6/
 title: "Cisco IOS TCP MSS handling on IPv6"
 date: "2013-05-10T16:26:00.000+02:00"
 tags: [ IPv6 ]
 ---
 
-<p>Just received an <a href="http://lists.cluenet.de/pipermail/ipv6-ops/2013-May/008832.html">email from Trevor Warwick</a> (Director, Cisco NOSTG Software Engineering, UK) on <a href="http://lists.cluenet.de/mailman/listinfo/ipv6-ops">ipv6-ops mailing list</a> (which you really should join if you plan to deploy IPv6) explaining the changes they made to <a href="/2013/01/mtu-issues-and-tcp-mss-clamping-in.html">IPv6 TCP MSS handling</a>.<!--more--></p>
+<p>Just received an <a href="http://lists.cluenet.de/pipermail/ipv6-ops/2013-May/008832.html">email from Trevor Warwick</a> (Director, Cisco NOSTG Software Engineering, UK) on <a href="http://lists.cluenet.de/mailman/listinfo/ipv6-ops">ipv6-ops mailing list</a> (which you really should join if you plan to deploy IPv6) explaining the changes they made to <a href="/2013/01/mtu-issues-and-tcp-mss-clamping-in/">IPv6 TCP MSS handling</a>.<!--more--></p>
 <blockquote class="cite"><p>I thought it would be worth giving an update on a couple matters arising from this original thread.</p>
 <ul class="ListParagraph"><li>The behaviour Mikael noticed, where MSS adjustment wasn't working for TCP over IPv6, was a bug that was specific to the 7300 platform. The fix is now committed and will ship in the next maintenance update of 15.2(4)M.</li>
 <li>Partly as a result of the feedback received on the original thread, there is a revised implementation of TCP MSS adjustment planned initially for 15.3(3)M for ISR platforms, which will allow MSS for TCP over IPv4 and IPv6  to be adjusted independently. This implementation will then appear on the ASR1000 series in a subsequent release, currently intended to be 15.4(1)S. [usual disclaimer about not taking these plans as commitments applies, if you have a need for any of these capabilities in a particular timeframe, please work with your account team to get formal agreements for delivery]</li>

@@ -6,7 +6,7 @@ tags:
 - OSPF
 - WAN
 title: Do We Still Need OSPF Areas and Summarization?
-url: /2016/09/do-we-still-need-ospf-areas-and.html
+url: /2016/09/do-we-still-need-ospf-areas-and/
 ---
 One of my [ExpertExpress design discussions](http://www.ipspace.net/ExpertExpress) focused on WAN network design and the need for OSPF areas and summarization (the customer had random addressing and the engineers wondered whether it makes sense to renumber the network to get better summarization).
 

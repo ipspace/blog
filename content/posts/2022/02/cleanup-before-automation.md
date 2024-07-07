@@ -3,7 +3,7 @@ title: "Do a Cleanup Before Automating Your Network"
 date: 2022-02-03 08:06:00
 tags: [ automation ]
 ---
-*[Remington Loose](https://www.linkedin.com/in/remington/) sent me an interesting email describing his views on the right approach to network automation after reading my _[Network Reliability Engineering Should Be More than Software or Automation](/2020/06/network-reliability-engineering-more-than-automation.html)_ rant -- he's advocating standardizing network services and cleaning up your network before trying to deploy full-scale automation.*
+*[Remington Loose](https://www.linkedin.com/in/remington/) sent me an interesting email describing his views on the right approach to network automation after reading my _[Network Reliability Engineering Should Be More than Software or Automation](/2020/06/network-reliability-engineering-more-than-automation/)_ rant -- he's advocating standardizing network services and cleaning up your network before trying to deploy full-scale automation.*
 
 ---
 

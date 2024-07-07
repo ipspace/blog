@@ -8,7 +8,7 @@ tags:
 - fabric
 - load balancing
 title: Stackable Data Center Switches? Do the Math!
-url: /2012/11/stackable-data-center-switches-do-math.html
+url: /2012/11/stackable-data-center-switches-do-math/
 ---
 Imagine you have a typical 2-tier data center network (because 3-tier is so last millennium): layer-2 top-of-rack switches redundantly connected to a pair of core switches running MLAG (to get around spanning tree limitations) and IP forwarding between VLANs.
 
@@ -46,7 +46,7 @@ Figuring out the available bandwidth between ToR switches is a bit trickier. Jun
 
 You might get lucky with traffic distribution and utilize multiple segments in the ring/chain simultaneously, but regardless of how lucky you are, you'll never get close to the bandwidth you had before you stacked the switches together, unless you started with a large oversubscription ratio.
 
-Furthermore, by using 10GE or 40GE ports to connect the ToR switches in a ring or daisy chain, you've split the available uplink ports into two groups: inter-server ports (within the stack) and northbound ports (uplinks to the core switch). In a traditional leaf-and-spine architecture you're able to fully utilize the all the uplinks regardless of the traffic profile; the utilization of links in a stacked ToR switch design depends heavily on the east-west versus northbound traffic ratio (the pathological case being known as [Monkey Design](/2012/04/monkey-design-still-doesnt-work-well.html)).
+Furthermore, by using 10GE or 40GE ports to connect the ToR switches in a ring or daisy chain, you've split the available uplink ports into two groups: inter-server ports (within the stack) and northbound ports (uplinks to the core switch). In a traditional leaf-and-spine architecture you're able to fully utilize the all the uplinks regardless of the traffic profile; the utilization of links in a stacked ToR switch design depends heavily on the east-west versus northbound traffic ratio (the pathological case being known as [Monkey Design](/2012/04/monkey-design-still-doesnt-work-well/)).
 
 **Conclusion:** daisy-chained stackable switches were probably a great idea in campus networks and 1GE world; be careful when using switch stacks in data centers. You might have to look elsewhere if you want to reduce the management overhead of your ToR switches.
 

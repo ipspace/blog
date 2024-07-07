@@ -4,7 +4,7 @@ tags:
 - firewall
 - security
 title: Use access-lists to filter IP packets with IP options
-url: /2007/02/use-access-lists-to-filter-ip-packets.html
+url: /2007/02/use-access-lists-to-filter-ip-packets/
 ---
 
 In the security advisory detailing the <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios124/124cg/hiap_c/ch05/hipofil.htm">Crafted IP Option Vulnerability</a> (a nasty bug that allows an intruder to reset your router with a <em>ping</em> packet), the authors forgot to mention a great tool available in IOS release 12.3(4)T (and integrated in 12.4): the ability to <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios124/124cg/hiap_c/ch05/hipofil.htm">filter packets with IP options in an access-list</a>.<!--more-->I've used this proof-of-concept access list that logs all <em>ping</em> packets with IP options:<pre class="code">ip access-list extended LogOptions<br/> permit icmp any any echo option any-options log<br/> permit icmp any any echo-reply option any-options log<br/> permit ip any any</pre>After an extended ping from my Windows XP workstation, the router (as expected) logged the offending packets:<blockquote class="code">%SEC-6-IPACCESSLOGDP: list LogOptions permitted icmp 10.0.0.10 -&gt; 172.16.0.12 (8/0), 1 packet<br/>%SEC-6-IPACCESSLOGDP: list LogOptions permitted icmp 10.0.0.10 -&gt; 172.16.0.12 (8/0), 3 packets</blockquote>

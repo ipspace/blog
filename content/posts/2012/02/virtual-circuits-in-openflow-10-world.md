@@ -5,9 +5,9 @@ tags:
 - MPLS
 - SDN
 title: Virtual Circuits in OpenFlow 1.0 World
-url: /2012/02/virtual-circuits-in-openflow-10-world.html
+url: /2012/02/virtual-circuits-in-openflow-10-world/
 ---
-Two days ago I described how you can [use tunneling or labeling to reduce the forwarding state in the network core](/2012/02/forwarding-state-abstraction-with.html) (which you have to do if you want to have reasonably fast convergence with currently-available OpenFlow-enabled switches). Now let's see what you can do in the very limited world of OpenFlow 1.0.
+Two days ago I described how you can [use tunneling or labeling to reduce the forwarding state in the network core](/2012/02/forwarding-state-abstraction-with/) (which you have to do if you want to have reasonably fast convergence with currently-available OpenFlow-enabled switches). Now let's see what you can do in the very limited world of OpenFlow 1.0.
 
 {{<note warn>}}OpenFlow 1.0 is obsolete, but it's still worth noting some of the underlying technical limitations -- see also RFC 1925 Rule 11.{{</note>}}
 <!--more-->
@@ -15,11 +15,11 @@ Two days ago I described how you can [use tunneling or labeling to reduce the fo
 
 Open vSwitch (OpenFlow-capable soft switch running on Linux/Xen/KVM) can use GRE tunnels to exchange MAC frames between hypervisor hosts across an IP backbone, but cannot use OpenFlow to provision those tunnels -- it uses [Open vSwitch Database](http://manpages.ubuntu.com/manpages/natty/man1/ovsdb-server.1.html) to get its configuration information (including GRE tunnel definitions).
 
-After the GRE tunnels have been created, they appear as regular interfaces within the Open vSwitch; an [OpenFlow controller](/2011/10/what-is-nicira-really-up-to.html) can use them in flow entries to push user packets across GRE tunnels to other hypervisor hosts.
+After the GRE tunnels have been created, they appear as regular interfaces within the Open vSwitch; an [OpenFlow controller](/2011/10/what-is-nicira-really-up-to/) can use them in flow entries to push user packets across GRE tunnels to other hypervisor hosts.
 
 Tunneling support within existing OpenFlow-enabled data center switches is virtually non-existent (Juniper's MX routers with OpenFlow add-on might be an exception), primarily due to hardware constraints.
 
-We will probably see [VXLAN](/2011/08/finally-mac-over-ip-based-vcloud.html)/NVGRE/GRE [implementations in data center switches](/2011/10/vxlan-termination-on-physical-devices.html) in the next few months, but I expect most of those implementations to be software-based and thus useless for anything else but a proof-of-concept.
+We will probably see [VXLAN](/2011/08/finally-mac-over-ip-based-vcloud/)/NVGRE/GRE [implementations in data center switches](/2011/10/vxlan-termination-on-physical-devices/) in the next few months, but I expect most of those implementations to be software-based and thus useless for anything else but a proof-of-concept.
 
 Cisco already has VXLAN-capable chipset in the M-series linecards; [believers in merchant silicon](http://etherealmind.com/merchant-silicon-vendor-software-rise-lost-opportunity/) will have to wait for the next-generation chipsets.
 

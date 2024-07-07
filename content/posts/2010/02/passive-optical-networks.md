@@ -4,7 +4,7 @@ tags:
 - optical
 - service providers
 title: Passive Optical Networks
-url: /2010/02/passive-optical-networks.html
+url: /2010/02/passive-optical-networks/
 ---
 When I've first heard about [Passive Optical Networks](http://en.wikipedia.org/wiki/Passive_optical_network), this blast from the past almost made my head explode. Imagine this: you're replacing obsolete copper cabling with fiber and decide to create shared media access network similar to the widely hated cable networks.
 

@@ -4,12 +4,12 @@ tags:
 - you've asked for it
 - IP routing
 title: 'Quick tip: Matching default route in a standard ACL'
-url: /2009/06/quick-tip-matching-default-route-in.html
+url: /2009/06/quick-tip-matching-default-route-in/
 ---
 
 <div class="bloggerBody"><p>I've got the following question from Matthew: »<span class="cite">how would one go about matching the default route for filtering using standard ACLs?</span>«</p>
 <p>In all routing protocols but EIGRP (which can carry the »default candidate« flag on any IP prefix), the default route has IP address 0.0.0.0 and subnet mask 0.0.0.0.</p>
 <p>To match the default route with a standard ACL, use <strong>access-list </strong><strong><em>x </em>permit 0.0.0.0</strong>. To match it with an extended ACL (which matches the IP address and the subnet mask portions), you have to use <strong>access-list <em>y</em> permit ip host 0.0.0.0 host 0.0.0.0</strong>. And finally, to match the default route in a prefix list, use <strong>ip prefix-list <em>z</em> permit 0.0.0.0/0</strong>.</p>
-<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.</p>
+<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>
 </div>
 

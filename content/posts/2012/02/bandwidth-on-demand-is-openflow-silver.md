@@ -5,7 +5,7 @@ tags:
 - OpenFlow
 - QoS
 title: 'Bandwidth-On-Demand: Is OpenFlow the Silver Bullet?'
-url: /2012/02/bandwidth-on-demand-is-openflow-silver.html
+url: /2012/02/bandwidth-on-demand-is-openflow-silver/
 ---
 Whenever the networking industry invents a new (somewhat radical) technology, bandwidth-on-demand seems to be one of the much-touted use cases. OpenFlow/SDN is no different -- Juniper used its OpenFlow implementation ([Open vSwitch sitting on top of Junos SDK](https://developer.juniper.net/content/dam/jdn/Programmable%20Networks/OpenFLow_APP_JDN_Overview.pdf)) to demonstrate *Bandwidth Calendaring* (see [Dave Ward's presentation @ OpenFlow Symposium](https://player.vimeo.com/video/31205041?title=0&byline=0&portrait=0) for more details), and Dmitri Kalintsev [recently blogged](http://telecomoccasionally.wordpress.com/2012/02/11/should-sdn-and-mpls-kiss-and-make-out/) "*How about an ability for things like Open vSwitch \... to actually signal the transport network its connectivity requirements \... say desired bandwidth*" I have only one problem with these ideas: I've seen them before.
 <!--more-->
@@ -15,7 +15,7 @@ I'm positive very smart network operators (including major CDN and content provi
 
 All three technologies I mentioned above faced the same set of problems:
 
--   [Per-flow (or per-granular-FEC) state in the network core never scales](/2011/10/openflow-and-state-explosion.html). This is what killed RSVP and ATM SVCs.
+-   [Per-flow (or per-granular-FEC) state in the network core never scales](/2011/10/openflow-and-state-explosion/). This is what killed RSVP and ATM SVCs.
 -   It's pretty hard to traffic engineer just the elephant flows. Either you do it properly and traffic engineer all traffic, or you end with a suboptimal network.
 -   Reacting to short-term changes in bandwidth requirements can cause interesting oscillations in the network (I'm positive Petr Lapukhov could point you to a dozen sources analyzing this problem).
 -   Nobody above the network layer really cares -- it's way simpler to blame the network when the [bandwidth fairy fails to deliver](http://en.wikipedia.org/wiki/Fallacies_of_Distributed_Computing).
@@ -26,7 +26,7 @@ Similarly, it's not hard to implement bandwidth-on-demand for specific elephant 
 
 {{<figure src="/2012/02/s400-HolyGrail.jpg" caption="Looking for the Holy Grail?">}}
 
-So, although I'm the first one to admit OpenFlow is an elegant tool to integrate flow classification (previously done with PBR) with traffic engineering (using MPLS-TE or any of the novel technologies proposed by Juniper) using the [hybrid deployment model](/2011/11/openflow-deployment-models.html), being a seasoned skeptic, I just don't believe we'll reach the holy grail of bandwidth-on-demand during this hype cycle. However, being an eternal optimist, I sincerely hope I'm wrong.
+So, although I'm the first one to admit OpenFlow is an elegant tool to integrate flow classification (previously done with PBR) with traffic engineering (using MPLS-TE or any of the novel technologies proposed by Juniper) using the [hybrid deployment model](/2011/11/openflow-deployment-models/), being a seasoned skeptic, I just don't believe we'll reach the holy grail of bandwidth-on-demand during this hype cycle. However, being an eternal optimist, I sincerely hope I'm wrong.
 
 #### Need help?
 

@@ -8,11 +8,11 @@ tags:
 - BGP
 - EVPN
 title: Don’t Sugarcoat the Challenges You Have
-url: /2019/04/dont-sugarcoat-challenges-you-have.html
+url: /2019/04/dont-sugarcoat-challenges-you-have/
 ---
 Last year I got into somewhat-heated discussion with a few engineers who followed the advice to [run IBGP EVPN address family on top of an EBGP underlay](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics).
 
-My main argument was simple: this is not how BGP was designed and how it's commonly used, and twisting it this way requires a schizophrenic BGP routing process, which introduces unnecessary complexity (even though it [looks simple in Junos configuration](/2018/05/dissecting-ibgpebgp-junos-configuration.html)) and might confuse people who have to run the network after the brilliant designer is gone.
+My main argument was simple: this is not how BGP was designed and how it's commonly used, and twisting it this way requires a schizophrenic BGP routing process, which introduces unnecessary complexity (even though it [looks simple in Junos configuration](/2018/05/dissecting-ibgpebgp-junos-configuration/)) and might confuse people who have to run the network after the brilliant designer is gone.
 <!--more-->
 What I got in return were personal attacks, an anonymous troll that was delighting everyone with a daily dose of irrelevance, but also a series of reasoned technical justifications that I still have a hard time buying.
 
@@ -36,11 +36,11 @@ And what's wrong with using a route server with EBGP connections to leaf switche
 
 Also, did you consider that you have to run that route reflector somewhere and that the compute nodes on which you run route reflectors become critical infrastructure? All this might be needed in humongous deployments, but probably not in 99% of the environments out there, for which the CPU and RAM available on the spine switches is probably good enough.
 
-BTW, all Junos examples I've seen had spines acting as IBGP route reflectors (which wouldn't work in [optimally-implemented EBGP underlay](/2018/06/is-ebgp-really-better-than-ospf-in-leaf.html) anyway).
+BTW, all Junos examples I've seen had spines acting as IBGP route reflectors (which wouldn't work in [optimally-implemented EBGP underlay](/2018/06/is-ebgp-really-better-than-ospf-in-leaf/) anyway).
 
 > ... but this is just bad implementation of a good design.
 
-Sure. How about those implementations (seen in live fabrics) that used different AS numbers on spine switches (making EBGP almost as bad as OSPF) just to get [IBGP-over-EBGP to work](/2018/09/valley-free-routing-in-data-center.html) because [valley-free-routing](/2018/09/valley-free-routing.html) interfered with their ideas?
+Sure. How about those implementations (seen in live fabrics) that used different AS numbers on spine switches (making EBGP almost as bad as OSPF) just to get [IBGP-over-EBGP to work](/2018/09/valley-free-routing-in-data-center/) because [valley-free-routing](/2018/09/valley-free-routing/) interfered with their ideas?
 
 In the meantime, a friend of mine who's been working with EVPN for years sent me this explanation:
 

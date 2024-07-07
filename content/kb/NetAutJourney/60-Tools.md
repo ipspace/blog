@@ -3,7 +3,7 @@ kb_section: NetAutJourney
 minimal_sidebar: true
 title: Tools Used in My Automation Projects
 toc_title: Tool Overview
-url: /kb/NetAutJourney/60-Tools.html
+url: /kb/NetAutJourney/60-Tools/
 ---
 I used numerous tools in my network automation projects. Here are some
 of those I think are worth investing your time in.
@@ -14,7 +14,7 @@ Let's start with Ansible. While it is very versatile and easy to use,
 it does have its shortcomings. I found myself creating extensive
 [regular expressions in playbooks](https://www.ipspace.net/kb/Ansible/Parsing_Text_Printouts_Ansible.html),
 some of which I am pretty sure I will regret later on
-(so-called _[write-only code](https://blog.ipspace.net/2018/04/avoid-write-only-code.html)_).
+(so-called _[write-only code](/2018/04/avoid-write-only-code/)_).
 
 It is also hard to avoid trying to use playbooks as a programming language.
 Ansible sort-of lures you into it as the playbook abstraction(or DSL, _domain-specific language_

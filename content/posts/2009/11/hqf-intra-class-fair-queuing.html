@@ -1,11 +1,11 @@
 ---
-url: /2009/11/hqf-intra-class-fair-queuing.html
+url: /2009/11/hqf-intra-class-fair-queuing/
 title: "HQF: intra-class fair queuing"
 date: "2009-11-16T06:43:00.001+01:00"
 tags: [ QoS ]
 ---
 
-<p>Continuing from my <a href="/2009/11/first-hqf-impressions-excellent-job.html">first excursion into the brave new world of HQF</a>, I wanted to check how well the intra-class fair queuing works. I’ve started with the <a href="/2009/11/first-hqf-impressions-excellent-job.html">same testbed and router configurations as before</a> and configured the following policy-map on the WAN interface:</p>
+<p>Continuing from my <a href="/2009/11/first-hqf-impressions-excellent-job/">first excursion into the brave new world of HQF</a>, I wanted to check how well the intra-class fair queuing works. I’ve started with the <a href="/2009/11/first-hqf-impressions-excellent-job/">same testbed and router configurations as before</a> and configured the following policy-map on the WAN interface:</p>
 <pre class="code">policy-map WAN<br/> class P5001<br/>    bandwidth percent 20<br/>    fair-queue<br/> class P5003<br/>    bandwidth percent 30<br/>class class-default<br/>    fair-queue</pre><p>The test used this background load:</p>
 <table class="codeTable"><tr><th>Class</th><th>Background load</th></tr><tr><td valign="top">P5001</td><td valign="top">10 parallel TCP sessions</td></tr><tr><td valign="top">P5003</td><td valign="top">1500 kbps UDP flood</td></tr><tr><td valign="top">class-default</td><td>1500 kbps UDP flood</td></tr></table><!--more--><p>As expected, the bandwidth distribution between the three traffic classes was almost optimal:</p>
 <pre class="code">a1#<strong>show policy-map interface serial 0/1/0 | include map|bps</strong><br/>    Class-map: P5001 (match-all)<br/>      30 second offered rate 394000 bps, drop rate 0 bps<br/>      bandwidth 20% (400 kbps)<br/>    Class-map: P5003 (match-all)<br/>      30 second offered rate 2073000 bps, drop rate 1479000 bps<br/>      bandwidth 30% (600 kbps)<br/>    Class-map: class-default (match-any)<br/>      30 second offered rate 1780000 bps, drop rate 790000 bps</pre><p>Next I’ve started a single (<em>iperf</em>) TCP session in the P5003 class. Using traditional CB-WFQ the session wouldn’t even start due to heavy congestion caused by the UDP floods. The same problem occurred with HQF since the P5003 class was using FIFO queuing.</p>

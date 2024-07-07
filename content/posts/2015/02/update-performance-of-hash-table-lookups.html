@@ -5,11 +5,11 @@ tags:
 - scalability
 - virtualization
 title: 'Update: Performance of Hash Table Lookups'
-url: /2015/02/update-performance-of-hash-table-lookups.html
+url: /2015/02/update-performance-of-hash-table-lookups/
 ---
 
-<p>In the <a href="/2015/02/myths-that-refuse-to-die-scalability-of.html">Myths That Refuse to Die: Scalability of Overlay Virtual Networking</a> blog post I wrote “<em>number of MAC addresses has absolutely no impact on the forwarding performance until the MAC hash table overflows</em>”, which happens to be <em>almost </em>true.<!--more--></p>
-<p>As always, the devil is in the details: assuming you dedicate a CPU core (or more of them) to the forwarding process like Intel DPDK or <a href="/2014/09/snabb-switch-deep-dive-on-software-gone.html">Snabb Switch</a> are doing, a small MAC table might fit into the CPU cache, while a hash lookup done on large MAC table inevitably results in accesses to main memory, which are way slower than reads from CPU cache.</p>
+<p>In the <a href="/2015/02/myths-that-refuse-to-die-scalability-of/">Myths That Refuse to Die: Scalability of Overlay Virtual Networking</a> blog post I wrote “<em>number of MAC addresses has absolutely no impact on the forwarding performance until the MAC hash table overflows</em>”, which happens to be <em>almost </em>true.<!--more--></p>
+<p>As always, the devil is in the details: assuming you dedicate a CPU core (or more of them) to the forwarding process like Intel DPDK or <a href="/2014/09/snabb-switch-deep-dive-on-software-gone/">Snabb Switch</a> are doing, a small MAC table might fit into the CPU cache, while a hash lookup done on large MAC table inevitably results in accesses to main memory, which are way slower than reads from CPU cache.</p>
 <p>I don’t have any vSwitch results that would corroborate this line of thinking, but engineers doing properly designed tests of hash arrays in scripting languages came to the same conclusion – see <a href="https://scalability.org/?p=7274">Real Measurement Is Hard</a> for details (and enjoy the beauty of the Perl code, which proves that Perl doesn’t have to look like line noise).</p>
 <p class="note">If you understood the <em>line noise </em>reference above, you’re way too old. Welcome to the “grumpy old engineers” club ;)</p>
 <p>On a slightly tangential note, OVS developers try really hard to implement fast hash table lookups in recent OVS releases – if you like reading <a href="http://www.amazon.com/gp/product/0321751043/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321751043&amp;linkCode=as2&amp;tag=cisioshinandt-20&amp;linkId=3ZYIO5I22LH4FSQJ">Donald Knuth books</a>, you’ll thoroughly enjoy <a href="https://github.com/openvswitch/ovs/blob/master/lib/cmap.c">Optimistic Concurrent Cuckoo Hash</a> (HT: <a href="http://highscalability.com/">highscalability.com</a> – an absolute must-read if you’re interested in any aspect of scalability).</p>

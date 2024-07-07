@@ -6,7 +6,7 @@ tags:
 - BGP
 - IP routing
 title: Another DMVPN Routing Question
-url: /2017/10/another-dmvpn-routing-question.html
+url: /2017/10/another-dmvpn-routing-question/
 ---
 One of my readers sent me an interesting DMVPN routing question. He has a design with a single DMVPN tunnel with two hubs (a primary and a backup hub), running BGP between hubs and spokes and IBGP session between hubs over a dedicated inter-hub link (he doesn't want the hub-to-hub traffic to go over DMVPN).
 
@@ -34,6 +34,6 @@ However, there's a more fundamental decision you have to make: do you prefer *di
 
 If you decide to go for *direct* traffic flow, make sure the hub routers don't change the BGP next hop. NHRP redirects for spoke-to-spoke traffic will work (because both hub routers know the destination is reachable via another spoke due to BGP next hop), but you might get traffic black holes if a hub router cannot reach a spoke router (for example, due to IPsec session failure).
 
-If you decide to go for *reliable* traffic flow, change BGP next hops to *self* on every hop. The traffic will [flow over the same path as BGP path information data](/2014/08/fate-sharing-in-ip-networks.html), but you might get suboptimal traffic flow that concerned my reader.
+If you decide to go for *reliable* traffic flow, change BGP next hops to *self* on every hop. The traffic will [flow over the same path as BGP path information data](/2014/08/fate-sharing-in-ip-networks/), but you might get suboptimal traffic flow that concerned my reader.
 
 Want to discuss an interesting problem you're facing in your network? I'm usually available for [online consulting](http://www.ipspace.net/ExpertExpress).

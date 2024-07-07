@@ -7,7 +7,7 @@ tags:
 - IPsec
 - MPLS VPN
 title: Where Would You Need GRE?
-url: /2010/12/where-would-you-need-gre.html
+url: /2010/12/where-would-you-need-gre/
 ---
 After I made the "_duct tape of networking_" joke, I quickly became a *GRE lover* (according to @Neelixx -- another Twitter account lost in the mists of time). Jokes aside, let's see where it makes sense to use GRE.
 
@@ -17,7 +17,7 @@ Whenever you want to transport your data over a third-party IP infrastructure wi
 
 There are at least five mechanisms that can do that (please add the ones I've missed in the comments):
 
--   IPsec tunneling mode, which encrypts *private* IP packet and transports it in a *public* IP datagram with [*Encapsulated Security Payload*](#Encapsulating_Security_Payload) header;
+-   IPsec tunneling mode, which encrypts *private* IP packet and transports it in a *public* IP datagram with *Encapsulated Security Payload* header;
 -   GRE, which puts *private* IP packet in a GRE envelope (IP+GRE header);
 -   LISP, which uses LISP-over-UDP-over-IP headers;
 -   Various SSL VPNs, which put private IP packets into SSL (encrypted HTTP);

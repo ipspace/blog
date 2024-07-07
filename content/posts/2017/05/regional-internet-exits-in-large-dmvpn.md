@@ -5,7 +5,7 @@ tags:
 - design
 - DMVPN
 title: Regional Internet Exits in Large DMVPN Deployment
-url: /2017/05/regional-internet-exits-in-large-dmvpn.html
+url: /2017/05/regional-internet-exits-in-large-dmvpn/
 ---
 One of my readers wanted to implement a large DMVPN cloud with regional Internet exit points:
 
@@ -15,7 +15,7 @@ He wasn't particularly happy with the idea of deploying access and core DMVPN cl
 <!--more-->
 > Looking at various design documents, they lead you to a hierarchical setup but I would like to look at your webinar if it discusses DMVPN setup in a similar manner.
 
-The easy answer first: no, my [DMVPN webinars](http://www.ipspace.net/DMVPN_trilogy) don't discuss such a setup. It's a routing challenge and has nothing to do with DMVPN. It does help though if you [understand](/2008/09/knowledge-or-recipes.html) how DMVPN works and how you should use routing protocols across DMVPN, and that is definitely covered in the DMVPN webinars.
+The easy answer first: no, my [DMVPN webinars](http://www.ipspace.net/DMVPN_trilogy) don't discuss such a setup. It's a routing challenge and has nothing to do with DMVPN. It does help though if you [understand](/2008/09/knowledge-or-recipes/) how DMVPN works and how you should use routing protocols across DMVPN, and that is definitely covered in the DMVPN webinars.
 
 Now for the interesting part.
 
@@ -35,4 +35,4 @@ The "only" drawback of this setup is suboptimal inter-region spoke-to-spoke traf
 
 {{<figure src="/2017/05/s550-DMVPN_Exit_Single_Routing.jpeg">}}
 
-Finally a note for SD-WAN aficionados: before you tell me how much easier this would be with your preferred SD-WAN solution, do remember that an SD-WAN controller is functionally equivalent to a BGP route reflector. It's just that the route propagation functionality is [hidden behind a GUI façade](/2015/06/software-defined-wanwell-orchestrated.html).
+Finally a note for SD-WAN aficionados: before you tell me how much easier this would be with your preferred SD-WAN solution, do remember that an SD-WAN controller is functionally equivalent to a BGP route reflector. It's just that the route propagation functionality is [hidden behind a GUI façade](/2015/06/software-defined-wanwell-orchestrated/).

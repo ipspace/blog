@@ -6,11 +6,11 @@ tags: [ DHCP ]
 pre_scroll: True
 series: [ dhcp-relay ]
 ---
-Previous posts in this series ([DHCP relaying principles](/2023/03/dhcp-relay-process.html), [inter-VRFs relaying](/2023/03/netlab-vrf-dhcp-relay.html), [relaying in VXLAN segments](/2023/03/netlab-vxlan-dhcp-relay.html) and [relaying from EVPN VRF](/2023/04/netlab-evpn-dhcp-relay.html)) used a single DHCP server. It's time to add another layer of complexity: redundant DHCP servers.
+Previous posts in this series ([DHCP relaying principles](/2023/03/dhcp-relay-process/), [inter-VRFs relaying](/2023/03/netlab-vrf-dhcp-relay/), [relaying in VXLAN segments](/2023/03/netlab-vxlan-dhcp-relay/) and [relaying from EVPN VRF](/2023/04/netlab-evpn-dhcp-relay/)) used a single DHCP server. It's time to add another layer of complexity: redundant DHCP servers.
 
 ### Lab Topology
 
-We'll use a lab topology similar to the [VXLAN DHCP relaying](/2023/03/netlab-vxlan-dhcp-relay.html) lab, add a second DHCP server, and a third switch connecting the two DHCP servers to the rest of the network.
+We'll use a lab topology similar to the [VXLAN DHCP relaying](/2023/03/netlab-vxlan-dhcp-relay/) lab, add a second DHCP server, and a third switch connecting the two DHCP servers to the rest of the network.
 <!--more-->
 {{<figure src="/2023/04/vxlan-redundant-dhcp-server.png" caption="Lab topology diagram">}}
 
@@ -53,17 +53,17 @@ You can [view the complete topology file on GitHub](https://github.com/ipspace/n
 
 You can add redundancy to the DHCP relaying process in several ways:
 
-* Have multiple switches with **ip helper-address** interface configuration connected to the same network (already covered in [VXLAN](/2023/03/netlab-vxlan-dhcp-relay.html) and [EVPN](/2023/04/netlab-evpn-dhcp-relay.html) scenarios)
+* Have multiple switches with **ip helper-address** interface configuration connected to the same network (already covered in [VXLAN](/2023/03/netlab-vxlan-dhcp-relay/) and [EVPN](/2023/04/netlab-evpn-dhcp-relay/) scenarios)
 * Have multiple DHCP servers, and list them all in **ip helper-address** configuration commands.
 * Use anycast IP address across multiple DHCP servers, and as the destination for **ip helper-address** command.
 
-Using [anycast](/series/anycast.html) sounds like an awesome idea. After all, DNS and DHCP run on top of UDP, and [tons of people use anycast with DNS](/2021/11/dns-anycast.html). Unfortunately, there's a tiny difference between DNS and DHCP. While they both use unreliable transport, DNS is a stateless service, while DHCP  address acquisition is a multi-step process, and DHCP servers have to keep long-term information about their clients. Trying to implement anycast-based DHCP is thus an [interesting exercise](https://gitlab.isc.org/isc-projects/kea/-/wikis/designs/anycast-ha-considerations).
+Using [anycast](/series/anycast/) sounds like an awesome idea. After all, DNS and DHCP run on top of UDP, and [tons of people use anycast with DNS](/2021/11/dns-anycast/). Unfortunately, there's a tiny difference between DNS and DHCP. While they both use unreliable transport, DNS is a stateless service, while DHCP  address acquisition is a multi-step process, and DHCP servers have to keep long-term information about their clients. Trying to implement anycast-based DHCP is thus an [interesting exercise](https://gitlab.isc.org/isc-projects/kea/-/wikis/designs/anycast-ha-considerations).
 
 We'll skip the unicorn pastures and focus on the simple scenario: multiple **ip helper-address** commands (one per DHCP server) on ingress interfaces. It's always worth checking how that works, but both platforms I tested (Cisco IOS/XE and Arista EOS) relay broadcast packets to *all configured servers* in parallel.
 
 ### Device Configurations
 
-I made the following configuration changes to the [VXLAN DHCP relaying configuration](/2023/03/netlab-vxlan-dhcp-relay.html):
+I made the following configuration changes to the [VXLAN DHCP relaying configuration](/2023/03/netlab-vxlan-dhcp-relay/):
 
 * Edge switches forward DHCP broadcasts to two DHCP servers.
 * Each DHCP server has half of the VLAN subnet in its DHCP pool to prevent address assignment conflicts[^AAC].
@@ -115,12 +115,12 @@ The [final device configurations](https://github.com/ipspace/netlab-examples/tre
 
 ### What's Going On Behind the Scenes?
 
-By now, you should know how the [DHCP relaying process works](/2023/03/dhcp-relay-process.html):
+By now, you should know how the [DHCP relaying process works](/2023/03/dhcp-relay-process/):
 
 * DHCP client sends a DHCP DISCOVER local broadcast
 * The switches attached to the client VLAN forwards the DHCP request to all DHCP servers configured in the **ip helper-address** interface configuration commands.
 * The source IP address of the relayed packet, and the **giaddr** (gateway IP address) in the forwarded DHCP request, is the unicast VLAN IP address of the relaying switch.
-* Each DHCP server receives two copies of the DHCP DISCOVER request but replies with a single DHCP OFFER packet to the first DHCP REQUEST packet it received (see [VXLAN DHCP relaying](/2023/03/netlab-vxlan-dhcp-relay.html) for more details).
+* Each DHCP server receives two copies of the DHCP DISCOVER request but replies with a single DHCP OFFER packet to the first DHCP REQUEST packet it received (see [VXLAN DHCP relaying](/2023/03/netlab-vxlan-dhcp-relay/) for more details).
 * The DHCP client receives two DHCP OFFERs with different IP addresses belonging to the VLAN subnet.
 
 Here are the relevant bits from the DHCP client log, you can view the full [client](https://github.com/ipspace/netlab-examples/blob/master/DHCP/vxlan-redundant-server/logs/request-cl_a.log) and server ([srv1](https://github.com/ipspace/netlab-examples/blob/master/DHCP/vxlan-redundant-server/logs/request-srv1.log), [srv2](https://github.com/ipspace/netlab-examples/blob/master/DHCP/vxlan-redundant-server/logs/request-srv2.log)) debugging logs on [GitHub](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vxlan-redundant-server/logs).

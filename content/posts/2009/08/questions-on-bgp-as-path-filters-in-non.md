@@ -3,9 +3,9 @@ date: 2009-08-18 21:07:00.003000+02:00
 tags:
 - BGP
 title: Questions on BGP AS-Path Filters in Non-Transit Networks
-url: /2009/08/questions-on-bgp-as-path-filters-in-non.html
+url: /2009/08/questions-on-bgp-as-path-filters-in-non/
 ---
-I've sent a link to my [*Filter excessively prepended AS-paths*](/kb/tag/BGP/Filter_Excessively_Prepended_BGP_Paths.html) article as an answer to a BGP route-map question to the NANOG mailing list and got several interesting questions from Dylan a few hours later. As they are pretty common, you might be interested in them as well.
+I've sent a link to my [*Filter excessively prepended AS-paths*](/kb/tag/BGP/Filter_Excessively_Prepended_BGP_Paths/) article as an answer to a BGP route-map question to the NANOG mailing list and got several interesting questions from Dylan a few hours later. As they are pretty common, you might be interested in them as well.
 
 > In my environment, we are not doing full routes. We have partial routes from AS X and then fail to AS Y. Is their any advantage for someone like me to do this, as we are not providing any IP transit so we are not passing the route table to anyone else?
 <!--more-->

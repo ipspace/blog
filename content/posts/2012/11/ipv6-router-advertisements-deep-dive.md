@@ -4,7 +4,7 @@ tags:
 - IPv6
 - security
 title: IPv6 Router Advertisements Deep Dive
-url: /2012/11/ipv6-router-advertisements-deep-dive.html
+url: /2012/11/ipv6-router-advertisements-deep-dive/
 ---
 I'm constantly getting questions about the intricate interworking of various flags present in IPv6 Router Advertisement messages. Here's a (hopefully comprehensive) summary taken primarily from [RFC 4861](http://tools.ietf.org/html/rfc4861).
 <!--more-->

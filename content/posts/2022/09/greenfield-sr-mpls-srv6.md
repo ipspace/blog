@@ -19,7 +19,7 @@ Now for the _why_ part of the question:
 
 But wait, it gets worse. Contrary to the popular PowerPoint-based wisdom:
 
-* [SRv6 is no more secure than MPLS](/2021/11/worth-reading-srv6-insecure.html).
+* [SRv6 is no more secure than MPLS](/2021/11/worth-reading-srv6-insecure/).
 * SRv6 running on top of public IPv6 network is therefore as secure as MPLS-over-GRE-over-IP.
 * SRv6 does not enable service insertion any more than VXLAN, Geneve, Network Services Header (NSH), or MPLS.
 

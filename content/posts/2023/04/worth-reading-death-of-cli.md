@@ -7,4 +7,4 @@ Jeff McLaughlin wrote a nice blog post on [the death of CLI](https://subnetzero.
 
 > The GUI-based layout tool [for iOS app development] is going away in favor of UI-as-code! The black screen always comes back!
 
-As I've been [saying for ages](/series/cli.html): people optimizing their productivity use CLI.
+As I've been [saying for ages](/series/cli/): people optimizing their productivity use CLI.

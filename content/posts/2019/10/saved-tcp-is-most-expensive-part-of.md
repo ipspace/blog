@@ -7,7 +7,7 @@ tags:
 - TCP
 - data center
 title: 'Saved: TCP Is the Most Expensive Part of Your Data Center'
-url: /2019/10/saved-tcp-is-most-expensive-part-of.html
+url: /2019/10/saved-tcp-is-most-expensive-part-of/
 ---
 Years ago [Dan Hughes](https://www.linkedin.com/in/danhughes1234ie/) wrote a great blog post explaining how expensive TCP is. His web site is long gone, but I managed to grab the blog post before it disappeared and he kindly allowed me to republish it.
 
@@ -44,4 +44,4 @@ Now, work out the SDE time to make your applications do the right thing. Bet you
 
 ---
 
-As I keep saying, we\'re still paying for the \"wisdom\" of the ancients who decided that [TCP/IP doesn\'t need a session layer](/2009/08/what-went-wrong-tcpip-lacks-session.html)\...
+As I keep saying, we\'re still paying for the \"wisdom\" of the ancients who decided that [TCP/IP doesn\'t need a session layer](/2009/08/what-went-wrong-tcpip-lacks-session/)\...

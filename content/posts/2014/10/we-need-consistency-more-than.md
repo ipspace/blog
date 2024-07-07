@@ -7,7 +7,7 @@ series_weight: 1100
 tags:
 - SDN
 title: We Need Consistency more than Controllers
-url: /2014/10/we-need-consistency-more-than.html
+url: /2014/10/we-need-consistency-more-than/
 ---
 I was listening to the [I2RS Packet Pushers podcast](http://packetpushers.net/show-181-intro-to-i2rs-with-joel-halpern-russ-white/) a while ago and was more than glad that when Greg Ferro yet again mentioned the complexity of OSPF, someone simply pointed out that controllers would not reduce the complexity; if anything they would increase it.
 <!--more-->

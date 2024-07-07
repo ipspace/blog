@@ -4,11 +4,11 @@ tags:
 - automation
 - Ansible
 title: Use Ansible to Execute a Single Command on All Routers
-url: /2017/02/use-ansible-to-execute-single-command.html
+url: /2017/02/use-ansible-to-execute-single-command/
 ---
 
 <p>I was using Ansible playbooks to configure Cisco IOS routers running in VIRL and wanted to extract the router configurations before stopping the simulation.</p>
-<p class="info">You can <a href="https://github.com/ipspace/MPLS-infrastructure">download the playbooks</a> from my Github repository, and here’s how you can <a href="/2016/11/testing-ansible-playbooks-with-cisco.html">run Ansible with VIRL</a>.<!--more--></p>
+<p class="info">You can <a href="https://github.com/ipspace/MPLS-infrastructure">download the playbooks</a> from my Github repository, and here’s how you can <a href="/2016/11/testing-ansible-playbooks-with-cisco/">run Ansible with VIRL</a>.<!--more--></p>
 <p>Unfortunately, VIRL extracts startup configurations not running ones, so I’d have to log into each router and execute <strong>write memory</strong> (the command youngsters know as <strong>copy running startup</strong>). Making it worse, my lab had six routers. Yes, I know, I have first-world problems.</p>
 <p>Fortunately, I was using Ansible, and had the inventory file describing all the routers, so it should be relatively easy to execute <strong>write memory </strong>on all of them with the <strong>raw </strong>module, but my default Ansible connection plugin was <strong>local </strong>to <a href="http://automation.ipspace.net/Example:Using_Ansible_Networking_Modules">make networking modules work correctly</a>.</p>
 <p class="update">Update 2017-02-14: As Nikolay pointed out in the comments, I might be able to use the <strong>ios_command</strong> module.</p>

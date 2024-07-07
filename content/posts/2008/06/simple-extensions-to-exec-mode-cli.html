@@ -5,11 +5,11 @@ tags:
 - command line interface
 - show filters
 title: Simple extensions to exec-mode CLI
-url: /2008/06/simple-extensions-to-exec-mode-cli.html
+url: /2008/06/simple-extensions-to-exec-mode-cli/
 ---
 
 The various <b>show</b> filters available in Cisco IOS are a great tool to minimize the amount of printout you have to analyze, their only problem (from my perspective) is that you cannot make an alias out of them, as you usually have to supply one or more parameters to the <b>show</b> command and these parameters have to be inserted before the filter (and the <b>alias</b> command does not support replaceable parameters). You could solve the problem with Tcl shell, but I'm not sure many networking engineers are fluent Tcl programmers. Fortunately, the code you need is so simple anyone can create a working solution.<!--more--><p>Follow these simple steps:<ol><li>Execute the <b>show</b> command you're interested in and fine-tune the filter. For example, I wanted to have a short display of IP interfaces produced with the <b>show ip interface fa0/0 ¦ include address¦protocol</b> command.</li>
-<li>Store the following line of Tcl code in a flash file: <tt>puts [exec "<em>your-command</em>"]</tt>, replacing the arguments in your command with $argv (you can <a href="/2008/01/copy-text-files-into-router-flash.html">use this trick</a> if you don't have an external file server handy). In my case, the <em>flash:ipconfig.tcl</em> file contained the following code:</li>
+<li>Store the following line of Tcl code in a flash file: <tt>puts [exec "<em>your-command</em>"]</tt>, replacing the arguments in your command with $argv (you can <a href="/2008/01/copy-text-files-into-router-flash/">use this trick</a> if you don't have an external file server handy). In my case, the <em>flash:ipconfig.tcl</em> file contained the following code:</li>
 <pre class="code">puts [exec "show ip interface $argv ¦ include address¦protocol"]</pre><li>Define a command alias: <b>alias exec <em>new-command</em> tclsh <em>file-in-flash</em></b>, for example, <b>alias exec ipconfig flash:ipconfig.tcl</b>.</li>
 </ol>
 Now you can execute your new command and use command parameters to select the printout you want.<pre class="code">X1#<b>ipconfig fa0/0</b><br/>FastEthernet0/0 is up, line protocol is up<br/>  Internet address is 172.16.0.1/24<br/>  Broadcast address is 255.255.255.255<br/>  Helper address is not set<br/>  Network address translation is disabled</pre><p class="warn">Replace the broken vertical bar in sample printouts with a vertical bar before using them.</p>

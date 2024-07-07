@@ -9,7 +9,7 @@ tags:
 - BGP
 - IP routing
 title: 'Routing Protocols: Perfect Example of RFC 1925 Rule 5'
-url: /2017/10/routing-protocols-perfect-example-of.html
+url: /2017/10/routing-protocols-perfect-example-of/
 ---
 In case you're not familiar with RFC 1925, Rule 5 states:
 

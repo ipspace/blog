@@ -7,7 +7,7 @@ tags:
 - BGP
 - MPLS VPN
 title: Beware of the Pre-Bestpath Cost Extended BGP Community
-url: /2012/10/beware-of-pre-bestpath-cost-extended.html
+url: /2012/10/beware-of-pre-bestpath-cost-extended/
 ---
 One of my readers sent me an interesting problem a few days ago: the BGP process running on a PE-router in his MPLS/VPN network preferred an iBGP route received from another PE-router to a locally sourced (but otherwise identical) route. When I looked at the detailed printout, I spotted something "interesting" -- the *pre-bestpath cost* extended BGP community.
 <!--more-->
@@ -33,6 +33,6 @@ The [BGP cost community](http://tools.ietf.org/html/draft-retana-bgp-custom-deci
 
 BGP paths without the *cost* community are assumed to have a pretty high cost value (2147483647, as [explained by Cisco's documentation](http://www.cisco.com/en/US/docs/ios/12_0s/feature/guide/s_bgpcc.html)), causing the iBGP route to be better than the local route (which had no cost community).
 
-The *cost* extended BGP community is usually seen in [networks running EIGRP between PE-and CE-routers](/2008/07/multihomed-eigrp-sites-in-mpls-vpn.html) that try to cope with multihomed customer sites. Although you could change it manually with the **set extcommunity cost** command in numerous places where a route-map can be used, it should not appear in my reader's network -- his default route was a simple static route redistributed into BGP without a route-map.
+The *cost* extended BGP community is usually seen in [networks running EIGRP between PE-and CE-routers](/2008/07/multihomed-eigrp-sites-in-mpls-vpn/) that try to cope with multihomed customer sites. Although you could change it manually with the **set extcommunity cost** command in numerous places where a route-map can be used, it should not appear in my reader's network -- his default route was a simple static route redistributed into BGP without a route-map.
 
 It turned out he stumbled upon a bug; he was using EIGRP in the same VRF, and removing and re-enabling EIGRP-to-BGP redistribution in the VRF address family removed the stray *cost* community from the default route. Obviously that fix isn't always applicable -- you can't simply bounce EIGRP redistribution every time a BGP prefix gets a weird set of communities -- but fortunately you can ignore the *cost* community with the **bgp bestpath cost-community ignore** router configuration command.

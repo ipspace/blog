@@ -3,7 +3,7 @@ date: 2011-11-12 19:31:00.001000+01:00
 tags:
 - worth reading
 title: Welcome to ipSpace.net
-url: /2011/11/welcome-to-ipspacenet.html
+url: /2011/11/welcome-to-ipspacenet/
 ---
 During the last days there have been [rumors of flying pigs](http://twitter.com/#!/RagnarBelial/status/134211847682392064) and open speculations whether I'd [rename my blog](http://twitter.com/#!/etherealmind/status/135022944748453889) to [junoshints](http://twitter.com/#!/cooperlees/status/134158727677882368) or [junioshints](http://twitter.com/#!/pcolomes/status/135023518520836096) due to my Junos-related posts. When even my wife told me to get my act together, it was time to move \... and you can see the first changes at the top left corner of the screen.
 <!--more-->

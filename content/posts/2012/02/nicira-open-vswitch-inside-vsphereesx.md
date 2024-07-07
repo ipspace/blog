@@ -6,11 +6,11 @@ tags:
 - overlay networks
 - virtualization
 title: Nicira Open vSwitch Inside vSphere/ESX
-url: /2012/02/nicira-open-vswitch-inside-vsphereesx.html
+url: /2012/02/nicira-open-vswitch-inside-vsphereesx/
 ---
-I got intrigued when reading [Nicira's white paper](http://www.nicira.com/en/network-virtualization-platform) claiming their Open vSwitch can run within vSphere/ESX hypervisor. There are three APIs that you could use to get that job done: [dvFilter API](http://blogs.vmware.com/vcloud/2010/04/what-actually-is-vmsafe-and-the-vmsafe-api.html) (intercepting VM NIC like [vCDNI](/2011/04/vcloud-director-networking.html) does), the undocumented virtual switch API used by Cisco's Nexus 1000v, or the device driver interface (intercepting uplink traffic). Turns out Nicira decided to use a fourth approach using nothing but publicly available APIs.
+I got intrigued when reading [Nicira's white paper](http://www.nicira.com/en/network-virtualization-platform) claiming their Open vSwitch can run within vSphere/ESX hypervisor. There are three APIs that you could use to get that job done: [dvFilter API](http://blogs.vmware.com/vcloud/2010/04/what-actually-is-vmsafe-and-the-vmsafe-api.html) (intercepting VM NIC like [vCDNI](/2011/04/vcloud-director-networking/) does), the undocumented virtual switch API used by Cisco's Nexus 1000v, or the device driver interface (intercepting uplink traffic). Turns out Nicira decided to use a fourth approach using nothing but publicly available APIs.
 <!--more-->
-{{<figure src="s1600-Nicira-ESX-API.png" caption="Available ESX APIs">}}
+{{<figure src="/2012/02/s1600-Nicira-ESX-API.png" caption="Available ESX APIs">}}
 
 ### How relevant is this?
 
@@ -27,21 +27,21 @@ Meanwhile, VMware discontinued the networking API used by Cisco's Nexus 1000v (w
 
 ### Back to Nicira...
 
-As I wrote in the [update to the Nicira Uncloaked post](/2012/02/nicira-uncloaked.html), the cool trick they used relies on a few obscure properties of the Distributed vSwitch (vDS) and statically bound Distributed Ports. Let me show you how it actually works step-by-step (if you don't want to spoil the magic, stop reading right now)\... but before starting the journey, remember where we want to end: we want to have virtual machines connected to Open vSwitch, which uses the *transport network* (VLAN tags or MAC-over-GRE tunneling) to [build virtual networks as dictated by the OpenFlow controller](/2011/10/what-is-nicira-really-up-to.html) (Nicira's Network Virtualization Platform -- NVP).
+As I wrote in the [update to the Nicira Uncloaked post](/2012/02/nicira-uncloaked/), the cool trick they used relies on a few obscure properties of the Distributed vSwitch (vDS) and statically bound Distributed Ports. Let me show you how it actually works step-by-step (if you don't want to spoil the magic, stop reading right now)\... but before starting the journey, remember where we want to end: we want to have virtual machines connected to Open vSwitch, which uses the *transport network* (VLAN tags or MAC-over-GRE tunneling) to [build virtual networks as dictated by the OpenFlow controller](/2011/10/what-is-nicira-really-up-to/) (Nicira's Network Virtualization Platform -- NVP).
 
-{{<figure src="s1600-Nicira-ESX-Goal.png" caption="High-level overview of the problem they were trying to solve">}}
+{{<figure src="/2012/02/s1600-Nicira-ESX-Goal.png" caption="High-level overview of the problem they were trying to solve">}}
 
-{{<note>}}This blog post focuses on the intra-vSphere part of the solution. For more details on the \"transport\" part (which I left cloudy for a reason), read my other OpenFlow/Nicira blog posts, for example [*What is Nicira really up to*](/2011/10/what-is-nicira-really-up-to.html) and [*Decouple virtual networking from the physical world*](/2011/12/decouple-virtual-networking-from.html). TL&DR summary for the differently attentive: the \"transport\" cloud is almost \"NVGRE/VXLAN with a centralized control plane\".{{</note>}}
+{{<note>}}This blog post focuses on the intra-vSphere part of the solution. For more details on the \"transport\" part (which I left cloudy for a reason), read my other OpenFlow/Nicira blog posts, for example [*What is Nicira really up to*](/2011/10/what-is-nicira-really-up-to/) and [*Decouple virtual networking from the physical world*](/2011/12/decouple-virtual-networking-from/). TL&DR summary for the differently attentive: the \"transport\" cloud is almost \"NVGRE/VXLAN with a centralized control plane\".{{</note>}}
 
 Start with a distributed switch (vDS). It seems like it spans across a number of hosts, but that's just the management-plane perception; in reality, every vSphere host has an independent forwarding component.
 
-{{<figure src="s1600-Nicira-ESX-VDS-Transport.png" caption="VMware VDS overview">}}
+{{<figure src="/2012/02/s1600-Nicira-ESX-VDS-Transport.png" caption="VMware VDS overview">}}
 
 Now imagine you have a vDS (or a port group within a vDS) with no uplinks. It seems to span across numerous ESX hosts, you can vMotion VMs between the hosts, but only the VMs inside the same host can actually communicate.
 
 Next, start an Open vSwitch-hosting VM in every ESX host and connect it to the isolated port group as well as the outside transport network (another port group). The traffic between VMs connected to the isolated port group and the outside world has to pass through the OVS VM, and since there is no other way for the isolated VMs to reach the outside world, there can be no forwarding loops.
 
-{{<figure src="s1600-Nicira-ESX-OVS-Transport.png" caption="Open vSwitch inserted into a VDS port group">}}
+{{<figure src="/2012/02/s1600-Nicira-ESX-OVS-Transport.png" caption="Open vSwitch inserted into a VDS port group">}}
 
 Still, the VMs connected to the same port group can communicate with each other. We need another trick -- the per-port properties of statically bound Distributed Ports. If you use vDS, you can set numerous properties on individual ports (VM NICs), *including access VLAN*. Yes, you can run multiple VLANs *within a single port group.* Mindboggling. I never realized you could do that.
 
@@ -52,20 +52,20 @@ So this is what you do:
 
 The OVS VM will receive all traffic generated by the VMs, nicely tagged with per-VM VLAN tags.
 
-{{<figure src="s1600-Nicira-ESX-VLAN.png" caption="Each VM uses a different VLAN tag to reach the Open vSwitch inside a VDS port group">}}
+{{<figure src="/2012/02/s1600-Nicira-ESX-VLAN.png" caption="Each VM uses a different VLAN tag to reach the Open vSwitch inside a VDS port group">}}
 
 Finally, let's take a look deeper into the OVS VM. It needs three interfaces: VM-facing interface, transport interface (where it can use VLAN tags or MAC-over-GRE tunneling to send traffic between OVS switches), and management interface (over which it communicates with the NVP OpenFlow controller).
 
 The VM-facing interface appears as a physical interface to Linux running inside the VM; you can create VLAN subinterfaces on top of it (one per VM) and connect individual subinterfaces (point-to-point VLAN-tagged links to individual VMs) to OVS ports.
 
-{{<figure src="s1600-Nicira-ESX-Inside-VM.png" caption="A looking inside the OVS virtual machine">}}
+{{<figure src="/2012/02/s1600-Nicira-ESX-Inside-VM.png" caption="A looking inside the OVS virtual machine">}}
 
 ### Does this make sense?
 
 The switch-inside-a-VM solution has two obvious drawbacks:
 
--   The Open vSwitch VM becomes a single point of failure (but let's [handwave](http://tvtropes.org/pmwiki/pmwiki.php/Main/HandWave) that away -- after all, [every SPOF can be removed with High Availability](/2011/08/high-availability-fallacies.html)).
--   All the inter-VM traffic has to pass through the OVS VM, which [becomes a performance bottleneck](/2011/10/what-is-nicira-really-up-to.html) (you can't push more than a few Gbps through [userland](http://en.wikipedia.org/wiki/User_space)).
+-   The Open vSwitch VM becomes a single point of failure (but let's [handwave](http://tvtropes.org/pmwiki/pmwiki.php/Main/HandWave) that away -- after all, [every SPOF can be removed with High Availability](/2011/08/high-availability-fallacies/)).
+-   All the inter-VM traffic has to pass through the OVS VM, which [becomes a performance bottleneck](/2011/10/what-is-nicira-really-up-to/) (you can't push more than a few Gbps through [userland](http://en.wikipedia.org/wiki/User_space)).
 
 Does such a kludge make sense? It just might in (at least) three scenarios:
 

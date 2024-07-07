@@ -4,11 +4,11 @@ tags:
 - IP routing
 - CLNP
 title: Was CLNP Really Broken?
-url: /2015/10/was-clnp-really-broken.html
+url: /2015/10/was-clnp-really-broken/
 ---
-One of my readers sent me this question after listening to the [podcast with Douglas Comer](/2015/10/douglas-comer-on-future-of-networking.html):
+One of my readers sent me this question after listening to the [podcast with Douglas Comer](/2015/10/douglas-comer-on-future-of-networking/):
 
-> Professor Comer mentioned that IP choose a network attachment address model over an endpoint model because of scalability. He said if you did endpoint addressing it wouldn't scale. I remember reading a bunch of your blog posts about CNLP (I hope I'm remembering the right acronym) and I believe [you liked endpoint addressing better](/2015/05/reinventing-clns-with-l3-only-forwarding.html) than network attachment point addressing.
+> Professor Comer mentioned that IP choose a network attachment address model over an endpoint model because of scalability. He said if you did endpoint addressing it wouldn't scale. I remember reading a bunch of your blog posts about CNLP (I hope I'm remembering the right acronym) and I believe [you liked endpoint addressing better](/2015/05/reinventing-clns-with-l3-only-forwarding/) than network attachment point addressing.
 
 As always, the answer is "it depends" (aka "we're both right" ;).
 <!--more-->
@@ -22,7 +22,7 @@ The "only" difference between the two is the micro-level behavior. CLNP routers 
 
 ### Another History Lesson
 
-IPv4 was designed in the days when [hosts had a single interface](/2021/05/fundamentals-interface-node-addresses.html) connected to [thick coaxial cables](/2015/04/what-is-layer-2-and-why-do-we-need-it.html), and the whole IPv4/IPv6 forwarding model reflects the world in which hosts could talk directly to each other, and use *default gateway* only when trying to get out of the local network.
+IPv4 was designed in the days when [hosts had a single interface](/2021/05/fundamentals-interface-node-addresses/) connected to [thick coaxial cables](/2015/04/what-is-layer-2-and-why-do-we-need-it/), and the whole IPv4/IPv6 forwarding model reflects the world in which hosts could talk directly to each other, and use *default gateway* only when trying to get out of the local network.
 
 CLNP's roots are older than that -- host-based addressing goes back to early DECnet days when the minicomputers were connected by a haphazard mesh of point-to-point leased lines, and having interface addresses instead of host addresses made absolutely no sense. CLNP retained two important DECnet principles -- host-based addressing and host-to-router protocol (ES-IS). These properties allow:
 
@@ -32,6 +32,6 @@ CLNP's roots are older than that -- host-based addressing goes back to early DEC
 -   Anyone in the network to build a network-to-MAC address table (no more [RARP kludges on hypervisor switches](http://www.fragmentationneeded.net/2015/10/musings-on-datanauts-9.html));
 -   **Unlimited host mobility within the local domain**;
 
-The host-based addressing used by CLNP and the idea that hosts and routers discover each other made it an easy fit to any network topology, whereas the rigid IP subnet model (made worse by fixed classful boundaries) started breaking down the moment we [replaced coaxial cables with bridges](/2010/07/bridges-kludge-that-shouldnt-exist.html) (anyone remembers the beauties of [Local Area Mobility](/2012/08/mobile-arp-in-enterprise-networks.html)?), resulting in the nightmares we have to deal with in the data center environments to [support VM mobility](/2012/03/video-networking-requirements-for-vm.html).
+The host-based addressing used by CLNP and the idea that hosts and routers discover each other made it an easy fit to any network topology, whereas the rigid IP subnet model (made worse by fixed classful boundaries) started breaking down the moment we [replaced coaxial cables with bridges](/2010/07/bridges-kludge-that-shouldnt-exist/) (anyone remembers the beauties of [Local Area Mobility](/2012/08/mobile-arp-in-enterprise-networks/)?), resulting in the nightmares we have to deal with in the data center environments to [support VM mobility](/2012/03/video-networking-requirements-for-vm/).
 
-Not surprisingly, the networking industry started reinventing the wheel (there are only so many ways to get a job done) and [rediscovered the CLNP principles](/2015/05/reinventing-clns-with-l3-only-forwarding.html) when trying to make IP work better, first with [anycast first-hop gateways](/2013/06/vrrp-anycasts-fabrics-and-optimal.html) to bypass the problems of fixed first-hop gateway, later with host routing (Cisco's DFA, EVPN) based on ARP/ND snooping, and finally [full-blown layer-3-only networks](/2015/04/rearchitecting-l3-only-networks.html) ([Enterasys Fabric Routing](/2013/08/enterasys-host-routing-optimal-l3.html), [Cumulus Networks' Redistribute ARP](/2015/08/layer-3-only-data-center-networks-with.html)).
+Not surprisingly, the networking industry started reinventing the wheel (there are only so many ways to get a job done) and [rediscovered the CLNP principles](/2015/05/reinventing-clns-with-l3-only-forwarding/) when trying to make IP work better, first with [anycast first-hop gateways](/2013/06/vrrp-anycasts-fabrics-and-optimal/) to bypass the problems of fixed first-hop gateway, later with host routing (Cisco's DFA, EVPN) based on ARP/ND snooping, and finally [full-blown layer-3-only networks](/2015/04/rearchitecting-l3-only-networks/) ([Enterasys Fabric Routing](/2013/08/enterasys-host-routing-optimal-l3/), [Cumulus Networks' Redistribute ARP](/2015/08/layer-3-only-data-center-networks-with/)).

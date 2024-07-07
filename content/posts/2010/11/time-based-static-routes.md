@@ -4,7 +4,7 @@ tags:
 - IP routing
 - EEM
 title: Time-Based Static Routes
-url: /2010/11/time-based-static-routes.html
+url: /2010/11/time-based-static-routes/
 ---
 Before someone accuses me of being totally FCoE/DCB-focused, here's an interesting EEM trick. Damian wanted to have time-dependent static routes to ensure expensive backup path is only established during the working hours. I told him to use cron with EEM to modify router configuration (and obviously lost him in the acronym forest)\... but there's an even better solution: use reliable static routing and modify just the track object's state with EEM.
 <!--more-->
@@ -39,6 +39,6 @@ You might wonder why you should use this slightly convoluted solution when you c
 
 Related solutions:
 
--   [Periodic router reload](/2006/10/periodic-router-reload.html)
--   [Kron: poor-man\'s cron](/2007/11/kron-poor-man-cron.html)
--   [Time-based BGP policy routing](/2008/02/time-based-bgp-policy-routing.html)
+-   [Periodic router reload](/2006/10/periodic-router-reload/)
+-   [Kron: poor-man\'s cron](/2007/11/kron-poor-man-cron/)
+-   [Time-based BGP policy routing](/2008/02/time-based-bgp-policy-routing/)

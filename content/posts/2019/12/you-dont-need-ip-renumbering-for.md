@@ -11,7 +11,7 @@ tags:
 - WAN
 - high availability
 title: You Don't Need IP Renumbering for Disaster Recovery
-url: /2019/12/you-dont-need-ip-renumbering-for.html
+url: /2019/12/you-dont-need-ip-renumbering-for/
 ---
 This is a common objection I get when trying to persuade network architects they don't need stretched VLANs (and IP subnets) to implement data center disaster recovery:
 
@@ -37,20 +37,20 @@ Here are just a few simple ideas:
 
 I'm positive you can quickly find a few others. However, all of these ideas have a series of "shortcomings":
 
--   They cannot be used for [disaster recovery test faking](/2019/09/disaster-recovery-test-faking-another.html) (that [often fails anyway](/2019/10/disaster-recovery-faking-take-two.html));
+-   They cannot be used for [disaster recovery test faking](/2019/09/disaster-recovery-test-faking-another/) (that [often fails anyway](/2019/10/disaster-recovery-faking-take-two/));
 -   They require the networking team to be involved in disaster recovery process (OMG, what a weird idea!)
--   They require continuous synchronization of configuration changes between primary and disaster recovery infrastructure. Not a big deal if you automated configuration changes, use [infrastructure-as-code principles](/series/niac.html), or use something as simple as [Oxidized](https://github.com/ytti/oxidized)... and obviously a total deal-breaker if you're in habit of randomly clicking various GUI options on a Friday evening trying to fix a botched deployment.
+-   They require continuous synchronization of configuration changes between primary and disaster recovery infrastructure. Not a big deal if you automated configuration changes, use [infrastructure-as-code principles](/series/niac/), or use something as simple as [Oxidized](https://github.com/ytti/oxidized)... and obviously a total deal-breaker if you're in habit of randomly clicking various GUI options on a Friday evening trying to fix a botched deployment.
 
 **Long story short**: PLEASE don't ever tell me you NEED stretched VLANs for disaster recovery. There is absolutely no technical need for them.
 
-Your organization might decide to go down the stretched VLAN path because [consultants told them to do so](/2013/01/long-distance-vmotion-stretched-ha.html), because [you have broken processes](/2013/11/typical-enterprise-application.html), because the virtualization team and the networking team cannot stand each other, or because the application or virtualization teams [fake DR tests to get a tick-in-the-box during the annual audit](/2019/09/disaster-recovery-test-faking-another.html).
+Your organization might decide to go down the stretched VLAN path because [consultants told them to do so](/2013/01/long-distance-vmotion-stretched-ha/), because [you have broken processes](/2013/11/typical-enterprise-application/), because the virtualization team and the networking team cannot stand each other, or because the application or virtualization teams [fake DR tests to get a tick-in-the-box during the annual audit](/2019/09/disaster-recovery-test-faking-another/).
 
-In any case, stretched VLANs are a wrong tool to build disaster recovery infrastructure, and when implementing them you created a [permanent ticking bomb](/2019/05/real-life-data-center-meltdown.html) that you'll be blamed for when it goes off just to solve someone else's problem. Good job.
+In any case, stretched VLANs are a wrong tool to build disaster recovery infrastructure, and when implementing them you created a [permanent ticking bomb](/2019/05/real-life-data-center-meltdown/) that you'll be blamed for when it goes off just to solve someone else's problem. Good job.
 
-Fortunately, even though [most everyone else is selling you VXLAN/EVPN-based stretched VLAN as the latest miracle cure](/2019/11/the-evpn-dilemma.html), VMware finally realized that you should recover networking infrastructure as the first step of overall workload recovery, and their [*disaster recovery* approach to multi-site NSX-T deployments](https://my.ipspace.net/bin/list?id=NSX#CROSS) makes a lot of sense (active-active multi-site NSX-T deployments are [still as bad in release 2.5 as they were before](/2019/08/brief-history-of-vmware-nsx.html)).
+Fortunately, even though [most everyone else is selling you VXLAN/EVPN-based stretched VLAN as the latest miracle cure](/2019/11/the-evpn-dilemma/), VMware finally realized that you should recover networking infrastructure as the first step of overall workload recovery, and their [*disaster recovery* approach to multi-site NSX-T deployments](https://my.ipspace.net/bin/list?id=NSX#CROSS) makes a lot of sense (active-active multi-site NSX-T deployments are [still as bad in release 2.5 as they were before](/2019/08/brief-history-of-vmware-nsx/)).
 
 {{<note>}}
-There might be other reasons why you might be asked to implement stretched VLANs. [Most of them are equally bogus](/2018/01/revisited-need-for-stretched-vlans.html).
+There might be other reasons why you might be asked to implement stretched VLANs. [Most of them are equally bogus](/2018/01/revisited-need-for-stretched-vlans/).
 {{</note>}}
 
 ### More Information

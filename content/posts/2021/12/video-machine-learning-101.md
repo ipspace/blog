@@ -8,7 +8,7 @@ tags:
 title: 'Video: Machine Learning 101'
 video_tag: ai
 ---
-After a [brief overview of the AI/ML hype](/2021/10/video-ai-ml-introduction.html), [Javier Antich](https://www.ipspace.net/Author:Javier_Antich) continued the [_AI and ML in Networking_](https://www.ipspace.net/AI_and_ML_in_Networking) webinar with the basics of underlying technologies, starting with the [machine learning fundamentals](https://my.ipspace.net/bin/get/AI/2.1%20-%20Machine%20Learning%20101.mp4?doccode=AI). 
+After a [brief overview of the AI/ML hype](/2021/10/video-ai-ml-introduction/), [Javier Antich](https://www.ipspace.net/Author:Javier_Antich) continued the [_AI and ML in Networking_](https://www.ipspace.net/AI_and_ML_in_Networking) webinar with the basics of underlying technologies, starting with the [machine learning fundamentals](https://my.ipspace.net/bin/get/AI/2.1%20-%20Machine%20Learning%20101.mp4?doccode=AI). 
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/AI/2.1%20-%20Machine%20Learning%20101.mp4?doccode=AI){{</jump>}}
 

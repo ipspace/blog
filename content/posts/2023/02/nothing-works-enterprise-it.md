@@ -3,7 +3,7 @@ title: "Response: Nothing Works (in Enterprise IT)"
 date: 2023-02-08 09:08:00
 tags: [ worth reading ]
 ---
-Dmitry Perets [left a thoughtful comment](/2023/01/worth-reading-nothing-works.html#1629) on my Nothing Works blog post describing why enterprise IT might be even worse than consumer world.
+Dmitry Perets [left a thoughtful comment](/2023/01/worth-reading-nothing-works/#1629) on my Nothing Works blog post describing why enterprise IT might be even worse than consumer world.
 
 > I think another reason for the "Nothing Works" world is that the only true Management Plane separation that exists in our industry is that of the real "human" management. In the medium/large enterprises they (and their interests, KPIs and so on) are very much separated from the technical workforce. And increasingly so, because today the technical workforce might not even be the employees of the same enterprise. They are likely to come from some IT consultancy outsource -- degree of separation which makes a true SDN evangelist envious.
 <!--more-->

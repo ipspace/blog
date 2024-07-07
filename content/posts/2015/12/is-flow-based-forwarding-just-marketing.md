@@ -5,9 +5,9 @@ tags:
 - OpenFlow
 - performance
 title: Is Flow-Based Forwarding Just Marketing Fluff?
-url: /2015/12/is-flow-based-forwarding-just-marketing.html
+url: /2015/12/is-flow-based-forwarding-just-marketing/
 ---
-When writing the [Packet- and Flow-Based Forwarding blog post](/2015/11/packet-and-flow-based-forwarding.html), I tried to find a good definition of flow-based forwarding (and I was [not the only one being confused](/2015/11/packet-and-flow-based-forwarding.html?showComment=1448884900333#c2863387231465052303)), and the one from [Junos SRX documentation](https://www.juniper.net/techpubs/software/junos-security/junos-security10.1/junos-security-admin-guide/packet-flow-based-fwd-section.html) is as good as anything else I found, so let's use it.
+When writing the [Packet- and Flow-Based Forwarding blog post](/2015/11/packet-and-flow-based-forwarding/), I tried to find a good definition of flow-based forwarding (and I was [not the only one being confused](/2015/11/packet-and-flow-based-forwarding/#c2863387231465052303)), and the one from [Junos SRX documentation](https://www.juniper.net/techpubs/software/junos-security/junos-security10.1/junos-security-admin-guide/packet-flow-based-fwd-section.html) is as good as anything else I found, so let's use it.
 
 **TL&DR**: Flow-based forwarding is a valid technical concept. However, when mentioned together with OpenFlow, it's mostly marketing fluff.
 <!--more-->
@@ -32,7 +32,7 @@ Flow-based forwarding, on the other hand, is a **cache-based** forwarding mechan
 
 At this point it's worth mentioning that hardware OpenFlow devices from major vendors don't use flow-based forwarding as described above. They use the exact same forwarding hardware as they'd use with standalone network OS.
 
-The only OpenFlow switch I've seen so far that actually used the orthodox (micro)flow-based forwarding was the [early implementation of Open vSwitch](/2013/04/open-vswitch-under-hood.html), and they quickly dropped that idea and [implemented megaflows](/2014/02/flow-based-forwarding-doesnt-work-well.html) due to [dismal performance](/2014/11/open-vswitch-performance-revisited.html). Technically, megaflows-based forwarding is still doing flow-based forwarding, but with way coarser flows. I haven't looked into what they're doing these days with Bloom filters.
+The only OpenFlow switch I've seen so far that actually used the orthodox (micro)flow-based forwarding was the [early implementation of Open vSwitch](/2013/04/open-vswitch-under-hood/), and they quickly dropped that idea and [implemented megaflows](/2014/02/flow-based-forwarding-doesnt-work-well/) due to [dismal performance](/2014/11/open-vswitch-performance-revisited/). Technically, megaflows-based forwarding is still doing flow-based forwarding, but with way coarser flows. I haven't looked into what they're doing these days with Bloom filters.
 
 There might be other vendors out there doing true flow-based forwarding with hardware OpenFlow switches (please write a comment), and I'd dare to guess that the price of their hardware might be a bit higher than what you can get with traditional 10GE switches today.
 

@@ -6,7 +6,7 @@
   {{ $scr.Set "links" $me }}
   <div id="related_posts">
     {{ range first 3 .Params.tags }}
-      <h4><a href='{{ printf "/tag/%s.html" (. | urlize) | absURL }}' rel='tag'>{{ . }}</a></h4>
+      <h4><a href='{{ printf "/tag/%s/" (. | urlize) | absURL }}' rel='tag'>{{ . }}</a></h4>
       {{ with ($.Site.GetPage (printf "/tags/%s" ( . | urlize ))) }}
         <ul>
           {{ $scr.Set "relcnt" 0 }}

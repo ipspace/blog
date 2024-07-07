@@ -3,7 +3,7 @@ date: 2008-05-28 07:09:00.002000+02:00
 tags:
 - BGP
 title: Conditional BGP Route Origination
-url: /2008/05/conditional-bgp-route-origination.html
+url: /2008/05/conditional-bgp-route-origination/
 lastmod: 2020-12-28 07:58:00
 ---
 [Sebastian Majewski](https://www.linkedin.com/in/ccie18643/) has found an interesting feature: if you use the **network route-map** BGP configuration command to originate BGP prefixes and use the **match** conditions within the **route-map**, BGP inserts the IP prefix in the BGP table only if the source route in the IP routing table satisfies the **route-map** conditions.

@@ -10,9 +10,9 @@ tags:
 - data center
 - high availability
 title: Never Take Two Chronometers to Sea
-url: /2017/01/never-take-two-chronometers-to-sea.html
+url: /2017/01/never-take-two-chronometers-to-sea/
 ---
-One of the quotes I found in the [Mythical Man-Month](/2017/01/worth-reading-mythical-man-month.html) came from the pre-GPS days: "*never go to sea with two chronometers, take one or three*", and it's amazing the networking industry (and a few others) never got the message.
+One of the quotes I found in the [Mythical Man-Month](/2017/01/worth-reading-mythical-man-month/) came from the pre-GPS days: "*never go to sea with two chronometers, take one or three*", and it's amazing the networking industry (and a few others) never got the message.
 <!--more-->
 ### Wait, What?
 
@@ -34,10 +34,10 @@ If you have three, you take the average time of the two that are closer together
 
 Have you ever deployed redundant firewalls or load balancers? How many nodes are in a typical cluster? Got my point?
 
-How about data center switches [implementing MLAG](/series/mlag.html)? Or stackable switches like HP IRF or Juniper Virtual Chassis that support at most 4 or 10 nodes (depending on the model)?
+How about data center switches [implementing MLAG](/series/mlag/)? Or stackable switches like HP IRF or Juniper Virtual Chassis that support at most 4 or 10 nodes (depending on the model)?
 
 There's a good reason the server clustering solutions with two nodes use a disk as a witness. Networking industry obviously never got the memo, the obvious exceptions being VMware NSX controller (because it was designed by people who actually understood voting protocols) and Cisco ACI controller.
 
 ### Meh, You're Just Spreading FUD
 
-Sure. I've seen enough real-life failures to [believe in simpler solutions](/2016/11/reliability-of-clustered-solutions.html), but of course you shouldn't trust anything you read in a blog post. For a long list of split-brain failures from production environments, read [this ACM queue article](http://queue.acm.org/detail.cfm?id=2655736). Enjoy!
+Sure. I've seen enough real-life failures to [believe in simpler solutions](/2016/11/reliability-of-clustered-solutions/), but of course you shouldn't trust anything you read in a blog post. For a long list of split-brain failures from production environments, read [this ACM queue article](http://queue.acm.org/detail.cfm?id=2655736). Enjoy!

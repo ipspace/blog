@@ -4,9 +4,9 @@ tags:
 - network management
 - you've asked for it
 title: SNMP v3 users not shown in running-config
-url: /2008/08/snmp-v3-users-not-shown-in-running.html
+url: /2008/08/snmp-v3-users-not-shown-in-running/
 ---
 
 Ralf sent me a SNMPv3 question:<br/><blockquote class="cite">If I create a SNMPv3 user which has a password (<b>snmp-server user userthree groupthree v3 auth md5 user3passwd</b>), this user does not appear in the <i>running-</i> or <i>startup-config</i>. Cisco even <a href="http://www.cisco.com/en/US/docs/ios/12_0t/12_0t3/feature/guide/Snmp3.html#wp21866">documents this if you know what to look for</a>.<br/><br/>I strongly suspect (although I did not test this) that these users are also missing from configuration exported to TFTP servers. What would be the recommended way to make usable config backups of routers with such users?</blockquote>
-Like certificates, the SNMPv3 users are stored in <i>private-config</i> and thus never appear in the router configuration. If you want to have a backup of the user data, create a text file on one of your NMS servers, add SNMPv3 usernames and passwords in the text file and use the <b>copy somewhere running-config</b> to configure SNMPv3 users on the routers.<div class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.</div>
+Like certificates, the SNMPv3 users are stored in <i>private-config</i> and thus never appear in the router configuration. If you want to have a backup of the user data, create a text file on one of your NMS servers, add SNMPv3 usernames and passwords in the text file and use the <b>copy somewhere running-config</b> to configure SNMPv3 users on the routers.<div class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</div>
 

@@ -3,7 +3,7 @@ title: "OpenFlow Realities, 2021 Edition"
 date: 2021-07-29 17:10:00
 tags: [ OpenFlow ]
 ---
-I thought I was too harsh every now and then, but I'm a complete amateur when compared to [Minh Ha's take on OpenFlow](/2021/07/quantum-computing-openflow.html#704).
+I thought I was too harsh every now and then, but I'm a complete amateur when compared to [Minh Ha's take on OpenFlow](/2021/07/quantum-computing-openflow/#704).
 
 ---
 

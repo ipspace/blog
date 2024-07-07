@@ -3,7 +3,7 @@ title: "More: Hardware Differences between Routers and Switches"
 date: 2022-01-25 08:47:00
 tags: [ switching ]
 ---
-_Aaron Glenn sent me his thoughts on hardware differences between routers and switches based on the last paragraph of [Dmytro Shypovalov](https://www.linkedin.com/in/dmytro-shypovalov-573aab58/)'s [views on the topic](/2021/12/response-router-switch-hardware.html)_
+_Aaron Glenn sent me his thoughts on hardware differences between routers and switches based on the last paragraph of [Dmytro Shypovalov](https://www.linkedin.com/in/dmytro-shypovalov-573aab58/)'s [views on the topic](/2021/12/response-router-switch-hardware/)_
 
 ---
 

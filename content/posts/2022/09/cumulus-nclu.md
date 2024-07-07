@@ -3,7 +3,7 @@ title: "Cumulus Linux Network Command Line Utility (NCLU)"
 date: 2022-09-29 06:07:00
 tags: [ Cumulus Linux ]
 ---
-While [ranting about Linux data plane configuration](/2022/09/linux-data-plane-configuration.html), I mentioned an interesting solution: Cumulus Linux Network Command Line Utility (NCLU), an attempt to make Linux networking more palatable to more traditional networking engineers.
+While [ranting about Linux data plane configuration](/2022/09/linux-data-plane-configuration/), I mentioned an interesting solution: Cumulus Linux Network Command Line Utility (NCLU), an attempt to make Linux networking more palatable to more traditional networking engineers.
 
 NCLU is a simple wrapper around *ifupdown2* and *frr* packages. You can execute **net add** and **net del** commands to set or remove configuration parameters[^Junos], and NCLU translates those commands into changes to corresponding configuration files.
 <!--more-->

@@ -5,7 +5,7 @@ tags:
 - workshop
 - virtualization
 title: VLANs used by Nexus 1000V
-url: /2011/08/vlans-used-by-nexus-1000v.html
+url: /2011/08/vlans-used-by-nexus-1000v/
 ---
 
 Chris sent me an interesting question:
@@ -29,7 +29,7 @@ You also have to establish communication between VSM and vCenter using a ***Mana
 
 You can’t configure the management VLAN in VSM. You connect the management port of the VSM (a virtual machine) to a vCenter port group and specify the desired VLAN in the port group configuration ([follow this procedure](http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_0_4_s_v_1_3/getting_started/configuration/guide/n1000v_gsg_5vsm_behind_vem.pdf) if the VSM uses a VEM to communicate with the physical network).
 
-{{<note info>}}Read *[Management, Control, and Data Planes](/2013/08/management-control-and-data-planes-in.html)* blog post if you're not familiar with typical network device architecture.{{</note>}}
+{{<note info>}}Read *[Management, Control, and Data Planes](/2013/08/management-control-and-data-planes-in/)* blog post if you're not familiar with typical network device architecture.{{</note>}}
 
 You can use the same VLAN for all three purposes; you can also replace *packet* and *control* VLAN with layer-3 communication (using UDP). Using a separate management VLAN sounds like a good idea, but I fail to see why it would be a good idea to use separate *Packet* and *Control* VLANs.
 

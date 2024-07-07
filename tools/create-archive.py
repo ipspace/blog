@@ -166,7 +166,7 @@ def createTagList(names,data):
   for t in names:
     tagList.append({
       'name':  t,
-      'url':   "/tag/"+t.lower().replace(' ','-')+".html",
+      'url':   "/tag/"+t.lower().replace(' ','-')+"/",
       'count': data[t].count })
   return tagList
 

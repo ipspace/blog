@@ -5,7 +5,7 @@ tags:
 - design
 - DMVPN
 title: Migrating from Phase 1 DMVPN to Phase 2/3 Network
-url: /2012/03/migrating-from-phase-1-dmvpn-to-phase.html
+url: /2012/03/migrating-from-phase-1-dmvpn-to-phase/
 ---
 Chris sent me an interesting question that I haven't covered in any of my DMVPN webinars: "How would you migrate a part of a Phase-1 DMVPN network to a Phase-2 or Phase-3 network if you can only migrate one spoke site at a time? Can I just upgrade the spokes that need spoke-to-spoke connectivity?"
 

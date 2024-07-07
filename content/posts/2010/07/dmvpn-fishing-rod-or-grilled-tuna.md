@@ -6,7 +6,7 @@ tags:
 - workshop
 - IPsec
 title: 'DMVPN: Fishing Rod or Grilled Tuna?'
-url: /2010/07/dmvpn-fishing-rod-or-grilled-tuna.html
+url: /2010/07/dmvpn-fishing-rod-or-grilled-tuna/
 ---
 Last days I was eating, drinking, breathing and dreaming DMVPN as I was preparing lab scenarios for my DMVPN webinar (the participants will get complete router configurations for 12 different scenarios implemented in an 8-router fully redundant DMVPN network).
 

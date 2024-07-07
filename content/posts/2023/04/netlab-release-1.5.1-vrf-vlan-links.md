@@ -12,7 +12,7 @@ Even if you don't find those features interesting (more about them later), you m
 <!--more-->
 ### DHCP Clients Spoil the Fun
 
-_netlab_ always used [Cumulus containers created by Michael Kashin](https://github.com/networkop/cx) to test *containerlab* installation. They are also a pleasure to work with due to [very low startup time](/2023/02/virtual-device-boot-times.html), but when I tried to deploy a topology using them a few days ago, the initial configuration process crashed complaining about the _another instance already running._
+_netlab_ always used [Cumulus containers created by Michael Kashin](https://github.com/networkop/cx) to test *containerlab* installation. They are also a pleasure to work with due to [very low startup time](/2023/02/virtual-device-boot-times/), but when I tried to deploy a topology using them a few days ago, the initial configuration process crashed complaining about the _another instance already running._
 
 Fortunately, the bug was easy to reproduce, and after adding copious amounts of logging to the initialization script I was able to figure out it crashed when trying to run `ifreload` command.
 

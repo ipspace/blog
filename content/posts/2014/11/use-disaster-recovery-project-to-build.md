@@ -10,21 +10,21 @@ tags:
 - cloud
 - high availability
 title: Use a Disaster Recovery Project to Build Your New Cloud
-url: /2014/11/use-disaster-recovery-project-to-build.html
+url: /2014/11/use-disaster-recovery-project-to-build/
 ---
 It doesn't make sense to build a new data center network to support legacy bare-metal server infrastructure. You'll have to use relatively expensive 1G/10G ports to be able to connect the current and future servers, and once the server and virtualization engineers wake up and do hardware refresh you'll end up with way too many ports (oh, and you do know that transceivers could cost more than the switching hardware, right?).
 <!--more-->
-In the ideal case, you'd build a new infrastructure with high-density servers, 100% virtualized workload... and [then all you'd need would be two 1RU or 2RU ToR switches](/2014/10/all-you-need-are-two-top-of-rack.html). Unfortunately most organizations can't find their path from *here* to *there* due to tons of internal red tape (aka *budgets* and *depreciation period*).
+In the ideal case, you'd build a new infrastructure with high-density servers, 100% virtualized workload... and [then all you'd need would be two 1RU or 2RU ToR switches](/2014/10/all-you-need-are-two-top-of-rack/). Unfortunately most organizations can't find their path from *here* to *there* due to tons of internal red tape (aka *budgets* and *depreciation period*).
 
 [Eric Hanselman](https://www.linkedin.com/in/erichanselman/) (then at 451 Research) provided an interesting way out of this Catch-22 during one of the Interop panels:
 
 -   Start a *disaster recovery* project;
--   Rent space at a colocation facility ([hat tip to Rick Parker](/2014/09/open-source-hybrid-cloud-reference.html));
+-   Rent space at a colocation facility ([hat tip to Rick Parker](/2014/09/open-source-hybrid-cloud-reference/));
 -   Build your disaster recovery infrastructure over there;
 -   Move the workload, declare success, and shut down the legacy infrastructure;
 -   Start another disaster recovery project ;)
 
-Obviously you'd want the new infrastructure to be as forward-looking as your organization feels comfortable with. [High-density servers](/2014/09/building-small-cloud-with-ucs-mini.html) (each of them hosting 50 -- 100 VMs) are a no-brainer, virtualized [network services appliances](/2013/04/virtual-appliance-performance-is.html) are already a harder sell because they might require [changes](/2014/09/youve-been-doing-same-thing-for-last-20.html) in [processes](/2013/11/typical-enterprise-application.html) and [responsibilities](/2013/12/omg-who-will-manage-all-those-virtual.html) if you want to do them right, and distributed file system (like Nutanix or [VSAN](/2014/08/vmware-evorail-one-stop-shopping-for.html)) might turn out to be mission impossible, because, you know, [storage](/2010/08/storage-networking-is-different.html).
+Obviously you'd want the new infrastructure to be as forward-looking as your organization feels comfortable with. [High-density servers](/2014/09/building-small-cloud-with-ucs-mini/) (each of them hosting 50 -- 100 VMs) are a no-brainer, virtualized [network services appliances](/2013/04/virtual-appliance-performance-is/) are already a harder sell because they might require [changes](/2014/09/youve-been-doing-same-thing-for-last-20/) in [processes](/2013/11/typical-enterprise-application/) and [responsibilities](/2013/12/omg-who-will-manage-all-those-virtual/) if you want to do them right, and distributed file system (like Nutanix or [VSAN](/2014/08/vmware-evorail-one-stop-shopping-for/)) might turn out to be mission impossible, because, you know, [storage](/2010/08/storage-networking-is-different/).
 
 ### More details
 

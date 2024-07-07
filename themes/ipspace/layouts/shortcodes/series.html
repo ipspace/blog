@@ -3,9 +3,10 @@
   {{ if (.Get "single") }}
     {{ .Page.Scratch.Set "series" 1 }}
   {{ end }}
+  {{ $series := cond (reflect.IsSlice .Page.Params.series) (index .Page.Params.series 0) .Page.Params.series }}
   <div class="content-box tiny-margin">
     <h3>Blog posts in this series</h3>
-    {{ with ($.Site.GetPage (printf "/series/%s" ( .Page.Params.series | urlize ))) }}
+    {{ with ($.Site.GetPage (printf "/series/%s" ( $series | urlize ))) }}
       <ul>
         {{ range (.Pages).Reverse }}
           <li>

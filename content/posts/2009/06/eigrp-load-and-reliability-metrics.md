@@ -4,7 +4,7 @@ eigrp_tag: details
 tags:
 - EIGRP
 title: EIGRP Load and Reliability Metrics
-url: /2009/06/eigrp-load-and-reliability-metrics.html
+url: /2009/06/eigrp-load-and-reliability-metrics/
 ---
 Everyone studying the EIGRP details knows the ["famous" composite metric formula](https://en.wikipedia.org/wiki/Enhanced_Interior_Gateway_Routing_Protocol#Routing_metric), but the recommendation to keep the K values intact (or at least leaving K2 and K5 at zero) or the inability of EIGRP to adapt to changing load conditions is rarely understood.
 

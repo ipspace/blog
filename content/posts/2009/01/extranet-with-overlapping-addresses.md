@@ -3,7 +3,7 @@ date: 2009-01-07 06:38:00.004000+01:00
 tags:
 - MPLS VPN
 title: Extranet with Overlapping Addresses
-url: /2009/01/extranet-with-overlapping-addresses.html
+url: /2009/01/extranet-with-overlapping-addresses/
 ---
 The idea to write an article describing how you can use MPLS VPN-enabled NAT to implement flexible extranets that allow participants to retain their existing (and sometimes overlapping) IP address space has been sitting in my to-do list for over a year. 
 

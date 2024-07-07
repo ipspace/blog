@@ -7,7 +7,7 @@ tags:
 - link aggregation
 - data center
 title: Is MLAG an Alternative to Stackable Switches?
-url: /2018/03/is-mlag-alternative-to-stackable.html
+url: /2018/03/is-mlag-alternative-to-stackable/
 ---
 Alex was trying to figure out how to use Catalyst 3850 switches and sent me this question:
 
@@ -17,7 +17,7 @@ Let's start with some terminology.
 
 **Link Aggregation Group (LAG)** is the ability to bond multiple Ethernet links into a single virtual link. LAG (as defined in 802.1ax standard) can be used between a pair of adjacent nodes. While that's good enough if you need more bandwidth it doesn't help if you want to increase redundancy of your solution by connecting your edge device to two switches while using all uplinks and avoiding the shortcomings of STP. Sounds a bit like trying to keep the cake while eating it.
 <!--more-->
-Enter the magical world of [MLAG](/series/mlag.html) (Multichassis LAG) -- the ability to present two or more physical boxes (members of MLAG cluster) as a single logical device from LACP perspective.
+Enter the magical world of [MLAG](/series/mlag/) (Multichassis LAG) -- the ability to present two or more physical boxes (members of MLAG cluster) as a single logical device from LACP perspective.
 
 Most MLAG implementations (apart from those based on ICCP or EVPN) are totally proprietary, and vendors use numerous tricks to get the job done. Some use central control plane with all other devices acting as stupid packet forwarders (aka SDN or stackable switches), in which case they\'re sort-of still running traditional LAG/LACP. Others use traditional distributed control plane with additional control-plane protocols between MLAG cluster members.
 

@@ -5,7 +5,7 @@ tags:
 - LISP
 - LAN
 title: Why Is Cisco Pushing LISP in Enterprise Campus?
-url: /2017/09/why-is-cisco-pushing-lisp-in-enterprise.html
+url: /2017/09/why-is-cisco-pushing-lisp-in-enterprise/
 ---
 I got several questions along the lines of "*why is Cisco pushing LISP instead of using EVPN in VXLAN-based Enterprise campus solutions?"*
 

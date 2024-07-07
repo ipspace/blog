@@ -6,7 +6,7 @@ tags:
 - video
 - BGP
 title: 'Video: FRRouting Overview'
-url: /2019/12/video-frrouting-overview.html
+url: /2019/12/video-frrouting-overview/
 video_tag: frr
 ---
 In October 2019, [Donald Sharp](https://www.ipspace.net/Author:Donald_Sharp) did a short webinar describing [FRRouting](https://frrouting.org/), the hottest open-source routing suite.

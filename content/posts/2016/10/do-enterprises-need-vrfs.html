@@ -6,7 +6,7 @@ tags:
 - MPLS VPN
 - WAN
 title: Do Enterprises Need VRFs?
-url: /2016/10/do-enterprises-need-vrfs.html
+url: /2016/10/do-enterprises-need-vrfs/
 ---
 
 <p><a name="_GoBack"></a>One of my readers sent me a long of questions titled “<em>Do enterprise customers REALLY need VRFs?</em>”</p>
@@ -20,7 +20,7 @@ url: /2016/10/do-enterprises-need-vrfs.html
 <p><em>Yes:</em> I would use VRFs. You might want to use stretched VLANs, and I wish you luck.</p>
 <p><em>No:</em></p>
 <div class="decision"><p><strong>Will you implement tenants or security zones with multiple segments or distributed firewalls (also marketed as microsegmentation)?</strong></p>
-<p>Distributed firewalls: You might think you don’t need VRFs, but <a href="/2015/06/do-we-still-need-subnets-in-virtualized.html">maybe you still do</a> unless all hosts use the same exit from the subnet. If the hosts from different security zones (or tenants) need different exit points (aka <i>service insertion</i>), you’re better off using different routing domains for them.</p>
+<p>Distributed firewalls: You might think you don’t need VRFs, but <a href="/2015/06/do-we-still-need-subnets-in-virtualized/">maybe you still do</a> unless all hosts use the same exit from the subnet. If the hosts from different security zones (or tenants) need different exit points (aka <i>service insertion</i>), you’re better off using different routing domains for them.</p>
 <p class="info">Different tenants or security zones might use different load balancers, in which case you’d need either multiple segments (or routing domains) or source NAT on the load balancer to ensure symmetrical traffic flow.</p>
 <p>Multiple segments:</p>
 <div class="decision"><p><strong>Do you need a separate routing domain for each security zone or tenant</strong><strong> within a site</strong><strong>?</strong></p>

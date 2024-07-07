@@ -4,7 +4,7 @@ dmvpn_tag: training
 tags:
 - DMVPN
 title: DMVPN Deployment Success Story
-url: /2011/08/dmvpn-design-success-story.html
+url: /2011/08/dmvpn-design-success-story/
 ---
 Warning: totally shameless plug ahead. You might want to stop reading right now.
 

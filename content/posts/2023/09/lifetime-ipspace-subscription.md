@@ -39,7 +39,7 @@ I explained the changes I was making to ipSpace.net subscribers a few days ago[^
 
 > Am I right in assuming I'll have access to the material "forever" then? 
 
-Yes, for a very small value of “forever” compared to the expected time of the heat death of the universe ;) However, downloading the interesting stuff might not be a bad idea -- [Cloudflare promised that wouldn't cost me a dime](/2023/08/videos-free-subscription.html).
+Yes, for a very small value of “forever” compared to the expected time of the heat death of the universe ;) However, downloading the interesting stuff might not be a bad idea -- [Cloudflare promised that wouldn't cost me a dime](/2023/08/videos-free-subscription/).
 
 > Also, how will it work for those just subscribing after the news? Will it be like a one-time payment?
 

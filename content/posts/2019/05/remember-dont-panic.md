@@ -7,7 +7,7 @@ series:
 tags:
 - automation
 title: 'Remember: Don’t Panic'
-url: /2019/05/remember-dont-panic.html
+url: /2019/05/remember-dont-panic/
 ---
 I hate listening to "this is what we were doing this year" podcasts as they usually turn into pointless blabbering, self-congratulations and meaningless plans (think New Year resolutions). [The Full Stack Journey Episode 28](https://packetpushers.net/podcast/full-stack-journey-028-turning-the-mic-on-scott-lowe/) with Scott Lowe was an amazing deviation from this too-common template.
 
@@ -15,7 +15,7 @@ If you don't have time to listen to the podcast (but you [OUGHT TO](https://tool
 <!--more-->
 Maybe networking truly is different, but I wouldn't wait a few months but a year or two. Remember when Cisco ACI was launched? It might be safe to use it now. Remember early Juniper videos promising the nirvana of EVPN/VXLAN and demonstrating how simple the configuration was a year before the code actually shipped... and a few years before it was ready for production use?
 
-Whatever networking technology the vendors are pushing, wait at least a few months before you start gathering data, then a bit more before you start playing with it in the lab, and way longer before you deploy it in production... while carefully evaluating whether the technology [solves a real business problem](/2013/04/this-is-what-makes-networking-so-complex.html) that [cannot be solved by changing the way you work](/2013/01/long-distance-vmotion-stretched-ha.html), fixing your design, eliminating the snowflakes or (god forbid) talking with the application team and figuring out common goals.
+Whatever networking technology the vendors are pushing, wait at least a few months before you start gathering data, then a bit more before you start playing with it in the lab, and way longer before you deploy it in production... while carefully evaluating whether the technology [solves a real business problem](/2013/04/this-is-what-makes-networking-so-complex/) that [cannot be solved by changing the way you work](/2013/01/long-distance-vmotion-stretched-ha/), fixing your design, eliminating the snowflakes or (god forbid) talking with the application team and figuring out common goals.
 
 However, that doesn't mean that you shouldn't be considering interesting ideas that use age-old technologies in novel ways like (ta-da) network automation. There's no good reason you should still hand-craft your configurations instead of using templates, or use arcane naming conventions to keep track of versions and changes instead of pushing everything into source code control repository like Git.
 

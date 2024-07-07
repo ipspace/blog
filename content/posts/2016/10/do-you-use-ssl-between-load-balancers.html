@@ -5,24 +5,24 @@ tags:
 - security
 - data center
 title: Do You Use SSL between Load Balancers and Servers?
-url: /2016/10/do-you-use-ssl-between-load-balancers.html
+url: /2016/10/do-you-use-ssl-between-load-balancers/
 ---
 
 <p><a name="_GoBack"></a>One of my readers sent me this question:</p>
 <blockquote class="cite">Using SSL over the Internet is a must when dealing with sensitive data. What about SSL between data center components (frontend load-balancers and backend web servers for example)? Does it make sense to you? Can the question be summarized as "do I trust my Datacenter network team"? Or is there more at stake?</blockquote>
 <p>In the ideal world in which you’d have a totally reliable transport infrastructure the answer would be “<em>There’s no need for SSL across that infrastructure</em>”.<!--more--></p>
-<p>On planet Earth I wouldn’t worry that much about the networking team but more about <a href="/2013/04/compromised-security-zone-game-over-or.html">servers from multiple applications sitting in the same L2 subnet</a> (ideal scenario for an intruder trying to move laterally).</p>
+<p>On planet Earth I wouldn’t worry that much about the networking team but more about <a href="/2013/04/compromised-security-zone-game-over-or/">servers from multiple applications sitting in the same L2 subnet</a> (ideal scenario for an intruder trying to move laterally).</p>
 <p>Also, I would ask the question "<em>Is data encrypted at rest?</em>" and when the answer is "NO" the next question should be "<em>and why do you trust shared storage infrastructure more than shared network infrastructure?</em>".</p>
 <p>Finally, SSL within the data center usually protects the data exchanged between the load balancer and the web servers. While that data definitely deserves protection, there’s an even more important data stream: data exchanged between the web servers and the database servers. Are you encrypting the database connections? If not, why do you worry about encrypting web sessions?</p>
 <p>The same reader also sent me a follow-up question:</p>
 <blockquote class="cite">If I understand you correctly, if servers are on the same unprotected L2 segment, encryption would then make sense. I suppose that if we go on that path, each server should have its own certificate (or at least each application). Otherwise, having same certificate on all wouldn’t give more protection as breaking in one server would give you access to the private key. Am I right?</blockquote>
 <p>If you’re serious about security, you should have a different certificate for each application. You should also use Ephemeral Diffie-Hellman key exchange.</p>
-<h4>Few Details</h4><p>It’s really easy to decrypt a lot of TLS (formerly known as SSL) traffic if you have the server’s private key. Many TLS <a href="#Key_exchange_or_key_agreement">key exchange algorithms</a> use a simplistic approach:</p>
+<h4>Few Details</h4><p>It’s really easy to decrypt a lot of TLS (formerly known as SSL) traffic if you have the server’s private key. Many TLS key exchange algorithms use a simplistic approach:</p>
 <ul class="ListParagraph"><li>Client generates a random session key;</li>
 <li>Client encrypts the session key with server’s public key;</li>
 <li>Server decrypts the session key using server’s private key.</li>
 </ul>
 <p>Once you have the server’s private key, you can decrypt the session keys, and subsequently all traffic exchanged with that server (that’s why you can decrypt HTTPS traffic with Wireshark).</p>
-<p>Some TLS key exchange algorithms provide <a href="#Forward_secrecy"><em>forward secrecy</em></a>: it’s impossible to get the session key (and subsequently encrypted data) even if you have the private keys. These algorithms rely on <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman key exchange</a>, more specifically on <em>ephemeral </em>DH where the session key is generated for every TLS session.</p>
+<p>Some TLS key exchange algorithms provide <em>forward secrecy</em>: it’s impossible to get the session key (and subsequently encrypted data) even if you have the private keys. These algorithms rely on <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman key exchange</a>, more specifically on <em>ephemeral </em>DH where the session key is generated for every TLS session.</p>
 <p>For more details, do spend some time reading the <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Wikipedia TLS article</a>.</p>
 

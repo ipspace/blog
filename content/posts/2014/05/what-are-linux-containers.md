@@ -4,7 +4,7 @@ tags:
 - virtualization
 - video
 title: What Are Linux Containers?
-url: /2014/05/what-are-linux-containers.html
+url: /2014/05/what-are-linux-containers/
 ---
 Everyone talks about Linux containers these days like they would be the hottest thing invented this spring. In reality, it's a [pretty old technology](http://en.wikipedia.org/wiki/Cgroups) that was heavily used by some smart web hosting companies for years (but of course, some people think mentioning Google makes everything look sexier).
 

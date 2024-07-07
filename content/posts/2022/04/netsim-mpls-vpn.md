@@ -234,6 +234,6 @@ router ospf 101 vrf blue
 
 You'll find the [lab topology file on GitHub](https://github.com/ipspace/netlab-examples/tree/master/MPLS/vpn-simple). To use it:
 
-* [Install *netlab*](https://netlab.tools/install/) and your preferred lab environment. These days I find it easiest to use Arista cEOS with containerlab, but the [data plane (pings) probably won't work](/2022/03/dataplane-quirks-virtual-devices.html).
+* [Install *netlab*](https://netlab.tools/install/) and your preferred lab environment. These days I find it easiest to use Arista cEOS with containerlab, but the [data plane (pings) probably won't work](/2022/03/dataplane-quirks-virtual-devices/).
 * Copy [topology files](https://github.com/ipspace/netlab-examples/tree/master/VRF/vrf-lite-hosts) into an empty directory
 * Execute **netlab up** with the parameters described above.

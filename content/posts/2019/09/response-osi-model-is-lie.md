@@ -4,7 +4,7 @@ tags:
 - Internet
 - CLNP
 title: 'Response: The OSI Model Is a Lie'
-url: /2019/09/response-osi-model-is-lie.html
+url: /2019/09/response-osi-model-is-lie/
 ---
 Every now and then I stumble upon a blog post saying "*OSI 7-layer model sucks*" or "*OSI 7-layer model is a lie*", [most recent one coming from Robert Graham](https://blog.erratasec.com/2019/08/thread-on-osi-model-is-lie.html).
 
@@ -16,7 +16,7 @@ Whether you have three, four, five, or seven layers in your model doesn't matter
 <!--more-->
 While the conceptual split of functionality in the OSI 7-layer model makes perfect sense to me, there were few implementations of transport layer or above at the time when it mattered (when it was still unclear whether IP or CLNP would prevail).
 
-Lower layers were well specified and worked well enough that they were considered as a [replacement for IP](/2010/09/ipv6-experts-strike-again.html) when everyone realized IPv4 was running out of address space. Unfortunately, a clash between IAB and rest of IETF (that nobody wants to talk about) resulted in "*let's start from scratch and build our own stuff*". We're still dealing with the results of that decision (see also: [second system effect](https://en.wikipedia.org/wiki/Second-system_effect)).
+Lower layers were well specified and worked well enough that they were considered as a [replacement for IP](/2010/09/ipv6-experts-strike-again/) when everyone realized IPv4 was running out of address space. Unfortunately, a clash between IAB and rest of IETF (that nobody wants to talk about) resulted in "*let's start from scratch and build our own stuff*". We're still dealing with the results of that decision (see also: [second system effect](https://en.wikipedia.org/wiki/Second-system_effect)).
 
 Finally, reading the [The Elements of Networking Style](https://www.amazon.com/Elements-Networking-Style-Animadversions-Intercomputer/dp/0595088791) book will give you an idea of the battles between engineers building ARPANET and religious zealots promoting One True Religion (OSI model). I was lucky enough to be a bit too young to be involved in them, and remote enough to have a "*let's use the bits that make sense*" perspective, but unfortunately it looks like some people still have battle scars.
 

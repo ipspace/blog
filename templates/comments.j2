@@ -3,14 +3,9 @@
     {% for cmt in clist %}
       <div>
         <li class="comment" id="{{ cmt.id }}">
-          <!--
-          <div class="avatar-image-container">
-            <img src="{{ cmt.image }}">
-          </div>
-          -->
           <div class="comment-block">
             <div class="comment-header">
-              <cite class="user"><a href="{{ cmt.profile }}" rel="nofollow">{{ cmt.name }}</a></cite>
+              <cite class="user"><a href="{{ cmt.profile if cmt.profile is not none and '//' in cmt.profile and not '///' in cmt.profile else ''}}" rel="nofollow">{{ cmt.name }}</a></cite>
               <span class="datetime secondary-text">
                 <a rel="nofollow" id="c{{ cmt.id }}" href="#{{ cmt.id }}">{{ cmt.date }}</a>
               </span>

@@ -4,7 +4,7 @@ eigrp_tag: basic
 tags:
 - EIGRP
 title: EIGRP Loop Prevention Logic
-url: /2012/11/eigrp-loop-prevention-logic.html
+url: /2012/11/eigrp-loop-prevention-logic/
 ---
 Hamid sent me the following question:
 

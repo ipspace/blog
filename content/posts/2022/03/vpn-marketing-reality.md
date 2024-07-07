@@ -3,7 +3,7 @@ title: "So-Called Modern VPNs: Marketing and Reality"
 date: 2022-03-17 07:59:00
 tags: [ VPN, LISP ]
 ---
-Someone left a "killer" comment[^BB] after reading the _[Should We Use LISP](/2022/03/should-we-use-lisp.html)_ blog post. It start with...
+Someone left a "killer" comment[^BB] after reading the _[Should We Use LISP](/2022/03/should-we-use-lisp/)_ blog post. It start with...
 
 > I must sadly say that your view on what VPN is all about is pretty rusty and archaic :( Sorry! Modern VPNs are all pub-sub based and are already turning into NaaS.
 
@@ -13,7 +13,7 @@ Nothing new there. I've been called *old-school guru from an ivory tower* when c
 
 [^TRILL]: In the meantime, TRILL and SPBM are mostly dead, as are all proprietary fabric solutions like FabricPath, VCS Fabric, or Virtual Chassis Fabric. Everyone is building fabrics on top of layer-3 networks. Go figure...
 
-[According to Wikipedia](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern), "_publish–subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead categorize published messages into classes without knowledge of which subscribers, if any, there may be_". The author of that comment somehow failed to realize that's a perfect description of an L3VPN or EVPN design using BGP route reflectors and RT-based Outbound Route Filters. I already mentioned that in the [LISP blog post](/2022/03/should-we-use-lisp.html), but it's obviously too much of a nuisance to read the whole article before writing a dismissive comment.
+[According to Wikipedia](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern), "_publish–subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead categorize published messages into classes without knowledge of which subscribers, if any, there may be_". The author of that comment somehow failed to realize that's a perfect description of an L3VPN or EVPN design using BGP route reflectors and RT-based Outbound Route Filters. I already mentioned that in the [LISP blog post](/2022/03/should-we-use-lisp/), but it's obviously too much of a nuisance to read the whole article before writing a dismissive comment.
 
 As for network-as-a-service, I'm old enough to remember industry pundits telling us how networking is dead because every endpoint will use mobile networks with LTE VPNs. More than a decade later, we're still slogging through the networking morass even though it [should be easier to build networks with no wires](https://dilbert.com/strip/2010-04-24). Also, according to the pundits, routing is dead because we have SD-WAN, and BGP and MPLS are obsolete. What's funny is that people having these opinions couldn't publish them without BGP and (oftentimes) MPLS doing their job in the background.
 
@@ -57,7 +57,7 @@ ZeroTier and TailScale excel as endpoint VPNs, although both of them support gat
 
 [^TS]: I've heard great things about TailScale coming from an environment that will definitely need gateway nodes.
 
-LISP is a totally different story. While there are endpoint LISP implementations, the only products pushing LISP (that I'm aware of) use it to implement infrastructure VPNs. Furthermore, [based on the comments I got to recent blog posts](/2022/03/should-we-use-lisp.html), it looks like LISP refocused from [cache-based forwarding](/2022/02/cache-based-forwarding.html) towards a control plane that's functionally equivalent to EVPN or L3VPN control plane. 
+LISP is a totally different story. While there are endpoint LISP implementations, the only products pushing LISP (that I'm aware of) use it to implement infrastructure VPNs. Furthermore, [based on the comments I got to recent blog posts](/2022/03/should-we-use-lisp/), it looks like LISP refocused from [cache-based forwarding](/2022/02/cache-based-forwarding/) towards a control plane that's functionally equivalent to EVPN or L3VPN control plane. 
 
 To round up the VPN confusion: there are endpoint EVPN implementations (we discussed them in [December 2021 Design Clinic](https://my.ipspace.net/bin/list?id=Design#2021_12)), so what's the difference between _real VPNs_ and _SP customer locking tools_[^TOYS]? It's obviously not the technology, but the way it's used.
 

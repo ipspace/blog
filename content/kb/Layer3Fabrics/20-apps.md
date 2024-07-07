@@ -2,7 +2,7 @@
 kb_section: Layer3Fabrics
 minimal_sidebar: true
 title: Applications Using Multiple IP Addresses
-url: /kb/Layer3Fabrics/20-apps.html
+url: /kb/Layer3Fabrics/20-apps/
 ---
 The optimal approach to any distributed systems challenge is to solve the complex problems at the edge[^1], and using the network core as a simple transport mechanism.
 
@@ -14,7 +14,7 @@ We could use this approach to build simple layer-3-only transport fabrics, and s
 * Clients running on redundantly connected endpoints can use multiple IP addresses, potentially establishing multiple sessions (one per interface) with the same server and distributing requests across all the sessions;
 * Service endpoints are available on multiple (server) IP addresses and the clients try to connect to every service endpoint until a successful connection is established.
 
-{{<figure src="Redundant-App-Sessions.png" caption="Redundant client-server application sessions established across multiple subnets">}}
+{{<figure src="../Redundant-App-Sessions.png" caption="Redundant client-server application sessions established across multiple subnets">}}
 
 Well-known solutions using this approach include:
 

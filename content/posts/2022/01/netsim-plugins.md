@@ -6,11 +6,11 @@ tags:
 - netlab
 title: Introducing netlab Plugins
 ---
-Remember the [BGP anycast lab](/2021/12/bgp-anycast-lab.html) I described in December 2021? In that blog post I briefly mentioned a problem of extraneous IBGP sessions and promised to address it at a later date. Let's see how we can fix that with a *netlab* plugin.
+Remember the [BGP anycast lab](/2021/12/bgp-anycast-lab/) I described in December 2021? In that blog post I briefly mentioned a problem of extraneous IBGP sessions and promised to address it at a later date. Let's see how we can fix that with a *netlab* plugin.
 
 We always knew that it's impossible to implement every nerd knob someone would like to have when building their labs, and extending the tool with Python plugins seemed like the only sane way to go. We added [custom plugins](https://netlab.tools/plugins/) to *netlab* in late 2021, but I didn't want to write about them because we had to optimize the internal data structures first.
 <!--more-->
-{{<note>}}Even though you don't need to know anything about the internal *netlab* functions to write plugins, your code has to modify the lab topology data model, and we had to get that stabilized, which we hopefully managed to do over the [New Year break](/2022/01/netsim-tools-1.1.html).{{</note>}}
+{{<note>}}Even though you don't need to know anything about the internal *netlab* functions to write plugins, your code has to modify the lab topology data model, and we had to get that stabilized, which we hopefully managed to do over the [New Year break](/2022/01/netsim-tools-1.1/).{{</note>}}
 
 Back to the original challenge. In the BGP anycast lab I wanted to have BGP sessions set up like this:
 
@@ -58,7 +58,7 @@ def init(topo: Box) -> None:
 
 {{<note>}}
 * Python Box module makes deeply nested dictionaries a pleasure to work with -- imagine having to do the same with traditional hodgepodge of square brackets and quotes.
-* BGP anycast attribute is explained in the [Building a BGP Anycast Lab](/2021/12/bgp-anycast-lab.html) blog post.
+* BGP anycast attribute is explained in the [Building a BGP Anycast Lab](/2021/12/bgp-anycast-lab/) blog post.
 {{</note>}}
 
 Finally, I wanted to modify the lists of BGP neighbors once the [topology transformation](https://netlab.tools/dev/transform/) has been complete. **post_transform** seemed the perfect [hook to use](https://netlab.tools/plugins/), and all I had to do was to:

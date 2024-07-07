@@ -21,7 +21,7 @@ BGP policies like route maps and prefix lists clearly belong to the address fami
 
 One might argue that these parameters belong to the address family configuration. After all, they affect BGP updates within an address family. One might also argue that having different route reflector topologies for individual address families doesn't make sense. That might have been the argument that caused Arista to implement **neighbor route-reflector-client** and **neighbor next-hop-self** commands on the global BGP configuration level. I would have no problem with that if only they were implemented consistently.
 
-As I [described in April 2022](/2022/04/eos-route-reflector-next-hop-self.html), Arista EOS takes **next-hop-self** a bit too literally. That option also changes the next hops on reflected routes. No problem; one can also use the **bgp route-reflector preserve-attributes** command to fix it. The "only" remaining problem is that this command does not work on all address families, and there's no way to fix that.
+As I [described in April 2022](/2022/04/eos-route-reflector-next-hop-self/), Arista EOS takes **next-hop-self** a bit too literally. That option also changes the next hops on reflected routes. No problem; one can also use the **bgp route-reflector preserve-attributes** command to fix it. The "only" remaining problem is that this command does not work on all address families, and there's no way to fix that.
 
 Here are the relevant parts of the global BGP configuration *netlab* created when I started testing the [leaf-and-spine EVPN topology](https://github.com/ipspace/netlab/blob/dev/tests/integration/evpn/vxlan-bridging-leaf-spine.yml) with Arista EOS:
 

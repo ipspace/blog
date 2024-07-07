@@ -5,18 +5,18 @@ tags:
 - overlay networks
 - NSX
 title: Brief History of VMware NSX
-url: /2019/08/brief-history-of-vmware-nsx.html
+url: /2019/08/brief-history-of-vmware-nsx/
 ---
 
 <p>I spent a lot of time during this summer figuring out the details of NSX-T, resulting in significantly updated and expanded <a href="https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive">VMware NSX Technical Deep Dive</a> material… but before going into those details let’s do a brief walk down the memory lane ;)</p>
 <div class="info" data-markdown="1">We’re running an <a href="https://www.sig-switzerland.ch/vmware-nsx-architecture-deep-dive/">NSX Deep Dive workshop in Zurich</a> in early September, followed by <a href="https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive">NSX-T update webinar</a> in mid-November. </div>
-<p>You might remember a <a href="/2011/10/what-is-nicira-really-up-to.html">startup called Nicira</a> that was <a href="/2012/07/vmware-buys-nicira-hypervisor-vendor.html">acquired by VMware in mid-2012</a>… supposedly resulting in the ever-continuing spat between Cisco and VMware (and maybe even triggering the creation of Cisco ACI).<!--more--></p>
-<p>Nicira’s Network Virtualization Platform ran on KVM and Xen and used their own OpenFlow-based virtual switch (OVS). Not exactly what the mainstream VMware customers were looking for, so someone at VMware decided to go for another “doing more with less” exercise and “leveraged the investments” they made in the past, resulting in NSX for vSphere (NSX-V) launched in 2013. NSX-V was really a <a href="/2013/08/what-is-vmware-nsx.html">conglomerate of</a>:</p>
+<p>You might remember a <a href="/2011/10/what-is-nicira-really-up-to/">startup called Nicira</a> that was <a href="/2012/07/vmware-buys-nicira-hypervisor-vendor/">acquired by VMware in mid-2012</a>… supposedly resulting in the ever-continuing spat between Cisco and VMware (and maybe even triggering the creation of Cisco ACI).<!--more--></p>
+<p>Nicira’s Network Virtualization Platform ran on KVM and Xen and used their own OpenFlow-based virtual switch (OVS). Not exactly what the mainstream VMware customers were looking for, so someone at VMware decided to go for another “doing more with less” exercise and “leveraged the investments” they made in the past, resulting in NSX for vSphere (NSX-V) launched in 2013. NSX-V was really a <a href="/2013/08/what-is-vmware-nsx/">conglomerate of</a>:</p>
 <ul><li>Nicira’s controller;</li>
 <li>VMware’s existing ESXi virtual switch (vDS) and VXLAN kernel module;</li>
 <li>Modified vShield Manager GUI/API (now called NSX Manager);</li>
 <li>Open-source software with disabled configuration CLI running in virtual machines and a glaze of GUI/API on top (can’t tell you how much fun it is to configure <strong>HAProxy</strong> URL rewrite rules through a GUI).</li>
-<li>A few new components like proper in-kernel distributed firewall (instead of the sidecar VM approach they used in vShield that resulted in an ESXi server being <a href="/2011/11/junipers-virtual-gateway-virtual.html">limited to 1 Gbps throughput</a>).</li>
+<li>A few new components like proper in-kernel distributed firewall (instead of the sidecar VM approach they used in vShield that resulted in an ESXi server being <a href="/2011/11/junipers-virtual-gateway-virtual/">limited to 1 Gbps throughput</a>).</li>
 </ul>
 <p>VMware also decided to keep supporting the existing customers using NVP (rebranded into NSX for Multiple Hypervisors).</p>
 <div class="info" data-markdown="1">If you want to know more about what VMware NSX did in 2013, watch the <a href="https://www.ipspace.net/VMware_NSX_Architecture">VMware NSX Architecture Overview</a> webinar. </div>
@@ -25,7 +25,7 @@ url: /2019/08/brief-history-of-vmware-nsx.html
 <p>Having a stable shipping product, and a long-term strategy sounds like a great idea, but it costs money to support two parallel products, and eventually most vendors decide to neglect or outright kill the working product in favor of pie-in-the-sky future (while at the same time telling you that would never happen). NSX-V seems to be experiencing the same fate - everyone is talking about NSX-T, there hasn’t been a major release in over 18 months, and while the maintenance releases do add new functionality, it’s mostly polishing and GUI enhancements (with the exception of IP Multicast support added in 6.4.2).</p>
 <p>I wouldn’t mind that, and would happily recommend NSX-T for new deployments, but unfortunately there are still a few things missing in NSX-T:</p>
 <ul><li>There’s no real federation capability (you cannot extend a unified control/management plane across two or more NSX-T deployments);</li>
-<li>Active-active multi-site deployment is a joke and works almost as well as <a href="/2011/09/long-distance-irf-fabric-works-best-in.html">stretched data center fabric control plane</a> - when you lose the inter-site link in an active-active setup, one of the sites shuts down.</li>
+<li>Active-active multi-site deployment is a joke and works almost as well as <a href="/2011/09/long-distance-irf-fabric-works-best-in/">stretched data center fabric control plane</a> - when you lose the inter-site link in an active-active setup, one of the sites shuts down.</li>
 <li>Security vendors are telling me that there’s no sidecar service insertion architecture (where you’d run firewalls on the same hypervisor as the virtual machines they’re protecting), although at least Checkpoint is already certified for E-W service insertion functionality (so it might be vendor-specific challenge). Whether we really need that or whether the security vendors lament the ability to sell more licenses is obviously a different story ;)</li>
 <li>NSX-T uses Geneve encapsulation and as of today there are no hardware gateways.</li>
 </ul>

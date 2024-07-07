@@ -5,15 +5,15 @@ tags:
 - overlay networks
 - virtualization
 title: Layer-3 Forwarding with VMware NSX Edge Services Router
-url: /2013/11/layer-3-forwarding-with-vmware-nsx-edge.html
+url: /2013/11/layer-3-forwarding-with-vmware-nsx-edge/
 ---
 
-<p>The easiest way of connecting overlay virtual networks implemented with <a href="/2013/08/what-is-vmware-nsx.html">VMware NSX for vSphere</a> to the outside world is <a href="/2013/08/routing-protocols-on-nsx-edge-services.html">NSX Edge Services Router</a>. It’s a much improved version of vShield Edge and provides way more than just layer-3 forwarding services – it’s also a firewall, load balancer, DHCP server, DNS forwarder, NAT and VPN termination device.<!--more--></p>
+<p>The easiest way of connecting overlay virtual networks implemented with <a href="/2013/08/what-is-vmware-nsx/">VMware NSX for vSphere</a> to the outside world is <a href="/2013/08/routing-protocols-on-nsx-edge-services/">NSX Edge Services Router</a>. It’s a much improved version of vShield Edge and provides way more than just layer-3 forwarding services – it’s also a firewall, load balancer, DHCP server, DNS forwarder, NAT and VPN termination device.<!--more--></p>
 <p>You can use a VMware NSX Edge Services Router (ESR) to connect multiple VXLAN-backed layer-2 segments within an application stack. You would configure the services router through NSX Manager (improved vShield Manager), and you’d get a VM connected to multiple VXLAN-based port groups (and probably one or more VLAN-based port groups) behind the scenes.</p>
 <div class="separator"><a href="/2013/11/s1600-NSX+Edge+Services+Router.jpg" imageanchor="1"><img border="0" src="/2013/11/s400-NSX+Edge+Services+Router.jpg"/></a></div>
 <p>In this scenario, VXLAN kernel modules resident in individual vSphere hosts perform layer-2 forwarding, sending packets between VM and ESR NICs. ESR performs layer-3 forwarding within the VM context.</p>
 <p>NSX Edge Services Router is the ideal solution when you need network services (firewalls, load balancers …) between the client and the server. It’s more than good enough for smaller deployments or when the majority of the traffic leaves the overlay virtual networking world (you can push up to 10 Gbps of traffic through it) … but don’t use it in high-volume environments with large amount of inter-subnet east-west traffic.</p>
-<p>In those environments you might collapse multiple subnets into a single layer-2 segment (assuming your security engineers approve the <a href="/2013/04/are-you-ready-to-change-your-security.html">change in security paradigm introduced with VM NIC firewalls</a>) or use distributed routing functionality of VMware NSX. More about the latter in a follow-up blog post.</p>
+<p>In those environments you might collapse multiple subnets into a single layer-2 segment (assuming your security engineers approve the <a href="/2013/04/are-you-ready-to-change-your-security/">change in security paradigm introduced with VM NIC firewalls</a>) or use distributed routing functionality of VMware NSX. More about the latter in a follow-up blog post.</p>
 <h4>More information</h4><ul class="ListParagraph"><li>Watch <a href="http://demo.ipspace.net/get/4.2%20-%20Layer-3%20Gateways.mp4">VMware NSX Layer-3 Gateways</a> video from NSX <a href="http://www.ipspace.net/VMware_NSX_Architecture">Architecture webinar</a>;</li>
 <li><a href="http://www.ipspace.net/Overlay_Virtual_Networking">Overlay Virtual Networking</a> webinar includes in-depth coverage of other virtual networking vendors. </li>
 <li><a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> webinar covers even more topics, including over-the-cloud in hybrid cloud connectivity scenarios. </li>

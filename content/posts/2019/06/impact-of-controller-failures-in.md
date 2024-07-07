@@ -14,7 +14,7 @@ tags:
 - WAN
 - high availability
 title: Impact of Controller Failures in Software-Defined Networks
-url: /2019/06/impact-of-controller-failures-in.html
+url: /2019/06/impact-of-controller-failures-in/
 ---
 [Christoph Jaggi](http://uebermeister.com/about.html) sent me this observation during one of our SD-WAN discussions:
 
@@ -23,12 +23,12 @@ url: /2019/06/impact-of-controller-failures-in.html
 A controller (or management/provisioning) system is obviously the central point of failure in any network, but we have to go beyond that and ask a simple question: "What happens when the controller cluster fails and/or when nodes lose connectivity to the controller?"
 <!--more-->
 {{<note>}}
-Whoever claims [you don't have to worry about failure scenarios because redundant links and out-of-band management network ensure total failures never happen](/2012/10/if-something-can-fail-it-will.html) has just proven they have no clue what they're talking about.
+Whoever claims [you don't have to worry about failure scenarios because redundant links and out-of-band management network ensure total failures never happen](/2012/10/if-something-can-fail-it-will/) has just proven they have no clue what they're talking about.
 {{</note>}}
 
-Worst-case scenario is the orthodox SDN architecture with [centralized control plane residing in the controller](/2014/05/does-centralized-control-plane-make.html). While packet forwarding might continue to work until the flows time out, even [ARP won't work anymore](/2013/06/implementing-control-plane-protocols.html).
+Worst-case scenario is the orthodox SDN architecture with [centralized control plane residing in the controller](/2014/05/does-centralized-control-plane-make/). While packet forwarding might continue to work until the flows time out, even [ARP won't work anymore](/2013/06/implementing-control-plane-protocols/).
 
-Architectures based on a bit more operational experience like Big Switch fabric can deal with short-term failures. Big Switch claims [ARP entries reside in edge switches](/2015/02/big-cloud-fabric-scaling-openflow-fabric.html), so they can keep ARP going even when the controller fails. It might also be possible to pre-provision backup paths in the network (see also: SONET/SDH) so the headless fabric can deal with link failures (but not link recoveries because those require path recalculation). Dealing with external topology changes like VM migration is obviously already a mission impossible.
+Architectures based on a bit more operational experience like Big Switch fabric can deal with short-term failures. Big Switch claims [ARP entries reside in edge switches](/2015/02/big-cloud-fabric-scaling-openflow-fabric/), so they can keep ARP going even when the controller fails. It might also be possible to pre-provision backup paths in the network (see also: SONET/SDH) so the headless fabric can deal with link failures (but not link recoveries because those require path recalculation). Dealing with external topology changes like VM migration is obviously already a mission impossible.
 
 Some architectures deal with controller failure by falling back to *traditional* behavior. For example, ESXi hosts that lose connectivity with the NSX-V controller cluster enter *controller disconnected* mode in which they flood every BUM packet on every segment to every ESXi host in the domain. While this approach obviously works, try to figure out how much overhead (and wasted CPU cycles) it generates.
 

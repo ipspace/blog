@@ -7,7 +7,7 @@ tags:
 - SDN
 - Software Gone Wild
 title: Device Configuration Synthesis with NetComplete on Software Gone Wild
-url: /2019/06/device-configuration-synthesis-with.html
+url: /2019/06/device-configuration-synthesis-with/
 ---
 When I was still at university the [fourth-generation programming languages](https://en.wikipedia.org/wiki/Fourth-generation_programming_language) were all the hype, prompting us to make jokes along the lines "fifth generation will implement *do what I don't know how*"
 

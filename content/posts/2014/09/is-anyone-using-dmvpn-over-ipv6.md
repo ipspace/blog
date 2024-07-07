@@ -6,7 +6,7 @@ tags:
 - IPv6
 title: Is Anyone Using DMVPN-over-IPv6?
 series_weight: 50
-url: /2014/09/is-anyone-using-dmvpn-over-ipv6.html
+url: /2014/09/is-anyone-using-dmvpn-over-ipv6/
 ---
 One of my readers sent me an interesting challenge: they're deploying a new DMVPN WAN, and as they cannot expect all locations to have native (non-NAT) IPv4 access, they plan to build the new DMVPN over IPv6. He was wondering whether it would work.
 

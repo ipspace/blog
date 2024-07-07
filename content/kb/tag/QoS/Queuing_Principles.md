@@ -3,7 +3,7 @@ kb_section: QoS
 minimal_sidebar: true
 pre_scroll: true
 title: Queuing Principles
-url: /kb/tag/QoS/Queuing_Principles.html
+url: /kb/tag/QoS/Queuing_Principles/
 ---
 An interface _output_ queue can form only if the arrival rate of packets (routed or router-generated) is higher than the departure rate (usually the interface line speed). If the arrival rate is lower than the departure rate, the packets are sent immediately and no queuing is performed even when it’s configured on an interface.
 
@@ -23,7 +23,7 @@ The hardware queue shared between the CPU and the interface chipset cannot be re
 
 The various queuing mechanisms offered by Cisco IOS are implemented in software queues beyond the hardware queue. If the hardware queue is full at the time a packet is routed to an interface, the packet is entered into one of the software queues; otherwise it’s appended at the end of the hardware FIFO queue. The CPU transfers the packets from the software queues to the hardware queue when the interface interrupts it asking for more output packets. Based on the hardware queue size, more than one packet can be transferred from the software queues into the hardware queue on each interrupt.
 
-{{<figure src="Queuing_Software_Queues.png" caption="Software and hardware queues">}}
+{{<figure src="../Queuing_Software_Queues.png" caption="Software and hardware queues">}}
 
 The hardware queue size is computed automatically by Cisco IOS; the queue size depends on the interface hardware, its line speed and the router model (CPU speed). The router tries to minimize the hardware queue size (to minimize the FIFO part of the queuing model) while ensuring that the increased interrupt rate will not overwhelm the main CPU. Usually, the hardware queue has only one or two entries on low-speed (< 2 Mbps) links and can be as long as 128 entries on high-speed (> 100 Mbps) interfaces ([more details](Fair_Queuing.html)).
 
@@ -35,7 +35,7 @@ If no fancy queuing is configured on the interface, [FIFO queuing](https://en.w
 
 The FIFO queue shared between the main CPU and the interface hardware is almost always implemented with a structure of transmit buffer descriptors. To minimize the hardware complexity, the descriptors are logically organized in a *tx-ring* (actually it's a wrap-around array) and the FIFO queue is implemented as a moving set of buffer descriptors.
 
-{{<figure src="Queuing_Transmit_Ring.png" caption="Transmit ring between CPU and output interface">}}
+{{<figure src="../Queuing_Transmit_Ring.png" caption="Transmit ring between CPU and output interface">}}
 
 The main CPU inserts a packet in the FIFO queue by:
 

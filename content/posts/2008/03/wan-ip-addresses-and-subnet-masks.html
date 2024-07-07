@@ -1,14 +1,14 @@
 ---
-url: /2008/03/wan-ip-addresses-and-subnet-masks.html
+url: /2008/03/wan-ip-addresses-and-subnet-masks/
 title: "WAN IP addresses and subnet masks"
 date: "2008-03-04T07:12:00.006+01:00"
 tags: [ WAN ]
 ---
 
-Whisper asked <a href="/2008/02/reduce-ip-addressing-errors-in-lab.html#comments">an interesting question</a> …<blockquote class="cite">“What I would like to know is, on my PPP negotiated ADSL connection, how the ISP assigns me a /32 ip address.”</blockquote>
+Whisper asked <a href="/2008/02/reduce-ip-addressing-errors-in-lab/#comments">an interesting question</a> …<blockquote class="cite">“What I would like to know is, on my PPP negotiated ADSL connection, how the ISP assigns me a /32 ip address.”</blockquote>
 … which prompted me to test various WAN encapsulations and address assignment rules. Here are the results:<ul><li>On all WAN encapsulations you can configure subnet masks down to /31 (/30 in old IOS releases).</li>
 <li>The same IP address can be used on more than one interface as long as <em>both IP address and subnet mask match</em>.</li>
 <li>Two WAN interfaces can have different IP addresses but still belong to the same IP subnet. You would use this on Frame Relay when you have multiple interfaces into the same FR cloud for bandwidth reasons.</li>
-<li>If you configure IP address with IPCP (with the ip address negotiated command), the subnet mask becomes /32 as IPCP does not carry subnet mask (and <a href="/2008/02/reduce-ip-addressing-errors-in-lab.html">you get the host route toward the PPP peer</a> unless you <a href="/2008/02/remove-unwanted-ppp-peer-route.html">turn off the PPP peer route option</a>)</li>
+<li>If you configure IP address with IPCP (with the ip address negotiated command), the subnet mask becomes /32 as IPCP does not carry subnet mask (and <a href="/2008/02/reduce-ip-addressing-errors-in-lab/">you get the host route toward the PPP peer</a> unless you <a href="/2008/02/remove-unwanted-ppp-peer-route/">turn off the PPP peer route option</a>)</li>
 <li>If you configure IP address with SLARP (Serial Line ARP) on HDLC, the subnet mask is inherited from the peer (HDLC SLARP carries subnet mask) and the IP address is determined by flipping the low-order bits in the neighbor's IP address.</li>
 </ul>

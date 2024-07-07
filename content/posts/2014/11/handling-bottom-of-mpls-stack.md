@@ -4,7 +4,7 @@ tags:
 - MPLS
 - MPLS VPN
 title: Handling the Bottom of MPLS Stack
-url: /2014/11/handling-bottom-of-mpls-stack.html
+url: /2014/11/handling-bottom-of-mpls-stack/
 ---
 MPLS bottom-of-stack bit confused one of my readers. In particular, he had a problem with the part where the egress MPLS Label Switch Router (LSR) should go from labeled (MPLS) to unlabeled (IPv4, IPv6) packets and had to figure out what was in the packet.
 <!--more-->

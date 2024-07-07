@@ -4,9 +4,9 @@ tags:
 - BGP
 - MPLS VPN
 title: BGP Best External Explained
-url: /2013/05/bgp-best-external-explained.html
+url: /2013/05/bgp-best-external-explained/
 ---
-Loads of niche features got crammed into (MP)BGP and MPLS since I wrote my [MPLS books](/2007/06/using-mpls-vpn-books-to-study-for-ccip.html), most of them trying to tweak BGP (a scalable and reasonably slow routing protocol dealing with behemoth tables) to behave more like an IGP would.
+Loads of niche features got crammed into (MP)BGP and MPLS since I wrote my [MPLS books](/2007/06/using-mpls-vpn-books-to-study-for-ccip/), most of them trying to tweak BGP (a scalable and reasonably slow routing protocol dealing with behemoth tables) to behave more like an IGP would.
 
 It looks like we'll never see updated versions of the books, so I'll try to cover the new features with short videos. The first one on the list: BGP Best External -- a mechanism that speeds up MP-IBGP convergence in primary/backup PE-CE scenarios using EBGP.
 <!--more-->

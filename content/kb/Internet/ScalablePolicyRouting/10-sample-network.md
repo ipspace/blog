@@ -2,13 +2,13 @@
 kb_section: ScalablePolicyRouting
 minimal_sidebar: true
 title: Sample Network
-url: /kb/Internet/ScalablePolicyRouting/10-sample-network.html
+url: /kb/Internet/ScalablePolicyRouting/10-sample-network/
 ---
 The sample network that will be used in all the printouts and configuration examples is a redundant hub-and-spoke network where each remote site connects to the central location via a high-speed GRE-over-Internet connection and a lower-speed Frame Relay link (don't ask, it's an old example, but the principles and configurations are as valid as ever).
 
 The central site has two core routers (one concentrating the Internet connections, the other one serving as the Frame Relay hub) and two distribution-layer routers. The network schematics are displayed in the next figure.
 
-{{<figure src="network-diagram.jpg" caption="Network diagram">}}
+{{<figure src="../network-diagram.jpg" caption="Network diagram">}}
 
 {{<note note>}}In a live network, you’d use IPSec in combination with GRE tunnels, but it’s not included in the configuration samples to reduce the overall complexity.{{</note>}}
 

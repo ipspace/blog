@@ -6,7 +6,7 @@ tags:
 - podcast
 - Software Gone Wild
 title: Intent-Based Networking with Batfish on Software Gone Wild
-url: /2019/09/intent-based-networking-with-batfish-on.html
+url: /2019/09/intent-based-networking-with-batfish-on/
 intent-based-networking_tag: podcast
 ---
 Imagine you would have a system that would read network device configurations, figure out how those devices might be connected, reverse-engineer the network topology, and be able to answer questions like "*what would happen if this link fails*" or "*do I have fully-redundant network*" or even "*how will this configuration change impact my network*". Welcome to [Batfish](https://www.batfish.org/).

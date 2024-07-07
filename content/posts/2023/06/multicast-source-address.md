@@ -62,4 +62,4 @@ I used the following image in a blog post in 2015. Unfortunately it's equally ap
 ### Revision History
 
 2023-06-01
-: Rewrote the _impact of RPF check_ part of the blog post based on the [feedback from Erik Auerswald](/2023/06/multicast-source-address.html#1851).
+: Rewrote the _impact of RPF check_ part of the blog post based on the [feedback from Erik Auerswald](#1851).

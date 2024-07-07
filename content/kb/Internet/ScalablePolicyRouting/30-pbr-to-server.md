@@ -3,7 +3,7 @@ kb_section: ScalablePolicyRouting
 minimal_sidebar: true
 pre_scroll: true
 title: Policy Routing to the Servers
-url: /kb/Internet/ScalablePolicyRouting/30-pbr-to-server.html
+url: /kb/Internet/ScalablePolicyRouting/30-pbr-to-server/
 ---
 Whenever you want to implement policy routing in a network, you have to consider both traffic flow directions independently. For example, changes you make to force the traffic from remote sites to use a particular link toward a specific server usually do not influence the traffic flowing in the other direction, potentially resulting in asymmetrical traffic.
 
@@ -18,11 +18,11 @@ The following MED values are used in the sample network:
 * MED=200 is set on all IP prefixes advertised from the *CoreInet* router to the remote sites.
 *	MED=300 is set on IP prefixes advertised from the *CoreFR* router to the remote sites to ensure the backup path is only used when the primary link fails (lower MED values are preferred)
 
-{{<figure src="corenet-preferred-web.jpg" caption="CoreInet router is preferred for the Web LAN">}}
+{{<figure src="../corenet-preferred-web.jpg" caption="CoreInet router is preferred for the Web LAN">}}
 
 *	MED=100 is set on IP prefixes of the legacy servers when they are advertised from the *CoreFR* router, making them more preferred over the slower link.
 
-{{<figure src="corefr-preferred-legacy.jpg" caption="CoreFR router is preferred for the Legacy LAN">}}
+{{<figure src="../corefr-preferred-legacy.jpg" caption="CoreFR router is preferred for the Legacy LAN">}}
 
 You can use the **show ip bgp _prefix_** command on the remote site router to see the impact of the MED settings:
 
@@ -59,6 +59,6 @@ You could set the MED with an access-list or a prefix-list on the *CoreFR* route
 * The originating router (the *Legacy* router in our network) would set a BGP community (65000:100 is used in the sample network) to indicate that the IP prefix belongs to the legacy servers
 * The *CoreFR* router would use the community to set the MED values. 
 
-{{<figure src="legacy-route-propagation.jpg" caption="BGP route propagation from the Legacy router to the Site router">}}
+{{<figure src="../legacy-route-propagation.jpg" caption="BGP route propagation from the Legacy router to the Site router">}}
 
 <!-- end -->

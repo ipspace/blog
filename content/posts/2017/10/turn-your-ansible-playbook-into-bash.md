@@ -4,10 +4,10 @@ tags:
 - automation
 - Ansible
 title: Turn Your Ansible Playbook into a Bash Command
-url: /2017/10/turn-your-ansible-playbook-into-bash.html
+url: /2017/10/turn-your-ansible-playbook-into-bash/
 lastmod: 2022-02-17 16:27:00
 ---
-In [one of the previous blog posts](/2017/09/collect-ssh-keys-with-ansible.html) I described the playbook I use to collect SSH keys from network devices. As I use it quite often, it became tedious to write **ansible-playbook** ***path-to-playbook*** every time I wanted to run the collection process.
+In [one of the previous blog posts](/2017/09/collect-ssh-keys-with-ansible/) I described the playbook I use to collect SSH keys from network devices. As I use it quite often, it became tedious to write **ansible-playbook** ***path-to-playbook*** every time I wanted to run the collection process.
 
 Ansible playbooks are YAML documents, and YAML documents use \# to start comments, so I thought "_what if I'd use a YAML comment to add [shebang](https://en.wikipedia.org/wiki/Shebang(Unix)) and turn my YAML document into a script_"
 

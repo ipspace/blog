@@ -13,9 +13,9 @@ tags:
 - IP routing
 - Software Gone Wild
 title: OpenFabric with Russ White on Software Gone Wild
-url: /2018/04/openfabric-with-russ-white-on-software.html
+url: /2018/04/openfabric-with-russ-white-on-software/
 ---
-Continuing the series of [data center routing protocol podcasts](/2018/03/data-center-routing-with-rift-on.html), we sat down with Russ White (of the CCDE fame), author of another proposal: [OpenFabric](https://tools.ietf.org/html/draft-white-openfabric-05).
+Continuing the series of [data center routing protocol podcasts](/2018/03/data-center-routing-with-rift-on/), we sat down with Russ White (of the CCDE fame), author of another proposal: [OpenFabric](https://tools.ietf.org/html/draft-white-openfabric-05).
 
 As always, we started with the "*what's wrong with what we have right now, like using BGP as a better IGP*" question, resulting in "*BGP is becoming the trash can of the Internet*".
 <!--more-->

@@ -3,7 +3,7 @@ date: 2008-08-08 06:38:00+02:00
 tags:
 - BGP
 title: BGP Route Reflector Details
-url: /2008/08/bgp-route-reflector-details.html
+url: /2008/08/bgp-route-reflector-details/
 lastmod: 2020-11-20 09:24:00
 series: bgp-essentials
 ---
@@ -36,7 +36,7 @@ Route reflector does not change or remove any other attributes of the reflected 
 
 Exceptions:
 
-* BGP next-hop can be changed **set ip next-hop** route map command or with **neighbor next-hop-self all** feature introduced to [support large-scale DMVPN networks using IBGP](/2014/04/changes-in-ibgp-next-hop-processing.html).
+* BGP next-hop can be changed **set ip next-hop** route map command or with **neighbor next-hop-self all** feature introduced to [support large-scale DMVPN networks using IBGP](/2014/04/changes-in-ibgp-next-hop-processing/).
 * Standard and extended BGP communities are removed from the reflected routes unless the **neighbor send-community \[both\]** is configured on the route reflector.
 * The *link bandwidth* community is removed from reflected route if the route-reflector performs IBGP multipath load-sharing for that route.
 
@@ -120,31 +120,31 @@ Although the mechanisms specified in RFC 1966 ensure loop-free IBGP operation 
 
 Traditional design rules recommended an IBGP full mesh of route reflectors or other core routers, combined with route reflector clients at the network edge:
 
-{{<figure src="BGP_RR_IBGP_Mesh.png" caption="BGP route reflectors combined with IBGP full mesh between core routers">}}
+{{<figure src="/2008/08/BGP_RR_IBGP_Mesh.png" caption="BGP route reflectors combined with IBGP full mesh between core routers">}}
 
 Alternatively you could build a hierarchy of route reflectors with mid-range route reflectors being clients of core route reflectors:
 
-{{<figure src="BGP_RR_Hierarchy.png" caption="A hierarchy of BGP route reflectors">}}
+{{<figure src="/2008/08/BGP_RR_Hierarchy.png" caption="A hierarchy of BGP route reflectors">}}
 
 With the improved IBGP loop avoidance, you could use more relaxed designs, ranging from **route-reflector-client** being configured on every IBGP neighbor to designs where the edge routers act as route reflector clients and all other BGP routers in the AS act as route reflectors.
 
-{{<figure src="BGP_RR_Hierarchy.png" caption="IBGP session topology with bidirectional route-reflector-client configuration">}}
+{{<figure src="/2008/08/BGP_RR_Hierarchy.png" caption="IBGP session topology with bidirectional route-reflector-client configuration">}}
 
 ### Cluster-ID is Obsolete
 
-Cisco IOS implementation of route reflector functionality supports the **bgp** **cluster-id** parameter, which is used in the *Cluster list* attribute instead of the *Router ID*. The **cluster-id** parameter is useful in redundant route reflector scenarios where multiple route reflectors serve the same set of clients, but can lead to partial connectivity when multiple IBGP sessions are disrupted ([more details](/2022/02/bgp-rr-cluster-myths.html)).
+Cisco IOS implementation of route reflector functionality supports the **bgp** **cluster-id** parameter, which is used in the *Cluster list* attribute instead of the *Router ID*. The **cluster-id** parameter is useful in redundant route reflector scenarios where multiple route reflectors serve the same set of clients, but can lead to partial connectivity when multiple IBGP sessions are disrupted ([more details](/2022/02/bgp-rr-cluster-myths/)).
 
-{{<figure src="BGP_RR_Cluster.png" caption="Cluster of redundant BGP route reflectors">}}
+{{<figure src="/2008/08/BGP_RR_Cluster.png" caption="Cluster of redundant BGP route reflectors">}}
 
 The revised BGP route selection rules ensure that a route reflector in a cluster always prefers route from a client (with shorter *Cluster list*) over a reflected route, thus making the **bgp** **cluster-id** parameter obsolete. You should not use the **bgp** **cluster-id** in new designs to increase the resilience of your network.
 
 ### Further Reading
 
-* [Can BGP Route Reflectors Really Generate Forwarding Loops?](/2013/10/can-bgp-route-reflectors-really.html)
-* [Mixed Feelings about BGP Route Reflector Cluster ID](/2022/02/bgp-rr-cluster-myths.html)
-* [BGP Route Reflector update groups (technical details)](/2009/04/bgp-route-reflector-update-groups.html)
-* [BGP next hop processing](/2011/08/bgp-next-hop-processing.html)
-* [Can We Trust BGP Next Hops (Part 2)?](/2020/04/can-we-trust-bgp-next-hops-part-2.html)
-* [Running BGP Route Reflector in a Virtual Machine](/2016/05/running-bgp-route-reflector-in-virtual.html)
-* [Building BGP Route Reflector Configuration with Ansible/Jinja2](/2020/04/building-bgp-rr-configuration-ansible-jinja2.html)
+* [Can BGP Route Reflectors Really Generate Forwarding Loops?](/2013/10/can-bgp-route-reflectors-really/)
+* [Mixed Feelings about BGP Route Reflector Cluster ID](/2022/02/bgp-rr-cluster-myths/)
+* [BGP Route Reflector update groups (technical details)](/2009/04/bgp-route-reflector-update-groups/)
+* [BGP next hop processing](/2011/08/bgp-next-hop-processing/)
+* [Can We Trust BGP Next Hops (Part 2)?](/2020/04/can-we-trust-bgp-next-hops-part-2/)
+* [Running BGP Route Reflector in a Virtual Machine](/2016/05/running-bgp-route-reflector-in-virtual/)
+* [Building BGP Route Reflector Configuration with Ansible/Jinja2](/2020/04/building-bgp-rr-configuration-ansible-jinja2/)
 

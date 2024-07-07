@@ -6,7 +6,7 @@ tags:
 - security
 - OSPF
 title: Do Not EVER Run OSPF or IS-IS With Your Internet Customers
-url: /2009/08/do-not-ever-run-ospf-or-is-is-with-your.html
+url: /2009/08/do-not-ever-run-ospf-or-is-is-with-your/
 ---
 Someone started an [interesting discussion on the NANOG mailing list](http://www.merit.edu/mail.archives/nanog/msg20171.html). He inherited a network that extended its internal OSPF to its multihomed customers and wondered whether he should leave the network, change OSPF to IS-IS, or deploy BGP. Here are a few thoughts from [my reply](http://www.merit.edu/mail.archives/nanog/msg20189.html).
 

@@ -7,7 +7,7 @@ netlab_tag: ignore
 BGP_tag: lab
 redirect: https://bgplabs.net/basic/6-protect/
 ---
-I published another [BGP labs](https://bgplabs.net/) exercise a few days ago. You can use it to [practice EBGP session protection](https://bgplabs.net/basic/6-protect/), including [Generalized TTL Security Mechanism (GTSM)](/2023/03/advantages-bgp-gtsm.html) and TCP MD5 checksums[^AO].
+I published another [BGP labs](https://bgplabs.net/) exercise a few days ago. You can use it to [practice EBGP session protection](https://bgplabs.net/basic/6-protect/), including [Generalized TTL Security Mechanism (GTSM)](/2023/03/advantages-bgp-gtsm/) and TCP MD5 checksums[^AO].
 
 [^AO]: I would love to add TCP-AO to the mix, but it's not yet supported by the Linux kernel, and so cannot be used in Cumulus Linux or FRR containers.
 

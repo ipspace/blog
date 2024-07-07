@@ -11,7 +11,7 @@ tags:
 - virtualization
 - high availability
 title: Simplify Your Disaster Recovery with Virtual Appliances
-url: /2013/05/simplify-your-disaster-recovery-with.html
+url: /2013/05/simplify-your-disaster-recovery-with/
 ---
 Regardless of what the vendors are telling you, it's hard to get data center disaster recovery right (unless you're [running regular fire drills](http://queue.acm.org/detail.cfm?id=2371297)), and your job usually gets harder due to the intricate (sometimes undocumented) intertwining of physical and virtual worlds. For example, do you know how to get the firewall and load balancer configurations from the failed site implemented in the equipment currently used at disaster recovery site?
 

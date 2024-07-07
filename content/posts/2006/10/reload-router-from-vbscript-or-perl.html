@@ -5,11 +5,11 @@ tags:
 - network management
 - web
 title: Reload a router from VBScript or PERL with a HTTP (web) request
-url: /2006/10/reload-router-from-vbscript-or-perl.html
+url: /2006/10/reload-router-from-vbscript-or-perl/
 ---
 
 If you have HTTP enabled on your router, you can use it to automate router reloads through web requests. To enable HTTP on the router, use the following commands:<br/><blockquote class="code">ip http server<br/>ip http access-class 90<br/>access-list 90 permit <i>network-management-ip-address</i></blockquote>
 The <strong>ip http access-class </strong>configuration command is vital - it limits the access to the web server on your router to well-defined IP addresses.<br/><br/>The Visual Basic script to reload the router is extremely simple (just save the following lines into a file called <i>reload.vbs</i>): <blockquote class="code">Const RouterIP = "10.0.0.1" ' replace with router's IP address<br/>Const EnablePassword = "password" ' replace with enable password<br/><br/>Set WebRq = CreateObject("MSXML2.XMLHTTP")<br/>WebRq.Open "GET","http://" &amp; RouterIP &amp; "/level/15/exec/reload/CR",false,"Username",EnablePassword<br/>WebRq.Send</blockquote>
 And here is the equivalent PERL code for the open source community: <blockquote class="code">use LWP::UserAgent;<br/><br/>$routerIP = "10.0.0.1";<br/>$enablePwd = "password";<br/><br/>$ua = LWP::UserAgent-&gt;new;<br/>$req = HTTP::Request-&gt;new(GET =&gt; "http://$routerIP/level/15/exec/reload/CR");<br/>$req-&gt;authorization_basic('', $enablePwd);<br/>print $ua-&gt;request($req)-&gt;as_string;</blockquote>
-By default, the username specified in the web request is ignored by the router and the password has to be the enable password. Of course, if you <a href="/2006/10/multilevel-web-http-access-to-router.html">change the authentication</a> scheme on the router with the <strong>ip http authentication </strong>configuration command, you'd use proper username/password pair in the HTTP request.
+By default, the username specified in the web request is ignored by the router and the password has to be the enable password. Of course, if you <a href="/2006/10/multilevel-web-http-access-to-router/">change the authentication</a> scheme on the router with the <strong>ip http authentication </strong>configuration command, you'd use proper username/password pair in the HTTP request.
 

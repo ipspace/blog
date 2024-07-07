@@ -7,7 +7,7 @@ series:
 tags:
 - high availability
 title: Disasters Happen ... It’s the Recovery that Matters
-url: /2011/07/disasters-happen-its-recovery-that.html
+url: /2011/07/disasters-happen-its-recovery-that/
 ---
 My recent vacation included a few perfect lessons in disaster recovery. Fortunately the disasters were handled by total pros that managed them perfectly. It all started when we were already packed and driving -- my travel agent called me to tell me someone mixed up the dates and shifted them by two months; we were expected to arrive in late August. Not good when you have small kids all excited about going to the seaside sitting in the car.
 <!--more-->

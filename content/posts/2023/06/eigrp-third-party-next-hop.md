@@ -17,7 +17,7 @@ With the **no ip next-hop-self eigrp** command configured on an interface, an 
 
 The default EIGRP next hop processing will be illustrated in a simple NBMA network with three routers. R1 is the hub router; R2 and R3 are spoke routers. The examples use Frame Relay network between them; it could also be a DMVPN Phase-1 network or a Carrier Ethernet service.
 
-{{<figure src="NH_NBMA_Diagram.png" caption="NBMA network diagram">}}
+{{<figure src="/2023/06/NH_NBMA_Diagram.png" caption="NBMA network diagram">}}
 
 EIGRP split horizon has been disabled on R1 to allow route propagation between R2 and R3. The relevant parts of the R1’s router configuration are included in the following printout: 
 
@@ -33,7 +33,7 @@ interface Serial1/0
 
 By default, R1 does not set the *next hop* field in outgoing EIGRP routing update:
 
-{{<figure src="NH_Self_Wireshark.png" caption="EIGRP does not set the next-hop field by default">}}
+{{<figure src="/2023/06/NH_Self_Wireshark.png" caption="EIGRP does not set the next-hop field by default">}}
 
 After the EIGRP adjacencies are established, the routing table on R3 contains routes to loopback interfaces of R1 and R2. The *next-hop* field in the EIGRP updates sent by R1 was empty; the next hop of both routes in the R3’s routing table is thus R1.
 
@@ -103,7 +103,7 @@ interface Serial1/0
 
 A sample EIGRP update packet sent from R1 to R3 is displayed in the next figure:
 
-{{<figure src="NH_Set_Wireshark.png" caption="EIGRP update has non-zero next hop field">}}
+{{<figure src="/2023/06/NH_Set_Wireshark.png" caption="EIGRP update has non-zero next hop field">}}
 
 After the EIGRP adjacencies between R1 and R2/R3 are reestablished, the next-hop IP address of R2’s loopback interface in R3’s IP routing table is the WAN address of R2 (not R1):
 
@@ -160,7 +160,7 @@ Please note that it makes sense to use third-party next hops only when the route
 
 The **no ip next-hop-self eigrp** interface configuration command affects internal and external EIGRP routes. This effect is easy to demonstrate in a sample three router network running two EIGRP processes (Figure 4).
 
-{{<figure src="NH_Redistribute_Diagram.png" caption="EIGRP redistribution test lab">}}
+{{<figure src="/2023/06/NH_Redistribute_Diagram.png" caption="EIGRP redistribution test lab">}}
 
 The relevant configuration commands of the GW router are shown in the next printout:
 
@@ -221,7 +221,7 @@ interface FastEthernet0/0
 
 After the **no ip next-hop-self eigrp** command has been configured, the update packets sent from GW to AS2 contain non-zero values in the *next-hop* field:
 
-{{<figure src="NH_Redistribute_Wireshark.png" caption="External EIGRP route with non-zero next-hop field">}}
+{{<figure src="/2023/06/NH_Redistribute_Wireshark.png" caption="External EIGRP route with non-zero next-hop field">}}
 
 The next hop for the 10.0.1.1/32 prefix in the IP routing table of AS2 is modified accordingly; the traffic from AS2 to AS1 is sent directly and bypasses the GW router:
 

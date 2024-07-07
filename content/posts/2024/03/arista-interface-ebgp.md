@@ -3,7 +3,7 @@ title: "Interface EBGP Sessions on Arista EOS"
 date: 2024-03-19 07:48:00+0100
 tags: [ BGP ]
 ---
-Arista EOS and Cisco Nexus OS got *interface EBGP sessions* years after [Cumulus Linux](/2015/02/bgp-configuration-made-simple-with.html). While they're trivially easy to configure on FRRouting (the routing daemon used by Cumulus Linux), getting them to work on Arista EOS is a bit tricky.
+Arista EOS and Cisco Nexus OS got *interface EBGP sessions* years after [Cumulus Linux](/2015/02/bgp-configuration-made-simple-with/). While they're trivially easy to configure on FRRouting (the routing daemon used by Cumulus Linux), getting them to work on Arista EOS is a bit tricky.
 
 To make matters worse, my Google-Fu failed me when I tried to find a decent step-by-step configuration guide; all I got was a 12-minute video full of YouTube ads. Let's fix that.
 <!--more-->
@@ -15,7 +15,7 @@ A bit of terminology first (you know that I'm a bit obsessed with that). The fun
 
 * Running BGP TCP session between IPv6 LLA addresses;
 * Enabling IPv4 address family on that session;
-* Use IPv6 next hops for IPv4 prefixes ([more details](/2022/11/bgp-unnumbered-duct-tape.html))
+* Use IPv6 next hops for IPv4 prefixes ([more details](/2022/11/bgp-unnumbered-duct-tape/))
 
 That's a mouthful, isn't it? However, as most implementations allow you to configure an *interface* EBGP neighbor (the router figures out remote IPv6 LLA from ICMP messages), let's call this thingy *interface EBGP sessions*.
 

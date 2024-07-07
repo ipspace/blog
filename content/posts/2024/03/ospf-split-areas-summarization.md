@@ -4,7 +4,7 @@ date: 2024-03-12 07:39:00+0100
 tags: [ OSPF ]
 ospf_tag: areas
 ---
-In the [Do We Still Need OSPF Areas and Summarization?](/2016/09/do-we-still-need-ospf-areas-and.html) I wrote this somewhat cryptic remark:
+In the [Do We Still Need OSPF Areas and Summarization?](/2016/09/do-we-still-need-ospf-areas-and/) I wrote this somewhat cryptic remark:
 
 > The routers advertising a summarized prefix should be connected by a path going exclusively through the part of the network with more specific prefixes. GRE tunnel also satisfies that criteria; the proof is left as an exercise for the reader.
 

@@ -4,7 +4,7 @@ tags:
 - BGP
 - IP routing
 title: Is Internet Melting Down?
-url: /2008/06/is-internet-melting-down.html
+url: /2008/06/is-internet-melting-down/
 ---
 A while ago I've read a [post about the potential Internet meltdown by Michael Morris](http://www.networkworld.com/community/node/27191). He provided an amazingly accurate analysis of the facts ... and ended with a wrong conclusion. To understand the whole issue, please [thoroughly read his text in its entirety](http://www.networkworld.com/community/node/27191) before proceeding.
 

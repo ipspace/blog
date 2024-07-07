@@ -3,7 +3,7 @@ title: "Vendor Marketectures in Real Life"
 date: 2020-09-21 06:32:00
 tags: [ virtualization, vMotion ]
 ---
-Remember my rants about [VMware](/2020/02/live-vmotion-into-vmware-on-aws-cloud.html) and [firewall vendors](/2019/11/stretched-vlans-and-failing-firewall.html) promoting crazy solutions that work best in PowerPoint and cause more headaches than anything else (excluding increased vendor margins and sales team bonuses, of course)? 
+Remember my rants about [VMware](/2020/02/live-vmotion-into-vmware-on-aws-cloud/) and [firewall vendors](/2019/11/stretched-vlans-and-failing-firewall/) promoting crazy solutions that work best in PowerPoint and cause more headaches than anything else (excluding increased vendor margins and sales team bonuses, of course)? 
 
 Here's another _we-don't-need-all-that-complexity_ real-life story coming from one of my long-term subscribers:
 <!--more-->

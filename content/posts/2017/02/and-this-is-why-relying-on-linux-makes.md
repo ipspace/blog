@@ -5,7 +5,7 @@ tags:
 - data center
 - Cumulus Linux
 title: And This Is Why Relying on Linux Makes Sense
-url: /2017/02/and-this-is-why-relying-on-linux-makes.html
+url: /2017/02/and-this-is-why-relying-on-linux-makes/
 ---
 Most networking operating systems include a mechanism to roll back device configuration and/or create configuration snapshots. These mechanisms usually work only for the device configuration, but do not include operating system images or other components (example: crypto keys).
 
@@ -19,7 +19,7 @@ The real story behind this feature is Btree File System (BTRFS), a Linux file sy
 
 ### The Drawbacks
 
-File system rollback is like [hypervisor-based high availability](/2011/08/high-availability-fallacies.html). It's a great feature, but also an all-or-nothing one, and it's impossible to change the root file system (do a rollback) on a running system -- you need a restart to do it.
+File system rollback is like [hypervisor-based high availability](/2011/08/high-availability-fallacies/). It's a great feature, but also an all-or-nothing one, and it's impossible to change the root file system (do a rollback) on a running system -- you need a restart to do it.
 
 While the snapshots built in Cumulus Linux 3.2 are definitely a life-saver from some fat finger scenarios (and you can recover anything down to an individual file from the snapshot), they're not the only tool you should rely on. You should also maintain configuration archive to be able to roll back device or daemon configuration without restarting the system or digging through the snapshots... and relying on Linux yet again comes in handy -- there are tons of open-source configuration management tools like git you can use to manage Linux configuration files.
 

@@ -7,7 +7,7 @@ tags:
 - switching
 title: Select the Best Switching ASIC For the Job
 ---
-Last week I described some of the [data center switching ASIC design tradeoffs](/2022/06/data-center-switching-asic-tradeoffs.html) and the ASIC families Broadcom created to fit somewhere in that multi-dimensional space. 
+Last week I described some of the [data center switching ASIC design tradeoffs](/2022/06/data-center-switching-asic-tradeoffs/) and the ASIC families Broadcom created to fit somewhere in that multi-dimensional space. 
 
 Next step: how could you design your data center fabric to make the most out of them? To keep things simple, we'll build a typical leaf-and-spine fabric with a WAN edge layer (sometimes called *border leaf* switches).
 <!--more-->
@@ -29,7 +29,7 @@ Not surprisingly, the Broadcom Tomahawk series fits the bill perfectly, but you 
 
 **Leaf switches** might need slightly larger buffers, larger MAC/ARP forwarding tables[^CTR], and more complex packet forwarding functionality (example: VXLAN routing). A data center switch using a Broadcom Trident-series ASIC is usually a perfect fit.
 
-Leaf switches dealing with a significant amount of incast traffic[^INC] might need [significantly larger buffers](/2021/05/packet-bursts-data-center-networks.html). Typical scenarios include:
+Leaf switches dealing with a significant amount of incast traffic[^INC] might need [significantly larger buffers](/2021/05/packet-bursts-data-center-networks/). Typical scenarios include:
 
 * WAN edge
 * Applications with scatter-gather behavior (example: Map/Reduce)
@@ -40,10 +40,10 @@ Use a deep buffer switch in those few scenarios -- they tend to be horrendously 
 Please note that you usually DO NOT need a deep buffer leaf switch (or deep buffers on spine switches) outside of these few scenarios. For more details explore:
 
 * [Networks, Buffers and Drops](https://my.ipspace.net/bin/list?id=xBuffers) webinar and all the [related reference material](https://my.ipspace.net/bin/list?id=xBuffers#REF).
-* [Switch Buffer Sizes and Fermi Estimates](/2019/06/switch-buffer-sizes-and-fermi-estimates.html)
-* [Packet Bursts in Data Center Fabrics](/2021/05/packet-bursts-data-center-networks.html)
-* [Do Packet Drops Matter for TCP Performance?](/2019/06/do-packet-drops-matter-for-tcp.html)
-* [Fundamentals: Is Switching Latency Relevant?](/2021/04/switching-latency-relevant.html) (focus on the discussion about buffering-induced latency)
+* [Switch Buffer Sizes and Fermi Estimates](/2019/06/switch-buffer-sizes-and-fermi-estimates/)
+* [Packet Bursts in Data Center Fabrics](/2021/05/packet-bursts-data-center-networks/)
+* [Do Packet Drops Matter for TCP Performance?](/2019/06/do-packet-drops-matter-for-tcp/)
+* [Fundamentals: Is Switching Latency Relevant?](/2021/04/switching-latency-relevant/) (focus on the discussion about buffering-induced latency)
 
 [^CTR]: In particular, when you plan to connect containers straight to the data center fabric.
 

@@ -8,7 +8,7 @@ tags:
 - OSPF
 - EIGRP
 title: 'Loop-Free Alternate: OSPF Meets EIGRP'
-url: /2012/01/loop-free-alternate-ospf-meets-eigrp.html
+url: /2012/01/loop-free-alternate-ospf-meets-eigrp/
 ---
 Assume we have a simple triangular network:
 

@@ -4,7 +4,7 @@ tags:
 - BGP
 title: 'Configuring Internal BGP Sessions'
 series: bgp-essentials
-url: /2008/01/bgp-essentials-configuring-internal-bgp.html
+url: /2008/01/bgp-essentials-configuring-internal-bgp/
 ---
 Internal BGP (IBGP) sessions (BGP sessions within your autonomous system) are identified by the neighbor's AS number being identical to your AS number. While the external BGP (EBGP) sessions are usually established between directly connected routers, IBGP sessions are expected to be configured across the network.
 

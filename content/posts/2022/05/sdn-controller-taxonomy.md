@@ -16,13 +16,13 @@ Even though Gartner declared SDN _obsolete before plateau_ in their 2021 [Networ
 <!--more-->
 [^ANS]: Even when it's using an Ansible playbook with screen scraping over an SSH session
 
-**Centralized control plane solutions** are what Gartner considered to be SDN. Apart from a few well-architected niche solutions[^FAUCET], the laws of physics won. [Centralized control plane](/2014/01/what-exactly-is-sdn-and-does-it-make.html) was always a bad idea, and most people involved in the SDN orthodoxy eventually realized that after sobering up from a [hype-induced trip](/2021/07/openflow-realities.html)[^HEADACHE]. Nothing much to see here.
+**Centralized control plane solutions** are what Gartner considered to be SDN. Apart from a few well-architected niche solutions[^FAUCET], the laws of physics won. [Centralized control plane](/2014/01/what-exactly-is-sdn-and-does-it-make/) was always a bad idea, and most people involved in the SDN orthodoxy eventually realized that after sobering up from a [hype-induced trip](/2021/07/openflow-realities/)[^HEADACHE]. Nothing much to see here.
 
 [^FAUCET]: Including a surprisingly-stable and working [SDN controller](https://faucet.nz/).
 
 [^HEADACHE]: Some of them with an enormous headache, in particular when they worked for a vendor that bet the farm on OpenFlow.
 
-**Controllers interacting with the control plane**. Most SD-WAN controllers are in this category. At the very minimum, they have  to act as BGP route reflectors: [collect reachability information from the SD-WAN appliances](/2015/06/software-defined-wanwell-orchestrated.html) and distribute it to other appliances.
+**Controllers interacting with the control plane**. Most SD-WAN controllers are in this category. At the very minimum, they have  to act as BGP route reflectors: [collect reachability information from the SD-WAN appliances](/2015/06/software-defined-wanwell-orchestrated/) and distribute it to other appliances.
 
 Network virtualization controllers[^PC] are often in this category as well. Many of them use a control plane protocol (often EVPN) to interact with the outside world... although I wonder whether that's a good idea. It's interesting to see the gradual move away from the control plane interactions in VMware NSX Controller[^NSXM] -- as the product is built on ideas that came from one of the early proponents of centralized control plane, they must have hit some interesting scaling problems to move in that direction.
 
@@ -30,7 +30,7 @@ Network virtualization controllers[^PC] are often in this category as well. Many
 
 [^NSXM]: Now part of NSX Manager
 
-**Orchestration systems**. Why would you want to call a system that provisions a service by configuring the network elements in the background an SDN controller? Oh, it's like [*bridge* and *switch*](/2011/02/how-did-we-ever-get-into-this-switching.html) -- the marketing needed a flashy new name for an old idea, and SDN was all the rage when they made the decision.
+**Orchestration systems**. Why would you want to call a system that provisions a service by configuring the network elements in the background an SDN controller? Oh, it's like [*bridge* and *switch*](/2011/02/how-did-we-ever-get-into-this-switching/) -- the marketing needed a flashy new name for an old idea, and SDN was all the rage when they made the decision.
 
 Even in this segment, there are solutions that provide true abstraction of services. A prime example is probably Cisco ACI with its endpoint groups and contracts.
 

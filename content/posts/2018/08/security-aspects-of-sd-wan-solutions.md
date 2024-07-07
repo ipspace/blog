@@ -5,7 +5,7 @@ tags:
 - WAN
 - SD-WAN
 title: Security Aspects of SD-WAN Solutions
-url: /2018/08/security-aspects-of-sd-wan-solutions.html
+url: /2018/08/security-aspects-of-sd-wan-solutions/
 sd-wan_tag: security
 ---
 Christoph Jaggi, the author of [Transport and Network Security Primer](https://www.ipspace.net/Transport_and_Network_Security_Primer) and [Ethernet Encryption](https://www.ipspace.net/Ethernet_Encryption) webinars [published a high-level introductory article in Inside-IT online magazine](https://www.inside-it.ch/articles/51787) describing security deficiencies of SD-WAN solutions based on the work he did analyzing them for a large multinational corporation.

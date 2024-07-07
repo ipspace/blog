@@ -8,7 +8,7 @@ tags:
 title: 'Video: What Can Netlab Do?'
 video_tag: netlab
 ---
-Time for another *[netlab](https://netlab.tools/)* video: after explaining [how _netlab_ fits into the _virtual lab orchestration_ picture](/2022/10/replacing-gns3-netlab.html), let's answer the following question: [what exactly can _netlab_ do?](https://my.ipspace.net/bin/get/NetTools/N2%20-%20What%20Can%20netlab%20Do.mp4?doccode=NetTools)
+Time for another *[netlab](https://netlab.tools/)* video: after explaining [how _netlab_ fits into the _virtual lab orchestration_ picture](/2022/10/replacing-gns3-netlab/), let's answer the following question: [what exactly can _netlab_ do?](https://my.ipspace.net/bin/get/NetTools/N2%20-%20What%20Can%20netlab%20Do.mp4?doccode=NetTools)
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetTools/N2%20-%20What%20Can%20netlab%20Do.mp4?doccode=NetTools){{</jump>}}
 

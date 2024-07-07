@@ -6,12 +6,12 @@ tags:
 - OpenFlow
 - overlay networks
 title: Nicira NVP Control Plane
-url: /2013/08/nicira-nvp-control-plane.html
+url: /2013/08/nicira-nvp-control-plane/
 ---
 
-<p>In the previous posts I described how a <a href="/2013/08/a-day-in-life-of-overlaid-virtual-packet.html">typical overlay virtual networking data plane works</a> and what technologies vendors use to implement the associated <a href="/2013/08/management-control-and-data-planes-in.html">control plane</a> that <a href="/2013/08/control-plane-protocols-in-overlay.html">maps VM MAC addresses to transport IP addresses</a>. Now let’s walk through the details of a particular implementation: Nicira Network Virtualization Platform (NVP), part of VMware NSX.<!--more--></p>
+<p>In the previous posts I described how a <a href="/2013/08/a-day-in-life-of-overlaid-virtual-packet/">typical overlay virtual networking data plane works</a> and what technologies vendors use to implement the associated <a href="/2013/08/management-control-and-data-planes-in/">control plane</a> that <a href="/2013/08/control-plane-protocols-in-overlay/">maps VM MAC addresses to transport IP addresses</a>. Now let’s walk through the details of a particular implementation: Nicira Network Virtualization Platform (NVP), part of VMware NSX.<!--more--></p>
 <h4>Components</h4><p>Nicira NVP currently relies on Open vSwitch (OVS) to implement hypervisor soft switching. OVS could use dynamic MAC learning (and it does when used with OpenStack OVS Quantum plugin) or an external OpenFlow controller.</p>
-<p>A typical <a href="/2013/04/open-vswitch-under-hood.html">OpenFlow-based Open vSwitch implementation has three components</a>:</p>
+<p>A typical <a href="/2013/04/open-vswitch-under-hood/">OpenFlow-based Open vSwitch implementation has three components</a>:</p>
 <ul class="ListParagraph"><li>Flow-based forwarding module loaded in Linux kernel;</li>
 <li>User-space OpenFlow agent that communicates with OpenFlow controller and provides the kernel module with flow forwarding information;</li>
 <li>User-space OVS database (ovsdb) daemon that keeps track of the local OVS configuration (bridges, interfaces, controllers …).</li>

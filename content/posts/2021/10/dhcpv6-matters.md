@@ -32,11 +32,11 @@ There's a fundamental problem with this approach[^4]: it would give you attribut
 
 Finally, the lack of controlled IPv6 address allocation wrecks many of the first-hop IPv6 security features available on modern campus gear[^9]. Trying to reconstruct valid IPv6-to-MAC mappings in environments using SLAAC is like chasing the horse that has bolted from the barn because someone removed the lock from the door[^5] -- you MUST have an **authoritative** source of allowed IPv6-to-MAC mappings for first-hop security to work well.
 
-Here's another workaround: [use targeted Router Advertisement messages to give each user a different IPv6 /64 prefix](/2017/12/unique-ipv6-prefix-per-host-how-complex.html). WTF, really? All that just to work around an obstinate person who happens to control a feature of a protocol stack in a mobile platform? How did we ever manage to get to such a wrecked place?
+Here's another workaround: [use targeted Router Advertisement messages to give each user a different IPv6 /64 prefix](/2017/12/unique-ipv6-prefix-per-host-how-complex/). WTF, really? All that just to work around an obstinate person who happens to control a feature of a protocol stack in a mobile platform? How did we ever manage to get to such a wrecked place?
 
 ### More to Explore
 
-You know there are tons of [IPv6 blog posts](/tag/ipv6.html) and [webinars](https://www.ipspace.net/IPv6) on ipSpace.net. This time I want to point out the _[Layer-2 Security Challenges](https://my.ipspace.net/bin/get/IPv6Sec/E5.1%20-%20Layer-2%20IPv6%20Security%20Challenges.mp4?doccode=IPv6Sec)_ video by [Christopher Werny](https://www.ipspace.net/Author:Christopher_Werny). You'll find it in the [IPv6 Enterprise Security](https://my.ipspace.net/bin/list?id=IPv6Sec#ENTERPRISE) part of [IPv6 security webinar](https://www.ipspace.net/IPv6_security). 
+You know there are tons of [IPv6 blog posts](/tag/ipv6/) and [webinars](https://www.ipspace.net/IPv6) on ipSpace.net. This time I want to point out the _[Layer-2 Security Challenges](https://my.ipspace.net/bin/get/IPv6Sec/E5.1%20-%20Layer-2%20IPv6%20Security%20Challenges.mp4?doccode=IPv6Sec)_ video by [Christopher Werny](https://www.ipspace.net/Author:Christopher_Werny). You'll find it in the [IPv6 Enterprise Security](https://my.ipspace.net/bin/list?id=IPv6Sec#ENTERPRISE) part of [IPv6 security webinar](https://www.ipspace.net/IPv6_security). 
 
 You might also watch the slightly older *[Source Address Validation Improvement](https://my.ipspace.net/bin/get/IPv6Sec/D4%20-%20Source%20Address%20Validation%20Improvement.mp4?doccode=IPv6Sec)* video by [Eric Vyncke](https://www.ipspace.net/Author:Eric_Vyncke). Both videos are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).
 

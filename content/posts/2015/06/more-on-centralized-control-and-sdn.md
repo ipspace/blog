@@ -8,9 +8,9 @@ tags:
 - SDN
 - OpenFlow
 title: More on Centralized Control and SDN
-url: /2015/06/more-on-centralized-control-and-sdn.html
+url: /2015/06/more-on-centralized-control-and-sdn/
 ---
-After I wrote a [comment on a LinkedIn discussion](https://www.linkedin.com/grp/post/77819-6014408274856722434) in the [Carrier Ethernet group](https://www.linkedin.com/grp/home?gid=77819) ([more details here](/2015/06/centralized-control-is-not-centralized.html)), [Vishal Sharma](http://www.linkedin.com/in/vishalsharma) wrote an interesting response, going into more details of distinction between *centralized control* and *centralized control plane*.
+After I wrote a [comment on a LinkedIn discussion](https://www.linkedin.com/grp/post/77819-6014408274856722434) in the [Carrier Ethernet group](https://www.linkedin.com/grp/home?gid=77819) ([more details here](/2015/06/centralized-control-is-not-centralized/)), [Vishal Sharma](http://www.linkedin.com/in/vishalsharma) wrote an interesting response, going into more details of distinction between *centralized control* and *centralized control plane*.
 <!--more-->
 He started with a nice summary of my view:
 
@@ -22,7 +22,7 @@ Couldn't agree more. Numerous [SDN architectures](https://www.ipspace.net/SDN_Ar
 
 That's exactly what many SDN solutions are doing.
 
-Most of them use plain BGP, for example [Microsoft's data center solution](/2013/10/exception-routing-with-bgp-sdn-done.html) (see [Centralized Routing Control in BGP Networks Using Link-State Abstraction](https://tools.ietf.org/html/draft-lapukhov-bgp-sdn-00) for more details), [Netflix' traffic analysis solution](/2014/08/toolsmith-netflix-on-software-gone-wild.html), or [Border6 Non-Stop Internet](/2014/10/border6-non-stop-internet-commercial.html).
+Most of them use plain BGP, for example [Microsoft's data center solution](/2013/10/exception-routing-with-bgp-sdn-done/) (see [Centralized Routing Control in BGP Networks Using Link-State Abstraction](https://tools.ietf.org/html/draft-lapukhov-bgp-sdn-00) for more details), [Netflix' traffic analysis solution](/2014/08/toolsmith-netflix-on-software-gone-wild/), or [Border6 Non-Stop Internet](/2014/10/border6-non-stop-internet-commercial/).
 
 Some other solutions use BGP-LS ([North-Bound Distribution of Link-State and TE Information Using BGP](https://tools.ietf.org/html/draft-ietf-idr-ls-distribution-11)), for example [Juniper's NorthStar controller](http://www.juniper.net/us/en/products-services/sdn/northstar-network-controller/).
 
@@ -36,11 +36,11 @@ The real problem is in the *other tasks that the control plane has to do*, like 
 
 You might call my viewpoint contrarian, I call it realistic -- and almost everyone who had to build and ship a production-grade product agrees with me.
 
-{{<note>}}For more details, go to the product-specific part of the [previous blog post on this topic](/2015/06/centralized-control-is-not-centralized.html).{{</note>}}
+{{<note>}}For more details, go to the product-specific part of the [previous blog post on this topic](/2015/06/centralized-control-is-not-centralized/).{{</note>}}
 
 The real problem (as I see it) is that people who talk about *centralized control plane* don't really understand all the implications of this concept. You either *have* centralized control plane (including all the complications I mentioned above and in the previous blog post) or you don't. You can't have it both ways.
 
-You could, of course, offload the periodic control plane functionality to edge nodes, and still run central path computation. [Juniper's QFabric did exactly that](/2011/09/qfabric-part-2-control-plane-overview.html), as did most Frame Relay, SONET/SDH and ATM networks. The [SDN Architecture](https://www.opennetworking.org/images/stories/downloads/sdn-resources/technical-reports/TR_SDN_ARCH_1.0_06062014.pdf) document from ONF mentions this approach (and the real-life scalability concerns) very explicitly in sections 4.2 and 4.3. Let me quote straight from section 4.3.4 of that document (which more-or-less says the same things I've been saying for years)
+You could, of course, offload the periodic control plane functionality to edge nodes, and still run central path computation. [Juniper's QFabric did exactly that](/2011/09/qfabric-part-2-control-plane-overview/), as did most Frame Relay, SONET/SDH and ATM networks. The [SDN Architecture](https://www.opennetworking.org/images/stories/downloads/sdn-resources/technical-reports/TR_SDN_ARCH_1.0_06062014.pdf) document from ONF mentions this approach (and the real-life scalability concerns) very explicitly in sections 4.2 and 4.3. Let me quote straight from section 4.3.4 of that document (which more-or-less says the same things I've been saying for years)
 
 > Although a key principle of SDN is stated as the decoupling of control and data planes, it is clear that an agent in the data plane is itself exercising control, albeit on behalf of the SDN controller. Further, a number of functions with control aspects are widely considered as candidates to execute on network elements, for example OAM, ICMP processing, MAC learning, neighbor discovery, defect recognition and integration, protection switching.
 
@@ -50,7 +50,7 @@ However, do keep in mind that the current set of tools you could use (primarily 
 
 ### More to Explore
 
-You might want to read my other [SDN](/tag/sdn.html)- and [OpenFlow](/tag/openflow.html)-related blog posts. For even more details, explore my [SDN webinars and other SDN resources](http://www.ipspace.net/SDN):
+You might want to read my other [SDN](/tag/sdn/)- and [OpenFlow](/tag/openflow/)-related blog posts. For even more details, explore my [SDN webinars and other SDN resources](http://www.ipspace.net/SDN):
 
 -   Start with the free [Introduction to SDN](http://www.ipspace.net/Introduction_to_SDN) pack;
 -   Explore [SDN architectures](http://www.ipspace.net/SDN_Architectures_and_Deployment_Considerations) and their scalability challenges;

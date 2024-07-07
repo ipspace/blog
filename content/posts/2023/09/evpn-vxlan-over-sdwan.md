@@ -17,7 +17,7 @@ Let's unravel this scenario a bit:
 * We're using IP transport as the WAN service
 * MPLS/VPN with MPLS-over-GRE or EVPN/VXLAN are thus the only viable options
 
-So far so good. We've been in similar situations before -- I know people running [MPLS-over-GRE-over-IPsec over MPLS/VPN service](/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html). However, imagine the encapsulation stack we're dealing with assuming the SD-WAN solution uses VXLAN-over-IPsec[^PS]:
+So far so good. We've been in similar situations before -- I know people running [MPLS-over-GRE-over-IPsec over MPLS/VPN service](/2011/03/mplsvpn-over-gre-over-ipsec-does-it/). However, imagine the encapsulation stack we're dealing with assuming the SD-WAN solution uses VXLAN-over-IPsec[^PS]:
 
 [^PS]: Obviously an SD-WAN solution could use any proprietary encapsulation as long as it provides encryption and L3VPN functionality. However, many SD-WAN products are nothing more than orchestration glue around open-source components, and it's easy to set up VXLAN-over-IPsec on Linux, so there you go.
 

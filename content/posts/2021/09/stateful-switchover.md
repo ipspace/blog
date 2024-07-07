@@ -70,9 +70,9 @@ MPLS seems to be supported -- there's *‌[MPLS High Availability Configuration 
 
 ## Wrapping Up
 
-I already covered many caveats in *[Non-Stop Forwarding 101](non-stop-forwarding.html)* blog post and *[Before Moving On](#before-moving-on)* section, so let's just revisit the the two elephants that bother me most:
+I already covered many caveats in *[Non-Stop Forwarding 101](/2021/09/non-stop-forwarding/)* blog post and *[Before Moving On](#before-moving-on)* section, so let's just revisit the the two elephants that bother me most:
 
-* Can we be sure that the backup control plane reliably figures out the primary control plane is down? What happens if that misfires? What happened to *[never take two chronometers to the sea](/2017/01/never-take-two-chronometers-to-sea.html)* or the idea of a *witness node*?
+* Can we be sure that the backup control plane reliably figures out the primary control plane is down? What happens if that misfires? What happened to *[never take two chronometers to the sea](/2017/01/never-take-two-chronometers-to-sea/)* or the idea of a *witness node*?
 * Assume the primary control plane crashes due to some SNAFU in the system state. That state has been synchronized to the backup control plane. What happens when the backup control plane starts using the messed-up state?
 
 With that in mind:

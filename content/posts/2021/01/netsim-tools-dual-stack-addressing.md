@@ -7,7 +7,7 @@ tags:
 - netlab
 title: 'Build Virtual Lab Topology: Dual Stack Addressing, ArcOS  and Junos Support'
 ---
-In mid-December I [announced a set of tools](/2020/12/build-labs-netsim-tools.html) that will help you build Vagrant-based remote labs much faster than writing Vagrantfiles and Ansible inventories by hand.
+In mid-December I [announced a set of tools](/2020/12/build-labs-netsim-tools/) that will help you build Vagrant-based remote labs much faster than writing Vagrantfiles and Ansible inventories by hand.
 
 In early January I received a nice surprise: [Dave Thelen](https://www.linkedin.com/in/dave-thelen-10261312/) not only decided to use the tool, he submitted a pull request with full-blown (and correctly implemented) ArcOS support. A few days later I managed to figure out what needs to be configured on vSRX to make it work, added Junos support, and thus increased the [number of supported platforms](https://netlab.tools/platforms/) to six (spanning five different operating systems).
 <!--more-->

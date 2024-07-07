@@ -1,6 +1,6 @@
 ---
 cdate: 2022-07-06
-comment: 'The industry press jumped onto the [ONF/OpenFlow hype](/2011/03/open-networking-foundation-fabric.html)
+comment: 'The industry press jumped onto the [ONF/OpenFlow hype](/2011/03/open-networking-foundation-fabric/)
   with gusto, without ever trying to figure out what it''s all about. Not surprisingly,
   the articles they managed to produce were full of nonsense, prompting me to write
   yet another rant in April 2011.
@@ -20,11 +20,11 @@ tags:
 - SDN
 - OpenFlow
 title: 'OpenFlow FAQ: Will the Hype Ever Stop?'
-url: /2011/04/openflow-faq-will-hype-ever-stop.html
+url: /2011/04/openflow-faq-will-hype-ever-stop/
 ---
-Network World has published another masterpiece last week: [*FAQ: What is OpenFlow and why is it needed?*](https://www.networkworld.com/article/2202144/data-center-faq-what-is-openflow-and-why-is-it-needed.html) Following the [physics-changing promises made during the Open Network Foundation launch](/2011/03/open-networking-foundation-fabric.html), one would hope to get some straight facts; obviously things don't work that way. Let's walk through some of the points. While most of them might not be too incorrect from an oversimplified perspective, they do over-hype a potentially useful technology way out of proportions.
+Network World has published another masterpiece last week: [*FAQ: What is OpenFlow and why is it needed?*](https://www.networkworld.com/article/2202144/data-center-faq-what-is-openflow-and-why-is-it-needed.html) Following the [physics-changing promises made during the Open Network Foundation launch](/2011/03/open-networking-foundation-fabric/), one would hope to get some straight facts; obviously things don't work that way. Let's walk through some of the points. While most of them might not be too incorrect from an oversimplified perspective, they do over-hype a potentially useful technology way out of proportions.
 
-NW: "*OpenFlow is a programmable network protocol designed to manage and direct traffic among routers and switches from various vendors.*" This one is just a tad misleading. OpenFlow is actually a [protocol that allows a controller to download forwarding tables into one or more switches](/2011/04/what-is-openflow.html). Whether that manages or directs traffic depends on what controller is programmed to do.
+NW: "*OpenFlow is a programmable network protocol designed to manage and direct traffic among routers and switches from various vendors.*" This one is just a tad misleading. OpenFlow is actually a [protocol that allows a controller to download forwarding tables into one or more switches](/2011/04/what-is-openflow/). Whether that manages or directs traffic depends on what controller is programmed to do.
 <!--more-->
 NW: "*The technology consists of three parts: \[\...\] and a proprietary OpenFlow protocol for the controller to talk securely with switches.*" Please do decide what you think *proprietary* means. All parts of the OpenFlow technology are defined in publicly available documents [under BSD-like license](http://www.openflow.org/wp/legal/).
 

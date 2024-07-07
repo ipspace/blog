@@ -15,7 +15,7 @@ There is no change to the functionality, user interface (CLI commands), or docum
 Now for more details:
 <!--more-->
 * The bulk of the change was renaming the Python package to *networklab*[^NLP] and fixing documentation (replacing all *netsim-tools* references with *netlab*). We also bumped the version to 1.3 ([release notes](https://netlab.tools/release/1.3/))
-* GitHub repositories have been renamed: **ipspace/netsim-tools** to **ipspace/netlab** and **ipspace/netsim-examples** to **ipspace/netlab-examples**. GitHub creates automatic redirects -- git remotes and forks still work -- but it might be a good idea to update your remote repositories with `git remote set-url`. @Loren: thanks a million for the [tip](/2022/08/netsim-netlab.html#1346)!
+* GitHub repositories have been renamed: **ipspace/netsim-tools** to **ipspace/netlab** and **ipspace/netsim-examples** to **ipspace/netlab-examples**. GitHub creates automatic redirects -- git remotes and forks still work -- but it might be a good idea to update your remote repositories with `git remote set-url`. @Loren: thanks a million for the [tip](/2022/08/netsim-netlab/#1346)!
 * The Python modules have not been renamed
 * The documentation has moved to [netlab.tools](https://netlab.tools/).
 * netlab-related blog posts were updated to use the new project name and repository URL. The blog post URLs will not change.

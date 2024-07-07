@@ -1,10 +1,10 @@
 ---
 date: 2014-06-02 09:49:00+02:00
 title: Building Scalable Web Applications – Final Presentations
-url: /2014/06/building-scalable-web-applications.html
+url: /2014/06/building-scalable-web-applications/
 tags: [ training ]
 ---
-Last Friday my students attending this year's [Designing Scalable Web Applications](/2012/02/going-back-to-ivory-tower.html) course presented their semester-long assignments. I can't tell you how pleasantly surprised I was -- the results were much better and more polished than what I've seen during the previous years.
+Last Friday my students attending this year's [Designing Scalable Web Applications](/2012/02/going-back-to-ivory-tower/) course presented their semester-long assignments. I can't tell you how pleasantly surprised I was -- the results were much better and more polished than what I've seen during the previous years.
 <!--more-->
 A few things that particularly surprised me:
 

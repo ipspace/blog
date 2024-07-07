@@ -4,7 +4,7 @@ ospf_tag: config
 tags:
 - OSPF
 title: OSPF Router-Id Does Not Change When the Interface IP Address Changes
-url: /2007/10/ospf-router-id-does-not-change-when.html
+url: /2007/10/ospf-router-id-does-not-change-when/
 ---
 The venerable rules used to establish OSPF router ID on Cisco IOS are all over the Internet:
 

@@ -19,7 +19,7 @@ Let's unpack this:
 {{<note info>}}As always, the documentation could lag behind the implemented features (or we could overpromise and underdeliver). Whenever in doubt, explore the [list of tested features](https://release.netlab.tools/). For example, [these are the BGP features that were tested to work on FRR](https://release.netlab.tools/_html/frr-clab-bgp).{{</note>}}
 
 * What topology could I use? The *netlab-examples* repository includes a [BGP Unnumbered](https://github.com/ipspace/netlab-examples/tree/master/BGP/Unnumbered) topology -- precisely what we need.
-* How do I start the lab? As we're discussing FRR, you could [open the *netlab-examples* repository in GitHub codespaces](/2024/07/netlab-examples-codespaces.html), change the working directory, and start the lab.
+* How do I start the lab? As we're discussing FRR, you could [open the *netlab-examples* repository in GitHub codespaces](/2024/07/netlab-examples-codespaces/), change the working directory, and start the lab.
 
 But wait, it gets better: you can generate the configurations for any device supported by _netlab_ without having the virtualization environment or the device images installed:
 

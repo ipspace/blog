@@ -1,7 +1,7 @@
 ---
 cdate: 2023-03-10
 comment: |
-  Due to changes to source IPv6 address selection algorithms made after this blog post was written in 2013, it's [impossible to use ULA addresses](/2022/05/ipv6-ula-made-useless.html) in dual-stack networks.
+  Due to changes to source IPv6 address selection algorithms made after this blog post was written in 2013, it's [impossible to use ULA addresses](/2022/05/ipv6-ula-made-useless/) in dual-stack networks.
 date: 2012-04-04 06:54:00+02:00
 multihoming_tag: server
 series:
@@ -9,9 +9,9 @@ series:
 tags:
 - IPv6
 title: IPv6 Static Addresses and Renumbering
-url: /2012/04/ipv6-static-addresses-and-renumbering.html
+url: /2012/04/ipv6-static-addresses-and-renumbering/
 ---
-The proponents of [Network Prefix Translation for IPv6 (NPT66)](/2011/12/we-just-might-need-nat66.html) usually claim it's required for one of the two reasons: to implement [multihoming without BGP](/2010/12/small-site-multihoming-in-ipv6-mission.html) ([valid](/2009/05/lack-of-ipv6-multihoming-elephant-in.html)) and to avoid renumbering inside network(s) when the ISP assigns you a new IPv6 prefix. Let's focus on the renumbering claim today.
+The proponents of [Network Prefix Translation for IPv6 (NPT66)](/2011/12/we-just-might-need-nat66/) usually claim it's required for one of the two reasons: to implement [multihoming without BGP](/2010/12/small-site-multihoming-in-ipv6-mission/) ([valid](/2009/05/lack-of-ipv6-multihoming-elephant-in/)) and to avoid renumbering inside network(s) when the ISP assigns you a new IPv6 prefix. Let's focus on the renumbering claim today.
 <!--more-->
 A lot of IPv6-focused enterprise engineers have long advised medium-to-large networks to get their own IPv6 address space. Greg Ferro [compiled a long list of good reasons](http://etherealmind.com/importance-provider-independent-ipv6-addresses/) to do that, and having your own PI space is not overly expensive anyway -- [50€ per year in RIPE region](http://www.ripe.net/lir-services/member-support/info/billing/billing-procedure-and-fee-schedule-for-lirs-2011).
 

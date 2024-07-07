@@ -13,7 +13,7 @@ Last week I described the new features [added to netsim-tools release 0.4](https
 
 {{<note info>}}
 * This blog post has been updated to use the new **netlab** CLI introduced in *netsim-tools* release 0.8 and new IPAM features introduced in release 1.0
-* *netsim-tools* project [has been renamed to *netlab*](/2022/08/netsim-netlab.html).
+* *netsim-tools* project [has been renamed to *netlab*](/2022/08/netsim-netlab/).
 {{</note>}}
 <!--more-->
 First I needed to make P2P links within the lab unnumbered. Setting **unnumbered** attribute on the built-in **p2p** pool is good enough (for more details read the [addressing tutorial](https://netlab.tools/example/addressing-tutorial/)):
@@ -73,7 +73,7 @@ It works. The only glitch I encountered was the incorrect subnet mask in Arista 
 
 * OSPFv2 RFC (RFC 2328) specifies that the subnet mask in hello packets sent over unnumbered interfaces should be 0.0.0.0.
 * Arista EOS 4.25.0 sends the subnet mask used by the interface supplying the IP address -- 255.255.255.255.
-* Cisco IOS and Nexus OS [ignore the subnet mask](/2008/10/ospf-ignores-subnet-mask-mismatch-on.html) and establish the adjacency.
+* Cisco IOS and Nexus OS [ignore the subnet mask](/2008/10/ospf-ignores-subnet-mask-mismatch-on/) and establish the adjacency.
 * Junos rejects the incoming hello packets due to invalid subnet mask.
 
 A quick search found an Arista EOS support article describing the **interface unnumbered hello mask tx 0.0.0.0** configuration command that solved the problem. Mission accomplished. I also added that command to EOS OSPF configuration template, so you don't have to worry about that when deploying your labs with *netlab*.

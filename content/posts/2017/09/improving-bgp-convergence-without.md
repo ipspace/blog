@@ -7,7 +7,7 @@ series_weight: 750
 tags:
 - BGP
 title: Improving BGP Convergence without Tweaking BGP Timers
-url: /2017/09/improving-bgp-convergence-without.html
+url: /2017/09/improving-bgp-convergence-without/
 ---
 One of the perks of my [online courses](http://www.ipspace.net/Courses) is the lifetime access to course Slack team, and you'd amazed by the variety of questions asked there. Not so long ago I got one on BGP timers:
 
@@ -44,4 +44,4 @@ Assuming your platform supports next-hop tracking, and you're running IBGP betwe
 
 ### Still Feeling the Urge to Tweak the BGP Timers?
 
-We'll figure out what could possibly go wrong in a [follow-up blog post](/2017/10/to-bfd-or-not-to-bfd.html).
+We'll figure out what could possibly go wrong in a [follow-up blog post](/2017/10/to-bfd-or-not-to-bfd/).

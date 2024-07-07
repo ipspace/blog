@@ -5,7 +5,7 @@ tags:
 - netlab
 title: Suspending Devices in netlab Labs
 ---
-A networking engineer [tired of waiting for network devices to start](/2023/02/virtual-device-boot-times.html) sent me this question:
+A networking engineer [tired of waiting for network devices to start](/2023/02/virtual-device-boot-times/) sent me this question:
 
 > Can you suspend VMs in netlab? I use this trick in vSphere with CSR1Kv.
 
@@ -13,7 +13,7 @@ A networking engineer [tired of waiting for network devices to start](/2023/02/v
 <!--more-->
 _netlab_ tries to stay as far away from reinventing the wheels as possible[^VP] and offloads all the virtualization and orchestration tasks to other tools like KVM/libvirt and Vagrant. With that in mind, let's rephrase the question as "_can you use Vagrant to suspend/resume a network device VM in KVM/libvirt environment and what would be the impact of doing that on netlab?_"
 
-[^VP]: ... although it does have to configure virtual plumbing when [mixing virtual machines and containers](/2023/02/netlab-vm-containers.html).
+[^VP]: ... although it does have to configure virtual plumbing when [mixing virtual machines and containers](/2023/02/netlab-vm-containers/).
 
 In theory, the answer is "_yeah, why not._" In practice, my very first test failed[^GTP].
 

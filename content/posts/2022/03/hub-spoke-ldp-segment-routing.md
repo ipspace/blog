@@ -26,8 +26,8 @@ You might also fine-tune the LDP label allocation on the spoke routers (don't as
 [^KL]: Because you have to fix it with kludges ;)
 
 * No need for LDP -- labels are advertised in IGP together with IP prefixes
-* No [LDP-to-IGP synchronization headaches](/2011/11/ldp-igp-synchronization-in-mpls.html).
-* No [black holes or broken LSPs after link reestablishement](/2017/08/synchronizing-bgp-and-ospf-or-ospf-and.html)
+* No [LDP-to-IGP synchronization headaches](/2011/11/ldp-igp-synchronization-in-mpls/).
+* No [black holes or broken LSPs after link reestablishement](/2017/08/synchronizing-bgp-and-ospf-or-ospf-and/)
 * No LIB scaling issues
 * Single label per device (unless you configure adjacency SIDs)
 

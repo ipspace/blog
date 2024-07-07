@@ -3,7 +3,7 @@ kb_section: Ansible
 minimal_sidebar: true
 pre_scroll: true
 title: Creating Ansible Inventory from Vagrant SSH Configuration
-url: /kb/Ansible/Ansible_Inventory_Vagrant.html
+url: /kb/Ansible/Ansible_Inventory_Vagrant/
 ---
 Vagrant-based labs running on top of VirtualBox use port mapping from host TCP ports in range 2000 – 2500 to SSH ports on managed virtual machines.
 

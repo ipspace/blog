@@ -16,7 +16,7 @@ Fortunately my reader took a closer look at the data before they requested a who
 * All leaf switches _apart from one_ had _input_ CRC errors on _one of the uplinks_ but not the other. What if there was a problem with the spine switch?
 * The spine switch on the other side of the "faulty" uplinks had _input_ CRC errors on the link toward the one leaf switch with no CRC errors, and _output_ CRC errors on all other links.
 
-{{<figure src="DC_CRC_Observations.png" caption="Weird pattern of CRC errors">}}
+{{<figure src="/2020/12/DC_CRC_Observations.png" caption="Weird pattern of CRC errors">}}
 
 Knowing Ethernet fundamentals, one should ask a naive question at this point: "_isn't CRC checked when receiving packets and how could you get one on the transmit side?_" Fortunately my reader also understood the behavior of cut-through switching and quickly identified what was really going on:
 
@@ -24,7 +24,7 @@ Knowing Ethernet fundamentals, one should ask a naive question at this point: "_
 * The spine switch was configured for cut-through switching, so it propagated the corrupted packets, and _stomped the CRC on egress ports_ to prevent the downstream devices from accepting the packet... increasing the _transmit CRC error_ counter at the same time.
 * Downstream leaf switches received corrupted packets originally sent over the faulty link and increased their _receive CRC error_ counters.
 
-{{<figure src="DC_CRC_Errors.png" caption="Fabric-wide errors caused by a single faulty transceiver">}}
+{{<figure src="/2020/12/DC_CRC_Errors.png" caption="Fabric-wide errors caused by a single faulty transceiver">}}
 
 They replaced the faulty cable, the errors disappeared, and life was good. As for the original performance problem... maybe it wasn't the network ;)
 

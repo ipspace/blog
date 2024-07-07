@@ -4,7 +4,7 @@ tags:
 - IPv6
 - workshop
 title: Are Provider-Independent IPv6 Prefixes Really Global?
-url: /2012/01/are-provider-independent-ipv6-prefixes.html
+url: /2012/01/are-provider-independent-ipv6-prefixes/
 ---
 Aleksej sent me an intriguing question: "*Can the /48 PI block that a global company is assigned be attached to any region, or it is region-specific?*", or, more specifically:
 
@@ -18,7 +18,7 @@ Hint: If you have more than one location, you need more than a /48. If you have 
 
 Today, a PI IPv6 prefix is (usually) globally routable (but nobody could guarantee you that). Even more, PA prefixes not longer than /48 *should* be globally routable, but they're not -- at least the [latest measurements from RIPE labs](https://labs.ripe.net/Members/dbayer/visibility-of-prefix-lengths) indicate some providers still use PA-specific route advertisement filters.
 
-However, once mid-size organizations start migrating to IPv6, they'll [start asking for PI address space](http://etherealmind.com/importance-provider-independent-ipv6-addresses/) (because it's too much hassle to renumber the internal network \... and because everyone is telling them NAT stinks). Likewise, at least some customers [using poor man's multihoming](/2009/05/small-site-multihoming-tutorial.html) will start applying for PI prefixes (unless we admit [we need NPT66](/2011/12/we-just-might-need-nat66.html) and someone actually implements it). End result: explosion in global BGP tables and forwarding tables (unless LISP gets implemented everywhere), that just might force some ISPs to implement geo-aggregation or region-based filters.
+However, once mid-size organizations start migrating to IPv6, they'll [start asking for PI address space](http://etherealmind.com/importance-provider-independent-ipv6-addresses/) (because it's too much hassle to renumber the internal network \... and because everyone is telling them NAT stinks). Likewise, at least some customers [using poor man's multihoming](/2009/05/small-site-multihoming-tutorial/) will start applying for PI prefixes (unless we admit [we need NPT66](/2011/12/we-just-might-need-nat66/) and someone actually implements it). End result: explosion in global BGP tables and forwarding tables (unless LISP gets implemented everywhere), that just might force some ISPs to implement geo-aggregation or region-based filters.
 
 **Summary:** if you're a global organization with data centers spread across multiple RIR regions, apply for PI address space in every region where you need mission-critical connectivity.
 

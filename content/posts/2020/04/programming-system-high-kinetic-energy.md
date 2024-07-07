@@ -9,4 +9,4 @@ Kode Vicious (aka George V. Neville-Neil ) wrote [another brilliant article](htt
 
 > There is a wealth of literature on safety-critical systems, much of which points in the same direction: toward simplicity. With increasing complexity comes increasing risk ...
 
-For whatever reason most networking- and virtualization vendors joined a [lemming-like run](/2015/02/before-talking-about-vmotion-across.html) in the [opposite direction](/2015/11/stretched-firewalls-across-layer-3-dci.html) years ago.
+For whatever reason most networking- and virtualization vendors joined a [lemming-like run](/2015/02/before-talking-about-vmotion-across/) in the [opposite direction](/2015/11/stretched-firewalls-across-layer-3-dci/) years ago.

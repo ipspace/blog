@@ -5,15 +5,15 @@ tags:
 - cloud
 - overlay networks
 title: PVLAN, VXLAN and Cloud Application Architectures
-url: /2012/08/pvlan-vxlan-and-cloud-application.html
+url: /2012/08/pvlan-vxlan-and-cloud-application/
 ---
-Aldrin Isaac [made a great comment](/2012/07/could-mpls-over-ip-replace-vxlan-or.html?showComment=1344218766617#c3812932304135234188) to my [*Could MPLS-over-IP replace VXLAN?*](/2012/07/could-mpls-over-ip-replace-vxlan-or.html) article:
+Aldrin Isaac [made a great comment](/2012/07/could-mpls-over-ip-replace-vxlan-or/#c3812932304135234188) to my [*Could MPLS-over-IP replace VXLAN?*](/2012/07/could-mpls-over-ip-replace-vxlan-or/) article:
 
 > As far as I understand, VXLAN, NVGRE and any tunneling protocol that use global ID in the data plane cannot support PVLAN functionality.
 
 He's absolutely right, but you shouldn't try to shoehorn VXLAN into existing deployment models. To understand why that doesn't make sense, we have to focus on the typical cloud application architectures.
 <!--more-->
-To be more precise, *any tunneling protocol that uses global ID in the data plane [**and uses flooding to compensate for lack of control plane**](/2011/12/vxlan-ip-multicast-openflow-and-control.html) cannot support PVLAN*. [Nicira's NVP](/2012/02/nicira-uncloaked.html) has port isolation (which is equivalent to a simple PVLAN); they could do it because the NVP controller(s) [download all MAC-to-IP mappings and MAC forwarding entries into the hypervisor switches](/2011/10/what-is-nicira-really-up-to.html).
+To be more precise, *any tunneling protocol that uses global ID in the data plane [**and uses flooding to compensate for lack of control plane**](/2011/12/vxlan-ip-multicast-openflow-and-control/) cannot support PVLAN*. [Nicira's NVP](/2012/02/nicira-uncloaked/) has port isolation (which is equivalent to a simple PVLAN); they could do it because the NVP controller(s) [download all MAC-to-IP mappings and MAC forwarding entries into the hypervisor switches](/2011/10/what-is-nicira-really-up-to/).
 
 ### SMB LAMP stack
 
@@ -41,7 +41,7 @@ In short -- you need multiple isolated virtual network segments with firewalls a
 
 {{<figure src="/2012/08/s1600-Scale_Out.png" caption="Simplified scale-out application architecture">}}
 
-[VXLAN](/2011/09/vxlan-otv-and-lisp.html), [NVGRE](/2011/09/nvgre-because-one-standard-just-wouldnt.html) or [NVP](/2012/02/nicira-uncloaked.html), combined with virtual appliances, are an ideal solution for this type of application architectures. Trying to implement these architectures with PVLANs would result in a total spaghetti mess of isolated and community VLANs with multiple secondary VLANs per tenant.
+[VXLAN](/2011/09/vxlan-otv-and-lisp/), [NVGRE](/2011/09/nvgre-because-one-standard-just-wouldnt/) or [NVP](/2012/02/nicira-uncloaked/), combined with virtual appliances, are an ideal solution for this type of application architectures. Trying to implement these architectures with PVLANs would result in a total spaghetti mess of isolated and community VLANs with multiple secondary VLANs per tenant.
 
 ### Summary
 

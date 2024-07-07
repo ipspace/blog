@@ -4,7 +4,7 @@ tags:
 - MPLS
 - data center
 title: Using MPLS+EVPN in Data Center Fabrics
-url: /2018/11/using-mplsevpn-in-data-center-fabrics.html
+url: /2018/11/using-mplsevpn-in-data-center-fabrics/
 ---
 
 <p>Here’s a question I got from someone attending the <a href="https://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course:</p>
@@ -16,7 +16,7 @@ url: /2018/11/using-mplsevpn-in-data-center-fabrics.html
 <p>There is almost no state sharing between edge and core nodes in VXLAN, and no per-edge-node state in the core (unless you’re running VXLAN between loopback interfaces of edge nodes), making VXLAN more robust and easier to scale. </p>
 <p>Also keep in mind though that mature full-blown MPLS control plane (using LDP or SR in IS-IS/OSPF) is not available from all vendors (a cynical mind would say that <em>might</em> be the reason Cisco is pushing MPLS based fabric).</p>
 <p>However, there’s no free lunch. Edge nodes can easily detect transport failures when they’re tightly coupled with the fabric core (using traditional MPLS or VXLAN between loopback interfaces). Reliable detection of transport failures in loosely-coupled systems requires an end-to-end monitoring layer… something that solutions like VMware NSX never implemented because it’s easier to offload hard problems to the network and expect MLAG support on fabric edge (as I explained in the logical switches part of the <a href="https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive">NSX Technical Deep Dive webinar</a>).</p>
-<p>Finally, the tight coupling of edge and core nodes in MPLS gives you the ability to do traffic engineering between fabric edges. Whether you need that in a data center fabric, and whether the gains justify the operational efforts (as opposed to buying more bandwidth) is another interesting question that I never got a clear answer to when I asked it in <a href="/2018/03/data-center-routing-with-rift-on.html">RIFT</a> and <a href="/2018/04/openfabric-with-russ-white-on-software.html">OpenFabric</a> episodes of <a href="https://www.ipspace.net/Podcast/Software_Gone_Wild">Software Gone Wild</a>.</p>
+<p>Finally, the tight coupling of edge and core nodes in MPLS gives you the ability to do traffic engineering between fabric edges. Whether you need that in a data center fabric, and whether the gains justify the operational efforts (as opposed to buying more bandwidth) is another interesting question that I never got a clear answer to when I asked it in <a href="/2018/03/data-center-routing-with-rift-on/">RIFT</a> and <a href="/2018/04/openfabric-with-russ-white-on-software/">OpenFabric</a> episodes of <a href="https://www.ipspace.net/Podcast/Software_Gone_Wild">Software Gone Wild</a>.</p>
 <h4>Which one should I use?</h4><p>As long as you’re doing encapsulation on fabric edge in a reasonably-small fabric, and the number of prefixes in your fabric doesn’t exceed the MPLS forwarding capacity of your switches, and you don’t plan to build a multi-vendor fabric, it doesn’t matter that much whether you use MPLS or VXLAN encapsulation.</p>
 <p>Doing MPLS in the hypervisor makes less sense due to tight coupling required between edge and core devices to synchronize labels. Juniper Contrail is the only product I’m aware of that used MPLS between hypervisors and even they moved to VXLAN. </p>
 <p>Am I missing something? Please write a comment!</p>

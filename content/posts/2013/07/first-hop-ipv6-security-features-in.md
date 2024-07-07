@@ -5,7 +5,7 @@ tags:
 - security
 - LAN
 title: First-Hop IPv6 Security Features in Cisco IOS
-url: /2013/07/first-hop-ipv6-security-features-in.html
+url: /2013/07/first-hop-ipv6-security-features-in/
 ---
 I wanted to figure out how to use IPv6 DAD proxy in PVLAN environments during my seaside vacations, and as I had no regular Internet access decided to download the whole set of IPv6 configuration guides while enjoying the morning cup of coffee in an Internet café. Opening the [IPv6 First-Hop Security Configuration Guide](http://www.cisco.com/en/US/docs/ios-xml/ios/ipv6_fhsec/configuration/xe-3s/ip6f-xe-3s-book.pdf) was one of the most pleasant (professional) surprises I had recently.
 

@@ -6,7 +6,7 @@ tags:
 - cloud
 - AWS
 title: 'Stateful Firewalls: When You Get to a Fork in the Road, Take It'
-url: /2019/03/stateful-firewalls-when-you-get-to-fork.html
+url: /2019/03/stateful-firewalls-when-you-get-to-fork/
 ---
 
 <p>If you’ve been in networking long enough you’d probably noticed an interesting pattern:</p>
@@ -15,7 +15,7 @@ url: /2019/03/stateful-firewalls-when-you-get-to-fork.html
 <li>The debate dies after participants diverge enough to stop caring about the other group.</li>
 </ul>
 <p>I was reminded of this pattern when I was explaining the traffic filtering measures available in private and public clouds during the <a href="https://www.ipspace.net/Designing_Infrastructure_for_Private_Clouds">Designing Infrastructure for Private Clouds</a> workshop.<!--more--></p>
-<p>Almost a decade ago I was observing a heated “<em><a href="/2010/08/i-dont-need-no-stinking-firewall-or-do.html">I don’t need no stinking firewalls</a></em>” debate. Fast forward to 2019 and you’ll find a huge gap: enterprise environments insist on using stateful firewalls in front of application stacks, sometimes deploying complex deep packet inspection, while all you can get from public cloud providers like AWS, Azure or GCP is packet filters with reflexive ACL functionality.</p>
+<p>Almost a decade ago I was observing a heated “<em><a href="/2010/08/i-dont-need-no-stinking-firewall-or-do/">I don’t need no stinking firewalls</a></em>” debate. Fast forward to 2019 and you’ll find a huge gap: enterprise environments insist on using stateful firewalls in front of application stacks, sometimes deploying complex deep packet inspection, while all you can get from public cloud providers like AWS, Azure or GCP is packet filters with reflexive ACL functionality.</p>
 <p>It’s obvious which approach scales. It’s also obvious that the scalable approach (reflexive ACLs) makes perfect sense and works well assuming you have a vague idea what you’re doing.</p>
 <div class="note" data-markdown="1">The <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/">memcrashed</a> crowd proved how clueless <a href="https://blog.erratasec.com/2018/03/some-notes-on-memcached-ddos.html">some people deploying workloads in public cloud</a> could be. </div>
 <p>The laws of physics haven’t changed in the meantime: any volume-based DoS attack will crash a stateful firewall before affecting the servers the firewall is protecting. Considering all this, why do we still see stateful firewalls deployed as the weakest link in the application stack?</p>

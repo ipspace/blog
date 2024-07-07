@@ -4,7 +4,7 @@ eigrp_tag: details
 tags:
 - EIGRP
 title: EIGRP Goodbye Message
-url: /2007/03/eigrp-goodbye-message.html
+url: /2007/03/eigrp-goodbye-message/
 pre_scroll: true
 ---
 In IOS release 12.3(1.4), Cisco has added Goodbye message to EIGRP protocol. Previously, whenever the router would need to tear down EIGRP adjacency (for example, due to changed summary addresses), it would simply erase the neighbor from its EIGRP neighbor table and pretend the it's just encountered a new neighbor on the next hello message. As the adjacent device does not participate in this charade, it becomes confused resulting in delayed adjacency establishment. The whole process is described in details in [my EIGRP book](http://www.amazon.com/EIGRP-Network-Design-Solutions-Definitive/dp/1578701651), which is unfortunately out-of-print and is available only as an [on-line book on Safari](http://safari.ciscopress.com/1578701651).

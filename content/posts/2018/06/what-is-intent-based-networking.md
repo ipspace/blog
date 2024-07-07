@@ -5,7 +5,7 @@ tags:
 - automation
 - intent-based networking
 title: What Is Intent-Based Networking?
-url: /2018/06/what-is-intent-based-networking.html
+url: /2018/06/what-is-intent-based-networking/
 ---
 Whenever someone mentions *intent-based networking* I try to figure out what exactly they're talking about. Not surprisingly, I get a different answer every single time. Confused by all that, I tried to find a good definition, but all I could find was vendor marketing along the lines of "*Intent-based networking captures and translates business intent so that it can be applied across the network,*" or industry press articles regurgitating vendor white papers.
 <!--more-->
@@ -33,4 +33,4 @@ Side note: every now and then there's a networking engineer who's pushing the de
 
 To recap: like the network devices (apart from unmanaged hubs and cables) were always software-defined, the way we're configuring network devices has always been intent-based. *Intent-based Networking* is thus as meaningless (as a term) as *Software-Defined Networking*.
 
-However, that doesn't mean that some of the ideas advertised by intent-based vendors are not useful. More about that in other [blog posts in this series](/tag/intent-based-networking.html) and in the [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar.
+However, that doesn't mean that some of the ideas advertised by intent-based vendors are not useful. More about that in other [blog posts in this series](/tag/intent-based-networking/) and in the [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar.

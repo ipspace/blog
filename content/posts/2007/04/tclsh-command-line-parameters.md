@@ -1,11 +1,11 @@
 ---
-url: /2007/04/tclsh-command-line-parameters.html
+url: /2007/04/tclsh-command-line-parameters/
 title: "Tclsh Command Line Parameters"
 date: "2007-04-09T11:27:00.001+02:00"
 tags: [ Tcl,command line interface ]
 ---
 
-In a previous post, I've described [how to execute a Tcl file](/2007/03/running-tcl-procedures-from-command.html) with the **tclsh** command. 
+In a previous post, I've described [how to execute a Tcl file](/2007/03/running-tcl-procedures-from-command/) with the **tclsh** command. 
 
 You can do even more than that: you can pass parameters to the executed file. Every word you enter after the file name in the tclsh command line is passed as a parameter to the Tcl code you execute. To get these parameters in Tcl, use Tcl commands similar to the code below:
 <!--more-->
@@ -22,4 +22,4 @@ return -code error "Syntax: loop.tcl ifnum ifstate"
 ... rest of procedure ...
 ```
 
-{{<jump>}}[More details](/kb/Tclsh/30-parameters.html){{</jump>}}
+{{<jump>}}[More details](/kb/Tclsh/30-parameters/){{</jump>}}

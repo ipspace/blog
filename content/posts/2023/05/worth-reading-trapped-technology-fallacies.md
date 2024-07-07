@@ -7,4 +7,4 @@ Michele Chubirka published a must-read article on [technology fallacies](https:/
 
 > Technologists often assume that all problems can be beaten into submission with a technology hammer.
 
-As [I've been saying for ages](/2014/09/youve-been-doing-same-thing-for-last-20.html) (not that anyone would listen): all the technology in the world won’t save you unless you change the mentality and rearchitect broken processes.
+As [I've been saying for ages](/2014/09/youve-been-doing-same-thing-for-last-20/) (not that anyone would listen): all the technology in the world won’t save you unless you change the mentality and rearchitect broken processes.

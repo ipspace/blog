@@ -4,7 +4,7 @@ date: 2024-03-27 08:10:00+0100
 tags: [ BGP ]
 pre_scroll: True
 ---
-Last week, I explained the differences between FRRouting and more traditional networking operating systems in scenarios where [OSPF and IBGP advertise the same prefix](/2024/03/frr-rib-fib.html):
+Last week, I explained the differences between FRRouting and more traditional networking operating systems in scenarios where [OSPF and IBGP advertise the same prefix](/2024/03/frr-rib-fib/):
 
 * Traditional networking operating systems enter only the OSPF route into the IP routing table.
 * FRRouting enters OSPF and IBGP routes into the IP routing table.
@@ -31,7 +31,7 @@ You REALLY SHOULD HAVE read the previous blog post describing the network topolo
 
 ### Back to BGP
 
-First, there's the ancient question, "*Should a router advertise a BGP route if it's not using it?*" I never understood what the big deal was[^PWAC]; if someone decided a prefix is worth advertising in BGP, and the current router knows how to send traffic to that prefix, there's little harm in advertising the prefix. Anyway, Cisco IOS [gets nervous](/2007/12/what-is-bgp-rib-failure.html), and old Arista EOS releases refused to advertise the prefix to other BGP neighbors[^BC]; you had to calm them down with the **bgp advertise-inactive** incantation.
+First, there's the ancient question, "*Should a router advertise a BGP route if it's not using it?*" I never understood what the big deal was[^PWAC]; if someone decided a prefix is worth advertising in BGP, and the current router knows how to send traffic to that prefix, there's little harm in advertising the prefix. Anyway, Cisco IOS [gets nervous](/2007/12/what-is-bgp-rib-failure/), and old Arista EOS releases refused to advertise the prefix to other BGP neighbors[^BC]; you had to calm them down with the **bgp advertise-inactive** incantation.
 
 [^PWAC]: If you have more information, please write a comment.
 

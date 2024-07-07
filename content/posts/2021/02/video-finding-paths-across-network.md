@@ -9,7 +9,7 @@ tags:
 title: 'Video: Finding Paths Across the Network'
 video_tag: net101
 ---
-Regardless of the [technology used to get packets across the network](/2021/01/video-multi-layer-switching-tunneling.html), someone has to know **how** to get from sender to receiver(s), and as always, you have multiple options:
+Regardless of the [technology used to get packets across the network](/2021/01/video-multi-layer-switching-tunneling/), someone has to know **how** to get from sender to receiver(s), and as always, you have multiple options:
 
 * Almighty controller
 * On-demand dynamic path discovery (example: probing)

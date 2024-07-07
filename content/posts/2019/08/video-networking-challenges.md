@@ -5,7 +5,7 @@ tags:
 - networking fundamentals
 - video
 title: 'Video: Networking Challenges'
-url: /2019/08/video-networking-challenges.html
+url: /2019/08/video-networking-challenges/
 video_tag: net101
 ---
 Whenever discussing a complex topic, it's worth adhering to two principles: (A) identify the challenges you're trying to solve, and (B) start as simple as you can and add complexity later.

@@ -1,13 +1,13 @@
 ---
-url: /2011/01/eem-event-cli-command-options-and.html
+url: /2011/01/eem-event-cli-command-options-and/
 title: "EEM event cli command options and the _exit_status variable"
 date: "2011-01-11T06:34:00.000+01:00"
 tags: [ EEM ]
 ---
 
-<p><em>Upendra</em> wrote the following comment to my “<a href="/2007/12/eem-cli-patterns-are-not-context.html"><em>EEM CLI patterns are not context sensitive</em></a>” post:</p>
+<p><em>Upendra</em> wrote the following comment to my “<a href="/2007/12/eem-cli-patterns-are-not-context/"><em>EEM CLI patterns are not context sensitive</em></a>” post:</p>
 <blockquote class="cite">I am totally confused with <strong>sync yes|no skip yes|no</strong>. What is the mean of <strong>sync</strong> and <strong>skip</strong>, when we use these keywords and what is the mean of yes and no.</blockquote>
-<p>The <a href="#wp1181708">online documentation on this topic is pretty extensive</a>, but obviously not explicit enough, so let’s try to reword it.</p>
-<!--more--><p>When you use the <strong>sync yes </strong>option in the <strong>event cli </strong>command, the EEM applet runs before the CLI command is executed. The EEM applet should set the <strong>_exit_status</strong> variable to indicate whether the CLI command should be executed (<strong>_exit_status</strong> set to one) or not (<b>_exit_status</b> set to zero). A sample applet using the <b>_exit_status</b> variable in described in my “<a href="/2011/01/schedule-reload-before-configuring.html"><em>Schedule reload before configuring the router</em></a>” post.</p>
-<p>With the <strong>sync no </strong>option, the EEM applet is executed in background <em>in parallel </em>with the CLI command. As the CLI command starts at the same time as the EEM applet, you cannot use the <strong>_exit_status </strong>variable anymore; you have to specify whether you want the CLI command to execute with the <strong>skip yes|no </strong>option of the <b>event cli</b> command. A sample applet using <strong>sync no skip yes </strong>options is described in my “<a href="/2007/03/can-you-disable-reload-command.html"><em>Can you disable the reload command?</em></a>” post.</p>
+<p>The online documentation on this topic is pretty extensive, but obviously not explicit enough, so let’s try to reword it.</p>
+<!--more--><p>When you use the <strong>sync yes </strong>option in the <strong>event cli </strong>command, the EEM applet runs before the CLI command is executed. The EEM applet should set the <strong>_exit_status</strong> variable to indicate whether the CLI command should be executed (<strong>_exit_status</strong> set to one) or not (<b>_exit_status</b> set to zero). A sample applet using the <b>_exit_status</b> variable in described in my “<a href="/2011/01/schedule-reload-before-configuring/"><em>Schedule reload before configuring the router</em></a>” post.</p>
+<p>With the <strong>sync no </strong>option, the EEM applet is executed in background <em>in parallel </em>with the CLI command. As the CLI command starts at the same time as the EEM applet, you cannot use the <strong>_exit_status </strong>variable anymore; you have to specify whether you want the CLI command to execute with the <strong>skip yes|no </strong>option of the <b>event cli</b> command. A sample applet using <strong>sync no skip yes </strong>options is described in my “<a href="/2007/03/can-you-disable-reload-command/"><em>Can you disable the reload command?</em></a>” post.</p>
 

@@ -6,13 +6,13 @@ tags:
 - netlab
 title: netlab VLAN Trunk Example
 ---
-Last week I described [how easy it is to use access VLANs](/2022/05/netsim-vlan-simple.html) in *netlab*. Next step: VLAN trunks. 
+Last week I described [how easy it is to use access VLANs](/2022/05/netsim-vlan-simple/) in *netlab*. Next step: VLAN trunks. 
 
 We'll add two Linux hosts to the lab topology used in the previous blog post, resulting in two switches, two Linux hosts in *red* VLAN and two Linux hosts in *blue* VLAN.
 
 {{<figure src="/2022/06/vlan-trunk.png" caption="Lab topology">}}
 <!--more-->
-Like in the previous example, we'll use *[groups](/2021/11/netsim-groups-deployment-templates.html)* in the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
+Like in the previous example, we'll use *[groups](/2021/11/netsim-groups-deployment-templates/)* in the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
 
 {{<cc>}}Defining nodes and groups{{</cc>}}
 ```

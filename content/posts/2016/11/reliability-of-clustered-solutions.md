@@ -10,9 +10,9 @@ tags:
 - data center
 - high availability
 title: 'Reliability of Clustered Solutions: Another Data Point'
-url: /2016/11/reliability-of-clustered-solutions.html
+url: /2016/11/reliability-of-clustered-solutions/
 ---
-A while ago [I wrote](/2016/10/do-i-need-redundant-firewalls.html):
+A while ago [I wrote](/2016/10/do-i-need-redundant-firewalls/):
 
 > I haven't seen any hard data, but intuition suggests that apart from hardware failures a standalone firewall might be more stable than a state-sharing firewall cluster.
 
@@ -30,4 +30,4 @@ Guillaume Sachot (working for a web hosting company) sent me his first-hand expe
 >
 > And if customers need very high availability, they should/must design their app to take it into account and host it on multiple locations/independent providers.
 
-Not that many people would want to listen to anything along these lines. Believing in Santa Claus and magical [High Availability solutions](/2011/08/high-availability-fallacies.html) is more comforting.
+Not that many people would want to listen to anything along these lines. Believing in Santa Claus and magical [High Availability solutions](/2011/08/high-availability-fallacies/) is more comforting.

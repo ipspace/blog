@@ -5,7 +5,7 @@ tags:
 - command line interface
 - show filters
 title: Save IOS printouts in a file
-url: /2007/04/save-ios-printouts-in-file.html
+url: /2007/04/save-ios-printouts-in-file/
 ---
 
 IOS release 12.2(13)T (integrated in IOS release 12.3) has added the capability to redirect output of an IOS <strong>show</strong> command to a file. This feature uses Unix-style pipes (similar to the <strong>include</strong>, <strong>exclude</strong> and <strong>section</strong> keywords) and adds <strong>append</strong>, <strong>redirect</strong> and <strong>tee</strong> (redirect + print) keywords. <br/><br/>The show output can be redirected to a local filename (in flash, on usb token or even in NVRAM) or sent to a remote server (currently only FTP and TFTP servers are supported). For example, the <strong>show ip interface brief | redirect ftp://student:lab@192.168.0.10/ifstatus</strong> command will store the current interface status to an FTP server.<br/><br/><strong>Note:</strong> the append (or tee /append) operation only works on destinations that support the file append operation: class-C flash file systems, local disks, USB tokens and NVRAM.

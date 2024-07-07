@@ -3,7 +3,7 @@ title: "VXLAN-to-VXLAN Bridging in DCI Environments"
 date: 2022-06-21 06:50:00
 tags: [ VXLAN, data center, WAN ]
 ---
-Almost exactly a decade ago I wrote that [VXLAN isn't a data center interconnect technology](/2012/11/vxlan-is-not-data-center-interconnect.html). That's still true, but you can make it a bit better with EVPN -- at the very minimum you'll get an ARP proxy and anycast gateway. Even this combo does not address the other requirements I listed a decade ago, but maybe I'm too demanding and _good enough_ works _well enough_.
+Almost exactly a decade ago I wrote that [VXLAN isn't a data center interconnect technology](/2012/11/vxlan-is-not-data-center-interconnect/). That's still true, but you can make it a bit better with EVPN -- at the very minimum you'll get an ARP proxy and anycast gateway. Even this combo does not address the other requirements I listed a decade ago, but maybe I'm too demanding and _good enough_ works _well enough_.
 
 However, there is one other bit that was missing from most VXLAN implementations: LAN-to-WAN VXLAN-to-VXLAN bridging. Sounds weird? Supposedly a picture is worth a thousand words, so here we go.
 <!--more-->
@@ -43,4 +43,4 @@ For years, it looked like the only ASIC capable of doing VXLAN-to-VXLAN bridging
 
 Remi Locherer sent me a nice email after the June 2022 design clinic saying "_your information is a bit outdated_" and included the link to 2022 EANTC test report and Arista documentation. I solemnly promise to augment those videos with _I was wrong_ callouts once I get them back from the editor.
 
-[^NA]: Should that be the case, I'm hoping you're not designing your network based on generic blog posts. I'm trying to be less biased than [vendor white papers](/2022/06/beware-vendors-bringing-whitepapers.html), but if you have such a large network you're deep in the It Depends territory and need a proper network design.
+[^NA]: Should that be the case, I'm hoping you're not designing your network based on generic blog posts. I'm trying to be less biased than [vendor white papers](/2022/06/beware-vendors-bringing-whitepapers/), but if you have such a large network you're deep in the It Depends territory and need a proper network design.

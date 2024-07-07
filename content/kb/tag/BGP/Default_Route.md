@@ -3,14 +3,14 @@ kb_section: BGP
 minimal_sidebar: true
 pre_scroll: true
 title: Default Routes in BGP
-url: /kb/tag/BGP/Default_Route.html
+url: /kb/tag/BGP/Default_Route/
 series: bgp-essentials
 date: "2007-11-15 06:23:00"
 tags: [ BGP ]
 ---
 The primary mission of Border Gateway Protocol (BGP) (transport of Internet routing between ISPs) has influenced the implementation of BGP default route origination, advertisements and propagation. This article describes the functionality and caveats of BGP default routing. All router configurations and printouts are taken from a sample network illustrated in the following diagram:
 
-{{<figure src="BGP_Default_Route_Diagram.png" caption="Test network used to produce the printouts in this article">}}
+{{<figure src="../BGP_Default_Route_Diagram.png" caption="Test network used to produce the printouts in this article">}}
 
 ## Default Route Origination in BGP
 
@@ -121,7 +121,7 @@ Flag: 0x820
 
 The unconditional default route advertisement from PE router to CE routers could lead to traffic black holes. If PE-A loses connectivity to the network core (see the next diagram) but still advertises the default route to Site-A, it will attract the traffic from AS 65100 and subsequently drop it due to failed uplink. It’s thus best to configure conditional advertising of the BGP default route to BGP neighbors.
 
-{{<figure src="BGP_Default_Route_Failure.png" caption="Default route is still advertised after an uplink failure">}}
+{{<figure src="../BGP_Default_Route_Failure.png" caption="Default route is still advertised after an uplink failure">}}
 
 In the sample network, the presence of the IP prefix 10.0.1.8/32 originated in AS 65104 indicates that the core network is available. To configure conditional BGP default route advertisement, you have to:
 

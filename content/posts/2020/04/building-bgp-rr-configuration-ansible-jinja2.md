@@ -17,7 +17,7 @@ In this particular case, your problem shouldn't be "*I want to configure BGP nei
 
 {{<note>}}Ansible calls variables _facts_ just to confuse people with a bit of programming background.{{</note>}}
 
-Whatever you do, make sure you don’t have the same information (like router loopback IP) stored in multiple places. You want to have a **single** [source of truth](/2019/02/building-network-automation-source-of.html) for every bit of information, or as [Elisa Jasinska](https://www.ipspace.net/Author:Elisa_Jasinska) explained in [her presentation in Building Network Automation Solutions](https://my.ipspace.net/bin/list?id=NetAutSol&module=1#M1S3) online course: “*duplicate data makes rockets explode*”
+Whatever you do, make sure you don’t have the same information (like router loopback IP) stored in multiple places. You want to have a **single** [source of truth](/2019/02/building-network-automation-source-of/) for every bit of information, or as [Elisa Jasinska](https://www.ipspace.net/Author:Elisa_Jasinska) explained in [her presentation in Building Network Automation Solutions](https://my.ipspace.net/bin/list?id=NetAutSol&module=1#M1S3) online course: “*duplicate data makes rockets explode*”
 
 Let's assume that after you're done your data model looks like this:
 

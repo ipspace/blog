@@ -19,7 +19,7 @@ Big picture first: as I explained in the [Routing Protocols](https://my.ipspace.
 
 Next step: a few design requirements. Routing protocols have to be resilient against all sorts of network failures including link loss, node loss, or network partitioning. Combine that with the idea of using a distributed database, consider the impact of CAP theorem, and you'll quickly realize that the only way forward is to use [*eventually consistent database* with *last-writer-wins* edit conflict resolution](/2021/02/state-consistency-distributed-controllers.html#consistency-requirements). 
 
-{{<note info>}}If the previous sentence sounded like Latin, start with [State Consistency in Distributed SDN Controller Clusters](/2021/02/state-consistency-distributed-controllers.html) blog post.{{</note>}} 
+{{<note info>}}If the previous sentence sounded like Latin, start with [State Consistency in Distributed SDN Controller Clusters](/2021/02/state-consistency-distributed-controllers/) blog post.{{</note>}} 
 
 Even worse, a node might be lost forever. Every node running a link-state routing protocol inserts its own local topology data into the distributed database, and no-one else can touch that data. Link state protocols thus need a garbage collection mechanism to purge the irrelevant data from the distributed database. Welcome to LSA/LSP aging concept.
 

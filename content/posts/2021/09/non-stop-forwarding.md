@@ -13,7 +13,7 @@ tags:
 - networking fundamentals
 title: Non-Stop Forwarding (NSF) 101
 ---
-Non-Stop Forwarding (NSF) is one of those ideas that look great in a slide deck and marketing collaterals, but might turn into a giant can of worms once you try to implement them properly (see also: stackable switches or [VMware Fault Tolerance](/2021/01/vmware-fault-tolerance-woes.html)). 
+Non-Stop Forwarding (NSF) is one of those ideas that look great in a slide deck and marketing collaterals, but might turn into a giant can of worms once you try to implement them properly (see also: stackable switches or [VMware Fault Tolerance](/2021/01/vmware-fault-tolerance-woes/)). 
 
 {{<note info>}}NSF has been around for at least 15 years, so I'm positive at least some vendors got most of the details right; I'm also pretty sure a few people have scars to prove they've been around the non-optimal implementations.{{</note>}}
 <!--more-->
@@ -21,13 +21,13 @@ Non-Stop Forwarding (NSF) is one of those ideas that look great in a slide deck 
 
 Long long time ago network devices had a single CPU and used it to run a control plane and perform ~~software-defined networking~~ CPU-based packet switching. There was nothing one could do if such a device crashed, so we all learned the basics of redundant network designs, including "_if you want true redundancy, use at least two uplinks connected to two independent boxes_".
 
-It seems to me that the art of good network design got clobbered the moment traditional telcos hooked on big shiny boxes discovered IP routing. They didn't want to hear about _network design_ or _configuration automation_, they wanted to have an equivalent of [class 5 telephone switch](https://en.wikipedia.org/wiki/Class-5_telephone_switch) for IP... and so we got [redundant fabrics and supervisor modules in large chassis](/2014/04/should-we-use-redundant-supervisors.html)[^1].
+It seems to me that the art of good network design got clobbered the moment traditional telcos hooked on big shiny boxes discovered IP routing. They didn't want to hear about _network design_ or _configuration automation_, they wanted to have an equivalent of [class 5 telephone switch](https://en.wikipedia.org/wiki/Class-5_telephone_switch) for IP... and so we got [redundant fabrics and supervisor modules in large chassis](/2014/04/should-we-use-redundant-supervisors/)[^1].
 
 Once you have redundant CPU modules, someone is bound to come up with a great idea: "*can't the second CPU take over at the moment the first one fails*". That would be *Stateful Switchover*, a topic for a future blog post.
 
 Another idea along the same lines pops up the moment the packet forwarding is offloaded from the control-plane CPU to ASICs or line cards: can't we keep the packets moving even if the control-plane CPU crashed? After all, the forwarding data structures are intact. That's how Non-Stop Forwarding started.
 
-[^1]: Using complex redundant systems instead of redundant architecture is [never a good idea](/2017/06/leaf-and-spine-fabrics-implicit-or.html), but marketing usually eats engineering for lunch, and a large purchase order can move mountains.
+[^1]: Using complex redundant systems instead of redundant architecture is [never a good idea](/2017/06/leaf-and-spine-fabrics-implicit-or/), but marketing usually eats engineering for lunch, and a large purchase order can move mountains.
 
 ## Should You Use Non-Stop Forwarding?
 
@@ -52,7 +52,7 @@ In those cases you could decide to:
 
 [^2]: I'm positive a lot of people will disagree with me, particularly when their compensation depends on sales of big shiny boxes.
 
-[^4]: Do I have to mention that all other things being equal, complex solutions tend to have more bugs and crash more often than simple solutions? Adding non-stop forwarding and stateful switchover to a routing stack [might *decrease* its reliability](/2016/11/reliability-of-clustered-solutions.html).
+[^4]: Do I have to mention that all other things being equal, complex solutions tend to have more bugs and crash more often than simple solutions? Adding non-stop forwarding and stateful switchover to a routing stack [might *decrease* its reliability](/2016/11/reliability-of-clustered-solutions/).
 
 ### Long Convergence Times
 
@@ -74,10 +74,10 @@ Oh, and did I mention the control plane is dead? There's no LACP, ARP, LLDP, STP
 
 Also, there's a reason the control plane crashed. It might be corrupted data structures, in which case one has to wonder how reliable the ASIC or linecard forwarding information is. Well, in a single-uplink scenario explained above we can choose between *sending the traffic somewhere* and *not sending the traffic*. I guess your choice depends on whether you're a pessimist or an optimist ;)
 
-Moving on to redundant control plane architectures. Ignoring the elephant in the room (aka: *[never take two chronometers to the sea](/2017/01/never-take-two-chronometers-to-sea.html)*), consider these minor details:
+Moving on to redundant control plane architectures. Ignoring the elephant in the room (aka: *[never take two chronometers to the sea](/2017/01/never-take-two-chronometers-to-sea/)*), consider these minor details:
 
 * The secondary control plane must realize the primary one is gone (byzantine failures are a never-ending source of fun).
-* The secondary control plane must take over all control plane protocols and reinitialize routing protocol adjacencies (unless you're using *Non-Stop Routing*, a topic for yet another blog post). At that point the adjacent nodes that were happily using the forwarding hardware in the crashed node give up -- yet another instance of *[black hole on recovery](/2011/11/ldp-igp-synchronization-in-mpls.html)*. Of course we have a solution for this challenge: *Graceful Restart* (aka: the third can of worms in this wonderful voyage).
+* The secondary control plane must take over all control plane protocols and reinitialize routing protocol adjacencies (unless you're using *Non-Stop Routing*, a topic for yet another blog post). At that point the adjacent nodes that were happily using the forwarding hardware in the crashed node give up -- yet another instance of *[black hole on recovery](/2011/11/ldp-igp-synchronization-in-mpls/)*. Of course we have a solution for this challenge: *Graceful Restart* (aka: the third can of worms in this wonderful voyage).
 * Failover must be done extremely carefully. At no time should the forwarding hardware be reinitialized in a way that would flap the physical links or we might trigger an *interface down* event in the adjacent nodes. How do you implement that when trying to reinitialize a borked ASIC? I have no idea.
 * The primary control plane crashed for a reason. Are you positive the secondary control plane won't crash as well after receiving the same information from the neighboring devices?
 

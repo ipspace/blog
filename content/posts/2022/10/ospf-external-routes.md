@@ -23,7 +23,7 @@ Like everyone else, ISPs started building IP networks on top of some other switc
 
 It was well understood[^LAB] that if you want to replace WAN switches with a pure IP network, all P-devices have to have routes to all external destinations, and instead of saying _let's run BGP everywhere_, the solution was _let's redistribute BGP into OSPF_ because an IP prefix in OSPF topology database takes less memory than a full-blown BGP prefix[^RRR], and needs fewer CPU cycles to process because OSPF considers external routes after the hard work (SPF algorithm) has already been done.
 
-{{<note warn>}}Please note that the global BGP table [had a few thousand entries](https://bgp.potaroo.net/as2.0/bgp-active.html) at that time -- OSPFv1 was published in 1991. [Redistributing today's BGP table into OSPF](/2020/10/redistributing-bgp-into-ospf.html) is not a good idea.{{</note>}}
+{{<note warn>}}Please note that the global BGP table [had a few thousand entries](https://bgp.potaroo.net/as2.0/bgp-active.html) at that time -- OSPFv1 was published in 1991. [Redistributing today's BGP table into OSPF](/2020/10/redistributing-bgp-into-ospf/) is not a good idea.{{</note>}}
 
 So here's your challenge: design a protocol that will compute optimal end-to-end paths toward 10-20K external routes while running on a 4 MHz 16-bit CPU with 2MB of memory (including the software image).
 

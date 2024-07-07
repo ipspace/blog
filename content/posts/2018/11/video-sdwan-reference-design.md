@@ -7,10 +7,10 @@ tags:
 - SD-WAN
 - video
 title: 'Video: SD-WAN Reference Design'
-url: /2018/11/video-sdwan-reference-design.html
+url: /2018/11/video-sdwan-reference-design/
 video_tag: sd-wan
 ---
-After [explaining the basics of SD-WAN](/2018/09/video-what-is-sdwan.html), [Pradosh Mohapatra](https://www.ipspace.net/Author:Pradosh_Mohapatra), the author of [SD-WAN Overview](https://www.ipspace.net/SD-WAN_Overview) webinar focused on [SDWAN reference network design](https://my.ipspace.net/bin/get/SDWAN/2%20-%20Reference%20Network%20Design.mp4).
+After [explaining the basics of SD-WAN](/2018/09/video-what-is-sdwan/), [Pradosh Mohapatra](https://www.ipspace.net/Author:Pradosh_Mohapatra), the author of [SD-WAN Overview](https://www.ipspace.net/SD-WAN_Overview) webinar focused on [SDWAN reference network design](https://my.ipspace.net/bin/get/SDWAN/2%20-%20Reference%20Network%20Design.mp4).
 
 {{<jump>}}
 [Watch the video](https://my.ipspace.net/bin/get/SDWAN/2%20-%20Reference%20Network%20Design.mp4)

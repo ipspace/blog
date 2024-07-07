@@ -5,7 +5,7 @@ tags:
 - EIGRP
 - MPLS VPN
 title: Multiple EIGRP Autonomous Systems in a VRF
-url: /2010/10/multiple-eigrp-autonomous-systems-in.html
+url: /2010/10/multiple-eigrp-autonomous-systems-in/
 ---
 A while ago Ron sent me an intriguing question: "Is it possible to have two EIGRP AS numbers in the same VRF?" Obviously he's working on a network with multiple EIGRP processes (not an uncommon pre-MPLS/VPN solution; I did a network design along the same lines almost 20 years ago).
 

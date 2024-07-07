@@ -8,17 +8,17 @@ tags:
 - NAT
 - LISP
 title: We Just Might Need NAT66/NPT66 (and Not LISP)
-url: /2011/12/we-just-might-need-nat66.html
+url: /2011/12/we-just-might-need-nat66/
 ---
-My friend Tom Hollingsworth has written another [NAT66-is-evil](http://networkingnerd.net/2011/12/01/whats-the-point-of-nat66/) blog post. While I agree with him in principle, and most everyone agrees NAT as we know it from IPv4 world is plain stupid in IPv6 world (NAPT more so than NAT), we just might need NPT66 ([Network Prefix Translation; RFC 6296](http://www.rfc-editor.org/rfc/rfc6296.txt)) to support [small-site multihoming](/2009/05/small-site-multihoming-tutorial.html) \... and yet again, it seems that many leading IPv6 experts grudgingly agree with me.
+My friend Tom Hollingsworth has written another [NAT66-is-evil](http://networkingnerd.net/2011/12/01/whats-the-point-of-nat66/) blog post. While I agree with him in principle, and most everyone agrees NAT as we know it from IPv4 world is plain stupid in IPv6 world (NAPT more so than NAT), we just might need NPT66 ([Network Prefix Translation; RFC 6296](http://www.rfc-editor.org/rfc/rfc6296.txt)) to support [small-site multihoming](/2009/05/small-site-multihoming-tutorial/) \... and yet again, it seems that many leading IPv6 experts grudgingly agree with me.
 <!--more-->
 ### The Problem
 
-There's plenty of multihoming going on in the current Internet without anyone being aware of it. Anyone using Internet for mission-critical applications (or business-grade cloud access) can get two Internet connections from two upstream providers and [use pretty simple NAT tricks to use those connections](/2009/05/small-site-multihoming-tutorial.html) in either active-standby or active-active mode. I'm personally aware of a few large multinational organizations using similar designs for remote office or retail access.
+There's plenty of multihoming going on in the current Internet without anyone being aware of it. Anyone using Internet for mission-critical applications (or business-grade cloud access) can get two Internet connections from two upstream providers and [use pretty simple NAT tricks to use those connections](/2009/05/small-site-multihoming-tutorial/) in either active-standby or active-active mode. I'm personally aware of a few large multinational organizations using similar designs for remote office or retail access.
 
 {{<figure src="/2009/05/SOHO_Multihoming_Addressing.png" caption="Simple small site multihoming">}}
 
-Using currently available low-end routers and existing IPv6 host stacks (with [TCP stack without a session layer](/2009/08/what-went-wrong-tcpip-lacks-session.html) and [broken socket API](/2009/08/what-went-wrong-socket-api.html)) you can solve the same problem in one of two ways in the IPv6 world:
+Using currently available low-end routers and existing IPv6 host stacks (with [TCP stack without a session layer](/2009/08/what-went-wrong-tcpip-lacks-session/) and [broken socket API](/2009/08/what-went-wrong-socket-api/)) you can solve the same problem in one of two ways in the IPv6 world:
 
 **BGP-based multihoming**. Get a large chunk of provider-independent (PI) address space and an AS number, assign a /48 to every location, and run BGP with two upstream ISPs from every location.
 

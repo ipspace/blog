@@ -7,9 +7,9 @@ tags:
 - automation
 - NETCONF
 title: To YANG or Not to YANG, That’s the Question
-url: /2017/03/to-yang-or-not-to-yang-thats-question.html
+url: /2017/03/to-yang-or-not-to-yang-thats-question/
 ---
-Yannis sent me an interesting challenge after reading my short "[*this is how I wasted my time*](/2016/12/generating-ospf-bgp-and-mplsvpn.html)" update:
+Yannis sent me an interesting challenge after reading my short "[*this is how I wasted my time*](/2016/12/generating-ospf-bgp-and-mplsvpn/)" update:
 
 > We are very much committed in automation and use Ansible to create configuration and provision our SP and data center network. One of our principles is that we do rely solely on data available in external resources (databases and REST endpoints), and avoid fetching information/views from the network because that would create a loop.
 
@@ -19,7 +19,7 @@ You can almost feel a *however* coming in just a few seconds, right?
 
 As Yannis asked my opinion on using YANG, let's focus on that challenge first.
 
-YANG is a *data model description language* -- you can use it to [describe how your data model looks like](/2012/06/netconf-expect-on-steroids.html), for example what attributes you use to describe a router or IP subnet object.
+YANG is a *data model description language* -- you can use it to [describe how your data model looks like](/2012/06/netconf-expect-on-steroids/), for example what attributes you use to describe a router or IP subnet object.
 
 {{<note info>}}I covered data stores, databases, and data model description languages in more details in the [*Data models*](http://automation.ipspace.net/Public:3-Data_Models) section of the [Building Network Automation Solutions online course](http://www.ipspace.net/Building_Network_Automation_Solutions).{{</note>}}
 
@@ -37,4 +37,4 @@ If I had had too much time, I could have created a YANG data model describing th
 
 YANG is thus not the answer to the question. OpenConfig might be, depending on what data you want to handle. I know customers using OpenConfig with extensions in their automation solutions, and David Barroso is working hard to make it part of NAPALM.
 
-If you're interested in the technical realities of OpenConfig (as opposed to marketing nirvana), listen to the [Software Gone Wild podcast with Marcel Wiget](/2017/02/openconfig-from-basics-to.html), who was also the [guest speaker](http://automation.ipspace.net/Public:Speakers) in the [Data Models](http://automation.ipspace.net/Public:3-Data_Models) part of my [network automation online course](http://www.ipspace.net/Building_Network_Automation_Solutions).
+If you're interested in the technical realities of OpenConfig (as opposed to marketing nirvana), listen to the [Software Gone Wild podcast with Marcel Wiget](/2017/02/openconfig-from-basics-to/), who was also the [guest speaker](http://automation.ipspace.net/Public:Speakers) in the [Data Models](http://automation.ipspace.net/Public:3-Data_Models) part of my [network automation online course](http://www.ipspace.net/Building_Network_Automation_Solutions).

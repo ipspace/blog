@@ -21,7 +21,7 @@ router bgp 65100
  neighbor 10.1.0.6 remote-as 65002
 ```
   
-The results of such a simplistic configuration are too well-known[^OPS]: the customer starts leaking routes between the two service providers, and if one of them [happens to be Verizon](/2019/07/rant-some-internet-service-providers.html), we have an Internet-wide meltdown.
+The results of such a simplistic configuration are too well-known[^OPS]: the customer starts leaking routes between the two service providers, and if one of them [happens to be Verizon](/2019/07/rant-some-internet-service-providers/), we have an Internet-wide meltdown.
 
 [^OPS]: To people running BGP in production networks
 
@@ -31,7 +31,7 @@ I replicated that setup in a [netlab](https://netlab.tools/) lab using the follo
 
 The *netlab* topology file is as simple as it can get:
 
--   We're using *containerlab* provider to [reduce the lab startup times](/2023/02/virtual-device-boot-times.html).
+-   We're using *containerlab* provider to [reduce the lab startup times](/2023/02/virtual-device-boot-times/).
 -   All lab devices are running BGP
 -   We're setting explicit BGP AS numbers on every device
 -   There are two links in the lab (from customer to ISP-A and ISP-B)

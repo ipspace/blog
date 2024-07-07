@@ -3,7 +3,7 @@ kb_section: BGP
 minimal_sidebar: true
 pre_scroll: true
 title: Filter Excessively Prepended BGP Paths
-url: /kb/tag/BGP/Filter_Excessively_Prepended_BGP_Paths.html
+url: /kb/tag/BGP/Filter_Excessively_Prepended_BGP_Paths/
 ---
 **Short description**: BGP AS-path prepending is commonly used to influence BGP path selection in upstream autonomous systems, forcing the upstream networks to use one of the advertised paths as a primary path and another one as a backup path based on the AS path length.
 

@@ -9,9 +9,9 @@ tags:
 - automation
 - SDN
 title: Can We Make REST API Transactional Across Multiple Calls?
-url: /2019/10/can-we-make-rest-api-transactional.html
+url: /2019/10/can-we-make-rest-api-transactional/
 ---
-I got interesting feedback from one of my readers after publishing my [REST API Is Not Transactional](/2019/04/rest-api-is-not-transactional.html) blog post:
+I got interesting feedback from one of my readers after publishing my [REST API Is Not Transactional](/2019/04/rest-api-is-not-transactional/) blog post:
 
 > One would think a transactional REST interface wouldn't be too difficult to implement. Using HTTP1/1, it is possible to multiplex several REST calls into one connection to a specific server. The first call then is a request for start a transaction, returning a transaction ID, to be used in subsequent calls. Since we're not primarily interested in the massive scalability of stateless REST calls, all the REST calls will be handled by the same frontend. Obviously the last call would be a commit.
 
@@ -24,9 +24,9 @@ Let's evict the obvious elephant from the room before you rush to point out that
 -   The ability to roll back five independent changes to the system if one of my changes fails;
 -   Ideally the ability to make changes that are not visible to the outside world until the **commit** REST API call.
 
-Implementing such a system is trivial if the REST API calls do nothing more than [modify the data model which is then instantiated once we execute the **commit** call](/2018/09/adjusting-system-state-with.html).
+Implementing such a system is trivial if the REST API calls do nothing more than [modify the data model which is then instantiated once we execute the **commit** call](/2018/09/adjusting-system-state-with/).
 
-Unfortunately most systems (or network devices) don't work that way because it's much simpler to [execute a function call within the system and modify system state the moment a REST API call is received](/2018/09/infrastructure-as-code-netconf-and-rest.html) or a command is typed in the CLI.
+Unfortunately most systems (or network devices) don't work that way because it's much simpler to [execute a function call within the system and modify system state the moment a REST API call is received](/2018/09/infrastructure-as-code-netconf-and-rest/) or a command is typed in the CLI.
 
 Even worse, the execute-changes-immediately paradigm is so widely accepted that it's totally unrealistic to expect that we'll get transactional configuration consistency we have with Junos, IOS-XR or Arista EOS in SDN controllers, orchestration systems or intent-based products (isn't it great to have three marketing names for the same stuff?) with rare exceptions like Cisco APIC.
 

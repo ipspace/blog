@@ -2,7 +2,7 @@
 kb_section: ConfigRegex
 minimal_sidebar: true
 title: Simple Implementation in Ansible and Jinja2
-url: /kb/ConfigRegex/10-Implementation.html
+url: /kb/ConfigRegex/10-Implementation/
 ---
 The Cisco IOS configuration is a structured text file that uses indentation to group configuration sections.
 

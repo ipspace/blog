@@ -10,9 +10,9 @@ tags:
 - BGP
 - EVPN
 title: Typical EVPN BGP Routing Designs
-url: /2018/05/typical-evpn-bgp-routing-designs.html
+url: /2018/05/typical-evpn-bgp-routing-designs/
 ---
-As discussed in a [previous blog post](/2018/05/what-is-evpn.html), IETF designed EVPN to be next-generation BGP-based VPN technology providing scalable layer-2 and layer-3 VPN functionality. EVPN was initially designed to be used with MPLS data plane and was later extended to use numerous data plane encapsulations, VXLAN being the most common one.
+As discussed in a [previous blog post](/2018/05/what-is-evpn/), IETF designed EVPN to be next-generation BGP-based VPN technology providing scalable layer-2 and layer-3 VPN functionality. EVPN was initially designed to be used with MPLS data plane and was later extended to use numerous data plane encapsulations, VXLAN being the most common one.
 
 ### Design Requirements
 
@@ -20,7 +20,7 @@ Like any other BGP-based solution, EVPN uses BGP to transport endpoint reachabil
 <!--more-->
 The most obvious approach would thus be to use BGP-based control plane with an underlying IGP (or even Fast Reroute) providing fast-converging paths to BGP next hops. You can use the same design with EVPN regardless of whether you use MPLS or VXLAN data plane:
 
--   Use [any IGP suitable for the size of your network](/2018/05/is-ospf-or-is-is-good-enough-for-my.html). Some service providers have over a thousand routers in a single OSPF or IS-IS area. Even in highly-meshed environments (leaf-and-spine fabrics), OSPF or IS-IS easily scale to over a hundred switches.
+-   Use [any IGP suitable for the size of your network](/2018/05/is-ospf-or-is-is-good-enough-for-my/). Some service providers have over a thousand routers in a single OSPF or IS-IS area. Even in highly-meshed environments (leaf-and-spine fabrics), OSPF or IS-IS easily scale to over a hundred switches.
 -   Use IBGP to transport EVPN BGP updates, and BGP route reflectors for scalability.
 
 In data centers using EBGP as an IGP replacement, you could use the existing EBGP sessions to carry IPv4 (underlay) and EVPN (overlay) address families. For more information on this approach and some alternative designs read the [BGP in EVPN-Based Data Center Fabrics](http://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics) part of [Using BGP in Data Center Leaf-and-Spine Fabrics](http://www.ipspace.net/Data_Center_BGP) document.
@@ -52,7 +52,7 @@ The border gateway (device changing BGP next hop on fabric boundary) has to be a
 
 {{<figure src="/2018/05/s1600-Multi-Site+Border+Gateway.png" caption="Border gateways perform VXLAN-to-VXLAN forwarding (diagram by Lukas Krattiger)">}}
 
-While recent merchant silicon ASICs implement RIOT (Routing In-and-Out of VXLAN Tunnels), [very few of them can do bridging In-and-Out of VXLAN Tunnels](/2022/06/vxlan-bridging-dci.html) -- the mandatory prerequisite for Inter-AS Option&nbsp;B.
+While recent merchant silicon ASICs implement RIOT (Routing In-and-Out of VXLAN Tunnels), [very few of them can do bridging In-and-Out of VXLAN Tunnels](/2022/06/vxlan-bridging-dci/) -- the mandatory prerequisite for Inter-AS Option&nbsp;B.
 
 {{<note info>}}For more details watch [Implementing true multi-site layer-2 fabrics with Cisco's ASICs](https://my.ipspace.net/bin/list?id=Clos#MULTISITE) in [Leaf-and-Spine Fabric Architectures](http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar -- Lukas Krattiger did a great job explaining the intricacies of multi-site fabrics with VXLAN-to-VXLAN bridging at the fabric edge.{{</note>}}
 

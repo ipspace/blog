@@ -4,7 +4,7 @@ tags:
 - IPsec
 - MPLS VPN
 title: Encrypting P-to-P-router traffic
-url: /2009/09/encrypting-p-to-p-router-traffic.html
+url: /2009/09/encrypting-p-to-p-router-traffic/
 ---
 Rob sent me a really good question:
 

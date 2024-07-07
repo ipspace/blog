@@ -3,7 +3,7 @@ kb_section: NetAutJourney
 minimal_sidebar: true
 pre_scroll: true
 title: Appendix
-url: /kb/NetAutJourney/99-Appendix.html
+url: /kb/NetAutJourney/99-Appendix/
 ---
 ## EEM Scripts
 
@@ -67,4 +67,4 @@ formatting of output messages, greatly enhancing the readability of the Ansible 
 a web browser. I am now playing with outputting HTML text where each output category
 (‘changed’, ‘failed’, ‘skipped’, etc.) is mapped to its own CSS **div** class.
 
-{{<figure src="Playbook-Output.png" caption="Ansible playbook output">}}
+{{<figure src="../Playbook-Output.png" caption="Ansible playbook output">}}

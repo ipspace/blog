@@ -4,7 +4,7 @@ eigrp_tag: details
 tags:
 - EIGRP
 title: Changes in EIGRP Summary Address Are no Longer Disruptive
-url: /2007/04/changes-in-eigrp-summary-address-are-no.html
+url: /2007/04/changes-in-eigrp-summary-address-are-no/
 pre_scroll: True
 ---
 Early EIGRP implementation treated changes in EIGRP summary address configuration (configured with the **ip summary-address eigrp** interface configuration command) very disruptively: all EIGRP sessions across the affected interface were cleared, sometimes resulting in a large number of routes entering *active* state, potentially leading to a *stuck-in-active* condition.

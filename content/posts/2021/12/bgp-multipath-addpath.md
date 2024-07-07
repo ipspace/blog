@@ -9,7 +9,7 @@ tags:
 - netlab
 title: Optimal BGP Path Selection with BGP Additional Paths
 ---
-A month ago I explained how [using a BGP route reflector in a large-enough non-symmetrical network could result in suboptimal routing](/2021/11/bgp-multipath-netsim-tools.html) (or loss of path diversity or multipathing). I also promised to explain how *Advertisement of Multiple Paths in BGP*  functionality[^AP] solves that problem. Here we go...
+A month ago I explained how [using a BGP route reflector in a large-enough non-symmetrical network could result in suboptimal routing](/2021/11/bgp-multipath-netsim-tools/) (or loss of path diversity or multipathing). I also promised to explain how *Advertisement of Multiple Paths in BGP*  functionality[^AP] solves that problem. Here we go...
 
 I extended the [original lab](https://github.com/ipspace/netlab-examples/blob/master/BGP/Multipath/baseline.yml) with another router to get a scenario where one route reflector (RR) client should use equal-cost paths to an external destination while another RR client should select a best path that is different from what the route reflector would select.
 <!--more-->
@@ -33,7 +33,7 @@ To get there, the route reflector has to advertise D-Y and C-Y paths to A and M,
 
 ### Technology
 
-[RFC 7911](https://datatracker.ietf.org/doc/html/rfc7911) extends the *advertised prefix* (Network Layer Reachability Information -- NLRI) with a *Path Identifier* to solve the *multiple updates of the same prefix* conundrum. Obviously one cannot just send the new data structures to an unsuspecting BGP neighbor; BGP neighbors must *negotiate* the new functionality [with BGP capabilities exchange](/2021/11/bgp-dynamic-capability.html), usually bringing down the BGP session as an interesting side effect. 
+[RFC 7911](https://datatracker.ietf.org/doc/html/rfc7911) extends the *advertised prefix* (Network Layer Reachability Information -- NLRI) with a *Path Identifier* to solve the *multiple updates of the same prefix* conundrum. Obviously one cannot just send the new data structures to an unsuspecting BGP neighbor; BGP neighbors must *negotiate* the new functionality [with BGP capabilities exchange](/2021/11/bgp-dynamic-capability/), usually bringing down the BGP session as an interesting side effect. 
 
 RFC 7911 allows a BGP speaker to advertise that it's willing to *send* multiple paths, *receive* multiple paths or both. For a working solution, one of the neighbors must be willing to *receive* multiple paths, and the other one must be will to *send* them. Obviously it's also possible to have a two-way exchange.
 
@@ -42,7 +42,7 @@ Selecting the paths that are advertised to a neighbor willing to receive multipl
 * Which alternate paths should be considered to be interesting;
 * Which interesting alternate paths should be advertised to individual neighbors.
 
-Any gotchas? Sure. The *path identifier* is a local variable and might not be preserved across [Graceful Restarts](/2021/09/graceful-restart.html). In the words of RFC 7911:
+Any gotchas? Sure. The *path identifier* is a local variable and might not be preserved across [Graceful Restarts](/2021/09/graceful-restart/). In the words of RFC 7911:
 
 > As the Path Identifiers are locally assigned, and may or may not be persistent across a control plane restart of a BGP speaker, an implementation SHOULD take special care so that the underlying forwarding plane of a "Receiving Speaker" as described in RFC4724 is not affected during the graceful restart of a BGP session.
 
@@ -163,7 +163,7 @@ router bgp {{ bgp.as }}
 {% endfor %}
 ```
 
-Finally, I added the template as a [custom deployment template](/2021/11/netsim-groups-deployment-templates.html) to the topology file. Now I can get a fully-configured lab with a simple **netlab up** command.
+Finally, I added the template as a [custom deployment template](/2021/11/netsim-groups-deployment-templates/) to the topology file. Now I can get a fully-configured lab with a simple **netlab up** command.
 
 ```
 module: [ bgp, ospf ]
@@ -182,4 +182,4 @@ groups:
 
 Want do to your own tests? [Install netlab](https://netlab.tools/install/), build your own [virtual lab environment](https://netlab.tools/install/#creating-the-lab-environment), and use [this set of configuration files](https://github.com/ipspace/netlab-examples/tree/master/BGP/Multipath).
 
-Want to learn more? Explore [BGP-related blog posts](/tag/bgp.html) and _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar.
+Want to learn more? Explore [BGP-related blog posts](/tag/bgp/) and _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar.

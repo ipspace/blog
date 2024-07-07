@@ -5,9 +5,9 @@ tags:
 - MPLS VPN
 - QoS
 title: Solving the MPLS/VPN QoS Challenge
-url: /2010/11/solving-mplsvpn-qos-challenge.html
+url: /2010/11/solving-mplsvpn-qos-challenge/
 ---
-Two weeks ago I [wrote about the challenges](/2010/10/qos-over-mplsvpn-networks.html) you'll encounter when trying to implement end-to-end QoS in an enterprise network that uses MPLS/VPN service as one of its transport components. Most of the issues you'll encounter are caused by the position of the user-SP demarcation point. The Service Providers smartly "assume" the demarcation point is the PE-router interface... and everything up to that point (including their access network) is your problem.
+Two weeks ago I [wrote about the challenges](/2010/10/qos-over-mplsvpn-networks/) you'll encounter when trying to implement end-to-end QoS in an enterprise network that uses MPLS/VPN service as one of its transport components. Most of the issues you'll encounter are caused by the position of the user-SP demarcation point. The Service Providers smartly "assume" the demarcation point is the PE-router interface... and everything up to that point (including their access network) is your problem.
 
 {{<figure src="/2010/11/s1600-mplsqos_before.png" caption="Typical MPLS/VPN demarcation point">}}
 <!--more-->
@@ -15,7 +15,7 @@ The only workable solution to the QoS-across-MPLS/VPN problem I found (and belie
 
 {{<figure src="/2010/11/s1600-mplsqos_after.png" caption="Onsite demarcation point">}}
 
-The only task left to you is to shape your outbound traffic to the contractual rate (and [queue within the shaping queue](/kb/tag/QoS/Traffic_Shaping.html) if necessary) and the rest is now purely the Service Provider's responsibility. Make sure you have enforceable SLA violation penalties in your contract, deploy SLA-measurement tools, show your SP account manager the graphs (just to let them know you might have supporting documentation to enforce the penalties) \... and watch the QoS miraculously work as expected (OK, it helps if you're big enough and if they know what they're doing).
+The only task left to you is to shape your outbound traffic to the contractual rate (and [queue within the shaping queue](/kb/tag/QoS/Traffic_Shaping/) if necessary) and the rest is now purely the Service Provider's responsibility. Make sure you have enforceable SLA violation penalties in your contract, deploy SLA-measurement tools, show your SP account manager the graphs (just to let them know you might have supporting documentation to enforce the penalties) \... and watch the QoS miraculously work as expected (OK, it helps if you're big enough and if they know what they're doing).
 
 ### More information
 

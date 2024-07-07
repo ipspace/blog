@@ -7,14 +7,14 @@ tags:
 - networking fundamentals
 title: Unnumbered Ethernet Interfaces
 ---
-Imagine an Internet Service Provider offering Ethernet-based Internet access (aka everyone using fiber access, excluding people believing in [Russian dolls](/2008/10/internet-access-russian-dolls.html)). If they know how to spell security, they might be nervous about connecting numerous customers to the same multi-access network, but it seems they have only two ways to solve this challenge:
+Imagine an Internet Service Provider offering Ethernet-based Internet access (aka everyone using fiber access, excluding people believing in [Russian dolls](/2008/10/internet-access-russian-dolls/)). If they know how to spell security, they might be nervous about connecting numerous customers to the same multi-access network, but it seems they have only two ways to solve this challenge:
 
 * Use private VLANs with proxy ARP on the head-end router, forcing the customer-to-customer traffic to pass through layer-3 forwarding on the head-end router.
 * Use a separate routed interface with each customer, wasting three-quarters of their available IPv4 address space.
 
-Is there a third option? Can't we pretend Ethernet works in [almost the same way as dialup](/2021/05/fundamentals-unnumbered-ip-interfaces.html) and use unnumbered IPv4 interfaces? 
+Is there a third option? Can't we pretend Ethernet works in [almost the same way as dialup](/2021/05/fundamentals-unnumbered-ip-interfaces/) and use unnumbered IPv4 interfaces? 
 <!--more-->
-Considering what we [already know about unnumbered interfaces](/2021/05/routing-unnumbered-interfaces.html), it shouldn't be too hard to get it done, considering that Ethernet forces you to supply next-hop layer-2 information even on point-to-point links.
+Considering what we [already know about unnumbered interfaces](/2021/05/routing-unnumbered-interfaces/), it shouldn't be too hard to get it done, considering that Ethernet forces you to supply next-hop layer-2 information even on point-to-point links.
 
 Here's what we have to do:
 
@@ -94,7 +94,7 @@ Internet  10.2.1.2                1   5254.00e3.3048  ARPA   GigabitEthernet2
 Internet  10.2.1.3                1   5254.00cb.bf02  ARPA   GigabitEthernet3
 ```
 
-Mission accomplished? Not exactly. While it's possible to automate static route configuration, we still need to tell the clients what IP addresses to use. Time to add DHCP to the picture -- the topic of the next blog post in [this series](/series/unnumbered-interfaces.html).
+Mission accomplished? Not exactly. While it's possible to automate static route configuration, we still need to tell the clients what IP addresses to use. Time to add DHCP to the picture -- the topic of the next blog post in [this series](/series/unnumbered-interfaces/).
 
 ### Want to Know More?
 

@@ -8,7 +8,7 @@ tags:
 title: 'Video: Hacking BGP for Fun and Profit'
 video_tag: bgp
 ---
-At least some people learn from others' mistakes: using the concepts proven by some [well-publicized BGP leaks](/2023/10/video-history-bgp-route-leaks.html), malicious actors quickly figured out how to [hijack BGP prefixes for fun and profit](https://my.ipspace.net/bin/get/Net101/NS5.2%20-%20Hacking%20BGP%20for%20Fun%20and%20Profit.mp4?doccode=Net101).
+At least some people learn from others' mistakes: using the concepts proven by some [well-publicized BGP leaks](/2023/10/video-history-bgp-route-leaks/), malicious actors quickly figured out how to [hijack BGP prefixes for fun and profit](https://my.ipspace.net/bin/get/Net101/NS5.2%20-%20Hacking%20BGP%20for%20Fun%20and%20Profit.mp4?doccode=Net101).
 
 Fortunately, those shenanigans wouldn't spread as far today as they did in the past -- according to [RoVista](https://rovista.netsecurelab.org/), most of the largest networks block the prefixes Route Origin Validation (ROV) marks as invalid.
 

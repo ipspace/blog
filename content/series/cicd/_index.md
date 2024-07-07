@@ -12,7 +12,7 @@ Interested? Let's start with the fundamentals:
 
 {{<series-listing tag="principles" weight="yes">}}
 
-You might also want to explore [network-infrastructure-as-code](/series/niac.html) concepts.
+You might also want to explore [network-infrastructure-as-code](/series/niac/) concepts.
 
 ### {{<plushy master>}}Testing, Validation, and Tools
 

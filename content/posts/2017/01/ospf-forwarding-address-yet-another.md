@@ -4,7 +4,7 @@ ospf_tag: fa
 tags:
 - OSPF
 title: 'OSPF Forwarding Address: Yet Another Kludge'
-url: /2017/01/ospf-forwarding-address-yet-another.html
+url: /2017/01/ospf-forwarding-address-yet-another/
 ---
 One of my readers sent me an interesting NSSA question (more in a future blog post) that sent me chasing for the reasons behind the OSPF Forwarding Address (FA) field in type-5 and type-7 LSAs.
 
@@ -144,7 +144,7 @@ Problem solved? **NO, OF COURSE NOT**. You just made it worse:
 
 -   Even though it looks like everything works as expected, E1 is a single point of failure -- if it crashes, you lose route redistribution and connectivity to external destinations;
 -   The already-too-complex link-state routing protocol got another hard-to-figure-out quirk. See the *passive interface* gotcha above, and check all the complications T5 FA caused in OSPF route selection process ([RFC 2328](https://tools.ietf.org/html/rfc2328));
-- To make this kludge work, you have to run OSPF on the external interface (at least with recent Cisco IOS releases). Not exactly the most secure design I've seen in my life (and please don't even mention that you could use an ACL to filter incoming OSPF packets on the external interface before [reading this blog post](/2013/08/temper-your-macgyver-streak.html)).
+- To make this kludge work, you have to run OSPF on the external interface (at least with recent Cisco IOS releases). Not exactly the most secure design I've seen in my life (and please don't even mention that you could use an ACL to filter incoming OSPF packets on the external interface before [reading this blog post](/2013/08/temper-your-macgyver-streak/)).
 
 The proper design would be to run external routing protocol and route redistribution on both ASBRs (yeah, I know, the beauties of two-way redistribution), and tell everyone who complained about this *deficiency* of OSPF to get lost and fix his design.
 

@@ -13,13 +13,13 @@ tags:
 - BGP
 title: Packet Forwarding and Routing over Unnumbered Interfaces
 ---
-In the previous blog posts in [this series](/series/unnumbered-interfaces.html), we explored whether we [need addresses on point-to-point links](/2021/05/fundamentals-need-interface-addresses.html) (TL&DR: no), whether it's better to have [interface or node addresses](/2021/05/fundamentals-interface-node-addresses.html) (TL&DR: it depends), and why we got [unnumbered IPv4 interfaces](/2021/05/fundamentals-unnumbered-ip-interfaces.html). Now let's see how IP routing works over unnumbered interfaces.
+In the previous blog posts in [this series](/series/unnumbered-interfaces/), we explored whether we [need addresses on point-to-point links](/2021/05/fundamentals-need-interface-addresses/) (TL&DR: no), whether it's better to have [interface or node addresses](/2021/05/fundamentals-interface-node-addresses/) (TL&DR: it depends), and why we got [unnumbered IPv4 interfaces](/2021/05/fundamentals-unnumbered-ip-interfaces/). Now let's see how IP routing works over unnumbered interfaces.
 
 ### The Challenge
 
 A cursory look at an IP routing table (or at CCNA-level materials) tells you that the IP routing table contains prefixes and next hops, and that the next hops are IP addresses. How should that work over unnumbered interfaces, and what should we use for the next-hop IP address in that case?
 <!--more-->
-As always, oversimplifications (like the one in the previous paragraph) can impede your understanding. The job of a [forwarding table](/2010/09/ribs-and-fibs.html) (FIB)[^1] in a router is to:
+As always, oversimplifications (like the one in the previous paragraph) can impede your understanding. The job of a [forwarding table](/2010/09/ribs-and-fibs/) (FIB)[^1] in a router is to:
 
 * Find the outgoing interface that is on the shortest path to the destination;
 * Rewrite layer-2 header in the forwarded packet in a way that will make the downstream router receive it.
@@ -39,7 +39,7 @@ Let's walk through a few examples.
 
 Imagine you configure a static route pointing to a GRE tunnel (because very few people know what serial interfaces are in 2021). Do you need a next-hop IP address for that route? Of course not. The outgoing interface is clearly identified (you configured it), and there's only one potential next-hop: the other end of the tunnel. Problem solved -- point-to-point tunnels can be unnumbered interfaces.
 
-Here's a curveball: what happens if a static route without next-hop information points to an Ethernet interface? You REALLY SHOULD lab this, but I doubt you will, so you'll find the answer in the comments to [this blog post](/2009/10/my-stupid-moments-interface-default.html).
+Here's a curveball: what happens if a static route without next-hop information points to an Ethernet interface? You REALLY SHOULD lab this, but I doubt you will, so you'll find the answer in the comments to [this blog post](/2009/10/my-stupid-moments-interface-default/).
 
 ### Getting Our Hands Dirty
 
@@ -78,7 +78,7 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
 
 ### Unnumbered Interfaces and Routing Protocols
 
-Now let's assume you're running OSPF across unnumbered interfaces. It's perfectly legal, and there's even provision in the OSPF RFC for [what subnet mask one should be using on such occasions](/2021/04/build-unnumbered-lab-netsim-tools.html) (hint: all zeroes).[^4]
+Now let's assume you're running OSPF across unnumbered interfaces. It's perfectly legal, and there's even provision in the OSPF RFC for [what subnet mask one should be using on such occasions](/2021/04/build-unnumbered-lab-netsim-tools/) (hint: all zeroes).[^4]
 
 Using some magic (aka SPF algorithm), OSPF figures out it needs to use an unnumbered interface to send traffic to some destination. No problem, it installs a route pointing to that interface, and takes the neighbor IP address (as taken from OSPF hello messages) as the next hop[^6].
 
@@ -114,7 +114,7 @@ Fortunately, we don't really need the next hop on a point-to-point link. Everyth
 
 ### Making BGP Work
 
-You cannot run BGP over unnumbered interfaces... or at least it's hard establishing a TCP session with an IP address that's not in your routing table, but I know we all love [MacGyver-type challenges](/2013/08/temper-your-macgyver-streak.html), so here's how you solve this conundrum:
+You cannot run BGP over unnumbered interfaces... or at least it's hard establishing a TCP session with an IP address that's not in your routing table, but I know we all love [MacGyver-type challenges](/2013/08/temper-your-macgyver-streak/), so here's how you solve this conundrum:
 
 * Figure out what the remote system wants to use as the source IP address of the BGP session (let's assume it's their loopback IP address)
 * Create a static host route for that IP address pointing to the unnumbered interface.

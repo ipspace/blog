@@ -12,7 +12,7 @@ tags:
 - high availability
 title: Non-Stop Routing (NSR) 101
 ---
-After [Non-Stop Forwarding](/2021/09/non-stop-forwarding.html), [Stateful Switchover](/2021/09/stateful-switchover.html) and [Graceful Restart](/2021/09/graceful-restart.html), it's time for the pinnacle of *high-availability switching*: Non-Stop Routing (NSR)[^JNSR].
+After [Non-Stop Forwarding](/2021/09/non-stop-forwarding/), [Stateful Switchover](/2021/09/stateful-switchover/) and [Graceful Restart](/2021/09/graceful-restart/), it's time for the pinnacle of *high-availability switching*: Non-Stop Routing (NSR)[^JNSR].
 
 The PowerPoint-level description of this idea sounds fantastic:
 
@@ -21,7 +21,7 @@ The PowerPoint-level description of this idea sounds fantastic:
 * The state of all control plane protocols is continuously synchronized between the two control plane instances. If one of them fails, the other one continues running.
 * A failure of a control plane instance is thus invisible from the outside.
 
-If this sounds an awful lot like [VMware Fault Tolerance](/2011/08/high-availability-fallacies.html), you're not too far off the mark.
+If this sounds an awful lot like [VMware Fault Tolerance](/2011/08/high-availability-fallacies/), you're not too far off the mark.
 <!--more-->
 [^JNSR]: Juniper calls this functionality Nonstop Active Routing.
 
@@ -33,7 +33,7 @@ Non-Stop Routing seems like a no-brainer from the software architecture perspect
 * Whenever processing incoming messages, make sure the state is fully synchronized before acknowledging the message and updating the session counters. If the control plane instance processing the message crashes before the state has been propagated, the other instance can claim packet loss and request retransmission.
 * Apply similar principles to outbound messages.
 
-Does that mean we should use NSR whenever possible? In the ideal world, the answer would be "yes, of course!" As [Erik Auerswald wrote](/2021/10/big-picture-bfd-nsf-gr.html):
+Does that mean we should use NSR whenever possible? In the ideal world, the answer would be "yes, of course!" As [Erik Auerswald wrote](/2021/10/big-picture-bfd-nsf-gr/):
 
 > IMHO NSR/SSO should be implemented completely transparently and always be enabled when there are two or more control plane processors. Why even have hardware redundancy for the control plane when it does not work well enough to enable unconditionally?
 

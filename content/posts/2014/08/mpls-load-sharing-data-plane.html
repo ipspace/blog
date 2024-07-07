@@ -1,17 +1,17 @@
 ---
-url: /2014/08/mpls-load-sharing-data-plane.html
+url: /2014/08/mpls-load-sharing-data-plane/
 title: "MPLS Load Sharing – Data Plane Considerations"
 date: "2014-08-13T08:32:00.000+02:00"
 tags: [ MPLS,load balancing ]
 ---
 
-<p>In <a href="/2014/08/load-sharing-in-mpls-core.html">a previous blog post</a> I explained how load sharing across LDP-controlled MPLS core works. Now let’s focus on another detail: how are the packets assigned to individual paths across the core?</p>
+<p>In <a href="/2014/08/load-sharing-in-mpls-core/">a previous blog post</a> I explained how load sharing across LDP-controlled MPLS core works. Now let’s focus on another detail: how are the packets assigned to individual paths across the core?</p>
 <p class="update">2014-08-14: Additional information was added to the blog post based on comments from Nischal Sheth, Frederic Cuiller and Tiziano Tofoni. Thank you!<!--more--></p>
-<p>The answer is trivial if you’re doing headend-based load sharing (example: using multiple MPLS TE tunnels) – the headend router has full visibility into the original MAC frame or IP packet and can do any type of load sharing it wants (from <a href="/2006/12/per-destination-or-per-packet-cef-load.html">per-destination</a> to <a href="/2006/12/per-port-cef-load-sharing.html">per-session</a> load balancing).</p>
+<p>The answer is trivial if you’re doing headend-based load sharing (example: using multiple MPLS TE tunnels) – the headend router has full visibility into the original MAC frame or IP packet and can do any type of load sharing it wants (from <a href="/2006/12/per-destination-or-per-packet-cef-load/">per-destination</a> to <a href="/2006/12/per-port-cef-load-sharing/">per-session</a> load balancing).</p>
 <p>Load sharing at the LSP split point (in the network core) is trickier and mostly vendor-dependent. Let’s use the same sample network we used in the previous blog post to illustrate the difficulties. How will Label Switch Router (LSR) B decide which labeled packets with incoming label 1015 should go toward LSR C and which ones should go toward LSR D, if all it ever sees are the labeled packets?</p>
 <div class="separator"><a href="/2014/08/s1600-MPLS+Load+Sharing+Scenario.jpg" imageanchor="1"><img border="0" src="/2014/08/s400-MPLS+Load+Sharing+Scenario.jpg"/></a></div>
 <p>An LSR could perform the load balancing based on the next label in the stack, based on the last label in the stack, or based on the actual labeled payload. Unfortunately a transit LSR has no idea what the payload is – only the ingress and egress LSRs know what they agreed to use the LSP for. </p>
-<p>Some implementations of transit LSRs <a href="#L3">look into the first nibble of the payload</a> and treat the payload as IPv4 packet (using the load-sharing algorithm configured for unlabeled IPv4 packets) if the value in the first nibble is 0x04, and likewise treat the payload as IPv6 packet if the value in the first nibble is 0x06.</p>
+<p>Some implementations of transit LSRs look into the first nibble of the payload and treat the payload as IPv4 packet (using the load-sharing algorithm configured for unlabeled IPv4 packets) if the value in the first nibble is 0x04, and likewise treat the payload as IPv6 packet if the value in the first nibble is 0x06.</p>
 <p class="more">For in-depth discussion of MPLS load balancing on ASR 9000, <a href="https://supportforums.cisco.com/document/111291/asr9000xr-loadbalancing-architecture-and-characteristics">read this document</a>. </p>
 <p>That approach works well for L3VPN traffic (where labeled IPv4 or IPv6 datagrams are transported across MPLS core), but fails miserably for non-IP traffic (example: L2VPN traffic, which has MAC header at the beginning of the payload).</p>
 <p class="warn">The guesswork based on first nibble of the payload might incorrectly load balance EoMPLS traffic when the destination MAC address starts with 04 or 06. You can use the <a href="http://tools.ietf.org/html/rfc4448#section-4.6"><em>control word </em>functionality</a> of EoMPLS pseudowires to set the first nibble of the payload to zero.</p>

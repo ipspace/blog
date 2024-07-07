@@ -1,12 +1,12 @@
 ---
 comment: 'With Open Networking Foundation [adamantly promoting their definition of
-  SDN](/2014/01/what-exactly-is-sdn-and-does-it-make.html), and based on experiences
+  SDN](/2014/01/what-exactly-is-sdn-and-does-it-make/), and based on experiences
   with previous (now mostly extinct) centralized architectures, one has to ask a simple
   question: does it make sense?
 
 
   Here’s what I thought in May 2014; for more details, read the [Packet Forwarding
-  101](/series/forwarding.html) blog posts and watch the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)
+  101](/series/forwarding/) blog posts and watch the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)
   webinar.
 
 
@@ -24,13 +24,13 @@ tags:
 - SDN
 - OpenFlow
 title: Does Centralized Control Plane Make Sense?
-url: /2014/05/does-centralized-control-plane-make.html
+url: /2014/05/does-centralized-control-plane-make/
 ---
 A friend of mine sent me a challenging question:
 
 > You\'ve stated a couple of times that you don\'t favor the OpenFlow version of SDN due to a variety of problems like scaling and latency. What model/mechanism do you like? Hybrid? Something else?
 
-Before answering the question, let's step back and ask another one: "*Does* [*centralized control plane, as evangelized by ONF*](/2014/01/what-exactly-is-sdn-and-does-it-make.html)*, make sense?*"
+Before answering the question, let's step back and ask another one: "*Does* [*centralized control plane, as evangelized by ONF*](/2014/01/what-exactly-is-sdn-and-does-it-make/)*, make sense?*"
 <!--more-->
 ### A Bit of History
 
@@ -58,15 +58,15 @@ Interestingly, numerous data center architectures already use centralized contro
 
 [^FE]: These were obviously marketing numbers: latest _Nexus OS Verified Scalability_ guide claims a Nexus 9500 switch (with a much more powerful CPU than the Nexus 7700) supports up to 1536 Fabric Extender server interfaces.
 
-NEC ProgrammableFlow seems to be an outlier -- they can control up to 200 switches, for a total of over 9000 GE (not 10GE) ports... but they don't run any [control-plane protocol](/2013/06/implementing-control-plane-protocols.html) (apart from ARP and dynamic MAC learning) with the outside world. No STP, LACP, LLDP, BFD or routing protocols.
+NEC ProgrammableFlow seems to be an outlier -- they can control up to 200 switches, for a total of over 9000 GE (not 10GE) ports... but they don't run any [control-plane protocol](/2013/06/implementing-control-plane-protocols/) (apart from ARP and dynamic MAC learning) with the outside world. No STP, LACP, LLDP, BFD or routing protocols.
 
-One could argue that we could get an order of magnitude beyond those numbers if only we were using proper control plane hardware (Xeon CPUs, for example). I don't buy that argument till I actually see a production deployment, and do keep in mind that NEC ProgrammableFlow Controller uses decent Intel-based hardware. Real-time distributed systems with fast feedback loops are [way more complex than most people looking from the outside realize](/2013/09/openflow-fabric-controllers-are-light.html) (see also RFC 1925, section 2.4).
+One could argue that we could get an order of magnitude beyond those numbers if only we were using proper control plane hardware (Xeon CPUs, for example). I don't buy that argument till I actually see a production deployment, and do keep in mind that NEC ProgrammableFlow Controller uses decent Intel-based hardware. Real-time distributed systems with fast feedback loops are [way more complex than most people looking from the outside realize](/2013/09/openflow-fabric-controllers-are-light/) (see also RFC 1925, section 2.4).
 
 ### Does Central Control Plane Make Sense?
 
 It does in certain smaller-scale environments (see above)... as long as you can guarantee redundant connectivity between then controller and controlled devices, or don't care what happens after link loss (see also [wireless access points](http://en.wikipedia.org/wiki/Wireless_access_point)). Does it make sense to generate a huge hoopla while reinventing this particular wheel? I would spend my energy doing something else.
 
-{{<note>}}I absolutely understand why NEC went down this path -- they did something extraordinary to differentiate themselves in a very crowded market. I also understand why [Google decided to use this approach](/2012/05/openflow-google-brilliant-but-not.html), and why they evangelize it as much as they do. I'm just saying that it doesn't make that much sense for the rest of us.{{</note>}}
+{{<note>}}I absolutely understand why NEC went down this path -- they did something extraordinary to differentiate themselves in a very crowded market. I also understand why [Google decided to use this approach](/2012/05/openflow-google-brilliant-but-not/), and why they evangelize it as much as they do. I'm just saying that it doesn't make that much sense for the rest of us.{{</note>}}
 
 Finally, do keep in mind that the whole world of IT is moving toward scale-out architectures. Netflix & Co are already there, and the enterprise world is grudgingly doing the first steps. In the meantime, OpenFlow evangelists talk about the immeasurable revolutionary merits of centralized scale-up architecture. They must be living on a different planet.
 

@@ -5,7 +5,7 @@ tags:
 - IS-IS
 - OSPF
 title: Why Is OSPF (Or IS-IS) Afraid of Unequal-Cost Load Balancing
-url: /2009/05/why-is-ospf-or-is-is-afraid-of-unequal.html
+url: /2009/05/why-is-ospf-or-is-is-afraid-of-unequal/
 ---
 You might have wondered why no link-state routing protocols support unequal-cost load balancing (UCLB). Petr Lapukhov provides part of the answer in his [Understanding Unequal-Cost Load-Balancing](http://blog.internetworkexpert.com/2009/05/01/understanding-unequal-cost-load-balancing/) article: EIGRP is one of those few protocols that can ensure a neighbor is not using the current router as its next-hop.
 

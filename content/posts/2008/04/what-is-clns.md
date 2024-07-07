@@ -4,7 +4,7 @@ tags:
 - IP routing
 - CLNP
 title: What Is CLNS?
-url: /2008/04/what-is-clns.html
+url: /2008/04/what-is-clns/
 ---
 According to the results of my recent *Do you use CLNS* poll, around 10% of my readers use CLNS in their network, while 36% of them wonder what that acronym stands for.
 

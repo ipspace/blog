@@ -5,7 +5,7 @@ series_weight: 300
 tags:
 - DMVPN
 title: DMVPN Phase 2 Fundamentals
-url: /2011/01/dmvpn-phase-2-fundamentals.html
+url: /2011/01/dmvpn-phase-2-fundamentals/
 ---
 Phase 2 DMVPN in a nutshell:
 

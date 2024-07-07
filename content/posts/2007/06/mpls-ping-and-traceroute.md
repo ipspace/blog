@@ -4,7 +4,7 @@ tags:
 - MPLS
 - network management
 title: MPLS Ping and Traceroute
-url: /2007/06/mpls-ping-and-traceroute.html
+url: /2007/06/mpls-ping-and-traceroute/
 ---
 One of the hardest troubleshooting problems within an MPLS VPN network has always been finding a broken LSP. While you could (in theory) use the IP **ping** or **traceroute** (assuming all hops support ICMP extensions for MPLS), the results are not always reliable... and interpreting them is not so easy. For example, after I\'ve disabled LDP on an interface with the **no mpls ip** configuration command, the routers in the LSP path still reported outgoing MPLS labels in ICMP replies for a few seconds (until the LDP holddown timer expired on both ends of the link).
 

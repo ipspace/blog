@@ -9,7 +9,7 @@ tags:
 - automation
 - configuration
 title: Stop the Low-Level Configuration Manipulation
-url: /2019/05/stop-low-level-configuration.html
+url: /2019/05/stop-low-level-configuration/
 ---
 *This blog post was initially sent to subscribers of my SDN and Network Automation mailing list. *[*Subscribe here*](http://www.ipspace.net/Subscribe/Five_SDN_Tips)*.*
 
@@ -40,4 +40,4 @@ Nobody in their right mind would even think about doing something this stupid, r
 
 Maybe we should stop yammering how networking is special and start learning from other people's lessons-learned... in this particular case creating scripts that would take simple input values that operators can understand because they're related to task-at-hand (like customer names instead of VLAN numbers), create configuration commands (SQL transactions in my analogy) that would be consistent and repeatable, and push the configuration commands to the network devices.
 
-Obviously, software developers have it easier because they're dealing with databases that have ACID properties (your network devices could have them as well [if you'd care about that when buying them](/2016/10/network-automation-rfp-requirements.html)) but that shouldn't be an excuse not to get started. Welcome to the world of network automation ;)... and once you decide to get serious about it, we might have a [few webinars](https://www.ipspace.net/Roadmap/Network_Automation_webinars) and [courses](https://www.ipspace.net/Building_Network_Automation_Solutions) that could help you on the way.
+Obviously, software developers have it easier because they're dealing with databases that have ACID properties (your network devices could have them as well [if you'd care about that when buying them](/2016/10/network-automation-rfp-requirements/)) but that shouldn't be an excuse not to get started. Welcome to the world of network automation ;)... and once you decide to get serious about it, we might have a [few webinars](https://www.ipspace.net/Roadmap/Network_Automation_webinars) and [courses](https://www.ipspace.net/Building_Network_Automation_Solutions) that could help you on the way.

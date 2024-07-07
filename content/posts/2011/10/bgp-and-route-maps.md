@@ -5,7 +5,7 @@ series:
 tags:
 - BGP
 title: BGP and Route Maps
-url: /2011/10/bgp-and-route-maps.html
+url: /2011/10/bgp-and-route-maps/
 ---
 This is a nice email I got from an engineer struggling with multi-homing BGP setup:
 
@@ -21,7 +21,7 @@ The **network route-map** command uses a route map to change the attributes of a
 
 Route map applied to a BGP neighbor can change most BGP attributes that make sense (example: you cannot change local preference if the neighbor is not in the same AS) and prepend AS numbers to the AS path (you're not allowed to modify AS path directly, as that might bypass BGP loop prevention mechanisms).
 
-On top of obvious sanity checks, the router applies the usual [BGP route reflector safeguards](/2008/08/bgp-route-reflector-details.html): if the neighbor is a route reflector client, you cannot change any attributes of reflected routes with an outbound route-map (but you can change attributes of routes you've received from EBGP neighbors). 
+On top of obvious sanity checks, the router applies the usual [BGP route reflector safeguards](/2008/08/bgp-route-reflector-details/): if the neighbor is a route reflector client, you cannot change any attributes of reflected routes with an outbound route-map (but you can change attributes of routes you've received from EBGP neighbors). 
 
 If you want to change attributes of IBGP prefixes sent to route reflector clients, you have to modify them as you receive them from other neighbors with inbound route-maps.
 

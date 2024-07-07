@@ -5,10 +5,10 @@ tags:
 - traffic engineering
 - MPLS VPN
 title: Do you need LDP with MPLS TE?
-url: /2008/09/do-you-need-ldp-with-mpls-te.html
+url: /2008/09/do-you-need-ldp-with-mpls-te/
 needs_fix: true
 ---
-An [anonymous commenter](/2008/08/is-label-imposed-in-case-of-penultimate.html?showComment=1219355400000) to my [implicit NULL/PHP post](/2008/08/is-label-imposed-in-case-of-penultimate.html) made a very valid point:
+An [anonymous commenter](/2008/08/is-label-imposed-in-case-of-penultimate.html?showComment=1219355400000) to my [implicit NULL/PHP post](/2008/08/is-label-imposed-in-case-of-penultimate/) made a very valid point:
 
 > Most Cisco documentation states that you must enable LDP before doing MPLS-TE, which is a complete fallacy.
 

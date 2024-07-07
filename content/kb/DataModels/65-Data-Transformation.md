@@ -2,7 +2,7 @@
 kb_section: DataModels
 minimal_sidebar: true
 title: Data Model Transformation Concepts
-url: /kb/DataModels/65-Data-Transformation.html
+url: /kb/DataModels/65-Data-Transformation/
 ---
 Our journey took us from the [initial simplistic data model full of duplicate data](index.html) to [highly optimized data model with automatic IP address allocation](40-Link%20Prefixes.html). However, as we kept simplifying the data model and squeezing out redundancies, the complexity of our templates increased dramatically &ndash; we replaced explicit (data) complexity with hidden (template) complexity.
 

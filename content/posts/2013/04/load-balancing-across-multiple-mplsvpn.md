@@ -5,7 +5,7 @@ tags:
 - load balancing
 - MPLS VPN
 title: Load Balancing Across Multiple MPLS/VPN Providers
-url: /2013/04/load-balancing-across-multiple-mplsvpn.html
+url: /2013/04/load-balancing-across-multiple-mplsvpn/
 ---
 Arnold sent me an interesting challenge: he's using two MPLS/VPN providers, with most sites being connected to both providers. He'd like to load balance the inter-site traffic across all PE-CE links -- an easy task if you're using RIP, OSPF or EIGRP as the PE-CE routing protocol, but he happens to be using BGP.
 <!--more-->

@@ -2,7 +2,7 @@
 kb_section: AutomationLab
 minimal_sidebar: true
 title: Accessing Network Devices from Your Automation Environment
-url: /kb/AutomationLab/30-Connectivity.html
+url: /kb/AutomationLab/30-Connectivity/
 ---
 The network automation environment you build [in the first step](10-Ansible_Environment.html) has to be able to access your networking lab.
 

@@ -7,7 +7,7 @@ tags:
 - MPLS VPN
 - QoS
 title: End-to-End QoS marking in MPLS/VPN-over-DMVPN networks
-url: /2011/02/end-to-end-qos-marking-in-mplsvpn-over.html
+url: /2011/02/end-to-end-qos-marking-in-mplsvpn-over/
 ---
 I got a great question in one of my [Enterprise MPLS/VPN Deployment](http://www.ipspace.net/EnterpriseMPLS) webinars when I was describing how you could run MPLS/VPN across DMVPN cloud:
 
@@ -19,7 +19,7 @@ My initial off-the-cuff answer was:
 <!--more-->
 Finally I found some time to do proper lab tests. I fired up one of my MPLS/VPN-over-DMVPN labs, turned one of the remote site routers (R1A in the following diagram) into a traffic source host (by disabling all its interface but its LAN interface) and started my tests.
 
-{{<figure src="s1600-ADV_PhaseI_MPLSVPN_Topology.png" caption="Lab topology">}}
+{{<figure src="/2011/02/s1600-ADV_PhaseI_MPLSVPN_Topology.png" caption="Lab topology">}}
 
 **MPLS label imposition**. The default behavior of Cisco IOS is to copy IP precedence bits (the upper part of DSCP value) into MPLS EXP (aka TC) bits during label imposition.
 

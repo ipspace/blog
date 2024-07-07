@@ -7,7 +7,7 @@ tags:
 - logging
 title: Enhanced OSPF Adjacency Logging
 pre_scroll: True
-url: /2006/12/enhanced-ospf-adjacency-logging.html
+url: /2006/12/enhanced-ospf-adjacency-logging/
 ---
 The **log-adjacency-changes** OSPF configuration command was improved with the **detail** command that logs every step of OSPF adjacency establishment (sample printout below), making it a great troubleshooting tool.
 

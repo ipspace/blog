@@ -4,7 +4,7 @@ eigrp_tag: details
 tags:
 - EIGRP
 title: EIGRP Load Balancing Based on Interface Load
-url: /2007/03/eigrp-load-balancing-based-on-interface.html
+url: /2007/03/eigrp-load-balancing-based-on-interface/
 ---
 **TL&DR**: Don't.
 

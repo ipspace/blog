@@ -67,7 +67,7 @@ A few notes:
 
 Here's a screen shot of the first run of that playbook:
 
-{{<figure src="pvlan-ping-1.png" caption="Pings work. Life is good.">}}
+{{<figure src="/2020/12/pvlan-ping-1.png" caption="Pings work. Life is good.">}}
 
 Next step: enable port isolation on ports connecting two out of three virtual machines to my Linux bridge. To do that, I needed to know the names of the interfaces created by Vagrant libvirt provider. The easiest way to get them is to get the list of interfaces connected to the virtual machines I wanted to isolate:
 
@@ -91,7 +91,7 @@ $ virsh domiflist PVLAN_c3
 
 After enabling port isolation on **vnet3** and **vnet5** with **bridge link set dev *name* isolated on**, *c2* and *c3* can no longer ping each other. Mission accomplished.
 
-{{<figure src="pvlan-ping-failed.png" caption="C2 and C3 can no longer ping each other">}}
+{{<figure src="/2020/12/pvlan-ping-failed.png" caption="C2 and C3 can no longer ping each other">}}
 
 The mandatory final step: automate all the boring tasks. The interface names can change every time Vagrant recreates the environment, so I needed a more generic solution. This is a Bash script I'm using to enable bridge port isolation.
 

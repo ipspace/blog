@@ -5,11 +5,11 @@ tags:
 title: Adjusting System State with Infrastructure as Code
 series: [ niac ]
 niac_tag: implement
-url: /2018/09/adjusting-system-state-with.html
+url: /2018/09/adjusting-system-state-with/
 ---
-*This is the second blog post in "thinking out loud while preparing Network Infrastructure as Code presentation for the* [*network automation course*](https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog)*" series. If you stumbled upon it, you might want to* [*start here*](/2018/09/network-infrastructure-as-code-is.html)*.*
+*This is the second blog post in "thinking out loud while preparing Network Infrastructure as Code presentation for the* [*network automation course*](https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog)*" series. If you stumbled upon it, you might want to* [*start here*](/2018/09/network-infrastructure-as-code-is/)*.*
 
-An anonymous commenter to my [previous blog post on the topic](/2018/09/network-infrastructure-as-code-is.html) hit the crux of the infrastructure-as-code challenge when [he wrote](/2018/09/network-infrastructure-as-code-is.html?showComment=1536134563213#c4016391268971561558): "*It\'s hard to do a declarative approach with Ansible and the nice network vendor APIs.*" Let's see what he was trying to tell us.
+An anonymous commenter to my [previous blog post on the topic](/2018/09/network-infrastructure-as-code-is/) hit the crux of the infrastructure-as-code challenge when [he wrote](/2018/09/network-infrastructure-as-code-is/#c4016391268971561558): "*It\'s hard to do a declarative approach with Ansible and the nice network vendor APIs.*" Let's see what he was trying to tell us.
 <!--more-->
 The goal of infrastructure-as-code approach is to have a system in a state that's defined by machine-readable (and hopefully human-readable) definition files. The \$1M question is "*How do we get the system in that state?*"
 
@@ -31,7 +31,7 @@ Many modern Linux services can adjust their state on their own -- all you have t
 
 Some network devices can do the same trick. The crudest form of system state adjustment is **configure replace**; Junos, IOS XR and Arista EOS offer a more granular approach using *candidate configuration*.
 
-Assuming you have a networking device that implements configuration replacement at some reasonably good-enough level, there's no need to reinvent the *adjusting system state* wheel on your own with tools like vendor API and Ansible. (or as I wrote in the past: [don't get obsessed with REST API](/2018/04/dont-get-obsessed-with-rest-api.html)). The problem has been solved; all you have to do is to:
+Assuming you have a networking device that implements configuration replacement at some reasonably good-enough level, there's no need to reinvent the *adjusting system state* wheel on your own with tools like vendor API and Ansible. (or as I wrote in the past: [don't get obsessed with REST API](/2018/04/dont-get-obsessed-with-rest-api/)). The problem has been solved; all you have to do is to:
 
 -   Understand what problem you're trying to solve;
 -   Select the best tools for the job;

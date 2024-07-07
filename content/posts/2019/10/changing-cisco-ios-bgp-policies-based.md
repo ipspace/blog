@@ -5,14 +5,14 @@ tags:
 - SLA
 - SD-WAN
 title: Changing Cisco IOS BGP Policies Based on IP SLA Measurements
-url: /2019/10/changing-cisco-ios-bgp-policies-based.html
+url: /2019/10/changing-cisco-ios-bgp-policies-based/
 sd-wan_tag: weird
 ---
 This is a guest blog post by [Philippe Jounin](https://www.linkedin.com/in/phjounin/), Senior Network Architect at Orange Business Services.
 
 ---
 
-You could use **track** objects in Cisco IOS to track route reachability or metric, the status of an interface, or IP SLA compliance for a long time. Initially you could use them to implement [reliable static routing](/2007/02/reliable-static-routing.html) (or even [shut down a BGP session](/2011/09/shut-down-bgp-session-based-on-tracked.html)) or trigger EEM scripts. With a bit more work (and a few more EEM scripts) you could use object tracking to create [time-dependent static routes](/2010/11/time-based-static-routes.html).
+You could use **track** objects in Cisco IOS to track route reachability or metric, the status of an interface, or IP SLA compliance for a long time. Initially you could use them to implement [reliable static routing](/2007/02/reliable-static-routing/) (or even [shut down a BGP session](/2011/09/shut-down-bgp-session-based-on-tracked/)) or trigger EEM scripts. With a bit more work (and a few more EEM scripts) you could use object tracking to create [time-dependent static routes](/2010/11/time-based-static-routes/).
 
 Cisco IOS 15 has introduced [Enhanced Object Tracking](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipapp/configuration/xe-2/iap-xe-2-book/iap-eot.html) that allows first-hop router protocols like VRRP or HSRP to use tracking state to modify their behavior.
 <!--more-->

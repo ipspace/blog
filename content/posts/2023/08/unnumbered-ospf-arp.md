@@ -7,7 +7,7 @@ tags:
 - OSPF
 title: OSPF and ARP on Unnumbered IPv4 Interfaces
 ---
-After figuring out [ARP details](/2023/08/arp-details.html), describing how [routers use ARP to resolve entries in the IP routing table](/2023/08/arp-static-routes.html), and considering what we already know about [OSPF on unnumbered IPv4 interfaces](/2022/01/ospf-unnumbered.html), we're finally ready to answer Daniel's question:
+After figuring out [ARP details](/2023/08/arp-details/), describing how [routers use ARP to resolve entries in the IP routing table](/2023/08/arp-static-routes/), and considering what we already know about [OSPF on unnumbered IPv4 interfaces](/2022/01/ospf-unnumbered/), we're finally ready to answer Daniel's question:
 
 {{<figure src="/2023/08/ARP-Q.png">}}
 <!--more-->
@@ -70,7 +70,7 @@ kernel, and they are marked with '%'.
 
 ### What About ARP?
 
-[ARP details](/2023/08/arp-details.html) and [ARP and Static Routes](/2023/08/arp-static-routes.html) blog posts contain all you need to know; here's the TL&DR:
+[ARP details](/2023/08/arp-details/) and [ARP and Static Routes](/2023/08/arp-static-routes/) blog posts contain all you need to know; here's the TL&DR:
 
 * When trying to resolve the MAC address of the directly connected remote IP address (usually: remote loopback interface), the router sends an ARP request for the remote IP address from the source IP address used on the interface (usually: local loopback interface).
 * The remote router has no problem replying to the ARP request. The requested IP address is used on the interface (usually, ARP works even if you turn off proxy ARP), and the source IP address is not checked.

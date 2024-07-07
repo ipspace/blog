@@ -4,7 +4,7 @@ tags:
 - automation
 - labs
 title: Using Virtual Labs When Developing Network Automation Solutions
-url: /2018/12/using-virtual-labs-when-developing.html
+url: /2018/12/using-virtual-labs-when-developing/
 series: [ cicd ]
 cicd_tag: principles
 series_weight: 300

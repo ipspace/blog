@@ -3,7 +3,7 @@ title: "Updates: AWS Networking"
 date: 2023-01-11 07:00:00
 tags: [ AWS, cloud ]
 ---
-It didn't make sense to update *[Amazon Web Services Networking](https://www.ipspace.net/Amazon_Web_Services_Networking)* webinar before the re:Invent conference -- even though AWS introduced only a few networking features during the conference, at least [one of them](/2022/12/quick-look-aws-srd.html) made a significant impact on the materials.
+It didn't make sense to update *[Amazon Web Services Networking](https://www.ipspace.net/Amazon_Web_Services_Networking)* webinar before the re:Invent conference -- even though AWS introduced only a few networking features during the conference, at least [one of them](/2022/12/quick-look-aws-srd/) made a significant impact on the materials.
 
 However, once the conference was over, I went over the to-do list that has been slowly accumulating for months and spent days updating over a dozen videos[^PM]. The major changes include:
 <!--more-->

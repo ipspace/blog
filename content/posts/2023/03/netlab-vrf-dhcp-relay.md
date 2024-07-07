@@ -7,7 +7,7 @@ title: Test VRF-Aware DHCP Relaying with netlab
 pre_scroll: True
 series: [ dhcp-relay ]
 ---
-After [figuring out how DHCP relaying works](/2023/03/dhcp-relay-process.html) and [testing it in a simple lab](/2023/03/netlab-dhcp-relay.html), I went a step further and tested VRF-aware DHCP relaying.
+After [figuring out how DHCP relaying works](/2023/03/dhcp-relay-process/) and [testing it in a simple lab](/2023/03/netlab-dhcp-relay/), I went a step further and tested VRF-aware DHCP relaying.
 
 ### Lab Topology
 

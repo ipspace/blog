@@ -7,7 +7,7 @@ I'm usually telling networking engineers seriously considering whether to automa
 
 > The only reasonable way forward is to simplify your processes – get rid of all corner cases, all special deals that are probably costing you more than you earned on them, all one-off kludges to support badly-designed applications – and once you get that done, you might realize you don’t need a magic platform anymore, because you can run your simpler network using traditional tools.
 
-While [seasoned automation practitioners](/2022/02/cleanup-before-automation.html) agree with me, a lot of enterprise engineers face a different reality. Straight from a source that wished to remain anonymous...
+While [seasoned automation practitioners](/2022/02/cleanup-before-automation/) agree with me, a lot of enterprise engineers face a different reality. Straight from a source that wished to remain anonymous...
 <!--more-->
 ---
 
@@ -25,4 +25,4 @@ Sorry if this sounds like whining. It's not my intent. I absolutely love designi
 
 ---
 
-Fortunately, there's a way forward even when faced with grim reality; I described some ideas in the _[Automate the Exceptions](/2016/07/automate-exceptions.html)_ blog post years ago, and I remember David Barroso having real-life examples in one of his webinars, but I can't find them :(
+Fortunately, there's a way forward even when faced with grim reality; I described some ideas in the _[Automate the Exceptions](/2016/07/automate-exceptions/)_ blog post years ago, and I remember David Barroso having real-life examples in one of his webinars, but I can't find them :(

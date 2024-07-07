@@ -11,9 +11,9 @@ tags: [ BGP ]
 
 Let's deal with the *moving traffic* bit first.
 <!--more-->
-According to [RFC 4271](https://www.rfc-editor.org/rfc/rfc4271.html#section-9.1.2.2), the length of the AS path is compared before the origin code, which makes AS path length a more decisive metric. It's pretty rare for an adjacent autonomous system to have different paths to your network with the same AS path length unless you have parallel links into that AS, in which case you could [easily use MED](/2023/11/bgp-labs-multi-exit-discriminator.html).
+According to [RFC 4271](https://www.rfc-editor.org/rfc/rfc4271.html#section-9.1.2.2), the length of the AS path is compared before the origin code, which makes AS path length a more decisive metric. It's pretty rare for an adjacent autonomous system to have different paths to your network with the same AS path length unless you have parallel links into that AS, in which case you could [easily use MED](/2023/11/bgp-labs-multi-exit-discriminator/).
 
-Origin attribute does have an advantage over the MED attribute, though: it's a mandatory attribute (and thus always present), avoiding the *[how should we compare missing values](/2023/11/bgp-med-saga.html)* drama. Its disadvantage: it only has three values.
+Origin attribute does have an advantage over the MED attribute, though: it's a mandatory attribute (and thus always present), avoiding the *[how should we compare missing values](/2023/11/bgp-med-saga/)* drama. Its disadvantage: it only has three values.
 
 ### A Bit of History
 

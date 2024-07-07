@@ -41,14 +41,14 @@ def get_report():
 def blog_metrics(results,limit):
   blog_posts = []
   for (idx,row) in results.iterrows():
-    path = row['pagePath']
+    path = row['pagePath'].replace('.html','/')
     if limit and not limit in path:
       continue
     if len(path.split('/')) < 3:
       continue
 
     blog_posts.append({
-      'url':   row['pagePath'],
+      'url':   path,
       'title': row['pageTitle'].split(" « ")[0],
     })
 

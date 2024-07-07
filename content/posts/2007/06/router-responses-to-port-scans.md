@@ -3,7 +3,7 @@ date: 2007-06-12 08:03:00+02:00
 tags:
 - security
 title: Router Responses to Port Scans
-url: /2007/06/router-responses-to-port-scans.html
+url: /2007/06/router-responses-to-port-scans/
 ---
 Recently I was trying to figure out what the various port states reported by [Nmap](http://insecure.org/nmap/index.html) really mean. This is what\'s actually going on:
 

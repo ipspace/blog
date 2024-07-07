@@ -2,7 +2,7 @@
 kb_section: DataModels
 minimal_sidebar: true
 title: Removing Duplicate Data
-url: /kb/DataModels/10-Removing Duplicate Data.html
+url: /kb/DataModels/10-Removing Duplicate Data/
 pre_scroll: true
 ---
 I started this article with a typical first attempt at describing a leaf-and-spine fabric using BGP as the routing protocol. Before moving on, make sure you [understand the original data model](index.html). Now let's see how we can reduce the amount of duplicate data.

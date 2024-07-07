@@ -3,7 +3,7 @@ date: 2009-08-28 06:35:00+02:00
 tags:
 - BGP
 title: Disable Flapping BGP Neighbors
-url: /2009/08/disable-flapping-bgp-neighbors.html
+url: /2009/08/disable-flapping-bgp-neighbors/
 lastmod: 2020-12-29 09:51:00
 ---
 It looks like we're bound to experience a widespread BGP failure once every few months. They all follow the same pattern:

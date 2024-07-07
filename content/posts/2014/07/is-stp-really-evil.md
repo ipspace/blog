@@ -3,7 +3,7 @@ date: 2014-07-28 08:06:00+02:00
 tags:
 - bridging
 title: Is STP Really Evil?
-url: /2014/07/is-stp-really-evil.html
+url: /2014/07/is-stp-really-evil/
 ---
 Maxim Gelin sent me an interesting question:
 
@@ -11,11 +11,11 @@ Maxim Gelin sent me an interesting question:
 
 STP's fundamental problem is that it's a fail-close, not a fail-open protocol.
 <!--more-->
-Ethernet bridges (later [renamed to *layer-2 switches*](/2011/02/how-did-we-ever-get-into-this-switching.html)) were designed to be [transparent plug-and-pray devices](/2010/07/bridges-kludge-that-shouldnt-exist.html) that you could drop anywhere into the network and hope they'll work. They could not rely on having a control-plane protocol between adjacent nodes (like most modern routing protocols do) -- lack of control-plane communication indicated lack of adjacent bridges.
+Ethernet bridges (later [renamed to *layer-2 switches*](/2011/02/how-did-we-ever-get-into-this-switching/)) were designed to be [transparent plug-and-pray devices](/2010/07/bridges-kludge-that-shouldnt-exist/) that you could drop anywhere into the network and hope they'll work. They could not rely on having a control-plane protocol between adjacent nodes (like most modern routing protocols do) -- lack of control-plane communication indicated lack of adjacent bridges.
 
-That's all nice and dandy until a bridge loses its mind, and stops sending BPDUs ([control plane](/2013/08/management-control-and-data-planes-in.html) activity) while still forwarding traffic (data plane activity). Adjacent bridges think they have hosts plugged into the affected ports (this is the *fail close* part), and start forwarding traffic through those ports, resulting in a nice forwarding loop (been there, seen that).
+That's all nice and dandy until a bridge loses its mind, and stops sending BPDUs ([control plane](/2013/08/management-control-and-data-planes-in/) activity) while still forwarding traffic (data plane activity). Adjacent bridges think they have hosts plugged into the affected ports (this is the *fail close* part), and start forwarding traffic through those ports, resulting in a nice forwarding loop (been there, seen that).
 
-{{<note>}}A bridge with hung control plane would not forward BPDUs between its ports (which would stop the forwarding loop), because the forwarding entry for the [STP multicast address](http://en.wikipedia.org/wiki/Spanning_Tree_Protocol#Bridge_Protocol_Data_Units) still [punts](/2013/02/process-fast-and-cef-switching-and.html) packets to the CPU.{{</note>}}
+{{<note>}}A bridge with hung control plane would not forward BPDUs between its ports (which would stop the forwarding loop), because the forwarding entry for the [STP multicast address](http://en.wikipedia.org/wiki/Spanning_Tree_Protocol#Bridge_Protocol_Data_Units) still [punts](/2013/02/process-fast-and-cef-switching-and/) packets to the CPU.{{</note>}}
 
 ### Fail-Open or Fail-Close?
 
@@ -33,7 +33,7 @@ You might have a different opinion on what "open" or "close" means, and it's as 
 
 The solution to the *confused bridge traffic forwarding* problem is quite simple: Cisco IOS has [*bridge assurance*](http://www.netcraftsmen.net/blogs/entry/what-is-bridge-assurance.html) -- you configure a port to expect an adjacent bridge, and the port doesn't forward traffic if it doesn't receive BPDUs from the other end.
 
-The generic solution to this particular problem (and a few others, including hosts turning into bridges) seems to be extremely simple: allow a switch port to be a host-facing port (implicitly configuring *BPDU guard* and a few other things) or a fabric port (implicitly configuring *bridge assurance* and VLAN trunking). Why hasn't [any vendor implemented such a simple concept](/2022/02/vtp-insecure.html)? I can't figure it out -- your comments are most welcome!
+The generic solution to this particular problem (and a few others, including hosts turning into bridges) seems to be extremely simple: allow a switch port to be a host-facing port (implicitly configuring *BPDU guard* and a few other things) or a fabric port (implicitly configuring *bridge assurance* and VLAN trunking). Why hasn't [any vendor implemented such a simple concept](/2022/02/vtp-insecure/)? I can't figure it out -- your comments are most welcome!
 
 ### It Gets Worse
 

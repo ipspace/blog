@@ -4,7 +4,7 @@ tags:
 - SD-WAN
 - ACI
 title: 'Networking Field Day 9: Brief Recap'
-url: /2015/02/networking-field-day-9-brief-recap.html
+url: /2015/02/networking-field-day-9-brief-recap/
 sd-wan_tag: ignore
 ---
 I'm sitting in the San Francisco airport with nothing better to do than writing blog posts, so let's see what we've seen and learned during the [Networking Field Day 9](http://techfieldday.com/event/nfd9/).

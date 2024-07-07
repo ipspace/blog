@@ -3,7 +3,7 @@ title: "Network Automation Considered Harmful"
 date: 2022-10-25 06:22:00
 tags: [ automation ]
 ---
-Some of the blog comments never cease to amaze me. Here's one [questioning the value of network automation](/2022/10/repost-whats-wrong-network-automation.html#1421):
+Some of the blog comments never cease to amaze me. Here's one [questioning the value of network automation](/2022/10/repost-whats-wrong-network-automation/#1421):
 
 > I think there is a more fundamental reason than the (in my opinion simplistic) lack of skills argument. As someone mentioned on twitter
 >
@@ -13,7 +13,7 @@ Some of the blog comments never cease to amaze me. Here's one [questioning the v
 
 Whenever someone starts using MBA-speak like _value differentiator_ in a technical arguments, I get an acute allergic reaction, but maybe he's right.
 <!--more-->
-Introducing network automation in a small company network with a single router and one or two access points is an obvious overkill. But then we were told only last year that we should [embrace single points of failure](/2021/07/network-design-tricycles-carriers.html); manual processes are the obvious next step[^1].
+Introducing network automation in a small company network with a single router and one or two access points is an obvious overkill. But then we were told only last year that we should [embrace single points of failure](/2021/07/network-design-tricycles-carriers/); manual processes are the obvious next step[^1].
 
 [^1]: Although Ubiquity is still selling it's Software-Defined (not really) cloud-based network management system. They must have awesome marketing.
 
@@ -21,9 +21,9 @@ I'm assuming that most of my readers run networks slightly larger than the one d
 
 Even worse, you have to go through the same processes when making *identical changes* because you can never be sure that the infrastructure is configured in exactly the same way. Obviously that results in rubber-stamping and complacency until you hit a bit of infrastructure that's a different-enough snowflake, and then all hell breaks loose anyway.
 
-I spent almost a decade writing about, talking about, and practicing network automation (resulting in over [380 blog posts](/tag/automation.html), dozens of hours of [video content](https://my.ipspace.net/bin/list?id=NetOps), and a bunch of [GitHub repositories](https://github.com/ipspace)). If someone seriously wants to dig into various arguments we had during that time, you'll have plenty of stuff to read and watch. In the meantime, I'll conclude with a [wonderful reply left on that comment](/2022/10/repost-whats-wrong-network-automation.html#1422):
+I spent almost a decade writing about, talking about, and practicing network automation (resulting in over [380 blog posts](/tag/automation/), dozens of hours of [video content](https://my.ipspace.net/bin/list?id=NetOps), and a bunch of [GitHub repositories](https://github.com/ipspace)). If someone seriously wants to dig into various arguments we had during that time, you'll have plenty of stuff to read and watch. In the meantime, I'll conclude with a [wonderful reply left on that comment](/2022/10/repost-whats-wrong-network-automation/#1422):
 
-[^2]: They were definitely [moving fast enough in October 2021](/2021/10/circular-dependencies-considered-harmful.html) when their outage caused Sky News to invent Bridging the Gap Protocol.
+[^2]: They were definitely [moving fast enough in October 2021](/2021/10/circular-dependencies-considered-harmful/) when their outage caused Sky News to invent Bridging the Gap Protocol.
 
 [^3]: Or a lame excuse for your borked Pull Request
 
@@ -39,4 +39,4 @@ Yes, having to run everything through an automation pipeline is less rapid than 
 
 ---
 
-Finally, there must be some networking engineers running large networks who shun automation as much as the original commenter. I have great news for them: most vendors will gladly sell them all the licenses they need to [build a _Digital Twin_ of their network](/2019/09/if-you-have-to-simulate-your-whole.html) to practice on.
+Finally, there must be some networking engineers running large networks who shun automation as much as the original commenter. I have great news for them: most vendors will gladly sell them all the licenses they need to [build a _Digital Twin_ of their network](/2019/09/if-you-have-to-simulate-your-whole/) to practice on.

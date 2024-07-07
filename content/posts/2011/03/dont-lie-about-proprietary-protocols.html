@@ -4,7 +4,7 @@ tags:
 - switching
 - data center
 title: Don’t lie about proprietary protocols
-url: /2011/03/dont-lie-about-proprietary-protocols.html
+url: /2011/03/dont-lie-about-proprietary-protocols/
 ---
 
 <p>A few months ago Brocade launched its own version of Data Center Fabric (VCS) and the VDX series of switches <a href="http://www.brocade.com/downloads/documents/white_papers/Introducing_Brocade_VCS_WP.pdf">claiming that</a>:</p>
@@ -16,7 +16,7 @@ url: /2011/03/dont-lie-about-proprietary-protocols.html
 <blockquote class="cite">Link state routing in VCS-based TRILL networks is performed using Brocade’s proven Fabric Shortest Path First (FSPF) protocol.</blockquote>
 <p>I understand that Brocade has way more FSPF than IS-IS experience, but the <a href="https://tools.ietf.org/html/draft-ietf-trill-rbridge-protocol-16">RBridges: Base Protocol Specification</a> is very clear. In section 4.2 it states that “<em>TRILL uses an extension of IS-IS [ISO10589] [RFC1195] as its routing</em><em> </em><em>protocol.</em>” </p>
 <p>There are numerous other details where the concepts of VCS fabric deviate from TRILL. For example: </p>
-<ul class="ListParagraph"><li>RBridge ID is assigned through Fiber Channel <em>Request for Domain ID</em> and <em>Domain ID Assignment</em> messages. <a href="https://tools.ietf.org/html/draft-ietf-trill-rbridge-protocol-16">RBridges: Base Protocol Specification</a> uses a completely different process to select RBridge ID (<a href="#section-4.2.1">Section 4.2.1</a>) and RBridge Nickname (<a href="#section-3.7.3">Section 3.7.3</a>).</li>
+<ul class="ListParagraph"><li>RBridge ID is assigned through Fiber Channel <em>Request for Domain ID</em> and <em>Domain ID Assignment</em> messages. <a href="https://tools.ietf.org/html/draft-ietf-trill-rbridge-protocol-16">RBridges: Base Protocol Specification</a> uses a completely different process to select RBridge ID (Section 4.2.1) and RBridge Nickname (Section 3.7.3).</li>
 <li>Switches use Brocade Link Discovery Process (BLDP) to discover other switches in the fabric. TRILL uses IS-IS hello messages.</li>
 </ul>
 <p>VCS fabric does use TRILL framing, as explained in the <a href="http://community.brocade.com/community/brocadeblogs/vcs/blog/2010/12/07/vcs-ethernet-fabric-and-fcoe-traffic"><em>VCS Ethernet Fabric and FCoE Traffic</em></a> article by Brook Reams, and according to the same author Brocade plans to replace FSPF with IS-IS in the future. Brocade’s engineers are very clear about what VCS fabric does and does not do, but the marketing claim that <em>VCS uses TRILL</em> is a clear misrepresentation that casts unnecessary doubts on the new products and raises confusion where none should have existed. Cisco was at least honest enough to admit that FabricPath is not TRILL (it does use TRILL concepts, including IS-IS, but not TRILL framing).</p>

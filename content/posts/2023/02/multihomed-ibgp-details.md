@@ -8,7 +8,7 @@ tags:
 - design
 title: Alternatives to IBGP within Multihomed Sites
 ---
-Two weeks ago I explained why you might want to run IBGP between CE-routers on a multihomed site. One of the blog readers [didn't like my ideas](/2023/02/ce-ibgp-multihomed-site.html#1669):
+Two weeks ago I explained why you might want to run IBGP between CE-routers on a multihomed site. One of the blog readers [didn't like my ideas](/2023/02/ce-ibgp-multihomed-site/#1669):
 
 > In such a small deployment I assume that both ISPs offer transit, so that both CEs would get a default route from their upstream.
 >
@@ -32,17 +32,17 @@ Some network operating systems can adjust HSRP/VRRP priority based on a complex 
 
 {{<note>}}Please note that I'm not saying "*you don't need FHRP on the LAN interfaces of the CE-routers*" (that's a completely different discussion) but "_you can't rely on FHRP priority to get LAN packets to the router that knows how to forward them_."{{</note>}}
 
-[^EEM]: If nothing else, you could develop some crazy EEM magic on Cisco IOS -- read some [ancient blog posts](/tag/eem.html) on this site if you're interested in that particular strain of job security.
+[^EEM]: If nothing else, you could develop some crazy EEM magic on Cisco IOS -- read some [ancient blog posts](/tag/eem/) on this site if you're interested in that particular strain of job security.
 
 I also received an interesting comment on [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7031529539725877248/) saying:
 
 > You need a static default route pointing towards the second CE with a metric [sic] inferior to the route installed by EBGP for failover purpose.
 
-{{<note>}}Obviously you'd need a static route with higher admin distance (or whatever your preferred implementation calls it); one usually cannot compare metrics between different routing sources. HT: [A Random Guy](/2023/02/multihomed-ibgp-details.html#1689).{{</note>}}
+{{<note>}}Obviously you'd need a static route with higher admin distance (or whatever your preferred implementation calls it); one usually cannot compare metrics between different routing sources. HT: [A Random Guy](/2023/02/multihomed-ibgp-details/#1689).{{</note>}}
 
 That would also work. I still think IBGP session is simpler, and it helps ensure that all (BGP) routers in an autonomous system have the same view of the network.
 
-Another commenter on LinkedIn wanted to demonstrate his BGP prowess and wrote a lengthy treatise on BGP next hop processing (spoiler alert: [here's a better version](/2011/08/bgp-next-hop-processing.html)) including the recommendation to set the next hop on IBGP session to the loopback interface. Interestingly, although that's the recommended _best practice_, you don't need the loopback interface or IGP if you have only two directly-connected routers in an autonomous system -- [the road to hell is often paved with best practices](/2011/08/road-to-complex-designs-is-paved-with.html).
+Another commenter on LinkedIn wanted to demonstrate his BGP prowess and wrote a lengthy treatise on BGP next hop processing (spoiler alert: [here's a better version](/2011/08/bgp-next-hop-processing/)) including the recommendation to set the next hop on IBGP session to the loopback interface. Interestingly, although that's the recommended _best practice_, you don't need the loopback interface or IGP if you have only two directly-connected routers in an autonomous system -- [the road to hell is often paved with best practices](/2011/08/road-to-complex-designs-is-paved-with/).
 
 To recap:
 
@@ -64,7 +64,7 @@ In any case, if you decide to go with the default route, it might be better to f
 
 [^N2]: Trying to do ECMP load balancing across links connected to different ISPs is usually a bad idea. The proof is left as an exercise for the reader; if you decide to go down that path, you might find some of the older blog posts useful.
 
-While two default routes might work well for a content _consumer_ (because it's hard to influence incoming traffic anyway), if you happen to be content *provider* (there's more traffic going out than coming in), you might want to optimize WAN link utilization. For example, you might want to use the direct uplink for prefixes belonging to ISPs and their customers, or you could do a [traffic flow analysis combining NetFlow with BGP data](/2015/01/sdn-router-spotify-on-software-gone-wild.html), and [accept prefixes that represent large percentage of your traffic](/2015/10/sdn-internet-router-is-in-production-on.html) ([even more details](/2022/05/living-small-forwarding-tables.html)).
+While two default routes might work well for a content _consumer_ (because it's hard to influence incoming traffic anyway), if you happen to be content *provider* (there's more traffic going out than coming in), you might want to optimize WAN link utilization. For example, you might want to use the direct uplink for prefixes belonging to ISPs and their customers, or you could do a [traffic flow analysis combining NetFlow with BGP data](/2015/01/sdn-router-spotify-on-software-gone-wild/), and [accept prefixes that represent large percentage of your traffic](/2015/10/sdn-internet-router-is-in-production-on/) ([even more details](/2022/05/living-small-forwarding-tables/)).
 
 ### More Details
 

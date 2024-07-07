@@ -7,7 +7,7 @@ tags:
 - SDN
 - network management
 title: CLI and API Myths
-url: /2013/06/cli-and-api-myths.html
+url: /2013/06/cli-and-api-myths/
 ---
 Greg Ferro published a great blog post explaining why he [decided to use node.js to build his cloud automation platform](http://etherealmind.com/thoughts-on-choosing-node-js-for-automation/). While I agree with most things he wrote, this one prickled me the wrong way:
 
@@ -38,4 +38,4 @@ The way we provision services today is too expensive and cumbersome, there's no 
 
 ### Theory or Reality?
 
-There are several tools out there that give you a network-level API, including [NCS from Tail-f](/2013/05/tail-f-network-control-system-first.html) (now Cisco), [VMware NSX-T](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive) and [Cisco ACI](https://www.ipspace.net/Cisco_ACI_Deep_Dive), and a plethora of _[intent-based](/tag/intent-based-networking.html)_ systems. However, we're all aware of networking vendors' dismal track record when it comes to network management tools. Why should they do any better this time?
+There are several tools out there that give you a network-level API, including [NCS from Tail-f](/2013/05/tail-f-network-control-system-first/) (now Cisco), [VMware NSX-T](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive) and [Cisco ACI](https://www.ipspace.net/Cisco_ACI_Deep_Dive), and a plethora of _[intent-based](/tag/intent-based-networking/)_ systems. However, we're all aware of networking vendors' dismal track record when it comes to network management tools. Why should they do any better this time?

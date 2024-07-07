@@ -3,7 +3,7 @@ kb_section: DataModels
 minimal_sidebar: true
 pre_scroll: true
 title: Data Validation
-url: /kb/DataModels/70-Validation.html
+url: /kb/DataModels/70-Validation/
 ---
 Optimizing a data model and removing duplicate data is great... but how do we know that we're working with a _valid_ data model? 
 

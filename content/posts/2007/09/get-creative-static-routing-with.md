@@ -3,7 +3,7 @@ date: 2007-09-05 07:12:00+02:00
 tags:
 - IP routing
 title: 'Get Creative: Static Routing with Catalyst 3750'
-url: /2007/09/get-creative-static-routing-with.html
+url: /2007/09/get-creative-static-routing-with/
 ---
 Here\'s an interesting scenario:
 
@@ -11,7 +11,7 @@ Here\'s an interesting scenario:
 
 The setup is summarized in this diagram:
 <!--more-->
-{{<figure src="StaticCatalyst.jpg" caption="Network diagram">}}
+{{<figure src="/2007/09/StaticCatalyst.jpg" caption="Network diagram">}}
 
 My initial reaction was a polite answer explaining that the dynamic routing protocols were invented to handle scenarios like this one, but the poor guy responded that *"[his boss](http://www.dilbert.com/comics/dilbert/the_characters/index.html#boss) does not want to hear about a dynamic routing protocol."* 
 

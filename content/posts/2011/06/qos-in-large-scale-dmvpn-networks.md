@@ -6,7 +6,7 @@ tags:
 - workshop
 - QoS
 title: QoS in Large-Scale DMVPN Networks
-url: /2011/06/qos-in-large-scale-dmvpn-networks.html
+url: /2011/06/qos-in-large-scale-dmvpn-networks/
 ---
 Got this question a few days ago:
 

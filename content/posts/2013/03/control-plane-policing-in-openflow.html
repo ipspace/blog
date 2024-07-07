@@ -1,13 +1,13 @@
 ---
-url: /2013/03/control-plane-policing-in-openflow.html
+url: /2013/03/control-plane-policing-in-openflow/
 title: "Control-plane policing in OpenFlow networks"
 date: "2013-03-25T07:23:00.000+01:00"
 tags: [ SDN,OpenFlow ]
 ---
 
-<p>The <a href="/2013/03/controller-based-packet-forwarding-in.html"><em>Controller-Based Packet Forwarding in OpenFlow Networks</em></a><em> </em>post generated the obvious question: “does that mean we need some kind of Control-Plane Protection (CoPP) in OpenFlow controller?” Of course it does, but things aren’t as simple as that.<!--more--></p>
-<p>The weakest link in today’s OpenFlow implementations (like NEC’s ProgrammableFlow) is not the controller, but the dismal CPU used in the hardware switches. The controller could handle millions packets per second (that’s the <a href="https://groups.google.com/a/openflowhub.org/forum/?fromgroups=#!topic/floodlight-dev/Xm4kYizkJFo">flow setup rate claimed by Floodlight developers</a>), the switches usually burn out at <a href="/2012/01/fib-update-challenges-in-openflow.html">thousands of flow setups per second</a>.</p>
+<p>The <a href="/2013/03/controller-based-packet-forwarding-in/"><em>Controller-Based Packet Forwarding in OpenFlow Networks</em></a><em> </em>post generated the obvious question: “does that mean we need some kind of Control-Plane Protection (CoPP) in OpenFlow controller?” Of course it does, but things aren’t as simple as that.<!--more--></p>
+<p>The weakest link in today’s OpenFlow implementations (like NEC’s ProgrammableFlow) is not the controller, but the dismal CPU used in the hardware switches. The controller could handle millions packets per second (that’s the <a href="https://groups.google.com/a/openflowhub.org/forum/?fromgroups=#!topic/floodlight-dev/Xm4kYizkJFo">flow setup rate claimed by Floodlight developers</a>), the switches usually burn out at <a href="/2012/01/fib-update-challenges-in-openflow/">thousands of flow setups per second</a>.</p>
 <p>The CoPP function thus has to be implemented in the OpenFlow switches (like it’s implemented in linecard hardware in traditional switches), and that’s where the problems start – OpenFlow doesn’t have a usable rate-limiting functionality till version 1.3, which added <em>meters</em>. </p>
 <p>OpenFlow meters are a really cool concept – they have multiple bands, and you can apply either DSCP remarking or packet dropping at each band – that would allow an OpenFlow controller to closely mimic the CoPP functionality and apply different rate limits to different types of control- or punted traffic. Unfortunately, no hardware switch available on the market supports OpenFlow 1.3 yet, and even when the first OpenFlow 1.3 switches start appearing, they might not support meters (or meters on flows sent to the controller).</p>
-<p>In the meantime, proprietary extensions galore – NEC had to use one to <a href="/2013/03/nec-programmableflow-scalability.html">limit unicast flooding in its ProgrammableFlow switches</a>.</p>
+<p>In the meantime, proprietary extensions galore – NEC had to use one to <a href="/2013/03/nec-programmableflow-scalability/">limit unicast flooding in its ProgrammableFlow switches</a>.</p>
 

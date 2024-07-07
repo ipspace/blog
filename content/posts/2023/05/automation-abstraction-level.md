@@ -3,7 +3,7 @@ title: "Find the Optimal Level of Automation Abstraction"
 date: 2023-05-18 07:03:00
 tags: [ automation ]
 ---
-_[Tom Ammon](https://www.linkedin.com/in/tomammon/) sent me his thoughts on choosing the right level of abstraction in your network automation solution as a response to my [What Is Intent-Based Networking](/2018/06/what-is-intent-based-networking.html) blog post, and allowed me to publish them on ipspace.net._
+_[Tom Ammon](https://www.linkedin.com/in/tomammon/) sent me his thoughts on choosing the right level of abstraction in your network automation solution as a response to my [What Is Intent-Based Networking](/2018/06/what-is-intent-based-networking/) blog post, and allowed me to publish them on ipspace.net._
 
 ---
 

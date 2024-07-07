@@ -11,13 +11,13 @@ tags:
 - WAN
 - high availability
 title: 'Long-distance IRF Fabric: Works Best in PowerPoint'
-url: /2011/09/long-distance-irf-fabric-works-best-in.html
+url: /2011/09/long-distance-irf-fabric-works-best-in/
 ---
 HP has commissioned an [IRF network test](https://web.archive.org/web/20170806120331/http://www3.networktest.com/hpirf/hpirf1.pdf) that came to absolutely astonishing conclusions: vMotion runs almost twice as fast across two links bundled in a port channel than across a single link (with the other one being blocked by STP). The test report contains one other gem, this one a result of incredible creativity of HP marketing:
 
 > For disaster recovery, switches within an IRF domain can be deployed across multiple data centers. According to HP, a single IRF domain can link switches up to 70 kilometers (43.5 miles) apart.
 
-You know my [opinions about stretched cluster](/2011/06/stretched-clusters-almost-as-good-as.html)... and the more down-to-earth part of HP Networking (the people writing the documentation) agrees with me.
+You know my [opinions about stretched cluster](/2011/06/stretched-clusters-almost-as-good-as/)... and the more down-to-earth part of HP Networking (the people writing the documentation) agrees with me.
 <!--more-->
 {{<note>}}Please note: this post is not a critique of IRF fabric technology or its implementation, just of a particularly \"creative\" use case.{{</note>}}
 

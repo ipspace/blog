@@ -4,17 +4,17 @@ tags:
 - data center
 - virtualization
 title: 'SSL Termination on Virtual Appliances: Another Myth Busted'
-url: /2015/08/ssl-termination-on-virtual-appliances.html
+url: /2015/08/ssl-termination-on-virtual-appliances/
 ---
 
-<p>In the <a href="/2015/08/can-virtual-routers-compete-with.html"><em>Can Virtual Routers Compete with Physical Hardware</em></a><em> </em>blog post I mentioned that SSL termination remains one of the few bastions of hardware acceleration. </p>
-<p>Based on the <a href="/2015/08/can-virtual-routers-compete-with.html?showComment=1438722463244#c5004201706131204487">comment made by RPM</a>, it looks like I was wrong.</p>
+<p>In the <a href="/2015/08/can-virtual-routers-compete-with/"><em>Can Virtual Routers Compete with Physical Hardware</em></a><em> </em>blog post I mentioned that SSL termination remains one of the few bastions of hardware acceleration. </p>
+<p>Based on the <a href="/2015/08/can-virtual-routers-compete-with/#c5004201706131204487">comment made by RPM</a>, it looks like I was wrong.</p>
 <p>Here’s his reasoning:<!--more--></p>
 <ul class="ListParagraph"><li>OpenSSL can do close to 900 RSA signatures per second per CPU core (which coincides nicely with ~3000 TPS quoted by F5 LTM-VE);</li>
 <li>A few thousand TPS might be more than enough for most web properties, particularly if you use persistent HTTP connection and TLS session resumption (so you do TLS negotiation only for truly new users).</li>
 </ul>
 <p class="more">Interested in virtual appliances and virtual network functions? <a href="http://www.ipspace.net/Network_Function_Virtualization">Register for the NFV webinar</a>.</p>
-<p>Let’s sprinkle a few <a href="/2013/09/openflow-and-fermi-estimates.html">Fermi estimates</a> on top of that (I know your traffic mix is totally different, but we’re looking at the big picture here). </p>
+<p>Let’s sprinkle a few <a href="/2013/09/openflow-and-fermi-estimates/">Fermi estimates</a> on top of that (I know your traffic mix is totally different, but we’re looking at the big picture here). </p>
 <p>It takes <a href="http://www.webperformancetoday.com/2014/12/02/page-bloat-update-average-top-1000-web-page-1795-kb-size/">around 2MB of data</a> to render an average web page. If you don’t want to get mixed-content warnings, you’d want to have all that data encrypted, and if you’re not using CDN, all that data has to be served from your data center.</p>
 <p>Assuming every visitor to your web property looks at a single page (totally unrealistic) and you’re getting 1000 new visitors per second requiring 1000 TLS session negotiations, your data center has to serve 2GB of data per second (or 16+ Gbps of bandwidth)… and all you need to run those 1000 TLS session negotiations are one or two x86 cores.</p>
 <p>But wait, there’s more. Things are getting significantly better with <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">Elliptic Curve Cryptography</a>, which is fast enough to allow CloudFlare to offer <a href="https://blog.cloudflare.com/introducing-universal-ssl/">free SSL termination to anyone</a>.</p>

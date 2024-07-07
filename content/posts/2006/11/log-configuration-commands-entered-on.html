@@ -1,10 +1,10 @@
 ---
-url: /2006/11/log-configuration-commands-entered-on.html
+url: /2006/11/log-configuration-commands-entered-on/
 title: "Log configuration commands entered on your Cisco router"
 date: "2006-11-13T15:41:00.000+01:00"
 tags: [ syslog,network management,logging,configuration ]
 ---
 
 As part of <em>Configuraton Change Notification and Logging</em> feature, Cisco IOS stores the most recent configuration commands in a circular buffer and (optionally) sends them to <em>syslog</em> streams.<br/><br/>This feature is configured under the <strong>archive</strong> configuration mode with the <strong>log config</strong> command, which brings you to yet another configuration mode where you can fine-tune the parameters (they are obvious, on-router help is sufficient), for example:<pre class="code">archive<br/> log config<br/>  logging enable 100<br/>  notify syslog<br/>  hidekeys</pre>After you've enabled configuration command logging, you can use the <strong>show archive log config all</strong> command to inspect the logging buffer. You can also display commands entered in a particular session or by a selected user.<br/><br/>If you've configured <strong>notify syslog</strong>, every configuration command also triggers a syslog message similar to this one:<blockquote class="code">3d03h: %PARSER-5-CFGLOG_LOGGEDCMD: User:console  logged command:interface loopback 0</blockquote>
-<strong>Note:</strong> This feature logs only the configuration commands, if you want to log all commands, use TACACS+ or <a href="/2006/11/cli-command-logging-without-tacacs.html">Embedded Event Manager</a>.
+<strong>Note:</strong> This feature logs only the configuration commands, if you want to log all commands, use TACACS+ or <a href="/2006/11/cli-command-logging-without-tacacs/">Embedded Event Manager</a>.
 

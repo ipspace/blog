@@ -3,7 +3,7 @@ kb_section: EIGRP_stub
 minimal_sidebar: true
 pre_scroll: true
 title: Tight Control over Route Leaking
-url: /kb/Internet/EIGRP_stub/30-route-leaking-control.html
+url: /kb/Internet/EIGRP_stub/30-route-leaking-control/
 ---
 The introduction of EIGRP route leaking on the stub routers has to be based on a thoroughly checked network design. Imagine a scenario where the link bandwidth between A2 and B2 is significantly lower than the one between A1 and B1:
 

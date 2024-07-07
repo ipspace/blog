@@ -7,7 +7,7 @@ series:
 tags:
 - high availability
 title: All Operations Engineers Should Have Firefighting Training
-url: /2014/05/all-operations-engineers-should-have.html
+url: /2014/05/all-operations-engineers-should-have/
 ---
 Recently I had a fantastic conversation with [Erich Hohermuth](https://ch.linkedin.com/pub/erich-hohermuth/3/924/a7b), a networking engineer with an unusual hobby: he's a professional firefighting instructor (teaching firefighters across the country how to do their job).
 

@@ -4,7 +4,7 @@ eigrp_tag: deploy
 tags:
 - EIGRP
 title: Leak Map Confusion
-url: /2008/10/leak-map-confusion.html
+url: /2008/10/leak-map-confusion/
 ---
 A short question I\'ve got from Shahid Rox:
 

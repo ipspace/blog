@@ -7,7 +7,7 @@ tags:
 - NSX
 - virtualization
 title: Cisco ACI, VMware NSX and Programmability
-url: /2017/05/cisco-aci-vmware-nsx-and-programmability.html
+url: /2017/05/cisco-aci-vmware-nsx-and-programmability/
 ---
 
 <p>One of my readers sent me a lengthy email describing his NSX-versus-ACI views. He started with [slightly reworded]:</p>
@@ -17,9 +17,9 @@ url: /2017/05/cisco-aci-vmware-nsx-and-programmability.html
 <p style="margin-top: 1em">And yes you've got me here. I guess programming to vCenter + NSX would be easier?</p>
 </blockquote>
 <p>As always, you have to figure out where you want to add value. Do you want to develop scripts (or Ansible playbooks or whatever other tool you might want to use) that will do the job in your unique snowflake, or would it be better to use off-the-shelf tool that already gets the job done, and then adapt your environment to whatever those tools can work with.</p>
-<p class="more">Cloudify and Terraform immediately come to mind. Cisco CloudCenter or VMware vRealize Orchestration might be a good fit for you environment (and <a href="/2015/01/lock-in-is-inevitable-get-used-to-it.html">you’ll be locked into something anyway</a>). I’m positive there are tons of others.</p>
+<p class="more">Cloudify and Terraform immediately come to mind. Cisco CloudCenter or VMware vRealize Orchestration might be a good fit for you environment (and <a href="/2015/01/lock-in-is-inevitable-get-used-to-it/">you’ll be locked into something anyway</a>). I’m positive there are tons of others.</p>
 <p>Usually it makes sense to start with what your users care most about (= application deployment tools or cloud orchestration systems) and work from there. Starting from “<em>we have this cool product or technology</em>” and then going down the path of “<em>let’s develop all the glue we need to make it work</em>” might be a cool project, but maybe not the best use of resources.</p>
 <p>Speaking of glue, keep the number of moving parts in your infrastructure to a minimum. The more moving parts you have, the more probable it is something will break, and the more fun you’ll have troubleshooting it (it does sound like a wonderful job security, but let’s not go there).</p>
 <p>In the specific example of NSX versus ACI, assuming you’re bound to work with vSphere (some enterprises still prefer using familiar products instead of jumping into the Linux/KVM/OVS/whatever waters), figure out how many tools from different vendors you’d need to get the job done when you use one or the other product, and then select the simpler one (assuming it can meet your requirements and scalability goals).</p>
-<p>In the ideal world you’d start with your application deployment tools using a well-established cloud orchestration API. Right now the most popular two are AWS and OpenStack, which means (assuming you have to use vSphere) you might consider <a href="/2016/09/openstack-on-vmware-nsx-on-software.html">VMware-integrated OpenStack (VIO)</a>. It uses vCenter, VSAN and NSX behind the scenes, so things keep working once you create them even if OpenStack sucks. Unfortunately I have no idea how stable VIO is though. Feedback and alternatives are highly appreciated.</p>
+<p>In the ideal world you’d start with your application deployment tools using a well-established cloud orchestration API. Right now the most popular two are AWS and OpenStack, which means (assuming you have to use vSphere) you might consider <a href="/2016/09/openstack-on-vmware-nsx-on-software/">VMware-integrated OpenStack (VIO)</a>. It uses vCenter, VSAN and NSX behind the scenes, so things keep working once you create them even if OpenStack sucks. Unfortunately I have no idea how stable VIO is though. Feedback and alternatives are highly appreciated.</p>
 

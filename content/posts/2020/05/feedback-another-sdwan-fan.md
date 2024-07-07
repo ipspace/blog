@@ -53,7 +53,7 @@ Crazy expensive… for a Linux server.
  
 Ok… I believe in progress, but you are trying to sell me something that is not as magical as you say, it’s just a nice compilation of old and very basic techniques with a beautiful GUI. And I say “very basic techniques” mainly because it seems to use only ICMP for calculations, it works as-is, and I can’t modify or check it further. Or at least you are not willing to give me more low-level details.
  
-So, I like the concept, but I have to go back to [your premise](/2019/03/lock-in-and-sd-wan-match-made-in-heaven.html), this is a lock-in and nothing so new, it’s just the ability to code faster than some big players.
+So, I like the concept, but I have to go back to [your premise](/2019/03/lock-in-and-sd-wan-match-made-in-heaven/), this is a lock-in and nothing so new, it’s just the ability to code faster than some big players.
  
 Or like when I started to study OpenStack and VMWare-NSX… what? They all use the concept of the old fellow Linux-bridge and tunnel interfaces!
 

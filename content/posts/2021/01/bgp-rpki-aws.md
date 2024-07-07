@@ -17,7 +17,7 @@ If you've never heard of RPKI, the [AWS blog post](https://aws.amazon.com/blogs/
 
 **What happens to invalid prefixes?** That depends on local policy. ISPs adhering to [MANRS best practices](https://www.manrs.org/isps/bcop/) should ignore *invalid* prefixes and prefer *signed* over *unsigned* prefixes... but like in real life, you cannot force anyone else on the Internet to stop listening to fake news.
 
-**What is RPKI protecting against?** RPKI validates the correctness of origin AS, stopping stupid fat-finger mistakes like two-way BGP-OSPF-BGP redistribution, [misconfigured BGP optimizers bringing down third-party services due to clueless tier-1 provider](/2019/07/rant-some-internet-service-providers.html), or the spillover effects of [third-world countries trying to stop their population from watching unorthodox video](/2008/02/building-customer-resilient-bgp.html). Off-topic: that  spillover was caused by another clueless tier-1 provider... you see a pattern here?
+**What is RPKI protecting against?** RPKI validates the correctness of origin AS, stopping stupid fat-finger mistakes like two-way BGP-OSPF-BGP redistribution, [misconfigured BGP optimizers bringing down third-party services due to clueless tier-1 provider](/2019/07/rant-some-internet-service-providers/), or the spillover effects of [third-world countries trying to stop their population from watching unorthodox video](/2008/02/building-customer-resilient-bgp/). Off-topic: that  spillover was caused by another clueless tier-1 provider... you see a pattern here?
 
 **What is RPKI not?** RPKI cannot be used to validate the *path* between your network and the origin. The bad guys can still spoof the AS path.
 

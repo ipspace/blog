@@ -7,9 +7,9 @@ tags:
 - BGP
 title: 'Feedback: Recursive BGP Next Hop Resolution'
 ---
-The _[Recursive BGP Next Hops: an RFC 4271 Quirk](/2022/01/bgp-recursive-next-hops-rfc.html)_ blog post generated tons of feedback (thanks a million to everyone writing a comment on my blog or [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A6884535946654572544/)).
+The _[Recursive BGP Next Hops: an RFC 4271 Quirk](/2022/01/bgp-recursive-next-hops-rfc/)_ blog post generated tons of feedback (thanks a million to everyone writing a comment on my blog or [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A6884535946654572544/)).
 
-Starting with [Robert Razsuk](/2022/01/bgp-recursive-next-hops-rfc.html#956) who managed to track down the [original email](https://mailarchive.ietf.org/arch/msg/idr/OHlGLdQOF5lSa_NR7oOaDjse8y8/) that triggered the (maybe dubious) text in RFC 4271:
+Starting with [Robert Razsuk](/2022/01/bgp-recursive-next-hops-rfc/#956) who managed to track down the [original email](https://mailarchive.ietf.org/arch/msg/idr/OHlGLdQOF5lSa_NR7oOaDjse8y8/) that triggered the (maybe dubious) text in RFC 4271:
 
 > The text in section 5.1.3 was not really targeting to prohibit load balancing. Keep in mind that it is FIB layer which constructs actual forwarding paths.
 >
@@ -23,7 +23,7 @@ As expected, [Dr. Tony Przygienda](https://www.linkedin.com/in/dr-tony-przygiend
 
 A quick illustration of how complex things can get was supplied by [Blake Willis](https://www.linkedin.com/in/blakedot/): guess what happens when a BGP next hop is resolved over another BGP prefix that has multiple resolved paths. Junos has a [nerd knob just for that edge case](https://www.juniper.net/documentation/us/en/software/junos/bgp/topics/topic-map/load-balancing-bgp-session.html#id-configuring-recursive-resolution-over-bgp-multipath).
 
-Finally, [Bela Varkonyi documented](/2022/01/bgp-recursive-next-hops-rfc.html#960) that if one reads the BGP RFC with rosy (and a bit creative) glasses, it's perfectly fine to do load balancing over IGP next hops for a particular BGP next hop... just imagine you're doing the recursive next hop calculation every time you need it (example: for every packet):
+Finally, [Bela Varkonyi documented](/2022/01/bgp-recursive-next-hops-rfc/#960) that if one reads the BGP RFC with rosy (and a bit creative) glasses, it's perfectly fine to do load balancing over IGP next hops for a particular BGP next hop... just imagine you're doing the recursive next hop calculation every time you need it (example: for every packet):
 
 > Load balancing is still possible depending on the implementation. If you make a single lookup for a specific next hop address for all occurrences and cache this even for later use, then of course this would disable load balancing since you would get the same answer for all occurrences. But it is not prescribed. You can do an independent recursive lookup for each next hop occurrence when it is needed. Then you can pickup a different single lookup result for each individual query from multiple possible choices. This is still load balancing that is not violating section 5.1.3.
 >

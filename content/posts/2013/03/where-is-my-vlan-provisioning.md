@@ -5,9 +5,9 @@ tags:
 - LAN
 - virtualization
 title: Where Is my VLAN Provisioning Application?
-url: /2013/03/where-is-my-vlan-provisioning.html
+url: /2013/03/where-is-my-vlan-provisioning/
 ---
-Yesterday I wrote that [it's pretty easy to develop a VLAN provisioning application](/2013/03/what-did-you-do-to-get-rid-of-manual.html) (integrating it with vCenter or System Center earns you bonus points, but even that's not too hard), so based on the frequent "I hate using CLI to provision VLANs" rants you might wonder where all the startups developing those applications are. Simple answer: there's no [reasonably-sized market](http://telecomoccasionally.wordpress.com/2012/02/20/mid-market-innovators-dilemma/). How would I know that? We've been there.
+Yesterday I wrote that [it's pretty easy to develop a VLAN provisioning application](/2013/03/what-did-you-do-to-get-rid-of-manual/) (integrating it with vCenter or System Center earns you bonus points, but even that's not too hard), so based on the frequent "I hate using CLI to provision VLANs" rants you might wonder where all the startups developing those applications are. Simple answer: there's no [reasonably-sized market](http://telecomoccasionally.wordpress.com/2012/02/20/mid-market-innovators-dilemma/). How would I know that? We've been there.
 <!--more-->
 When I was working at a system integrator we wrote numerous network configuration/provisioning applications, starting with provisioning of Internet customers on our dial-up servers and routers in 1993 to MPLS/VPN provisioning for a major MPLS/VPN-over-IPsec-over-IP-over-MPLS/VPN customer. Needless to say, we also had to fully automate our remote labs and cloud services (and both required frequent reconfiguration of numerous networking elements).
 

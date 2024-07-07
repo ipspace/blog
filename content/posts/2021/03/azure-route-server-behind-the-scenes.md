@@ -9,7 +9,7 @@ tags:
 - SD-WAN
 title: 'Azure Route Server: Behind the Scenes'
 ---
-Last week I [described the challenges Azure Route Server is supposed to solve](/2021/03/azure-route-server-101.html). Now let's dive deeper into how it's implemented and what those implementation details mean for your design.
+Last week I [described the challenges Azure Route Server is supposed to solve](/2021/03/azure-route-server-101/). Now let's dive deeper into how it's implemented and what those implementation details mean for your design.
 
 The whole thing looks relatively simple:
 <!--more-->

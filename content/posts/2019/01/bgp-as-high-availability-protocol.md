@@ -10,7 +10,7 @@ tags:
 - BGP
 - high availability
 title: BGP as High Availability Protocol
-url: /2019/01/bgp-as-high-availability-protocol.html
+url: /2019/01/bgp-as-high-availability-protocol/
 ---
 Every now and then someone tells me I should write more about the basic networking concepts like I did years ago when I started blogging. I'm probably too old (and too grumpy) for that, but fortunately I'm no longer on my own.
 

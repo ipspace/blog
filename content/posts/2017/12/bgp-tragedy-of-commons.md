@@ -7,7 +7,7 @@ tags:
 - Internet
 - BGP
 title: 'BGP: the Tragedy of the Commons'
-url: /2017/12/bgp-tragedy-of-commons.html
+url: /2017/12/bgp-tragedy-of-commons/
 ---
 Every now and then someone looks at a few recent BGP incidents (from fat fingers to more dubious ones) and says "[we need a better BGP](https://networkingnerd.net/2017/12/15/should-we-build-a-better-bgp/)".
 

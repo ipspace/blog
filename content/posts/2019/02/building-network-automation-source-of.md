@@ -4,7 +4,7 @@ tags:
 - automation
 - Ansible
 title: Building the Network Automation Source of Truth
-url: /2019/02/building-network-automation-source-of.html
+url: /2019/02/building-network-automation-source-of/
 series: [ ssot ]
 ssot_tag: build
 ---

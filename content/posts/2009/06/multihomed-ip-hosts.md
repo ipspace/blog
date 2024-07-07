@@ -8,7 +8,7 @@ tags:
 - IP routing
 - LAN
 title: Multihomed IP Hosts
-url: /2009/06/multihomed-ip-hosts.html
+url: /2009/06/multihomed-ip-hosts/
 ---
 IP host (workstations, servers or communication equipment) is *multihomed* if it has more than one IP address. An IP host can be multihomed in numerous ways, using one or more layer-3 interfaces for network connectivity. Some multihoming scenarios are well understood and commonly used, while others (multiple physical layer-3 interfaces in the same IP subnet) could be hard to implement on common operating systems.
 
@@ -20,17 +20,17 @@ IP host (workstations, servers or communication equipment) is *multihomed* if 
 
 -   **Multiple logical networks.** A host connected to a single layer-2 networks with multiple IP subnets may have an IP address in each subnet (*secondary IP addresses* in Cisco IOS terminology).
 
-{{<figure src="MHIP_LogicalNetworks.png" caption="Multiple logical networks">}}
+{{<figure src="/2009/06/MHIP_LogicalNetworks.png" caption="Multiple logical networks">}}
 
 -   **Multiple logical hosts.** A host has multiple IP addresses in the same IP subnet. These IP addresses might be configured on the same or different layer-2 interfaces.
 
-{{<figure src="MHIP_LogicalHosts_MultiIf.png" caption="Multiple logical hosts; two interfaces">}}
+{{<figure src="/2009/06/MHIP_LogicalHosts_MultiIf.png" caption="Multiple logical hosts; two interfaces">}}
 
-{{<figure src="MHIP_LogicalHosts.png" caption="Multiple logical hosts; single interface">}}
+{{<figure src="/2009/06/MHIP_LogicalHosts.png" caption="Multiple logical hosts; single interface">}}
 
 -   **Simple multihoming**. A host is connected to multiple layer-2 networks (and thus multiple IP subnets) and has one (or more, see *Multiple logical hosts*) IP address in each IP subnet.
 
-{{<figure src="MHIP_Simple.png" caption="Simple IP host multihoming">}}
+{{<figure src="/2009/06/MHIP_Simple.png" caption="Simple IP host multihoming">}}
 
 Multihomed IP hosts face two significant challenges:
 

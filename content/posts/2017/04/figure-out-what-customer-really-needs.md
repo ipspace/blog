@@ -7,7 +7,7 @@ tags:
 - data center
 - high availability
 title: Figure Out What the Customer Really Needs
-url: /2017/04/figure-out-what-customer-really-needs.html
+url: /2017/04/figure-out-what-customer-really-needs/
 ---
 One of the toughest challenges you can face as a networking engineer is trying to understand what the customer really needs (as opposed to what they think they're telling you they want).
 

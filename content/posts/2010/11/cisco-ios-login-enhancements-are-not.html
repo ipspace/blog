@@ -1,12 +1,12 @@
 ---
-url: /2010/11/cisco-ios-login-enhancements-are-not.html
+url: /2010/11/cisco-ios-login-enhancements-are-not/
 title: "Cisco IOS Login Enhancements are not IPv6-aware"
 date: "2010-11-26T07:11:00.003+01:00"
 tags: [ IPv6 ]
 ---
 
-<p>One of the comments to my “<a href="/2010/11/ipv6-in-data-center-after-year-cisco-is.html"><em>IPv6 in Data Center: after a year, Cisco is still not ready</em></a>” post included the following facts:</p>
+<p>One of the comments to my “<a href="/2010/11/ipv6-in-data-center-after-year-cisco-is/"><em>IPv6 in Data Center: after a year, Cisco is still not ready</em></a>” post included the following facts:</p>
 <blockquote class="cite">Up through at least 15.0(1)M and 12.2(53)SE2 the IPv6 support for management protocols is spotty; syslog is there, SNMP traps and the RADIUS/TACACS control plane aren't.</blockquote>
-<p>Another bug along the same lines was discovered by Jónatan Jónasson: When the <em><a href="/2006/12/cisco-ios-login-enhancements.html">Cisco IOS Login Enhancements</a> </em>feature logs successful or failed login attempt, it reports the top 32 bits of the remote IPv6 address in IPv4 address format. Here’s a sample printout taken from a router running IOS release 15.0(1)M.</p>
+<p>Another bug along the same lines was discovered by Jónatan Jónasson: When the <em><a href="/2006/12/cisco-ios-login-enhancements/">Cisco IOS Login Enhancements</a> </em>feature logs successful or failed login attempt, it reports the top 32 bits of the remote IPv6 address in IPv4 address format. Here’s a sample printout taken from a router running IOS release 15.0(1)M.</p>
 <pre class="code">P#<br/>%SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: test] <br/><span class="high">[Source: 254.192.0.0]</span> [localport: 23] at ...<br>P#<strong>who</strong><br/>    Line       User       Host(s)              Idle       Location<br/>*  0 con 0                idle                 00:00:00   <br/>   2 vty 0     test       idle                 00:00:06 <span class="high">FEC0::CCCC:1</span></br></pre><p>It looks like the recommendation we’ve been making two years ago is still valid: use IPv4 for network management. </p>
 

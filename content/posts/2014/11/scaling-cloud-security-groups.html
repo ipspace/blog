@@ -6,11 +6,11 @@ tags:
 - cloud
 - overlay networks
 title: Scaling the Cloud Security Groups
-url: /2014/11/scaling-cloud-security-groups.html
+url: /2014/11/scaling-cloud-security-groups/
 ---
 
-<p>Most <a href="/2013/12/overlay-virtual-networking-solutions.html">overlay virtual networking</a> and <a href="/2014/09/virtual-networking-in-cloudstack.html">cloud orchestration</a> products support <em>security groups </em>– <a href="/2013/03/the-spectrum-of-firewall-statefulness.html">more-or-less-statefulish ACLs</a> inserted between VM NIC and virtual switch.</p>
-<p>The lure of security groups is obvious: if you’re <a href="/2013/04/are-you-ready-to-change-your-security.html">willing to change your network security paradigm</a>, you can stop thinking in subnets and focus on specifying <em>who </em>can exchange <em>what </em>traffic (usually specified as TCP/UDP port#) with <em>whom</em>.<!--more--></p>
+<p>Most <a href="/2013/12/overlay-virtual-networking-solutions/">overlay virtual networking</a> and <a href="/2014/09/virtual-networking-in-cloudstack/">cloud orchestration</a> products support <em>security groups </em>– <a href="/2013/03/the-spectrum-of-firewall-statefulness/">more-or-less-statefulish ACLs</a> inserted between VM NIC and virtual switch.</p>
+<p>The lure of security groups is obvious: if you’re <a href="/2013/04/are-you-ready-to-change-your-security/">willing to change your network security paradigm</a>, you can stop thinking in subnets and focus on specifying <em>who </em>can exchange <em>what </em>traffic (usually specified as TCP/UDP port#) with <em>whom</em>.<!--more--></p>
 <h4>Getting rid of subnets? How?</h4><p>If you’re not familiar with how security groups typically get implemented, you might wonder why I wrote that you can <em>stop thinking in subnets</em>. Here’s the short version of the story.</p>
 <p>Security groups are like <a href="http://www.cisco.com/c/en/us/td/docs/security/asa/asa82/configuration/guide/config/objectgroups.html"><em>object groups</em></a><em> </em>on Cisco ASA:</p>
 <ul class="ListParagraph"><li>You specify the VM-to-group membership in the cloud orchestration system;</li>
@@ -22,7 +22,7 @@ url: /2014/11/scaling-cloud-security-groups.html
 <li>Most ACL implementations scan the entries sequentially (because networking engineers love to optimize irrelevant stuff and use overlapping ACL entries that make ACLs order-sensitive). ACL performance is thus inversely proportional to the product of group sizes (<em>O(n^2)</em> for those of you that love talking about computational complexity);</li>
 <li>ACLs have to be updated on all participating virtual switches every time a VM is added to any of the groups used in the ACL.</li>
 </ul>
-<p>Oh, and if you want to implement security groups on ToR switches, you’ll <a href="http://www.ipspace.net/Replacing_the_Central_Firewall">quickly realize</a> just how little TCAM they have – you might be better off inserting x86 servers into the forwarding path and using something like <a href="/2014/09/snabb-switch-deep-dive-on-software-gone.html">Snabb Switch</a> on them.</p>
+<p>Oh, and if you want to implement security groups on ToR switches, you’ll <a href="http://www.ipspace.net/Replacing_the_Central_Firewall">quickly realize</a> just how little TCAM they have – you might be better off inserting x86 servers into the forwarding path and using something like <a href="/2014/09/snabb-switch-deep-dive-on-software-gone/">Snabb Switch</a> on them.</p>
 <h4>Can we make it any better?</h4><p>Sure we can. Instead of blindly converting per-group security rules into IP address ACLs we need a better matching mechanism that would work along these lines:</p>
 <ul class="ListParagraph"><li>Identify the group membership of the sending VM (trivial on ingress ACL, requires IP lookup on egress ACL);</li>
 <li>Identify the relevant ACL based on the group membership;</li>

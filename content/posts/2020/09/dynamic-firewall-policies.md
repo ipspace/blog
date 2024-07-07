@@ -7,7 +7,7 @@ tags:
 - firewall
 title: Why Don't We Have Dynamic Firewall Policies
 ---
-One of the readers of the [Considerations for Host-Based Firewalls](/2020/09/considerations-host-based-firewalls.html) blog post [wrote this interesting comment](/2020/09/considerations-host-based-firewalls.html#115):
+One of the readers of the [Considerations for Host-Based Firewalls](/2020/09/considerations-host-based-firewalls/) blog post [wrote this interesting comment](/2020/09/considerations-host-based-firewalls/#115):
 
 > Perhaps a paradigm shift is due for firewalls in general? I'm thinking quickly here but wondering if we perhaps just had a protocol by which a host could request upstream firewall(s) to open access inbound on their behalf dynamically, the hosts themselves would then automatically inform the security device what ports they need/want opened upstream.
 
@@ -15,7 +15,7 @@ Well, we have at least two protocols that could fit the bill: [Universal Plug an
 <!--more-->
 {{<note>}}Interesting bits of trivia: 
 
-* UPnP is a set of standards defined by [Open Connectivity Foundation](https://openconnectivity.org/foundation/) and published as ISO/IEC standards. One has to wonder what made them choose this standardization path instead of working within IETF. [Maybe this](/2020/09/worth-reading-making-rfc.html)?
+* UPnP is a set of standards defined by [Open Connectivity Foundation](https://openconnectivity.org/foundation/) and published as ISO/IEC standards. One has to wonder what made them choose this standardization path instead of working within IETF. [Maybe this](/2020/09/worth-reading-making-rfc/)?
 * PCP is [implemented on Junos](https://www.juniper.net/documentation/en_US/junos/topics/concept/nat-port-control-protocol.html) but not on Cisco IOS (at least I couldn't find it). No surprise there either...
 {{</note>}}
 
@@ -51,6 +51,6 @@ Assuming we know the required connectivity between various components of numerou
 
 There are numerous production-grade implementations out there doing exactly that for source/destination IP addresses (NSX microsegmentation and public cloud security groups come to mind), and finding the application port numbers is as easy as executing **netstat -ltup** on a Linux server and parsing the results. An extra protocol thus won't give much more.
 
-Given all that, one has to ask "_so what exactly is the problem we're trying to solve?_" In most cases, the problem is "_we have no clue who should be allowed to talk to whom_" and no amount of magic technology will ever solve that problem for us. As [I pointed out numerous times in various presentations](/2014/09/youve-been-doing-same-thing-for-last-20.html) (you might enjoy watching [Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies) webinar), you can not solve people- and processes problems with black-box technologies and layers of abstraction, and continuing to do the same broken thing and expecting different results is one of the definitions of insanity.
+Given all that, one has to ask "_so what exactly is the problem we're trying to solve?_" In most cases, the problem is "_we have no clue who should be allowed to talk to whom_" and no amount of magic technology will ever solve that problem for us. As [I pointed out numerous times in various presentations](/2014/09/youve-been-doing-same-thing-for-last-20/) (you might enjoy watching [Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies) webinar), you can not solve people- and processes problems with black-box technologies and layers of abstraction, and continuing to do the same broken thing and expecting different results is one of the definitions of insanity.
 
 More to come...

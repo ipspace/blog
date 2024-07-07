@@ -3,7 +3,7 @@ kb_section: Ansible
 minimal_sidebar: true
 pre_scroll: true
 title: Transforming XML Data in Ansible
-url: /kb/Ansible/Transform-XML-Data.html
+url: /kb/Ansible/Transform-XML-Data/
 ---
 A netwoking engineer attending the Building Network Automation Solutions online course wanted to transform Junos interface configuration (in XML format) into a concise data structure that could be used in an Ansible playbook.
 

@@ -3,7 +3,7 @@ title: "Real-Life Network-as-a-Graph Examples"
 date: 2021-06-09 06:26:00
 tags: [ networking fundamentals ]
 ---
-After reading the *[Everything Is a Graph](/2021/04/everything-is-a-graph.html)* blog post,  [Vadim Semenov](https://www.linkedin.com/in/vadim-semenov-1b538130/) sent me a long list of real-life examples (slightly edited):
+After reading the *[Everything Is a Graph](/2021/04/everything-is-a-graph/)* blog post,  [Vadim Semenov](https://www.linkedin.com/in/vadim-semenov-1b538130/) sent me a long list of real-life examples (slightly edited):
 
 ---
 

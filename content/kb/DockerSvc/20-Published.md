@@ -2,7 +2,7 @@
 kb_section: DockerSvc
 minimal_sidebar: true
 title: Published Ports
-url: /kb/DockerSvc/20-Published.html
+url: /kb/DockerSvc/20-Published/
 ---
 As mentioned in the [overview](index.html) part of this article, the default Docker networking implementation makes it hard to reach a service running in a container from an external client; the usual solution is to *publish* a container port (map a container port into a port on the Docker host).
 

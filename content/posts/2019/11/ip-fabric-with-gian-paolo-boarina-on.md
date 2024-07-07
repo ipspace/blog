@@ -7,7 +7,7 @@ tags:
 - podcast
 - Software Gone Wild
 title: IP Fabric with Gian-Paolo Boarina on Software Gone Wild
-url: /2019/11/ip-fabric-with-gian-paolo-boarina-on.html
+url: /2019/11/ip-fabric-with-gian-paolo-boarina-on/
 intent-based-networking_tag: podcast
 ---
 No, we were not talking about IP fabrics in general - [**IP Fabric**](https://ipfabric.io/) is a network management software (oops, *network assurance platform*) Gian Paolo [discovered a while ago](https://www.ifconfig.it/hugo/2019/10/ip-fabric-ambassador/) and thoroughly tested in the meantime.

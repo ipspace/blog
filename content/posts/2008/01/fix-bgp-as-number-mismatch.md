@@ -3,13 +3,13 @@ date: 2008-01-09 06:52:00+01:00
 tags:
 - BGP
 title: Fix a BGP AS Number Mismatch
-url: /2008/01/fix-bgp-as-number-mismatch.html
+url: /2008/01/fix-bgp-as-number-mismatch/
 ---
 Sometimes you end up having wrong BGP AS number throughout your network. It could be a result of an unexpected merger or split or you could have started using a private BGP AS number and realized you have to connect to the Internet using a real AS number. The proper solution would be a total reconfiguration of the whole network, but of course not many engineers have the time and courage to do it ;), so it\'s time to introduce another kludge: the **neighbor local-as** configuration command.
 <!--more-->
 For example, let\'s assume your AS number should be 20, but you\'re using a private AS 65001, as shown in the following figure:
 
-{{<figure src="bgp_1.jpg">}}
+{{<figure src="/2008/01/bgp_1.jpg">}}
 
 To retain the AS 65001 internally but appear as AS 20 to the outside world, you could use the following configuration on R1:
 
@@ -31,7 +31,7 @@ AS30#show ip bgp | include 20
 
 ... making your network appear as a set of nested autonomous systems:
 
-{{<figure src="bgp_2.jpg">}}
+{{<figure src="/2008/01/bgp_2.jpg">}}
 
 There are two reasons for the weird AS path:
 

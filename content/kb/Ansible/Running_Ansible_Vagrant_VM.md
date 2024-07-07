@@ -3,7 +3,7 @@ kb_section: Ansible
 minimal_sidebar: true
 pre_scroll: true
 title: Running Ansible in a Vagrant-Controlled Virtual Machine
-url: /kb/Ansible/Running_Ansible_Vagrant_VM.html
+url: /kb/Ansible/Running_Ansible_Vagrant_VM/
 ---
 Most network automation tutorials using Ansible with Vagrant assume that you’re running Ansible on your host machine. I prefer running Ansible in another virtual machine for these reasons:
 

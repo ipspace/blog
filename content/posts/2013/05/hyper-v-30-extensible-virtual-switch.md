@@ -6,11 +6,11 @@ tags:
 - virtualization
 - video
 title: Hyper-V 3.0 Extensible Virtual Switch
-url: /2013/05/hyper-v-30-extensible-virtual-switch.html
+url: /2013/05/hyper-v-30-extensible-virtual-switch/
 ---
-It took years before the rumored Cisco vSwitch materialized (in the form of Nexus 1000v), several more years before there was the first competitor ([IBM Distributed Virtual Switch](/2012/02/ibm-launched-nexus-1000v-competitor.html)), and who knows how long before the third entrant ([recently announced HP vSwitch](/2013/05/interop-product-launch-craze.html)) jumps out of PowerPoint slides and whitepapers into the real world.
+It took years before the rumored Cisco vSwitch materialized (in the form of Nexus 1000v), several more years before there was the first competitor ([IBM Distributed Virtual Switch](/2012/02/ibm-launched-nexus-1000v-competitor/)), and who knows how long before the third entrant ([recently announced HP vSwitch](/2013/05/interop-product-launch-craze/)) jumps out of PowerPoint slides and whitepapers into the real world.
 
-Compare that to the Hyper-V environment, where we have at least two virtual switches ([Nexus 1000V](http://www.cisco.com/en/US/products/ps13056/index.html) and [NEC\'s PF1000](/2013/01/nec-launched-virtual-openflow-switch.html)) mere months after Hyper-V\'s general availability.
+Compare that to the Hyper-V environment, where we have at least two virtual switches ([Nexus 1000V](http://www.cisco.com/en/US/products/ps13056/index.html) and [NEC\'s PF1000](/2013/01/nec-launched-virtual-openflow-switch/)) mere months after Hyper-V\'s general availability.
 <!--more-->
 The difference: Microsoft did the right thing, created an extensible vSwitch architecture, and thoroughly documented all the APIs (there\'s enough documentation that you can go and implement your own switch extension if you\'re so inclined).
 

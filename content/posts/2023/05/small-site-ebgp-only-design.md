@@ -10,7 +10,7 @@ One of my subscribers found an unusual BGP specimen in the wild:
 * The WAN edge router was running BGP across WAN IPsec tunnels
 * The VPN concentrators were running BGP with core switches.
 
-So far so good, and kudos to whoever realized BGP is [the only sane protocol to run between virtual machines and network core](/2016/03/dont-run-ospf-with-your-customers.html). However, the routing in the network core was implemented with EBGP sessions between the three core devices, and my subscriber thought the correct way to do it would be to use IBGP and OSPF.
+So far so good, and kudos to whoever realized BGP is [the only sane protocol to run between virtual machines and network core](/2016/03/dont-run-ospf-with-your-customers/). However, the routing in the network core was implemented with EBGP sessions between the three core devices, and my subscriber thought the correct way to do it would be to use IBGP and OSPF.
 <!--more-->
 {{<tldr intent="Summary" model="excited ChatGPT using GPT-4 model" comment="Had to tell ChatGPT to create an exciting summary, the regular one was too boring 🤷‍♂️">}}Discover the ideal BGP design for a small site with unusual routing configurations! Dive into the pros and cons of four design options, and learn why the traditional IBGP design stands out as the top choice. Unravel the mysteries of BGP's original intent and adaptability in a growing network!{{</tldr>}}
 
@@ -37,6 +37,6 @@ Adding new switches to the network is trivial in the IBGP+IGP design: enable OSP
 
 Extending EBGP-only design is more interesting if you buy your hardware from the vendors that love licensing games. Years ago some vendors wanted to sell you an extra license to give you the privilege of running BGP on access switches. That might no longer be the case, but you better check in advance. Finally, some low-end gear might not be able to run BGP at all.
 
-**Long story short:** there's a reason we've been using IBGP+IGP combo for so long (and [keep recommending it](/2023/04/multi-vendor-evpn-fabric.html)) -- that's how BGP was designed to be used, and it's always messy to try to pound a square peg into a round hole.
+**Long story short:** there's a reason we've been using IBGP+IGP combo for so long (and [keep recommending it](/2023/04/multi-vendor-evpn-fabric/)) -- that's how BGP was designed to be used, and it's always messy to try to pound a square peg into a round hole.
 
 [^RR]: Yeah, I know you could use route reflectors, but even that wouldn't help. The proof is left as an exercise for the reader.

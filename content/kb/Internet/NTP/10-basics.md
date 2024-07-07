@@ -2,7 +2,7 @@
 kb_section: NTP
 minimal_sidebar: true
 title: NTP Basics
-url: /kb/Internet/NTP/10-basics.html
+url: /kb/Internet/NTP/10-basics/
 ---
 The Network Time Protocol (NTP, [RFC 1305](http://tools.ietf.org/html/rfc1305)) is a simple protocol using UDP port 123. The RFC describes the protocol itself as well as the architectural framework and in-depth implementation recommendations.
 

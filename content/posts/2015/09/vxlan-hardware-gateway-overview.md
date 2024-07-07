@@ -5,7 +5,7 @@ tags:
 - VXLAN
 - data center
 title: VXLAN Hardware Gateway Overview
-url: /2015/09/vxlan-hardware-gateway-overview.html
+url: /2015/09/vxlan-hardware-gateway-overview/
 ---
 One of my readers stumbled upon blog post from 2011 explaining the potential implementations of VXLAN hardware gateways, and asked me if that information is still relevant.
 
@@ -42,13 +42,13 @@ Here's a brief overview of what individual vendors' hardware gateways (ToR switc
 
 ### Notes
 
--   Nuage (or Alcatel Lucent) has Virtualized Services Gateway, which is another VXLAN gateway, but as I couldn't find any documentation on Nuage or Alcatel Lucent web site (and the VSP documentation is behind a regwall), it's not on the list. [Five years later](/2010/09/hiding-documentation-will-they-never.html), some vendors still haven't got the memo.
+-   Nuage (or Alcatel Lucent) has Virtualized Services Gateway, which is another VXLAN gateway, but as I couldn't find any documentation on Nuage or Alcatel Lucent web site (and the VSP documentation is behind a regwall), it's not on the list. [Five years later](/2010/09/hiding-documentation-will-they-never/), some vendors still haven't got the memo.
 -   A10 Networks is another vendor who hasn\'t got that same memo yet.
 -   HP has VXLAN support on several Data Center switches, but according to the configuration guide(s) at the moment only 5930 supports multicast VXLAN and OVSDB. Please check HP documentation for up-to-date status;
 -   Juniper QFX5100, QFX10K, EX9200 and MX routers support VXLAN and OVSDB. QFX10K does not support multicast VXLAN (yet). Only EX9200 and MX routers support VXLAN routing.
 -   Multicast VXLAN support allows ToR switch to interact with Cisco Nexus 1000V and pre-NSX VMware VXLAN implementations;
 -   OVSDB is the protocol used by VMware NSX for Multiple Hypervisors to configure ToR switches. We don't know yet what VMware will use when support for hardware gateways will be added to NSX for vSphere, but I wouldn't be surprised if they were to use OVSDB;
--   VXLAN routing is tricky -- more details [here](/2014/07/layer-3-switching-over-vxlan-revisited.html) and [here](/2015/03/video-routing-over-vxlan.html);
+-   VXLAN routing is tricky -- more details [here](/2014/07/layer-3-switching-over-vxlan-revisited/) and [here](/2015/03/video-routing-over-vxlan/);
 -   EVPN control plane enables large L2 fabrics built on top of VXLAN and controller federation;
 
 For more details, go watch the two webinars (links above).

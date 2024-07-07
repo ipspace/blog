@@ -5,7 +5,7 @@ series_weight: 650
 tags:
 - high availability
 title: 'High Availability Planning: Identify the Weakest Link'
-url: /2016/04/high-availability-planning-identify.html
+url: /2016/04/high-availability-planning-identify/
 ---
 Everyone loves to talk about business critical applications that require extremely high availability, but it's rare to see someone analyze the whole application stack and identify the weakest link.
 
@@ -34,4 +34,4 @@ Now you're ready to start the discussion:
 -   What is the downtime caused by a failure of a non-redundant component?
 -   How often can you expect to see those failures?
 
-Getting answers to those questions (good luck ;) might make it easier to persuade the CIO that you company doesn't need a [L2 DCI for disaster recovery](/2013/01/long-distance-vmotion-stretched-ha.html) (which might happen every 10 years) when the non-redundant applications need a restart every month or remain unpatched for years because nobody wants to touch them... and if everything else fails, you can still [quote Gartner](/2015/09/blessed-by-gartner-stretched-vlans-make.html).
+Getting answers to those questions (good luck ;) might make it easier to persuade the CIO that you company doesn't need a [L2 DCI for disaster recovery](/2013/01/long-distance-vmotion-stretched-ha/) (which might happen every 10 years) when the non-redundant applications need a restart every month or remain unpatched for years because nobody wants to touch them... and if everything else fails, you can still [quote Gartner](/2015/09/blessed-by-gartner-stretched-vlans-make/).

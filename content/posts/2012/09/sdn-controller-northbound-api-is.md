@@ -6,7 +6,7 @@ comment: 'Open Networking Foundation (ONF) created a ginormous amount of OpenFlo
 
 
   Nor surprisingly, every controller vendor used a different API, creating [another
-  layer of lock-in](/2015/01/lock-in-is-inevitable-get-used-to-it.html), but ONF never
+  layer of lock-in](/2015/01/lock-in-is-inevitable-get-used-to-it/), but ONF never
   cared about that, because the most influential founding members planned to write
   their own controllers anyway.
 
@@ -29,7 +29,7 @@ tags:
 - SDN
 - OpenFlow
 title: SDN Controller Northbound API Is the Crucial Missing Piece
-url: /2012/09/sdn-controller-northbound-api-is.html
+url: /2012/09/sdn-controller-northbound-api-is/
 ---
 Imagine you'd like to write a simple Perl (or Python, Ruby, JavaScript -- you get the idea) script to automate a burdensome function on your server (or router/switch from any vendor running Linux/BSD behind the scenes) that the vendor never bothered to implement. The script interpreter relies on numerous APIs being available from the operating system -- from process API (to load and start the interpreter) to file system API, console I/O API, memory management API, and probably a few others.
 
@@ -43,7 +43,7 @@ I have some bad news for you: nobody is working on standardizing such an API (re
 
 Are you old enough to remember the video games for early IBM PC? None of them used MS-DOS. They were embedded software solutions that you had to boot off a floppy disk (remember those?) and then they took over all the hardware you had. That's exactly what we have in the SDN land today.
 
-Don't try to tell me I've missed [Flowvisor](https://openflow.stanford.edu/display/DOCS/Flowvisor) -- an OpenFlow controller that allocates slices of actual hardware to individual OpenFlow controllers. I haven't; but using Flowvisor to solve this problem is like using Xen (or KVM or ESXi) to boot multiple embedded video games in separate VMs. Not highly useful for a regular guy trying to steer some traffic around the network (or [any one of the other small things that bother us](/2011/11/openflow-enterprise-use-cases.html)), is it?
+Don't try to tell me I've missed [Flowvisor](https://openflow.stanford.edu/display/DOCS/Flowvisor) -- an OpenFlow controller that allocates slices of actual hardware to individual OpenFlow controllers. I haven't; but using Flowvisor to solve this problem is like using Xen (or KVM or ESXi) to boot multiple embedded video games in separate VMs. Not highly useful for a regular guy trying to steer some traffic around the network (or [any one of the other small things that bother us](/2011/11/openflow-enterprise-use-cases/)), is it?
 
 Also, don't tell me each SDN controller has an API. While NEC and startups like Big Switch Networks are creating something akin to a network operating system that we could use to program our network (no, I really don't want to deal with the topology discovery and fast failover myself), and each one of them has an API, no two APIs are even remotely similar.
 
@@ -53,7 +53,7 @@ I still remember the days when there were at least a [dozen operating systems ru
 
 There might be several good reasons for the current state of affairs:
 
--   The only people truly interested in OpenFlow are the [Googles of the world](/2012/05/openflow-google-brilliant-but-not.html) ([Nicira is using OpenFlow](/2012/02/nicira-bigswitch-nec-openflow-and-sdn.html) purely as an information transfer tool to get MAC-to-IP mappings into their vSwitches);
+-   The only people truly interested in OpenFlow are the [Googles of the world](/2012/05/openflow-google-brilliant-but-not/) ([Nicira is using OpenFlow](/2012/02/nicira-bigswitch-nec-openflow-and-sdn/) purely as an information transfer tool to get MAC-to-IP mappings into their vSwitches);
 -   Developers love using standard libraries and APIs other people created, and figure out all sorts of excellent reasons why their dynamic and creative work couldn't possibly be hammered into tight confines of a standard API;
 -   Nobody is [interested in creating a Linux-like solution](http://www.forbes.com/sites/ciocentral/2012/04/03/be-wary-of-geeks-bearing-gifts/); everyone is striving to achieve the maximum possible vendor lock-in;
 -   We still [don't know what we're looking for](http://en.wikipedia.org/wiki/Blind_men_and_an_elephant).

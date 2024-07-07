@@ -27,13 +27,13 @@ Fibbing always felt like a proof-of-concept to me. It does allow you to steer tr
 
 For more details:
 
-* Listen to the _[Fibbing: OSPF-Based Traffic Engineering](/2015/11/fibbing-ospf-based-traffic-engineering.html)_ episode of _[Software Gone Wild Podcast](https://www.ipspace.net/Podcast/Software_Gone_Wild/)_;
+* Listen to the _[Fibbing: OSPF-Based Traffic Engineering](/2015/11/fibbing-ospf-based-traffic-engineering/)_ episode of _[Software Gone Wild Podcast](https://www.ipspace.net/Podcast/Software_Gone_Wild/)_;
 * Watch the _[PCEP and BGP-LS Deep Dive](https://www.ipspace.net/PCEP_and_BGP-LS_Deep_Dive)_ webinar.
 * For a bigger picture, watch the 
 _[Switching, Routing and Bridging](https://my.ipspace.net/bin/list?id=Net101#SWITCH)_ part of _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar.
 
 {{<note free>}}Both webinars mentioned above are available with _[Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free)_{{</note>}}
 
-[^1]: That's also the reason I'm [highly recommending running BGP between your data center fabric and virtual appliances](/2013/08/virtual-appliance-routing-network.html). It looked like the VMware NSBU grasped the concept when they made BGP the only routing protocol supported in NSX-T, but of course the sane days didn't last long... NSX-T 3.1.1 [added OSPF support to NSX Edge](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/rn/VMware-NSX-T-Data-Center-311-Release-Notes.html).
+[^1]: That's also the reason I'm [highly recommending running BGP between your data center fabric and virtual appliances](/2013/08/virtual-appliance-routing-network/). It looked like the VMware NSBU grasped the concept when they made BGP the only routing protocol supported in NSX-T, but of course the sane days didn't last long... NSX-T 3.1.1 [added OSPF support to NSX Edge](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/rn/VMware-NSX-T-Data-Center-311-Release-Notes.html).
 
 [^2]: *Virtual circuits* are the important bit -- it doesn't matter whether they're established with RSVP, PCEP, or segment routing label stack pushed into head-end device.

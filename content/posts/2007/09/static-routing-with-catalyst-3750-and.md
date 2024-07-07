@@ -4,9 +4,9 @@ tags:
 - IP routing
 - LAN
 title: 'Static routing with Catalyst 3750: and the winner is …'
-url: /2007/09/static-routing-with-catalyst-3750-and.html
+url: /2007/09/static-routing-with-catalyst-3750-and/
 ---
-The [Static routing with Catalyst 3750](/2007/09/get-creative-static-routing-with.html) post has generated a lot of good, creative ideas. Some of the proposed solutions were better than the others and some were simply not implementable (but nonetheless, had great creative potential :). Here is my list of the favorites:
+The [Static routing with Catalyst 3750](/2007/09/get-creative-static-routing-with/) post has generated a lot of good, creative ideas. Some of the proposed solutions were better than the others and some were simply not implementable (but nonetheless, had great creative potential :). Here is my list of the favorites:
 
 **A routing protocol:** as a few of you have rightly pointed out, this is the best choice.
 

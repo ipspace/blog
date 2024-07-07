@@ -1,5 +1,5 @@
 ---
-url: /2009/03/generating-syslog-messages-from-tcl.html
+url: /2009/03/generating-syslog-messages-from-tcl/
 title: "Generating syslog messages from Tcl"
 date: "2009-03-04T06:49:00.000+01:00"
 tags: [ Tcl ]
