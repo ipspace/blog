@@ -7,7 +7,7 @@ tags:
 - workshop
 - QoS
 title: 'PFC/ETS and storage traffic: the real story'
-url: /2010/10/pfcets-and-storage-traffic-real-story.html
+url: /2010/10/pfcets-and-storage-traffic-real-story/
 ---
 
 <p>Data Center Ethernet (or DCB or CEE, depending on who you are) is a hot story these days and it’s no wonder that misconceptions galore. However, when I hear several CCIEs I highly respect talk about “Priority Flow Control can be used to stop all the other traffic when storage needs more bandwidth”, I get worried. Exactly the opposite is true: you use PFC to stop the overzealous storage traffic (primarily FCoE, but also iSCSI) to make sure you don’t drop it.</p>
@@ -22,8 +22,8 @@ url: /2010/10/pfcets-and-storage-traffic-real-story.html
 <p>Would it help to be able to stop TCP/IP traffic if it congests the network? Sometimes. Making TCP/IP lossless increases the overall throughput (that’s the reason you should make iSCSI lossless), but messes up TCP’s congestion avoidance mechanism that relies on occasional drops.</p>
 <h4>Dirty details</h4><p>Let’s mention one more technical detail: implementing PFC is expensive. You have to send PAUSE frames on <em>input </em>ports when <em>output </em>ports become congested. Unless you want to block all input ports when a single output port is congested (not a good idea), you have to build a sophisticated queuing mechanism similar to <em>Virtual Output Queues </em>on the Nexus switches, and be able to detect looming congestion well in advance (due to round-trip times between switches, PFC takes a while before the inbound traffic stops). That’s the reason Nexus 5000 supports only three PFC-enabled classes with strict MTU limitations in the current software.</p>
 <p>For more details, see the <a href="http://www.cisco.com/en/US/prod/collateral/switches/ps9441/ps9670/white_paper_c11-542809.pdf"><em>Priority Flow Control: Build Reliable Layer 2 Infrastructure</em></a> whitepaper from Cisco.</p>
-<h4>More information</h4><ul class="ListParagraph"><li><a href="/2010/09/introduction-to-8021qbb-priority-flow.html">Introduction to 802.1Qbb (Priority-based Flow Control — PFC)</a></li>
-<li><a href="/2010/09/introduction-to-8021qaz-enhanced.html">Introduction to 802.1Qaz (Enhanced Transmission Selection – ETS)</a></li>
+<h4>More information</h4><ul class="ListParagraph"><li><a href="/2010/09/introduction-to-8021qbb-priority-flow/">Introduction to 802.1Qbb (Priority-based Flow Control — PFC)</a></li>
+<li><a href="/2010/09/introduction-to-8021qaz-enhanced/">Introduction to 802.1Qaz (Enhanced Transmission Selection – ETS)</a></li>
 <li><a href="https://www.ipspace.net/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="https://www.ipspace.net/SingleRecording?code=DC30">buy a recording</a> or <a href="https://www.ipspace.net/Subscription">yearly subscription</a>) describes numerous Data Center technologies, including DCB, FCoE and iSCSI.</li>
 </ul>
 <p><b>Update:</b> you simply must read the <a href="http://etherealmind.com/network-zen-storage-qos/">Network ZEN perspective of this topic</a>.</p>

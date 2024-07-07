@@ -6,7 +6,7 @@ tags:
 - what went wrong
 - Internet
 title: The FTP Butterfly Effect
-url: /2010/03/ftp-butterfly-effect.html
+url: /2010/03/ftp-butterfly-effect/
 ---
 
 <p>Anyone dealing with FTP and firewalls has to ask himself “what were those guys <del class="corr">smoking</del><ins class="corr">thinking</ins>?” As we all know, FTP is <del class="corr">seriously broken</del> <ins class="corr">interestingly-designed</ins>:</p>
@@ -16,5 +16,5 @@ url: /2010/03/ftp-butterfly-effect.html
 </ul>
 <p>Once upon a time, there was a very good reason for this weird behavior. As Marcus Ranum explained in his <em><a href="http://www.youtube.com/watch?v=o59mQhBiUo4">Internet nails</a> </em>talk @ TEDx (the title is based on the <a href="http://en.wikipedia.org/wiki/For_Want_of_a_Nail_(proverb)"><em>For Want of a Nail</em></a><em> </em>rhyme), the original FTP program had to use two sessions because the sessions in the original (pre-TCP) Arpanet network were unidirectional. When TCP was introduced and two sessions were no longer needed (or, at least, they could be opened in the same direction), the programmer responsible for the FTP code was simply too lazy to fix it.</p>
 <!--more--><p>The list of problems created by someone saving a few hours of coding is long. The original sin was the widespread acceptance of the stupid idea that it’s OK to use server-to-client sessions and embedded layer-3 addresses in application data stream. As the programmers are usually not too versed in networking protocols, they looked at past examples whenever coding a new application and decided they can do the same thing; we’ve thus ended with numerous broken applications (including SIP) that need stateful firewall inspection and application-level gateways (ALG) to work with NAT.</p>
-<p>Just imagine how much simpler our life would be if we would only have to deal with client-to-server TCP sessions with no embedded addresses ... or if the <a href="/2009/08/what-went-wrong-tcpip-lacks-session.html">TCP/IP protocol stack would have a session layer</a> that would solve the peer-to-peer issues once and for all in a central piece of code.</p>
+<p>Just imagine how much simpler our life would be if we would only have to deal with client-to-server TCP sessions with no embedded addresses ... or if the <a href="/2009/08/what-went-wrong-tcpip-lacks-session/">TCP/IP protocol stack would have a session layer</a> that would solve the peer-to-peer issues once and for all in a central piece of code.</p>
 

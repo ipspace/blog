@@ -12,9 +12,9 @@ tags:
 - IP routing
 - Software Gone Wild
 title: Data Center Routing with RIFT on Software Gone Wild
-url: /2018/03/data-center-routing-with-rift-on.html
+url: /2018/03/data-center-routing-with-rift-on/
 ---
-Years ago Petr Lapukhov decided that it's a waste of time to try to make OSPF or IS-IS work in large-scale data center leaf-and-spine fabrics and figured out how to [use BGP as a better IGP](/2016/02/using-bgp-in-data-center-fabrics.html).
+Years ago Petr Lapukhov decided that it's a waste of time to try to make OSPF or IS-IS work in large-scale data center leaf-and-spine fabrics and figured out how to [use BGP as a better IGP](/2016/02/using-bgp-in-data-center-fabrics/).
 
 In the meantime, old-time routing gurus started designing routing protocols targeting a specific environment: highly meshed leaf-and-spine fabrics. First in the list: Routing in Fat Trees (RIFT).
 <!--more-->

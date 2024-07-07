@@ -4,7 +4,7 @@ tags:
 - data center
 - SAN
 title: ATAoE for Converged Data Center Networks? No Way
-url: /2010/09/ataoe-for-converged-data-center.html
+url: /2010/09/ataoe-for-converged-data-center/
 ---
 When I started writing about storage industry and its attempts to tweak Ethernet to its needs, someone mentioned ATAoE. I read the [ATAoE Wikipedia article](http://en.wikipedia.org/wiki/ATA_over_Ethernet) and concluded that this dinky technology probably makes sense in a small home office... and then I've stumbled across an [article in The Register that claimed you could run a 9000-user Exchange server on ATAoE storage](http://www.theregister.co.uk/2010/08/10/coraid_esg/). It was time to deep-dive into this "interesting" L2+7 protocol. As expected, there are numerous good reasons you won't hear about ATAoE in my [Data Center 3.0 for Networking Engineers](https://www.ipspace.net/DC30) webinar.
 
@@ -36,5 +36,5 @@ A protocol like this could have been good enough 30 years ago when TFTP was desi
 
 ### Related Blog Posts
 
-* [ATAoE: response from Coraid](/2010/09/ataoe-response-from-coraid.html)
-* [ATAoE Is Alive and Well](/2013/10/ataoe-is-alive-and-well.html)
+* [ATAoE: response from Coraid](/2010/09/ataoe-response-from-coraid/)
+* [ATAoE Is Alive and Well](/2013/10/ataoe-is-alive-and-well/)

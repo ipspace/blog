@@ -2,7 +2,7 @@
 kb_section: DataModels
 minimal_sidebar: true
 title: Replace IP Addresses with Per-Link Prefixes
-url: /kb/DataModels/40-Link Prefixes.html
+url: /kb/DataModels/40-Link Prefixes/
 pre_scroll: true
 ---
 We got very far from the [initial simplistic data model full of duplicate data](index.html): we [removed duplicate data](10-Removing%20Duplicate%20Data.html), [restructured the data model into a network-focused one](20-Restructure.html), and [optimized data structure to represent stub, P2P and multi-access links](30-Generalize%20Network%20Model.html). However, there's still a hidden redundancy in our data model. Consider the following bit of our data model describing a single P2P link:

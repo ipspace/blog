@@ -4,7 +4,7 @@ tags:
 - IPv6
 - Internet
 title: 'ITU: Grabbing a Piece of the IPv6 Pie?'
-url: /2009/11/itu-grabbing-piece-of-ipv6-pie.html
+url: /2009/11/itu-grabbing-piece-of-ipv6-pie/
 ---
 ITU (the organization formerly known as CCITT) is having a bit of a relevance problem these days: its flagship technological achievements, including X.25, ISDN, ATM, and SDH, are dead or headed toward oblivion ... and a former pariah, a group of geeks, is stealing the show and rolling out the Internet. No wonder their bureaucrats are having a hard time figuring out how to justify their existence. For years they've been [lamenting how much they've contributed to the Internet](http://www.itu.int/ITU-T/tsb-director/itut-wsis/files/zhao-netgov01.doc) (highly recommended reading for Monty Python fans) and how their [precious](http://www.youtube.com/watch?v=Gk4Ntcq5uNg) contributions were unacknowledged. Now they came forth with a "wonderful" idea: the history of IPv4 address allocation proves that the wealthy nations and early adopters managed to grab disproportionate parts of the IPv4 address space (well, that's true), so they made it their mission to protect the poor and underdeveloped countries in the brave new IPv6 world. In short, they want to become an independent address allocation entity (RIR). It looks like another worldwide bureaucracy is precisely what we need on top of all the other problems we have with IPv6 deployment.
 <!--more-->

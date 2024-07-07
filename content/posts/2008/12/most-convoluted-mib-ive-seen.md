@@ -1,5 +1,5 @@
 ---
-url: /2008/12/most-convoluted-mib-ive-seen.html
+url: /2008/12/most-convoluted-mib-ive-seen/
 title: "The most convoluted MIB I’ve seen"
 date: "2008-12-10T10:12:00.002+01:00"
 tags: [ network management,Tcl,QoS ]

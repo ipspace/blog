@@ -2,7 +2,7 @@
 kb_section: Ansible
 minimal_sidebar: true
 title: Sample Ansible-Based Network Automation Solutions
-url: /kb/Ansible/Sample_Ansible_Solutions.html
+url: /kb/Ansible/Sample_Ansible_Solutions/
 ---
 Most networking-focused Ansible examples or blog posts focus on basic proof-of-concept examples. We tried to collect more comprehensive solutions and articles that would help you become proficient in Ansible, and figure out how to best use Ansible in your first production-grade network automation solution:
 

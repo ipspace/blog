@@ -3,7 +3,7 @@ title: "BGP Route Reflectors in the Forwarding Path"
 date: 2022-11-10 07:31:00
 tags: [ BGP ]
 ---
-Bela Varkonyi left [two intriguing comments](/2022/10/bgp-route-reflector-next-hops.html#1481) on my _[Leave BGP Next Hops Unchanged on Reflected Routes](/2022/10/bgp-route-reflector-next-hops.html)_ blog post. Let's start with:
+Bela Varkonyi left [two intriguing comments](/2022/10/bgp-route-reflector-next-hops/#1481) on my _[Leave BGP Next Hops Unchanged on Reflected Routes](/2022/10/bgp-route-reflector-next-hops/)_ blog post. Let's start with:
 
 > The original RR design has a lot of limitations. For usual enterprise networks I always suggested to follow the topology with RRs (every interim node is an RR), since this would become the most robust configuration where a link failure would have the less impact.
 
@@ -44,7 +44,7 @@ Interestingly, if your IBGP sessions follow the physical topology, then it's OK 
 
 > If you implement a native RR topology following the physical topology, then changing the next hop might be meaningful, since the RR is always in the user data plane path and shares the fate of user data packets. BTW, this is the original IP networking concept. The routing protocol shall follow the same path as the user data plane.
 
-While I agree with him that [routing should rely on shared fate](/2014/08/fate-sharing-in-ip-networks.html), we usually use IGP to meet that requirement. In ye olden days we redistributed BGP into IGP, and believed a BGP prefix is reachable if IGP brought it to the other edge of the autonomous system. In the meantime, the global BGP table exploded, and the best we can do is to configure the routers to accept only loopback prefixes as the BGP next hops (as opposed to default route or aggregated prefixes). In the MPLS world, one could go a step further and consider a BGP next hop valid only when the ingress router has a valid LSP to the next hop.
+While I agree with him that [routing should rely on shared fate](/2014/08/fate-sharing-in-ip-networks/), we usually use IGP to meet that requirement. In ye olden days we redistributed BGP into IGP, and believed a BGP prefix is reachable if IGP brought it to the other edge of the autonomous system. In the meantime, the global BGP table exploded, and the best we can do is to configure the routers to accept only loopback prefixes as the BGP next hops (as opposed to default route or aggregated prefixes). In the MPLS world, one could go a step further and consider a BGP next hop valid only when the ingress router has a valid LSP to the next hop.
 
 An irrelevant aside: if you run IBGP sessions over the physical links, and change BGP next hops on every IBGP session, you managed to implement "_BGP as a better IGP_" design paradigm with IBGP. Congratulations, you saved an incredible amount of memory shortening the AS-path, and created a design that will keep you employed (and on pager duty) for decades.
 
@@ -52,7 +52,7 @@ Finally, Bela compared centralized BGP route reflectors with SDN controllers:
 
 > Ivan loves criticizing the centralized SDN controller design. The centralized RR design has almost the same issues... :-) I know people still prefer doing that, but this was not the original intention of RR. It is a misuse of the original RR concept.
 
-For the record: I did not criticize the idea of centralized SDN controllers, but the stupid idea of centralized control plane. It's well known[^WK] that [some problems](/2013/01/edge-and-core-openflow-and-why-mpls-is.html) (example: [optimal bandwidth reservations](/2018/02/machine-learning-and-network-traffic.html)) cannot be solved with a distributed system of autonomous agents.
+For the record: I did not criticize the idea of centralized SDN controllers, but the stupid idea of centralized control plane. It's well known[^WK] that [some problems](/2013/01/edge-and-core-openflow-and-why-mpls-is/) (example: [optimal bandwidth reservations](/2018/02/machine-learning-and-network-traffic/)) cannot be solved with a distributed system of autonomous agents.
 
 [^WK]: A wonderful [handwaving](https://wiki.c2.com/?HandWaving) phrase used when you're too lazy to find supporting evidence.
 

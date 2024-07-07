@@ -1,12 +1,12 @@
 ---
-url: /2018/05/happy-eyeballs-v2-and-how-i-was-wrong.html
+url: /2018/05/happy-eyeballs-v2-and-how-i-was-wrong/
 title: "Happy Eyeballs v2 (and how I Was Wrong Again)"
 date: "2018-05-28T08:34:00.000+02:00"
 tags: [ IPv6 ]
 ---
 
-<p>In <a href="/2017/12/moving-complexity-to-application-layer.html"><em>Moving Complexity to Application Layer</em></a><em> </em>I discussed the idea of trying to use all addresses returned in a DNS response when trying to establish a connection with a server, concluding with “<em>I don’t think anyone big enough to influence browser vendors is interested in reinventing this particular wheel.</em>”</p>
+<p>In <a href="/2017/12/moving-complexity-to-application-layer/"><em>Moving Complexity to Application Layer</em></a><em> </em>I discussed the idea of trying to use all addresses returned in a DNS response when trying to establish a connection with a server, concluding with “<em>I don’t think anyone big enough to influence browser vendors is interested in reinventing this particular wheel.</em>”</p>
 <p>I’m really glad to report I was wrong ;) This is what <a href="https://tools.ietf.org/html/rfc8305">RFC 8305 (Happy Eyeballs v2)</a> says:<!--more--></p>
 <blockquote class="cite">Before attempting to connect to any of the resolved destination addresses, the client should define the order in which to start the attempts.  Once the order has been defined, the client can use a simple algorithm for racing each option after a short delay (see <a href="https://tools.ietf.org/html/rfc8305#section-5">Section 5</a>).  <strong>It is important that the ordered list involve all addresses from both families that have been received by this point, as this allows the client to get the racing effect of Happy Eyeballs for the entire list, not just the first IPv4 and first IPv6 addresses.</strong></blockquote>
-<p>As the RFC was authored by engineers from Apple, I’m positive we’ll see at least some implementations in foreseeable future. Who knows what the alternative mobile platform will do; they love <a href="/2017/12/unique-ipv6-prefix-per-host-how-complex.html">making people who disagree with them jump through all sorts of hoops</a>. </p>
+<p>As the RFC was authored by engineers from Apple, I’m positive we’ll see at least some implementations in foreseeable future. Who knows what the alternative mobile platform will do; they love <a href="/2017/12/unique-ipv6-prefix-per-host-how-complex/">making people who disagree with them jump through all sorts of hoops</a>. </p>
 

@@ -3,7 +3,7 @@ title: "Repost: Drawbacks and Pitfalls of Cut-Through Switching"
 date: 2020-12-14 07:44:00
 tags: [ switching ]
 ---
-Minh Ha left a great comment describing additional pitfalls of cut-through switching on my [Chasing CRC Errors](/2020/12/chasing-crc-errors-data-center-fabric.html) blog post. Here it is (lightly edited).
+Minh Ha left a great comment describing additional pitfalls of cut-through switching on my [Chasing CRC Errors](/2020/12/chasing-crc-errors-data-center-fabric/) blog post. Here it is (lightly edited).
 
 ---
 

@@ -8,7 +8,7 @@ tags:
 title: 'Video: IPv6 RA Guard and Extension Headers'
 video_tag: ipv6sec
 ---
-Last week's IPv6 security video [introduced the rogue IPv6 RA challenges](/2022/06/video-rogue-ra-challenges.html) and the usual countermeasure -- RA guard. Unfortunately, IPv6 tends to be a wonderfully extensible protocol, creating all sorts of opportunities for nefarious actors and security researchers.
+Last week's IPv6 security video [introduced the rogue IPv6 RA challenges](/2022/06/video-rogue-ra-challenges/) and the usual countermeasure -- RA guard. Unfortunately, IPv6 tends to be a wonderfully extensible protocol, creating all sorts of opportunities for nefarious actors and security researchers.
 
 For years, the networking vendors were furiously trying to plug the holes created by the academically minded IPv6 designers in love with fragmented extension headers. In the meantime, security researches had absolutely no problem finding yet another weird combination of IPv6 headers that would bypass any IPv6 RA guard implementation until IETF gave up and admitted [one cannot have "infinitely extensible" and "secure" in the same sentence](https://datatracker.ietf.org/doc/html/rfc6980#section-5). 
 

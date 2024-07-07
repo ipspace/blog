@@ -7,7 +7,7 @@ anycast_tag: intro
 dcbgp_tag: interesting
 series_weight: 400
 ---
-[Pete Lumbis](/2021/02/does-ucmp-make-sense.html#421) and [Network Ninja](/2021/04/ucmp-leaf-spine-fabrics.html#540) mentioned an interesting Unequal-Cost Multipathing (UCMP) data center use case in their comments to my [UCMP-related blog posts](/series/ucmp.html): anycast servers.
+[Pete Lumbis](/2021/02/does-ucmp-make-sense/#421) and [Network Ninja](/2021/04/ucmp-leaf-spine-fabrics/#540) mentioned an interesting Unequal-Cost Multipathing (UCMP) data center use case in their comments to my [UCMP-related blog posts](/series/ucmp/): anycast servers.
 
 Here's a typical scenario they mentioned: a bunch of servers, randomly connected to multiple leaf switches, is offering a service on the *same IP address* (that's where *anycast* comes from).
 
@@ -25,22 +25,22 @@ It's easy to figure out that the design works in a steady-state situation. Data 
 
 ### Dealing with Link- or Node Loss
 
-Most production-grade hardware ECMP implementations use *hash buckets* ([more details](/2020/11/fast-failover-implementation.html)), and if the number of next hops changes due to a topology change, the hash buckets are reassigned, sending most of the traffic to a server that has no idea what to do with it. Modern ECMP implementations avoid that with *consistent hashing*. Consistent hashing tries to avoids recomputing the hash buckets after a topology change[^1]:
+Most production-grade hardware ECMP implementations use *hash buckets* ([more details](/2020/11/fast-failover-implementation/)), and if the number of next hops changes due to a topology change, the hash buckets are reassigned, sending most of the traffic to a server that has no idea what to do with it. Modern ECMP implementations avoid that with *consistent hashing*. Consistent hashing tries to avoids recomputing the hash buckets after a topology change[^1]:
 
 * Hash buckets for valid next hops are not touched.
 * Invalid hash buckets (due to invalid next hop) are reassigned to valid next hops.
 
-[^1]: Please note that this is a control-plane functionality where you can take all the time in the world to get it done, even more so if you're able to [precompute the backup next hops](/2020/12/fast-failover-techniques.html).
+[^1]: Please note that this is a control-plane functionality where you can take all the time in the world to get it done, even more so if you're able to [precompute the backup next hops](/2020/12/fast-failover-techniques/).
 
 Obviously we'll get some misdirected traffic, but those sessions are hopelessly lost anyway -- they were connected to a server that is no longer reachable.
 
 ### Adding New Servers
 
-The really fun part starts when you try to *add a server*. To do that, the last-hop switch has to take a few buckets from every valid next hop, and assign them to the new server. That's really hard to do without disrupting something[^4]. Even waiting for a bucket to get idle (the *[flowlet load balancing](/2015/01/improving-ecmp-load-balancing-with.html)* approach) doesn't help -- an idle bucket does not mean there's no active TCP session using it.
+The really fun part starts when you try to *add a server*. To do that, the last-hop switch has to take a few buckets from every valid next hop, and assign them to the new server. That's really hard to do without disrupting something[^4]. Even waiting for a bucket to get idle (the *[flowlet load balancing](/2015/01/improving-ecmp-load-balancing-with/)* approach) doesn't help -- an idle bucket does not mean there's no active TCP session using it.
 
 [^4]: And even harder if you want to solve it in hardware at terabit speeds
 
-Oh, and finally there's ICMP: ICMP replies include the original TCP/UDP port numbers, but no hardware switch is able to dig that far into the packet, so the ICMP reply is usually sent to some random server that has no idea what to do with it. Welcome to [PMTUD](/kb/Internet/PMTUD/20-mtu-discovery.html) hell.
+Oh, and finally there's ICMP: ICMP replies include the original TCP/UDP port numbers, but no hardware switch is able to dig that far into the packet, so the ICMP reply is usually sent to some random server that has no idea what to do with it. Welcome to [PMTUD](/kb/Internet/PMTUD/20-mtu-discovery/) hell.
 
 ### Making Local TCP Anycast Work
 

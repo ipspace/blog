@@ -4,7 +4,7 @@ tags:
 - automation
 - SDN
 title: If You Have to Simulate Your Whole Network, You're Doing It Wrong
-url: /2019/09/if-you-have-to-simulate-your-whole.html
+url: /2019/09/if-you-have-to-simulate-your-whole/
 ---
 *This blog post was initially sent to subscribers of my SDN and Network Automation mailing list. *[*Subscribe here*](http://www.ipspace.net/Subscribe/Five_SDN_Tips)*.*
 

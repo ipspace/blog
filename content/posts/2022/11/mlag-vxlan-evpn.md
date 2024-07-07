@@ -16,7 +16,7 @@ There's no better way to start this blog post than with a widespread myth: we do
 
 **TL&DR**: This myth is close to the [not even wrong](https://en.wikipedia.org/wiki/Not_even_wrong) category.
 
-As we discussed in the [MLAG System Overview](/2022/06/mlag-deep-dive-overview.html) blog post, every MLAG implementation needs at least three functional components:
+As we discussed in the [MLAG System Overview](/2022/06/mlag-deep-dive-overview/) blog post, every MLAG implementation needs at least three functional components:
 <!--more-->
 * Forwarding table synchronization -- members of an MLAG cluster have to synchronize MAC and ARP tables.
 * Synchronized control plane protocols -- members of an MLAG cluster must use the same system ID for LACP and should synchronize STP state (often implemented with running STP on a single member of the MLAG cluster)
@@ -35,11 +35,11 @@ That must be sad news for the true believers in the powers of EVPN, but at least
 
 That is almost correct, apart from the last bit. 
 
-{{<note info>}}For more details, watch the [EVPN Multihoming Deep Dive](/2022/11/video-evpn-multihoming-deep-dive.html) video by Lukas Krattiger.{{</note>}}
+{{<note info>}}For more details, watch the [EVPN Multihoming Deep Dive](/2022/11/video-evpn-multihoming-deep-dive/) video by Lukas Krattiger.{{</note>}}
 
 ### EVPN MAC-Based Load Balancing
 
-Let's use the same data center fabric we discussed in the [Combining MLAG Clusters with VXLAN Fabric](/2022/09/mlag-deep-dive-vxlan-fabric.html) blog post:
+Let's use the same data center fabric we discussed in the [Combining MLAG Clusters with VXLAN Fabric](/2022/09/mlag-deep-dive-vxlan-fabric/) blog post:
 
 {{<figure src="/2022/09/MLAG-VXLAN-topology.jpg" caption="MLAG cluster connected to a VXLAN fabric">}}
 
@@ -57,9 +57,9 @@ Software-based forwarding is relatively easy to fix: FRR uses _nexthop_ objects 
 
 According to Junos [Dynamic Load Balancing in an EVPN-VXLAN Network](https://www.juniper.net/documentation/us/en/software/junos/evpn-vxlan/topics/concept/evpn-vxlan-dynamic-load-balancing.html), Juniper implemented *nexthop* objects for VTEP load balancing in all QFX switches, including the old QFX5100 that uses Broadcom Trident II chipset. OTOH, there's a blog post from a non-Juniper JNCIE [describing the EVPN/ESI limitations of QFX-series switches](https://danhearty.wordpress.com/2020/04/25/evpn-vxlan-virtual-gateway-qfx5k-forwarding/) and claiming that "_This behavior is well documented and there are some talks about Broadcom working with the vendors to improve gateway load-balancing with ESI functionality._" (HT: _[Daniel](#1502)_)
 
-Does that mean that VXLAN-enabled ASICs always supported this functionality but it took Broadcom and networking vendors years to implement it? I guess we'll never know due to the wonderful [Broadcom documentation policy](/2016/05/what-are-problems-with-broadcom.html), but if you have lab results proving that traffic from a single ingress switch toward a single MLAG-connected MAC address gets distributed across a pair of egress switches I'd be glad to know about them.
+Does that mean that VXLAN-enabled ASICs always supported this functionality but it took Broadcom and networking vendors years to implement it? I guess we'll never know due to the wonderful [Broadcom documentation policy](/2016/05/what-are-problems-with-broadcom/), but if you have lab results proving that traffic from a single ingress switch toward a single MLAG-connected MAC address gets distributed across a pair of egress switches I'd be glad to know about them.
 
-In the meantime, some vendors (example: Cisco) keep using anycast VTEP IP addresses described in the [Combining MLAG Clusters with VXLAN Fabric](/2022/09/mlag-deep-dive-vxlan-fabric.html) blog post with EVPN control plane. Yet again, I can't comment whether that's due to hardware limitations, code reuse, or backward compatibility.
+In the meantime, some vendors (example: Cisco) keep using anycast VTEP IP addresses described in the [Combining MLAG Clusters with VXLAN Fabric](/2022/09/mlag-deep-dive-vxlan-fabric/) blog post with EVPN control plane. Yet again, I can't comment whether that's due to hardware limitations, code reuse, or backward compatibility.
 
 Anyway, even when using anycast IP address, using EVPN as the control plane protocol instead of dynamic MAC learning does provide a significant benefit -- the egress PE devices can advertise whatever next hop they wish in the MAC+IP update messages. An EVPN/VXLAN MLAG implementation could use this functionality to differentiate between multihomed and orphan nodes:
 

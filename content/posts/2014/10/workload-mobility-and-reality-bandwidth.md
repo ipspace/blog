@@ -10,7 +10,7 @@ tags:
 - WAN
 - high availability
 title: 'Workload Mobility and Reality: Bandwidth Constraints'
-url: /2014/10/workload-mobility-and-reality-bandwidth.html
+url: /2014/10/workload-mobility-and-reality-bandwidth/
 ---
 People talking about long-distance workload mobility and cloudbursting often forget the physical reality documented in the [fallacies of distributed computing](http://en.wikipedia.org/wiki/Fallacies_of_distributed_computing). Today we'll focus on *bandwidth*, in a follow-up blog post we'll deal with its ugly cousin *latency*.
 
@@ -62,6 +62,6 @@ Try to remain realistic when estimating the available bandwidth between applicat
 
 ### Isn't This Obvious?
 
-It should be, but as one of my fellow networking gurus recently told me: "You have no idea how many times your [*Do the math before considering long-distance vMotion*](/2011/09/long-distance-vmotion-for-disaster.html) post saved my day".
+It should be, but as one of my fellow networking gurus recently told me: "You have no idea how many times your [*Do the math before considering long-distance vMotion*](/2011/09/long-distance-vmotion-for-disaster/) post saved my day".
 
 Also, keep in mind that these days bandwidth is no longer the primary constraint. Latency plays a much bigger role than it used to.

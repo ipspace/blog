@@ -4,7 +4,7 @@ tags:
 - BGP
 - load balancing
 title: Load Balancing with Parallel EBGP Sessions
-url: /2008/08/load-balancing-with-parallel-ebgp.html
+url: /2008/08/load-balancing-with-parallel-ebgp/
 lastmod: 2020-12-28 12:35:00
 ---
 Establishing parallel EBGP sessions across parallel links between two edge routers (EBGP peers) -- as displayed in the diagram below -- is the most versatile form of EBGP load balancing. It does not require static routing or extra routing protocol (like the design running EBGP between routers’ loopback interfaces), device-specific tricks like configuring the same IP address on multiple interfaces) or specific layer-2 encapsulation (like Ethernet LAG or Multilink PPP).
@@ -13,7 +13,7 @@ It even allows proportional load-balancing across unequal-bandwidth links and co
 <!--more-->
 {{<ct3_rescue>}}
 
-{{<figure src="BGP_ParallelEBGPSessions.png" caption="Parallel EBGP sessions">}}
+{{<figure src="/2008/08/BGP_ParallelEBGPSessions.png" caption="Parallel EBGP sessions">}}
 
 **Benefits**
 
@@ -135,7 +135,7 @@ Routing entry for 10.2.2.0/24
 
 ### Bandwidth-proportional load balancing
 
-Configure [DMZ Link Bandwidth](/2008/07/unequal-bandwidth-ebgp-load-balancing.html) feature to enable load balancing proportional to the bandwidth of the parallel links:
+Configure [DMZ Link Bandwidth](/2008/07/unequal-bandwidth-ebgp-load-balancing/) feature to enable load balancing proportional to the bandwidth of the parallel links:
 
 -   Configure **neighbor _ip-address_ dmzlink-bw** on all EBGP sessions with the EBGP peer router.
 -   Configure proportional load sharing with the **bgp dmzlink-bw** router configuration command.

@@ -5,7 +5,7 @@ tags:
 - OSPF
 - IP routing
 title: 'OSPF Default Route: Design Scenarios'
-url: /2007/06/ospf-default-route-design-scenarios.html
+url: /2007/06/ospf-default-route-design-scenarios/
 ---
 Here's an interesting OSPF-related question I got::
 
@@ -17,7 +17,7 @@ As always, the answer is *it depends*. If your OSPF edge routers have external d
 
 If you use something other than OSPF as the core routing protocol of your network (as shown in the next diagram), then you'd want the core routers to announce the default route into OSPF to attract the traffic from the edges regardless of whether they have the default route themselves or not. In this scenario, you'd use **default-information originate always**.
 
-{{<figure src="OSPF_B.jpg">}}
+{{<figure src="/2007/06/OSPF_B.jpg">}}
 
 {{<note>}}BGP is almost always the core routing protocol of Service Provider networks. You can also use it to make a large enterprise network scalable.{{</note>}}
 

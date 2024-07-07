@@ -12,7 +12,7 @@ Let's start with the abstract:
 
 > Every significant element of TCP, from its stream orientation to its expectation of in-order packet delivery, is wrong for the data center. It is time to recognize that TCP's problems are too fundamental and interrelated to be fixed; the only way to harness the full performance potential of modern networks is to introduce a new transport protocol into the data center. 
 
-If that doesn't sound like a manifesto rallying point, I don't know what does. Everyone is [fed up with TCP in one way or another](/2019/10/saved-tcp-is-most-expensive-part-of.html) (quite often because TCP gets blamed for unrelated problems like the [lack of a session layer](/2009/08/what-went-wrong-tcpip-lacks-session.html)), so it's not hard to react to that message with a "hear, hear!!!" TCP specifications are also full of arcane nerd knobs resulting in [bizarre behavior](https://withinboredom.info/blog/2022/12/29/golang-is-evil-on-shitty-networks/) due to [incompatible features](https://en.wikipedia.org/wiki/TCP_delayed_acknowledgment) being [enabled by default](https://news.ycombinator.com/item?id=34180239) in different TCP/IP protocol stacks. 
+If that doesn't sound like a manifesto rallying point, I don't know what does. Everyone is [fed up with TCP in one way or another](/2019/10/saved-tcp-is-most-expensive-part-of/) (quite often because TCP gets blamed for unrelated problems like the [lack of a session layer](/2009/08/what-went-wrong-tcpip-lacks-session/)), so it's not hard to react to that message with a "hear, hear!!!" TCP specifications are also full of arcane nerd knobs resulting in [bizarre behavior](https://withinboredom.info/blog/2022/12/29/golang-is-evil-on-shitty-networks/) due to [incompatible features](https://en.wikipedia.org/wiki/TCP_delayed_acknowledgment) being [enabled by default](https://news.ycombinator.com/item?id=34180239) in different TCP/IP protocol stacks. 
 
 However, most attempts to persuade networking engineers to ignore the laws of physics inevitably fail when marketing encounters reality. Let's see how well the _It's Time to Replace TCP in the Datacenter_ article fares in that respect.
 
@@ -36,7 +36,7 @@ Ignoring the biased abstract, let's dig into the technical details, starting wit
 
 So far so good, but there's a conspicuously missing requirement in that list: the recipient must know when it's safe to start working on a message, and it might not be safe to handle incoming messages out-of-order. While the order of execution might not matter for read-only transactions with no side effects, it's crucial if the messages cause a state change in the recipient application.
 
-While the read-only transactions are usually more common than the read-write ones, the latter ones tend to impact data consistency, and raise the interesting challenge of providing consistent data to read-after-write transactions. Someone has to reshuffle incoming out-of-order messages into the sequence in which they were sent, and if the transport protocol is not doing that, everyone else has to reinvent the wheel. Look at the [socket API](/2009/08/what-went-wrong-socket-api.html) or [happy eyeballs](/2013/03/happy-eyeballs-happiness-defined-by.html) if you want to know how well that ends.
+While the read-only transactions are usually more common than the read-write ones, the latter ones tend to impact data consistency, and raise the interesting challenge of providing consistent data to read-after-write transactions. Someone has to reshuffle incoming out-of-order messages into the sequence in which they were sent, and if the transport protocol is not doing that, everyone else has to reinvent the wheel. Look at the [socket API](/2009/08/what-went-wrong-socket-api/) or [happy eyeballs](/2013/03/happy-eyeballs-happiness-defined-by/) if you want to know how well that ends.
 
 The *efficient load balancing across server cores* (as opposed to *across the network*) is also worrying -- it implies the CPU cores are the bottleneck, and might indicate unfamiliarity with the state-of-the-art high-speed packet processing. The focus on CPU cores and hotspots described in the deep-dive article might be an artifact of using small number of TCP sessions, which is an unnecessary artificial restriction -- _[systems running Nginx or NodeJS have been scaled to 1-million connections per server](https://blog.erratasec.com/2012/10/scalability-is-systemic-anomaly.html#.Y59TJewo_lw)_ a decade ago. Statistical distribution of TCP sessions to cores would also be much better with a larger number of TCP sessions.
 
@@ -58,7 +58,7 @@ The first two points are valid -- TCP was designed to be a connection-oriented p
 
 * **What's wrong with Infiniband?** Environments focused on low latency often use Infiniband. Why should we use Homa to solve the challenges it is supposed to solve if we have a ready-to-use proven technology?
 * **What's wrong with RoCE?** Maybe you dislike Infiniband and prefer Ethernet as the transport fabric. In that case, you could use RDMA over Converged Ethernet (RoCE) as a low-latency high-throughput mechanism.
-* **What's wrong with existing alternatives?** Even if you don't like RDMA, you could choose between several existing message-oriented transport protocols. [SCTP](/2009/08/what-went-wrong-sctp.html) and [QUIC](/2022/10/worth-reading-quic-tcp.html) immediately come to mind. There's also [SRD](/2022/12/quick-look-aws-srd.html) used by AWS.
+* **What's wrong with existing alternatives?** Even if you don't like RDMA, you could choose between several existing message-oriented transport protocols. [SCTP](/2009/08/what-went-wrong-sctp/) and [QUIC](/2022/10/worth-reading-quic-tcp/) immediately come to mind. There's also [SRD](/2022/12/quick-look-aws-srd/) used by AWS.
 * **What happened to other RPC frameworks?** We had solutions implementing Remote Procedure Calls (RPC) on top of UDP, including Sun RPC, DNS and NFS. Some of them faded away; others started using TCP as an alternate transport mechanism instead of improving UDP. gRPC (the new cool RPC kid) uses HTTP/2[^gRPC] which rides on top of TCP. Why should that be the case, considering how bad TCP supposedly is? 
 * **Why is everyone still using TCP?** There's no regulatory requirement to use TCP, and everyone is unhappy with it. Why are we still using it? Why is nobody using alternatives like SCTP? Why is there no QUIC-like protocol but without encryption (which is often not needed within data centers)? Why is nobody (apart from giants like Google and AWS) investing significant resources in developing an alternative protocol? Are we all lazy, or incompetent, or is TCP just good enough to shrug and move on?
 
@@ -75,7 +75,7 @@ Starting with *bandwidth sharing*, the article claims that:
 That claim ignores a few minor details:
 
 * It's really hard to influence incoming traffic.
-* Bandwidth sharing is just a side-effect of running many independent TCP sessions across a network using FIFO queueing, but even then it's [far from ideal](/2022/11/worth-reading-congestion-control-not-fair.html).
+* Bandwidth sharing is just a side-effect of running many independent TCP sessions across a network using FIFO queueing, but even then it's [far from ideal](/2022/11/worth-reading-congestion-control-not-fair/).
 * While a TCP/IP stack might try to provide fair scheduling of outbound traffic (but often does not), all bets are off once the traffic enters the network.
 * Obviously, one could use QoS mechanisms (including priority queuing and weighted round-robin queuing) to change that behavior should one wish to do so.
 
@@ -93,7 +93,7 @@ Let me also reiterate that this is not how TCP is commonly used. Environments in
 
 Anyway, ignoring the "apples to mushroom soup" comparison, which skews the results so far that they become meaningless, let's focus on incast-generated congestion. Yet again, the countermeasures have been known for decades, from flow-based queuing to priority queuing or data center TCP (DCTCP) that reduces the average queue length. 
 
-In any case, once we accept that it doesn't make sense to use a single high-volume TCP session between two nodes, what's stopping an optimized TCP implementation from setting a higher priority on traffic belonging to low-bandwidth conversations[^OC], similar to a [proof-of-concept implemented in Open vSwitch years ago](/2014/06/mice-elephants-and-virtual-switches.html)[^HP].
+In any case, once we accept that it doesn't make sense to use a single high-volume TCP session between two nodes, what's stopping an optimized TCP implementation from setting a higher priority on traffic belonging to low-bandwidth conversations[^OC], similar to a [proof-of-concept implemented in Open vSwitch years ago](/2014/06/mice-elephants-and-virtual-switches/)[^HP].
 
 [^HP]: Reality might intervene: the network devices often ignore those signals as most networks don't trust host QoS marking, usually for an excellent reason -- everyone thinks whatever they're doing must be high priority.
 
@@ -109,7 +109,7 @@ IP never guaranteed in-order delivery[^RSRB], so TCP never assumed in-order pack
 
 [^OOI]: Or so I was told by people who worked on TCP/IP implementations for ages. Please feel free to correct my ignorance.
 
-But wait, it gets worse. When AWS [introduced SRD as the transport protocol for overlay virtual networks](/2022/12/quick-look-aws-srd.html), they claimed they observed a significant TCP performance improvements due to SRD packet spraying. At the same time, the Homa _position paper_ claims that:
+But wait, it gets worse. When AWS [introduced SRD as the transport protocol for overlay virtual networks](/2022/12/quick-look-aws-srd/), they claimed they observed a significant TCP performance improvements due to SRD packet spraying. At the same time, the Homa _position paper_ claims that:
 
 > However, packet spraying cannot be used with TCP since it could change the order in which packets arrive at their destination. 
 
@@ -121,7 +121,7 @@ The ultimate gem in this section is the following handwaving argument:
 
 As the server-to-network links tend to be an order of magnitude slower than the core links, I hypothesize that it takes a significant amount of bad luck to get core congestion solely based on flow-consistent routing. The statistical details are left as an exercise for the reader.
 
-Regardless of the validity of that claim, flow-consistent routing might result in imbalance in edge or core link utilization, but even there we have numerous well-known solutions. I [wrote about flowlets in 2015](/2015/01/improving-ecmp-load-balancing-with.html) when there were already several production-grade implementations, while the [FlowBender paper](http://conferences2.sigcomm.org/co-next/2014/CoNEXT_papers/p149.pdf) was published in 2014. There's also the [Conga paper](https://people.csail.mit.edu/alizadeh/papers/conga-sigcomm14.pdf) implemented in Cisco ACI, and a [number of other well-known mechanisms](/2021/03/topology-congestion-driven-load-balancing.html) that can be used to alleviate the imbalance.
+Regardless of the validity of that claim, flow-consistent routing might result in imbalance in edge or core link utilization, but even there we have numerous well-known solutions. I [wrote about flowlets in 2015](/2015/01/improving-ecmp-load-balancing-with/) when there were already several production-grade implementations, while the [FlowBender paper](http://conferences2.sigcomm.org/co-next/2014/CoNEXT_papers/p149.pdf) was published in 2014. There's also the [Conga paper](https://people.csail.mit.edu/alizadeh/papers/conga-sigcomm14.pdf) implemented in Cisco ACI, and a [number of other well-known mechanisms](/2021/03/topology-congestion-driven-load-balancing/) that can be used to alleviate the imbalance.
 
 ### Is It Time to Replace TCP in Data Centers?
 

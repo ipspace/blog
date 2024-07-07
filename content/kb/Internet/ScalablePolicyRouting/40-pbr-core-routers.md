@@ -3,7 +3,7 @@ kb_section: ScalablePolicyRouting
 minimal_sidebar: true
 pre_scroll: true
 title: Configure Policy Routing on the Core Routers
-url: /kb/Internet/ScalablePolicyRouting/40-pbr-core-routers.html
+url: /kb/Internet/ScalablePolicyRouting/40-pbr-core-routers/
 ---
 BGP configuration on the *Legacy* router changes only slightly: a route-map is attached to the network statement advertising the IP prefixes of the legacy servers:
 

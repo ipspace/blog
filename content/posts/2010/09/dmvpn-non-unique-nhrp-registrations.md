@@ -4,7 +4,7 @@ dmvpn_tag: quirk
 tags:
 - DMVPN
 title: 'DMVPN: Non-Unique NHRP Registrations'
-url: /2010/09/dmvpn-non-unique-nhrp-registrations.html
+url: /2010/09/dmvpn-non-unique-nhrp-registrations/
 ---
 During my last DMVPN webinar, one of the students mentioned the need for non-unique NHRP registrations in environments where the public IP address of a DMVPN spoke site changes due to DHCP lease expiration or PPPoE session termination. Finally I found some time to recreate the scenario in my DMVPN lab; here are the results.
 <!--more-->

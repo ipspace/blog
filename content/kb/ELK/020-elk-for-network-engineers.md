@@ -4,7 +4,7 @@ minimal_sidebar: true
 pre_scroll: true
 title: Using Elastic Stack in Networking and Security
 toc_title: Using Elastic Stack
-url: /kb/ELK/020-elk-for-network-engineers.html
+url: /kb/ELK/020-elk-for-network-engineers/
 ---
 Any information system gets through many incidents every year. Most of them are light, but (hopefully) very few can be very serious. The key to resolve incidents fast enough, additionally resulting in a valuable "lesson learned," is visibility.
 
@@ -26,7 +26,7 @@ To give you a few examples - you can do all these things (and many more) with El
 
 Enterprise-level scalable and resilient ELK architectures will be discussed in the future. We'll start with a simple ELK configuration useful as a learning lab:
 
-{{<figure src="elk-1.png" caption="A simple ELK(B) architecture">}}
+{{<figure src="../elk-1.png" caption="A simple ELK(B) architecture">}}
 
 - Logstash is the first log receiver you'll focus on to ingest Syslog and NetFlow logs. Logstash parses and enriches logs before storing them to Elasticsearch.
 - Beats are agents installed into Linux or Windows systems to collect logs. Beats can write directly to Elasticsearch, but I usually prefer to pass them trough Logstash for enrichment.

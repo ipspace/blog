@@ -6,17 +6,17 @@ tags:
 - workshop
 - FCoE
 title: FCoE between data centers? Forget it!
-url: /2010/11/fcoe-between-data-centers-forget-it.html
+url: /2010/11/fcoe-between-data-centers-forget-it/
 ---
 
 <p>Was anyone trying to sell you the “wonderful” idea of running FCoE between Data Centers instead of FC-over-DWDM or FCIP? Sounds great ... until you figure out it won’t work. Ever ... or at least until switch vendors drastically increase interface buffers on the 10GE ports.</p>
-<p>FCoE requires lossless Ethernet between its “routers” (Fiber Channel Forwarders – see <a href="/2010/08/multihop-fcoe-101.html">Multihop FCoE 101</a> for more details), which can only be provided with Data Center Bridging (DCB) standards, specifically <a href="/2010/09/introduction-to-8021qbb-priority-flow.html">Priority Flow Control (PFC)</a>. However, if you want to have lossless Ethernet between two points, every layer-2 (or higher) device in the path has to support DCB, which probably rules out any existing layer-2+ solution (including Carrier Ethernet, pseudowires, VPLS or OTV). The only option is thus bridging over dark fiber or a DWDM wavelength.</p>
+<p>FCoE requires lossless Ethernet between its “routers” (Fiber Channel Forwarders – see <a href="/2010/08/multihop-fcoe-101/">Multihop FCoE 101</a> for more details), which can only be provided with Data Center Bridging (DCB) standards, specifically <a href="/2010/09/introduction-to-8021qbb-priority-flow/">Priority Flow Control (PFC)</a>. However, if you want to have lossless Ethernet between two points, every layer-2 (or higher) device in the path has to support DCB, which probably rules out any existing layer-2+ solution (including Carrier Ethernet, pseudowires, VPLS or OTV). The only option is thus bridging over dark fiber or a DWDM wavelength.</p>
 <!--more--><p>If you’ve been working with long-distance Fiber Channel, you know that the end-to-end throughput decreases with distance and number of buffers the switches have due to the Fiber Channel flow control mechanism (BB_credits). BB_credits are a very safe mechanism: if the transmission latency is too large, the confirmations won’t arrive in time and the transmitter will stop. Worst case, you’ll get dismal throughput.</p>
 <p>The Priority Flow Control used by lossless Ethernet is the exact opposite of BB_credits: as the receiver starts running out of buffers, it has to send a PAUSE frame to stop the sender. Obviously the PAUSE frame has to be sent soon enough so that the packets sent before the transmitter will receive the PAUSE frame will not overload the input buffers.</p>
 <p>Cisco published a <a href="http://www.cisco.com/en/US/prod/collateral/switches/ps9441/ps9670/white_paper_c11-542809.html">detailed white paper describing the limitations of PFC</a>. Short summary: if you want to run PFC across a 10-km link, you need to stop the transmitter while you still have 350K free space in input buffers (the total amount of per-interface buffers space is 500K). PFC implementation in Nexus 5000 is therefore limited to 300 meters (and the distance is not configurable).</p>
 <p>With FCoE out of the picture, we’re left with the will-known IP-based options if you can’t get a dedicated wavelength for your Fiber Channel SAN: FCIP, iSCSI or NFS. Told you iSCSI is better than FCoE, did I not?</p>
 <h4>More information</h4><ul class="ListParagraph"><li><a href="https://www.ipspace.net/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="https://www.ipspace.net/SingleRecording?code=DC30">buy a recording</a> or <a href="https://www.ipspace.net/Subscription">yearly subscription</a>) describes numerous Data Center technologies, including DCB and FCoE.</li>
-<li>Read my <a href="/tag/dcb.html">Data Center Bridging posts</a> to get more information on DCB and PFC</li>
-<li>I also wrote numerous posts covering <a href="/tag/fcoe.html">FCoE architecture and design caveats</a>. </li>
+<li>Read my <a href="/tag/dcb/">Data Center Bridging posts</a> to get more information on DCB and PFC</li>
+<li>I also wrote numerous posts covering <a href="/tag/fcoe/">FCoE architecture and design caveats</a>. </li>
 </ul>
 

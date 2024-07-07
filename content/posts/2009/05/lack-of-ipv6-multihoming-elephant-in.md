@@ -15,7 +15,7 @@ tags:
 - IPv6
 - high availability
 title: 'Lack of IPv6 Multihoming: the Elephant in the Room?'
-url: /2009/05/lack-of-ipv6-multihoming-elephant-in.html
+url: /2009/05/lack-of-ipv6-multihoming-elephant-in/
 ---
 I have to admit I have no hands-on Service Provider IPv6 experience (but then there are not too many people that can claim they do) and I don't attend RIPE meetings, so I might have a completely wrong impression, but here it is: Is it just my perception or do we really lack any production-grade means of end-user multihoming in IPv6?
 <!--more-->

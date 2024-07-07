@@ -6,7 +6,7 @@ tags:
 - switching
 - LAN
 title: Are VLANs safe in DMZ environment?
-url: /2008/09/are-vlans-safe-in-dmz-environment.html
+url: /2008/09/are-vlans-safe-in-dmz-environment/
 ---
 
 The <a href="http://thinkingproblemmanagement.blogspot.com/">Thinking problem  management!</a> blog had an interesting article on <a href="http://thinkingproblemmanagement.blogspot.com/2008/08/leaky-vlans-myth.html">The  Leaky VLANs myth</a>, quoting a test report from SANS Institute that <a href="http://www.sans.org/resources/idfaq/vlan.php">documents how you can inject frames into other VLANs even if you're not connected to a trunk port</a>. The report is eight years old (so one would hope this issue has been fixed in the meantime), but there's another question you should ask yourself is: what happens when you lose the configuration of the switch (and I've seen devices losing configuration after a power glitch). If you're using a router to perform L3 switching, no harm is done; a router with empty configuration forwards no packets. But if you're using a low-end switch, you're in deep trouble; by default, a switch forwards packets between all ports ... and if you use static IP addresses on all subnets, you won't even notice they're connected. If you want to be very safe, you're better off having a different set of switches for the <i>inside </i>and the <i>outside </i>zones of your firewall.

@@ -3,7 +3,7 @@ title: "Nonlinear Effects of Optimization-Induced Complexity"
 date: 2021-10-29 07:33:00
 tags: [ automation ]
 ---
-_We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Minh Ha on [recent Facebook failure and overly complex systems](/2021/10/circular-dependencies-considered-harmful.html#810) (slightly edited)_.
+_We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Minh Ha on [recent Facebook failure and overly complex systems](/2021/10/circular-dependencies-considered-harmful/#810) (slightly edited)_.
 
 ---
 

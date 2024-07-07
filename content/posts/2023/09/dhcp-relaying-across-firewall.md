@@ -4,16 +4,16 @@ date: 2023-09-12 06:36:00
 tags: [ DHCP, firewalls ]
 series: dhcp-relay
 ---
-Chinar Trivedi wanted to know what happens when you insert a firewall in the DHCP data path ([original question](/2023/05/dhcp-redundant-vrf-relay.html#1833).
+Chinar Trivedi wanted to know what happens when you insert a firewall in the DHCP data path ([original question](/2023/05/dhcp-redundant-vrf-relay/#1833).
 
 **TL&DR:** Nothing much, but that does not mean you should.
 
 Now for the details:
 <!--more-->
 -   DHCP communication between a client and a relay (or a directly connected server) is somewhat weird from the firewall's session-tracking perspective. You might get it to work, but it's probably not worth the hassle. Insert a DHCP relay in the forwarding path to protect the DHCP server.
--   [DHCP communication between a DHCP relay and a DHCP server](/2023/03/dhcp-relay-process.html) is a UDP transaction using the BOOTP port. You should be fine if your firewall rules allow the DHCP relays to send UDP packets to the BOOTP port on the DHCP servers (and the reverse traffic). 
+-   [DHCP communication between a DHCP relay and a DHCP server](/2023/03/dhcp-relay-process/) is a UDP transaction using the BOOTP port. You should be fine if your firewall rules allow the DHCP relays to send UDP packets to the BOOTP port on the DHCP servers (and the reverse traffic). 
 
-Want to go even further? You could put the DHCP traffic into a separate VRF; most decent network devices support [inter-VRF DHCP forwarding](/2023/04/netlab-evpn-dhcp-relay.html).
+Want to go even further? You could put the DHCP traffic into a separate VRF; most decent network devices support [inter-VRF DHCP forwarding](/2023/04/netlab-evpn-dhcp-relay/).
 
 Finally, Chinar wondered, "*What would Ivan do?"*
 

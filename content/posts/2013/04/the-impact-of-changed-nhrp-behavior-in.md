@@ -6,11 +6,11 @@ tags:
 - DMVPN
 - IPsec
 title: The Impact of Changed NHRP Behavior in DMVPN Networks
-url: /2013/04/the-impact-of-changed-nhrp-behavior-in.html
+url: /2013/04/the-impact-of-changed-nhrp-behavior-in/
 ---
-Two years ago I wrote the another [Fermatish](http://en.wikipedia.org/wiki/Fermat's_Last_Theorem) post: I described how [NHRP behavior changed in DMVPN networks using NAT](/2011/04/dmvpn-spoke-nhrp-behavior-changed-in.html) and claimed that it might be a huge problem, without ever explaining what the problem is.
+Two years ago I wrote the another [Fermatish](http://en.wikipedia.org/wiki/Fermat's_Last_Theorem) post: I described how [NHRP behavior changed in DMVPN networks using NAT](/2011/04/dmvpn-spoke-nhrp-behavior-changed-in/) and claimed that it might be a huge problem, without ever explaining what the problem is.
 
-Fabrice [quickly identified the problem](/2011/04/dmvpn-spoke-nhrp-behavior-changed-in.html?showComment=1304374254012#c7665983883544403504), but it seems the description was not explicit enough as I'm still getting queries about that post, so here's a step-by-step description of what's going on.
+Fabrice [quickly identified the problem](/2011/04/dmvpn-spoke-nhrp-behavior-changed-in/#c7665983883544403504), but it seems the description was not explicit enough as I'm still getting queries about that post, so here's a step-by-step description of what's going on.
 <!--more-->
 A single DMVPN network has two hubs and two spokes. Spokes are behind NAT boxes (e.g. cable/DSL modems) that prevent IPsec session between the spokes to be established.
 

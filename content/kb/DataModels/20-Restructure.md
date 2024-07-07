@@ -2,7 +2,7 @@
 kb_section: DataModels
 minimal_sidebar: true
 title: Nodes-and-Links Data Model
-url: /kb/DataModels/20-Restructure.html
+url: /kb/DataModels/20-Restructure/
 pre_scroll: true
 ---
 [After rigorous deduplication](10-Removing%20Duplicate%20Data.html) we got a pretty clean data model, but still has a significant drawback: it's not the best representation of reality.

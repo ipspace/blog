@@ -8,18 +8,18 @@ tags:
 - switching
 - data center
 title: Multi-Chassis Link Aggregation (MLAG) and Hot Potato Switching
-url: /2010/12/multi-chassis-link-aggregation-mlag-and.html
+url: /2010/12/multi-chassis-link-aggregation-mlag-and/
 ---
 There are two reasons one would bundle parallel Ethernet links into a port channel (official term is *Link Aggregation Group*):
 
-- Transforming parallel links into a single logical link bypasses Spanning Tree Protocol loop avoidance logic; all links belonging to the port channel can be active at the same time (see also: [Multi-Chassis Link Aggregation basics](/2010/10/multi-chassis-link-aggregation-basics.html)).
+- Transforming parallel links into a single logical link bypasses Spanning Tree Protocol loop avoidance logic; all links belonging to the port channel can be active at the same time (see also: [Multi-Chassis Link Aggregation basics](/2010/10/multi-chassis-link-aggregation-basics/)).
 - Load sharing across parallel links in a port channel increases the total bandwidth available between adjacent L2 switches or between routers/hosts and switches.
 
 Ethan Banks wrote an [excellent explanation of traditional port channel caveats](https://web.archive.org/web/20110112232009/https://packetattack.wordpress.com/2010/11/27/the-scaling-limitations-of-etherchannel-or-why-11-does-not-equal-2/) (proving that 1+1 sometimes does not equal 2); things get way worse when you start using Multi-Chassis Link Aggregation due to *hot potato* switching (the switch tries to forward packets toward destination MAC address as soon as possible) used by all MLAG implementations I'm familiar with.
 <!--more-->
 ### What Is Hot Potato Switching?
 
-*Hot potato switching* is a very simple principle (try to get rid of the packet as soon as possible) best explained with a few examples. Let's start with a very simple architecture: a router  connected to two switches ([MLAG cluster](/series/mlag.html)) through a link aggregation group, and a bunch of servers with a single uplink per server ([ESXi hosts usually look that way](/2011/01/vswitch-in-multi-chassis-link.html) even when they have redundant uplinks).
+*Hot potato switching* is a very simple principle (try to get rid of the packet as soon as possible) best explained with a few examples. Let's start with a very simple architecture: a router  connected to two switches ([MLAG cluster](/series/mlag/)) through a link aggregation group, and a bunch of servers with a single uplink per server ([ESXi hosts usually look that way](/2011/01/vswitch-in-multi-chassis-link/) even when they have redundant uplinks).
 
 {{<figure src="/2010/12/s400-mlag_hotpotato.png" caption="A simple data center fabric">}}
 

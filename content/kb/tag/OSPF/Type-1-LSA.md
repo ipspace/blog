@@ -3,7 +3,7 @@ kb_section: OSPF
 minimal_sidebar: true
 pre_scroll: true
 title: Type-1 (Router) LSA in OSPF Topology Database
-url: /kb/tag/OSPF/Type-1-LSA.html
+url: /kb/tag/OSPF/Type-1-LSA/
 tags: [ OSPF ]
 ospf_tag: details
 ---

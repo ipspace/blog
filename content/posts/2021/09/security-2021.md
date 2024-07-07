@@ -3,11 +3,11 @@ title: "State of IT Security in 2021"
 date: 2021-09-27 07:21:00
 tags: [ security ]
 ---
-[Patrik Schindler](https://www.pocnet.net/) sent me his views on code quality and resulting security nightmares after reading the [Cisco SD-WAN SQL Injection saga](/2021/09/cisco-sdwan-security.html). Enjoy!
+[Patrik Schindler](https://www.pocnet.net/) sent me his views on code quality and resulting security nightmares after reading the [Cisco SD-WAN SQL Injection saga](/2021/09/cisco-sdwan-security/). Enjoy!
 
 ---
 
-I think we have a global problem with code quality. Both from a security perspective, and from a less problematic but still annoying bugs-everywhere perspective. I'm not sure if the issue is largely ignored, or we've given up on it (see also: [Cloud Complexity Lies](https://ea.rna.nl/2021/01/10/the-many-lies-about-reducing-complexity-part-2-cloud/) or [Cisco ACI Complexity](/2021/03/rant-cisco-aci-complexity.html)).
+I think we have a global problem with code quality. Both from a security perspective, and from a less problematic but still annoying bugs-everywhere perspective. I'm not sure if the issue is largely ignored, or we've given up on it (see also: [Cloud Complexity Lies](https://ea.rna.nl/2021/01/10/the-many-lies-about-reducing-complexity-part-2-cloud/) or [Cisco ACI Complexity](/2021/03/rant-cisco-aci-complexity/)).
 <!--more-->
 Instead on focusing to not create even more bugs, companies like VMware publish a new vCenter server with some old bugs fixed, some new introduced and a shiny new bling-bling web interface style. Apparently it's cheaper to pay some icon designers than programmers.
 

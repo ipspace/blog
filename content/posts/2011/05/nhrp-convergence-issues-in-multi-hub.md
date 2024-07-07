@@ -5,7 +5,7 @@ tags:
 - DMVPN
 - workshop
 title: NHRP Convergence Issues in Multi-Hub DMVPN Networks
-url: /2011/05/nhrp-convergence-issues-in-multi-hub.html
+url: /2011/05/nhrp-convergence-issues-in-multi-hub/
 ---
 **Summary for differently attentive**: A hub router failure in multi-hub DMVPN networks can cause spoke-to-spoke traffic disruptions that last up to three minutes.
 
@@ -45,7 +45,7 @@ NHRP spokes usually use a single hub router for NHRP resolution and interim inte
 
 **IOS releases prior to NAT enhancements**. The spokes detect hub router failure through NHRP registration timeouts (see above). Spoke-to-spoke traffic flows through the hub only if the NRHP entry for the other spoke is *incomplete* or otherwise faulty (for example, IPsec session is not operational, resulting in *no socket* state) and is *not tied to any individual hub*. As soon as the spoke detects the failure of its currently selected hub router, it switches to another hub router, resulting in short disruption of inter-spoke traffic.
 
-**IOS releases after NAT enhancements (12.4T and 15.x)**. Spoke routers create [fake NHRP entries for other spokes](/2011/04/dmvpn-spoke-nhrp-behavior-changed-in.html) using the hub's router NBMA address. The fake entry disappears as soon as the spoke router receives a NHRP reply from the other spoke, but could stay in the NHRP cache indefinitely if the spoke-to-spoke IPsec session cannot be established.
+**IOS releases after NAT enhancements (12.4T and 15.x)**. Spoke routers create [fake NHRP entries for other spokes](/2011/04/dmvpn-spoke-nhrp-behavior-changed-in/) using the hub's router NBMA address. The fake entry disappears as soon as the spoke router receives a NHRP reply from the other spoke, but could stay in the NHRP cache indefinitely if the spoke-to-spoke IPsec session cannot be established.
 
 These entries are tied to *specific NBMA address* (of the selected hub router), not to the hub router and do not disappear when the spoke router discovers hub router failure (via NHRP registration failure). To make matters worse, the fake entries use a 3-minute expiration timer that cannot be adjusted with any publicly available DMVPN configuration command that I could find. A hub router failure can thus disrupt the spoke-to-spoke traffic for up to three minutes (until the fake NHRP entry expires).
 

@@ -11,7 +11,7 @@ title: Unequal-Cost Multipath in Link State Protocols
 ---
 **TL&DR**: You get unequal-cost multipath for free with distance-vector routing protocols. Implementing it in link state routing protocols is an order of magnitude more CPU-consuming.
 
-Continuing our [exploration of the Unequal-Cost Multipath world](/2021/02/does-ucmp-make-sense.html), why was it implemented in EIGRP decades ago, but not in OSPF or IS-IS?
+Continuing our [exploration of the Unequal-Cost Multipath world](/2021/02/does-ucmp-make-sense/), why was it implemented in EIGRP decades ago, but not in OSPF or IS-IS?
 
 Ignoring for the moment the "*does it make sense*" dilemma: finding *downstream paths* (paths strictly shorter than the current best path) is a side effect of running distance vector algorithms. 
 
@@ -19,7 +19,7 @@ Ignoring for the moment the "*does it make sense*" dilemma: finding *downstream 
 <!--more-->
 Getting the same results in a link-state protocol requires calculating loop-free alternates, and that was simply too CPU-intensive in ye olde times. We shouldn't have similar problems in the last decades... apart from the minor detail that hardware vendors put the cheapest possible CPU they could get away with on top of the switching silicon to maximize gross margins. 
 
-Anyway, here's what Minh Ha had to say on the topic in a [comment to my previous UCMP blog post](/2021/02/does-ucmp-make-sense.html#427):
+Anyway, here's what Minh Ha had to say on the topic in a [comment to my previous UCMP blog post](/2021/02/does-ucmp-make-sense/#427):
 
 {{<long-quote>}}
 Use-cases aside, I think the bigger question is: is it technically viable to implement UCMP in Link State Protocols? LFA, in its simplest form, is the LS' version of UCMP, and it's computationally intensive when you do it for 1 leaf destination. When you generalize it to calculate UCMP paths to every destination in the network, and the number of nodes gets really huge, into the thousands, this can be computationally intractable. That's why vendors have to take shortcuts, for ex, not implementing TI-LFA for the case of node failure, only link-failure.
@@ -31,7 +31,7 @@ So even if there are situations that require the use of UCMP, one of which broug
 Come to think of it, from the very beginning, in order to scale LS, their inventors had to resort to areas, basically turning LS protocols into distance-vector ones, inter-area-wise. And RIFT, in order to scale better than existing LS protocols in flood-heavy environments, also has to resort to distance-vector principles :)). BGP, the most scalable routing protocol, is a distance-vector protocol after all.
 {{</long-quote>}}
 
-Henk Smit quickly provided [hands-on counterargument](/2021/02/does-ucmp-make-sense.html#429):
+Henk Smit quickly provided [hands-on counterargument](/2021/02/does-ucmp-make-sense/#429):
 
 {{<long-quote>}}
 It's not that bad. In LS-protocols, doing UCMP scales with the number of direct neighbors a router has. If a router wants to do UCMP, it has to do one SPF-computation for itself, and one SPF-computation for each neighbor. Note, once you know all the feasible (unequal-cost) paths to all routers (nodes) in the network, computing the ip-prefixes (leafs) needs to be done only once.

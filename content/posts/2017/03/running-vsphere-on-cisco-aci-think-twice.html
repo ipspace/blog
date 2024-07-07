@@ -5,15 +5,15 @@ tags:
 - ACI
 - virtualization
 title: Running vSphere on Cisco ACI? Think Twice…
-url: /2017/03/running-vsphere-on-cisco-aci-think-twice.html
+url: /2017/03/running-vsphere-on-cisco-aci-think-twice/
 ---
 
-<p>When Cisco ACI was launched it promised to do everything you need (plus much more, and in multi-hypervisor environment). It was quickly obvious that you <a href="/2013/06/network-virtualization-and-spaghetti.html">can’t do all that on ToR switches</a>, and need control of the virtual switch (the <a href="/2011/05/complexity-belongs-to-network-edge.html">real network edge</a>) to get the job done.<!--more--></p>
+<p>When Cisco ACI was launched it promised to do everything you need (plus much more, and in multi-hypervisor environment). It was quickly obvious that you <a href="/2013/06/network-virtualization-and-spaghetti/">can’t do all that on ToR switches</a>, and need control of the virtual switch (the <a href="/2011/05/complexity-belongs-to-network-edge/">real network edge</a>) to get the job done.<!--more--></p>
 <div class="update">Updates: <ul><li>2017-03-17: It was not clear that the API I was referring to is the 3rd party vSwitch data plane API.</li>
 <li>2017-03-26: VMware <a href="https://blogs.vmware.com/networkvirtualization/2017/03/native-vswitch.html">announced</a> what I described here a week later. So much for "they will never dare to do it" wishful thinking from $NetVendor engineers.</li>
 </ul>
 </div>
-<p>No problem, there’s <a href="http://www.cisco.com/c/en/us/products/switches/application-virtual-switch/index.html">Cisco Application Virtual Switch</a>. Well, its deployment on vSphere was <a href="#compatibility">not supported by VMware</a> (in case you care), and it seems VMware might throw another spanner in the works.</p>
+<p>No problem, there’s <a href="http://www.cisco.com/c/en/us/products/switches/application-virtual-switch/index.html">Cisco Application Virtual Switch</a>. Well, its deployment on vSphere was not supported by VMware (in case you care), and it seems VMware might throw another spanner in the works.</p>
 <p>Looks like even <a href="https://communities.vmware.com/thread/547306?start=0&amp;tstart=0">Nexus 1000V is currently not working on vSphere 6.5</a>, and based on some VMware training material I’ve seen third-party distributed switches might not be supported at all in vSphere 6.5U1. Whether that means “<em>don’t call us</em>” or “<em>they won’t work because the API will be gone</em>” wasn’t exactly clear (so we’ll have to wait till 6.5U1 comes out), but with vDS being pretty close to Nexus 1000V feature-wise (and NSX competing with ACI) I would expect VMware to kill the internal vDS data/control plane API used by 3rd-party virtual switches like they killed the dvFilter API.</p>
 <p>That would degrade Cisco ACI used in vSphere environments into a smarter L2+L3 data center fabric. Is that worth the additional complexity you get with ACI? It depends… and we’ll discuss some aspects of that in the <a href="http://www.ipspace.net/VMware_NSX,_Cisco_ACI_or_Standard-Based_EVPN"><em>VMware NSX, Cisco ACI or standard-based EVPN</em></a><em> </em>workshop in mid-May.</p>
 <p><strong>Note to potential commenters</strong>: you cannot implement EPGs and all the other fun stuff on granularity finer than VLANs unless you control the virtual switch. The proof is left as an exercise for the reader. </p>

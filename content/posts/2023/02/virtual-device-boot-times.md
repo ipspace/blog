@@ -62,7 +62,7 @@ I would love to try out his idea, but it looks like I'm too stupid to be able to
 
 Anyway, the last time I was able to test cRPD it had minimal data plane awareness, making it impossible to configure it with Ansible. That made it completely useless as a potential  _netlab_ network device.
 
-It's worth noticing that all other container solutions I tried out have a configurable data plane, and can be configured in exactly the same way using the same tools as virtual machines or physical devices. While Arista's implementation [has a few quirks](/2022/03/dataplane-quirks-virtual-devices.html), Cumulus Linux container works surprisingly well (although [it cannot handle MLAG](https://containerlab.dev/manual/kinds/cvx/)), and the FRR container managed to run MPLS and L3VPN out of the box.
+It's worth noticing that all other container solutions I tried out have a configurable data plane, and can be configured in exactly the same way using the same tools as virtual machines or physical devices. While Arista's implementation [has a few quirks](/2022/03/dataplane-quirks-virtual-devices/), Cumulus Linux container works surprisingly well (although [it cannot handle MLAG](https://containerlab.dev/manual/kinds/cvx/)), and the FRR container managed to run MPLS and L3VPN out of the box.
 
 Not surprisingly, the container start times are much lower than the VM start times. Here are the results for the three containers I have installed on my lab server:
 

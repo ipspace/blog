@@ -5,10 +5,10 @@ tags:
 - load balancing
 - MPLS VPN
 title: Load sharing in MPLS/VPN networks with route reflectors
-url: /2011/02/load-balancing-in-mplsvpn-networks-with.html
+url: /2011/02/load-balancing-in-mplsvpn-networks-with/
 ---
 
-<p>Some of the e-mails and comments I received after writing the “<a href="/2011/02/changing-vpnv4-route-attributes-within.html"><em>Changing VPNv4 route attributes</em></a><em>” </em>post illustrated common MPLS/VPN misconceptions, so it’s worth addressing them in a series of posts. Let’s start with the simplest scenario: load <del class="error">balancing</del><ins class="corr">sharing</ins> toward a multi-homed customer site. We’ll use a very simple MPLS/VPN network with three customer sites, four CE-routers, four PE-routers a route reflector:</p>
+<p>Some of the e-mails and comments I received after writing the “<a href="/2011/02/changing-vpnv4-route-attributes-within/"><em>Changing VPNv4 route attributes</em></a><em>” </em>post illustrated common MPLS/VPN misconceptions, so it’s worth addressing them in a series of posts. Let’s start with the simplest scenario: load <del class="error">balancing</del><ins class="corr">sharing</ins> toward a multi-homed customer site. We’ll use a very simple MPLS/VPN network with three customer sites, four CE-routers, four PE-routers a route reflector:</p>
 <figure><img src="/2011/02/s1600-MPLSVPN_MH.png"></figure>
 <!--more--><p>Let’s assume that we use the default MPLS/VPN RT/RD design rules: one RD and one import/export RT per simple VPN. The IPv6 (or IPv4) default routes received by PE-A and PE-B are transformed into VPNv6 (or VPNv4) routes (<tt>[RD]::/0</tt> or <tt>RD:0.0.0.0/0</tt>) and sent to RR. </p>
 <p>RR receives two identical VPNv6 (or VPNv4) routes from two sources (PE-A and PE-B), installs both of them in its BGP table, <em>selects the best one </em>and <em>sends the best one to the other BGP neighbors</em>. PE-C and PE-D thus receive only <em>a single default route</em> and forward all traffic toward PE-A or PE-B (based on the decision BGP made on RR). There is <em>absolutely no way </em>to change the RR behavior – it’s one of those BGP rules that nobody wanted to touch (yet): only the best routes in the BGP table are propagated to BGP neighbors.</p>

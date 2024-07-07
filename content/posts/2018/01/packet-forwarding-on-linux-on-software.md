@@ -8,7 +8,7 @@ tags:
 - Software Gone Wild
 - Cumulus Linux
 title: Packet Forwarding on Linux on Software Gone Wild
-url: /2018/01/packet-forwarding-on-linux-on-software.html
+url: /2018/01/packet-forwarding-on-linux-on-software/
 ---
 Linux operating system is used as the foundation for numerous network operating systems including Arista EOS and Cumulus Linux. It provides most networking constructs we grew familiar with including interfaces, VLANs, routing tables, VRFs and contexts, but they behave slightly differently from what we're used to.
 

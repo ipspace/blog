@@ -4,7 +4,7 @@ tags:
 - training
 - MPLS VPN
 title: Using MPLS VPN Books to Study for the CCIP Exam
-url: /2007/06/using-mpls-vpn-books-to-study-for-ccip.html
+url: /2007/06/using-mpls-vpn-books-to-study-for-ccip/
 ---
 Every now and then I\'m getting questions from my readers regarding the suitability of my MPLS books for the CCIP exam, for example:
 
@@ -16,4 +16,4 @@ Here is the full story: MPLS and VPN Architectures Volume I and II are completel
 
 The Volume II covers advanced MPLS topics, including remote access, inter-AS MPLS VPN, Carrier\'s carrier architecture, IP Multicast in MPLS VPN etc. It also contains the MPLS and MPLS VPN troubleshooting information (similar to the CCIP edition of Volume I). Reading Volume II without having sound foundations from Volume I does not make sense.
 
-I would definitely recommend CCIP edition of Volume I (you can still get it [as an on-line book](http://search.safaribooksonline.com/1587050811)) as the basis of your learning efforts, with a few topics from Volume II (EIGRP as PE-CE routing protocol, more in-depth troubleshooting information) also being applicable. MPLS TE is not covered in any of my books, but as [Peter Dob suggested](/2007/07/update-preparing-for-mpls-ccip-exam.html), you can get enough information from the MPLS Fundamentals book.
+I would definitely recommend CCIP edition of Volume I (you can still get it [as an on-line book](http://search.safaribooksonline.com/1587050811)) as the basis of your learning efforts, with a few topics from Volume II (EIGRP as PE-CE routing protocol, more in-depth troubleshooting information) also being applicable. MPLS TE is not covered in any of my books, but as [Peter Dob suggested](/2007/07/update-preparing-for-mpls-ccip-exam/), you can get enough information from the MPLS Fundamentals book.

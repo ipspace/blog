@@ -7,11 +7,11 @@ tags:
 - automation
 title: New Ansible Data Validation Module(s)
 ---
-A few months ago I described how you could [use JSON Schema to validate your automation data models](/kb/DataModels/70-Validation.html), host/group variable files, or even Ansible inventory file. 
+A few months ago I described how you could [use JSON Schema to validate your automation data models](/kb/DataModels/70-Validation/), host/group variable files, or even Ansible inventory file. 
 
 I had to use a weird toolchain to get it done -- either **ansible-inventory** to build a complete data model from various inventory sources, or **yq** to convert YAML to JSON... and just for the giggles **jsonschema** CLI command requires the JSON input to reside in a file, so you have to use a temporary file to get the job done.
 <!--more-->
-Obviously I could have used Python, and it wouldn't be more than a dozen or so lines of code to read YAML and have it validated with **jsonschema** Python module, but I wanted to keep it as simple as possible and probably failed. What exactly did [RFC 6670 say about squashed complexity sausage](/2012/07/virtualized-squashed-complexity-sausage.html)?
+Obviously I could have used Python, and it wouldn't be more than a dozen or so lines of code to read YAML and have it validated with **jsonschema** Python module, but I wanted to keep it as simple as possible and probably failed. What exactly did [RFC 6670 say about squashed complexity sausage](/2012/07/virtualized-squashed-complexity-sausage/)?
 
 Things got much simpler with the new **[validate](https://github.com/ansible-collections/ansible.utils/blob/main/docs/ansible.utils.validate_module.rst)** module in **ansible.utils** collection. You pass the data you want to have validated, the validation criteria (JSON schema describing your data), and the validation engine (currently only **jsonschema**) to the module and get back a success message or a list of errors. Great job (and thanks for the reference to my article in the [announcement blog post](https://www.ansible.com/blog/using-new-ansible-utilities-for-operational-state-management-and-remediation) 🙏)
 

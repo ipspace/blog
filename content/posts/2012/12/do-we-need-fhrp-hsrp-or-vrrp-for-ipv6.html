@@ -1,14 +1,14 @@
 ---
-url: /2012/12/do-we-need-fhrp-hsrp-or-vrrp-for-ipv6.html
+url: /2012/12/do-we-need-fhrp-hsrp-or-vrrp-for-ipv6/
 title: "Do We Need FHRP (HSRP or VRRP) For IPv6?"
 date: "2012-12-13T07:00:00.000+01:00"
 tags: [ IPv6, high availability ]
 ---
 
-<p>Justin <a href="/2012/11/ipv6-on-link-determination-what-is-it.html?showComment=1354126069275#c4403321141602579149">asked an interesting question</a> in a comment to my <a href="/2012/11/ipv6-on-link-determination-what-is-it.html?showComment=1354126069275"><em>IPv6 On-Link Determination</em></a><em> </em>post: do we need HSRP for IPv6 as the routers already send out RA messages? <a href="/2012/11/ipv6-on-link-determination-what-is-it.html?showComment=1354171030981#c6024862644214060842">Pavel quickly pointed out</a> that my friend <a href="https://twitter.com/packetlife">@packetlife</a> already <a href="http://packetlife.net/blog/2011/apr/18/ipv6-neighbor-discovery-high-availability/">wrote about it</a>, concluding that you could use RAs unless you need deterministic sub-second failover. </p>
+<p>Justin <a href="/2012/11/ipv6-on-link-determination-what-is-it/#c4403321141602579149">asked an interesting question</a> in a comment to my <a href="/2012/11/ipv6-on-link-determination-what-is-it/#comments"><em>IPv6 On-Link Determination</em></a><em> </em>post: do we need HSRP for IPv6 as the routers already send out RA messages? <a href="/2012/11/ipv6-on-link-determination-what-is-it/#c6024862644214060842">Pavel quickly pointed out</a> that my friend <a href="https://twitter.com/packetlife">@packetlife</a> already <a href="http://packetlife.net/blog/2011/apr/18/ipv6-neighbor-discovery-high-availability/">wrote about it</a>, concluding that you could use RAs unless you need deterministic sub-second failover. </p>
 <p>However, there are (as always) a few more gotchas:<!--more--></p>
 <p><strong>RA-based failover relies on host IP stack</strong>. You never know what the hosts will do once a router’s lifetime expires (I’ve seen quite a few unexpected things in the IPv6 world already), and the behavior might change after a software update.</p>
-<p><strong>You might not want to use RAs</strong> in <a href="/2012/10/dont-use-ipv6-ra-on-server-lans.html">environments where some hosts (particularly servers) are not dual-stacked</a>, as the IPv4-only hosts might decide they want to use IPv6 even though they don’t have a valid IPv6 address.</p>
+<p><strong>You might not want to use RAs</strong> in <a href="/2012/10/dont-use-ipv6-ra-on-server-lans/">environments where some hosts (particularly servers) are not dual-stacked</a>, as the IPv4-only hosts might decide they want to use IPv6 even though they don’t have a valid IPv6 address.</p>
 <p><strong>RAs are processed by every host</strong>. If you decide to use fast RA-based failover, every server (or VM) in your network will have to process several RAs per second. Not a problem, unless you have thousands of VMs – heaps of small overhead tend to add up.</p>
-<p class="update">2014-03-25: Another gotcha: <a href="/2014/03/can-we-use-ipv6-router-advertisements.html">RA-based failover probably won't work in MLAG environments</a>.</p>
+<p class="update">2014-03-25: Another gotcha: <a href="/2014/03/can-we-use-ipv6-router-advertisements/">RA-based failover probably won't work in MLAG environments</a>.</p>
 

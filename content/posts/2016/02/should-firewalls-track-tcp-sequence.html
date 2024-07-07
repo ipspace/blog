@@ -5,14 +5,14 @@ tags:
 - security
 - virtualization
 title: Should Firewalls Track TCP Sequence Numbers?
-url: /2016/02/should-firewalls-track-tcp-sequence.html
+url: /2016/02/should-firewalls-track-tcp-sequence/
 ---
 
 <p>It all started with a tweet by Stephane Clavel:</p>
 <blockquote class="twitter-tweet" data-conversation="none" lang="en"><p dir="ltr" lang="en"><a href="https://twitter.com/ioshints">@ioshints</a> <a href="https://twitter.com/BradHedlund">@BradHedlund</a> I'm puzzled NSX dFW does not track connections seq #. Still true? To me this is std fw feature.</p>
 — stephaneclavel (@stephaneclavel) <a href="https://twitter.com/stephaneclavel/status/693754336552341504">January 31, 2016</a></blockquote>
 <script async="" charset="utf-8" src="//platform.twitter.com/widgets.js"></script><p>Trying to fit my response into the huge Twitter reply field I wrote “<em>Tracking Seq# on FW should be mostly irrelevant with modern TCP stacks</em>” and when Gal Sagie asked for more elaboration, I decided it’s time to write a blog post.<!--more--></p>
-<h4>Some background first</h4><p>I’m assuming you read my <a href="/2013/03/the-spectrum-of-firewall-statefulness.html">Spectrum of Firewall Statefulness</a> blog post. In case you haven’t, please do it now. Don’t worry, I’ll wait.</p>
+<h4>Some background first</h4><p>I’m assuming you read my <a href="/2013/03/the-spectrum-of-firewall-statefulness/">Spectrum of Firewall Statefulness</a> blog post. In case you haven’t, please do it now. Don’t worry, I’ll wait.</p>
 <p>Firewalls that include <strong><em>application level gateways</em></strong><em> </em>(example: FTP command session inspection), <strong><em>web application firewalls</em></strong><em> </em>(including stuff marketed as <em>next-generation whatever</em>) or any other devices that performs deep packet inspection have to include full-blown TCP stack including retransmissions, packet reordering and IP fragment reassembly. A device that doesn’t do all of the above will eventually be spoofed (aka Fernando Gont will eventually get you with the right sequence of extension headers).</p>
 <p class="more">In case you didn’t get the above reference, you REALLY SHOULD attend the <a href="https://www.troopers.de/ipv6-security-summit/">IPv6 security summit @ Troopers 2016</a> and enjoy the talks by Fernando, Eric Vyncke and Enno Rey.</p>
 <p>What about the devices called stateful firewalls that don’t do more than track incoming and outgoing TCP/UDP sessions? Should they do <strong><em>transport layer session inspection </em></strong>(including TCP sequence number tracking) or is that functionality becoming useless (as I claimed)?</p>

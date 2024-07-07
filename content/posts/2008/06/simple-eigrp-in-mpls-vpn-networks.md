@@ -7,7 +7,7 @@ tags:
 - BGP
 - MPLS VPN
 title: Using EIGRP in MPLS VPN Networks
-url: /2008/06/simple-eigrp-in-mpls-vpn-networks.html
+url: /2008/06/simple-eigrp-in-mpls-vpn-networks/
 ---
 We described EIGRP-in-VRF in [MPLS and VPN Architectures, Volume II](http://www.amazon.com/gp/product/1587051125?ie=UTF8&tag=cisioshinandt-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1587051125). A few details have changed in the meantime; you have to configure the following features to get EIGRP running within MPLS/VPN environment:
 
@@ -28,7 +28,7 @@ EIGRP routes redistributed from VRF address family into VPNv4 BGP carry EIGRP-sp
 
 The VRF and EIGRP configuration on the PE-R1 router in the sample network shown in the following figure is included below.
 
-{{<figure src="SingleHomed_EIGRP_VPN.png" caption="Lab topology">}}
+{{<figure src="/2008/06/SingleHomed_EIGRP_VPN.png" caption="Lab topology">}}
 
 {{<cc>}}PE-R1 configuration{{</cc>}}
 ```

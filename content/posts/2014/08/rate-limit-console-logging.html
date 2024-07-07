@@ -1,11 +1,11 @@
 ---
-url: /2014/08/rate-limit-console-logging.html
+url: /2014/08/rate-limit-console-logging/
 title: "Rate-Limit Console Logging"
 date: "2014-08-01T07:23:00.000+02:00"
 tags: [ syslog,logging ]
 ---
 
-<p>Someone made a really interesting remark on my <a href="/2007/01/disable-console-logging.html">Disable Console Logging</a> blog post: Cisco IOS has log message rate limiting – all you need is the <strong>logging rate-limit </strong>configuration command.<!--more--></p>
+<p>Someone made a really interesting remark on my <a href="/2007/01/disable-console-logging/">Disable Console Logging</a> blog post: Cisco IOS has log message rate limiting – all you need is the <strong>logging rate-limit </strong>configuration command.<!--more--></p>
 <p>You can rate-limit all logging messages or just the messages going to the console port (this one comes handy in case you don't want to disable console logging), and you can specify which messages should not be rate-limited with the <strong>except </strong>option. </p>
 <p>For example, I could use <strong>logging rate-limit console 5 except notifications </strong>on my home router to rate limit the ACL logging messages (at <em>informational </em>level) while still getting the link up/down messages (at <em>errors </em>level) and line protocol up/down messages (at <em>notifications </em>level).</p>
 

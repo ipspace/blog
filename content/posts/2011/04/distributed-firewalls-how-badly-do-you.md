@@ -12,7 +12,7 @@ tags:
 - WAN
 - high availability
 title: 'Distributed Firewalls: a Ticking Bomb'
-url: /2011/04/distributed-firewalls-how-badly-do-you.html
+url: /2011/04/distributed-firewalls-how-badly-do-you/
 ---
 Are you ever asked to use a layer-2 Data Center Interconnect to implement distributed active-active firewalls, supposedly solving all the L3 issues and asymmetrical-traffic-flow-over-stateful-firewalls problems? Don't be surprised; I was stupid enough (or maybe just blinded by the L2 glitter) in 2010 to draw the following diagram illustrating a sample use of VPLS services:
 <!--more-->
@@ -40,7 +40,7 @@ The [*Data Center Interconnects*](https://www.ipspace.net/DCI) webinar describes
 
 ### Related Blog Posts
 
-* [Sometimes You Have to Decide How Badly You Want to Fail](/2015/10/sometimes-you-have-to-decide-how-badly.html)
-* [Do I Need Redundant Firewalls?](/2016/10/do-i-need-redundant-firewalls.html)
-* [Stretched Firewalls across Layer-3 DCI? Will the Madness Ever Stop?](/2015/11/stretched-firewalls-across-layer-3-dci.html)
-* [Stretched VLANs and Failing Firewall Clusters](/2019/11/stretched-vlans-and-failing-firewall.html)
+* [Sometimes You Have to Decide How Badly You Want to Fail](/2015/10/sometimes-you-have-to-decide-how-badly/)
+* [Do I Need Redundant Firewalls?](/2016/10/do-i-need-redundant-firewalls/)
+* [Stretched Firewalls across Layer-3 DCI? Will the Madness Ever Stop?](/2015/11/stretched-firewalls-across-layer-3-dci/)
+* [Stretched VLANs and Failing Firewall Clusters](/2019/11/stretched-vlans-and-failing-firewall/)

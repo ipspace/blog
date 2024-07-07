@@ -5,7 +5,7 @@ tags:
 - security
 - QoS
 title: Zone-based Traffic Policing
-url: /2009/05/zone-based-traffic-policing.html
+url: /2009/05/zone-based-traffic-policing/
 ---
 The zone-based firewall uses security **policy-maps** to specify how the flows between zones should be handled based on their traffic classes. The obvious actions that you can use in the security policy are **pass**, **drop** and **inspect**, but there's also the **police** action and one of the readers sent me an interesting question: "why would you need the **police** action in the security policy if you already have QoS policing".
 <!--more-->

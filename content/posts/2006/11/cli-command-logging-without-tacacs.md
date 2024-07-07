@@ -6,7 +6,7 @@ tags:
 - logging
 - EEM
 title: CLI command logging without TACACS+
-url: /2006/11/cli-command-logging-without-tacacs.html
+url: /2006/11/cli-command-logging-without-tacacs/
 ---
 The Cisco IOS's AAA architecture contains many handy features, including authorizing and logging every CLI command executed on the router. Unfortunately, the *AAA command accounting* only supports TACACS+ as the AAA transport protocol, making it unusable in RADIUS environments.
 

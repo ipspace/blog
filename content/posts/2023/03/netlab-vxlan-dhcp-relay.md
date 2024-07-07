@@ -7,7 +7,7 @@ title: DHCP Relaying in VXLAN Segments
 pre_scroll: True
 series: [ dhcp-relay ]
 ---
-After I got the testing infrastructure in place ([simple DHCP relay](/2023/03/netlab-dhcp-relay.html), [VRF-aware DHCP relay](/2023/03/netlab-vrf-dhcp-relay.html)), I was ready for the real fun: DHCP relaying in VXLAN (and later EVPN) segments.
+After I got the testing infrastructure in place ([simple DHCP relay](/2023/03/netlab-dhcp-relay/), [VRF-aware DHCP relay](/2023/03/netlab-vrf-dhcp-relay/)), I was ready for the real fun: DHCP relaying in VXLAN (and later EVPN) segments.
 
 **TL&DR:** It works exactly as expected. Even though I had anycast gateway configured on the VLAN, the Arista vEOS switches  used their unicast IP addresses in the DHCP relaying process. The DHCP server had absolutely no problem dealing with multiple copies of the same DHCP broadcast relayed by different switches attached to the same VLAN. One could only wish things were always as easy in the networking land.
 <!--more-->
@@ -328,7 +328,7 @@ You can download the [lab topology file](https://github.com/ipspace/netlab-examp
 
 ### Reference: Configuration Templates
 
-I had to make slight modifications to the DHCP server configuration template I used in the [simple DHCP relaying lab](/2023/03/netlab-dhcp-relay.html):
+I had to make slight modifications to the DHCP server configuration template I used in the [simple DHCP relaying lab](/2023/03/netlab-dhcp-relay/):
 
 * The default gateway IP address is the anycast IP address (if present)
 * Anycast IP address has to be excluded from the DHCP pool.

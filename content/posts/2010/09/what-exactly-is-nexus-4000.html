@@ -1,11 +1,11 @@
 ---
-url: /2010/09/what-exactly-is-nexus-4000.html
+url: /2010/09/what-exactly-is-nexus-4000/
 title: "What exactly is a Nexus 4000?"
 date: "2010-09-29T07:28:00.004+02:00"
 tags: [ DCB,FCoE ]
 ---
 
-<p>Someone mentioned a while ago in a comment to one of my blog posts that the Nexus 4000 switch already supports multihop FCoE. Now that we know what <a href="/2010/08/multihop-fcoe-101.html">multihop FCoE</a> really is, let’s see how Nexus 4000 fits into the picture.</p>
+<p>Someone mentioned a while ago in a comment to one of my blog posts that the Nexus 4000 switch already supports multihop FCoE. Now that we know what <a href="/2010/08/multihop-fcoe-101/">multihop FCoE</a> really is, let’s see how Nexus 4000 fits into the picture.</p>
 <p>The <a href="http://www.cisco.com/en/US/prod/collateral/switches/ps9441/ps10596/deployment_guide_c07-574724.html">Cisco Nexus 4000 Series Design Guide</a> starts with a confusing set of claims:</p>
 <ul class="ListParagraph"><li>The Cisco Nexus 4000 Series Switches provide the Fibre Channel Forwarder (FCF) function.</li>
 <li>Nexus 4000 is a FCoE Initialization Protocol (FIP) snooping bridge.</li>
@@ -16,7 +16,7 @@ tags: [ DCB,FCoE ]
 <li>You cannot configure FCoE on an individual interface of a Nexus 4000 with the <strong>fcoe mode </strong>command.</li>
 <li>The only FCoE-related parameter you can configure on a Nexus 4000 is <strong>fip-snooping</strong>.</li>
 </ul>
-<p><strong>The obvious conclusion</strong>: Nexus 4000 is a <a href="/2010/09/multihop-fcoe-102-vnport-proxy-and-fip.html">FIP snooping bridge</a> and thus has nothing to do with multihop FCoE. You could replace it with any DCB-compliant bridge and get the same results.</p>
+<p><strong>The obvious conclusion</strong>: Nexus 4000 is a <a href="/2010/09/multihop-fcoe-102-vnport-proxy-and-fip/">FIP snooping bridge</a> and thus has nothing to do with multihop FCoE. You could replace it with any DCB-compliant bridge and get the same results.</p>
 <p><strong>Speculation</strong>: you might even be able to tweak Nexus 5000 to use the 802.3x PAUSE mechanism instead of PFC and work without LLDP ... just don’t act surprised when TAC tells you that configuration is unsupported.</p>
 <p><strong>Another sad realization</strong>: It looks like the current release of NX-OS cannot create dynamic VF_ports. Even when the servers are not directly attached to the Nexus 5000, you have to create a VFC interface for each individual server and bind it to the server’s MAC address with the <strong>bind mac-address </strong>configuration command.</p>
 

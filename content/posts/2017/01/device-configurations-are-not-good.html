@@ -3,7 +3,7 @@ date: 2017-01-10T07:21:00.000+01:00
 tags:
 - automation
 title: Device Configurations Are Not a Good Source of Truth
-url: /2017/01/device-configurations-are-not-good.html
+url: /2017/01/device-configurations-are-not-good/
 ---
 
 <p>One of my subscribers sent me this question after watching the second part of <a href="http://www.ipspace.net/Network_Automation_Tools">Network Automation Tools</a> webinar (or maybe it was <a href="http://nextgendc.ipspace.net/Public:2-Automation_and_Orchestration">Elisa Jasinska's presentation</a> in the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Data Center course</a>):</p>
@@ -14,13 +14,13 @@ url: /2017/01/device-configurations-are-not-good.html
 <ul class="ListParagraph"><li>There should be a single source of truth for any type of data;</li>
 <li>The data should be easily consumable (preferably through an easy-to-use API).</li>
 </ul>
-<p>Relying on device configurations to store device names, SNMP community strings, router IP addresses, and IP subnets somewhat satisfies the first requirement (if we ignore the need for <a href="https://en.wikipedia.org/wiki/Unique_key"><em>unique key</em></a><em> </em>and <a href="https://en.wikipedia.org/wiki/Referential_integrity"><em>referential integrity</em></a><em> </em>constraints), but falls far short of satisfying the second one. You could use something like the <a href="/2014/07/the-f-script-with-john-herbert-on.html">F script</a> to continuously extract data from device configurations and compile it into a database, but it’s much better to admit defeat and reverse the process:</p>
+<p>Relying on device configurations to store device names, SNMP community strings, router IP addresses, and IP subnets somewhat satisfies the first requirement (if we ignore the need for <a href="https://en.wikipedia.org/wiki/Unique_key"><em>unique key</em></a><em> </em>and <a href="https://en.wikipedia.org/wiki/Referential_integrity"><em>referential integrity</em></a><em> </em>constraints), but falls far short of satisfying the second one. You could use something like the <a href="/2014/07/the-f-script-with-john-herbert-on/">F script</a> to continuously extract data from device configurations and compile it into a database, but it’s much better to admit defeat and reverse the process:</p>
 <ul class="ListParagraph"><li>IPAM data is the single source of truth for device names, interface addresses and subnets;</li>
 <li>Auxiliary data needed to configure network devices (syslog servers, NTP servers, SNMP communities) are in a YAML file or simple object-oriented database (more about this topic in a follow-up post);</li>
 <li>Device configuration <em>templates </em>are managed by a source control tool like Git;</li>
 <li>Device configurations are generated from templates and IPAM+YAML data;</li>
 <li>While you’re collecting device configurations and keeping track of changes in another Git repository, that’s just a safeguard and a convenient method of identifying out-of-process changes made directly on the devices.</li>
 </ul>
-<p class="info">You might have noticed that I haven’t mentioned a single unicorn-based SDN or automation tool – <a href="/2014/09/youve-been-doing-same-thing-for-last-20.html">no technology will save the day</a> until you realize you have to <strong>change the process</strong>.</p>
+<p class="info">You might have noticed that I haven’t mentioned a single unicorn-based SDN or automation tool – <a href="/2014/09/youve-been-doing-same-thing-for-last-20/">no technology will save the day</a> until you realize you have to <strong>change the process</strong>.</p>
 <p>We’ll talk more about data models, building device configurations and deploying them, and validating input data and deployed configurations in the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions"><em>Building Network Automation Solutions</em></a><em> </em>online course. All you have to do to be part of that discussion is to <a href="http://www.ipspace.net/Building_Network_Automation_Solutions#register">register</a>.</p>
 

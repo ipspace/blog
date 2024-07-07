@@ -5,7 +5,7 @@ tags:
 - WAN
 - EEM
 title: Detect DoS Attacks with EEM
-url: /2009/11/detect-dos-attacks-with-eem.html
+url: /2009/11/detect-dos-attacks-with-eem/
 ---
 Someone sent me an interesting question a while ago: "is it possible to detect DOS flooding with an EEM applet?" Of course it is (assuming the DOS attack results in very high load on the Internet-facing interface) and the best option is the EEM interface event detector.
 

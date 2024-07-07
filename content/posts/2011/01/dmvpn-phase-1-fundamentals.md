@@ -5,7 +5,7 @@ series_weight: 400
 tags:
 - DMVPN
 title: DMVPN Phase 1 Fundamentals
-url: /2011/01/dmvpn-phase-1-fundamentals.html
+url: /2011/01/dmvpn-phase-1-fundamentals/
 ---
 Phase 1 DMVPN in a nutshell:
 

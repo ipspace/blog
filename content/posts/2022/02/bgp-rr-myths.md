@@ -44,6 +44,6 @@ In theory, the need for the IBGP sessions between spine switches diminishes if a
 
 ### Lesson Learned
 
-You can't beat the laws of physics (or networking). A BGP router in an autonomous system should either participate in the IBGP full mesh or be a client of at least two route reflectors. For more details, please read _[BGP Route Reflector Details](/2008/08/bgp-route-reflector-details.html)_.
+You can't beat the laws of physics (or networking). A BGP router in an autonomous system should either participate in the IBGP full mesh or be a client of at least two route reflectors. For more details, please read _[BGP Route Reflector Details](/2008/08/bgp-route-reflector-details/)_.
 
 Does the above rule cover all possible scenarios? The answer is left as an exercise for the careful reader.

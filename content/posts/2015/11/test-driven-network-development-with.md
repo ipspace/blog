@@ -11,7 +11,7 @@ tags:
 - network management
 - Software Gone Wild
 title: Test-Driven Network Development with Michael Kashin on Software Gone Wild
-url: /2015/11/test-driven-network-development-with.html
+url: /2015/11/test-driven-network-development-with/
 ---
 Imagine you'd design your network by documenting the desired traffic flow across the network under all failure conditions, and only then do a low-level design, create configurations, and deploy the network... while being able to use the desired traffic flows as a testing tool to verify that the network still behaves as expected, both in a test lab as well as in the live network.
 <!--more-->

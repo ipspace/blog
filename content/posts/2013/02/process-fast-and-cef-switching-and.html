@@ -1,5 +1,5 @@
 ---
-url: /2013/02/process-fast-and-cef-switching-and.html
+url: /2013/02/process-fast-and-cef-switching-and/
 title: "Process, Fast and CEF Switching and Packet Punting"
 date: "2013-02-19T07:00:00.000+01:00"
 tags: [ switching ]
@@ -15,22 +15,22 @@ tags: [ switching ]
 <p><strong>Fast switching</strong> is a <em>reactive cache-based</em> IP forwarding mechanism. The address lookup within the interrupt handler uses a cache of destinations to find the IP next hop, outgoing interface, and outbound layer-2 header. If the destination is not found in the fast switching cache, the packet is <em>punted</em> to the IP(v6) Input process, which eventually performs full-blown destination address lookup (including ARP/ND resolution) and stores the results in the fast switching cache.</p>
 <p>Fast switching worked great two decades ago (there were even hardware implementations of fast switching) ... until the bad guys started spraying the Internet with vulnerability scans. No caching code works well with miss rates approaching 100% (because every packet is sent to a different destination) and very high cache churn (because nobody designed the cache to have 100.000 or more entries). </p>
 <p>When faced with a simple host scanning activity, routers using fast switching in combination with high number of IP routes (read: Internet core routers) experienced severe brownouts because most of the received packets had destination addresses that were not yet in the fast switching cache, and so the packets had to be punted to process switching. Welcome to <em>CEF switching</em>.</p>
-<p><strong>CEF switching</strong> (or Cisco Express Forwarding) is a proactive, deterministic IP forwarding mechanism. <a href="/2010/09/ribs-and-fibs.html">Routing table (RIB) as computed by routing protocols is copied into forwarding table (FIB)</a>, where it’s combined with adjacency information (ARP or ND table) to form a deterministic lookup table. </p>
+<p><strong>CEF switching</strong> (or Cisco Express Forwarding) is a proactive, deterministic IP forwarding mechanism. <a href="/2010/09/ribs-and-fibs/">Routing table (RIB) as computed by routing protocols is copied into forwarding table (FIB)</a>, where it’s combined with adjacency information (ARP or ND table) to form a deterministic lookup table. </p>
 <p>When a router uses CEF switching, there’s (almost) no need to punt packets sent to unknown destinations to <em>IP Input </em>process; if a destination is not in the FIB, it does not exist.</p>
 <p>There are still cases where CEF switching cannot do its job. For example, packets sent to IP addresses on directly connected interfaces cannot be sent to destination hosts until the router performs ARP/ND MAC address resolution; these packets have to be sent to the <em>IP Input </em>process. </p>
-<p>The directly connected prefixes are thus entered as <a href="/2007/01/cef-punt-adjancency.html"><em>glean </em>adjacencies</a> in the FIB, and as the router learns MAC address of the target host (through ARP or ND reply), it creates a dynamic host route in the FIB pointing to the adjacency entry for the newly-discovered directly-connected host.</p>
-<p>Actually, you wouldn’t want to send too many packets to the <em>IP Input </em>process; it’s better to create the host route in the FIB (pointing to the bit bucket, <em>/dev/null</em> or something equivalent) even before the ARP/ND reply is received to ensure subsequent packets sent to the same destination are dropped, not punted – behavior <a href="/2011/05/ipv6-neighbor-discovery-exhaustion.html">nicely exploitable by ND exhaustion attack</a>.</p>
-<p>It’s pretty obvious that the CEF table must stay current. For example, if the adjacency information is lost (due to ARP/ND aging), the packets sent to that destination are yet again punted to the process switching. No wonder the router <a href="/2007/06/ar.html">periodically refreshes ARP entries</a> to ensure they never expire.</p>
+<p>The directly connected prefixes are thus entered as <a href="/2007/01/cef-punt-adjancency/"><em>glean </em>adjacencies</a> in the FIB, and as the router learns MAC address of the target host (through ARP or ND reply), it creates a dynamic host route in the FIB pointing to the adjacency entry for the newly-discovered directly-connected host.</p>
+<p>Actually, you wouldn’t want to send too many packets to the <em>IP Input </em>process; it’s better to create the host route in the FIB (pointing to the bit bucket, <em>/dev/null</em> or something equivalent) even before the ARP/ND reply is received to ensure subsequent packets sent to the same destination are dropped, not punted – behavior <a href="/2011/05/ipv6-neighbor-discovery-exhaustion/">nicely exploitable by ND exhaustion attack</a>.</p>
+<p>It’s pretty obvious that the CEF table must stay current. For example, if the adjacency information is lost (due to ARP/ND aging), the packets sent to that destination are yet again punted to the process switching. No wonder the router <a href="/2007/06/ar/">periodically refreshes ARP entries</a> to ensure they never expire.</p>
 <p>Next time ... hardware switching.</p>
 <h4>More information</h4><p>You might want to read these blog posts:</p>
-<ul class="ListParagraph"><li><a href="/2010/09/ribs-and-fibs.html">RIBs and FIBs (aka IP routing table and CEF table)</a></li>
-<li><a href="/2007/06/ar.html">ARP entries are periodically refreshed if you use CEF switching</a></li>
-<li><a href="/2008/08/ios-scheduling-parameters.html">IOS scheduling parameters</a></li>
-<li><a href="/2008/03/detect-routers-operating-in-process.html">Detect routers operating in process switching mode</a></li>
-<li><a href="/2006/12/which-switching-path-does-ios-feature.html">Which switching path does an IOS feature use?</a></li>
-<li><a href="/2007/01/cef-punted-packets.html">CEF punted packets</a></li>
-<li><a href="/2007/01/cef-punt-adjancency.html">CEF punt adjacency</a></li>
-<li><a href="/2007/10/debugging-cached-cef-adjacencies.html">Debugging cached CEF adjacencies</a></li>
-<li>And then there are a dozen more <a href="/tag/cef.html">CEF-related blog posts</a></li>
+<ul class="ListParagraph"><li><a href="/2010/09/ribs-and-fibs/">RIBs and FIBs (aka IP routing table and CEF table)</a></li>
+<li><a href="/2007/06/ar/">ARP entries are periodically refreshed if you use CEF switching</a></li>
+<li><a href="/2008/08/ios-scheduling-parameters/">IOS scheduling parameters</a></li>
+<li><a href="/2008/03/detect-routers-operating-in-process/">Detect routers operating in process switching mode</a></li>
+<li><a href="/2006/12/which-switching-path-does-ios-feature/">Which switching path does an IOS feature use?</a></li>
+<li><a href="/2007/01/cef-punted-packets/">CEF punted packets</a></li>
+<li><a href="/2007/01/cef-punt-adjancency/">CEF punt adjacency</a></li>
+<li><a href="/2007/10/debugging-cached-cef-adjacencies/">Debugging cached CEF adjacencies</a></li>
+<li>And then there are a dozen more <a href="/tag/cef/">CEF-related blog posts</a></li>
 </ul>
 

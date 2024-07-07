@@ -9,7 +9,7 @@ tags:
 - BGP
 - IP routing
 title: Valley-Free Routing
-url: /2018/09/valley-free-routing.html
+url: /2018/09/valley-free-routing/
 ---
 Reading academic articles about Internet-wide routing challenges you might stumble upon *valley-free routing* – a pretty important concept with applications in WAN and data center routing design.
 
@@ -52,7 +52,7 @@ Here’s an alternative definition assuming we can figure out the contractual re
 
 {{<note info>}}Interesting in graph applications in networking? Check out [*Network Connectivity, Graph Theory, and Reliable Network Design*](https://www.ipspace.net/Network_Connectivity,_Graph_Theory,_and_Reliable_Network_Design) webinar by [dr. Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor).{{</note>}}
 
-Assigning hierarchical levels to network nodes is a fun problem to solve. You could do it manually, automate the process, or try to deduce node’s level in the hierarchy based on its surroundings – [RIFT](/2018/03/data-center-routing-with-rift-on.html) and [OpenFabric](/2018/04/openfabric-with-russ-white-on-software.html) are both trying to do that to enable plug-and-pray fabric autoconfiguration.
+Assigning hierarchical levels to network nodes is a fun problem to solve. You could do it manually, automate the process, or try to deduce node’s level in the hierarchy based on its surroundings – [RIFT](/2018/03/data-center-routing-with-rift-on/) and [OpenFabric](/2018/04/openfabric-with-russ-white-on-software/) are both trying to do that to enable plug-and-pray fabric autoconfiguration.
 
 The challenge is relatively easy to solve if you’re allowed to label the core (or edge) nodes. This is how you could do it in the Internet case:
 

@@ -17,14 +17,14 @@ He started with...
 
 > You said that the Centralized control has one IP address per subnet and if the two DC's lose connectivity, it will result in one DC completely unreachable. Is it because the Controller only exists in one DC?
 
-That's how most stackable switch solutions work, see for example [HP IRF](/2011/09/long-distance-irf-fabric-works-best-in.html) (mentioned here because they were one of the few vendors "brave" enough to advertise Cross-DC Switch Stack stupidity).
+That's how most stackable switch solutions work, see for example [HP IRF](/2011/09/long-distance-irf-fabric-works-best-in/) (mentioned here because they were one of the few vendors "brave" enough to advertise Cross-DC Switch Stack stupidity).
 	
 The location of the controller cluster and its operations (active/active or active/standby) are architectural decisions, and different architectures went different ways. For example, VMware NSX-V has controllers spread across multiple locations, while VMware NSX-T requires all controllers to be in one location.
 
 The behavior under network partitioning (this is what DCI link failure really is) also depends on controller architecture (does it implement control plane or only management plane) and quality of its implementation. Shutting down the minority part of the partitioned network is the most brutal approach to solving this problem. There are better solutions -- here are some of the typical behaviors observed in the wild:
 
 * Complete shutdown of minority part of the network (most stackable switches);
-* Complete shutdown of control plane with data plane operating as long as there are no topology changes or control-plane requests that cannot be handled locally. NSX-T [uses this approach](/2019/08/brief-history-of-vmware-nsx.html), and Big Switch made it a bit better by [offloading LACP and ARP to the edge switches](/2015/02/big-cloud-fabric-scaling-openflow-fabric.html).
+* Complete shutdown of control plane with data plane operating as long as there are no topology changes or control-plane requests that cannot be handled locally. NSX-T [uses this approach](/2019/08/brief-history-of-vmware-nsx/), and Big Switch made it a bit better by [offloading LACP and ARP to the edge switches](/2015/02/big-cloud-fabric-scaling-openflow-fabric/).
 * Minority part of the network reverting to non-controller mode. This is NSX-V approach -- minority site uses fabric-wide flood-and-learn.
 * Minority part of the network becoming read-only. This is Cisco ACI approach, and works well only when the controllers remain a management-plane component. The moment you introduce control plane to the controller you're almost forced to go back to one of the previous approaches.
 * Minority part of the network losing write access to shared objects. This is how Cisco ACI Multi-Site controller and NSX-T federation work. They both deploy a full-blown controller cluster on each site, and use an umbrella system to synchronize configurable objects across sites. Each location remains fully operational and manageable, and you can even create local objects when undergoing network partition. I expect Microsoft Azure orchestration system to work in a similar way.
@@ -40,13 +40,13 @@ You won't find the answer to the first question in vendor whitepapers for obviou
 
 A quick search for *controller failure* on my blog resulted in these blog posts:
 
-* [Impact of Controller Failures in Software-Defined Networks](/2019/06/impact-of-controller-failures-in.html)
-* [Controller Cluster Is a Single Failure Domain](/2014/09/controller-cluster-is-single-failure.html)
-* [How Hard Is It to Think about Failures?](/2016/03/how-hard-is-it-to-think-about-failures.html)
-* [On SDN Controllers, Interconnectedness and Failure Domains](/2015/04/on-sdn-controllers-interconnectedness.html)
-* [OpenFlow Fabric Controllers Are Light-years Away from Wireless Ones](/2013/09/openflow-fabric-controllers-are-light.html)
+* [Impact of Controller Failures in Software-Defined Networks](/2019/06/impact-of-controller-failures-in/)
+* [Controller Cluster Is a Single Failure Domain](/2014/09/controller-cluster-is-single-failure/)
+* [How Hard Is It to Think about Failures?](/2016/03/how-hard-is-it-to-think-about-failures/)
+* [On SDN Controllers, Interconnectedness and Failure Domains](/2015/04/on-sdn-controllers-interconnectedness/)
+* [OpenFlow Fabric Controllers Are Light-years Away from Wireless Ones](/2013/09/openflow-fabric-controllers-are-light/)
 
-You will also find the impacts of controller failures discussed in [Distributed Systems Resources](/series/distributed-systems.html) and in these webinars:
+You will also find the impacts of controller failures discussed in [Distributed Systems Resources](/series/distributed-systems/) and in these webinars:
 
 * [SDN Architectures and Deployment Considerations](https://www.ipspace.net/SDN_Architectures_and_Deployment_Considerations)
 * [VMware NSX, Cisco ACI or Standard-Based EVPN](https://www.ipspace.net/VMware_NSX,_Cisco_ACI_or_Standard-Based_EVPN)

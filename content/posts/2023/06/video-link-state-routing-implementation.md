@@ -8,7 +8,7 @@ tags:
 title: 'Video: Link State Routing Protocol Basics'
 video_tag: net101
 ---
-After [introducing the routing protocols](/2022/11/video-routing-protocols-overview.html) and explaining the [basics of link-state routing](/2023/02/video-link-state-routing-basics.html) it was time for [implementation considerations](https://my.ipspace.net/bin/get/Net101/RP2.2%20-%20Link%20State%20Routing%20Protocol%20Implementation%20Considerations.mp4?doccode=Net101) including:
+After [introducing the routing protocols](/2022/11/video-routing-protocols-overview/) and explaining the [basics of link-state routing](/2023/02/video-link-state-routing-basics/) it was time for [implementation considerations](https://my.ipspace.net/bin/get/Net101/RP2.2%20-%20Link%20State%20Routing%20Protocol%20Implementation%20Considerations.mp4?doccode=Net101) including:
 
 * Collecting local endpoint reachability information
 * Finding neighbors and exchanging the collected information (hint: a link-state topology database is just a distributed key-value store)

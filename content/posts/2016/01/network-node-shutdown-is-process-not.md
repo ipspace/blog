@@ -5,7 +5,7 @@ tags:
 - data center
 - fabric
 title: Network Node Shutdown Is a Process, not an Event
-url: /2016/01/network-node-shutdown-is-process-not.html
+url: /2016/01/network-node-shutdown-is-process-not/
 ---
 In theory, you should shut down a network device with a well-defined procedure:
 

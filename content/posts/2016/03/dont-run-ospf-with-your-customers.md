@@ -11,9 +11,9 @@ tags:
 - BGP
 - IP routing
 title: Don’t Run OSPF with Your Customers
-url: /2016/03/dont-run-ospf-with-your-customers.html
+url: /2016/03/dont-run-ospf-with-your-customers/
 ---
-Salman left an interesting comment on my [*Running BGP on Servers*](/2016/02/running-bgp-on-servers.html) blog post:
+Salman left an interesting comment on my [*Running BGP on Servers*](/2016/02/running-bgp-on-servers/) blog post:
 
 > My prior counterparts thought running OSPF on Mainframes was a good idea. Then we had a routing blackhole due to misconfiguration on the server. Twice! The main issue was the Mainframe admins lack of networking/OSPF knowledge.
 
@@ -21,7 +21,7 @@ Well, there's a reason OSPF is called *Interior Routing Protocol*.
 <!--more-->
 {{<note>}}Honestly, mainframe administrators have no other options: IBM, in their infinite wisdom, implemented only RIP and OSPF, and OSPF seems to be the lesser evil.{{</note>}}
 
-However, even some networking engineers didn't get the memo. A long time ago, I encountered a service provider who [ran OSPF with their customers](/2009/08/do-not-ever-run-ospf-or-is-is-with-your.html), and all customers happily shared area 0 with the provider... until a customer accidentally managed to create an intra-area default route (don't ask me how), which was preferred over provider's external default route. And so, an early attempt at plug-and-pray networking (because it's oh-so-much-easier to run OSPF with your customers than to configure static routes) failed miserably.
+However, even some networking engineers didn't get the memo. A long time ago, I encountered a service provider who [ran OSPF with their customers](/2009/08/do-not-ever-run-ospf-or-is-is-with-your/), and all customers happily shared area 0 with the provider... until a customer accidentally managed to create an intra-area default route (don't ask me how), which was preferred over provider's external default route. And so, an early attempt at plug-and-pray networking (because it's oh-so-much-easier to run OSPF with your customers than to configure static routes) failed miserably.
 
 ### 30K Foot View
 
@@ -47,6 +47,6 @@ In other words, anyone who's part of an OSPF domain can insert any stupidity the
 
 ### To Summarize
 
-As I [wrote 2.5 years ago](/2013/08/virtual-appliance-routing-network.html): Don't ever run OSPF with a third party, even if that third party happens to be your friendly server administrator. It's not that you wouldn't trust him, it's just that you don't need so many additional sources of semi-reliable information plugged straight into the heart of your network.
+As I [wrote 2.5 years ago](/2013/08/virtual-appliance-routing-network/): Don't ever run OSPF with a third party, even if that third party happens to be your friendly server administrator. It's not that you wouldn't trust him, it's just that you don't need so many additional sources of semi-reliable information plugged straight into the heart of your network.
 
 Finally, to learn more about running BGP between servers and ToR switches, watch the [Leaf-and-Spine Fabric Designs](http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs) webinar.

@@ -6,13 +6,13 @@ tags:
 - OSPF
 - LDP
 title: Use Slow IGP Startup in LDP-only MPLS Environments
-url: /2008/02/use-slow-igp-startup-in-ldp-only-mpls.html
+url: /2008/02/use-slow-igp-startup-in-ldp-only-mpls/
 ---
 If you use LDP-based MPLS as the only means of transporting data across your network core (for example, in MPLS VPN networks or in BGP-free ISP core), a router startup might disrupt your Label Switched Paths (remember: they are always based on IGP best paths) leading to a temporary disruption in service.
 
 For example, when the router P1 in the network shown in the following diagram is powered on, and its IGP advertises its presence, the IGP-derived path from PE1 to PE2 will go over P1. If the LDP on P1 has not exchanged labels with PE1 and PE2, there will be no LSP on the shortest path between PE1 and PE2, resulting in a loss of traffic until the labels are exchanged and LSP is built.
 <!--more-->
-{{<figure src="LDP.jpg">}}
+{{<figure src="/2008/02/LDP.jpg">}}
 
 The proper router startup timing in this environment is thus:
 

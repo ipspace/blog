@@ -5,7 +5,7 @@ tags:
 - security
 - NAT
 title: Is NAT a Security Feature?
-url: /2011/12/is-nat-security-feature.html
+url: /2011/12/is-nat-security-feature/
 ---
 15 years after NAT was invented, I'm still getting questions along the lines of "is NAT a security feature?" **Short answer: NO!**
 

@@ -6,7 +6,7 @@ tags:
 - PPP
 - WAN
 title: OSPF Breaks When Faced With Overlapping IP Addresses
-url: /2008/10/ospf-breaks-when-faced-with-overlapping.html
+url: /2008/10/ospf-breaks-when-faced-with-overlapping/
 ---
 A while ago [cciepursuit](http://cciepursuit.wordpress.com/) described his [problems with PPP-over-Frame Relay](http://cciepursuit.wordpress.com/2008/09/21/ios-error-with-ospf-point-to-multipoint-network-in-pppofr-hub-and-spoke-topology/). Most probably his problems were caused by a static IP address assigned to the virtual template interface (this address gets cloned to all virtual access interfaces and IOS allows you to have the same IP address on multiple WAN point-to-point links). I recreated a very similar (obviously seriously broken) scenario in my lab using point-to-point subinterfaces over Frame Relay to simplify the setup.
 

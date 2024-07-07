@@ -17,7 +17,7 @@ A few hours later, he came back to me saying "_That solved the problem. How did 
 
 ### WTF?
 
-At that time, I had a [few bad experiences with the baseband modems](/2022/07/file-transfer-drops-link.html) pushing the performance envelope way past the breaking point, and suspected that it might be a clock synchronization issue: a long sequence of zeroes or ones would cause the receiving modem to lose synchronization with the transmitting modem's clock. A well-designed solution should use line encoding that would allow the receiver to recover clock from any input data, but when you buy magic products, you get magic behavior.
+At that time, I had a [few bad experiences with the baseband modems](/2022/07/file-transfer-drops-link/) pushing the performance envelope way past the breaking point, and suspected that it might be a clock synchronization issue: a long sequence of zeroes or ones would cause the receiving modem to lose synchronization with the transmitting modem's clock. A well-designed solution should use line encoding that would allow the receiver to recover clock from any input data, but when you buy magic products, you get magic behavior.
 
 A long sequence of ones shouldn't be a problem on an HDLC[^HDLC] link -- the HDLC encoding inserts a zero after five consecutive ones to avoid end-of-frame sequence (six consecutive ones) -- but there's nothing HDLC can do about long sequences of zeroes. Link compression replaced long sequences of zeroes with some other sequence of bits. Problem solved.
 

@@ -1,11 +1,11 @@
 ---
-url: /2008/05/cable-modem-problems-with-cisco-871.html
+url: /2008/05/cable-modem-problems-with-cisco-871/
 title: "Cable modem problems with Cisco 871"
 date: "2008-05-21T07:13:00.001+02:00"
 tags: [ DHCP,security ]
 ---
 
-The <a href="/2008/05/cisco-851-and-871-bridge-between-lan.html">undesired intermittent bridging behavior of Cisco 871 using old ROMMON software</a> can lead to hard-to-diagnose problems if you're connected to an Internet access network through a cable modem that accepts only a single MAC address. The right sequence of events can leave the router/modem combination in a state with no external connectivity requiring a modem power-cycle:<br/><ol><li>The router and the cable modem are power-cycled.</li>
+The <a href="/2008/05/cisco-851-and-871-bridge-between-lan/">undesired intermittent bridging behavior of Cisco 871 using old ROMMON software</a> can lead to hard-to-diagnose problems if you're connected to an Internet access network through a cable modem that accepts only a single MAC address. The right sequence of events can leave the router/modem combination in a state with no external connectivity requiring a modem power-cycle:<br/><ol><li>The router and the cable modem are power-cycled.</li>
 <li>The router starts to bridge between all LAN interfaces, effectively connecting inside workstations directly to the cable modem.</li>
 <li>One of the workstations could detect a LAN failure (due to router reload) and restart the DHCP process (a Windows XP host would definitely do that).</li>
 <li>The DHCP requests from the workstation are bridged straight to the cable modem which caches the workstation's MAC address and forwards the DHCP request.</li>

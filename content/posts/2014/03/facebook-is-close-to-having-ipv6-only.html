@@ -4,14 +4,14 @@ tags:
 - IPv6
 - data center
 title: Facebook Is Close to Having an IPv6-only Data Center
-url: /2014/03/facebook-is-close-to-having-ipv6-only.html
+url: /2014/03/facebook-is-close-to-having-ipv6-only/
 ---
 
 <p>Whenever I mention the idea of <a href="http://www.ipspace.net/IPv6-Only_Data_Centers">IPv6-only data centers</a>, I get the usual question: “<em>Sounds great, but is anyone actually using it?</em>” So far, my answer was: “<em>Yeah, I know </em><a href="http://toreanderson.no/"><em>a great guy in Norway</em></a><em> that runs this in production</em>” As of last week, the answer is way more persuasive: “<em>Facebook is almost there.</em>”<!--more--></p>
 <p><strong>Background</strong>: Paul Saab from Facebook <a href="https://www.facebook.com/groups/2234775539/10152303014725540/">had a great presentation</a> during last week’s <a href="http://www.uppersideconferences.com/v6world2014/v6world2014introduction.html">V6 World Congress</a> describing Facebook’s IPv6 deployment plans and the gotchas they encountered on the way.</p>
 <p><strong>Why</strong>: They ran out of RFC 1918 address space in their data center (that’s a nice problem to have). IPv6 was the only way forward. Also, they wanted to encourage developers to stop writing IPv4-only code (and taking IPv4 away seems to be the only way to do that).</p>
 <p><strong>How</strong>: They decided IPv6-only data center is the way to go. It’s much easier to handle two protocols at the edge (where they have load balancers anyway) than throughout the data center.</p>
-<p><strong>Problems</strong>: Plenty of them, from switches falling back to process switching (lovely, isn’t it?) to TCAM limits (<a href="/2012/12/ipv6-prefixes-longer-than-64-might-be.html">told you</a>), software crashes, BGP problems, Linux kernel cache trashing, <em>glibc</em> and <em>curl</em> errors… The usual when you’re the first one pushing the envelope.</p>
+<p><strong>Problems</strong>: Plenty of them, from switches falling back to process switching (lovely, isn’t it?) to TCAM limits (<a href="/2012/12/ipv6-prefixes-longer-than-64-might-be/">told you</a>), software crashes, BGP problems, Linux kernel cache trashing, <em>glibc</em> and <em>curl</em> errors… The usual when you’re the first one pushing the envelope.</p>
 <p><strong>How far did they get</strong>: They had IPv6 throughout the data center in 2011. All hosts support IPv6 now, 75% of internal traffic (including 100% of <em>memcached</em> traffic) is already IPv6.</p>
 <p><strong>What next</strong>: Plans to remove IPv4 from first clusters by the end of 2014.</p>
 <p><strong>Why does it matter</strong>: Facebook proved <em>it can be done</em> at scale, and discovered (and helped fix) a lot of bugs on the way. Everyone might eventually have a slightly easier transition to IPv6 because of their efforts. Thank you!</p>

@@ -3,7 +3,7 @@ kb_section: Ansible
 minimal_sidebar: true
 pre_scroll: true
 title: Parsing Text Printouts within Ansible Playbooks
-url: /kb/Ansible/Parsing_Text_Printouts_Ansible.html
+url: /kb/Ansible/Parsing_Text_Printouts_Ansible/
 ---
 Ansible can take data produced by an external script (or **show** command executed on a network device) and use it in subsequent tasks in an Ansible playbook – an ideal solution if you need to collect device data to generate a report, verify device state (example: *are BGP neighbors up*) or check device state before configuring it (example: *is another customer configured on this interface?*)
 

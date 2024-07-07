@@ -47,7 +47,7 @@ However, if you're implementing a control system for a nuclear power plant, a vi
 
 ### How Fast Is Good Enough?
 
-Years ago when I was still young and enthusiastic I considered 50 msec failover a holy grail everyone tries to reach... until I attended a [presentation by Ian Farrer](/2013/11/deutsche-telekom-terastream-designed.html), who pointed out an oft-overlooked fact: maybe you should read your Service Level Agreement first, and design your network to support what you promised instead of chasing the grail. Maybe you could reach what you have to deliver with a  decently-implemented routing protocol.
+Years ago when I was still young and enthusiastic I considered 50 msec failover a holy grail everyone tries to reach... until I attended a [presentation by Ian Farrer](/2013/11/deutsche-telekom-terastream-designed/), who pointed out an oft-overlooked fact: maybe you should read your Service Level Agreement first, and design your network to support what you promised instead of chasing the grail. Maybe you could reach what you have to deliver with a  decently-implemented routing protocol.
 
 ### Can You Make It Work?
 
@@ -55,7 +55,7 @@ Remember the first step in the _Basics_ section: detect the failure? The failove
 
 Most network designs promising extremely fast failover times rely on some external magic to provide instantaneous failure detection. Most commonly used magic in modern networks is _loss of light_: the optical cable will be cleanly cut in a microsecond, and the transceiver will report the failure in less than a millisecond.
 
-Really? Sometimes you're lucky and things do work that way. Sometimes you get [gray failures](/2017/10/to-bfd-or-not-to-bfd.html). Sometimes an intermediate box that you have no control over (repeater, media converter) doesn't propagate loss-of-light condition.
+Really? Sometimes you're lucky and things do work that way. Sometimes you get [gray failures](/2017/10/to-bfd-or-not-to-bfd/). Sometimes an intermediate box that you have no control over (repeater, media converter) doesn't propagate loss-of-light condition.
 
 "_No problem_", a seasoned networking engineer says, "_we'll detect the failure with BFD_". Of course he's right... but how fast could BFD detect a failure? It depends on how low you can tweak the BFD timers before getting an unstable network, and that depends on the specifics of BFD implementation. 
 
@@ -63,4 +63,4 @@ Regardless of what the actual value is, pondering a failover solution faster tha
 
 ### Is the Added Complexity Worth the Effort?
 
-In most cases, the answer is NO, in particular if the [failures are rare](/2019/06/know-thy-environment-before-redesigning.html).
+In most cases, the answer is NO, in particular if the [failures are rare](/2019/06/know-thy-environment-before-redesigning/).

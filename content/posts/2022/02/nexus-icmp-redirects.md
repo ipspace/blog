@@ -33,7 +33,7 @@ Disabling ICMP redirects on the Nexus switches with **no ip redirects** magicall
 Considering the impact of this SNAFU, one has to wonder about the Nexus OS default settings:
 
 * ICMP redirects are rarely useful
-* Ignoring ICMP redirects on hosts is often considered a "security best practice" -- they are almost as good as [IPv6 Router Advertisements](/2011/11/ipv6-security-getting-bored-bru-airport.html) if you want to snatch someone's traffic.
+* Ignoring ICMP redirects on hosts is often considered a "security best practice" -- they are almost as good as [IPv6 Router Advertisements](/2011/11/ipv6-security-getting-bored-bru-airport/) if you want to snatch someone's traffic.
 * Sending ICMP redirects is a performance killer.
 
 And still, a modern network operating system has an obsolete 40-year-old technology enabled by default (still true on Nexus OS 9.3.8). Mindboggling.

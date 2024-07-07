@@ -6,7 +6,7 @@ tags:
 - SD-WAN
 - video
 title: 'Video: What Is SD-WAN?'
-url: /2018/09/video-what-is-sdwan.html
+url: /2018/09/video-what-is-sdwan/
 video_tag: sd-wan
 ---
 [Pradosh Mohapatra](https://www.ipspace.net/Author:Pradosh_Mohapatra), the author of last week's [SD-WAN Overview](https://www.ipspace.net/SD-WAN_Overview) webinar started his presentation with a seemingly simple question: [What Is SD-WAN](https://my.ipspace.net/bin/get/SDWAN/1%20-%20What%20Is%20SDWAN.mp4)?

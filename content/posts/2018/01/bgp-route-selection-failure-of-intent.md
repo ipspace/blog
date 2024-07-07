@@ -6,10 +6,10 @@ tags:
 - SDN
 - BGP
 title: 'BGP Route Selection: a Failure of Intent-Based Networking'
-url: /2018/01/bgp-route-selection-failure-of-intent.html
+url: /2018/01/bgp-route-selection-failure-of-intent/
 intent-based-networking_tag: drawback
 ---
-It's interesting how the same pundits who loudly complain about the complexities of BGP (and how it will be dead any time soon and replaced by an SDN miracle) also praise the beauties of [intent-based networking](/2017/09/intent-based-hype.html)... without realizing that the hated BGP route selection process represents one of the first failures of intent-based approach to networking.
+It's interesting how the same pundits who loudly complain about the complexities of BGP (and how it will be dead any time soon and replaced by an SDN miracle) also praise the beauties of [intent-based networking](/2017/09/intent-based-hype/)... without realizing that the hated BGP route selection process represents one of the first failures of intent-based approach to networking.
 
 Let's start with some definitions. There are two ways to get a job done by someone else:
 <!--more-->
@@ -48,7 +48,7 @@ Guess what -- almost nobody wanted to go down that path (assuming they did the h
 -   MED (I want to influence how others send traffic to me)
 -   Communities (I want to influence others but can't use any other tool, so let's hope they interpret my intent correctly)
 -   Lists of communities to use (this is how you can signal your intent in a way that I'll understand it)
--   Weird rules about route reflector attributes affecting route selection (because it's always possible to [build a broken network](/2013/10/can-bgp-route-reflectors-really.html) and then claim it's the vendor- or protocol fault)
+-   Weird rules about route reflector attributes affecting route selection (because it's always possible to [build a broken network](/2013/10/can-bgp-route-reflectors-really/) and then claim it's the vendor- or protocol fault)
 -   Crazy stuff like copying IGP metric into BGP extended community because we want to have some more tweaks on intent without having to deal with writing the code ourselves.
 
 In my biased view (because I don't believe in fairy tales and magic), BGP is a pretty obvious lesson in what happens when you try to solve vague business rules with intent-driven approach instead of writing your own code that does what you want to be done.

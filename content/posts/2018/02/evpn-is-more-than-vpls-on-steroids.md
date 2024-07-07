@@ -5,9 +5,9 @@ tags:
 - EVPN
 - MPLS VPN
 title: EVPN Is More than VPLS on Steroids
-url: /2018/02/evpn-is-more-than-vpls-on-steroids.html
+url: /2018/02/evpn-is-more-than-vpls-on-steroids/
 ---
-[Tiziano Tofoni](https://www.linkedin.com/in/tiziano-tofoni-1361759/) wrote a lengthy comment on my [EVPN in small data center fabrics](/2018/02/using-evpn-in-very-small-data-center.html) blog post continuing the excellent discussion we started over a beer last October. Today, I'll address the first part:
+[Tiziano Tofoni](https://www.linkedin.com/in/tiziano-tofoni-1361759/) wrote a lengthy comment on my [EVPN in small data center fabrics](/2018/02/using-evpn-in-very-small-data-center/) blog post continuing the excellent discussion we started over a beer last October. Today, I'll address the first part:
 
 > I think that EVPN is an excellent standard for those who love Layer 2 (L2) services; we may say that it is an evolution of the implementation of the VPLS service, which addresses some limits in the original standard (RFCs 4761 and 4762).
 
@@ -19,7 +19,7 @@ VPLS is the result of [organic evolution](https://en.wikipedia.org/wiki/Favela#/
 -   Ethernet transport was the next logical step, first as P2P circuits and later as emulated LANs;
 -   BGP control plane was introduced to solve scalability challenges caused by lack of automation.
 
-{{<note info>}}Want to know how to automate VPN service provisioning? I published a [simple case study on GitHub](https://github.com/ipspace/MPLS-infrastructure). You might also want to explore the [solution Francois Herbet built](/2018/02/automation-win-mplsvpn-service.html) while attending [Building Network Automation Solutions](http://www.ipspace.net/Building_Network_Automation_Solutions) online course.{{</note>}}
+{{<note info>}}Want to know how to automate VPN service provisioning? I published a [simple case study on GitHub](https://github.com/ipspace/MPLS-infrastructure). You might also want to explore the [solution Francois Herbet built](/2018/02/automation-win-mplsvpn-service/) while attending [Building Network Automation Solutions](http://www.ipspace.net/Building_Network_Automation_Solutions) online course.{{</note>}}
 
 At no time did VPLS evolve from a wire-focused service to an endpoint-focused service like MPLS/VPN, officially known as [BGP/MPLS IP VPN](https://tools.ietf.org/html/rfc4364).
 

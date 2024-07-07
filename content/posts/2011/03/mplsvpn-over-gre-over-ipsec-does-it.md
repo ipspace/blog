@@ -7,7 +7,7 @@ tags:
 - MPLS VPN
 - GRE
 title: 'MPLS/VPN-over-GRE-over-IPSec: Does It Really Work?'
-url: /2011/03/mplsvpn-over-gre-over-ipsec-does-it.html
+url: /2011/03/mplsvpn-over-gre-over-ipsec-does-it/
 ---
 **Short answer**: yes, it does.
 

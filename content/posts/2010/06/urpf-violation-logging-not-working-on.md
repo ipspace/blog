@@ -6,7 +6,7 @@ tags:
 - security
 - IP routing
 title: uRPF Violation Logging Is Not Working on 12.4T
-url: /2010/06/urpf-violation-logging-not-working-on.html
+url: /2010/06/urpf-violation-logging-not-working-on/
 ---
 One of the scenarios I'm discussing in the [*DMVPN webinar*](http://www.ipspace.net/DMVPN) is redundant DMVPN network with two ISPs. It's not a particularly complex setup, unless the ISPs decide to deploy anti-spoofing filters (more precisely: unicast RPF checks) in which case it becomes crucially important which outbound interface you use for your DMVPN tunnel.
 

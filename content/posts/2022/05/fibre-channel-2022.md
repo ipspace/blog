@@ -23,7 +23,7 @@ Would Fibre Channel give you better performance? Probably not. Years ago, I was 
 
 Does that make Fibre Channel dead? Of course not. People who have been building and upgrading their FC-based SAN for the last 30 years will keep doing so. Would I use Fibre Channel in a new deployment? Absolutely not.
 
-Finally, a word on [ATA-over-Ethernet](https://en.wikipedia.org/wiki/ATA_over_Ethernet): it's a simple protocol running directly on top of Ethernet. I [considered that a bad idea in 2010](/2010/09/ataoe-for-converged-data-center.html) (the [vendor using ATAoE strongly disagreed](/2010/09/ataoe-response-from-coraid.html)) and I haven't changed my mind even though [someone had great experience running ATAoE on Debian](/2013/10/ataoe-is-alive-and-well.html).
+Finally, a word on [ATA-over-Ethernet](https://en.wikipedia.org/wiki/ATA_over_Ethernet): it's a simple protocol running directly on top of Ethernet. I [considered that a bad idea in 2010](/2010/09/ataoe-for-converged-data-center/) (the [vendor using ATAoE strongly disagreed](/2010/09/ataoe-response-from-coraid/)) and I haven't changed my mind even though [someone had great experience running ATAoE on Debian](/2013/10/ataoe-is-alive-and-well/).
 
 [^BETTER]: I wanted to write _better_, but then remembered that _better_ depends on what metric you like to choose ;)
 

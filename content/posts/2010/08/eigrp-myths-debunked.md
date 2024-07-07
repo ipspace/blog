@@ -4,13 +4,13 @@ eigrp_tag: basic
 tags:
 - EIGRP
 title: EIGRP Myths Debunked
-url: /2010/08/eigrp-myths-debunked.html
+url: /2010/08/eigrp-myths-debunked/
 ---
 [Matthew Norwood](http://twitter.com/matthewnorwood) performed a really thorough EIGRP research and [unearthed a lot of myths around it](http://networktherapy.wordpress.com/2010/07/29/how-much-do-you-really-know-about-technology-x), some of them coming from official documentation, Cisco Press books (hopefully not [mine](http://www.amazon.com/gp/product/1578701651?ie=UTF8&tag=cisioshinandt-20&linkCode=xm2&camp=1789&creativeASIN=1578701651)) and other sources. It's time to debunk a few of them (read the [comments to Matthew's post](#comment-7) to find the sources of the following "wisdoms").
 
 {{<note info>}}To learn more about routing protocols, watch our [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar{{</note>}}
 
-**EIGRP is a hybrid routing protocol**. If I remember correctly, this one comes straight from the first EIGRP presentations Dino had @ Networkers years ago and is usually interpreted as "EIGRP has the best features of Distance Vector and Link State routing protocols". Completely wrong, EIGRP has zero LS features. Correct classification would be "EIGRP is an advanced Distance Vector routing protocol" and the [Wikipedia entry on EIGRP](#EIGRP_classification_as_a_distance-vector) is almost spot-on.
+**EIGRP is a hybrid routing protocol**. If I remember correctly, this one comes straight from the first EIGRP presentations Dino had @ Networkers years ago and is usually interpreted as "EIGRP has the best features of Distance Vector and Link State routing protocols". Completely wrong, EIGRP has zero LS features. Correct classification would be "EIGRP is an advanced Distance Vector routing protocol" and the Wikipedia entry on EIGRP is almost spot-on.
 <!--more-->
 **EIGRP is a distance vector routing protocol**. Not bad, but not completely true either. Wikipedia has a nice wording: "EIGRP is not a naïve DV routing protocol". EIGRP differs from other DV routing protocols in the way it handles lost routes (or routes with increased metric). All other DV routing protocols passively wait to get potentially better information from their neighbors (some of them, including RIP, even lock down the path to prevent loops), while EIGRP takes a more active approach (now you see why a temporarily-lost route is *active*) and starts querying its neighbors.
 

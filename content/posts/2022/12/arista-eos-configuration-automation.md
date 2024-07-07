@@ -7,11 +7,11 @@ I keep getting questions along the lines of "_is network automation practical/a 
 
 > Many do not see a value and are OK with just a configuration manager such as Arista CVP (CloudVision Portal) and Cisco DNA. 
 
-[Configuration consistently is a huge win](/2018/04/configuration-templating-could-be-huge.html) regardless of how you implement it (it's perfectly fine if the tools your vendor providers work for you). It prevents _opportunistic consistency_, as Antti Ristimäki [succinctly explained](/2022/11/automation-service-provider.html):
+[Configuration consistently is a huge win](/2018/04/configuration-templating-could-be-huge/) regardless of how you implement it (it's perfectly fine if the tools your vendor providers work for you). It prevents _opportunistic consistency_, as Antti Ristimäki [succinctly explained](/2022/11/automation-service-provider/):
 <!--more-->
 > Without automation it would be also very difficult to enforce the desired configurations and would result in an opportunistic network where certain configurations are only applied if an engineer has remembered to, or cared to, configure them.
 
-Having your network described as a set of well-defined parameters (aka [Source of Truth](https://my.ipspace.net/bin/list?id=AutConcepts#SSOT)) instead of [device configurations scattered all over the globe](/2019/03/creating-automation-source-of-truth.html) is another huge win, so it's no surprise that a lot of engineers include these concepts in their new projects. Here's what [Gaël Garcin](https://www.linkedin.com/in/ga%C3%ABl-garcin-39abbb12/) recently sent me:
+Having your network described as a set of well-defined parameters (aka [Source of Truth](https://my.ipspace.net/bin/list?id=AutConcepts#SSOT)) instead of [device configurations scattered all over the globe](/2019/03/creating-automation-source-of-truth/) is another huge win, so it's no surprise that a lot of engineers include these concepts in their new projects. Here's what [Gaël Garcin](https://www.linkedin.com/in/ga%C3%ABl-garcin-39abbb12/) recently sent me:
 
 ---
 
@@ -23,8 +23,8 @@ The result now is a 100% infrastructure-as-code core network, all starting from 
 
 In a nutshell:
 
-* Create a machine-readable high-level description of your network. It doesn't matter (initially) if you use [text files](/2021/11/worth-reading-git-source-truth.html) or [something more complex](/2019/04/text-files-or-relational-database.html);
-* Create consistent device configuration templates, and use them as the sole means of creating device configuration (don't forget to consider how to implement the [Big Red Button](/2018/02/big-red-button-for-network-automation.html))
+* Create a machine-readable high-level description of your network. It doesn't matter (initially) if you use [text files](/2021/11/worth-reading-git-source-truth/) or [something more complex](/2019/04/text-files-or-relational-database/);
+* Create consistent device configuration templates, and use them as the sole means of creating device configuration (don't forget to consider how to implement the [Big Red Button](/2018/02/big-red-button-for-network-automation/))
 * Use whatever workflow works for you to deploy the configurations
 * Squeeze the most out of the vendor-supplied tools, but don't be limited by their functionality.
 

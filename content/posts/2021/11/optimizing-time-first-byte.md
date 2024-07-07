@@ -11,7 +11,7 @@ I don't think I've ever met someone saying "_I wish my web application would run
 
 **The obvious answer**: The Cloud. Let's move our web servers closer to the clients -- deploy them in various cloud regions around the world. Mission accomplished.
 
-Not really; the laws of physics (latency in particular) will kill your wonderful idea. I [wrote about the underlying problems years ago](/2015/01/latency-killer-of-spread-out.html), wrote another blog post [focused on the misconceptions of cloudbursting](/2020/02/the-myth-of-scaling-from-on-premises.html), but I'm still getting the questions along the same lines. Time for another blog post, this time with even more diagrams.
+Not really; the laws of physics (latency in particular) will kill your wonderful idea. I [wrote about the underlying problems years ago](/2015/01/latency-killer-of-spread-out/), wrote another blog post [focused on the misconceptions of cloudbursting](/2020/02/the-myth-of-scaling-from-on-premises/), but I'm still getting the questions along the same lines. Time for another blog post, this time with even more diagrams.
 <!--more-->
 Let's assume your customer sits 10 msec away from your data center.
 
@@ -32,7 +32,7 @@ You could solve this conundrum with a new protocol that reduces the number of RT
 
 {{<figure src="/2021/11/TTFB-web.png" caption="Deploying a web server closer to the client">}}
 
-Guess what... as I [explained](/2015/01/latency-killer-of-spread-out.html) [several times](/2020/02/the-myth-of-scaling-from-on-premises.html) pulling the web server away from the underlying infrastructure only makes the situation worse -- a web application usually makes many back-end requests to collect data needed by a single client request.
+Guess what... as I [explained](/2015/01/latency-killer-of-spread-out/) [several times](/2020/02/the-myth-of-scaling-from-on-premises/) pulling the web server away from the underlying infrastructure only makes the situation worse -- a web application usually makes many back-end requests to collect data needed by a single client request.
 
 The only working solution is thus a *web proxy* -- a local web server that terminates the client session and uses an *existing HTTP session* with the back-end web server, spending a single RTT for the HTTP request and response.
 

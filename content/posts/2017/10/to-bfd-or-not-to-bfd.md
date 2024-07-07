@@ -8,9 +8,9 @@ tags:
 - BGP
 - IP routing
 title: To BFD or Not to BFD?
-url: /2017/10/to-bfd-or-not-to-bfd.html
+url: /2017/10/to-bfd-or-not-to-bfd/
 ---
-Omer asked a pretty common question about BFD on [one of my blog posts](/2017/10/routing-protocols-perfect-example-of.html) (slightly reworded):
+Omer asked a pretty common question about BFD on [one of my blog posts](/2017/10/routing-protocols-perfect-example-of/) (slightly reworded):
 
 > Would you still use BFD even if you have a direct router-to-router physical link without L2 transport in the middle to detect if there is some kind of software failure on the other side?
 
@@ -18,7 +18,7 @@ Sander Steffann quickly replied:
 <!--more-->
 > Too many things can go wrong, even on a simple point-to-point link. The latest ones I have observed are a router not properly detecting when a link goes down and one of the SFPs on a DAC cable failing while keeping the link up towards the router.
 
-We all know that the absolutely correct answer is "it depends" (even though, in this case, I would forgo that get-out-of-jail card and lean heavily toward YES). Let's try to quantify it using the same questions we used when [discussing BGP timers](/2017/09/improving-bgp-convergence-without.html):
+We all know that the absolutely correct answer is "it depends" (even though, in this case, I would forgo that get-out-of-jail card and lean heavily toward YES). Let's try to quantify it using the same questions we used when [discussing BGP timers](/2017/09/improving-bgp-convergence-without/):
 
 **What problem are we trying to solve?** We're trying to detect inter-router link failure faster than what would be feasible using routing protocol hellos or timeouts.
 
@@ -46,4 +46,4 @@ You might think that the switches performing packet forwarding in hardware would
 
 You can (and should) use Control Plane Protection (CoPP) to protect the central CPU of your network device. Just make sure CoPP can treat NNI traffic (BFD and routing protocols) differently than UNI traffic (ARP or ping).
 
-Long story short: be moderate on BFD timers. Figure out what your real business needs are, not what everyone assumes they are, and choose the simplest possible approach that would meet them (see also what [Deutsche Telekom did to simplify their network](/2013/11/deutsche-telekom-terastream-designed.html)).
+Long story short: be moderate on BFD timers. Figure out what your real business needs are, not what everyone assumes they are, and choose the simplest possible approach that would meet them (see also what [Deutsche Telekom did to simplify their network](/2013/11/deutsche-telekom-terastream-designed/)).

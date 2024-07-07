@@ -3,7 +3,7 @@ date: 2008-07-08 07:16:00.002000+02:00
 tags:
 - certifications
 title: The Value of Being a CCIE
-url: /2008/07/value-of-being-ccie.html
+url: /2008/07/value-of-being-ccie/
 ---
 I was very pleasantly surprised by the supportive comments to [my CCIE-related post](http://localhost:1313/2008/07/why-im-no-longer-active-ccie.html); I didn't realize there are so many CCIEs out there that feel the same way I do. Will we change anything? We can only hope; the CCIE program is orders of magnitude smaller than the Cisco's equipment sales.
 

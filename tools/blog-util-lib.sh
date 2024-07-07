@@ -29,7 +29,7 @@ blog_start_hugo() {
 
 blog_view_post() {
   blog_start_hugo
-  BLOG_POST=$(get_filepath $1|sed 's#.*/posts##'|sed 's#md$#html#')
+  BLOG_POST=$(get_filepath $1|sed 's#.*/posts##'|sed 's#md$#html#'|sed 's#.html#/#')
   open "http://localhost:1313$BLOG_POST"
 }
 
@@ -99,10 +99,11 @@ blog_html_to_md() {
 }
 
 blog_find_file() {
-  if [ -f "$1" ]; then
-    echo $1
+  fname="$(echo $1|sed 's#/$#.html#')"
+  if [ -f "$fname" ]; then
+    echo $fname
   else
-    blog_html_to_md $1
+    blog_html_to_md $fname
   fi
 }
 

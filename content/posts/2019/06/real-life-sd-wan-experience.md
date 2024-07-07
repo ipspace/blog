@@ -3,7 +3,7 @@ date: 2019-06-19 08:11:00+02:00
 tags:
 - SD-WAN
 title: Real-Life SD-WAN Experience
-url: /2019/06/real-life-sd-wan-experience.html
+url: /2019/06/real-life-sd-wan-experience/
 sd-wan_tag: reality
 ---
 SD-WAN is the best thing that could have happened to networking according to some industry "thought leaders" and \$vendor marketers... but it seems there might be a tiny little gap between their rosy picture and reality.
@@ -16,4 +16,4 @@ This is what I got from someone blessed with hands-on SD-WAN experience:
 >
 > We are using an Overlay based SDN solution and with every release it appears that we are opening a new can of worms. SDN and NFV are fantastic technologies but I must say some implementations are way too raw and un-milled (they are not even qualified to be called Beta versions). Industry should have moved a little slower when it comes to offering something for production networks.
 
-Unfortunately this is not how this industry works. For more delightful banter on the same topic listen to [The Trough of Disillusionment](https://thenetworkcollective.com/2019/05/subscription-licensing/) on Network Collective (including Tom Hollingsworth being aggravated about me [calling RADIUS an SDN solution](/2015/05/do-we-need-nac-and-8021x.html) :D)... and if you need more detailed SD-WAN horror stories check out the [latest version of SD-WAN security presentation](https://github.com/sdnewhop/sdwannewhope/blob/master/insomnihack-2019.pdf).
+Unfortunately this is not how this industry works. For more delightful banter on the same topic listen to [The Trough of Disillusionment](https://thenetworkcollective.com/2019/05/subscription-licensing/) on Network Collective (including Tom Hollingsworth being aggravated about me [calling RADIUS an SDN solution](/2015/05/do-we-need-nac-and-8021x/) :D)... and if you need more detailed SD-WAN horror stories check out the [latest version of SD-WAN security presentation](https://github.com/sdnewhop/sdwannewhope/blob/master/insomnihack-2019.pdf).

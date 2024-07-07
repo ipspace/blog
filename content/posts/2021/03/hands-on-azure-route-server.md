@@ -9,7 +9,7 @@ title: 'Hands-On: Azure Route Server'
 ---
 **TL&DR**: Azure Route Server works as advertised. Setting it up is excruciatingly slow. You might want to start the process just before taking a long lunch break.
 
-I decided to take [Azure Route Server](/2021/03/azure-route-server-behind-the-scenes.html) for a ride. Simple setup, two Networking Virtual Appliance (NVA) instances running Quagga to advertise a single prefix (just to see how multipathing works).
+I decided to take [Azure Route Server](/2021/03/azure-route-server-behind-the-scenes/) for a ride. Simple setup, two Networking Virtual Appliance (NVA) instances running Quagga to advertise a single prefix (just to see how multipathing works).
 
 Here's the diagram of what I set up:
 <!--more-->

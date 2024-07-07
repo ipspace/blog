@@ -9,7 +9,7 @@ tags:
 - switching
 title: 'MLAG Deep Dive: Layer-3 Forwarding'
 ---
-The [layer-2 forwarding](/2022/06/mlag-deep-dive-mac-learning.html) and [flooding](/2022/06/mlag-deep-dive-flooding.html) in an MLAG cluster are intricate but still reasonably easy to understand. Layer-3 gets more interesting; its quirks depend heavily on layer-2 implementation. While most MLAG implementations exhibit similar bridging behavior, expect interesting differences in routing behavior.
+The [layer-2 forwarding](/2022/06/mlag-deep-dive-mac-learning/) and [flooding](/2022/06/mlag-deep-dive-flooding/) in an MLAG cluster are intricate but still reasonably easy to understand. Layer-3 gets more interesting; its quirks depend heavily on layer-2 implementation. While most MLAG implementations exhibit similar bridging behavior, expect interesting differences in routing behavior.
 
 We'll have to expand by-now familiar network topology to cover layer-3 edge cases. We'll still work with two switches in an MLAG cluster, but we'll have an external router attached to both of them. The hosts connected to the switches belong to two subnets (red and blue).
 <!--more-->
@@ -20,22 +20,22 @@ We'll have to expand by-now familiar network topology to cover layer-3 edge case
 Before going into the details, let's figure out what we should expect in a well-designed MLAG cluster providing layer-3 forwarding:
 
 * One of the primary reasons to deal with MLAG complexity is _redundancy_ -- the traffic should keep flowing even when one of the MLAG cluster members crashes. That's easy to do within a layer-2 segment; to keep inter-subnet traffic flowing, the MLAG cluster members have to share the IP and MAC address of the first-hop gateway.
-* We want [active/active layer-3 forwarding across the MLAG cluster](/2012/05/does-optimal-l3-forwarding-matter-in.html). For example, when A sends an IP packet to B, it might use the A-S1 or the A-S2 link. It would make no sense to send that packet over the S1-S2 peer link just to be routed by the other switch. The first-hop IP and MAC address must therefore be active on all MLAG cluster members.
+* We want [active/active layer-3 forwarding across the MLAG cluster](/2012/05/does-optimal-l3-forwarding-matter-in/). For example, when A sends an IP packet to B, it might use the A-S1 or the A-S2 link. It would make no sense to send that packet over the S1-S2 peer link just to be routed by the other switch. The first-hop IP and MAC address must therefore be active on all MLAG cluster members.
 * MLAG cluster members must deal with misdirected traffic. In most designs, S1 and S2 advertise whole subnets (_red_ and _blue_) to the external router. While it doesn't matter whether the external router sends traffic for A or B to S1 or S2, S1 and S2 have to deal with traffic for X or Y arriving at the wrong switch.
 
 ### First-Hop IP and MAC Address
 
-I'm positive the "_shared first-hop IP- and MAC address_" requirement immediately triggered the "_first-hop redundancy protocols (FHRP)_" knee-jerk reaction, but that doesn't have to be the case. [Arista's Virtual ARP (VARP)](/2013/06/arista-eos-virtual-arp-varp-behind.html) or Cumulus Linux Virtual Router Redundancy (VRR) – statically configured shared IP- and MAC address – are more than good enough, and are pretty resilient against configuration mistakes.
+I'm positive the "_shared first-hop IP- and MAC address_" requirement immediately triggered the "_first-hop redundancy protocols (FHRP)_" knee-jerk reaction, but that doesn't have to be the case. [Arista's Virtual ARP (VARP)](/2013/06/arista-eos-virtual-arp-varp-behind/) or Cumulus Linux Virtual Router Redundancy (VRR) – statically configured shared IP- and MAC address – are more than good enough, and are pretty resilient against configuration mistakes.
 
 Many other vendors insist on running HSRP or VRRP between MLAG cluster members, and Arista and Cumulus offer both options -- what could be better than two ways of configuring the same thing.
 
 ### Active/Active Forwarding
 
-Many vendors took ancient FHRP implementations that supported a single active forwarder and made them part of their MLAG solutions. It took years before they realized it's [perfectly fine to have all switches listen to the same MAC address](/2013/05/optimal-l3-forwarding-with-varp-and.html). After all, if the MAC table on the ingress switch forwards a layer-2 packet with the FHRP destination MAC address to the layer-3 forwarding table, that same packet is not flooded to any other host (or the peer link), and there's no danger of traffic duplication.
+Many vendors took ancient FHRP implementations that supported a single active forwarder and made them part of their MLAG solutions. It took years before they realized it's [perfectly fine to have all switches listen to the same MAC address](/2013/05/optimal-l3-forwarding-with-varp-and/). After all, if the MAC table on the ingress switch forwards a layer-2 packet with the FHRP destination MAC address to the layer-3 forwarding table, that same packet is not flooded to any other host (or the peer link), and there's no danger of traffic duplication.
 
-{{<note warn>}}If you want to use active-active forwarding, [turn off ICMP redirects](/2022/02/nexus-icmp-redirects.html) on routed VLANs in an MLAG cluster. More details coming in another blog post.{{</note>}}
+{{<note warn>}}If you want to use active-active forwarding, [turn off ICMP redirects](/2022/02/nexus-icmp-redirects/) on routed VLANs in an MLAG cluster. More details coming in another blog post.{{</note>}}
 
-Fast forward to 2022. Active/active forwarding is now a table-stakes MLAG feature, and there's a good reason for that. Remember the "_[use outbound ACL to limit layer-2 flooding](/2022/06/mlag-deep-dive-flooding.html)_" trick? Here's what happens when you try to use single forwarder with it:
+Fast forward to 2022. Active/active forwarding is now a table-stakes MLAG feature, and there's a good reason for that. Remember the "_[use outbound ACL to limit layer-2 flooding](/2022/06/mlag-deep-dive-flooding/)_" trick? Here's what happens when you try to use single forwarder with it:
 
 * Let's assume S1 is our dedicated forwarder, and S2 is just a layer-2 switch.
 * Assume A wants to send a packet to B (which is in a different subnet) and happens to send the packet to the VRRP MAC address (owned by S1) over the A-S2 link.

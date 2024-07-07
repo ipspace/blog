@@ -5,7 +5,7 @@ tags:
 - MPLS VPN
 - QoS
 title: QPPB in MPLS VPN
-url: /2010/03/qppb-in-mpls-vpn.html
+url: /2010/03/qppb-in-mpls-vpn/
 ---
 **TL&DR**: [QPPB](https://en.wikipedia.org/wiki/QPPB) works in MPLS VPNs... with a few limitations (at least in Cisco IOS implementation).
 

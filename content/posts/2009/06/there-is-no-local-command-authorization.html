@@ -4,12 +4,12 @@ tags:
 - access control
 - you've asked for it
 title: There is no local command authorization
-url: /2009/06/there-is-no-local-command-authorization.html
+url: /2009/06/there-is-no-local-command-authorization/
 ---
 
 <div class="bloggerBody"><p>Shahid wrote me an e-mail asking about local command authorization. He would like to perform it within the AAA model, but while AAA local authorization works, it only allows you to specify user privilege level (and autocommand), not individual commands (like you can do on a TACACS+ server).</p>
-<!--more--><p>One of the reasons for this behavior is the difference between <em>exec </em>authorization (the authorization to start the interactive session, configured with <strong>aaa authorization exec</strong>) and <em>command </em>authorization (the <a href="/2008/10/aaa-command-authorization-gotchas.html">authorization to execute a particular command</a>, configured with <strong>aaa authorization commands</strong>). While the <strong>local </strong>method can be specified in the <strong>aaa authorization commands </strong>command, it’s essentially a no-op (it always succeeds). Using the <strong>local </strong>method in the <strong>aaa authorization commands </strong>is only meaningful if you want to provide a fallback mechanism where all commands are authorized if the router cannot contact a TACACS+ server.</p>
-<p class="info">You can use <a href="/2006/11/cli-command-logging-without-tacacs.html">EEM applets</a>, command privilege levels or parser views to limit the set of commands a user can execute on a router without using TACACS+ command authorization.</p>
-<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.</p>
+<!--more--><p>One of the reasons for this behavior is the difference between <em>exec </em>authorization (the authorization to start the interactive session, configured with <strong>aaa authorization exec</strong>) and <em>command </em>authorization (the <a href="/2008/10/aaa-command-authorization-gotchas/">authorization to execute a particular command</a>, configured with <strong>aaa authorization commands</strong>). While the <strong>local </strong>method can be specified in the <strong>aaa authorization commands </strong>command, it’s essentially a no-op (it always succeeds). Using the <strong>local </strong>method in the <strong>aaa authorization commands </strong>is only meaningful if you want to provide a fallback mechanism where all commands are authorized if the router cannot contact a TACACS+ server.</p>
+<p class="info">You can use <a href="/2006/11/cli-command-logging-without-tacacs/">EEM applets</a>, command privilege levels or parser views to limit the set of commands a user can execute on a router without using TACACS+ command authorization.</p>
+<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>
 </div>
 

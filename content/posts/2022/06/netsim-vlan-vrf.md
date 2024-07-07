@@ -6,7 +6,7 @@ tags:
 - netlab
 title: 'netlab: Combining VLANs with VRFs'
 ---
-Last two weeks we focused on [access VLANs](/2022/05/netsim-vlan-simple.html) and [VLAN trunk](/2022/06/netsim-vlan-trunk.html) *[netlab](https://netlab.tools/)* implementation. Can we combine them with [VRFs](/2022/04/netsim-vrf-lite.html)? Of course.
+Last two weeks we focused on [access VLANs](/2022/05/netsim-vlan-simple/) and [VLAN trunk](/2022/06/netsim-vlan-trunk/) *[netlab](https://netlab.tools/)* implementation. Can we combine them with [VRFs](/2022/04/netsim-vrf-lite/)? Of course.
 
 The trick is very simple: attributes within a VLAN definition become attributes of VLAN interfaces. Add `vrf` attribute to a VLAN and you get all VLAN interfaces created for that VLAN in the corresponding VRF. Can't get any easier, can it?
 

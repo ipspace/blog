@@ -7,9 +7,9 @@ tags:
 - BGP
 - MPLS VPN
 title: Multihomed EIGRP Sites in MPLS VPN Network
-url: /2008/07/multihomed-eigrp-sites-in-mpls-vpn.html
+url: /2008/07/multihomed-eigrp-sites-in-mpls-vpn/
 ---
-Deploying EIGRP as the PE-CE routing protocol in MPLS VPN networks is easy if [all sites have a single PE-CE link and there are no backdoor links between the sites](/2008/06/simple-eigrp-in-mpls-vpn-networks.html). Real life is never as simple as that; you have to cope with various (sometimes undocumented) network topologies. Even that would be manageable if the customer networks would have a clean addressing scheme that would allow good summarization (that happens once in a blue moon) or if the MPLS VPN core could announce the default route into the EIGRP sites (wishful thinking; the customer probably has one or more Internet exit points).
+Deploying EIGRP as the PE-CE routing protocol in MPLS VPN networks is easy if [all sites have a single PE-CE link and there are no backdoor links between the sites](/2008/06/simple-eigrp-in-mpls-vpn-networks/). Real life is never as simple as that; you have to cope with various (sometimes undocumented) network topologies. Even that would be manageable if the customer networks would have a clean addressing scheme that would allow good summarization (that happens once in a blue moon) or if the MPLS VPN core could announce the default route into the EIGRP sites (wishful thinking; the customer probably has one or more Internet exit points).
 <!--more-->
 In the end, you're left with two-way route redistribution between core MP-BGP and edge EIGRP, resulting in nightmarish scenarios (probably a good half of the blog posts of the CCIE candidates talk about redistribution horrors). Fortunately, Cisco implemented two extra features supporting EIGRP-to-MP-BGP redistribution: BGP cost community and BGP Site-of-Origin.
 

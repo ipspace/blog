@@ -7,7 +7,7 @@ tags:
 - bridging
 title: EVPN VLAN-Aware Bundle Service
 ---
-In the _[EVPN/MPLS Bridging Forwarding Model](/2022/10/evpn-mpls-bridging-forwarding-model.html)_ blog post I mentioned numerous services defined in [RFC 7432](https://datatracker.ietf.org/doc/html/rfc7432). That blog post focused on [VLAN-Based Service Interface](https://datatracker.ietf.org/doc/html/rfc7432#section-6.1) that mirrors the [Carrier Ethernet VLAN mode](https://datatracker.ietf.org/doc/html/rfc7209#section-7).
+In the _[EVPN/MPLS Bridging Forwarding Model](/2022/10/evpn-mpls-bridging-forwarding-model/)_ blog post I mentioned numerous services defined in [RFC 7432](https://datatracker.ietf.org/doc/html/rfc7432). That blog post focused on [VLAN-Based Service Interface](https://datatracker.ietf.org/doc/html/rfc7432#section-6.1) that mirrors the [Carrier Ethernet VLAN mode](https://datatracker.ietf.org/doc/html/rfc7209#section-7).
 
 RFC 7432 defines two other VLAN services that can be used to implement Carrier Ethernet services:
 
@@ -24,7 +24,7 @@ Just in case you're as confused as I am, here's the [justification from RFC 7209
 
 Why would they "require a single L2VPN instance"? Because the transport provider charges per label?
 
-Anyway, time to see how that beast works. We'll use the [very same lab as before](/2022/10/evpn-mpls-bridging-forwarding-model.html), but split the hosts into two VLANs that will be provisioned as a VLAN bundle. The [Arista EOS configuration files](https://github.com/ipspace/netlab-examples/tree/master/EVPN/mpls-vlan-bundle/saved_config) are on GitHub as is the [lab topology](https://github.com/ipspace/netlab-examples/tree/master/EVPN/mpls-vlan-bundle) in case you want to recreate the lab[^V14].
+Anyway, time to see how that beast works. We'll use the [very same lab as before](/2022/10/evpn-mpls-bridging-forwarding-model/), but split the hosts into two VLANs that will be provisioned as a VLAN bundle. The [Arista EOS configuration files](https://github.com/ipspace/netlab-examples/tree/master/EVPN/mpls-vlan-bundle/saved_config) are on GitHub as is the [lab topology](https://github.com/ipspace/netlab-examples/tree/master/EVPN/mpls-vlan-bundle) in case you want to recreate the lab[^V14].
 
 [^V14]: You'll need *netlab* release 1.4 or later to recreate the lab. You can get a pre-release version (if needed) with `pip3 install --upgrade --pre networklab`.
 
@@ -126,4 +126,4 @@ Does that mean that the flow of traffic would be suboptimal, or that (for exampl
 
 OK, so VLAN-aware bundle service has no drawbacks. Does it have any benefits? I can't see them, unless you're worried about the number of MPLS labels, route targets, or configuration lines (BGP configuration of VLAN-aware bundle service on Arista EOS takes fewer lines than configuring individual VLANs in the BGP process). Am I missing something? Please write a comment.
 
-**Recap**: Should you use VLAN-aware Bundle Service? [Paraphrasing James Mickens](/2018/10/worth-watching-machine-learning-in.html): "In a word: don't!"
+**Recap**: Should you use VLAN-aware Bundle Service? [Paraphrasing James Mickens](/2018/10/worth-watching-machine-learning-in/): "In a word: don't!"

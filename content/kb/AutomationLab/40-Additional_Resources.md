@@ -2,7 +2,7 @@
 kb_section: AutomationLab
 minimal_sidebar: true
 title: Useful Resources
-url: /kb/AutomationLab/40-Additional_Resources.html
+url: /kb/AutomationLab/40-Additional_Resources/
 ---
 Finally, you might also find these resources useful:
 

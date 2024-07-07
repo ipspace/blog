@@ -8,9 +8,9 @@ tags:
 - ARP
 - fabric
 title: Arista EOS Virtual ARP (VARP) Behind the Scenes
-url: /2013/06/arista-eos-virtual-arp-varp-behind.html
+url: /2013/06/arista-eos-virtual-arp-varp-behind/
 ---
-In the _[Optimal L3 Forwarding with VARP and Active/Active VRRP](/2013/05/optimal-l3-forwarding-with-varp-and.html)_ blog post I made a remark along the lines of "_Things might get nasty [in Arista EOS Virtual ARP world] if you have configuration mismatches_", resulting in a lengthy and amazingly insightful email exchange with [Lincoln Dale](http://www.linkedin.com/in/ltdatinterlinkcomau) during which we ventured deeper and deeper down the Virtual ARP (VARP) rabbit hole. Here's what I learned during out trip:
+In the _[Optimal L3 Forwarding with VARP and Active/Active VRRP](/2013/05/optimal-l3-forwarding-with-varp-and/)_ blog post I made a remark along the lines of "_Things might get nasty [in Arista EOS Virtual ARP world] if you have configuration mismatches_", resulting in a lengthy and amazingly insightful email exchange with [Lincoln Dale](http://www.linkedin.com/in/ltdatinterlinkcomau) during which we ventured deeper and deeper down the Virtual ARP (VARP) rabbit hole. Here's what I learned during out trip:
 <!--more-->
 ### Optimal VARP Deployment
 
@@ -38,7 +38,7 @@ A VARP-enabled Arista switch receiving gratuitous ARP reply will ignore it (afte
 
 **End result:** every switch in the network either receives traffic sent to the VARP MAC address (if it has VARP configured) or forwards the traffic toward the last switch that sent gratuitous ARP broadcast from the VARP MAC address.
 
-{{<note warn>}}All servers in VARP-enabled VLAN receive (and have to process) the gratuitous ARP replies sent by VARP-enabled switches. Don't set the **ip virtual-router mac-address advertisement-interval** to a small number unless you love wasting CPU cycles across the whole data center. Also, keep in mind that [*layer-2 domains don't scale*](/2012/05/transparent-bridging-aka-l2-switching.html).{{</note>}}
+{{<note warn>}}All servers in VARP-enabled VLAN receive (and have to process) the gratuitous ARP replies sent by VARP-enabled switches. Don't set the **ip virtual-router mac-address advertisement-interval** to a small number unless you love wasting CPU cycles across the whole data center. Also, keep in mind that [*layer-2 domains don't scale*](/2012/05/transparent-bridging-aka-l2-switching/).{{</note>}}
 
 ### Impact of VARP Configuration Errors
 

@@ -3,7 +3,7 @@ kb_section: ScalablePolicyRouting
 minimal_sidebar: true
 pre_scroll: true
 title: Policy Routing from the Server
-url: /kb/Internet/ScalablePolicyRouting/50-pbr-from-server.html
+url: /kb/Internet/ScalablePolicyRouting/50-pbr-from-server/
 ---
 The changes to BGP routing that force the traffic flow from the *Legacy* servers to remote sites through the slower links are slightly more complex. Obviously, both core routers (*CoreFR* and *CoreInet*) have to prefer BGP prefixes received from remote sites over the same BGP prefixes received from the other core router. That’s the default BGP behavior (so we need no configuration change on *CoreInet* and *CoreFR*), but this requirement also precludes the usage of tools like BGP Local Preference or Multi-Exit Discriminator as any of these attributes would make routes from one of the core routers preferable on all other routers on the central site.
 

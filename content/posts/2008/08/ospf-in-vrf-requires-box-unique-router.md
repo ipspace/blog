@@ -5,7 +5,7 @@ tags:
 - OSPF
 - MPLS VPN
 title: OSPF in a VRF Requires a Box-Unique Router ID
-url: /2008/08/ospf-in-vrf-requires-box-unique-router.html
+url: /2008/08/ospf-in-vrf-requires-box-unique-router/
 ---
 It's obvious why two routers in the same OSPF domain cannot have the same router ID. However, requiring unique router IDs on OSPF processes running in different VRFs is probably too harsh, even though it does prevent confusion if two VRFs ever get connected through a customer site. Anyhow, if you have overlapping IP addresses on loopback interfaces in *different VRFs*, OSPF process might not start.
 <!--more-->

@@ -6,7 +6,7 @@ tags:
 - IP routing
 - WAN
 title: Small Steps to Large Complexity
-url: /2010/04/small-steps-to-large-complexity.html
+url: /2010/04/small-steps-to-large-complexity/
 ---
 Imagine you have a large retail network: your remote offices use ISDN to dial into the central site and upload/download whatever periodic reports they have. Having a core router connected to an ISDN PRI interface is the perfect solution:
 

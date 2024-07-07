@@ -10,7 +10,7 @@ tags:
 - load balancing
 - high availability
 title: Are Your Applications Cloud-Friendly?
-url: /2013/11/are-your-applications-cloud-friendly.html
+url: /2013/11/are-your-applications-cloud-friendly/
 ---
 A while ago I had a discussion with someone who wanted to be able to move whole application stacks between different private cloud solutions (VMware, Hyper-V, OpenStack, Cloud Stack) and a variety of public clouds.
 

@@ -1,5 +1,5 @@
 ---
-url: /2008/09/end-to-end-responsibility.html
+url: /2008/09/end-to-end-responsibility/
 title: "End-to-End Responsibility"
 date: 2008-09-06 09:48:00
 tags: [ design ]

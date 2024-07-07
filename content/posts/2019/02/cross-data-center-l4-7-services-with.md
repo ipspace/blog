@@ -5,7 +5,7 @@ tags:
 - data center
 - ACI
 title: Cross-Data-Center L4-7 Services With Cisco ACI
-url: /2019/02/cross-data-center-l4-7-services-with.html
+url: /2019/02/cross-data-center-l4-7-services-with/
 ---
 [Craig Weinhold](https://www.linkedin.com/in/craig-weinhold-0230236/) sent me his thoughts on using Cisco ACI to implement cross-data-center L4-7 services. While we both believe this is not the way to do things (because you should start with proper application architecture), you might find his insights useful if you have to deal with legacy environments that believe in Santa Claus and solving application problems with networking infrastructure.
 

@@ -3,7 +3,7 @@ title: "Repost: Campus-Wide Wireless Roaming with EVPN"
 date: 2024-04-22 08:05:00+0200
 tags: [ IP routing, EVPN ]
 ---
-As a response to my [LISP vs EVPN: Mobility in Campus Networks](/2024/04/mobility-campus-networks-lisp-evpn.html) blog post, Route Abel [provided interesting real-life details](/2024/04/mobility-campus-networks-lisp-evpn.html#2220) of a large-scale campus wireless testing using EVPN and VXLAN tunnels to a central aggregation point (slightly edited):
+As a response to my [LISP vs EVPN: Mobility in Campus Networks](/2024/04/mobility-campus-networks-lisp-evpn/) blog post, Route Abel [provided interesting real-life details](/2024/04/mobility-campus-networks-lisp-evpn/#2220) of a large-scale campus wireless testing using EVPN and VXLAN tunnels to a central aggregation point (slightly edited):
 
 ---
 

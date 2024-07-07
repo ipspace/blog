@@ -4,7 +4,7 @@ dmvpn_tag: training
 tags:
 - DMVPN
 title: 'Advanced DMVPN Webinar: Router Configurations'
-url: /2010/09/advanced-dmvpn-webinar-router.html
+url: /2010/09/advanced-dmvpn-webinar-router/
 ---
 I included 12 sets of complete router configurations with the DMVPN webinar covering every single design scenario described in the webinar. The seven router lab topology emulates an enterprise DMVPN deployment with a redundant central site, a redundant remote site (with two routers) and two non-redundant remote sites (using two uplinks in a few scenarios). The seventh router emulates the Internet. The configurations can be used on any hardware (real or otherwise) supporting recent Cisco IOS software, allowing you to test and modify the design scenarios discussed in the webinar.
 

@@ -4,7 +4,7 @@ dmvpn_tag: quirk
 tags:
 - DMVPN
 title: NHRP Rate Limiting Can Hurt Your DMVPN Network
-url: /2012/05/nhrp-rate-limiting-can-hurt-your-dmvpn.html
+url: /2012/05/nhrp-rate-limiting-can-hurt-your-dmvpn/
 ---
 [NHRP-based interface state control](http://www.cisco.com/en/US/docs/ios-xml/ios/sec_conn_dmvpn/configuration/15-2mt/sec-conn-dmvpn-tun-mon.html#GUID-E968E183-0022-4E8C-89A6-69AE3AE2AFF9) is a fantastic feature that you can use for faster convergence of very large DMVPN networks (as explained in the [DMVPN Designs](http://www.ipspace.net/DMVPN_Designs) webinar, you can also use it to solve some interesting backup scenarios). We tested it in a network with over 1000 spokes (using ASR1K as the hub router) using very short registration timeouts, and the CPU utilization of the NHRP process rarely exceeded a few percents.
 <!--more-->

@@ -46,7 +46,7 @@ I'm pretty sure you realized why I'm so proud of the concise syntax ;)
 
 ### VRF Links
 
-Unfortunately, you need link attributes to put links into VRFs. For example, if you want to build a topology with [four hosts connected to two VRFs configured on a single router](/2022/04/netsim-vrf-lite.html), you had to do it this way:
+Unfortunately, you need link attributes to put links into VRFs. For example, if you want to build a topology with [four hosts connected to two VRFs configured on a single router](/2022/04/netsim-vrf-lite/), you had to do it this way:
 
 ```
 defaults.device: linux
@@ -115,7 +115,7 @@ VLAN links are very similar to VRF links:
 * They are listed in the **links** attribute of global VLAN definitions.
 * They are appended to the global **links** list with **vlan.access** attribute set to the VLAN name.
 
-For example, we could use them to simplify [VXLAN bridging](/2022/09/netlab-vxlan-bridging.html) topology:
+For example, we could use them to simplify [VXLAN bridging](/2022/09/netlab-vxlan-bridging/) topology:
 
 ```
 groups:

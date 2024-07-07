@@ -5,7 +5,7 @@ series_weight: 100
 tags:
 - DMVPN
 title: DMVPN Scalability
-url: /2010/10/dmvpn-scalability.html
+url: /2010/10/dmvpn-scalability/
 ---
 Alexander sent me a very valid question: "*Do you cover scalability problems in your [DMVPN webinar](https://www.ipspace.net/DMVPN)?*". Of course I do, more than half of the webinar is devoted to them.
 

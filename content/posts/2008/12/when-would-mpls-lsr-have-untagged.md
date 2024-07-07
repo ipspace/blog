@@ -3,13 +3,13 @@ date: 2008-12-01 06:40:00.002000+01:00
 tags:
 - MPLS
 title: When Would an MPLS LSR Have Untagged Output Label?
-url: /2008/12/when-would-mpls-lsr-have-untagged.html
+url: /2008/12/when-would-mpls-lsr-have-untagged/
 ---
 This is a nice MPLS question I've received from one of the readers:
 
 > I have understood the Penultimate Hop Popping (PHP) process, but I don't understand when a router would use UNTAGGED instead of POP TAG?
 
-Instead of answering the question directly, let\'s walk through a series of simple Q&A pairs that will help you understand the whole process (remember: [knowledge, not recipes](/2008/09/knowledge-or-recipes.html)!).
+Instead of answering the question directly, let\'s walk through a series of simple Q&A pairs that will help you understand the whole process (remember: [knowledge, not recipes](/2008/09/knowledge-or-recipes/)!).
 
 {{<note>}}It\'s highly recommended you read the first few chapters of the *[MPLS and VPN Architectures](http://www.amazon.com/gp/product/1587050021?ie=UTF8&tag=cisioshinandt-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1587050021)* book before the rest of this post.
 {{</note>}}

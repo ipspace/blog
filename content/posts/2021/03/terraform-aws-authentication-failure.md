@@ -5,7 +5,7 @@ tags: [ cloud, automation, AWS ]
 ---
 **TL&DR**: Client clock skew could result in AWS authentication failure when running **terraform apply**
 
-When I wanted to [compare AWS and Azure orchestration speeds](/2021/03/public-cloud-orchestration-speed.html) I encountered a crazy Terraform error message when running **terraform apply**:
+When I wanted to [compare AWS and Azure orchestration speeds](/2021/03/public-cloud-orchestration-speed/) I encountered a crazy Terraform error message when running **terraform apply**:
 
 ```
 module.network.aws_vpc.My_VPC: Creating...
@@ -25,7 +25,7 @@ And then something weird happened: when searching for the exact error message, I
 
 I found a half-dozen Terraform support cases almost identical to my problem where the reporters did everything they could do to fix the problem (including switching the access keys), and collected all the necessary information, only to have their report closed with *It's not a good idea to publish your AWS access keys* (like that would be relevant) or *Looks like you can't use AWS IAM* or *Not a Terraform problem* or *Can't reproduce*.
 
-{{<note>}}Now you know why it's sometimes more efficient to [publish a rant](/2020/12/ansible-config-sections.html) pointing out ([sometimes very well-known](/2017/04/lets-drop-some-random-commands-shall-we.html)) undesired behavior.{{</note>}}
+{{<note>}}Now you know why it's sometimes more efficient to [publish a rant](/2020/12/ansible-config-sections/) pointing out ([sometimes very well-known](/2017/04/lets-drop-some-random-commands-shall-we/)) undesired behavior.{{</note>}}
 
 Finally I [found one](https://github.com/hashicorp/terraform/issues/6566) where someone took the time to realize that HTTP error code 401 does *not* mean *Forbidden* but *Unauthorized*, and provided a [link to an AWS discussion](https://forums.aws.amazon.com/thread.jspa?threadID=175266) with an interesting conclusion: the real-time clock on your client might be out-of-sync.
 

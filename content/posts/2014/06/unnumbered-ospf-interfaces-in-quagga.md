@@ -6,7 +6,7 @@ tags:
 - fabric
 - Cumulus Linux
 title: Unnumbered OSPF Interfaces in Quagga (and Cumulus)
-url: /2014/06/unnumbered-ospf-interfaces-in-quagga.html
+url: /2014/06/unnumbered-ospf-interfaces-in-quagga/
 ---
 [Carlos Mendioroz](https://ar.linkedin.com/pub/carlos-g-mendioroz/1/85/723) sent me an interesting question about unnumbered interfaces in Cumulus Linux and some of the claims they make in their documentation.
 
@@ -47,7 +47,7 @@ Translated into engineering terms: the Type-1 (router) LSA no longer contains th
 
 > ... and thus dramatically simplifies network configuration and reconfiguration.
 
-Marketese for "[we don't check IP subnets in OSPF hello packets](/2008/10/ospf-ignores-subnet-mask-mismatch-on.html)".
+Marketese for "[we don't check IP subnets in OSPF hello packets](/2008/10/ospf-ignores-subnet-mask-mismatch-on/)".
 
 > In addition, routing database contains only the real networks,
 

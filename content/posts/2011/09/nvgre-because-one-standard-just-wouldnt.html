@@ -8,11 +8,11 @@ tags:
 - GRE
 - virtualization
 title: NVGRE – because one standard just wouldn’t be enough
-url: /2011/09/nvgre-because-one-standard-just-wouldnt.html
+url: /2011/09/nvgre-because-one-standard-just-wouldnt/
 ---
 <div class='update'>2021-01-03: Looks like NVGRE died &ndash; even Microsoft walked away. There are tons of VXLAN implementations though. VMware and AWS are also using Geneve.</div>
-<p>Two weeks after <a href="/2011/08/finally-mac-over-ip-based-vcloud.html">VXLAN</a> (backed by VMware, Cisco, Citrix and Red Hat) was <a href="/2011/08/finally-mac-over-ip-based-vcloud.html">launched at VMworld</a>, Microsoft, Intel, HP &amp; Dell published <a href="http://tools.ietf.org/html/draft-sridharan-virtualization-nvgre-00">NVGRE draft</a> (Arista and Broadcom are cleverly sitting on both chairs) which solves the same problem in a slightly different way. </p>
-<p class="note">If you’re still wondering why we need VXLAN and NVGRE, read my <a href="/2011/08/finally-mac-over-ip-based-vcloud.html">VXLAN post</a> (and the one describing how <a href="/2011/09/vxlan-otv-and-lisp.html">VXLAN, OTV and LISP fit together</a>).</p>
+<p>Two weeks after <a href="/2011/08/finally-mac-over-ip-based-vcloud/">VXLAN</a> (backed by VMware, Cisco, Citrix and Red Hat) was <a href="/2011/08/finally-mac-over-ip-based-vcloud/">launched at VMworld</a>, Microsoft, Intel, HP &amp; Dell published <a href="http://tools.ietf.org/html/draft-sridharan-virtualization-nvgre-00">NVGRE draft</a> (Arista and Broadcom are cleverly sitting on both chairs) which solves the same problem in a slightly different way. </p>
+<p class="note">If you’re still wondering why we need VXLAN and NVGRE, read my <a href="/2011/08/finally-mac-over-ip-based-vcloud/">VXLAN post</a> (and the one describing how <a href="/2011/09/vxlan-otv-and-lisp/">VXLAN, OTV and LISP fit together</a>).</p>
 <p>It’s obvious the NVGRE draft was a rushed affair, its only <em>significant and original contribution to knowledge</em><em> </em>is the idea of using the lower 24 bits of the GRE key field to indicate the Tenant Network Identifier (but then, lesser ideas have been patented time and again). Like with VXLAN, most of the real problems are handwaved to other or future drafts.</p><!--more-->
 <p><strong>The way to obtain remote VM MAC to physical IP mapping</strong> <em>will be covered in a different draft</em> (section 3.1). VXLAN specifies the use of IP multicast to flood within the virtual segment and relies on dynamic MAC learning.</p>
 <p>The NVGRE approach is actually more scalable than the VXLAN one because it does not mandate the use of flooding-based MAC address learning. Even more, NVGRE acknowledges that there might be virtual L2 networks that will not use flooding at all (like Amazon EC2).</p>

@@ -1,7 +1,7 @@
 ---
 date: 2011-09-26 06:48:00+02:00
 title: ExpertExpress – Online Help When and Where You Need It Most
-url: /2011/09/expertexpress-online-help-when-and.html
+url: /2011/09/expertexpress-online-help-when-and/
 tags: [ design ]
 ---
 Occasionally my readers ask me if I would be available for a consulting/design project (or send me questions that are actually design review/second opinion challenges). 

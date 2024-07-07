@@ -3,7 +3,7 @@ title: "Renumbering Public Cloud Address Space"
 date: 2020-11-05 07:47:00
 tags: [ cloud, Azure ]
 ---
-Got this question from one of the networking engineers "blessed" with [rampant clueless-rush-to-the-cloud](/2020/10/dont-lift-and-shift-into-cloud.html).
+Got this question from one of the networking engineers "blessed" with [rampant clueless-rush-to-the-cloud](/2020/10/dont-lift-and-shift-into-cloud/).
 
 > I plan to peer multiple VNet from different regions. The problem is that there is not any consistent deployment in regards to the private IP subnets used on each VNet to the point I found several of them using public IP blocks as private IP ranges.  As far as I recall, in Azure we can’t re-ip the VNets as the resource will be deleted so I don’t see any other option than use NAT from offending VNet subnets to use my internal RFC1918 IPv4 range. Do you have a better idea?
 

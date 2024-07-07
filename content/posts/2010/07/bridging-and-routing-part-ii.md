@@ -7,17 +7,17 @@ tags:
 - IP routing
 - TRILL
 title: Bridging and Routing, Part II
-url: /2010/07/bridging-and-routing-part-ii.html
+url: /2010/07/bridging-and-routing-part-ii/
 ---
-Based on the readers' comments on my "[*Bridging and Routing: is there a difference?*](/2010/07/bridging-and-routing-is-there.html)*"* post (thanks you!), here are a few more differences between bridging and routing:
+Based on the readers' comments on my "[*Bridging and Routing: is there a difference?*](/2010/07/bridging-and-routing-is-there/)*"* post (thanks you!), here are a few more differences between bridging and routing:
 
 **Cost.** Layer-2 switches are almost always cheaper than layer-3 (usually combined layer-2/3) switches. There are numerous reasons for the cost difference, including:
 <!--more-->
 -   Mass-market low-end switches are usually simple bridges. Low-cost high-speed bridging silicon is thus readily available.
--   MAC address lookup is simpler than IP table lookup and easier to implement in silicon. You need simple CAM ([Content Addressable Memory](http://en.wikipedia.org/wiki/Content-addressable_memory)) to perform MAC address lookup and [TCAM](#Ternary_CAMs) (Ternary CAM) with additional output logic to perform longest-IP-prefix matching.
+-   MAC address lookup is simpler than IP table lookup and easier to implement in silicon. You need simple CAM ([Content Addressable Memory](http://en.wikipedia.org/wiki/Content-addressable_memory)) to perform MAC address lookup and TCAM] (Ternary CAM) with additional output logic to perform longest-IP-prefix matching.
 -   Layer-3 switches are expected to perform IP packet filtering. Implementing access lists in hardware (usually with even larger TCAM) is expensive.
 
-**Zero configuration.** In their simplest incarnation, the bridges are plug-and-play devices (magically [transforming themselves into plug-and-pray devices as the network grows](/2009/12/ten-steps-of-small-lan-design.html)); it's quite easy to find a perfectly working switch named *Switch* with no non-default configuration in a badly managed network. Routers always require configuration (at the very minimum, you have to configure IP subnets and IP routing protocols).
+**Zero configuration.** In their simplest incarnation, the bridges are plug-and-play devices (magically [transforming themselves into plug-and-pray devices as the network grows](/2009/12/ten-steps-of-small-lan-design/)); it's quite easy to find a perfectly working switch named *Switch* with no non-default configuration in a badly managed network. Routers always require configuration (at the very minimum, you have to configure IP subnets and IP routing protocols).
 
 However, as soon as VLANs are introduced into the network or you need to fine-tune STP, the zero-configuration benefits are gone.
 
@@ -29,7 +29,7 @@ Enhancements to port channel technology (VSS and vPC) allow links connected to m
 
 Some layer-2 switches have similar functionality (port ACL), which turns a L2 switch into a layer-3-aware L2 device, increasing configuration and troubleshooting complexity.
 
-**Predictability.** L3 forwarding tables are modified only by the [control plane](/2013/08/management-control-and-data-planes-in.html) (routing) protocols based on messages exchanged by the routers, not by the data traffic flow. L2 forwarding tables are modified on-the-fly by the data plane snooping functionality based on source MAC addresses in the frames forwarded by the switch.
+**Predictability.** L3 forwarding tables are modified only by the [control plane](/2013/08/management-control-and-data-planes-in/) (routing) protocols based on messages exchanged by the routers, not by the data traffic flow. L2 forwarding tables are modified on-the-fly by the data plane snooping functionality based on source MAC addresses in the frames forwarded by the switch.
 
 **Troubleshooting.** It's impossible to troubleshoot a bridged network from an end-host; the network is designed to be invisible. The error reporting mechanisms built into most L3 protocols allow an end-host to trace a path across the network, giving the network operator at least an initial snapshot of the network conditions and a troubleshooting starting point.
 
@@ -53,7 +53,7 @@ Bridge assurance solves this issue, as does TRILL.
 
 **Size of fault domain.** Whole bridged network is a single fault domain (a fault anywhere in the network can impact the rest of it). A fault domain in a routed network is a single subnet.
 
-The *fault domain* issue is usually related to the behavior of STP, but extends to the forwarding plane as well. A [single misbehaving host attached to a bridged network can affect the whole network](/2012/05/layer-2-network-is-single-failure.html).
+The *fault domain* issue is usually related to the behavior of STP, but extends to the forwarding plane as well. A [single misbehaving host attached to a bridged network can affect the whole network](/2012/05/layer-2-network-is-single-failure/).
 
 **Anything else?** Have I still missed something? Leave a comment!
 

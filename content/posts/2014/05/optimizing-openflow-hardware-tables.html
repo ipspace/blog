@@ -1,5 +1,5 @@
 ---
-url: /2014/05/optimizing-openflow-hardware-tables.html
+url: /2014/05/optimizing-openflow-hardware-tables/
 title: "Optimizing OpenFlow Hardware Tables"
 date: "2014-05-13T07:59:00.000+02:00"
 tags: [ OpenFlow ]
@@ -7,7 +7,7 @@ tags: [ OpenFlow ]
 
 <p>Initial OpenFlow hardware implementations used a simplistic approach: install all OpenFlow entries in TCAM (the hardware that’s used to implement ACLs and PBR) and hope for the best.</p>
 <p>That approach was good enough to get you a tick-in-the-box on RFP responses, but it fails miserably when you try to get OpenFlow working in a reasonably sized network. On the other hand, many problems people try to solve with OpenFlow, like data center fabrics, involve simple destination-only L2 or L3 switching.<!--more--></p>
-<p class="note">Problems that can be solved with destination-only L2- or L3 switching are so similar to what we’re doing with traditional routing protocols that I keep wondering whether <a href="/2014/05/does-centralized-control-plane-make.html">it makes sense to reinvent that particular well-working wheel</a>, but let’s not go there.</p>
+<p class="note">Problems that can be solved with destination-only L2- or L3 switching are so similar to what we’re doing with traditional routing protocols that I keep wondering whether <a href="/2014/05/does-centralized-control-plane-make/">it makes sense to reinvent that particular well-working wheel</a>, but let’s not go there.</p>
 <p>The switching hardware vendors realized in the last months what the OpenFlow developers were doing and started implementing forwarding optimizations – they would install OpenFlow entries that require 12-tuple matching in TCAM, and entries that specify only destination MAC address or destination IP prefix in L2- and L3 switching structures (usually hash tables for L2 switching and some variant of binary tree for L3 switching). The two or three switching tables would appear as a single OpenFlow table to the controller, and the hardware switch would be able to install more flows. Quite ingenious;)</p>
 <p>The vendors using this approach include Arista (L2), Cisco (L2), and Dell Force 10 (L2 and L3). HP is using both MAC table and TCAM in its 5900 switch, but presents them as two separate tables to the OpenFlow controller (at least that was my understanding of their documentation – please do correct me if I got it wrong), pushing the optimization challenge back to the controller.</p>
 <h4>More informations</h4><p>The <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics webinar</a> and <a href="http://www.ipspace.net/SDN,_OpenFlow,_NFV_and_SDDC">SDN workshop</a> include information on OpenFlow support offered by major data center switching vendors.</p>

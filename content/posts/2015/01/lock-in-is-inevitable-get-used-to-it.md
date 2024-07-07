@@ -5,7 +5,7 @@ tags:
 - data center
 - fabric
 title: Lock-In Is Inevitable – Get Used to It!
-url: /2015/01/lock-in-is-inevitable-get-used-to-it.html
+url: /2015/01/lock-in-is-inevitable-get-used-to-it/
 ---
 For whatever reason (subliminal messages from vendor marketing departments?), I'm constantly brooding about the vendor lock-in, its inevitability, and the way supposedly disruptive companies try to use the fear of lock-in to persuade naive customers to buy their products.
 <!--more-->

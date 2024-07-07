@@ -2,7 +2,7 @@
 kb_section: Ansible
 minimal_sidebar: true
 title: Optimizing Environment Setup in Ansible Playbooks
-url: /kb/Ansible/Optimizing_Environment_Setup.html
+url: /kb/Ansible/Optimizing_Environment_Setup/
 ---
 One of the simplest network automation tasks is generating device configurations from data models, service descriptions, and configuration templates. You can use almost any tool to do that - from Excel to Ansible, Python or Nornir. However, it makes sense if the tool is easy to use and can handle device inventory and data models out-of-the box, making Ansible a common choice.
 

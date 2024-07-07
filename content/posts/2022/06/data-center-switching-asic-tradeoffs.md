@@ -7,7 +7,7 @@ tags:
 - switching
 title: Data Center Switching ASICs Tradeoffs
 ---
-A brief mention of Broadcom ASIC families in the _[Networking Hardware/Software Disaggregation in 2022](/2022/05/network-hardware-disaggregation-2022.html)_ blog post triggered an interesting discussion of ASIC features and where one should use different ASIC families.
+A brief mention of Broadcom ASIC families in the _[Networking Hardware/Software Disaggregation in 2022](/2022/05/network-hardware-disaggregation-2022/)_ blog post triggered an interesting discussion of ASIC features and where one should use different ASIC families.
 
 Like so many things in life, ASIC design is all about tradeoffs. Usually you're faced with a decision to either implement X (whatever X happens to be), or have high-performance product, or have a reasonably-priced product. It's very hard to get two out of three, and getting all three is beyond Mission Impossible.
 <!--more-->
@@ -19,7 +19,7 @@ Here are just a few things you have to trade against performance and cost:
 
 **Buffer space**. An ASIC with megabytes of internal buffer storage is using very high speed on-chip static RAM. The only way to get gigabyte-sized buffers is to use crazily-complex (and expensive) technology like [Hybrid Memory Cube](https://en.wikipedia.org/wiki/Hybrid_Memory_Cube) or [High Bandwidth Memory](https://en.wikipedia.org/wiki/High_Bandwidth_Memory). Conventional dynamic RAM used in your laptop is way too slow.
 
-**Forwarding table size**. Small forwarding tables can be implemented with on-chip TCAM. Larger forwarding tables that use simple matching (MAC address table) can use fast on-chip static RAM and get the results in a single lookup ([more details](/2022/02/packet-forwarding-header-lookup.html)).
+**Forwarding table size**. Small forwarding tables can be implemented with on-chip TCAM. Larger forwarding tables that use simple matching (MAC address table) can use fast on-chip static RAM and get the results in a single lookup ([more details](/2022/02/packet-forwarding-header-lookup/)).
 
 Longest-prefix matching is already more complex and might require more than one lookup to get the end result. Whenever you need more than one lookup to get the result, you have to settle for lower forwarding performance, or use higher-speed memory.
 

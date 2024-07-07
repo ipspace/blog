@@ -5,7 +5,7 @@ tags:
 - IP routing
 title: DHCP Response Sets the Default Route
 pre_scroll: True
-url: /2007/06/dhcp-response-sets-default-route.html
+url: /2007/06/dhcp-response-sets-default-route/
 ---
 It makes perfect sense in hindsight, but I was nonetheless pleasantly surprised: when the router acting as a DHCP client (configured with the **ip address dhcp** interface configuration command) receives the DHCP reply packet containing the default gateway option (option #3), it installs a static default route toward that next-hop.
 

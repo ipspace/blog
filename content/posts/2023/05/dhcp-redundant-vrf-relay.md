@@ -8,10 +8,10 @@ series: [ dhcp-relay ]
 ---
 Previous posts in this series covered numerous intricacies of DHCP relaying:
 
-* [DHCP relaying principles](/2023/03/dhcp-relay-process.html) described the basics
-* In [Inter-VRFs relaying](/2023/03/netlab-vrf-dhcp-relay.html) we figured out how a DHCP client reaches a DHCP server in another VRF without inter-VRF route leaking
-* [Relaying in VXLAN segments](/2023/03/netlab-vxlan-dhcp-relay.html) and [relaying from EVPN VRF](/2023/04/netlab-evpn-dhcp-relay.html) applied those lessons to VXLAN/EVPN environment.
-* [DHCP Relaying with Redundant DHCP Servers](/2023/04/dhcp-redundant-relay.html) added relay- and server redundancy.
+* [DHCP relaying principles](/2023/03/dhcp-relay-process/) described the basics
+* In [Inter-VRFs relaying](/2023/03/netlab-vrf-dhcp-relay/) we figured out how a DHCP client reaches a DHCP server in another VRF without inter-VRF route leaking
+* [Relaying in VXLAN segments](/2023/03/netlab-vxlan-dhcp-relay/) and [relaying from EVPN VRF](/2023/04/netlab-evpn-dhcp-relay/) applied those lessons to VXLAN/EVPN environment.
+* [DHCP Relaying with Redundant DHCP Servers](/2023/04/dhcp-redundant-relay/) added relay- and server redundancy.
 
 Now for the final bit of the puzzle: what if we want to do inter-VRF DHCP relaying with redundant DHCP servers?
 <!--more-->
@@ -25,7 +25,7 @@ It's time for another lab test...
 
 ### Lab Topology
 
-We'll use the same lab topology we used in the [DHCP Relaying with Redundant DHCP Servers](/2023/04/dhcp-redundant-relay.html) scenario but connect DHCP clients to a VRF (similar to the [Inter-VRFs relaying](/2023/03/netlab-vrf-dhcp-relay.html) scenario).
+We'll use the same lab topology we used in the [DHCP Relaying with Redundant DHCP Servers](/2023/04/dhcp-redundant-relay/) scenario but connect DHCP clients to a VRF (similar to the [Inter-VRFs relaying](/2023/03/netlab-vrf-dhcp-relay/) scenario).
 <!--more-->
 {{<figure src="/2023/05/evpn-dhcp-redundant-server.png" caption="Lab topology diagram">}}
 

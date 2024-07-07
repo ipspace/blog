@@ -3,7 +3,7 @@ date: 2008-11-07 07:17:00+01:00
 tags:
 - IP routing
 title: Bidirectional Forwarding Detection
-url: /2008/11/bidirectional-forwarding-detection.html
+url: /2008/11/bidirectional-forwarding-detection/
 ---
 BFD is one of those simple ingenious ideas that make you wonder "*Why did it take them so long to figure this out?*" It's a UDP-based protocol that replaces dozens of link-level failure-detection mechanisms and routing protocol tweaks with a simple, focused solution: detect hop-by-hop layer-3 failures.
 

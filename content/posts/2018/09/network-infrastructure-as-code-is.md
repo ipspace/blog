@@ -5,7 +5,7 @@ tags:
 series: [ niac ]
 niac_tag: principles
 title: Network Infrastructure as Code Is Nothing New
-url: /2018/09/network-infrastructure-as-code-is.html
+url: /2018/09/network-infrastructure-as-code-is/
 ---
 *Following "if you can't explain it, you don't understand it" mantra I decided to use blog posts to organize my ideas while preparing my Networking Infrastructure as Code presentation for the Autumn 2018 [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course. Constructive feedback is highly appreciated.*
 

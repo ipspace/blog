@@ -6,7 +6,7 @@ tags:
 - DMVPN
 - BGP
 title: BGP Routing in DMVPN Networks
-url: /2013/12/bgp-routing-in-dmvpn-networks.html
+url: /2013/12/bgp-routing-in-dmvpn-networks/
 ---
 Once you decide to [use BGP as the routing protocol in your DMVPN network](http://www.ipspace.net/Integrating_Internet_VPN_with_MPLS_VPN_WAN), you face a few more design choices:
 

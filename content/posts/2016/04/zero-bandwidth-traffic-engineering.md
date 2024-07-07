@@ -6,7 +6,7 @@ tags:
 - traffic engineering
 - segment routing
 title: Zero Bandwidth Traffic Engineering
-url: /2016/04/zero-bandwidth-traffic-engineering.html
+url: /2016/04/zero-bandwidth-traffic-engineering/
 ---
 Oliver Steudler from Juniper sent me a link to an interesting Juniper blog post describing [zero-bandwidth traffic engineering](http://forums.juniper.net/t5/SDN-and-NFV-Era/Using-Zero-Bandwidth-BW-LSPs-for-Optimal-Network-Utilization-in/ba-p/289472).
 

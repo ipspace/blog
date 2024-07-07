@@ -10,4 +10,4 @@ Charity Majors published another must-read article: *[why every software enginee
 > * You are still responsible for your code after it’s been deployed to production, and 
 > * Operational excellence is everyone’s job.
 
-Adhering to these simple principles would remove an [enormous amount of complexity from typical enterprise IT infrastructure](/2013/04/this-is-what-makes-networking-so-complex.html)... but I'm afraid it's not going to happen anytime soon.
+Adhering to these simple principles would remove an [enormous amount of complexity from typical enterprise IT infrastructure](/2013/04/this-is-what-makes-networking-so-complex/)... but I'm afraid it's not going to happen anytime soon.

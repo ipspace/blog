@@ -5,7 +5,7 @@ tags:
 - security
 - data center
 title: Why is IPv6 layer-2 security so complex (and how to fix it)
-url: /2014/06/why-is-ipv6-layer-2-security-so-complex.html
+url: /2014/06/why-is-ipv6-layer-2-security-so-complex/
 ---
 
 <p>After the excellent IPv6 security presentation Eric Vyncke had @ 9th Slovenian IPv6 summit someone asked me: “<em>Why is IPv6 first-hop security so complex? It looks like the developers of IPv6 protocol stack tried to make users anonymous and made everyone’s life complex while doing that.</em>”</p>
@@ -18,13 +18,13 @@ url: /2014/06/why-is-ipv6-layer-2-security-so-complex.html
 </ul>
 <h4>Won’t that explode the routing tables?</h4><p>Am I advocating using a /64 for every host? Do I look that stupid? It’s time to get creative and start using host routes:</p>
 <ul class="ListParagraph"><li>A single /64 prefix is advertised to all hosts in a “subnet”;</li>
-<li>The prefix is advertised as <a href="/2012/11/ipv6-router-advertisements-deep-dive.html">available for autoconfiguration</a> (if you want to have autoconfiguration);</li>
-<li>If the <a href="/2012/11/ipv6-on-link-determination-what-is-it.html">layer-3 switch advertises the prefix as off-net</a>, the hosts don’t even try to use Neighbor Discovery mechanism to find the MAC addresses of other hosts, but go straight to the layer-3 switch when they have to send a packet to someone else;</li>
-<li>The layer-3 switch creates a host route for every directly attached host. It can even reuse the exact same silicon used for ND entries these days (see also: <a href="/2014/02/this-is-not-host-route-youre-looking-for.html">that’s not the host route route you’re looking for</a>).</li>
+<li>The prefix is advertised as <a href="/2012/11/ipv6-router-advertisements-deep-dive/">available for autoconfiguration</a> (if you want to have autoconfiguration);</li>
+<li>If the <a href="/2012/11/ipv6-on-link-determination-what-is-it/">layer-3 switch advertises the prefix as off-net</a>, the hosts don’t even try to use Neighbor Discovery mechanism to find the MAC addresses of other hosts, but go straight to the layer-3 switch when they have to send a packet to someone else;</li>
+<li>The layer-3 switch creates a host route for every directly attached host. It can even reuse the exact same silicon used for ND entries these days (see also: <a href="/2014/02/this-is-not-host-route-youre-looking-for/">that’s not the host route route you’re looking for</a>).</li>
 <li>You could configure those host routes manually (in high-security environment), allow DHCPv6 proxy to do its job (interesting, this code is already available in Cisco IOS), or create a host route out of an DAD message if you decide to trust the hosts and the IPv6 autoconfiguration process.</li>
 <li>The switch may redistribute those host routes into whatever routing protocol it’s using (might be needed in multihomed environments) or advertise the /64 prefix into the rest of the network and let the more-specific-prefix forwarding take care of the rest.</li>
 </ul>
-<p>Most of the above functionality is already available in layer-3 switches with reasonably good IPv6 support (read: not many of them), the only missing bit is the host route creation based on DAD messages (effectively reinventing <a href="/2012/08/mobile-arp-in-enterprise-networks.html">Mobile ARP</a> or <a href="/2013/08/enterasys-host-routing-optimal-l3.html">Enterasys’ Host Routing</a>).</p>
-<p>Will we see a daring switch vendor who’ll break the ancient bad habits and start using the hardware they already have (most high-speed switches already have L3 hardware) in a slightly more creative way, or will <a href="/2013/12/hyper-v-network-virtualization-packet.html">Microsoft remain the only one with the guts to say “<em>stop the layer-2 stupidities</em>”</a>? Being the pessimist that I am, I’d bet Microsoft will be very lonely in the IPv6 L3-only world for quite a while, but do prove me wrong in the comments!</p>
-<h4>Speaking of IPv6 security</h4><p>I did an <a href="http://www.ipspace.net/IPv6_security">IPv6 security webinar</a> with Eric Vyncke 18 months ago, and it’s as relevant as ever (particularly considering the <a href="/2012/09/state-of-ipv6-in-data-center-gear.html">dismal level of first-hop IPv6 security support in hardware- or virtual switches</a>).</p>
+<p>Most of the above functionality is already available in layer-3 switches with reasonably good IPv6 support (read: not many of them), the only missing bit is the host route creation based on DAD messages (effectively reinventing <a href="/2012/08/mobile-arp-in-enterprise-networks/">Mobile ARP</a> or <a href="/2013/08/enterasys-host-routing-optimal-l3/">Enterasys’ Host Routing</a>).</p>
+<p>Will we see a daring switch vendor who’ll break the ancient bad habits and start using the hardware they already have (most high-speed switches already have L3 hardware) in a slightly more creative way, or will <a href="/2013/12/hyper-v-network-virtualization-packet/">Microsoft remain the only one with the guts to say “<em>stop the layer-2 stupidities</em>”</a>? Being the pessimist that I am, I’d bet Microsoft will be very lonely in the IPv6 L3-only world for quite a while, but do prove me wrong in the comments!</p>
+<h4>Speaking of IPv6 security</h4><p>I did an <a href="http://www.ipspace.net/IPv6_security">IPv6 security webinar</a> with Eric Vyncke 18 months ago, and it’s as relevant as ever (particularly considering the <a href="/2012/09/state-of-ipv6-in-data-center-gear/">dismal level of first-hop IPv6 security support in hardware- or virtual switches</a>).</p>
 

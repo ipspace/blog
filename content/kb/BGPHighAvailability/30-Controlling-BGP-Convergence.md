@@ -2,7 +2,7 @@
 kb_section: BGPHighAvailability
 minimal_sidebar: true
 title: Controlling BGP Convergence Time
-url: /kb/BGPHighAvailability/30-Controlling-BGP-Convergence.html
+url: /kb/BGPHighAvailability/30-Controlling-BGP-Convergence/
 ---
 One of the features that qualifies [this solution](index.html) for mission-critical environments is the predictability of the convergence time. Although many people still believe that BGP is an extremely slow-converging routing protocol, with the appropriate tuning and feature, you could easily get end-to-end convergence time below a few tens of milliseconds. Let's analyze the mechanisms that allow us to reach these results.
 
@@ -20,7 +20,7 @@ As already mentioned, we can solve the typically slower RIB-&gt;FIB convergence 
 
 Note that if you have configured the BGP as indicated in the previous post, the backup firewall already has the routing and forwarding table ready for the failover, and does not require any update. A fast routing update is required (for example) on the primary firewall node in case of an inside interface failure to quickly propagate the updates and trigger the convergence of the WAN backbone that should start using the backup firewall node.
 
-{{<figure src="bgp-for-HA-03-01.png" caption="Fault propagation from inside interface to WAN backbone">}}
+{{<figure src="../bgp-for-HA-03-01.png" caption="Fault propagation from inside interface to WAN backbone">}}
 
 Modern switches and routers typically do not have route table convergence problems: recent BGP implementations are event-based and do not introduce any delay from the moment a next-hop becomes unavailable to the moment a best-path selection process start. The use of BFD to monitor BGP session, and the directly attached firewall device therefore makes this sequence of events almost immediate.
 
@@ -32,7 +32,7 @@ The original behavior of BGP is to propagate only the selected best path within 
 
 Please note that the leaf switch connected to the backup firewall node has the backup BGP path as an alternate path, but it is not used nor propagated to its BGP neighbors.
 
-{{<figure src="bgp-for-HA-03-02.png" caption="Propagating BGP default route to BGP route reflector and leaf switches">}}
+{{<figure src="../bgp-for-HA-03-02.png" caption="Propagating BGP default route to BGP route reflector and leaf switches">}}
 
 A failure in the primary firewall chain causes the disappearance of the default-route on the “designated primary" leaf and triggers a new convergence process:
 
@@ -48,7 +48,7 @@ You can activate *best-external advertisement* on the backup leaf to minimize th
 
 In this scenario, the backup default route is distributed to BGP route reflectors and all the remaining leafs even if it does not become active on any device. In fact, each device applies the BGP best-path algorithm independently, with the final result dependent on the different BGP Local Preference values imposed at the AS edge.
 
-{{<figure src="bgp-for-HA-03-03.png" caption="Alternate BGP paths gained with BGP Bext External">}}
+{{<figure src="../bgp-for-HA-03-03.png" caption="Alternate BGP paths gained with BGP Bext External">}}
 
 However, the advantage of this action is evident in the event of a fault of the primary firewall node: the first withdrawal removes the best-path on all the leafs, resulting in immediate installation of the designated backup path which is already present in the BGP RIB.
 
@@ -66,11 +66,11 @@ Now let's compare the BGP-based solution with a traditional layer-2 solution bas
 data center hosts with a layer-3 boundary, making any firewall status changes transparent to data center hosts. **BGP provides an "in-band" control-plane that checks the status of all links and devices in the forwarding path and selects the primary and backup paths.** The total time required for a complete
 failover depends exclusively on BFD timers plus BGP state propagation delay.
 
-{{<figure src="bgp-for-HA-03-04.png" caption="Layer-3 boundary between data center hosts and firewalls">}}
+{{<figure src="../bgp-for-HA-03-04.png" caption="Layer-3 boundary between data center hosts and firewalls">}}
 
 A traditional layer-2 solution based on FHRP and static routing must rely on firewall clustering, and usually follows interface states and possibly some external probes (ping). In case of firewall failure the new master node will send GARPs (Gratuitous ARP) packets to trigger a layer-2 convergence on the shared segments. The convergence time depends on several independent factors, including convergence time of the layer-2 segment (which might depend on the number of devices in the segment).
 
-{{<figure src="bgp-for-HA-03-05.png" caption="FHRP-based convergence">}}
+{{<figure src="../bgp-for-HA-03-05.png" caption="FHRP-based convergence">}}
 
 As the backup path is not continuously probed (like it is in the BGP-based solution), it's hard to guarantee **the correct functioning of the whole secondary path** - the end-to-end connectivity can only be verified after the failover is complete. The convergence time and the failover success are thus non-deterministic.
 

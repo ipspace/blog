@@ -19,9 +19,9 @@ One of the ways to provide a consistent view of exterior routes was to redistrib
 
 Even more, when redistributing a BGP route into OSPF, the redistributing router copies the first AS in the AS-path into the OSPF tag together with a few extra bits that help the egress router recreate a short AS-path from OSPF tag when redistributing OSPF back into BGP[^IOSF] -- in those days, if you were a regional ISP, you didn't need IBGP at all.
 
-[^IOSF]: See [RFC 1403](https://datatracker.ietf.org/doc/html/rfc1403) and [OSPF-to-BGP redistribution](/2009/05/ios-fossils-ospf-to-bgp-redistribution.html) for details.
+[^IOSF]: See [RFC 1403](https://datatracker.ietf.org/doc/html/rfc1403) and [OSPF-to-BGP redistribution](/2009/05/ios-fossils-ospf-to-bgp-redistribution/) for details.
 
-The designers of BGP version 1 understood that some networks might prefer to exchange BGP information directly between AS-edge routers while still [redistributing BGP into IGP to get external routes into forwarding tables of intermediate devices](/2022/10/ospf-external-routes.html). They could have made the protocol more complex (and harder to implement) but decided to go down the long-forgotten path of "_we'll keep protocols simple and assume that the engineers using them know what they're doing_." Quoting RFC 1105 again:
+The designers of BGP version 1 understood that some networks might prefer to exchange BGP information directly between AS-edge routers while still [redistributing BGP into IGP to get external routes into forwarding tables of intermediate devices](/2022/10/ospf-external-routes/). They could have made the protocol more complex (and harder to implement) but decided to go down the long-forgotten path of "_we'll keep protocols simple and assume that the engineers using them know what they're doing_." Quoting RFC 1105 again:
 
 > One way is to use the BGP protocol to exchange routing information between the BGP gateways within a single AS. In this case, in order to maintain consist routing information, these gateways MUST have direct BGP sessions with each other (the BGP sessions should form a complete graph).
 

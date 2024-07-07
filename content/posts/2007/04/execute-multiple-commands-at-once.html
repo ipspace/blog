@@ -5,8 +5,8 @@ tags:
 - you've asked for it
 - EEM
 title: Execute multiple commands at once
-url: /2007/04/execute-multiple-commands-at-once.html
+url: /2007/04/execute-multiple-commands-at-once/
 ---
 
-Sometimes you'd like to automate execution of command sequences or create a command alias that would trigger a series of commands. One way of achieving this is by creating an EEM applet. For example, to clear IP routing table and reset BGP neighbors, define the following EEM applet:<pre class="code">event manager applet ClearAll<br/> event none<br/> action 1.0 cli command "clear ip route *"<br/> action 2.0 cli command "clear ip bgp *"</pre>You can trigger this applet with the <strong>event manager run ClearAll</strong> command or you could <a href="/2006/10/use-command-aliases-to-simplify-cisco.html">configure a command alias</a>, for example <strong>alias exec cleanup event manager run ClearAll</strong>.<br/><br/><strong>Note:</strong> this article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.
+Sometimes you'd like to automate execution of command sequences or create a command alias that would trigger a series of commands. One way of achieving this is by creating an EEM applet. For example, to clear IP routing table and reset BGP neighbors, define the following EEM applet:<pre class="code">event manager applet ClearAll<br/> event none<br/> action 1.0 cli command "clear ip route *"<br/> action 2.0 cli command "clear ip bgp *"</pre>You can trigger this applet with the <strong>event manager run ClearAll</strong> command or you could <a href="/2006/10/use-command-aliases-to-simplify-cisco/">configure a command alias</a>, for example <strong>alias exec cleanup event manager run ClearAll</strong>.<br/><br/><strong>Note:</strong> this article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.
 

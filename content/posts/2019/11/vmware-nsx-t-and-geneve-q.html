@@ -1,11 +1,11 @@
 ---
-url: /2019/11/vmware-nsx-t-and-geneve-q.html
+url: /2019/11/vmware-nsx-t-and-geneve-q/
 title: "VMware NSX-T and Geneve Q&A"
 date: "2019-11-06T08:28:00.000+01:00"
 tags: [ VXLAN,NSX ]
 ---
 
-<p><em>A Network Artist</em> left a lengthy comment on my <a href="/2019/08/brief-history-of-vmware-nsx.html">Brief History of VMware NSX</a> blog post. He raised a number of interesting topics, so I decided to write my replies as a separate blog post.</p>
+<p><em>A Network Artist</em> left a lengthy comment on my <a href="/2019/08/brief-history-of-vmware-nsx/">Brief History of VMware NSX</a> blog post. He raised a number of interesting topics, so I decided to write my replies as a separate blog post.</p>
 <blockquote class="cite"><p>Using Geneve is an interesting choice to be made and while the approach has it’s own Pros and Cons, I would like to stick to VXLAN if I were to recommend to someone for few good reasons.</p>
 </blockquote>
 <p>The main reason I see for NSX-T using Geneve instead of VXLAN is the need for additional header fields to carry metadata around, and to implement Network Services Header (NSH) for east-west service insertion.<!--more--></p>
@@ -20,7 +20,7 @@ tags: [ VXLAN,NSX ]
 <p>As of NSX-T 2.5 there is no support for overlay multicast, at least across subnet boundaries - you can send whatever you wish (AppleTalk anyone?) within a logical switch.</p>
 <blockquote class="cite"><p>How would you correlate underlay vs. overlay stats for visibility, performance mgmt. &amp; troubleshooting ?</p>
 </blockquote>
-<p>We’ve been facing the same problem from the days we started connecting routers to Frame Relay instead of leased lines to build WAN networks. We had the same problems with IPsec tunnels, GRE tunnels, <a href="/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html">MPLS-over-GRE-over-IPsec-over-MPLS tunnels</a>… Some things never change, and while we can’t expect miracles at least there’s vast prior experience that might help you when reading the pretty good <a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.5/troubleshooting/">NSX-T Data Center Troubleshooting Guide</a>.</p>
+<p>We’ve been facing the same problem from the days we started connecting routers to Frame Relay instead of leased lines to build WAN networks. We had the same problems with IPsec tunnels, GRE tunnels, <a href="/2011/03/mplsvpn-over-gre-over-ipsec-does-it/">MPLS-over-GRE-over-IPsec-over-MPLS tunnels</a>… Some things never change, and while we can’t expect miracles at least there’s vast prior experience that might help you when reading the pretty good <a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.5/troubleshooting/">NSX-T Data Center Troubleshooting Guide</a>.</p>
 <p>On a totally unrelated topic, I can’t fathom why people keep raising the same objections every time they’re facing an age-old situation. It’s not like complaining would ever make something go away. Learn how to deal with it, and get on with your life.</p>
 <p>Want to know more about NSX-T? I’m starting <a href="https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive">deep dive into NSX-T</a> in mid-November 2019, and all you need to join the live sessions is a <a href="https://www.ipspace.net/Subscription/Individual">Standard ipSpace.net Subscription</a>.</p>
 

@@ -3,7 +3,7 @@ kb_section: DataModels
 minimal_sidebar: true
 pre_scroll: true
 title: Data Transformation Example
-url: /kb/DataModels/66-Transformation-Example.html
+url: /kb/DataModels/66-Transformation-Example/
 ---
 Let's illustrate the data transformation concepts with a simple example: we'll transform our [highly optimized data model with automatic IP address allocation](40-Link%20Prefixes.html) into a set of device-level data models [identical to what we started with](index.html). Our transformation should take data describing nodes and links...
 

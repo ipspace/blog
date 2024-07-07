@@ -7,7 +7,7 @@ title: Test DHCP Relaying with netlab
 pre_scroll: True
 series: [ dhcp-relay ]
 ---
-After [figuring out how DHCP relaying works](/2023/03/dhcp-relay-process.html), I decided to test it out in a lab. *netlab* has no DHCP configuration module (at the moment); the easiest way forward seemed to be custom configuration templates combined with a few extra attributes.
+After [figuring out how DHCP relaying works](/2023/03/dhcp-relay-process/), I decided to test it out in a lab. *netlab* has no DHCP configuration module (at the moment); the easiest way forward seemed to be custom configuration templates combined with a few extra attributes.
 
 ### Lab Topology
 

@@ -6,7 +6,7 @@ tags:
 - fabric
 - video
 title: 'Example: Multi-Stage Clos Fabrics'
-url: /2013/02/example-multi-stage-clos-fabrics.html
+url: /2013/02/example-multi-stage-clos-fabrics/
 video_tag: clos
 ---
 Smaller Clos fabrics are built with two layers of switches: leaf and spine switches. The oversubscription ratio you want to achieve dictates the number of uplinks on the leaf switch, which in turn dictates the maximum number of spine switches and thus the fabric size.

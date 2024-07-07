@@ -9,7 +9,7 @@ tags:
 - high availability
 title: Where Would You Need DNS Anycast?
 ---
-One of the publicly observable artifacts of the [October 2021 Facebook outage](/2021/10/circular-dependencies-considered-harmful.html) was an intricate interaction between BGP routing and their DNS servers needed to support optimal anycast configuration. Not surprisingly, it was all networking engineers' fault according to some opinions[^1]
+One of the publicly observable artifacts of the [October 2021 Facebook outage](/2021/10/circular-dependencies-considered-harmful/) was an intricate interaction between BGP routing and their DNS servers needed to support optimal anycast configuration. Not surprisingly, it was all networking engineers' fault according to some opinions[^1]
 
 > There's no need for anycast[^2]/BGP advertisement for DNS servers. DNS is already highly available by design. Only network people never understand that, which leads to overengineering.
 
@@ -64,7 +64,7 @@ Finally, consider the amount of DNS traffic any member of the FAANG club must be
 
 ### Lessons learned
 
-* Anycast DNS is used in most large-scale environments to provide resilience, scalability, improved reliability, and other features like geographic load balancing (for more details, listen to the [podcast I did with NS1 in 2015](/2015/04/nsone-data-driven-dns-on-software-gone.html)).
+* Anycast DNS is used in most large-scale environments to provide resilience, scalability, improved reliability, and other features like geographic load balancing (for more details, listen to the [podcast I did with NS1 in 2015](/2015/04/nsone-data-driven-dns-on-software-gone/)).
 * Your network or DNS traffic is not remotely similar to Facebook's (or root name servers).
 * Whatever lessons and experience you might have gained running your environment for ages might not be relevant in dissimilar-enough environments.
 * Sometimes people do stuff for good reasons. It might be worth figuring out what their reasoning is even if you disagree with them -- that's how we learn and become better engineers.

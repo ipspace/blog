@@ -21,4 +21,4 @@ And once more for good luck: "$SomeTechnology is not a security mechanism. It is
 
 ---
 
-Bonus points if the [description of $SomeTechnology clearly describes its security shortcomings](/2018/11/omg-vxlan-is-still-insecure.html) that are then "discovered" by a publicity-hungry security researcher.
+Bonus points if the [description of $SomeTechnology clearly describes its security shortcomings](/2018/11/omg-vxlan-is-still-insecure/) that are then "discovered" by a publicity-hungry security researcher.

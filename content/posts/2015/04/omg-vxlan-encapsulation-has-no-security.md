@@ -4,7 +4,7 @@ tags:
 - VXLAN
 - security
 title: OMG, VXLAN Encapsulation Has No Security!
-url: /2015/04/omg-vxlan-encapsulation-has-no-security.html
+url: /2015/04/omg-vxlan-encapsulation-has-no-security/
 ---
 Every now and then someone actually looks at the VXLAN packet format and eventually figures out that VXLAN encapsulation doesn't provide any intrinsic security.
 

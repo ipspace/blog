@@ -8,9 +8,9 @@ tags:
 - service providers
 - BGP
 title: 'Prefix-Independent Convergence (PIC): Fixing the FIB Bottleneck'
-url: /2012/01/prefix-independent-convergence-pic.html
+url: /2012/01/prefix-independent-convergence-pic/
 ---
-Did you rush to try OSPF Loop-Free Alternate on a Cisco 7200 after reading my [LFA blog post](/2012/01/loop-free-alternate-ospf-meets-eigrp.html)... and disappointedly discovered that it only works on Cisco 7600? The reason is simple: while LFA does add feasible-successor-like behavior to OSPF, its primary mission is to improve RIB-to-FIB convergence time.
+Did you rush to try OSPF Loop-Free Alternate on a Cisco 7200 after reading my [LFA blog post](/2012/01/loop-free-alternate-ospf-meets-eigrp/)... and disappointedly discovered that it only works on Cisco 7600? The reason is simple: while LFA does add feasible-successor-like behavior to OSPF, its primary mission is to improve RIB-to-FIB convergence time.
 <!--more-->
 If you want to know more details, I would strongly suggest you browse through the [IP Fast Reroute Applicability](http://www.data.proidea.org.pl/euronog/1edycja/materialy/prezentacje/Pierre_Francois_IP_Fast_Reroute_Applicability.pdf) presentation Pierre Francois had @ EuroNOG 2011. To summarize what he told us:
 
@@ -22,4 +22,4 @@ The generic optimization of the RIB-to-FIB update process is known as *Prefix-In
 
 PIC was first implemented for BGP (you can find more details, including interesting discussions of FIB architectures, in [another presentation Pierre Francois had @ EuroNOG](http://www.data.proidea.org.pl/euronog/1edycja/materialy/prezentacje/Pierre_Francois_BGP_Add-Paths.pdf)), which usually carries hundreds of thousands of prefixes that point to a few tens of different next hops. It seems some Service Providers carry way too many routes in OSPF or IS-IS, so it also made sense to implement LFA for those routing protocols.
 
-In its simplest form, BGP PIC goes a bit beyond exiting EBGP/IBGP multipathing and copies *backup path information* into RIB and FIB. Distributing alternate paths throughout the network requires numerous additional tweaks, from modified [BGP path propagation rules](/2021/12/bgp-multipath-addpath.html) to [modified BGP route reflector behavior](/2021/10/bgp-optimal-route-reflection.html).
+In its simplest form, BGP PIC goes a bit beyond exiting EBGP/IBGP multipathing and copies *backup path information* into RIB and FIB. Distributing alternate paths throughout the network requires numerous additional tweaks, from modified [BGP path propagation rules](/2021/12/bgp-multipath-addpath/) to [modified BGP route reflector behavior](/2021/10/bgp-optimal-route-reflection/).

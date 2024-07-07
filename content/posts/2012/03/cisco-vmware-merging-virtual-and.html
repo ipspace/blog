@@ -5,14 +5,14 @@ tags:
 - workshop
 - virtualization
 title: 'Cisco & VMware: Merging the Virtual and Physical NICs'
-url: /2012/03/cisco-vmware-merging-virtual-and.html
+url: /2012/03/cisco-vmware-merging-virtual-and/
 ---
 
-<p><a href="/2011/12/vmware-vswitch-baseline-of-simplicity.html">Virtual (soft) switches</a> present in almost every hypervisor significantly reduce the performance of high-bandwidth virtual machines (<a href="http://www.cisco.com/en/US/solutions/collateral/ns340/ns517/ns224/ns944/white_paper_c11-593280.html">measurements done by Cisco</a> a while ago indicate you could get up to 38% more throughput if you tie VMs directly to hardware NICs), but as I argued in my “<a href="/2011/08/soft-switching-might-not-scale-but-we.html"><em>Soft Switching Might Not Scale, But We Need It</em></a>” post, we need hypervisor switches to isolate the virtual machines from the vagaries of the physical NICs. </p>
-<p>Engineering gurus from Cisco and VMware have yet again proven me wrong – you can combine VMDirectPath and vMotion if you <a href="/2011/08/vm-fex-how-convoluted-can-you-get.html">use VM-FEX</a>.<!--more--></p>
+<p><a href="/2011/12/vmware-vswitch-baseline-of-simplicity/">Virtual (soft) switches</a> present in almost every hypervisor significantly reduce the performance of high-bandwidth virtual machines (<a href="http://www.cisco.com/en/US/solutions/collateral/ns340/ns517/ns224/ns944/white_paper_c11-593280.html">measurements done by Cisco</a> a while ago indicate you could get up to 38% more throughput if you tie VMs directly to hardware NICs), but as I argued in my “<a href="/2011/08/soft-switching-might-not-scale-but-we/"><em>Soft Switching Might Not Scale, But We Need It</em></a>” post, we need hypervisor switches to isolate the virtual machines from the vagaries of the physical NICs. </p>
+<p>Engineering gurus from Cisco and VMware have yet again proven me wrong – you can combine VMDirectPath and vMotion if you <a href="/2011/08/vm-fex-how-convoluted-can-you-get/">use VM-FEX</a>.<!--more--></p>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2012/03/s1600-VM-FEX-Reality.png"><img border="0" src="/2012/03/s400-VM-FEX-Reality.png"/></a><br/>VM-FEX architecture</div>
 <p>This is (approximately) how that marvel of engineering works (and you’ll find <a href="http://www.cisco.com/web/learning/le21/le34/downloads/689/vmworld/preso/VMDirectPath_with_vMotion_on_Cisco_UCS_VM-FEX.pdf">more details in this presentation</a>):</p>
-<ul class="ListParagraph"><li>You have to configure <a href="/2011/08/vm-fex-how-convoluted-can-you-get.html">VM-FEX</a> (which means that you can only use this trick if you have an UCS system with Palo chipset in the server blades).</li>
+<ul class="ListParagraph"><li>You have to configure <a href="/2011/08/vm-fex-how-convoluted-can-you-get/">VM-FEX</a> (which means that you can only use this trick if you have an UCS system with Palo chipset in the server blades).</li>
 <li>Palo chipset emulates the registers and data structures used by the VMXNET3 paravirtualized device driver (and most VMs use VMXNET3 today due to its <a href="http://www.vmware.com/pdf/vsp_4_vmxnet3_perf.pdf">performance benefits</a>). You can thus link a VM with VMXNET3 device driver directly to the physical hardware presented to the server by the Palo chipset (using VMDirectPath, for example).</li>
 </ul>
 <p class="note">Cisco was using VMDirectPath in the <a href="http://www.cisco.com/en/US/solutions/collateral/ns340/ns517/ns224/ns944/white_paper_c11-593280.html">VM-FEX performance measurements</a>; in most VM-FEX deployments you’d use the passthrough VEM to enable vMotion of the VMs using VM-FEX.</p>

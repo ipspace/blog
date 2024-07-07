@@ -4,7 +4,7 @@ tags:
 - IPv6
 - workshop
 title: 'NAT64: it’s all about the legacy content'
-url: /2011/05/nat64-its-all-about-legacy-content.html
+url: /2011/05/nat64-its-all-about-legacy-content/
 ---
 
 <p>Few days ago I enjoyed listening to the <a href="http://packetpushers.net/show-43-microsoft-teredo-is-crap/">Teredo-bashing Packet Pushers Podcast</a> during which Greg &amp; the crew simply couldn’t avoid NAT64. Tom even <a href="http://networkingnerd.net/2011/05/05/i-hate-nat-or-do-i/">wrote a follow-up post</a> explaining why NAT is bad (we all agree with that) and why we shouldn’t use it in IPv6. Unfortunately he missed the elephant in the room: it’s all about the legacy content. IPv6-only residential users have to access IPv4-only content.<!--more--></p>
@@ -13,6 +13,6 @@ url: /2011/05/nat64-its-all-about-legacy-content.html
 <p><strong>Connect them using dual-stack</strong>. As above, you still need NAT44/NAT444 for IPv4 and you make your network more complex than necessary. On top of that, people trying to avoid NAT444 have proposed convoluted schemes like DS-Lite or A+P.</p>
 <p>Supporting and troubleshooting dual-stack residential ISP networks with unknown customer-side configs could also turn out to be great fun.</p>
 <p><strong>Connect them to IPv6 and use NAT64</strong>. Still seems to be the cleanest solution to me. Single protocol in the access network, NAT is out of the forwarding path, and it’s used only where absolutely needed. Caveat: while regular web browsing works just fine with NAT64, P2P applications (like Skype) might get totally confused unless they're NAT64-aware.</p>
-<p>We all hate NAT to various degrees, but at the moment NAT64 seems to be the least painful interim solution. The long tail of the content will take years to figure out <a href="/2011/03/you-cant-ignore-ipv6-any-longer-in.html">why you shouldn’t ignore IPv6</a>.</p>
+<p>We all hate NAT to various degrees, but at the moment NAT64 seems to be the least painful interim solution. The long tail of the content will take years to figure out <a href="/2011/03/you-cant-ignore-ipv6-any-longer-in/">why you shouldn’t ignore IPv6</a>.</p>
 <h4>What are the alternatives?</h4><p>The proper way to tackle this issue is to make your content available over IPv4 and IPv6. IPv4 clients won’t notice it and IPv6 clients will use native IPv6 connectivity bypassing NAT64. You might find useful overview of what needs to be done in my <a href="https://www.ipspace.net/IPv6E101">Enterprise IPv6 – the first steps</a> webinar.</p>
 

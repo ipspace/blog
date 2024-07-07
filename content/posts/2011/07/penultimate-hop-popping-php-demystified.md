@@ -4,14 +4,14 @@ tags:
 - MPLS
 - workshop
 title: Penultimate Hop Popping (PHP) demystified
-url: /2011/07/penultimate-hop-popping-php-demystified.html
+url: /2011/07/penultimate-hop-popping-php-demystified/
 lastmod: 2020-11-18 06:28:00
 ---
-I got an interesting question after writing the [*Asymmetric MPLS MTU Problem*](/2011/07/asymmetric-mpls-mtu-problem.html) post:
+I got an interesting question after writing the [*Asymmetric MPLS MTU Problem*](/2011/07/asymmetric-mpls-mtu-problem/) post:
 
 > Why does PHP happen only on directly-connected interfaces but not on other non-MPLS routes?
 
-Obviously it’s time for a deep dive into [Penultimate Hop Popping](/kb/tag/MPLS/Implicit_Explicit_NULL.html) (PHP) mysteries (warning label: [read the MPLS books](/2007/07/update-preparing-for-mpls-ccip-exam.html) if you plan to get seriously involved with MPLS).
+Obviously it’s time for a deep dive into [Penultimate Hop Popping](/kb/tag/MPLS/Implicit_Explicit_NULL/) (PHP) mysteries (warning label: [read the MPLS books](/2007/07/update-preparing-for-mpls-ccip-exam/) if you plan to get seriously involved with MPLS).
 <!--more-->
 When developing the MPLS architecture, its designers had to consider two fundamental facts:
 

@@ -5,7 +5,7 @@ tags:
 - performance
 - worth reading
 title: 'Worth Reading: SD-WAN Scalability Challenges'
-url: /2020/02/worth-reading-sd-wan-scalability.html
+url: /2020/02/worth-reading-sd-wan-scalability/
 sd-wan_tag: reality
 ---
 In January 2020 Doug Heckaman [documented his experience with VeloCloud SD-WAN](https://blog.heckanet.net/2020/01/17/vmware-velocloud-edge-configuration-quirks/). He tried to be positive, but for whatever reason this particular bit caught my interest:

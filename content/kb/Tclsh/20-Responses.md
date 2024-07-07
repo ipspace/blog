@@ -2,7 +2,7 @@
 kb_section: Tclsh
 minimal_sidebar: true
 title: Insert Responses to Command Prompts in Tclsh
-url: /kb/Tclsh/20-Responses.html
+url: /kb/Tclsh/20-Responses/
 ---
 Some IOS CLI commands (for example, the **clear counter** command) require user confirmations. The **typeahead** ***text-string*** Tcl command can be used to insert the simulated user response before an IOS CLI command is executed.
 

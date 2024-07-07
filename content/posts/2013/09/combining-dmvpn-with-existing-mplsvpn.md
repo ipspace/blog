@@ -9,7 +9,7 @@ tags:
 - BGP
 - MPLS VPN
 title: Combining DMVPN with Existing MPLS/VPN Network
-url: /2013/09/combining-dmvpn-with-existing-mplsvpn.html
+url: /2013/09/combining-dmvpn-with-existing-mplsvpn/
 ---
 One of the [Expert Express](http://www.ipspace.net/ExpertExpress) sessions focused on an MPLS/VPN-based WAN network using OSPF as the routing protocol. The customer wanted to add DMVPN-based backup links and planned to retain OSPF as the routing protocol. Not surprisingly, the initial design had all sorts of unexpectedly complex kludges (see the [case study](http://www.ipspace.net/Integrating_Internet_VPN_with_MPLS_VPN_WAN) for more details).
 

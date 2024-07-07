@@ -2,7 +2,7 @@
 kb_section: DockerSvc
 minimal_sidebar: true
 title: Docker Implementation of Published Ports
-url: /kb/DockerSvc/30-nat-iptables.html
+url: /kb/DockerSvc/30-nat-iptables/
 ---
 The default single-host Docker networking implementation uses **iptables** NAT table to implement published ports (Docker Swarm uses a load balancer on every swarm member), and in this part of the article we'll decode the intricate setup it has to use to get the job done.
 

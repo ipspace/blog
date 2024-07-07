@@ -8,7 +8,7 @@ tags:
 - cloud
 - high availability
 title: Reliable or Unreliable Cloud Services?
-url: /2011/10/reliable-or-unreliable-cloud-services.html
+url: /2011/10/reliable-or-unreliable-cloud-services/
 ---
 The question of high-availability cloud services (let's agree *reliable* in this context really means *highly available*) pops up every time I discuss cloud networking requirements with enterprise-focused experts. While it's obvious the software- and platform services must be highly available (as their users have few mechanisms to increase their availability), Infrastructure-as-a-Service (IaaS) remains a grey area.
 

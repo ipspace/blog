@@ -2,7 +2,7 @@
 date: 2008-12-02 07:06:00.002000+01:00
 tags: []
 title: I’m Too Old … I Prefer CLI over GUI
-url: /2008/12/im-too-old-i-prefer-cli-over-gui.html
+url: /2008/12/im-too-old-i-prefer-cli-over-gui/
 ---
 I was delighted when I got access to **Cisco's Application Control Engine (ACE) XML Gateway/Web Application Firewall (WAF) box**. This box is the perfect intersection of three fields that really interest me: networking, security and Web programming. To my huge disappointment, though, all the real configuration can only be done through the Web interface. I understand that casual users of a device prefer a graphical user interface (GUI) over text commands (and Generation Z has never seen a terminal window, DOS prompt or, God forbid, an actual terminal), **but you can achieve so much more with a simple text-based configuration approach:**
 <!--more-->

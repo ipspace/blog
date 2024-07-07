@@ -5,7 +5,7 @@ tags:
 - command line interface
 - show filters
 title: Display operational IPv6 interfaces
-url: /2008/04/display-operational-ipv6-interfaces.html
+url: /2008/04/display-operational-ipv6-interfaces/
 ---
 
 The brief display of the state of IPv6 interfaces in the router (<strong>show ipv6 interface brief</strong>) is significantly different from the well-known <strong>show ip interface brief</strong> display as the IPv6 address might not fit in the same line as all the other data. To filter the printout and display only the operational interfaces, you have to replace the include filter with the section filter, which displays all the lines matching the regular expression as well as associated follow-up lines.<pre class="code">PE-A#show ipv6 interface brief | section up<br/>Serial1/0                  [up/up]<br/>    unassigned<br/>Serial1/1                  [up/up]<br/>    FE80::C800:CFF:FEA7:0<br/>Loopback0                  [up/up]<br/>    unassigned<br/></pre><p class="warn">The definition of the <em>associated follow-up lines</em> depends on the printout. Usually the indented lines are assumed to belong to a <strong>section</strong>, but you might be surprised.</p>

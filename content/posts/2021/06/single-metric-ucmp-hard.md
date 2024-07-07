@@ -10,7 +10,7 @@ tags:
 - OSPF
 title: Single-Metric Unequal-Cost Multipathing Is Hard
 ---
-A while ago, we discussed whether [unequal-cost multipathing (UCMP) makes sense](/2021/02/does-ucmp-make-sense.html) (TL&DR: rarely), and whether we could implement it in [link-state routing protocols](/2021/03/ucmp-link-state-protocols.html) (TL&DR: yes). Even though we could modify OSPF or IS-IS to support UCMP, and Cisco IOS XR even implemented those changes ([they are not exactly widely used](/2021/03/ucmp-link-state-protocols.html#496)), the results are... suboptimal.
+A while ago, we discussed whether [unequal-cost multipathing (UCMP) makes sense](/2021/02/does-ucmp-make-sense/) (TL&DR: rarely), and whether we could implement it in [link-state routing protocols](/2021/03/ucmp-link-state-protocols/) (TL&DR: yes). Even though we could modify OSPF or IS-IS to support UCMP, and Cisco IOS XR even implemented those changes ([they are not exactly widely used](/2021/03/ucmp-link-state-protocols/#496)), the results are... suboptimal.
 
 Imagine a simple network with four nodes, three equal-bandwidth links, and a link that has half the bandwidth of the other three:
 
@@ -20,7 +20,7 @@ It obviously makes sense to spread the load between E1 and E2 in a 2:1 ratio (â…
 
 There's absolutely no way that you would get the load balancing ratios right in a single-metric routing protocol without getting insane trying to tweak the link metrics. You _could_ get the metrics just right with some interesting math, using a tool like Cariden MATE, or using MPLS-TE tunnels (where the load balancing ratio is determined by relative tunnel bandwidth)... but it's not trivial.
 
-How about the data center anycast use case I [mentioned the last time](/2021/06/tcp-anycast-hard.html)?
+How about the data center anycast use case I [mentioned the last time](/2021/06/tcp-anycast-hard/)?
 
 {{<figure src="/2021/06/Anycast-TCP.png">}}
 

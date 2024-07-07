@@ -1,11 +1,11 @@
 ---
-url: /2014/08/fate-sharing-in-ip-networks.html
+url: /2014/08/fate-sharing-in-ip-networks/
 title: "Fate Sharing in IP Networks"
 date: "2014-08-28T15:55:00.000+02:00"
 tags: [ Internet,BGP,IP routing ]
 ---
 
-<p>My good friend Tiziano <a href="/2014/08/what-is-valid-bgp-route.html?showComment=1408043055320#c4497621972855924719">complained about the fact that BGP considers next hop reachable</a> if there’s an entry in the IP routing table even though the router cannot even ping the next hop.</p>
+<p>My good friend Tiziano <a href="/2014/08/what-is-valid-bgp-route/#c4497621972855924719">complained about the fact that BGP considers next hop reachable</a> if there’s an entry in the IP routing table even though the router cannot even ping the next hop.</p>
 <p>That behavior is one of the fundamental aspects of IP networks: networks built with IP routing protocols rely on <a href="http://en.wikipedia.org/wiki/Fate-sharing"><em>fate sharing</em></a><em> </em>between control and data planes instead of <em>path liveliness checks</em>.<!--more--></p>
 <h4>Fate Sharing 101</h4><p>In networks where control and data plane share the same fate, the routing protocols use the same data plane (same links and interfaces) to exchange hello packets or routing protocol messages as the traffic forwarded based on the information collected by the routing protocol. </p>
 <p>The underlying assumption is simple: if the routing protocol manages to exchange information between adjacent nodes, there won’t be any problems with the user traffic. Furthermore, if the routing protocol updates in a distance vector protocol made it from egress router to ingress router, the traffic should experience no problems when being sent in the reverse direction.</p>
@@ -16,9 +16,9 @@ tags: [ Internet,BGP,IP routing ]
 </ul>
 <p>The behavior described by Tiziano is thus not a bug, but a FAD (Functions as Designed).</p>
 <p class="note">Before we start the discussion whether the default route should or should not be a viable path toward a BGP next hop, read the <a href="http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-mt/irg-15-mt-book/irg-nexthop-track.pdf">BGP Support for Next-Hop Address Tracking</a> document (yeah, I know, another nerd knob with potentially unexpected default value).</p>
-<h4>How They Broke Fate Sharing</h4><p>Fundamental principles should never stand in the way of a performance hack or a <a href="/2013/08/temper-your-macgyver-streak.html">cool MacGyver kludge</a>. Fate sharing fared no better.</p>
+<h4>How They Broke Fate Sharing</h4><p>Fundamental principles should never stand in the way of a performance hack or a <a href="/2013/08/temper-your-macgyver-streak/">cool MacGyver kludge</a>. Fate sharing fared no better.</p>
 <p>The first routing protocol that broke fate sharing properties was OSPF – the <a href="http://tools.ietf.org/html/rfc1583">early versions of OSPF</a> assumed that all routers on a subnet (that is modeled as Type-2 LSA) can communicate even though all we can safely assume is that they can exchange OSPF hellos with the DR. The consequences of this faulty assumption are well known to anyone that had to troubleshoot OSPF over NBMA networks. <a href="http://tools.ietf.org/html/rfc2178#appendix-G.2">Point-to-multipoint interfaces were introduced in RFC 2178</a> to fix this problem a few years later.</p>
-<p>BGP is no better than OSPF. The <a href="/2011/08/bgp-next-hop-processing.html">default BGP next hop processing algorithm</a> breaks fate sharing: a BGP router assumes two other routers in the same subnet can communicate if it’s able to establish BGP session with both of them. </p>
+<p>BGP is no better than OSPF. The <a href="/2011/08/bgp-next-hop-processing/">default BGP next hop processing algorithm</a> breaks fate sharing: a BGP router assumes two other routers in the same subnet can communicate if it’s able to establish BGP session with both of them. </p>
 <p class="note">To use strict fate sharing in a BGP network, you have to configure <strong>next-hop-self </strong>on all BGP sessions, which might result in pretty suboptimal traffic flow.</p>
 <p>Speaking about third-party next hops – next hop address in OSPF type-5 LSA is another potential can of worms.</p>
 <p>Multi-protocol routing over IS-IS is another example – IS-IS routers assume they can use a path across the topology graph for IPv4 and IPv6 even when only one of the protocols is configured on the actual link. That behavior was fixed with multi-topology IS-IS (<a href="http://tools.ietf.org/html/rfc5120">RFC 5120</a>) which introduced separate topology graphs for individual layer-3 protocols (IPv4 and IPv6).</p>

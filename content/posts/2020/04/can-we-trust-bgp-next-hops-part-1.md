@@ -9,7 +9,7 @@ tags:
 - IP routing
 title: Can We Trust BGP Next Hops (Part 1)?
 ---
-[Aldrin](https://www.linkedin.com/in/aldrin-isaac-387864/) sent me an interesting question as a comment to one of my [EVPN blog posts](/2020/02/the-evpnbgp-saga-continues.html):
+[Aldrin](https://www.linkedin.com/in/aldrin-isaac-387864/) sent me an interesting question as a comment to one of my [EVPN blog posts](/2020/02/the-evpnbgp-saga-continues/):
 
 > How does the network know that a VTEP is actually alive? (1) from the point of view of the control plane and (2) from the point of view of the data plane? And how do you ensure that control and data plane liveness monitoring has the same view? BFD for BGP is a possible solution for (1) but it’s not meant for 3rd party next hops, i.e. it doesn’t address (2).
 
@@ -26,7 +26,7 @@ But nonetheless, even if our BGP neighbor did everything right (from the BGP pro
 
 **Long story short**: we could never know whether the BGP next hop (VTEP in Aldrin's question because he was talking about EVPN) is alive.
 
-Next question: can we do better than that? **TL&DR: No**... at least not when using traditional routing protocols. [SD-WAN with end-to-end data-plane probes](/2020/01/fast-failover-in-sd-wan-networks.html) is a different story.
+Next question: can we do better than that? **TL&DR: No**... at least not when using traditional routing protocols. [SD-WAN with end-to-end data-plane probes](/2020/01/fast-failover-in-sd-wan-networks/) is a different story.
 
 ### But Routing Protocols Work
 
@@ -64,7 +64,7 @@ IBGP session between L1 and L2 is up and running, or at least you got the last p
 
 **Conclusion**: Even if you do everything right, you can never be sure that traffic sent toward a BGP next hop will reach the advertised destination. You might as well stop bothering and get a life, networks usually work reasonably well.
 
-So far we covered the two simplest scenarios. The [next installment of this saga](/2020/04/can-we-trust-bgp-next-hops-part-2.html) describes networks with more than two routers.
+So far we covered the two simplest scenarios. The [next installment of this saga](/2020/04/can-we-trust-bgp-next-hops-part-2/) describes networks with more than two routers.
 - - -
 You might also want to watch [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar (parts of it are available with [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)) or explore [other BGP resources](/kb/tag/BGP) we've created in the last decade and a half.
 

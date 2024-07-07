@@ -5,7 +5,7 @@ tags:
 - DMVPN
 - QoS
 title: RSVP over DMVPN
-url: /2013/08/rsvp-over-dmvpn.html
+url: /2013/08/rsvp-over-dmvpn/
 ---
 A while ago [Tomasz Kacprzynski](http://kemot-net.com/about) asked me whether I'd ever run RSVP over DMVPN. I hadn't - after all, you'd only need that in VoIP environments and I try to stay as far away from voice as possible.
 

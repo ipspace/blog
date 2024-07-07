@@ -3,7 +3,7 @@ date: 2019-03-12 09:19:00+01:00
 tags:
 - automation
 title: Use Network Automation to Detect Software Bugs
-url: /2019/03/use-network-automation-to-detect.html
+url: /2019/03/use-network-automation-to-detect/
 ---
 *This blog post was initially sent to subscribers of my SDN and Network Automation mailing list. *[*Subscribe here*](http://www.ipspace.net/Subscribe/Five_SDN_Tips)*.*
 

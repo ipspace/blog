@@ -1,14 +1,14 @@
 ---
-url: /2008/02/use-all-tools-you-have.html
+url: /2008/02/use-all-tools-you-have/
 title: "Use all the tools you have"
 date: "2008-02-21T07:33:00.003+01:00"
 tags: [ BGP ]
 ---
 
 BGP implementation on Cisco IOS gives you a number of filtering options, including prefix filters, AS path filters and route maps. While it might be tempting to learn just the most versatile tool available (route maps) and discard all the others, judicious use of all available tools can simplify your router configurations.<br/><br/>For example, an Internet Service Provider might want to filter incoming updates received from the customers to ensure they’re not advertising transit routes and advertise only IP prefixes they actually own. Inbound route maps might also be needed to attach BGP communities to inbound routes or set BGP attributes (for example, local preference) based on communities attached to incoming routing updates.<br/><br/>You can perform all these tasks with <strong>route-maps</strong>, but then you’d probably have to create a dedicated <strong>route-map</strong> for each customer (as the inbound prefix filter has to be customer-specific). Changing your routing policies or community definitions would require changing a lot of route maps.<p class="important">Update 21-feb-08@15:39: distribute lists and prefix lists can't coexist (they cannot be configured in the same direction on the same neighbor)</p>
-On the other hand, if you use all the filters available in the BGP routing process, you could:<ul><li>Use <strong>neighbor filter-list in</strong> to check the <a href="/2008/02/as-path-based-filter-of-customer-bgp.html">customer-specific AS path requirements</a>; </li>
+On the other hand, if you use all the filters available in the BGP routing process, you could:<ul><li>Use <strong>neighbor filter-list in</strong> to check the <a href="/2008/02/as-path-based-filter-of-customer-bgp/">customer-specific AS path requirements</a>; </li>
 <li>Use <strong>neighbor prefix-list in</strong> to filter customer prefixes, reject too long prefixes or prefixes not belonging to the customer; </li>
 <li>Use <strong>neighbor route-map in</strong> to drop prefixes belonging to your own address space, implement various routing policies and set BGP communities.</li>
 </ul>
-<p class="info">The solution scales even better if you configure common filters (<strong>route-map in </strong>and <strong>filter-list in </strong>in our scenario) in a <a href="/2008/01/bgp-essentials-peer-session-templates.html">BGP peer session template</a>.</p>
+<p class="info">The solution scales even better if you configure common filters (<strong>route-map in </strong>and <strong>filter-list in </strong>in our scenario) in a <a href="/2008/01/bgp-essentials-peer-session-templates/">BGP peer session template</a>.</p>
 

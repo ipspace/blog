@@ -5,7 +5,7 @@ comment: |
 date: 2023-09-19 05:56:00
 tags: [ networking fundamentals ]
 ---
-It always helps to figure out the challenges of a problem you're planning to solve, and to have a well-defined terminology. This blog post will mention a few challenges we might encounter while addressing various layers of the [networking stack](/2019/09/on-usability-of-osi-layered-networking.html), from data-link layer and all the way up to the application layer, and introduce the concepts of *names*, *addresses* and *routes*.
+It always helps to figure out the challenges of a problem you're planning to solve, and to have a well-defined terminology. This blog post will mention a few challenges we might encounter while addressing various layers of the [networking stack](/2019/09/on-usability-of-osi-layered-networking/), from data-link layer and all the way up to the application layer, and introduce the concepts of *names*, *addresses* and *routes*.
 
 [According to Martin Fowler](https://martinfowler.com/bliki/TwoHardThings.html), one of the best quotes I found on the topic originally came from Phil Karlton:
 <!--more-->

@@ -7,11 +7,11 @@ tags:
 - networking fundamentals
 title: 'Back to Basics: Unnumbered IPv4 Interfaces'
 ---
-In the [previous blog post](/2021/05/fundamentals-interface-node-addresses.html) in [this series](/series/unnumbered-interfaces.html), we explored some of the reasons IP uses per-interface (and not per-node) IP addresses. That model worked well when routers had few interfaces and mostly routed between a few LAN segments (often large subnets of a Class A network assigned to an academic institution) and a few WAN uplinks. In those days, the WAN networks were often implemented with non-IP technologies like Frame Relay or ATM (with an occasional pinch of X.25).
+In the [previous blog post](/2021/05/fundamentals-interface-node-addresses/) in [this series](/series/unnumbered-interfaces/), we explored some of the reasons IP uses per-interface (and not per-node) IP addresses. That model worked well when routers had few interfaces and mostly routed between a few LAN segments (often large subnets of a Class A network assigned to an academic institution) and a few WAN uplinks. In those days, the WAN networks were often implemented with non-IP technologies like Frame Relay or ATM (with an occasional pinch of X.25).
 
 The first sign of troubles in paradise probably occurred when someone wanted to use a dial-up modem to connect to a LAN segment. What subnet (and IP address) do you assign to the dial-up connection, and how do you tell the other end what to use? Also, what do you do when you want to have a bank of modems and dozens of people dialing in?
 <!--more-->
-The history of networking is full of dirty hacks (I'm looking at you, [long-distance vMotion](/2015/02/before-talking-about-vmotion-across.html)), and the initial dial-up solutions were no different:
+The history of networking is full of dirty hacks (I'm looking at you, [long-distance vMotion](/2015/02/before-talking-about-vmotion-across/)), and the initial dial-up solutions were no different:
 
 * Grab a bunch of LAN IP addresses, and enter them as RESERVED in the shared Excel spreadsheet (or whatever we were using in those days)[^2]
 * Pretend that all these addresses belong to the dial-in server and are connected directly to the LAN segment. Whenever someone asks for the MAC address of one of those addresses, respond with the MAC address of the dial-in server (we might call that proxy-ARP today).
@@ -52,11 +52,11 @@ IPv6 designers tried to do things THE RIGHT WAY (for whatever direction they tho
 
 [^3]: Or whatever hack they're using to generate what looks like a MAC address for virtual interfaces like tunnels -- OSX uses some random ****
 
-Wonder how they solved the dial-up challenge? With the "*we have an infinite number of bits to play with*" mentality, it wasn't hard to decide that every dial-up connection deserves a dedicated /64 prefix ([or worse](/2017/12/unique-ipv6-prefix-per-host-how-complex.html)).
+Wonder how they solved the dial-up challenge? With the "*we have an infinite number of bits to play with*" mentality, it wasn't hard to decide that every dial-up connection deserves a dedicated /64 prefix ([or worse](/2017/12/unique-ipv6-prefix-per-host-how-complex/)).
 
 You know, your phone might decide it wants to change its IPv6 address, and it wouldn't be fair to give it less than a gazillion options to choose from. Some people went as far as suggesting we should give more than one /64 prefix to every dial-up connection (/48, anyone?) because it would look horrible to use the proxy-ARP (now proxy-ND) tricks from the 1980s to implement tethering.
 
 ### Even More Details
 
 * Want to explore the world of network addressing? Watch [this part](https://my.ipspace.net/bin/list?id=Net101#ADDR) of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar.
-* Interested in IPv6 details? You might find them in our [IPv6 webinars](https://www.ipspace.net/IPv6) and [blog posts](/tag/ipv6.html).
+* Interested in IPv6 details? You might find them in our [IPv6 webinars](https://www.ipspace.net/IPv6) and [blog posts](/tag/ipv6/).

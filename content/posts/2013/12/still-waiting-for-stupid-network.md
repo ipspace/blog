@@ -15,9 +15,9 @@ tags:
 - SDN
 - worth reading
 title: Still Waiting for the Stupid Network
-url: /2013/12/still-waiting-for-stupid-network.html
+url: /2013/12/still-waiting-for-stupid-network/
 ---
-In 1998, the cover story of [ACM netWorker](http://networker.acm.org/) magazine discussed the [dawn of the stupid network](http://www.isen.com/papers/Dawnstupid.html) -- an architecture with [smart edge nodes and simple packet forwarding code](/2011/05/complexity-belongs-to-network-edge.html). Obviously we learned nothing in all those years -- we're [still having the same discussions](/2013/06/network-virtualization-and-spaghetti.html).
+In 1998, the cover story of [ACM netWorker](http://networker.acm.org/) magazine discussed the [dawn of the stupid network](http://www.isen.com/papers/Dawnstupid.html) -- an architecture with [smart edge nodes and simple packet forwarding code](/2011/05/complexity-belongs-to-network-edge/). Obviously we learned nothing in all those years -- we're [still having the same discussions](/2013/06/network-virtualization-and-spaghetti/).
 
 Here are a few juicy quotes from that article (taken completely out of context solely for your enjoyment).
 <!--more-->

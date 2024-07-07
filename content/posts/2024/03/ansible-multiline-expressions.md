@@ -75,4 +75,4 @@ You'll find more details on a website dedicated to [multiline YAML strings](http
 ### Revision History
 
 2024-03-07
-: Added Block Chomping as an alternate solution based on [Miguel's comment](/2024/03/ansible-multiline-expressions.html#2129).
+: Added Block Chomping as an alternate solution based on [Miguel's comment](#2129).

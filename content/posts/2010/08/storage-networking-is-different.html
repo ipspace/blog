@@ -5,11 +5,11 @@ tags:
 - SAN
 - workshop
 title: Storage networking is different
-url: /2010/08/storage-networking-is-different.html
+url: /2010/08/storage-networking-is-different/
 ---
 
-<p>The storage industry has a very specific view of the networking protocols – they expect the network to be extremely reliable, either by <a href="http://etherealmind.com/myth-fibrechannel-over-token-ring/">making it lossless</a> or by using a transport protocol (TCP + embedded iSCSI checksums) that was only <a href="/2010/05/iscsi-moores-law-won.html">recently made decently fast</a>. </p>
-<p>Some of their behavior can be easily attributed to <a href="/2009/12/iscsi-and-san-two-decades-of-rigid.html">network-blindness</a> and attempts to support legacy protocols that were designed for a completely different environment <a href="http://en.wikipedia.org/wiki/SCSI#History">25 years ago</a>, but we also have to admit that the server-to-storage sessions are way more critical than the user-to-server application sessions.</p>
+<p>The storage industry has a very specific view of the networking protocols – they expect the network to be extremely reliable, either by <a href="http://etherealmind.com/myth-fibrechannel-over-token-ring/">making it lossless</a> or by using a transport protocol (TCP + embedded iSCSI checksums) that was only <a href="/2010/05/iscsi-moores-law-won/">recently made decently fast</a>. </p>
+<p>Some of their behavior can be easily attributed to <a href="/2009/12/iscsi-and-san-two-decades-of-rigid/">network-blindness</a> and attempts to support legacy protocols that were designed for a completely different environment <a href="http://en.wikipedia.org/wiki/SCSI#History">25 years ago</a>, but we also have to admit that the server-to-storage sessions are way more critical than the user-to-server application sessions.</p>
 <!--more--><p><strong>Storage session loss can result in large-scale data corruption. </strong>If an end-user’s application session fails, you’ll hear some foul language, but the data will remain in a consistent state (assuming, of course, your application uses a decent database server with rollback capabilities). If a storage session is lost, the disk data could be left in some indeterminate state and might be permanently corrupted. Databases are quite good at recovering data; for whatever weird reason file systems are sometimes less robust.</p>
 <p><strong>Loss of a disk device can crash the server</strong>. If your server loses its network connection, all the user sessions are gone, there will be some data loss, but you’ll probably end with consistent data (transactions that have not been completed will be rolled back). The server will happily continue its (now largely non-existent) work.</p>
 <p>If your server loses its disk, a panicky crash is almost unavoidable. Dual HBA (storage adapters) and dual paths to the storage are thus a requirement in a decent data center.</p>

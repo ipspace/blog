@@ -6,20 +6,20 @@ tags:
 - workshop
 - fabric
 title: Link Aggregation with Stackable Data Center Top-of-Rack Switches
-url: /2013/01/link-aggregation-with-stackable-data.html
+url: /2013/01/link-aggregation-with-stackable-data/
 ---
 
-<p>Tomas Kubica made <a href="/2012/11/stackable-data-center-switches-do-math.html?showComment=1354186198587#c4254865332350305551">an interesting comment</a> to my <a href="/2012/11/stackable-data-center-switches-do-math.html"><em>Stackable Data Center Switches</em></a> blog post: “<em>Suppose all your servers have 4x 10G port and you bundle them to LACP NIC team [...] With this stacking link is not going to be used for your inter-server traffic if all servers have active connections to all nodes of your ToR stack.</em>” While he’s technically correct, the idea of having four 10GE ports on each server just to cater to the whims of stackable switches is somewhat hard to sell.<!--more--></p>
+<p>Tomas Kubica made <a href="/2012/11/stackable-data-center-switches-do-math/#c4254865332350305551">an interesting comment</a> to my <a href="/2012/11/stackable-data-center-switches-do-math/"><em>Stackable Data Center Switches</em></a> blog post: “<em>Suppose all your servers have 4x 10G port and you bundle them to LACP NIC team [...] With this stacking link is not going to be used for your inter-server traffic if all servers have active connections to all nodes of your ToR stack.</em>” While he’s technically correct, the idea of having four 10GE ports on each server just to cater to the whims of stackable switches is somewhat hard to sell.<!--more--></p>
 <p>However, his comment made me think about the link aggregation behavior between the ToR switches and core (or spine) switches.</p>
 <p>I was too tired of writing to write another blog post and decided to produce a short video (I was experimenting with a new mike, so the audio quality is not as good as usual).</p>
 <div class="separator" style="clear: both; text-align: center;"><a href="http://demo.ipspace.net/get/X1%20Link%20Aggregation%20with%20Stackable%20Data%20Center%20Switches.mp4" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="267" src="/2013/01/s400-Link+Aggregation+with+Stackable+Data+Center+Switches+-+Snapshot.png" width="400"/></a></div>
 <p class="info">If you like the video, don’t forget to <a href="https://feed.ipspace.net">subscribe to my podcast</a>.</p>
-<p>And here’s the summary for <a href="/2010/03/qppb-in-mpls-vpn.html?showComment=1267724172000#c6148862803422882475">differently-attentive</a>:</p>
+<p>And here’s the summary for <a href="/2010/03/qppb-in-mpls-vpn/#c6148862803422882475">differently-attentive</a>:</p>
 <ul class="ListParagraph"><li>All stackable technologies that present multiple ToR switches as a single LACP/STP/routing entity have the same problem. These technologies include Juniper’s Virtual Chassis, HP’s IRF and Brocade’s VCS fabric.</li>
 <li>There must be a single port channel between the whole stack and the spine layer, otherwise STP blocks some of the uplinks.</li>
 <li>Flow of northbound traffic is usually optimal.</li>
 <li>Southbound traffic (toward the servers) will arrive to wrong ToR switch with probability of (N-1)/N where N = number of ToR switches in a stack.</li>
-<li>All misdirected southbound traffic will traverse intra-stack links (see the <a href="/2012/11/stackable-data-center-switches-do-math.html?showComment=1354186198587">original blog post</a> for details).</li>
+<li>All misdirected southbound traffic will traverse intra-stack links (see the <a href="/2012/11/stackable-data-center-switches-do-math/#comments">original blog post</a> for details).</li>
 <li>Worst-case scenarios include iSCSI arrays or database servers reachable through the spine layer.</li>
 </ul>
 <h4>More information</h4><p>You probably know all this by now, but here it is for the newcomers (warmly welcome!):</p>

@@ -5,24 +5,24 @@ tags:
 - data center
 - fabric
 title: What Data Center Switches Should I Buy with VMware NSX?
-url: /2020/03/what-data-center-switches-should-i-buy.html
+url: /2020/03/what-data-center-switches-should-i-buy/
 ---
 
 <p>Another interesting question I got from an ipSpace.net subscriber:</p>
 <blockquote><p>Assuming we can simplify the physical network when using overlay virtual network solutions like VMware NSX, do we really need datacenter switches (example: Cisco Nexus instead of Catalyst product line) to implement the underlay?</p>
 </blockquote>
-<p>Let’s recap what we <a href="/2020/02/do-we-need-complex-data-center-switches.html">really need to run VMware NSX</a>:<!--more--></p>
+<p>Let’s recap what we <a href="/2020/02/do-we-need-complex-data-center-switches/">really need to run VMware NSX</a>:<!--more--></p>
 <ul><li>Multiple VRFs;</li>
 <li>VLANs stretched across at least two ToR switches (or IP host routing hacks), potentially combined with MLAG.</li>
 <li>Jumbo frames to support NSX-generated VXLAN packets carrying full-sized Ethernet frames.</li>
 </ul>
 <p>Next question: how big is your fabric?</p>
-<p>If you’re small enough for <a href="https://my.ipspace.net/bin/list?id=BCloud#2SWITCHES">two switches</a>, go with a solution that uses two independent switches - you really don’t want to run your whole infrastructure on a glorified stackable switch (regardless of whether it’s called VSS, IRF or VCF). Also, keep it as simple as possible - kick out any vendor that <a href="/2018/02/using-evpn-in-very-small-data-center.html">tries to sell you VXLAN with EVPN and BGP</a>.</p>
-<p>If you need more than two switches, you’ll have to build a fabric (I would opt for a leaf-and-spine fabric) that supports multiple VRFs and VLANs spanning more than one ToR switch. As <a href="/2019/11/the-evpn-dilemma.html">most vendors abandoned the proprietary fabric craze</a>, you have two options:</p>
+<p>If you’re small enough for <a href="https://my.ipspace.net/bin/list?id=BCloud#2SWITCHES">two switches</a>, go with a solution that uses two independent switches - you really don’t want to run your whole infrastructure on a glorified stackable switch (regardless of whether it’s called VSS, IRF or VCF). Also, keep it as simple as possible - kick out any vendor that <a href="/2018/02/using-evpn-in-very-small-data-center/">tries to sell you VXLAN with EVPN and BGP</a>.</p>
+<p>If you need more than two switches, you’ll have to build a fabric (I would opt for a leaf-and-spine fabric) that supports multiple VRFs and VLANs spanning more than one ToR switch. As <a href="/2019/11/the-evpn-dilemma/">most vendors abandoned the proprietary fabric craze</a>, you have two options:</p>
 <ul><li>Traditional bridging with leaf-to-spine MLAG;</li>
 <li>VXLAN-based overlay networking.</li>
 </ul>
-<p>Last time I looked at my calendar it was 2020. Maybe we should <a href="/2020/03/should-i-go-with-vxlan-or-mlag-with-stp.html">stop using the MLAG+STP hacks</a> even when you find them in <a href="/2019/05/dont-base-your-design-on-vendor.html">old vendor marketing materials</a>.</p>
+<p>Last time I looked at my calendar it was 2020. Maybe we should <a href="/2020/03/should-i-go-with-vxlan-or-mlag-with-stp/">stop using the MLAG+STP hacks</a> even when you find them in <a href="/2019/05/dont-base-your-design-on-vendor/">old vendor marketing materials</a>.</p>
 <p>To recap - you’re looking for switches that:</p>
 <ul><li>Do MLAG with independent control planes;</li>
 <li>Support multiple VRFs;</li>

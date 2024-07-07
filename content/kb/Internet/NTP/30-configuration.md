@@ -2,7 +2,7 @@
 kb_section: NTP
 minimal_sidebar: true
 title: NTP Configuration on Cisco IOS
-url: /kb/Internet/NTP/30-configuration.html
+url: /kb/Internet/NTP/30-configuration/
 ---
 NTP configuration in Cisco IOS uses global configuration commands that start with the keyword **ntp**. The upstream NTP servers in Cisco IOS are defined with the **ntp server _ip-address_** configuration command and the peers are defined with the **ntp peer _ip-address_** configuration command.
 
@@ -35,7 +35,7 @@ And finally, a router will not be able to act as a standalone NTP server (in cas
 
 We'll configure NTP on a remote site router (S1) running Cisco IOS in the following sample network:
 
-{{<figure src="config-network.png" caption="Sample network using NTP synchronization">}}
+{{<figure src="../config-network.png" caption="Sample network using NTP synchronization">}}
 
 We'll configure the following NTP parameters:
 

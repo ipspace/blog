@@ -6,11 +6,11 @@ tags:
 - MPLS
 - traffic engineering
 title: Unequal Cost Load-Sharing with MPLS TE
-url: /2007/02/unequal-cost-load-sharing.html
+url: /2007/02/unequal-cost-load-sharing/
 ---
 One of the most commonly asked load-sharing-related questions is "*can I load-share traffic across unequal-cost links?*". In general, the answer is no. In order to load-share the traffic, you need more than one path to the destination and the only way to get multiple routes toward a destination in the IP routing table is to make them equal-cost (the only notable exception being EIGRP that supports unequal-cost load-sharing with the **variance** parameter).
 
-There are, however, two cases where you can force unequal traffic split across equal-cost paths toward a destination: when using [inter-AS BGP with the link bandwidth parameter](/2008/07/unequal-bandwidth-ebgp-load-balancing.html), and when using unequal-bandwidth traffic-engineering tunnels.
+There are, however, two cases where you can force unequal traffic split across equal-cost paths toward a destination: when using [inter-AS BGP with the link bandwidth parameter](/2008/07/unequal-bandwidth-ebgp-load-balancing/), and when using unequal-bandwidth traffic-engineering tunnels.
 <!--more-->
 Due to the way MPLS TE autoroute is implemented in Cisco IOS, all tunnels toward the same destination appear as equal-cost paths, even when their TE bandwidths are not the same. For example, using a simple TE configuration...
 
@@ -47,7 +47,7 @@ O  172.16.0.22 255.255.255.255 [110/52] via 0.0.0.0, 00:11:06, Tunnel0
                                [110/52] via 0.0.0.0, 00:11:06, Tunnel1
 ```
 
-When transferring the IP routing table into the CEF table, the router takes MPLS TE bandwidth in consideration, [resulting in unequal traffic split](/2006/10/cef-load-sharing-details.html) proportional to the MPLS TE bandwidth:
+When transferring the IP routing table into the CEF table, the router takes MPLS TE bandwidth in consideration, [resulting in unequal traffic split](/2006/10/cef-load-sharing-details/) proportional to the MPLS TE bandwidth:
 
 ``` {.code}
 a1#show ip cef 172.16.0.21 internal

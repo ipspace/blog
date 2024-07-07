@@ -15,7 +15,7 @@ The way it was initially defined[^VMD], **microsegmentation** is the ability to 
 
 [^VMD]: IIRC: by VMware at the NSX launch
 
-[^ACIV]: Cisco ACI has a problem with virtual endpoints on VMware ESXi as they cannot control the VMware virtual switch. I have no idea how the [Application Virtual Switch](/2017/03/running-vsphere-on-cisco-aci-think-twice.html) SNAFU ended; the usual workarounds are _run virtual switch in a VM_ or _run private VLANs_. Oh, the beauties of [fixing suboptimal architecture](/2013/06/network-virtualization-and-spaghetti.html) with complex kludges.
+[^ACIV]: Cisco ACI has a problem with virtual endpoints on VMware ESXi as they cannot control the VMware virtual switch. I have no idea how the [Application Virtual Switch](/2017/03/running-vsphere-on-cisco-aci-think-twice/) SNAFU ended; the usual workarounds are _run virtual switch in a VM_ or _run private VLANs_. Oh, the beauties of [fixing suboptimal architecture](/2013/06/network-virtualization-and-spaghetti/) with complex kludges.
 
 The packet filters in front of the endpoints could be stateless (Cisco ACI[^SESS]), stateful (AWS or Azure security groups), or have some deep packet inspection capabilities (VMware NSX).
 
@@ -23,9 +23,9 @@ The packet filters in front of the endpoints could be stateless (Cisco ACI[^SESS
 
 Then we have *Security groups* or *security tags*. They could be just a convenient configuration mechanisms (in most cases) or data-plane markers (Cisco ACI) that simplify packet filters[^SCALE]... but they are nothing more than another application of RFC 1925 Rule 6. Regardless of PowerPoint-promised magic and dancing unicorns, the traffic filtering rules using *object tags* or *sets of objects* have to be transformed into the usual 5-tuple packet filters (modulo optimizations like object groups). There’s no other way to do it at reasonable speed.
 
-[^SCALE]: See [Scaling the Cloud Security Groups](/2014/11/scaling-cloud-security-groups.html) for more details.
+[^SCALE]: See [Scaling the Cloud Security Groups](/2014/11/scaling-cloud-security-groups/) for more details.
 
-Finally, while [Matthias Luft somewhat disagrees with me](/series/host-firewalls.html), I think the microsegmentation packet filter should be outside of the protected endpoint to prevent root exploits from disabling it.
+Finally, while [Matthias Luft somewhat disagrees with me](/series/host-firewalls/), I think the microsegmentation packet filter should be outside of the protected endpoint to prevent root exploits from disabling it.
 
 ### More Details
 

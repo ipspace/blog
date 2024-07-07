@@ -5,7 +5,7 @@ tags:
 - data center
 - SAN
 title: 'iSCSI and SAN: Two Decades of Rigid Mindsets'
-url: /2009/12/iscsi-and-san-two-decades-of-rigid.html
+url: /2009/12/iscsi-and-san-two-decades-of-rigid/
 more_blurb: True
 ---
 Greg Ferro asked a very valid question in his blog: "[Why does iSCSI use TCP as the underlying transport protocol](http://etherealmind.com/why-does-iscsi-use-tcp/)"? It's possible to design storage-focused protocol that uses connectionless lower layers ([NFS](http://en.wikipedia.org/wiki/Network_File_System_(protocol)) comes to mind), but the storage industry has been too focused on their past to see past the artificial obstacles they've set up themselves.

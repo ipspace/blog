@@ -12,7 +12,7 @@ We'll start with the simplest option: [a single VLAN](https://github.com/ipspace
 
 {{<figure src="/2022/05/vlan-simple.png" caption="Simple VLAN topology">}}
 <!--more-->
-We'll use *[groups](/2021/11/netsim-groups-deployment-templates.html)* in the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
+We'll use *[groups](/2021/11/netsim-groups-deployment-templates/)* in the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
 
 {{<cc>}}Defining nodes and groups{{</cc>}}
 ```

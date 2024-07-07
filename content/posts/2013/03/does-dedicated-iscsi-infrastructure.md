@@ -6,7 +6,7 @@ tags:
 - FCoE
 - high availability
 title: Does dedicated iSCSI infrastructure make sense?
-url: /2013/03/does-dedicated-iscsi-infrastructure.html
+url: /2013/03/does-dedicated-iscsi-infrastructure/
 ---
 [Chris Marget](http://www.fragmentationneeded.net) recently asked a really interesting question:
 
@@ -28,17 +28,17 @@ Storage experts developing iSCSI realized that's not good enough and added appli
 
 Someone from IBM published a great article explaining the need for iSCSI checksums a while ago (and of course I can't find it; [RFC 3385](http://tools.ietf.org/html/rfc3385) does contain some hints), and in case you wonder whether routers can actually corrupt packets, the answer is YES (and [someone managed to isolate a faulty router three AS-es down the road](http://mina.naguib.ca/blog/2012/10/22/the-little-ssh-that-sometimes-couldnt.html)). I have also seen cut-through switches helping broken NICs (that didn't check the checksum) corrupt the data (admittedly that was 20 years ago, but the history has a nasty circular habit).
 
-Of course some vendors cutting corners launched crippled boxes that require layer-2 connectivity for iSCSI replication. The only explanation I can find for that abominable restriction is lack of iSCSI-level checksums[^RT]. Ethernet checksums are orders of magnitude better than IP/TCP ones, and actually comparable to iSCSI checksums, so if you're too lazy (or your hardware is too crappy) to do the proper thing, you [stomp on the complexity sausage](/2012/07/virtualized-squashed-complexity-sausage.html) and push the hard work the other way. After all, [what could possible go wrong](/2012/10/if-something-can-fail-it-will.html) with [long-distance STP-assisted layer-2 connectivity](/2011/06/stretched-clusters-almost-as-good-as.html) (aka "the thing we don't understand at all, but it seems to work").
+Of course some vendors cutting corners launched crippled boxes that require layer-2 connectivity for iSCSI replication. The only explanation I can find for that abominable restriction is lack of iSCSI-level checksums[^RT]. Ethernet checksums are orders of magnitude better than IP/TCP ones, and actually comparable to iSCSI checksums, so if you're too lazy (or your hardware is too crappy) to do the proper thing, you [stomp on the complexity sausage](/2012/07/virtualized-squashed-complexity-sausage/) and push the hard work the other way. After all, [what could possible go wrong](/2012/10/if-something-can-fail-it-will/) with [long-distance STP-assisted layer-2 connectivity](/2011/06/stretched-clusters-almost-as-good-as/) (aka "the thing we don't understand at all, but it seems to work").
 
 [^RT]: There's also the tiny problem of not having a decent routing stack. VMware finally fixed that around vSphere 6.
 
-{{<note info>}}It turns out those vendors believe in CRC fairy. [Stretched VLAN is not a data protection measure](/2015/11/ethernet-checksums-are-not-good-enough.html), and once you start transporting Ethernet frames over VXLAN all bets are off anyway. If your iSCSI vendor doesn't support application-level checksum, your data is at risk no matter what.{{</note>}}
+{{<note info>}}It turns out those vendors believe in CRC fairy. [Stretched VLAN is not a data protection measure](/2015/11/ethernet-checksums-are-not-good-enough/), and once you start transporting Ethernet frames over VXLAN all bets are off anyway. If your iSCSI vendor doesn't support application-level checksum, your data is at risk no matter what.{{</note>}}
 
 Last but definitely not least, when the proverbial substance hits the rotating blades, it's usually not limited to a single box, particularly in layer-2 environments favored by the just-mentioned storage vendors. A single STP loop (or any other loop-generating bug, including some past vPC bugs) can bring down the whole layer-2 domain, including both server-to-storage paths.
 
 With all this in mind, it makes perfect sense to have two airgapped iSCSI networks in some environments. Obviously some people (or their CFOs) don't care enough about data availability to invest in them, and prefer the [cargo cult](http://en.wikipedia.org/wiki/Cargo_cult) approach of using two iSCSI VLANs to pretend they have FC-like connectivity, reminding me of some other people who don't want to invest in proper application development (and use of DNS for IP address resolution), load balancers etc. Believing in fairies and unicorns is so much easier.
 
-Finally, a storage protocol rant wouldn't be complete without a passing mention of FCoE. Every single vendor (ahem, both of them) is so proud of the A/B separation at server-to-ToR boundary (which, BTW, [violates IEEE 802.1ax and BB-5](/2011/12/fcoe-and-lag-industry-wide-violation-of.html)) that they forget to mention the A/B separation at the edge of a single network doesn't help once you have a network-wide meltdown.
+Finally, a storage protocol rant wouldn't be complete without a passing mention of FCoE. Every single vendor (ahem, both of them) is so proud of the A/B separation at server-to-ToR boundary (which, BTW, [violates IEEE 802.1ax and BB-5](/2011/12/fcoe-and-lag-industry-wide-violation-of/)) that they forget to mention the A/B separation at the edge of a single network doesn't help once you have a network-wide meltdown.
 
 {{<figure src="/2013/03/s480-Sparks.png" caption="This is what happens when I start discussing FCoE and LAG (author: Jon Hudson)">}}
 

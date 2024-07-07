@@ -6,9 +6,9 @@ tags:
 - OSPF
 - IP routing
 title: 'Conditional OSPF Default Route: Tested Configuration'
-url: /2007/08/conditional-ospf-default-route-tested.html
+url: /2007/08/conditional-ospf-default-route-tested/
 ---
-One of my readers asked for a working configuration of the [conditional OSPF default route advertisement feature](/2007/06/ospf-default-route-design-scenarios.html). In my scenario, the OSPF default route would be announced whenever an Internet prefix (172.18.0.0/16) would be present in the IP routing table.
+One of my readers asked for a working configuration of the [conditional OSPF default route advertisement feature](/2007/06/ospf-default-route-design-scenarios/). In my scenario, the OSPF default route would be announced whenever an Internet prefix (172.18.0.0/16) would be present in the IP routing table.
 
 ``` code
 router ospf 1

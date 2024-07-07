@@ -7,7 +7,7 @@ tags:
 - VXLAN
 title: netlab VXLAN Router-on-a-Stick Example
 ---
-In October 2022 I described how you could [build a VLAN router-on-a-stick topology with _netlab_](/2022/10/netlab-router-stick.html). With the new [features added in netlab release 1.4](/2022/11/netlab-release-1-4-0.html)[^VLI] we can do the same for VXLAN-enabled VLANs -- we'll build a lab where a router-on-a-stick will do VXLAN-to-VXLAN routing.
+In October 2022 I described how you could [build a VLAN router-on-a-stick topology with _netlab_](/2022/10/netlab-router-stick/). With the new [features added in netlab release 1.4](/2022/11/netlab-release-1-4-0/)[^VLI] we can do the same for VXLAN-enabled VLANs -- we'll build a lab where a router-on-a-stick will do VXLAN-to-VXLAN routing.
 
 {{<figure src="/2022/11/netlab-vxlan-router-stick.png" caption="Lab topology">}}
 <!--more-->
@@ -35,7 +35,7 @@ vlans:
     vrf: tenant
 ```
 
-[^RL]: Routing on VXLAN interfaces that are in global routing table could have [interesting side effects](/2022/10/use-vrf-for-vxlan-vlans.html).
+[^RL]: Routing on VXLAN interfaces that are in global routing table could have [interesting side effects](/2022/10/use-vrf-for-vxlan-vlans/).
 
 We'll use netlab groups to define most of the node parameters. Layer-2 switches need VLAN, VXLAN, and OSPF modules. They should not do any IP forwarding on the VLANs -- **vlan.mode** has to be set to **bridge**.
 

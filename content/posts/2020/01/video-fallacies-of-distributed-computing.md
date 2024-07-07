@@ -5,7 +5,7 @@ tags:
 - networking fundamentals
 - video
 title: 'Video: Fallacies of Distributed Computing'
-url: /2020/01/video-fallacies-of-distributed-computing.html
+url: /2020/01/video-fallacies-of-distributed-computing/
 video_tag: net101
 ---
 What better way to start [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar than with [fallacies of distributed computing](https://my.ipspace.net/bin/get/Net101/F1%20-%20Fallacies%20of%20Distributed%20Computing.mp4?doccode=Net101)... and that's exactly what I did in late August 2019.

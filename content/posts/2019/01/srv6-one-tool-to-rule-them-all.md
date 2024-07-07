@@ -4,7 +4,7 @@ tags:
 - IPv6
 - segment routing
 title: 'SRv6: One Tool to Rule Them All'
-url: /2019/01/srv6-one-tool-to-rule-them-all.html
+url: /2019/01/srv6-one-tool-to-rule-them-all/
 ---
 I got some interesting feedback from one of my readers on Segment Routing with IPv6 extension headers:
 
@@ -14,8 +14,8 @@ Stupid me replied "*SRv6 is NOT an overlay solution but a source routing solutio
 <!--more-->
 {{<note info>}}Want to get a second (or third or fourth) opinion? Check out:
 
-* _[SR(x)6 - Snake Oil Or Salvation?](/2020/08/worth-reading-srx6-snake-oil.html)_
-* _[Do We Need Segment Routing?](/2021/10/worth-reading-need-segment-routing.html)_
+* _[SR(x)6 - Snake Oil Or Salvation?](/2020/08/worth-reading-srx6-snake-oil/)_
+* _[Do We Need Segment Routing?](/2021/10/worth-reading-need-segment-routing/)_
 {{</note>}}
 
 #### So where would I need source routing?

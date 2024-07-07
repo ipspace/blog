@@ -3,7 +3,7 @@ date: 2006-11-18 12:22:00+01:00
 tags:
 - OSPF
 title: Network Statements in the OSPF Process Are No Longer Order-Dependent
-url: /2006/11/network-statements-in-ospf-process-are.html
+url: /2006/11/network-statements-in-ospf-process-are/
 ospf_tag: config
 ---
 When I was still teaching Cisco courses, we were telling the students that the order of **network** statements in an OSPF process was important if their ranges were overlapping; the first **network** statement that matched an interface IP address would place that interface in the corresponding area. This is no longer true; Cisco IOS now properly handles overlapping **network area** configuration commands.

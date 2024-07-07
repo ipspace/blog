@@ -2,7 +2,7 @@
 kb_section: QuantumCrypto
 minimal_sidebar: true
 title: Real-Life Solutions Explained
-url: /kb/QuantumCrypto/030-real-life.html
+url: /kb/QuantumCrypto/030-real-life/
 ---
 The two approaches to post-quantum cryptography that are the most practical and efficient for packet networks are:
 

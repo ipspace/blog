@@ -3,7 +3,7 @@ title: "BGP Labeled Unicast Interoperability Challenges"
 date: 2022-04-05 07:11:00
 tags: [ BGP, MPLS ]
 ---
-Jeff Tantsura left me tantalizing hint after reading the _[BGP Labeled Unicast on Cisco IOS](/2022/03/bgp-labeled-unicast-cisco-ios.html)_ blog post:
+Jeff Tantsura left me tantalizing hint after reading the _[BGP Labeled Unicast on Cisco IOS](/2022/03/bgp-labeled-unicast-cisco-ios/)_ blog post:
 
 > Read carefully “[Relationship between SAFI-4 and SAFI-1 Routes](https://datatracker.ietf.org/doc/html/rfc8277#section-5)” section in RFC 8277
 
@@ -14,7 +14,7 @@ The start of that section doesn't look promising (and it gets worse):
 Now for the details:
 <!--more-->
 
-[^SF1]: Unlabeled IPv4 or IPv6 prefix. See _[Three Dimensions of BGP Address Family Nerd Knobs](/2022/01/bgp-af-nerd-knobs.html)_ for more details.
+[^SF1]: Unlabeled IPv4 or IPv6 prefix. See _[Three Dimensions of BGP Address Family Nerd Knobs](/2022/01/bgp-af-nerd-knobs/)_ for more details.
 
 [^SF4]: IPv4 or IPv6 prefix with one or more MPLS labels attached to it.
 
@@ -28,7 +28,7 @@ That would be Cisco IOS.
 
 > Some implementations may allow a single BGP session to carry UPDATEs of both SAFI-1 and SAFI-4; other implementations may disallow this.
 
-Both Cisco IOS and Arista EOS can carry SAFI-1 and SAFI-4 updates over the same BGP session. IOS XR is a bit different -- see the [comment by Fred Cuiller](/2022/03/bgp-labeled-unicast-cisco-ios.html#1105) for more details.
+Both Cisco IOS and Arista EOS can carry SAFI-1 and SAFI-4 updates over the same BGP session. IOS XR is a bit different -- see the [comment by Fred Cuiller](/2022/03/bgp-labeled-unicast-cisco-ios/#1105) for more details.
 
 > A BGP speaker may receive a SAFI-4 route over a given BGP session but may have other BGP sessions for which SAFI-4 is not enabled.  In this case, the BGP speaker MAY convert the SAFI-4 route to a SAFI-1 route and then propagate the result over the session on which SAFI-4 is not enabled.  Whether this is done is a matter of local policy.
 

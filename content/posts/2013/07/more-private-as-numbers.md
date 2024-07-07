@@ -6,7 +6,7 @@ tags:
 - BGP
 - MPLS VPN
 title: More Private AS Numbers
-url: /2013/07/more-private-as-numbers.html
+url: /2013/07/more-private-as-numbers/
 ---
 Have you ever tried to implement a large-scale DMVPN or MPLS/VPN network using BGP as the routing protocol? If you tried to stitch more than \~1000 sites together you're well aware of all the pain caused by a [small range of private AS numbers defined in RFC 1930](http://tools.ietf.org/html/rfc1930). We can kludge our way around the limitation by reusing the same AS number on multiple sites (and using **allowas-in** when we need full routing information on every site), but such a design clearly sucks.
 <!--more-->

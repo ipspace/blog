@@ -1,11 +1,11 @@
 ---
-url: /2011/01/stop-accidental-scheduled-router.html
+url: /2011/01/stop-accidental-scheduled-router/
 title: "Stop accidental scheduled router reloads"
 date: "2011-01-28T06:35:00.002+01:00"
 tags: [ EEM ]
 ---
 
-<p>Alexandra Stanovska wrote an excellent comment to my <a href="/2011/01/schedule-reload-before-configuring.html">Schedule reload before configuring the router</a> post:</p>
+<p>Alexandra Stanovska wrote an excellent comment to my <a href="/2011/01/schedule-reload-before-configuring/">Schedule reload before configuring the router</a> post:</p>
 <blockquote class="cite">It may come in handy creating some form of script that would display some basic upon logout - show debug, show reload etc.</blockquote>
 <p>The new capabilities of CLI event detector introduced in EEM 3.0 allow us to catch CLI commands in a particular parser mode. Writing an EEM applet that catches exec-mode <strong>exit </strong>or <strong>logout</strong> and performs a few checks is thus a trivial task.</p>
 <!--more--><p>The following applet is a proof of concept; it checks whether a reload is scheduled and prevents the user from exiting a telnet session before cancelling the scheduled reload. Feel free to extend it and add other checks you’d like to see performed.</p>

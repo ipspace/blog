@@ -5,11 +5,11 @@ comment: |
 date: 2023-09-20 05:56:00
 tags: [ networking fundamentals ]
 ---
-After discussing [names, addresses and routes](/2023/09/names-addresses-routes.html), it's time for the next question: what kinds of addresses do we need to make things work?
+After discussing [names, addresses and routes](/2023/09/names-addresses-routes/), it's time for the next question: what kinds of addresses do we need to make things work?
 
 End-users (clients) are usually interested in a single thing: they want to reach the service they want to use. They don't care about nodes, links, or anything else.
 
-End-users might want to use friendly service *names*, but we [already know](/2023/09/names-addresses-routes.html) we need *addresses* to make things work. We need application level service identifiers -- something that identifies the services that the clients want to reach.
+End-users might want to use friendly service *names*, but we [already know](/2023/09/names-addresses-routes/) we need *addresses* to make things work. We need application level service identifiers -- something that identifies the services that the clients want to reach.
 <!--more-->
 To reach that service, the client's node has to establish connections with the servers offering the service, so we need some sort of connection identifier -- something that identifies the virtual link between the client and the server. These virtual links are always established between two or more endpoints[^MTO], so we need some endpoint identifiers. 
 

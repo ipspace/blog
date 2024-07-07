@@ -9,7 +9,7 @@ tags:
 - fabric
 - BGP
 title: BGP as a Better IGP? When and Where?
-url: /2017/11/bgp-as-better-igp-when-and-where.html
+url: /2017/11/bgp-as-better-igp-when-and-where/
 ---
 A while ago I helped a large enterprise redesign their data center fabric. They did a wonderful job [optimizing their infrastructure](http://www.ipspace.net/Optimize_Data_Center_Infrastructure), so all they really needed were two switches in each location.
 

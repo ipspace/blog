@@ -5,7 +5,7 @@ tags: [ fabric, design ]
 series: [ UCMP, dcbgp ]
 dcbgp_tag: interesting
 ---
-Scott submitted an interesting the comment to my *[Does Unequal-Cost Multipath (UCMP) Make Sense](/2021/02/does-ucmp-make-sense.html)* blog post:
+Scott submitted an interesting the comment to my *[Does Unequal-Cost Multipath (UCMP) Make Sense](/2021/02/does-ucmp-make-sense/)* blog post:
 
 > How about even Large CLOS networks with the same interface capacity, but accounting for things to fail; fabric cards, links or nodes in disaggregated units. You can either UCMP or drain large parts of your network to get the most out of ECMP.
 

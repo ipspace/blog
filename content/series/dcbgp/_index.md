@@ -40,7 +40,7 @@ Some vendors love making your life overly complex, inventing ridiculous architec
 
 {{<series-listing tag="rant" year="needed">}}
 
-{{<plushy magic>}}Two other interesting topics often pop up in BGP-related discussions: [anycast](/series/anycast.html) and [multipathing](/series/ucmp.html):
+{{<plushy magic>}}Two other interesting topics often pop up in BGP-related discussions: [anycast](/series/anycast/) and [multipathing](/series/ucmp/):
 
 {{<series-listing tag="interesting" year="sure">}}
 

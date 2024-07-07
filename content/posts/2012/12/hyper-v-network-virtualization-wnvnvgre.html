@@ -4,21 +4,21 @@ tags:
 - data center
 - virtualization
 title: 'Hyper-V Network Virtualization (HNV/NVGRE): Simply Amazing'
-url: /2012/12/hyper-v-network-virtualization-wnvnvgre.html
+url: /2012/12/hyper-v-network-virtualization-wnvnvgre/
 ---
 
-<p>In August 2011, when NVGRE draft appeared mere days after <a href="/2011/08/finally-mac-over-ip-based-vcloud.html">VXLAN was launched</a>, I <a href="/2011/09/nvgre-because-one-standard-just-wouldnt.html">dismissed it</a> as “more of the same, different encapsulation, vague control plane”. Boy was I wrong … and pleasantly surprised when I figured out one of the major virtualization vendors actually did the right thing.</p>
-<p><strong>TL;DR Summary:</strong> Hyper-V Network Virtualization is a layer-3 virtual networking solution with centralized (orchestration system based) control plane. Its scaling properties are thus way better than VXLAN’s (or <a href="/2012/02/nicira-uncloaked.html">Nicira’s</a> … unless they implemented L3 forwarding since the last time we spoke).<!--more--></p>
+<p>In August 2011, when NVGRE draft appeared mere days after <a href="/2011/08/finally-mac-over-ip-based-vcloud/">VXLAN was launched</a>, I <a href="/2011/09/nvgre-because-one-standard-just-wouldnt/">dismissed it</a> as “more of the same, different encapsulation, vague control plane”. Boy was I wrong … and pleasantly surprised when I figured out one of the major virtualization vendors actually did the right thing.</p>
+<p><strong>TL;DR Summary:</strong> Hyper-V Network Virtualization is a layer-3 virtual networking solution with centralized (orchestration system based) control plane. Its scaling properties are thus way better than VXLAN’s (or <a href="/2012/02/nicira-uncloaked/">Nicira’s</a> … unless they implemented L3 forwarding since the last time we spoke).<!--more--></p>
 <h4>The architecture</h4><p>From the functional block standpoint, Hyper-V Network Virtualization looks very similar to VXLAN. The virtual switch (vmSwitch) embedded in Hyper-V does simple layer-2 switching, and the Windows Network Virtualization (HNV) module, the core building block of the solution, is inserted between an internal VLAN (virtual subnet; VSID) and the physical NIC.</p>
 <p class="info">Interesting trivia: HNV is implemented as a loadable NDIS filter (for the physical NIC) and inserted between the vmSwitch and the NIC teaming driver.</p>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2012/12/s1600-nvgre_architecture.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="153" src="/2012/12/s400-nvgre_architecture.png" width="400"/></a></div>
 <p>The major difference between VXLAN and HNV module is their internal functionality: </p>
 <ul class="ListParagraph"><li>HNV is a full-blown layer-3 switch – it doesn’t do bridging at all; even packets forwarded within a single virtual network (VSID) are forwarded based on their destination IP address.</li>
-<li>HNV is not relying on <a href="/2011/12/vxlan-ip-multicast-openflow-and-control.html">flooding and dynamic learning to get the VM-MAC-to-VTEP mappings</a>; all the forwarding information is loaded into the HNV module through PowerShell cmdlets.</li>
+<li>HNV is not relying on <a href="/2011/12/vxlan-ip-multicast-openflow-and-control/">flooding and dynamic learning to get the VM-MAC-to-VTEP mappings</a>; all the forwarding information is loaded into the HNV module through PowerShell cmdlets.</li>
 </ul>
-<p>Like <a href="/2012/02/nicira-bigswitch-nec-openflow-and-sdn.html">OpenFlow-based solutions</a> (example: <a href="/2011/10/what-is-nicira-really-up-to.html">Nicira’s NVP</a>), Hyper-V Network Virtualization relies on a central controller (or orchestration system) to get the mappings between VM MAC and hypervisor IP address and VM IP and VM MAC address. It uses those mapping for deterministic packet forwarding (no unicast flooding) and ARP replies (every HNV module is an ARP proxy).</p>
+<p>Like <a href="/2012/02/nicira-bigswitch-nec-openflow-and-sdn/">OpenFlow-based solutions</a> (example: <a href="/2011/10/what-is-nicira-really-up-to/">Nicira’s NVP</a>), Hyper-V Network Virtualization relies on a central controller (or orchestration system) to get the mappings between VM MAC and hypervisor IP address and VM IP and VM MAC address. It uses those mapping for deterministic packet forwarding (no unicast flooding) and ARP replies (every HNV module is an ARP proxy).</p>
 <p><strong>Net result:</strong> you don’t need IP multicast in the transport network (unless you need IP multicast within the virtual network – more about that in a follow-up post), and there’s zero flooding, making HNV way more scalable than any other enterprise solution available today.</p>
-<h4>How well will it scale?</h4><p>From the <a href="/2011/12/decouple-virtual-networking-from.html">scalability perspective</a>, Hyper-V Network Virtualization architecture seems to be pretty close to Amazon’s VPC. The scalability ranking of major virtual network solutions (based on my current understanding of how they work) would thus be:</p>
+<h4>How well will it scale?</h4><p>From the <a href="/2011/12/decouple-virtual-networking-from/">scalability perspective</a>, Hyper-V Network Virtualization architecture seems to be pretty close to Amazon’s VPC. The scalability ranking of major virtual network solutions (based on my current understanding of how they work) would thus be:</p>
 <ul class="ListParagraph"><li>Amazon VPC (pure layer-3 IP-over-IP solution)</li>
 <li>Hyper-V Network Virtualization (almost layer-3 solution using MAC-over- GRE encapsulation)</li>
 <li>Nicira’s NVP (layer-2-over-STT/GRE solution with central control plane)</li>
@@ -26,7 +26,7 @@ url: /2012/12/hyper-v-network-virtualization-wnvnvgre.html
 <li>VLAN-based solutions</li>
 </ul>
 <h4>Breaking with the past bad practices</h4><p>And now for a few caveats inherent in the (pretty optimal) Hyper-V Network Virtualization architecture:</p>
-<ul class="ListParagraph"><li>Since the HNV module performs L3-based forwarding, you cannot run non-IP protocols in the virtual network. However, HNV already supports IPv4 and IPv6, both within the overlay virtual network, and in the transport network. Let me repeat this: Microsoft is the <a href="/2012/09/state-of-ipv6-in-data-center-gear.html">only major virtualization vendor</a> that has shipping IPv6 virtual networking implementation.</li>
+<ul class="ListParagraph"><li>Since the HNV module performs L3-based forwarding, you cannot run non-IP protocols in the virtual network. However, HNV already supports IPv4 and IPv6, both within the overlay virtual network, and in the transport network. Let me repeat this: Microsoft is the <a href="/2012/09/state-of-ipv6-in-data-center-gear/">only major virtualization vendor</a> that has shipping IPv6 virtual networking implementation.</li>
 <li>You cannot rely on dirty tricks (that should never have appeared in the first place) like clusters with IP address sharing implemented with ARP spoofing.</li>
 </ul>
 <p>I’m positive that the lack of support for dirty layer-2 tricks will upset a few people using them, but it’s evident Microsoft got sick and tired of the bad practice of supporting kludges and decided to boldly go where no enterprise virtualization vendors has dared to go before.</p>

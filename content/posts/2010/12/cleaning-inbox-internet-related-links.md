@@ -1,7 +1,7 @@
 ---
 date: 2010-12-24 05:40:00+01:00
 title: 'Cleaning the Inbox: Internet-related Links'
-url: /2010/12/cleaning-inbox-internet-related-links.html
+url: /2010/12/cleaning-inbox-internet-related-links/
 tags: [ worth reading ]
 ---
 Every Internet-related post is a great opportunity to increase comment count. I'll pass this time, here are the articles I found interesting with little or no comments from my side. First the generic Internet:

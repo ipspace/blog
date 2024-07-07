@@ -5,7 +5,7 @@ tags:
 - video
 - BGP
 title: 'Video: FRRouting Deployment Guidelines'
-url: /2020/03/video-frrouting-deployment-guidelines.html
+url: /2020/03/video-frrouting-deployment-guidelines/
 video_tag: frr
 ---
 After describing the FRRouting architecture, as well as recent performance optimizations and usability enhancements, [Donald Sharp](https://www.ipspace.net/Author:Donald_Sharp) concluded the [FRRouting webinar](https://www.ipspace.net/FRRouting_Architecture_and_Features) with [detailed deployment guidelines](https://my.ipspace.net/bin/get/FRR/7%20-%20Start%20using%20FRR.mp4?doccode=FRR).

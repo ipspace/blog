@@ -8,9 +8,9 @@ tags:
 - BGP
 - MPLS VPN
 title: DMVPN as a Backup for MPLS/VPN
-url: /2011/08/dmvpn-as-backup-for-mplsvpn.html
+url: /2011/08/dmvpn-as-backup-for-mplsvpn/
 ---
-*SK* left a long comment to my [*More OSPF-over-DMVPN Questions*](/2011/08/more-ospf-over-dmvpn-questions.html) post describing a scenario I find quite often in enterprise networks:
+*SK* left a long comment to my [*More OSPF-over-DMVPN Questions*](/2011/08/more-ospf-over-dmvpn-questions/) post describing a scenario I find quite often in enterprise networks:
 
 -   Primary connectivity is provided by an MPLS/VPN service provider;
 -   Backup connectivity should use DMVPN;

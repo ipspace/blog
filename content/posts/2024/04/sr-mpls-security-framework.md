@@ -12,9 +12,9 @@ Before going into the details, keep in mind that the core SR/MPLS functionality 
 * The data plane is the same. Ingress nodes add a stack of MPLS labels to each incoming layer-3 packet, and the rest of the network uses those labels for packet forwarding.
 * You still need a functioning IP network core, so you need a set of routing protocols to propagate end-user prefixes and next hops.
 
-The only significant difference between traditional MPLS and SR/MPLS is the [label allocation process](/2019/04/why-is-mpls-segment-routing-better-than.html):
+The only significant difference between traditional MPLS and SR/MPLS is the [label allocation process](/2019/04/why-is-mpls-segment-routing-better-than/):
 
-* Traditional MPLS uses locally-significant labels, whereas SR/MPLS uses network-wide [Segment Identifiers](/2021/05/segment-routing-ids-mpls-labels.html).
+* Traditional MPLS uses locally-significant labels, whereas SR/MPLS uses network-wide [Segment Identifiers](/2021/05/segment-routing-ids-mpls-labels/).
 * Traditional MPLS uses LDP to assign labels to entries in the IP forwarding table. In contrast, SR/MPLS attaches node- or adjacency segment identifiers to routing protocol data structures, eliminating an extra control-plane protocol and synchronizing MPLS forwarding with IP forwarding.
 
 {{<note info>}}You can use network-wide labels in novel solutions like TI-LFA, but that's a topic for another day.{{</note>}}

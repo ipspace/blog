@@ -14,7 +14,7 @@ When I created the [initial device configuration deployment](https://netlab.tool
 
 This allows you to use `netlab initial` to deploy all configuration modules used in a lab topology or `netlab initial -m ospf` to deploy just OSPF while surviving `netlab initial -m foo` (which would do nothing).
 <!--more-->
-We covered the first part of this saga in [Precedence of Ansible Extra Variables](/2024/01/ansible-extra-variable-precedence.html):
+We covered the first part of this saga in [Precedence of Ansible Extra Variables](/2024/01/ansible-extra-variable-precedence/):
 
 ```
 - set_fact:
@@ -23,7 +23,7 @@ We covered the first part of this saga in [Precedence of Ansible Extra Variables
 
 That would generate a list of modules, either those specified on the command line with the `modlist` extra variable or all modules used in the topology (specified in the `netlab_module` inventory variable).
 
-It's worth noting that the order of configuration deployment matters. For example, you have to configure VLANs before OSPF to have the VLAN interfaces that can be specified in the OSPF process.[^OD] To get that done, I decided to create a loop that would iterate over all modules _specified in the lab topology and in the `mod_select` variable_ (I had to use this approach instead of just iterating over device modules due to [another Ansible quirk](/2022/03/ansible-reorder-list-values.html)):
+It's worth noting that the order of configuration deployment matters. For example, you have to configure VLANs before OSPF to have the VLAN interfaces that can be specified in the OSPF process.[^OD] To get that done, I decided to create a loop that would iterate over all modules _specified in the lab topology and in the `mod_select` variable_ (I had to use this approach instead of just iterating over device modules due to [another Ansible quirk](/2022/03/ansible-reorder-list-values/)):
 
 [^OD]: In case you're curious: _netlab_ modules specify which modules have to be configured before them, and _netlab_ uses that information to do a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) and store the results in the `netlab_module` Ansible inventory variable.
 

@@ -6,10 +6,7 @@ tags: [ switching ]
 ---
 [Sander Steffann](https://www.linkedin.com/in/sandersteffann/) sent me an intriguing question a long while ago:
 
-> I was wondering if there are any downsides to setting "system mtu jumbo 
-9198" by default on every switch? I mean, if all connected devices have 
-MTU 1500 they won't notice that the switch could support longer frames, 
-right? 
+> I was wondering if there are any downsides to setting "system mtu jumbo 9198" by default on every switch? I mean, if all connected devices have MTU 1500 they won't notice that the switch could support longer frames, right? 
 
 That's absolutely correct, and unless the end hosts get into UDP fights things will always work out (aka TCP MSS saves the day)... but there must be a reason switching vendors don't use maximum frame sizes larger than 1514 by default ([Cumulus Linux seems to be an exception](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-41/Whats-New/), and according to [Sébastien Keller](https://www.linkedin.com/in/sebastienkeller/) Arista's default maximum frame size is between 9214 and 10178 depending on the platform).
 <!--more-->
@@ -26,7 +23,7 @@ The only particle-based platforms I encountered were Cisco 7200 and VIP line car
 
 The two O'Reilly books describing Juniper hardware that I happen to have on my bookshelf are uselessly vague[^BC]. [Expert Packet Walkthrough on the MX Series 3D](https://www.juniper.net/documentation/en_US/day-one-books/TW_MX3D_PacketWalkthrough.pdf) has more details; the way I read it, it claims the MX uses *parcels* (320 bytes) to store the input packets and fixed-size cells (64 bytes) to move the packets between forwarding engines.
 
-Finally, [Broadcom hates anyone telling us anything useful](/2016/05/what-are-problems-with-broadcom.html), but as both Arista and Cumulus use large default values, it **might** be a solved problem. In any case, it would be nice to **know** the problem has been solved in data center switching ASICs (high-end ASICs like Jericho or router platforms are a totally different story), and so far I haven't seen anything that would look convincing.
+Finally, [Broadcom hates anyone telling us anything useful](/2016/05/what-are-problems-with-broadcom/), but as both Arista and Cumulus use large default values, it **might** be a solved problem. In any case, it would be nice to **know** the problem has been solved in data center switching ASICs (high-end ASICs like Jericho or router platforms are a totally different story), and so far I haven't seen anything that would look convincing.
 
 **To recap**: while systems with fixed-size buffers lose the ability to absorb input bursts when you increase the maximum frame size, particle-based systems don't care. Unfortunately we often have absolutely no idea how the expensive hardware we just bought works... or I've overlooked something, in which case I'd appreciate useful pointers in the comments.
 

@@ -2,7 +2,7 @@
 kb_section: ConfigRegex
 minimal_sidebar: true
 title: Experiences and Optimizations
-url: /kb/ConfigRegex/20-Optimizations.html
+url: /kb/ConfigRegex/20-Optimizations/
 ---
 The Jinja2-only solution was working fine but suffers from poor performance when used on edge switches that have numerous managed client ports (some of my switches have up to 240 ports). The performance of looping over every single regex, parsing the whole configuration and rereading the result was not acceptable, so I optimized the configuration management by implementing two Jinja2 filters in Python. These filters work much faster than Ansible loops I used in the original solution.
 

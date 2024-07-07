@@ -2,7 +2,7 @@
 kb_section: NTP
 minimal_sidebar: true
 title: Monitoring NTP
-url: /kb/Internet/NTP/40-monitoring.html
+url: /kb/Internet/NTP/40-monitoring/
 pre_scroll: true
 ---
 Cisco IOS provides two commands to monitor the status of the embedded NTP server:

@@ -11,7 +11,7 @@ tags:
 - SDN
 - high availability
 title: Controller Cluster Is a Single Failure Domain
-url: /2014/09/controller-cluster-is-single-failure.html
+url: /2014/09/controller-cluster-is-single-failure/
 ---
 Some OpenFlow-focused startups are [desperately trying to tell you how redundant their architecture is](http://www.bigswitch.com/blog/2014/06/02/modern-openflow-and-sdn-part-ii). Unfortunately all the whitepapers (and the prancing unicorns) cannot change a simple fact: an SDN controller (OpenFlow-based or otherwise) is in some aspects a single failure domain.
 <!--more-->
@@ -23,7 +23,7 @@ An active/standby controller cluster might be less sensitive than an active/acti
 
 A controller crash might also be triggered by a malformed packet, or even a perfectly valid one -- decades ago one of my hosts generated a legitimate ARP packet that consistently crashed next-hop Cisco router. In this case, it's reasonable to expect the backup controller to crash as soon as it takes over and receives the same packet from the same host.
 
-Finally there's the complexity of the clustering software. I haven't heard of a clustering solution that would provably work under all possible weird conditions (and it's pretty hard to test all of them); [failovers between supervisor modules](/2014/04/should-we-use-redundant-supervisors.html) are no exceptions.
+Finally there's the complexity of the clustering software. I haven't heard of a clustering solution that would provably work under all possible weird conditions (and it's pretty hard to test all of them); [failovers between supervisor modules](/2014/04/should-we-use-redundant-supervisors/) are no exceptions.
 
 {{<note>}}Obviously, if there's a perfect clustering solution out there, I'd love to hear about it. Please write a comment.{{</note>}}
 
@@ -32,11 +32,11 @@ Finally there's the complexity of the clustering software. I haven't heard of a 
 The solutions to this challenge are well known:
 
 -   Distributed systems are more resilient than centralized ones;
--   Loosely coupled systems (example: [BGP SDN](/2013/10/exception-routing-with-bgp-sdn-done.html)) are more resilient than tightly coupled ones (example: [OpenFlow controller](/2013/09/openflow-fabric-controllers-are-light.html));
+-   Loosely coupled systems (example: [BGP SDN](/2013/10/exception-routing-with-bgp-sdn-done/)) are more resilient than tightly coupled ones (example: [OpenFlow controller](/2013/09/openflow-fabric-controllers-are-light/));
 -   [Network infrastructure *enhanced* by a controller](http://demo.ipspace.net/get/5.20%20-%20Plexxi%20Affinity%20Networking.mp4) is more resilient than one that relies on a controller to operate;
--   [Complexity at the edge of the network](/2011/05/complexity-belongs-to-network-edge.html) scales better than centralized complexity.
+-   [Complexity at the edge of the network](/2011/05/complexity-belongs-to-network-edge/) scales better than centralized complexity.
 
-Not surprisingly, scalable SDN solutions from [Google](/2012/05/openflow-google-brilliant-but-not.html), [Microsoft](https://www.nanog.org/sites/default/files/wed.general.brainslug.lapukhov.20.pdf) and (supposedly) Facebook, as well as some network virtualization solutions use most or all of these principles.
+Not surprisingly, scalable SDN solutions from [Google](/2012/05/openflow-google-brilliant-but-not/), [Microsoft](https://www.nanog.org/sites/default/files/wed.general.brainslug.lapukhov.20.pdf) and (supposedly) Facebook, as well as some network virtualization solutions use most or all of these principles.
 
 ### Need a Bigger Picture?
 

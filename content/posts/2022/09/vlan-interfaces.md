@@ -8,7 +8,7 @@ tags:
 - networking fundamentals
 title: VLAN Interfaces and Subinterfaces
 ---
-Early bridges [implemented a single bridging domain across all ports](/2022/09/interfaces-ports.html). Within a few years, we got multiple bridging domains within a single device (including [bridging implementation in Cisco IOS](/2022/09/routers-bridges-crb-irb.html)). The capability to have multiple bridging domains stretched across several devices was still missing... until the modern-day Pandora opened the VLAN box and forever swamped us in the complexities of large-scale bridging.
+Early bridges [implemented a single bridging domain across all ports](/2022/09/interfaces-ports/). Within a few years, we got multiple bridging domains within a single device (including [bridging implementation in Cisco IOS](/2022/09/routers-bridges-crb-irb/)). The capability to have multiple bridging domains stretched across several devices was still missing... until the modern-day Pandora opened the VLAN box and forever swamped us in the complexities of large-scale bridging.
 <!--more-->
 VLANs were first introduced in bridges and followed the usual "_keep things simple, just plug it in and pray_" mentality. You could assign a port to a VLAN (access port) or filter VLANs on a trunk port. Layer-3 switches added VLAN interfaces (a logical interface representing the whole bridging domain), resulting in the configuration model you get on modern layer-3 switches when configuring `switchport` on an interface.
 

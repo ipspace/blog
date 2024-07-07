@@ -10,13 +10,13 @@ tags:
 - virtualization
 - high availability
 title: Can You Afford to Reformat Your Data Center?
-url: /2015/11/can-you-afford-to-reformat-your-data.html
+url: /2015/11/can-you-afford-to-reformat-your-data/
 ---
 I love listening to the Datanauts podcast (Ethan and Chris are fantastic hosts), starting from the [very first episode](http://packetpushers.net/podcast/podcasts/datanauts-001-hyper-convergence-with-scott-d-lowe/) (hyper-converged infrastructure) in which Chris made a very valid comment along the lines of "*with the hyper-converged infrastructure it's possible to get so many things done without knowing too much about any individual thing...*" and I immediately thought "*... and what happens when it fails?*"
 <!--more-->
 ### It Looks Easier and Easier
 
-The ever-simpler GUI and wizards that come with well-executed hyper-converged offerings allow typical data center administrator (one would expect a single person to work with compute, storage and network in a hyper-converged world) to set up and operate a reasonably-sized data center without knowing much about anything -- like in every other IT discipline the [knowledge-versus-complexity](/2012/03/knowledge-and-complexity.html) curve looks more and more like the hockey stick.
+The ever-simpler GUI and wizards that come with well-executed hyper-converged offerings allow typical data center administrator (one would expect a single person to work with compute, storage and network in a hyper-converged world) to set up and operate a reasonably-sized data center without knowing much about anything -- like in every other IT discipline the [knowledge-versus-complexity](/2012/03/knowledge-and-complexity/) curve looks more and more like the hockey stick.
 
 ![](/2015/11/s500-Knowledge-Complexity-Hockey-Stick.png)
 

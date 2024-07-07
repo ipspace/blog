@@ -11,7 +11,7 @@ tags:
 - WAN
 - high availability
 title: 'Q&A: Ingress Traffic Flow in Multi-Data Center Deployments'
-url: /2016/11/q-ingress-traffic-flow-in-multi-data.html
+url: /2016/11/q-ingress-traffic-flow-in-multi-data/
 ---
 One of my readers was watching the [Building Active-Active Data Centers webinar](http://www.ipspace.net/Designing_Active-Active_and_Disaster_Recovery_Data_Centers) and sent me this question:
 
@@ -31,7 +31,7 @@ In both cases you have to advertise the same /24 from multiple data centers and 
 
 If your problem is lack of address space, you could use anycast: advertise the same prefix from multiple data centers, but terminate the TCP sessions on a different set of load balancers, all using the same outside IP address. Works surprisingly well across the global Internet (just ask [CloudFlare](https://blog.cloudflare.com/a-brief-anycast-primer/) or [LinkedIn](https://engineering.linkedin.com/network-performance/tcp-over-ip-anycast-pipe-dream-or-reality)).
 
-If however someone forced you to implement a stretched subnet design, or you did it on your own because you [trust your $vendor](/2016/01/the-sad-state-of-enterprise-networking.html) and [you know you can make it work](/2013/08/temper-your-macgyver-streak.html), you're in deep \*\*\*\* anyway. [There's no good solution](/2015/10/sometimes-you-have-to-decide-how-badly.html), particularly if the traffic has to traverse any stateful service (please don't get me started on [stretched](/2011/06/stretched-clusters-almost-as-good-as.html) [firewall clusters](/2011/04/distributed-firewalls-how-badly-do-you.html)).
+If however someone forced you to implement a stretched subnet design, or you did it on your own because you [trust your $vendor](/2016/01/the-sad-state-of-enterprise-networking/) and [you know you can make it work](/2013/08/temper-your-macgyver-streak/), you're in deep \*\*\*\* anyway. [There's no good solution](/2015/10/sometimes-you-have-to-decide-how-badly/), particularly if the traffic has to traverse any stateful service (please don't get me started on [stretched](/2011/06/stretched-clusters-almost-as-good-as/) [firewall clusters](/2011/04/distributed-firewalls-how-badly-do-you/)).
 
 I spent a lot of time a while ago describing the [intricacies of redundant Internet connectivity](http://content.ipspace.net/get/X1%20Redundant%20Data%20Center%20Internet%20Connectivity.mp4) (free video) and [wrote a case study documenting how you might solve the external routing with L2 DCI](http://www.ipspace.net/External_Routing_with_Layer-2_Data_Center_Interconnect_(DCI)), so if you need more details you'll find them there.
 

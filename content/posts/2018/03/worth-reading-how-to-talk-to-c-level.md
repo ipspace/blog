@@ -1,7 +1,7 @@
 ---
 date: 2018-03-10 09:48:00+01:00
 title: 'Worth Reading: How to Talk to a C-Level Executive'
-url: /2018/03/worth-reading-how-to-talk-to-c-level.html
+url: /2018/03/worth-reading-how-to-talk-to-c-level/
 tags: [ worth reading ]
 ---
 Ever wondered who manages to produce [deja-moo](/2021/01/deja-moo.jpg) like this one and why they'd do it?

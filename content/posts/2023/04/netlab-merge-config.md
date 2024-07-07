@@ -6,7 +6,7 @@ tags:
 - DMVPN
 title: Use Existing (DMVPN) Device Configurations in netlab
 ---
-[Anne Baretta](/kb/NetAutJourney/index.html) decided to use _[netlab](https://netlab.tools/)_ to test a proposed DMVPN topology. As _netlab_ doesn't support DMVPN (and probably never will), he decided to use _netlab_ capabilities to start the lab topology and perform initial configuration, adding DMVPN configuration commands as _custom configurations_. Here's how he described the process:
+[Anne Baretta](/kb/NetAutJourney/) decided to use _[netlab](https://netlab.tools/)_ to test a proposed DMVPN topology. As _netlab_ doesn't support DMVPN (and probably never will), he decided to use _netlab_ capabilities to start the lab topology and perform initial configuration, adding DMVPN configuration commands as _custom configurations_. Here's how he described the process:
 
 ---
 

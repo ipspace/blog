@@ -3,7 +3,7 @@ title: "Repost: What's Wrong with Network Automation"
 date: 2022-10-04 07:47:00
 tags: [ automation ]
 ---
-Responding to my *[Infrastructure as Code Sounds Scary](/2022/09/infrastructure-as-code-sounds-scary.html)* blog post, [Deepak Arora](https://www.linkedin.com/in/anetworkartist/) posted an interesting (and unfortunately way too accurate) [list of challenges](https://www.linkedin.com/posts/ivanpepelnjak_infrastructure-as-code-sounds-scary-ipspacenet-activity-6975503760752050176-x2b6/) you might encounter when trying to introduce network automation in an enterprise environment.
+Responding to my *[Infrastructure as Code Sounds Scary](/2022/09/infrastructure-as-code-sounds-scary/)* blog post, [Deepak Arora](https://www.linkedin.com/in/anetworkartist/) posted an interesting (and unfortunately way too accurate) [list of challenges](https://www.linkedin.com/posts/ivanpepelnjak_infrastructure-as-code-sounds-scary-ipspacenet-activity-6975503760752050176-x2b6/) you might encounter when trying to introduce network automation in an enterprise environment.
 
 He graciously allowed me to repost his thoughts on my blog.
 

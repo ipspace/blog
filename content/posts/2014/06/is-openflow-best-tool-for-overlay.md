@@ -19,9 +19,9 @@ tags:
 - overlay networks
 - virtualization
 title: Is OpenFlow the Best Tool for Overlay Virtual Networks?
-url: /2014/06/is-openflow-best-tool-for-overlay.html
+url: /2014/06/is-openflow-best-tool-for-overlay/
 ---
-Overlay virtual networks were the first commercial-grade OpenFlow use case -- [Nicira's Network Virtualization Platform](/2011/10/what-is-nicira-really-up-to.html) (NVP -- rebranded as VMware NSX for Multiple Hypervisors after the acquisition, and finally rearchitected into VMware NSX-T) used OpenFlow to program the hypervisor virtual switches (Open vSwitches -- OVS).
+Overlay virtual networks were the first commercial-grade OpenFlow use case -- [Nicira's Network Virtualization Platform](/2011/10/what-is-nicira-really-up-to/) (NVP -- rebranded as VMware NSX for Multiple Hypervisors after the acquisition, and finally rearchitected into VMware NSX-T) used OpenFlow to program the hypervisor virtual switches (Open vSwitches -- OVS).
 
 OpenStack is using the same approach in its OVS Neutron plugin, and it seems Open Daylight aims to reinvent that same wheel, replacing OVS plugin running on the hypervisor host agent with central controller.
 
@@ -33,11 +33,11 @@ Most OVS-based solutions (VMware NSX for Multiple Hypervisors, OpenStack ...) us
 
 The OpenFlow controller can thus proactively download the forwarding information to the switches, and stay out of the forwarding path, ensuring reasonable scalability.
 
-BTW, even this picture isn't all rosy -- Nicira had to [implement virtual tunnels to work around the OpenFlow point-to-point interface model](/2013/08/are-overlay-networking-tunnels.html).
+BTW, even this picture isn't all rosy -- Nicira had to [implement virtual tunnels to work around the OpenFlow point-to-point interface model](/2013/08/are-overlay-networking-tunnels/).
 
 ### The First Glitches: Layer-2 Gateways
 
-[Adding layer-2 gateways to overlay virtual networks](/2014/05/connecting-legacy-servers-to-overlay.html) reveals the first shortcomings of OpenFlow. Once the layer-2 environment stops being completely deterministic (layer-2 gateways introduce the need for dynamic MAC learning), the solution architects have only a few choices:
+[Adding layer-2 gateways to overlay virtual networks](/2014/05/connecting-legacy-servers-to-overlay/) reveals the first shortcomings of OpenFlow. Once the layer-2 environment stops being completely deterministic (layer-2 gateways introduce the need for dynamic MAC learning), the solution architects have only a few choices:
 
 -   Perform dynamic MAC learning in the OpenFlow controller -- all frames with unknown source MAC addresses are punted to the controller, which builds the dynamic MAC address table and downloads the modified forwarding information to all switches participating in a layer-2 segment. This is the approach used by NEC's ProgrammableFlow solution.\
     **Drawback**: controller gets involved in the data plane, which limits the scalability of the solution.
@@ -47,26 +47,26 @@ BTW, even this picture isn't all rosy -- Nicira had to [implement virtual tunnel
 
 ### The Killer: Distributed Layer-3 Forwarding
 
-Every layer-2 overlay virtual networking solution must eventually support distributed layer-3 forwarding (the customers that matter usually want that for one reason or another). Regardless of how you implement the distributed forwarding, hypervisor switches need ARP entries (see [this blog post](/2013/10/the-intricacies-of-optimal-layer-3.html) for more details), and have to reply to ARP queries from the virtual machines.
+Every layer-2 overlay virtual networking solution must eventually support distributed layer-3 forwarding (the customers that matter usually want that for one reason or another). Regardless of how you implement the distributed forwarding, hypervisor switches need ARP entries (see [this blog post](/2013/10/the-intricacies-of-optimal-layer-3/) for more details), and have to reply to ARP queries from the virtual machines.
 
 Even without the ARP proxy functionality, someone has to reply to the ARP queries for the default gateway IP address.
 
-ARP is a nasty beast in an OpenFlow world -- it's a control-plane protocol and thus [not implementable in the pure OpenFlow switches](/2013/06/implementing-control-plane-protocols.html). The implementers have (yet again) two choices:
+ARP is a nasty beast in an OpenFlow world -- it's a control-plane protocol and thus [not implementable in the pure OpenFlow switches](/2013/06/implementing-control-plane-protocols/). The implementers have (yet again) two choices:
 
--   [Punt](/2013/03/controller-based-packet-forwarding-in.html) the ARP packets to the controller, which yet again places the OpenFlow controller in the forwarding path (and limits its scalability);
--   [Solve layer-3 forwarding with a different tool](/2013/11/layer-2-and-layer-3-switching-in-vmware.html) (approach used by VMware NSX and distributed layer-3 forwarding in OpenStack).
+-   [Punt](/2013/03/controller-based-packet-forwarding-in/) the ARP packets to the controller, which yet again places the OpenFlow controller in the forwarding path (and limits its scalability);
+-   [Solve layer-3 forwarding with a different tool](/2013/11/layer-2-and-layer-3-switching-in-vmware/) (approach used by VMware NSX and distributed layer-3 forwarding in OpenStack).
 
 ### Do We Really Need OpenFlow?
 
-With all the challenges listed above, does it make sense to use OpenFlow to control overlay virtual networks? Not really. OpenFlow is like a Swiss Army knife (or a [duck](/2009/06/atm-is-like-duck.html)) -- it can solve many problems, but is not ideal for any one of them.
+With all the challenges listed above, does it make sense to use OpenFlow to control overlay virtual networks? Not really. OpenFlow is like a Swiss Army knife (or a [duck](/2009/06/atm-is-like-duck/)) -- it can solve many problems, but is not ideal for any one of them.
 
-Instead of continuously adjusting the tool to make it fit for the job, let's step back a bit and ask another question: what information do we really need to implement layer-2 and layer-3 forwarding in an overlay virtual network? All we need are three simple lookup tables that can be installed via any API mechanism of your choice ([Hyper-V uses PowerShell](/2012/12/hyper-v-network-virtualization-wnvnvgre.html)):
+Instead of continuously adjusting the tool to make it fit for the job, let's step back a bit and ask another question: what information do we really need to implement layer-2 and layer-3 forwarding in an overlay virtual network? All we need are three simple lookup tables that can be installed via any API mechanism of your choice ([Hyper-V uses PowerShell](/2012/12/hyper-v-network-virtualization-wnvnvgre/)):
 
 -   IP forwarding table;
 -   ARP table;
 -   VM MAC-to-underlay IP table.
 
-Some implementations would have a separate *connected interfaces table*; other implementations would [merge that with the forwarding table](/2007/05/what-is-cached-cef-adjacency.html). There are also implementations [merging ARP and IP forwarding tables](/2014/02/this-is-not-host-route-youre-looking-for.html).
+Some implementations would have a separate *connected interfaces table*; other implementations would [merge that with the forwarding table](/2007/05/what-is-cached-cef-adjacency/). There are also implementations [merging ARP and IP forwarding tables](/2014/02/this-is-not-host-route-youre-looking-for/).
 
 These three tables, combined with local layer-2 and layer-3 forwarding is all you need. Wouldn't it be better to keep things simple instead of introducing yet-another less-than-perfect abstraction layer?
 

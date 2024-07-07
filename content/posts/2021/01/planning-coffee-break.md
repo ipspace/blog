@@ -7,7 +7,7 @@ tags:
 - training
 title: Planning the Next Extended Coffee Break
 ---
-**Long story short**: ipSpace.net is ~~going on an extended coffee break on June 24th 2021~~ [reducing the scope of activities](/2021/04/coffee-break-take-two.html) on July 1st 2021. You can stop reading; the rest of the blog post is full of details you probably don't care about.
+**Long story short**: ipSpace.net is ~~going on an extended coffee break on June 24th 2021~~ [reducing the scope of activities](/2021/04/coffee-break-take-two/) on July 1st 2021. You can stop reading; the rest of the blog post is full of details you probably don't care about.
 
 **What exactly does that mean?** Since this blog post was published in January 2021, we pretty much [figured out a way forward](https://www.ipspace.net/Break/Overview), and I'm glad we let engineers considering our subscriptions know months in advance what might happen.
 
@@ -19,7 +19,7 @@ The split of responsibilities also allowed us to create significantly more conte
 
 Irena was pretty open when she joined ipSpace.net that she might move on in a few years... and decided it's time to move on by the end of June 2021, giving me a perfect excuse to take a break myself.
 
-**What will happen to ipSpace.net content?** Nothing bad. Everything that's out there will stay where it is, and we plan to [keep going at full speed until late June 2021](/2021/01/planning-webinars-2021.html). 
+**What will happen to ipSpace.net content?** Nothing bad. Everything that's out there will stay where it is, and we plan to [keep going at full speed until late June 2021](/2021/01/planning-webinars-2021/). 
 
 The rate of content delivery will slow down after that. Expect one or two live sessions per month (excluding July, August and December), mostly without guest speakers.
 
@@ -27,7 +27,7 @@ The rate of content delivery will slow down after that. Expect one or two live s
 
 However, you might decide not to renew your subscription if it expires in the following months.
 
-On a totally unrelated topic, it's [almost exactly 10 years since I launched the ipSpace.net subscription](/2010/12/yearly-subscription-to-my-webinars.html).
+On a totally unrelated topic, it's [almost exactly 10 years since I launched the ipSpace.net subscription](/2010/12/yearly-subscription-to-my-webinars/).
 
 **What will happen to online courses?** There will be no change for existing course attendees. I will keep supporting you in your studies and review hands-on assignments... but it might take a bit longer than usual.
 
@@ -45,7 +45,7 @@ We've probably missed numerous details when preparing this wall of text. Please 
 : Final update
 
 2021-03-30
-: Updated based on [most-recent decisions](/2021/04/coffee-break-take-two.html)
+: Updated based on [most-recent decisions](/2021/04/coffee-break-take-two/)
 
 2021-01-24
 : Updated the "automated subscription renewal" ideas.

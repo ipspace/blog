@@ -4,7 +4,7 @@ tags:
 - IPv6
 - load balancing
 title: IPv6-Enabling Your Legacy Applications with F5 BIG-IP LTM
-url: /2011/03/ipv6-enabling-your-legacy-applications.html
+url: /2011/03/ipv6-enabling-your-legacy-applications/
 ---
 In every enterprise-focused IPv6 presentation, including my [Enterprise IPv6 -- the first steps](https://www.ipspace.net/IPv6E101) webinar, I'm telling the attendees that they can easily make their legacy applications reachable over IPv6 with a little help from F5 load balancers. After all, Facebook is doing exactly that, so it should work (in theory)... but as we all know, in practice, the theory and practice are wildly different.
 <!--more-->

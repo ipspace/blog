@@ -5,10 +5,10 @@ tags:
 - data center
 - fabric
 title: 'Reader Comments: Spanning Tree Woes'
-url: /2016/03/reader-comments-spanning-tree-woes.html
+url: /2016/03/reader-comments-spanning-tree-woes/
 ---
 
-<p>My <a href="/2016/03/spanning-tree-protocol-stp-and-bridging.html">latest spanning tree protocol (STP) posts</a> generated numerous comments, some of them so relevant that I decided to summarize them into another blog post.</p>
+<p>My <a href="/2016/03/spanning-tree-protocol-stp-and-bridging/">latest spanning tree protocol (STP) posts</a> generated numerous comments, some of them so relevant that I decided to summarize them into another blog post.</p>
 <h4>Weird Things Happen</h4><p>The <em>unidirectional link </em>scenario mentioned by Antonio is pretty well known:<!--more--></p>
 <blockquote class="cite">I'd like to add unidirectional links to the list of STP problems, this can happen because a bad transceiver or a fiber is broken or badly manipulated, and only vendor kludges can solve you, adding an intervendor compatibility problem</blockquote>
 <p>However, Christoph described a scenario I never considered (or heard about):</p>
@@ -20,12 +20,12 @@ url: /2016/03/reader-comments-spanning-tree-woes.html
 <p>Kerry Thompson was even more explicit:</p>
 <blockquote class="cite">The biggest problem with STP that I've seen is when people who aren't exactly experts configure new switches and then disable spanning tree - because they heard from the experts that it's bad. I try to tell them that spanning tree is like smoke detectors - yes, they can be annoying and sometimes need maintenance, but don't just turn them off.</blockquote>
 <p>If you’re interested in this topic, make sure to read the great “<a href="http://www.network-janitor.net/2012/12/on-the-premature-death-of-spanning-tree-and-the-indiscriminate-killing-of-canaries/">Killing the Spanning Tree Canary</a>” analogy by Kurt Bales.</p>
-<p class="warn">In totally unrelated news, <a href="https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2047822">VMware keeps telling everyone how dropping BPDUs is the greatest idea since sliced bread</a>, including a link to another article describing how <a href="https://kb.vmware.com/selfservice/search.do?cmd=displayKC&amp;docType=kc&amp;docTypeID=DT_KB_1_1&amp;externalId=1003804">STP might cause temporary loss of network connectivity</a>. It’s amazing how VMware marketing always blames someone else for problems caused by <a href="/2012/09/dear-vmware-bpdu-filter-bpdu-guard.html">their developers choosing to abuse</a> perfectly well-known technologies.</p>
+<p class="warn">In totally unrelated news, <a href="https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2047822">VMware keeps telling everyone how dropping BPDUs is the greatest idea since sliced bread</a>, including a link to another article describing how <a href="https://kb.vmware.com/selfservice/search.do?cmd=displayKC&amp;docType=kc&amp;docTypeID=DT_KB_1_1&amp;externalId=1003804">STP might cause temporary loss of network connectivity</a>. It’s amazing how VMware marketing always blames someone else for problems caused by <a href="/2012/09/dear-vmware-bpdu-filter-bpdu-guard/">their developers choosing to abuse</a> perfectly well-known technologies.</p>
 <h4>Keep Layer-2 Domains Small</h4><p>Another point of very vocal agreement was the need to keep layer-2 domains small. Again starting with Bela:</p>
 <blockquote class="cite">The good practice is to keep the STP domain as small as possible. And remember: STP was designed originally for maximum 7 hops and few switches and some dozens of host devices in mind. It is definitely not designed for connecting big data centers into a single bridge domain. Do not use something for a use case it was not designed for and not fully tested and analyzed...</blockquote>
 <p>Mario had similar opinion:</p>
 <blockquote class="cite">I for one will always try to minimize any L2 STP or bridge domains as far away from the core as possible, down to a pair of ToR switches, or if possible at the virtual switch edge. If it's one thing I've learned throughout these very informative blog posts, it's that you should never extend that L2 domain across the DC; STP will bite you sooner than later. It's just not worth the risk.</blockquote>
-<p>Finally, you MUST read the Anonymous’ <a href="/2016/02/vlans-and-failure-domains-revisited.html?showComment=1456506417237#c2155045349610877567">tips on working with large bridging domains</a>.</p>
+<p>Finally, you MUST read the Anonymous’ <a href="/2016/02/vlans-and-failure-domains-revisited/#c2155045349610877567">tips on working with large bridging domains</a>.</p>
 <h4>Even more information</h4><p>If you want to know more about data center fabric architectures, attend the <a href="http://www.digs.ch/digs-workshop-data-center-fabrics-overview/">half-day workshop in Zurich in late March</a>. </p>
 <p>We’ll also be talking about layer-2 fabrics (unfortunately we still have to talk about them) in one of the <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs">upcoming sessions of the Leaf-and-Spine Designs webinar</a>.</p>
 

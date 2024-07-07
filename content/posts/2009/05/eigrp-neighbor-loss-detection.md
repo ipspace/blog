@@ -4,7 +4,7 @@ eigrp_tag: details
 tags:
 - EIGRP
 title: EIGRP Neighbor Loss Detection
-url: /2009/05/eigrp-neighbor-loss-detection.html
+url: /2009/05/eigrp-neighbor-loss-detection/
 ---
 Vijay sent me an interesting EIGRP query:
 

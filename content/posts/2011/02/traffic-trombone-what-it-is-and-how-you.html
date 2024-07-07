@@ -5,18 +5,18 @@ tags:
 - data center
 - workshop
 title: Traffic Trombone (what it is and how you get them)
-url: /2011/02/traffic-trombone-what-it-is-and-how-you.html
+url: /2011/02/traffic-trombone-what-it-is-and-how-you/
 ---
 
 <p>Every so often I get a question “<em>what exactly is a traffic trombone/tromboning</em>”. Here’s my attempt at a semi-formal definition.</p>
 <p><em>Traffic trombone </em>is a term (probably <a href="http://etherealmind.com/vmware-vfabric-data-centre-network-design/">invented by Greg Ferro</a>) that colorfully describes inter-VLAN traffic flows in a network with stretched (usually overlapping) L2 domains. </p>
 <p>In a traditional L2/L3 data center architecture with small L2 domains in the access layer and L3 forwarding across the core network, the inter-subnet traffic flows were close to optimal: a host would send a packet toward the first-hop (ingress) router (across a bridged L2 subnet), the ingress router would forward the packet across an optimal path toward the egress router, and the egress router would deliver the packet (yet again, across a bridged L2 subnet) to the destination host.</p>
-<!--more--><figure><img src="s1600-TT_OptimalL3.png"></figure>
+<!--more--><figure><img src="/2011/02/s1600-TT_OptimalL3.png"></figure>
 <p>If you draw your network diagrams with core layer at the top and access layer at the bottom, the north-south traffic would be bridged (or you could already introduce routing in access or aggregation layer) and the east-west traffic would be routed. The traffic across the network core and the end-to-end latency would be minimal (the same packet would traverse the core only once).</p>
 <p>In designs that stretch a single L2 domain across the network core (within or even between data centers), the first-hop router might be far away from the host originating the packet. The packet thus traverses the core before reaching the first-hop router, significantly increasing the latency and east-west traffic load.</p>
-<figure><img src="s1600-TT_Simple.png"></figure>
+<figure><img src="/2011/02/s1600-TT_Simple.png"></figure>
 <p>In a truly broken design with mixed routing and bridging in the network core (or in designs where L3 forwarding is implemented by virtual machines), the packet might have to traverse the core multiple times before reaching the destination host.</p>
-<figure><img src="s1600-TT_Worst.png"></figure>
-<p>When L2 domains stretch across multiple data centers, traffic flows belonging to a single user session <a href="/2010/09/long-distance-vmotion-and-traffic.html">might have to traverse Data Center Interconnect (DCI) link multiple times</a>.</p>
+<figure><img src="/2011/02/s1600-TT_Worst.png"></figure>
+<p>When L2 domains stretch across multiple data centers, traffic flows belonging to a single user session <a href="/2010/09/long-distance-vmotion-and-traffic/">might have to traverse Data Center Interconnect (DCI) link multiple times</a>.</p>
 <h4>More information</h4><p>The <a href="https://www.ipspace.net/DCI">Data Center Interconnect</a> webinar describes network designs that help you avoid stretched L2 domains and the tools you can use to reduce the amount of east-west traffic caused by stretched VLANs.</p>
 

@@ -6,7 +6,7 @@ comment: 'SDN and the idea of centralized control plane were hotly debated in th
   misleading article written in November 2013.
 
 
-  Fun fact: while HP did have a few interesting [SDN/OpenFlow-based solutions](/2015/05/openflow-in-hp-campus-solutions-on.html),
+  Fun fact: while HP did have a few interesting [SDN/OpenFlow-based solutions](/2015/05/openflow-in-hp-campus-solutions-on/),
   they never managed to get any reasonable foothold beyond ~~cheap~~ optimally-priced
   campus networking, and finally resorted to acquisitions to stay in that business.
 
@@ -19,7 +19,7 @@ tags:
 - SDN
 - OpenFlow
 title: Two and a Half Years after OpenFlow Debut, the Media Remains Clueless
-url: /2013/11/two-and-half-years-after-openflow-debut.html
+url: /2013/11/two-and-half-years-after-openflow-debut/
 ---
 If you repeat something often enough, it becomes a "fact" (or an urban myth). SDN is no exception, industry press [loves to explain SDN like this](https://web.archive.org/web/20140111002549/https://www.businessinsider.com/the-hp-woman-knocking-out-cisco-2013-11):
 

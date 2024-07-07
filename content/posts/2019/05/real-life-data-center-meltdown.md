@@ -10,7 +10,7 @@ tags:
 - data center
 - high availability
 title: Real-Life Data Center Meltdown
-url: /2019/05/real-life-data-center-meltdown.html
+url: /2019/05/real-life-data-center-meltdown/
 ---
 A good friend of mine who prefers to stay A. Nonymous for obvious reasons sent me his "*how I lost my data center to a broadcast storm*" story. Enjoy!
 

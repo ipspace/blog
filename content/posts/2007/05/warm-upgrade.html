@@ -1,11 +1,11 @@
 ---
-url: /2007/05/warm-upgrade.html
+url: /2007/05/warm-upgrade/
 title: "Warm upgrade"
 date: "2007-05-29T11:36:00.000+02:00"
 tags: [ network management,command line interface ]
 ---
 
-After you've configured the <a href="/2007/04/warm-reload.html">Warm Reload</a>, you can also perform <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios123/123newft/123t/123t_11/gtwarmup.htm">warm IOS upgrade/downgrade</a> (assuming that you already run at least the IOS release 12.3(11)T or 12.4). The Warm Upgrade functionality loads the new IOS image into the main memory, decompresses it and starts it, significantly reducing the downtime (in my case, a 2800 router reloaded in 62 seconds as compared to 415 seconds it took to load the image from a locally-attached server). <br/><br/>Apart from the downtime reduction, the warm upgrade (requested with the <strong>reload warm file <em>url</em></strong> command) has a number of other benefits:<ul><li>The new image does not have to be stored in flash</li>
+After you've configured the <a href="/2007/04/warm-reload/">Warm Reload</a>, you can also perform <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios123/123newft/123t/123t_11/gtwarmup.htm">warm IOS upgrade/downgrade</a> (assuming that you already run at least the IOS release 12.3(11)T or 12.4). The Warm Upgrade functionality loads the new IOS image into the main memory, decompresses it and starts it, significantly reducing the downtime (in my case, a 2800 router reloaded in 62 seconds as compared to 415 seconds it took to load the image from a locally-attached server). <br/><br/>Apart from the downtime reduction, the warm upgrade (requested with the <strong>reload warm file <em>url</em></strong> command) has a number of other benefits:<ul><li>The new image does not have to be stored in flash</li>
 <li>You don't have to change the boot image with the <strong>boot system</strong> command</li>
 <li>If the new image crashes, the router will revert to the original IOS image stored in flash</li>
 </ul>

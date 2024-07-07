@@ -4,7 +4,7 @@ ospf_tag: details
 tags:
 - OSPF
 title: OSPF Graceful Shutdown
-url: /2007/08/ospf-graceful-shutdown.html
+url: /2007/08/ospf-graceful-shutdown/
 ---
 Reloading a core router in a high-availability network is always a tricky proposition. Even if you tweak the routing protocol hello timers (or use fast L2 mechanisms to detect next-hop loss), it still takes a few seconds for the routing protocols to converge. For example, when using OSPF, the adjacent routers have to detect the neighbor loss, change their router LSAs, flood them (LSA flooding is rate-limited), the changed LSAs have to be propagated across the whole area and all routers in the area have to run SPF (which is also rate-limited).
 

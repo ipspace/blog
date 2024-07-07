@@ -11,9 +11,9 @@ tags:
 - cloud
 - high availability
 title: The Myth of Scaling From On-Premises Data Center into a Public Cloud
-url: /2020/02/the-myth-of-scaling-from-on-premises.html
+url: /2020/02/the-myth-of-scaling-from-on-premises/
 ---
-Every now and then someone tries to justify the "wisdom" of [migrating VMs from on-premises data center into a public cloud](/2020/02/live-vmotion-into-vmware-on-aws-cloud.html) (without renumbering them) with the idea of "scaling out into the public cloud" aka "cloud bursting". My usual response: this is another vendor marketing myth that [works only in PowerPoint](/2011/09/long-distance-irf-fabric-works-best-in.html).
+Every now and then someone tries to justify the "wisdom" of [migrating VMs from on-premises data center into a public cloud](/2020/02/live-vmotion-into-vmware-on-aws-cloud/) (without renumbering them) with the idea of "scaling out into the public cloud" aka "cloud bursting". My usual response: this is another vendor marketing myth that [works only in PowerPoint](/2011/09/long-distance-irf-fabric-works-best-in/).
 
 To be honest, that statement is too harsh. You can easily scale your application into a public cloud assuming that:
 <!--more-->
@@ -27,7 +27,7 @@ Turning the replicated data that already reside in a public cloud into yet anoth
 You'll find more information on the above concepts in [Designing Active-Active and Disaster Recovery Data Centers](https://www.ipspace.net/Designing_Active-Active_and_Disaster_Recovery_Data_Centers) webinar and the fantastic [Scalability Rules](https://www.amazon.com/gp/product/013443160X/ref=as_li_tl) book.
 {{</note>}}
 
-However, that's not what the enterprise-focused \$vendor evangelists have in mind. Here's a typical explanation, [courtesy of Piotr Jablonski](/2020/02/live-vmotion-into-vmware-on-aws-cloud.html?showComment=1582215526577#c6431086606253857338):
+However, that's not what the enterprise-focused \$vendor evangelists have in mind. Here's a typical explanation, [courtesy of Piotr Jablonski](/2020/02/live-vmotion-into-vmware-on-aws-cloud/#c6431086606253857338):
 
 > What about a use case for development/staging where the company want to test a new app on 10 servers and they have 2 on-prem and they don't need to wait for new hardware? They can run 8 servers or more in the cloud. For a production use case, if workloads are contained, then scaling-out a particular app layer is a viable option. Do you think a VPN/interconnect/DCI kills benefits of the scale-out?
 

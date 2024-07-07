@@ -7,9 +7,9 @@ tags:
 - design
 - BGP
 title: BGP Next Hop Processing
-url: /2011/08/bgp-next-hop-processing.html
+url: /2011/08/bgp-next-hop-processing/
 ---
-Following my [*IBGP or EBGP in an enterprise network*](/2011/08/ibgp-or-ebgp-in-enterprise-network.html) post a few people have asked for a more graphical explanation of IBGP/EBGP differences. Apart from the obvious ones (AS path does not change inside an AS) and more arcane ones (local preference is only propagated on IBGP sessions, MED of an EBGP route is not propagated to other EBGP neighbors), the most important difference between IBGP and EBGP is BGP next hop processing.
+Following my [*IBGP or EBGP in an enterprise network*](/2011/08/ibgp-or-ebgp-in-enterprise-network/) post a few people have asked for a more graphical explanation of IBGP/EBGP differences. Apart from the obvious ones (AS path does not change inside an AS) and more arcane ones (local preference is only propagated on IBGP sessions, MED of an EBGP route is not propagated to other EBGP neighbors), the most important difference between IBGP and EBGP is BGP next hop processing.
 <!--more-->
 It's best to explain BGP next hop processing through a set of examples; mine will be based on the following small network:
 
@@ -40,11 +40,11 @@ For routes with known next hops, the router applies standard IBGP/EBGP next hop 
 
 ### Route Reflector Cannot Change BGP Next Hop of Reflected Routes
 
-Large autonomous systems use BGP route reflectors. [With a few exceptions](/2014/04/changes-in-ibgp-next-hop-processing.html), BGP route reflectors [cannot change any attribute of the routes they reflect](/2008/08/bgp-route-reflector-details.html). The BGP next hop advertised by an edge router is thus propagated unchanged across the whole AS.
+Large autonomous systems use BGP route reflectors. [With a few exceptions](/2014/04/changes-in-ibgp-next-hop-processing/), BGP route reflectors [cannot change any attribute of the routes they reflect](/2008/08/bgp-route-reflector-details/). The BGP next hop advertised by an edge router is thus propagated unchanged across the whole AS.
 
 **Exceptions**:
 
-* Cisco IOS allows setting next-hop to **self** on reflected routes with the **neighbor next-hop-self all** configuration command. See [Changes in IBGP Next Hop Processing](/2014/04/changes-in-ibgp-next-hop-processing.html) blog post for more details.
+* Cisco IOS allows setting next-hop to **self** on reflected routes with the **neighbor next-hop-self all** configuration command. See [Changes in IBGP Next Hop Processing](/2014/04/changes-in-ibgp-next-hop-processing/) blog post for more details.
 * You can change BGP next hop on a route reflector with an *inbound* route-map. Don't do this outside of a CCIE lab.
 
 **Example**: Prefix 10.0.1.0/24 originated by PE-A is propagated by RR to PE-B. BGP next hop is still 10.0.0.1.
@@ -63,7 +63,7 @@ EBGP next hop is not changed if the BGP next hop in the BGP table belongs to the
 
 **Example**: X1 sends BGP prefix 172.16.0.0/16 to PE-A. Next hop is set to the source address of the EBGP session between X1 and PE-A (192.168.0.1). When PE-A propagates the BGP prefix to X2, it does not change the next hop (X1, PE-A and X2 are in the same subnet).
 
-You can disable the EBGP next hop optimization with **neighbor next-hop-self** router configuration command. This command is particularly useful in partially meshed multi-access networks (Frame Relay, ATM, Phase 1 DMVPN, private VLANs), see [*Using BGP in Phase 1 DMVPN Networks*](/2011/01/using-bgp-in-phase-1-dmvpn-network.html) post for more details.
+You can disable the EBGP next hop optimization with **neighbor next-hop-self** router configuration command. This command is particularly useful in partially meshed multi-access networks (Frame Relay, ATM, Phase 1 DMVPN, private VLANs), see [*Using BGP in Phase 1 DMVPN Networks*](/2011/01/using-bgp-in-phase-1-dmvpn-network/) post for more details.
 
 **Example**: Assuming **neighbor 192.168.0.2 next-hop-self** is configured on PE-A, the BGP next hop of all BGP routes sent to X2 from PE-A will be 192.168.0.3 and the traffic between X1 and X2 will flow through PE-A.
 
@@ -77,7 +77,7 @@ The only exception to this rule is a router doing load balancing across multiple
 
 {{<note warn>}}You could make BGP next hops reachable via BGP paths. While it might work, don't do this at home (or in your production network).{{</note>}}
 
-As with EBGP sessions, you can force the AS edge router to advertise its own IP address as the BGP next hop in IBGP updates with **neighbor next-hop-self** router configuration command applied to all IBGP sessions (I would usually use an [IBGP peer session and peer policy template](/2008/01/bgp-essentials-peer-session-templates.html) to simplify my configuration).
+As with EBGP sessions, you can force the AS edge router to advertise its own IP address as the BGP next hop in IBGP updates with **neighbor next-hop-self** router configuration command applied to all IBGP sessions (I would usually use an [IBGP peer session and peer policy template](/2008/01/bgp-essentials-peer-session-templates/) to simplify my configuration).
 
 **Example**: X1 sends BGP prefix 172.16.0.0/16 with next hop 192.168.0.1 to PE-A. Assuming **neighbor 10.0.0.2 next-hop-self** has been configured on PE-A, the BGP next hop of the BGP route sent to RR will be 10.0.0.1.
 
@@ -88,9 +88,9 @@ You can design IBGP in your autonomous system in two fundamentally different way
 -   IBGP routes point to external BGP next hops (default behavior)
 -   IGBP routes point to loopback interfaces of AS edge routers (**next-hop-self** is configured on IBGP sessions on AS edge routers).
 
-If you don't change the BGP next hop on AS edge routers, you have to propagate external subnets with your IGP. You can either configure external subnets as passive interfaces or redistribute them into your IGP. The two methods are almost identical if you use IS-IS; OSPF is a slightly different story. [Flap of a passive OSPF interface causes full SPF run](/2009/04/spf-events-in-ospf-and-is-is.html), whereas addition or removal of an external route (type-5 or type-7 LSA) results in partial SPF run. Redistribution of external subnets is thus preferred if you use OSPF.
+If you don't change the BGP next hop on AS edge routers, you have to propagate external subnets with your IGP. You can either configure external subnets as passive interfaces or redistribute them into your IGP. The two methods are almost identical if you use IS-IS; OSPF is a slightly different story. [Flap of a passive OSPF interface causes full SPF run](/2009/04/spf-events-in-ospf-and-is-is/), whereas addition or removal of an external route (type-5 or type-7 LSA) results in partial SPF run. Redistribution of external subnets is thus preferred if you use OSPF.
 
-However, it's never a good idea to allow external events (like link flaps in your access network) to [influence the stability of your core IGP](/2011/08/bgpigp-network-design-principles.html). Using **next-hop-self** on AS edge routers (and changing the external next hops into edge router's loopback address) is thus almost always the preferred design.
+However, it's never a good idea to allow external events (like link flaps in your access network) to [influence the stability of your core IGP](/2011/08/bgpigp-network-design-principles/). Using **next-hop-self** on AS edge routers (and changing the external next hops into edge router's loopback address) is thus almost always the preferred design.
 
 ### Summary
 
@@ -107,11 +107,11 @@ Saravanan posted an excellent table summarizing the BGP next hop  behavior in a 
 
 ### Further Reading
 
-* [Can We Trust BGP Next Hops (Part 1)?](/2020/04/can-we-trust-bgp-next-hops-part-1.html)
-* [Can We Trust BGP Next Hops (Part 2)?](/2020/04/can-we-trust-bgp-next-hops-part-2.html)
-* [Real Life BGP Route Origination and BGP Next Hop Intricacies](/2014/04/real-life-bgp-route-origination-and-bgp.html)
-* [What is a BGP RIB failure](/2007/12/what-is-bgp-rib-failure.html)
-* [Can BGP Route Reflectors Really Generate Forwarding Loops?](/2013/10/can-bgp-route-reflectors-really.html)
+* [Can We Trust BGP Next Hops (Part 1)?](/2020/04/can-we-trust-bgp-next-hops-part-1/)
+* [Can We Trust BGP Next Hops (Part 2)?](/2020/04/can-we-trust-bgp-next-hops-part-2/)
+* [Real Life BGP Route Origination and BGP Next Hop Intricacies](/2014/04/real-life-bgp-route-origination-and-bgp/)
+* [What is a BGP RIB failure](/2007/12/what-is-bgp-rib-failure/)
+* [Can BGP Route Reflectors Really Generate Forwarding Loops?](/2013/10/can-bgp-route-reflectors-really/)
 
 ### Revision History
 

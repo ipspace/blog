@@ -5,7 +5,7 @@ tags:
 - PPP
 - WAN
 title: Configure DNS Servers Through IPCP
-url: /2007/11/configure-dns-servers-through-ipcp.html
+url: /2007/11/configure-dns-servers-through-ipcp/
 ---
 After I\'ve fixed the default routing in my home office, I\'ve stumbled across another problem: the two ISPs I\'m using for my primary and backup link have DNS servers that reply solely to the DNS requests sent from their own IP address range:
 
@@ -54,7 +54,7 @@ Name servers are 10.0.0.10
 
 The access server receiving the call requires no special configuration; the first IP address configured with the **ip name-server** command is used as the primary DNS and the second one as the secondary. Alternatively, you can configure a different set of DNS servers to pass to the client with the **ppp ipcp dns *primary-DNS-address secondary-DNS-address*** interface configuration command.
 
-Unfortunately, the integration with LAN clients is not [as seamless as with DHCP](/2007/08/import-dhcp-options-from-upstream-dhcp.html); to make the whole solution work, you have to configure the router as a forwarding DNS server and make the LAN clients use the router as the default gateway and DNS server with the DHCP pool configuration:
+Unfortunately, the integration with LAN clients is not [as seamless as with DHCP](/2007/08/import-dhcp-options-from-upstream-dhcp/); to make the whole solution work, you have to configure the router as a forwarding DNS server and make the LAN clients use the router as the default gateway and DNS server with the DHCP pool configuration:
 
 ``` {.code}
 ip dns server

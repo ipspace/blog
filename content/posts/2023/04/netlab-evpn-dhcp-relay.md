@@ -12,13 +12,13 @@ tags:
 - IP routing
 title: DHCP Relaying in EVPN VRFs
 ---
-After [figuring out how DHCP relaying works](/2023/03/dhcp-relay-process.html) and testing it with[ VRFs](/2023/03/netlab-vrf-dhcp-relay.html) and in [VXLAN segments](/2023/03/netlab-vxlan-dhcp-relay.html), it seems like a no-brainer to make it work with EVPN.
+After [figuring out how DHCP relaying works](/2023/03/dhcp-relay-process/) and testing it with[ VRFs](/2023/03/netlab-vrf-dhcp-relay/) and in [VXLAN segments](/2023/03/netlab-vxlan-dhcp-relay/), it seems like a no-brainer to make it work with EVPN.
 
 **TL&DR:** It works, at least when using Arista vEOS as the relay and Cisco CSR 1000v as the DHCP server.
 
 ### Lab Topology
 
-We'll keep using the exact same "physical" topology we used in the [VXLAN DHCP relaying](/2023/03/netlab-vxlan-dhcp-relay.html) lab, add EVPN and BGP to the control-plane cocktail, and put the VXLAN segment into a VRF. We'll use CSR 1000v as the DHCP server because Cisco IOSv doesn't support some of the DHCP option-82 sub-options we need.
+We'll keep using the exact same "physical" topology we used in the [VXLAN DHCP relaying](/2023/03/netlab-vxlan-dhcp-relay/) lab, add EVPN and BGP to the control-plane cocktail, and put the VXLAN segment into a VRF. We'll use CSR 1000v as the DHCP server because Cisco IOSv doesn't support some of the DHCP option-82 sub-options we need.
 <!--more-->
 
 {{<figure src="/2023/04/evpn-dhcp-relay.png" caption="Lab topology diagram">}}

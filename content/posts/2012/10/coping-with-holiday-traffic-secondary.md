@@ -3,13 +3,13 @@ date: 2012-10-29 09:19:00.002000+01:00
 tags:
 - DHCP
 title: Coping with Holiday Traffic – Secondary DHCP Subnets
-url: /2012/10/coping-with-holiday-traffic-secondary.html
+url: /2012/10/coping-with-holiday-traffic-secondary/
 ---
 Years ago the IT of the organization I worked for assigned a /28 to my home office. It seemed enough; after all, who would ever have more than \~10 IP hosts at home (or [more than four computers at a site](https://video.arnes.si/portal/asset.zul?id=K1ETXpmORoMQkDeokYR8ZtNu)).
 
 When the number of Linux hosts and iGadgets started to grow, I occasionally ran out of IPv4 addresses, but managed to kludge my way around the problem by reducing DHCP lease time. However, when the start of school holidays coincided with the first snow storm of the season (so all the kids used their gadgets simultaneously) it was time to act.
 <!--more-->
-{{<figure src="s1600-Slika0133.jpg" caption="This is what \~20 cm (8 inches) of snow look like">}}
+{{<figure src="/2012/10/s1600-Slika0133.jpg" caption="This is what \~20 cm (8 inches) of snow look like">}}
 
 Before you tell me IPv6 would be a solution -- I know that, but none of my ISPs managed to configure IPv6 on my uplinks yet, and tunnels are so last millennium.
 

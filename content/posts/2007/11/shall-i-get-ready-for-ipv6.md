@@ -3,7 +3,7 @@ date: 2007-11-16T07:19:00.004+01:00
 tags:
 - IPv6
 title: 'IPv6 Deployment: Time for Action?'
-url: /2007/11/shall-i-get-ready-for-ipv6.html
+url: /2007/11/shall-i-get-ready-for-ipv6/
 ---
 A while ago I was asked to write an article about IPv6 training. I could just cover the training aspect, like what's offered (answer: *not much*) and whether someone can train the whole operations team like you could in the IPv4 or MPLS/VPN world (answer: *no*), but I wanted to understand whether anyone is really using IPv6 in a production network. 
 

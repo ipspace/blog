@@ -8,7 +8,7 @@ tags:
 - design
 - DNS
 title: 'Worth Reading: Anycast DNS in Enterprise Networks'
-url: /2019/10/worth-reading-anycast-dns-in-enterprise.html
+url: /2019/10/worth-reading-anycast-dns-in-enterprise/
 ---
 Anycast (advertising the same IP address from multiple servers/locations) has long been used to implement scale-out public DNS services (the whole root DNS system runs on massive anycast), but it's not as common in enterprise networks.
 

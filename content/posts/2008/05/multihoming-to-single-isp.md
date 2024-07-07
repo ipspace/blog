@@ -7,7 +7,7 @@ series:
 tags:
 - BGP
 title: Multihoming to a Single ISP
-url: /2008/05/multihoming-to-single-isp.html
+url: /2008/05/multihoming-to-single-isp/
 ---
 *Multihoming to a single ISP* is a design scenario in which a customer uses multiple Internet connections to the same Internet Service Provider. This design provides resilience against link and device failures, but does not provide protection against major outages within the Service Provider network.
 
@@ -17,7 +17,7 @@ There are three major decisions to be made when designing multihoming to single 
 * Should the customer use static or dynamic routing with the ISP?
 * When using dynamic routing with BGP, does the customer need its own public autonomous system?
 <!--more-->
-{{<figure src="MH_1ISP_Scenario.png" caption="Multihoming to single ISP">}}
+{{<figure src="/2008/05/MH_1ISP_Scenario.png" caption="Multihoming to single ISP">}}
 
 ## Addressing
 
@@ -46,7 +46,7 @@ The ISP could use a variety of mechanisms to filter customer’s PA prefixes, fo
 -   If the ISP propagates BGP communities within its AS, it could mark all PA prefixes received from the customers with the **no-export** community, which will ensure that they are never propagated beyond the ISP’s AS.
 -   The ISP could filter outbound updates sent toward its peering partners removing all small PA prefixes (for example, all prefixes smaller than /20), or all prefixes with a private AS number.
 
-{{<figure src="MH_1ISP_NoExport.png" caption="Using no-export community to filter customer prefixes">}}
+{{<figure src="/2008/05/MH_1ISP_NoExport.png" caption="Using no-export community to filter customer prefixes">}}
 
 The following printout shows a typical PE-router configuration. The PE-router advertises the default route and the local prefixes to the customer’s router and marks all inbound routes with the **no-export** community. Inbound **prefix-list** filter ensures that the customer cannot insert unauthorized prefixes into the provider’s AS.
 
@@ -80,7 +80,7 @@ If a customer already owns provider-independent addresses but does not have a re
 
 {{<note warn>}}When deploying RPKI, make sure that the public ROA records announce the customer prefix as belonging to the provider AS number.{{</note>}}
 
-{{<figure src="MH_1ISP_RemovePrivateAS.png" caption="Removing private AS numbers on peering connections">}}
+{{<figure src="/2008/05/MH_1ISP_RemovePrivateAS.png" caption="Removing private AS numbers on peering connections">}}
 
 The configuration of the customer-facing PE-router is very similar to the one described in the previous section (the inbound route-map is removed as the PI prefixes should not be marked with the **no-export** community).
 

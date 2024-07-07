@@ -4,7 +4,7 @@ tags:
 - switching
 - LAN
 title: Lies, damned lies and product marketing
-url: /2009/12/lies-damned-lies-and-product-marketing.html
+url: /2009/12/lies-damned-lies-and-product-marketing/
 ---
 Greg Ferro's "[Layer-3 routing](http://etherealmind.com/network-dictionary-layer-3-routing/)" post successfully kicked my huge sore spot: the numerous ways technical terminology is abused by product marketing gurus.
 
@@ -16,6 +16,6 @@ Fast-forward to late 1990's. ASICs were getting powerful enough to implement dec
 
 By then, everyone was thoroughly confused (primarily the customers ... but that was also the goal of the whole exercise, wasn't it) and extra verbs were being thrown into the soup, including "forwarding" which meant something very similar to what "switching" was supposed to mean before it's been abused.
 
-Today, you might see various interpretations of the same terms. I'm close enough to dinosaurs that I'd prefer to see "bridging" and "routing " being used in their original context, but I guess we're far beyond the [point of no return](http://en.wikipedia.org/wiki/Point_of_no_return). Failing that, using "routing" to mean the [control-plane](/2013/08/management-control-and-data-planes-in.html) function (collecting, distributing and evaluating the reachability information) and "switching" or "forwarding" to describe the data-plane function is not a bad idea. But please try to stay honest: you always have to specify the OSI (or TCP/IP) layer on which the switching/forwarding activity is taking place.
+Today, you might see various interpretations of the same terms. I'm close enough to dinosaurs that I'd prefer to see "bridging" and "routing " being used in their original context, but I guess we're far beyond the [point of no return](http://en.wikipedia.org/wiki/Point_of_no_return). Failing that, using "routing" to mean the [control-plane](/2013/08/management-control-and-data-planes-in/) function (collecting, distributing and evaluating the reachability information) and "switching" or "forwarding" to describe the data-plane function is not a bad idea. But please try to stay honest: you always have to specify the OSI (or TCP/IP) layer on which the switching/forwarding activity is taking place.
 
 For more details, please watch *[The Importance of Network Layers](https://my.ipspace.net/bin/list?id=Net101#LAYERS)* and *[Switching, Routing and Bridging](https://my.ipspace.net/bin/list?id=Net101#SWITCH)* parts of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar.

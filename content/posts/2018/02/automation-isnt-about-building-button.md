@@ -5,7 +5,7 @@ tags:
 series: [ niac ]
 niac_tag: principles
 title: Automation Isn’t About Building a Button to Press
-url: /2018/02/automation-isnt-about-building-button.html
+url: /2018/02/automation-isnt-about-building-button/
 ---
 *This is a guest blog post by* [*Carl Buchmann*](https://www.linkedin.com/in/carl-buchmann-6b436727/)*, Managing Solution Consultant at TeraMach. Carl attended the* [*Building Network Automation Solutions*](http://www.ipspace.net/Building_Network_Automation_Solutions) *online course in 2017.*
 

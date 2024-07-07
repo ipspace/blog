@@ -2,7 +2,7 @@
 kb_section: NTP
 minimal_sidebar: true
 title: Summary
-url: /kb/Internet/NTP/60-summary.html
+url: /kb/Internet/NTP/60-summary/
 ---
 Having accurate time on the network devices is very important if you use public key infrastructure (where the time is needed to check the certificate validity) or if you want to perform a distributed analysis of a security incident or a routing problem.
 

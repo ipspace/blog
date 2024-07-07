@@ -9,9 +9,9 @@ tags:
 - data center
 - BGP
 title: BGP or OSPF? Does Topology Visibility Matter?
-url: /2016/02/bgp-or-ospf-does-topology-visibility.html
+url: /2016/02/bgp-or-ospf-does-topology-visibility/
 ---
-[One of the comments](/2016/02/using-bgp-in-data-center-fabrics.html?showComment=1455038894509#c7711023460231292939) added to my [*Using BGP in Data Centers*](/2016/02/using-bgp-in-data-center-fabrics.html) blog post said:
+[One of the comments](/2016/02/using-bgp-in-data-center-fabrics/#c7711023460231292939) added to my [*Using BGP in Data Centers*](/2016/02/using-bgp-in-data-center-fabrics/) blog post said:
 
 > With symmetric fabric... does it make sense for a node to know every bit of fabric info or is reachability information sufficient?
 
@@ -32,7 +32,7 @@ Also, keep in mind that there are many ways one can discover the current state o
 
 Link-state protocols (OSPF and IS-IS) were created as a reaction to extremely slow convergence speeds of early versions of RIP that propagated reachability information with periodic updates.
 
-EIGRP (which is just an [optimized distance vector protocol](/2010/08/eigrp-myths-debunked.html)) was created as a reaction to complexities of OSPF.
+EIGRP (which is just an [optimized distance vector protocol](/2010/08/eigrp-myths-debunked/)) was created as a reaction to complexities of OSPF.
 
 It looks like another case of a technology pendulum being swung back and forth between two extremes. Does one of them work better than the other?
 
@@ -40,9 +40,9 @@ It looks like another case of a technology pendulum being swung back and forth b
 
 With link costs being equal, OSPF, IS-IS and EIGRP produce the same forwarding topology (so would RIP if it had link costs, or BGP is you'd encode link costs in AS-path length).
 
-No surprise there. As long as we stick with the [hop-by-hop destination-only](/2015/11/packet-and-flow-based-forwarding.html) forwarding paradigm, there's nothing that a router could do based on knowledge of wider network topology, because it cannot influence the forwarding decisions made by the downstream next-hop router.
+No surprise there. As long as we stick with the [hop-by-hop destination-only](/2015/11/packet-and-flow-based-forwarding/) forwarding paradigm, there's nothing that a router could do based on knowledge of wider network topology, because it cannot influence the forwarding decisions made by the downstream next-hop router.
 
-{{<note>}}That's why [EIGRP needs *feasible successor*](/2012/08/eigrp-mba-like-perspective.html) and why [LFA](/2012/01/loop-free-alternate-ospf-meets-eigrp.html) is so limited in what it can do. The proof is left as an exercise for the readers. However, if you need more information search for excellent LFA-related articles by [Russ White](http://packetpushers.net/author/russ-white/).{{</note>}}
+{{<note>}}That's why [EIGRP needs *feasible successor*](/2012/08/eigrp-mba-like-perspective/) and why [LFA](/2012/01/loop-free-alternate-ospf-meets-eigrp/) is so limited in what it can do. The proof is left as an exercise for the readers. However, if you need more information search for excellent LFA-related articles by [Russ White](http://packetpushers.net/author/russ-white/).{{</note>}}
 
 The only difference between link state and distance vector protocols used in traditional IP routing is the method of information dissemination: flooding-and-computing (link-state) or computing-and-propagating (distance vector).
 
@@ -54,7 +54,7 @@ Early implementations of distance vector protocols were excruciatingly slow. Mod
 
 In any case, you don't want the network overreacting to every change, so every routing protocol includes all sorts of dampening knobs (LSA origination timer, flooding timer, SPF interval...), making link-state and distance-vector protocols even more similar in performance.
 
-Finally, in large networks the routing protocol convergence time becomes insignificant compared to the [time needed to install the changes in the forwarding hardware](/2012/01/prefix-independent-convergence-pic.html).
+Finally, in large networks the routing protocol convergence time becomes insignificant compared to the [time needed to install the changes in the forwarding hardware](/2012/01/prefix-independent-convergence-pic/).
 
 ### Is There Any Use for Network Topology?
 

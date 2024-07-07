@@ -1,13 +1,13 @@
 ---
-url: /2007/11/kron-poor-man-cron.html
+url: /2007/11/kron-poor-man-cron/
 title: "Kron: poor-man's cron"
 date: "2007-11-22T07:12:00.001+01:00"
 tags: [ network management,configuration,EEM ]
 ---
 
 <p>When two groups within Cisco needed time-based command execution in Cisco IOS, they (in a typical big-corporation fashion) decided to implement the same wheel from two different sets of spokes and rims. One group built the Embedded Event Manager with its <strong>event timer cron</strong> command (introduced in 12.2(25)S and 12.3(14)T), the other group created the more limited <strong><a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios124/124tcr/tnm_r/nmg_03ht.htm#wp1302655">kron</a></strong> command set (introduced in 12.3(1)).</p>
-<!--more--><p>EEM is almost a perfect superset of kron, both can <a href="/2007/04/fix-router-configuration-after-reload.html">trigger a set of CLI commands at reload</a>, <a href="/2006/10/periodic-router-reload.html">at periodic intervals</a> or at certain time in the future. The only extra functionality offered by <strong>kron</strong> is the ability to specify a different username for each event (whereas <a href="/2007/05/command-authorization-fails-with-eem.html">all EEM applets have to run under a common username</a>) … and <strong>kron</strong> is available in older IOS releases.</p>
-<p class="note">Similar to EEM applets, CLI commands executed within kron cannot expect extra input (so you cannot execute <strong>clear counters</strong> or <strong>reload</strong> from <strong>kron</strong>) and the output they generate is lost unless you use <a href="/2007/04/save-ios-printouts-in-file.html">output filters to redirect it to an external file</a>.<p><p>Here is a simple configuration that archives the router's running configuration every sunday half an hour before midnight:</p>
+<!--more--><p>EEM is almost a perfect superset of kron, both can <a href="/2007/04/fix-router-configuration-after-reload/">trigger a set of CLI commands at reload</a>, <a href="/2006/10/periodic-router-reload/">at periodic intervals</a> or at certain time in the future. The only extra functionality offered by <strong>kron</strong> is the ability to specify a different username for each event (whereas <a href="/2007/05/command-authorization-fails-with-eem/">all EEM applets have to run under a common username</a>) … and <strong>kron</strong> is available in older IOS releases.</p>
+<p class="note">Similar to EEM applets, CLI commands executed within kron cannot expect extra input (so you cannot execute <strong>clear counters</strong> or <strong>reload</strong> from <strong>kron</strong>) and the output they generate is lost unless you use <a href="/2007/04/save-ios-printouts-in-file/">output filters to redirect it to an external file</a>.<p><p>Here is a simple configuration that archives the router's running configuration every sunday half an hour before midnight:</p>
 <pre class="code">kron policy-list archiveConfig<br/> cli archive config<br/>!<br/>kron occurrence archiveConfig at 23:30 Sun recurring<br/> policy-list archiveConfig</pre></p>
 </p>
 

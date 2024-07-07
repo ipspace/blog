@@ -4,7 +4,7 @@ tags:
 - IP routing
 - SLA
 title: Install a Static Route When an IP Address Is NOT Reachable
-url: /2007/08/install-static-route-when-ip-address-is.html
+url: /2007/08/install-static-route-when-ip-address-is/
 ---
 One of my readers recently asked an interesting question: "*How do you install a static route when an IP address is not reachable?*"
 

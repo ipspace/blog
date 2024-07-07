@@ -1,5 +1,5 @@
 ---
-url: /2020/02/fruit-drops-and-packet-drops.html
+url: /2020/02/fruit-drops-and-packet-drops/
 title: "Fruit Drops and Packet Drops"
 date: "2020-02-19T07:26:00.000+01:00"
 tags: [ QoS ]
@@ -10,11 +10,11 @@ tags: [ QoS ]
 <p>Then there was the tiny problem of <a href="https://en.wikipedia.org/wiki/Michelson%E2%80%93Morley_experiment">light traveling at the same speed in all directions</a>… even on objects moving in different directions.<!--more--></p>
 <p>You probably know that modern physics resolved these challenges with general relativity, quantum physics, and special relativity… and still hasn’t figured out how to combine the three into a single <a href="https://en.wikipedia.org/wiki/Theory_of_everything">Theory of Everything</a>. The <em>only</em> problem for someone stuck at the level of high-school physics (like myself) is that these theories tend to be a bit more complex (and thus harder to understand and use) than the simple laws of motion and gravity.</p>
 <p>We’re facing a similar challenge in many other disciplines: lacking a grand unifying theory of everything we have to use approximations, and they always have limited applicability.</p>
-<p>Taking the example of <a href="/2019/06/do-packet-drops-matter-for-tcp.html">impact of packet drops</a> and <a href="/2019/06/switch-buffer-sizes-and-fermi-estimates.html">shallow buffers</a> I discussed last summer (and numerous comments these blog posts generated):</p>
+<p>Taking the example of <a href="/2019/06/do-packet-drops-matter-for-tcp/">impact of packet drops</a> and <a href="/2019/06/switch-buffer-sizes-and-fermi-estimates/">shallow buffers</a> I discussed last summer (and numerous comments these blog posts generated):</p>
 <ul><li>TCP packet drops are a good thing… unless you’re in a distributed computing environment where microseconds of delay can stall your computation;</li>
 <li>Controlling TCP packet drops with congestion avoidance algorithms like WRED is an effective way of managing congestion unless you’re dealing with a small number of high-volume TCP sessions (example: storage traffic);</li>
 <li>Modern <a href="https://tools.ietf.org/html/rfc8289">Active Queue Management</a> solutions are supposed to be even better, but are probably hard to implement at high speeds (or I’ve yet again missed something, in which case please write a comment).</li>
 <li>Shallow buffers are good enough… unless you have to provide lossless environment (see above) or are dealing with few high-volume transfers over high-latency environment (example: 10 Gbps transfer with 100 msec RTT).</li>
 </ul>
-<p>Does that mean that TCP packet drops are bad, or that we should all buy more expensive deep buffer switches? Absolutely not, but you have to understand that lacking better tools (and/or being <a href="/2020/01/do-we-need-math-in-networking.html">ignorant of underlying math</a>) we’re using approximations (usually called <em>best current practices</em> because that sounds so much better), and no approximation is applicable across a very wide range of conditions.</p>
+<p>Does that mean that TCP packet drops are bad, or that we should all buy more expensive deep buffer switches? Absolutely not, but you have to understand that lacking better tools (and/or being <a href="/2020/01/do-we-need-math-in-networking/">ignorant of underlying math</a>) we’re using approximations (usually called <em>best current practices</em> because that sounds so much better), and no approximation is applicable across a very wide range of conditions.</p>
 

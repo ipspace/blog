@@ -1,5 +1,5 @@
 ---
-url: /2013/01/edge-protocol-independence-another.html
+url: /2013/01/edge-protocol-independence-another/
 title: "Edge Protocol Independence: Another Benefit of Edge-and-Core Layering"
 date: "2013-01-10T07:33:00.000+01:00"
 tags: [ MPLS,SDN,OpenFlow ]
@@ -8,7 +8,7 @@ tags: [ MPLS,SDN,OpenFlow ]
 <p>I asked Martin Casado to check whether I correctly described his HotSDN’12 paper in my Edge and Core OpenFlow post, and he replied with another interesting observation:</p>
 <blockquote class="cite">The (somewhat nuanced) issue I would raise is that [...] decoupling [also] allows evolving the edge and core separately. Today, changing the edge addressing scheme requires a wholesale upgrade to the core. </blockquote>
 <p class="note">The 6PE architecture (IPv6 on the edge, MPLS in the core) is a perfect example of this concept.<!--more--></p>
-<h4>Why does it matter?</h4><p>Traditional scalable network designs always <a href="/2011/08/bgpigp-network-design-principles.html">have at least two layers</a>: access or aggregation layer, where most of the network services are performed, and core layer, that provides high-speed transport across a stable network core. </p>
+<h4>Why does it matter?</h4><p>Traditional scalable network designs always <a href="/2011/08/bgpigp-network-design-principles/">have at least two layers</a>: access or aggregation layer, where most of the network services are performed, and core layer, that provides high-speed transport across a stable network core. </p>
 <p>In IP-only networks, the core and access routers (aka layer-3 switches) share the same forwarding mechanism (ignoring the option of having default routing in the access layer); if you want to introduce a new protocol (example: IPv6) you have to deploy it on every single router throughout the network, including all core routers.</p>
 <p>On the other hand, you can introduce IPv6, IPX or AppleTalk (not really), or anything else in an MPLS network, without upgrading the core routers. The core routers continue to provide a single function: optimal transport based on MPLS paths signaled by the edge routers (either through LDP, MPLS-TE, MPLS-TP or more creative approaches, including <a href="https://ripe65.ripe.net/archives/video/51/">NETCONF-configured static MPLS labels</a>).</p>
 <p>The same ideas apply to OpenFlow-configured networks. The edge devices have to be smart and support a rich set of flow matching and manipulation functionality; the core (fabric) devices have to match on simple packet tags (VLAN tags, MAC addresses with PBB encapsulation, MPLS tags ...) and provide fast packet forwarding. </p>

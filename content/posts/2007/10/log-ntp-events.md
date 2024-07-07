@@ -3,7 +3,7 @@ date: 2007-10-03 06:51:00+02:00
 tags:
 - NTP
 title: Log the NTP events
-url: /2007/10/log-ntp-events.html
+url: /2007/10/log-ntp-events/
 pre_scroll: true
 ---
 I almost started writing an EEM applet that would detect and log the changes in router's system time caused by NTP synchronizations, but then I've decided to check the IOS documentation first and found the **ntp logging** command.

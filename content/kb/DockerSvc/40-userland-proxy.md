@@ -2,7 +2,7 @@
 kb_section: DockerSvc
 minimal_sidebar: true
 title: Docker Userland Proxy
-url: /kb/DockerSvc/40-userland-proxy.html
+url: /kb/DockerSvc/40-userland-proxy/
 ---
 In the [previous section](30-nat-iptables.html) we identified two scenarios where Docker cannot use **iptables** NAT rules to map a [*published* port](20-Published.html) to a container service:
 

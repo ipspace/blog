@@ -10,9 +10,9 @@ tags:
 - fabric
 - BGP
 title: Avoid Summarization in Leaf-and-Spine Fabrics
-url: /2018/06/avoid-summarization-in-leaf-and-spine.html
+url: /2018/06/avoid-summarization-in-leaf-and-spine/
 ---
-I got this design improvement suggestion after publishing [*When Is BGP No Better than OSPF*](/2018/06/is-ebgp-really-better-than-ospf-in-leaf.html) blog post:
+I got this design improvement suggestion after publishing [*When Is BGP No Better than OSPF*](/2018/06/is-ebgp-really-better-than-ospf-in-leaf/) blog post:
 
 > Putting all the leafs in the same ASN and filtering routes sent down to the leafs (sending just a default) are potential enhancements that make BGP a nice option.
 
@@ -38,7 +38,7 @@ The scenario (although in a slightly different format) should be familiar to any
 
 ### Can We Fix It?
 
-Sure. You can add links between spine switches, add a superspine layer, or use RIFT (not available for production deployment at the time this blog post was written) that does selective deaggregation following a link failure -- more details in Software Gone Wild [Episode 88](/2018/03/data-center-routing-with-rift-on.html).
+Sure. You can add links between spine switches, add a superspine layer, or use RIFT (not available for production deployment at the time this blog post was written) that does selective deaggregation following a link failure -- more details in Software Gone Wild [Episode 88](/2018/03/data-center-routing-with-rift-on/).
 
 Let's focus on the challenges of the inter-spine links. Life is simple if we have just two spines: we add a link between them and run IBGP session across that link.
 

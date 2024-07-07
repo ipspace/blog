@@ -12,7 +12,7 @@ Both presentations describe how you can take over a smart NIC with a properly cr
 <!--more-->
 ## What Is a Smart NIC
 
-If you've never heard about smart NICs, you might want to [start with the chat](/2019/03/smart-nics-and-related-linux-kernel.html) we had with Or Gerlitz (Mellanox), Andy Gospodarek (Broadcom) and Jiri Pirko (Mellanox), and then look at the [technical part](https://vimeo.com/412089997) of the [Pensando presentation](https://techfieldday.com/appearance/pensando-presents-at-cloud-field-day-7/) from Cloud Field Day 7 (you can safely skip the "we are so awesome" part).
+If you've never heard about smart NICs, you might want to [start with the chat](/2019/03/smart-nics-and-related-linux-kernel/) we had with Or Gerlitz (Mellanox), Andy Gospodarek (Broadcom) and Jiri Pirko (Mellanox), and then look at the [technical part](https://vimeo.com/412089997) of the [Pensando presentation](https://techfieldday.com/appearance/pensando-presents-at-cloud-field-day-7/) from Cloud Field Day 7 (you can safely skip the "we are so awesome" part).
 
 Or in you're short on time, here's the crux of the story:
 
@@ -29,4 +29,4 @@ Then there are those nasty bugs that need a very specific sequence of events and
 
 I think it's fair to say that it's only a question of time when we'll see another catastrophic smart NIC exploit. Oops, we already did - see [Broadpwn](https://www.blackhat.com/docs/us-17/thursday/us-17-Artenstein-Broadpwn-Remotely-Compromising-Android-And-iOS-Via-A-Bug-In-Broadcoms-Wifi-Chipsets.pdf).
 
-Amazon might be in pretty good shape with AWS Nitro. A cloud service provider has to care about security more than a [typical enterprise vendor](/2020/06/sdwan-silver-peak-security.html), and they [claim to have provable security](https://www.slideshare.net/AmazonWebServices/an-aws-approach-to-higher-standards-of-assurance-with-provable-security-fnd214-aws-reinforce-2019). As for smart NICs being used in enterprise servers, in particular those that can be programmed by the end-user, I have only one thing to say: expect some fun times.
+Amazon might be in pretty good shape with AWS Nitro. A cloud service provider has to care about security more than a [typical enterprise vendor](/2020/06/sdwan-silver-peak-security/), and they [claim to have provable security](https://www.slideshare.net/AmazonWebServices/an-aws-approach-to-higher-standards-of-assurance-with-provable-security-fnd214-aws-reinforce-2019). As for smart NICs being used in enterprise servers, in particular those that can be programmed by the end-user, I have only one thing to say: expect some fun times.

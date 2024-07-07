@@ -3,7 +3,7 @@ date: 2019-01-09 08:35:00+01:00
 tags:
 - SD-WAN
 title: SD-WAN Reality Gap
-url: /2019/01/sd-wan-reality-gap.html
+url: /2019/01/sd-wan-reality-gap/
 sd-wan_tag: reality
 ---
 Here's some feedback I got from a subscriber who got pulled into an SD-WAN project:

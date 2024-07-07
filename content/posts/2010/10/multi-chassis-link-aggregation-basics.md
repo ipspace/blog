@@ -9,17 +9,17 @@ tags:
 - switching
 - data center
 title: Multi-Chassis Link Aggregation (MLAG) Basics
-url: /2010/10/multi-chassis-link-aggregation-basics.html
+url: /2010/10/multi-chassis-link-aggregation-basics/
 ---
 If you ask any networking engineer building layer-2 fabrics the traditional way about his worst pains, I'm positive Spanning Tree Protocol (STP) will be very high on the shortlist. In a well-designed fully redundant hierarchical bridged network where every device connects to at least two devices higher in the hierarchy, you lose half the bandwidth to STP loop prevention whims.
 
 {{<figure src="/2010/10/s320-STP_Blocking.png">}}
 <!--more-->
-You [REALLY SHOULD not build layer-2 data center fabrics with spanning tree anymore](/2020/03/should-i-go-with-vxlan-or-mlag-with-stp.html)[^NOTRILL], but if you're still stuck in STP land, you can try to dance around the problem:
+You [REALLY SHOULD not build layer-2 data center fabrics with spanning tree anymore](/2020/03/should-i-go-with-vxlan-or-mlag-with-stp/)[^NOTRILL], but if you're still stuck in STP land, you can try to dance around the problem:
 
-[^NOTRILL]: You should also forget about the "wonderful" [proprietary fabric technologies](/2022/05/cisco-fabric-path-and-friends.html) promised by the networking vendors during the early 2010s.
+[^NOTRILL]: You should also forget about the "wonderful" [proprietary fabric technologies](/2022/05/cisco-fabric-path-and-friends/) promised by the networking vendors during the early 2010s.
 
--   Push routing as close to the network edge as you can. This works if your environment already uses overlay virtual networking (for example, VMware NSX or Docker/Kubernetes), otherwise you might get a violent kickback from the server admins when they realize [they cannot move the VMs at will anymore](/2010/09/vmotion-elephant-in-data-center-room.html);
+-   Push routing as close to the network edge as you can. This works if your environment already uses overlay virtual networking (for example, VMware NSX or Docker/Kubernetes), otherwise you might get a violent kickback from the server admins when they realize [they cannot move the VMs at will anymore](/2010/09/vmotion-elephant-in-data-center-room/);
 -   Play with per-VLAN costs in PVST+ or MSTP, ensuring the need for constant supervision and magnificent job security;
 
 Considering the alternatives, multi-chassis link aggregation just might be what you need.
@@ -59,9 +59,9 @@ If you want to make two (or more) devices act like a single device, you have to 
 
 The architectural approaches used by individual vendors are widely different: 
 
-* A common early approach was to turn all but one of the control planes of MLAG cluster members into half-comatose state. Cisco VSS could do that with two devices, Juniper (Virtual Chassis) or HP ([IRF](/2011/01/intelligent-redundant-framework-irf.html)) reused their stackable switch technologies.
+* A common early approach was to turn all but one of the control planes of MLAG cluster members into half-comatose state. Cisco VSS could do that with two devices, Juniper (Virtual Chassis) or HP ([IRF](/2011/01/intelligent-redundant-framework-irf/)) reused their stackable switch technologies.
 * Modern implementations use cooperative control planes (Cisco vPC, Arista or Cumulus MLAG)
-* [Centralized control plane](/2015/05/link-aggregation-in-openflow-environment.html) was also a popular solution in the heydays of [orthodox SDN](/2014/01/what-exactly-is-sdn-and-does-it-make.html).
+* [Centralized control plane](/2015/05/link-aggregation-in-openflow-environment/) was also a popular solution in the heydays of [orthodox SDN](/2014/01/what-exactly-is-sdn-and-does-it-make/).
 
 ### More information
 

@@ -2,7 +2,7 @@
 kb_section: AutomationLab
 minimal_sidebar: true
 title: Networking Lab
-url: /kb/AutomationLab/20-Networking_Lab.html
+url: /kb/AutomationLab/20-Networking_Lab/
 ---
 You could build a physical or a virtual networking lab, or use a third-part virtual lab like [Network To Code labs](https://labs.networktocode.com/).
 

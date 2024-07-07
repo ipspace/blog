@@ -6,7 +6,7 @@ tags:
 - OSPF
 - LDP
 title: MPLS LDP Autoconfiguration
-url: /2007/08/mpls-ldp-autoconfiguration.html
+url: /2007/08/mpls-ldp-autoconfiguration/
 ---
 Most MPLS books (mine included) and courses tell you that you have to manually enable MPLS on each interface where you want to run it with the **mpls ip** interface configuration command. However, this task was significantly simplified in IOS release 12.3(14)T with the introduction of MPLS LDP autoconfiguration. If you use OSPF as the routing protocol in your network, you can use the **mpls autoconfig ldp [area *number*]** router configuration command to enable LDP on all interfaces running OSPF (optionally limited to an OSPF area).
 

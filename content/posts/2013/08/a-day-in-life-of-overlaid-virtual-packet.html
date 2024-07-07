@@ -6,7 +6,7 @@ tags:
 - overlay networks
 - virtualization
 title: A Day in a Life of an Overlaid Virtual Packet
-url: /2013/08/a-day-in-life-of-overlaid-virtual-packet.html
+url: /2013/08/a-day-in-life-of-overlaid-virtual-packet/
 needs_fix: True
 ---
 
@@ -24,11 +24,11 @@ needs_fix: True
 <p>The overlay virtual networking module uses the destination MAC address to find the IP address of the target hypervisor, encapsulates the virtual layer-2 frame into an VXLAN/(NV)GRE/STT envelope and sends the resulting IP packet toward the physical NIC (with the added complexity of vKernel NICs in vSphere environments).</p>
 <p class="warn">Every single overlay virtual networking solution needs jumbo frames in the transport network to work well - you really wouldn't want to reduce the MTU size on every single VM NIC</p>
 <div class="separator"><a href="/2013/08/s1600-DayLifeOverlayPacket_3.png" imageanchor="1"><img border="0" src="/2013/08/s500-DayLifeOverlayPacket_3.png"/></a><br/>Encapsulated virtual packet is sent toward the physical NIC</div>
-<p>Glad you asked the third question: how does the overlay networking module know the IP address of the target hypervisor??? That’s the crux of the problem and the main difference between VXLAN and Hyper-V/NVP. It’s clearly a topic for yet another blog post (and here’s what I <a href="/2011/12/vxlan-ip-multicast-openflow-and-control.html">wrote about this problem a while ago</a>). For the moment, let’s just <em>assume it </em><em>does know what to do</em>.</p>
+<p>Glad you asked the third question: how does the overlay networking module know the IP address of the target hypervisor??? That’s the crux of the problem and the main difference between VXLAN and Hyper-V/NVP. It’s clearly a topic for yet another blog post (and here’s what I <a href="/2011/12/vxlan-ip-multicast-openflow-and-control/">wrote about this problem a while ago</a>). For the moment, let’s just <em>assume it </em><em>does know what to do</em>.</p>
 <p>The physical network (which has to provide nothing more than simple IP transport) eventually delivers the encapsulated layer-2 frame to the target hypervisor, which uses standard TCP/IP mechanisms (match on IP protocol for GRE, destination UDP port for VXLAN and destination TCP port for STT) to deliver the encapsulated layer-2 frame to the target overlay networking module.</p>
 <p class="note">Things are a bit more complex: in most cases you’d want to catch the encapsulated traffic somewhere within the hypervisor kernel to minimize the performance hit (each trip through the userland costs you extra CPU cycles), but you get the idea.</p>
 <div class="separator"><a href="/2013/08/s1600-DayLifeOverlayPacket_4.png" imageanchor="1"><img border="0" src="/2013/08/s500-DayLifeOverlayPacket_4.png"/></a></div>
 <p>Last step: the target overlay networking module strips the envelope and delivers the raw layer-2 frame to the layer-2 hypervisor switch which then uses the destination MAC address to send the frame to the target VM-NIC.</p>
 <div class="separator"><a href="/2013/08/s1600-DayLifeOverlayPacket_5.png" imageanchor="1"><img border="0" src="/2013/08/s500-DayLifeOverlayPacket_5.png"/></a></div>
-<p><strong>Summary:</strong> all major overlay virtual networking implementations are essentially identical when it comes to frame forwarding mechanisms. The encapsulation wars are thus stupid, with the <a href="/2012/03/do-we-really-need-stateless-transport.html">sole exception of TCP/IP offload</a>, and some vendors have already started talking about multi-encapsulation support.</p>
+<p><strong>Summary:</strong> all major overlay virtual networking implementations are essentially identical when it comes to frame forwarding mechanisms. The encapsulation wars are thus stupid, with the <a href="/2012/03/do-we-really-need-stateless-transport/">sole exception of TCP/IP offload</a>, and some vendors have already started talking about multi-encapsulation support.</p>
 <div class="separator"><a href="/2013/08/s1600-DayLifeOverlayPacket_6.png" imageanchor="1"><img border="0" src="/2013/08/s500-DayLifeOverlayPacket_6.png"/></a></div>

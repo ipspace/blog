@@ -11,9 +11,9 @@ tags:
 - ACI
 - high availability
 title: Cisco ACI – a Stretched Fabric That Actually Works
-url: /2015/03/cisco-aci-stretched-fabric-that.html
+url: /2015/03/cisco-aci-stretched-fabric-that/
 ---
-In mid-February a blog post on Cisco's web site [announced stretched ACI fabric](http://blogs.cisco.com/datacenter/new-cisco-apic-software-allows-stretched-aci-fabric-across-long-distances) (bonus points for not using [marketing grammar](/2014/05/marketing-grammar.html) but talking about a [shipping product](http://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/1-x/release/notes/aci_nxos_rn_1103.html#46677)). Will it work better than [other PowerPoint-based fabrics](/2011/09/long-distance-irf-fabric-works-best-in.html)? You bet!
+In mid-February a blog post on Cisco's web site [announced stretched ACI fabric](http://blogs.cisco.com/datacenter/new-cisco-apic-software-allows-stretched-aci-fabric-across-long-distances) (bonus points for not using [marketing grammar](/2014/05/marketing-grammar/) but talking about a [shipping product](http://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/1-x/release/notes/aci_nxos_rn_1103.html#46677)). Will it work better than [other PowerPoint-based fabrics](/2011/09/long-distance-irf-fabric-works-best-in/)? You bet!
 
 ### What's the Big Deal?
 
@@ -21,15 +21,15 @@ Cisco's ACI fabric uses distributed (per-switch) control plane with APIC control
 <!--more-->
 ### But What about Stretched Subnets?
 
-Even though you can use Cisco ACI to implement [stretched subnets](/2011/04/distributed-firewalls-how-badly-do-you.html) (and there was the mandatory mention of [VM mobility](/2015/02/before-talking-about-vmotion-across.html) in Cisco's documentation), the fabric uses VXLAN-over-IP as the transport protocol, making the underlying transport network rock-solid. You cannot get a L2 forwarding loop in a pure L3 network.
+Even though you can use Cisco ACI to implement [stretched subnets](/2011/04/distributed-firewalls-how-badly-do-you/) (and there was the mandatory mention of [VM mobility](/2015/02/before-talking-about-vmotion-across/) in Cisco's documentation), the fabric uses VXLAN-over-IP as the transport protocol, making the underlying transport network rock-solid. You cannot get a L2 forwarding loop in a pure L3 network.
 
-Stretched subnets are [as great idea as they ever were](/2013/09/sooner-or-later-someone-will-pay-for.html) (there's nothing you can do to fix a broken concept), but ACI's handling of stretched subnets is better than almost anything else out there (including OTV).
+Stretched subnets are [as great idea as they ever were](/2013/09/sooner-or-later-someone-will-pay-for/) (there's nothing you can do to fix a broken concept), but ACI's handling of stretched subnets is better than almost anything else out there (including OTV).
 
 ACI uses ARP proxies and anycast gateways on leaf switches, and something equivalent to VRF-based host routing to forward traffic toward IP endpoints. The traffic transported across the fabric is thus mostly unicast IP traffic (admittedly encapsulated in VXLAN envelopes), and we know that IP-based networks got pretty good at handling unicast IP traffic.
 
 ### But There's Split Brain Problem
 
-True -- and Cisco was quick to admit the problem exists (many vendors try to pretend you don't have a problem because the [redundant links between sites can never fail](/2012/10/if-something-can-fail-it-will.html)) and documented the split fabric scenario in their [design guidelines](http://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/kb/b_kb-aci-stretched-fabric.html):
+True -- and Cisco was quick to admit the problem exists (many vendors try to pretend you don't have a problem because the [redundant links between sites can never fail](/2012/10/if-something-can-fail-it-will/)) and documented the split fabric scenario in their [design guidelines](http://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/kb/b_kb-aci-stretched-fabric.html):
 
 -   Controller cluster is split, and the minority part of the cluster goes into read-only mode;
 -   The fabric continues to forward traffic based on already-established policy rules;

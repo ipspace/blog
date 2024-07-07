@@ -4,7 +4,7 @@ tags:
 - automation
 - Ansible
 title: Text Files or Relational Database?
-url: /2019/04/text-files-or-relational-database.html
+url: /2019/04/text-files-or-relational-database/
 series: [ ssot ]
 ssot_tag: details
 ---

@@ -10,7 +10,7 @@ tags:
 - networking fundamentals
 title: Graceful Restart and BFD
 ---
-The whole *High Availability Switching* series started with a question along the lines of "*does it make sense to run BFD together with Graceful Restart*". After *[Non-Stop Forwarding 101](/2021/09/non-stop-forwarding.html)*, *[Graceful Restart 101](/2021/09/graceful-restart.html)*, and *[Graceful Restart and Convergence Speed](/2021/10/graceful-restart-convergence.html)* we finally have enough information to answer that question.
+The whole *High Availability Switching* series started with a question along the lines of "*does it make sense to run BFD together with Graceful Restart*". After *[Non-Stop Forwarding 101](/2021/09/non-stop-forwarding/)*, *[Graceful Restart 101](/2021/09/graceful-restart/)*, and *[Graceful Restart and Convergence Speed](/2021/10/graceful-restart-convergence/)* we finally have enough information to answer that question.
 
 **TL&DR**: Most probably not.
 

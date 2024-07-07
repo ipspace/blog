@@ -7,7 +7,7 @@ tags:
 - SDN
 - BGP
 title: Is BGP Really that Complex?
-url: /2016/06/is-bgp-really-that-complex.html
+url: /2016/06/is-bgp-really-that-complex/
 ---
 Anyone following the popular networking blogs and podcasts is probably familiar with the claim that BGP is way too complex to be used in whatever environment. On the other hand, more and more smart people use it when building their data center or WAN infrastructure. There's something wrong with this picture.
 <!--more-->
@@ -37,8 +37,8 @@ You might have network design that's a perfect match to BGP's capabilities, and 
 
 For example:
 
--   Cisco implemented dynamic BGP neighbors in Cisco IOS at least twice. Together with the [changes to BGP route reflector functionality](/2014/04/changes-in-ibgp-next-hop-processing.html) they make [BGP-over-DMVPN deployments almost trivial](/2014/03/scaling-bgp-based-dmvpn-networks.html);
--   Cumulus Linux implemented [BGP over unnumbered interfaces](/2015/02/bgp-configuration-made-simple-with.html), and relaxed the remote AS checking -- you have to specify whether the neighbor is internal or external, and the BGP routing daemon does the rest;
+-   Cisco implemented dynamic BGP neighbors in Cisco IOS at least twice. Together with the [changes to BGP route reflector functionality](/2014/04/changes-in-ibgp-next-hop-processing/) they make [BGP-over-DMVPN deployments almost trivial](/2014/03/scaling-bgp-based-dmvpn-networks/);
+-   Cumulus Linux implemented [BGP over unnumbered interfaces](/2015/02/bgp-configuration-made-simple-with/), and relaxed the remote AS checking -- you have to specify whether the neighbor is internal or external, and the BGP routing daemon does the rest;
 
 For more details, start with the [Simplifying BGP Configurations](https://my.ipspace.net/bin/get?doc=46d9b3b4-e1ea-11e5-a2b0-005056880254) video in which Dinesh Dutt explains how easy it is to run BGP in a leaf-and-spine fabric, and continue with the rest of the [Leaf-and-Spine Architectures](http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar.
 

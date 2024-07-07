@@ -8,7 +8,7 @@ tags:
 - high availability
 title: Interactions Between BFD and Graceful Restart
 ---
-_We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Dmitry Perets on the [interactions between BFD and GR](/2021/10/graceful-restart-bfd.html#804)_.
+_We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Dmitry Perets on the [interactions between BFD and GR](/2021/10/graceful-restart-bfd/#804)_.
 
 ---
 

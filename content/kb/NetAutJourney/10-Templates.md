@@ -4,7 +4,7 @@ minimal_sidebar: true
 pre_scroll: true
 title: 'First Step: Configuration Templates'
 toc_title: Configuration Templates
-url: /kb/NetAutJourney/10-Templates.html
+url: /kb/NetAutJourney/10-Templates/
 ---
 Creating configuration templates with Jinja2 is an excellent initial use-case for Ansible.
 One very beneficial aspect of any network automation journey is that it encourages

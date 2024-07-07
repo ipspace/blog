@@ -1,7 +1,7 @@
 ---
 date: 2010-12-23 06:20:00.001000+01:00
 title: 'Cleaning the Inbox: Data Center, Storage, Virtualization'
-url: /2010/12/cleaning-inbox-data-center-storage.html
+url: /2010/12/cleaning-inbox-data-center-storage/
 tags: [ worth reading ]
 ---
 Links to great data center, storage and virtualization articles found in the depths of my bloated Inbox:

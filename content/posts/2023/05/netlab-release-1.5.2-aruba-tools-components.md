@@ -21,7 +21,7 @@ I'll cover these features in separate blog posts; today I wanted to highlight a 
 
 * *netlab* can create configuration files for lab containers (primarily Linux hosts). These files are created before the lab is started and are executed within *netlab*, making it impossible to use anything but the standard Jinja2 filters. Release 1.5.2 allows you to **[use some Ansible filters when creating container configuration files](https://netlab.tools/labs/clab/#jinja2-filters-available-in-custom-configuration-files)**
 
-* The *find custom configuration template* logic was extended to include node name in the search list. This allows you to deploy **[per-node custom configuration templates](https://netlab.tools/dev/config/deploy/#finding-custom-configuration-templates)**, for example to [include saved device configurations when starting a new lab](/2023/04/netlab-merge-config.html).
+* The *find custom configuration template* logic was extended to include node name in the search list. This allows you to deploy **[per-node custom configuration templates](https://netlab.tools/dev/config/deploy/#finding-custom-configuration-templates)**, for example to [include saved device configurations when starting a new lab](/2023/04/netlab-merge-config/).
 
 * `netlab up` and `netlab down` commands support **dry run mode** (`--dry-run` option) that prints the commands that would be executed instead of executing them -- that might come handy when you're trying to troubleshoot bizarre failures.
 

@@ -10,14 +10,14 @@ tags:
 - IP routing
 - virtualization
 title: Virtual Appliance Routing – Network Engineer’s Survival Guide
-url: /2013/08/virtual-appliance-routing-network.html
+url: /2013/08/virtual-appliance-routing-network/
 ---
-Routing protocols running on virtual appliances [significantly increase the flexibility of virtual-to-physical network integration](/2013/06/dynamic-routing-with-virtual-appliances.html) -- you can easily [move the whole application stack across subnets or data centers](/2013/05/simplify-your-disaster-recovery-with.html) without changing the physical network configuration.
+Routing protocols running on virtual appliances [significantly increase the flexibility of virtual-to-physical network integration](/2013/06/dynamic-routing-with-virtual-appliances/) -- you can easily [move the whole application stack across subnets or data centers](/2013/05/simplify-your-disaster-recovery-with/) without changing the physical network configuration.
 
 Major hypervisor vendors already support the concept: VMware NSX-T edge nodes can run BGP or OSPF[^NSXV], and Hyper-V gateways can run BGP. Like it or not, we'll have to accept these solutions in the near future -- here's a quick survival guide.
 <!--more-->
 
-[^NSXV]: For a trip down the memory lane, read the _[Routing Protocols on NSX Edge Services Router](/2013/08/routing-protocols-on-nsx-edge-services.html)_ blog post that describes VMware NSX-V implementation.
+[^NSXV]: For a trip down the memory lane, read the _[Routing Protocols on NSX Edge Services Router](/2013/08/routing-protocols-on-nsx-edge-services/)_ blog post that describes VMware NSX-V implementation.
 
 ### Don't Use Link-State Routing Protocols
 
@@ -40,7 +40,7 @@ The route servers obviously have to accept BGP sessions coming from a range of I
 
 {{<note info>}}If the routers or layer-3 switches you use don't support dynamic BGP neighbors, use Cisco's Cloud Services Router  or a Linux virtual machine running FRR as a route server.{{</note>}}
 
-For even more details, read the [Running BGP between Virtual Machines and Data Center Fabric](/2022/02/bgp-on-virtual-machines.html) blog post.
+For even more details, read the [Running BGP between Virtual Machines and Data Center Fabric](/2022/02/bgp-on-virtual-machines/) blog post.
 
 ### EBGP or IBGP?
 

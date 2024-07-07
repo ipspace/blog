@@ -4,9 +4,9 @@ tags:
 - VPN
 - service providers
 title: Who’s Pushing Layer-2 VPN Services?
-url: /2018/03/whos-pushing-layer-2-vpn-services.html
+url: /2018/03/whos-pushing-layer-2-vpn-services/
 ---
-Here's another great point [Tiziano Tofoni](https://www.linkedin.com/in/tiziano-tofoni-1361759/) raised in his comment to my [EVPN in small data center fabrics](/2018/02/using-evpn-in-very-small-data-center.html) blog post:
+Here's another great point [Tiziano Tofoni](https://www.linkedin.com/in/tiziano-tofoni-1361759/) raised in his comment to my [EVPN in small data center fabrics](/2018/02/using-evpn-in-very-small-data-center/) blog post:
 
 > I cannot understand the usefulness of L2 services. I think that the preference for L2 services has its origin in the enterprise world (pushed by well known \$vendors) while ISPs tend to work at Layer 3 (L3) only, even if they are urged to offer L2 services by their customers.
 

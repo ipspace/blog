@@ -1,5 +1,5 @@
 ---
-url: /2016/12/response-on-death-of-openflow.html
+url: /2016/12/response-on-death-of-openflow/
 title: "Response: On the Death of OpenFlow"
 date: "2016-12-06T09:01:00.000+01:00"
 tags: [ SDN,OpenFlow ]
@@ -7,7 +7,7 @@ tags: [ SDN,OpenFlow ]
 
 <p><a name="_GoBack"></a>On November 7<span style="vertical-align: super; font-size: 80%;">th</span> SDx Central published an <a href="https://www.sdxcentral.com/articles/contributed/what-went-wrong-long-journey-open-networks/2016/11/">article</a> saying “<em>OpenFlow is virtually dead.</em>” There’s a first time for everything, and it’s a real fun reading a marketing blurb on a site sponsored by SDN vendors claiming the shiny SDN parade unicorn is dead.</p>
 <p>On a more serious note, Tom Hollingsworth <a href="https://networkingnerd.net/2016/11/29/openflow-is-dead-long-live-openflow/">wrote a blog post</a> in which he effectively said “<em>OpenFlow is just a tool. Can we please find the right problem for it?</em>”<!--more--></p>
-<h4>The Easy Part: What’s Wrong</h4><p>It’s immediately obvious to anyone who survived the scrutiny of RFC 1925 Rule 4 that the idea of centralized <a href="/2013/08/management-control-and-data-planes-in.html">control plane</a> has <a href="/2014/05/does-centralized-control-plane-make.html">no merits on planet Earth</a> (please note that <a href="/2015/06/centralized-control-is-not-centralized.html">centralized control is a totally different beast</a> that makes perfect sense). </p>
+<h4>The Easy Part: What’s Wrong</h4><p>It’s immediately obvious to anyone who survived the scrutiny of RFC 1925 Rule 4 that the idea of centralized <a href="/2013/08/management-control-and-data-planes-in/">control plane</a> has <a href="/2014/05/does-centralized-control-plane-make/">no merits on planet Earth</a> (please note that <a href="/2015/06/centralized-control-is-not-centralized/">centralized control is a totally different beast</a> that makes perfect sense). </p>
 <p>In particular, it’s really hard to:</p>
 <ul class="ListParagraph"><li>Detect non-trivial link failures in milliseconds (that’s why we have BFD); </li>
 <li>Respond to real-time events in reasonable timeframe;</li>
@@ -26,14 +26,14 @@ tags: [ SDN,OpenFlow ]
 <p>You might have realized that most problems listed above fall into “programmable ACL/PBR” category. You can use OpenFlow to solve them, but you could also use BGP FlowSpec or a number of vendor-specific tools.</p>
 <p class="more">Coho Data that Tom mentioned in his blog post is using OpenFlow to program a switch in front of its scale-out storage farm – a perfect example of load balancing of long-lived elephant flows. <a href="https://my.ipspace.net/bin/get?doc=cb99e534-bfb1-11e5-a2b0-005056880254">More details</a> in the <a href="http://www.ipspace.net/SDN_Use_Cases">SDN Use Cases</a> webinar.</p>
 <p>You might think that DDoS mitigation falls into the same category. Well, it <em>might</em> but the real challenge is the number of filtering rules you’d need which usually preclude the use of a hardware solution. </p>
-<p>In any case, people <a href="https://blog.cloudflare.com/why-we-use-the-linux-kernels-tcp-stack/">who know what they’re doing</a> try to implement <a href="/2016/10/fast-linux-packet-forwarding-with.html">extremely fast packet drops</a> as close to the server NIC as possible to solve the DDoS mitigation challenge. Others still try to solve the same problem with OpenFlow. I wish them luck.</p>
+<p>In any case, people <a href="https://blog.cloudflare.com/why-we-use-the-linux-kernels-tcp-stack/">who know what they’re doing</a> try to implement <a href="/2016/10/fast-linux-packet-forwarding-with/">extremely fast packet drops</a> as close to the server NIC as possible to solve the DDoS mitigation challenge. Others still try to solve the same problem with OpenFlow. I wish them luck.</p>
 <h4>What about Fabrics?</h4><p>The network fabrics were a particularly alluring OpenFlow use case. My cynical take on that: it was easy to figure out Total Addressable Market and get VC funding that way. </p>
-<p class="more">Before you start telling me how Google uses OpenFlow to build their fabrics, <a href="/2012/05/openflow-google-brilliant-but-not.html">read this</a> – they built their own <a href="https://networkingnerd.net/2010/10/01/one-switch-to-rule-them-all-one-acl-to-bind-them/">HFR</a> with OpenFlow, not a data center fabric.</p>
+<p class="more">Before you start telling me how Google uses OpenFlow to build their fabrics, <a href="/2012/05/openflow-google-brilliant-but-not/">read this</a> – they built their own <a href="https://networkingnerd.net/2010/10/01/one-switch-to-rule-them-all-one-acl-to-bind-them/">HFR</a> with OpenFlow, not a data center fabric.</p>
 <p>However, let’s assume you want to build your network fabric with pure OpenFlow 1.3 (no extensions to make your life easier, so you can use switches from almost any vendor). What kind of fabric could you build? These would be the prerequisites:</p>
 <ul class="ListParagraph"><li>No control-plane protocols;</li>
 <li>No real-time response to topology change events;</li>
 <li>No real-time response to link failures. You’d either use a single uplink or a pre-computed backup path.</li>
 </ul>
-<p>So what did you just build? A <a href="/2015/12/running-open-daylight-in-production.html">fancy programmable patch panel</a> (<a href="/2016/06/big-chain-deep-dive-on-software-gone.html">here’s another one</a>), and that’s exactly what some service providers need in their access networks. No wonder they still talk about using OpenFlow in their deployments, it’s a perfect tool for their particular problem. Does that imply that it will solve all the problems you have? Probably not.</p>
+<p>So what did you just build? A <a href="/2015/12/running-open-daylight-in-production/">fancy programmable patch panel</a> (<a href="/2016/06/big-chain-deep-dive-on-software-gone/">here’s another one</a>), and that’s exactly what some service providers need in their access networks. No wonder they still talk about using OpenFlow in their deployments, it’s a perfect tool for their particular problem. Does that imply that it will solve all the problems you have? Probably not.</p>
 <h4>Want to Know More?</h4><p>Start exploring the <a href="http://www.ipspace.net/SDN_Use_Cases">SDN resources</a> @ ipSpace.net, and watch <a href="http://www.ipspace.net/Roadmap/SDN_and_OpenFlow_webinars">SDN webinars</a>.</p>
 

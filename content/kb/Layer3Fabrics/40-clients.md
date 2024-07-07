@@ -2,7 +2,7 @@
 kb_section: Layer3Fabrics
 minimal_sidebar: true
 title: Challenges of Multi-Subnet Clients
-url: /kb/Layer3Fabrics/40-clients.html
+url: /kb/Layer3Fabrics/40-clients/
 ---
 Ignoring the [application-level challenges of multi-subnet clients](20-apps.html), the networking setup used on a client faces the same challenges as the [server-side setup](30-servers.html). Most importantly, it should ensure symmetrical traffic flow: outgoing traffic should always be sent through the interface having the IP address used in the outgoing packet.
 
@@ -22,7 +22,7 @@ Imagine the following scenario:
 
 {{<note note>}}We'll use the SAN-A/SAN-B terminology commonly used in Fibre Channel networks even though we’re describing the behavior of IP fabrics supporting iSCSI connectivity.{{</note>}}
 
-{{<figure src="Redundant-App-Sessions.png" caption="Air-gapped SAN-A/SAN-B iSCSI networks">}}
+{{<figure src="../Redundant-App-Sessions.png" caption="Air-gapped SAN-A/SAN-B iSCSI networks">}}
 
 Assuming you don't want to deal with policy routing or VRFs, you could enforce the desired traffic flow with a set of static routes:
 

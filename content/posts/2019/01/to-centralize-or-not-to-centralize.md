@@ -9,7 +9,7 @@ tags:
 - fabric
 - high availability
 title: To Centralize or not to Centralize, That’s the Question
-url: /2019/01/to-centralize-or-not-to-centralize.html
+url: /2019/01/to-centralize-or-not-to-centralize/
 ---
 One of the attendees of the Building Next-Generation Data Center online course solved the *build small data center fabric* challenge with [Virtual Chassis Fabric (VCF)](https://my.ipspace.net/bin/get/DCFabric/M53%20-%20Virtual%20Chassis.mp4). I pointed out that I would prefer not to use VCF as it uses centralized control plane and is thus a single failure domain.
 
@@ -25,12 +25,12 @@ Also, there are occasional software upgrade challenges that you don't get with i
 
 An obvious alternative to VCF would be a traditional leaf-and-spine fabric with VXLAN using either EVPN control plane or [statically-configured ingress BUM replication with dynamic MAC learning](https://my.ipspace.net/bin/get/DCFabric/RQ0%20-%20Keep%20It%20Simple.mp4). More robust, less complex software, smaller blast radius... but harder to design and configure.
 
-As always, it's the question of [explicit versus hidden complexity](/2018/02/how-self-sufficient-do-you-want-to-be.html), and you have to choose which one is better for you. I have no problem with that - it's just that the customers going for hidden complexity aren't always aware of the risks they're taking.
+As always, it's the question of [explicit versus hidden complexity](/2018/02/how-self-sufficient-do-you-want-to-be/), and you have to choose which one is better for you. I have no problem with that - it's just that the customers going for hidden complexity aren't always aware of the risks they're taking.
 
 ### Further Reading
 
--   [Should we use redundant supervisors?](/2014/04/should-we-use-redundant-supervisors.html)
--   [Do you need ISSU on your ToR switch?](/2015/06/so-you-need-issu-on-your-tor-switch.html)
+-   [Should we use redundant supervisors?](/2014/04/should-we-use-redundant-supervisors/)
+-   [Do you need ISSU on your ToR switch?](/2015/06/so-you-need-issu-on-your-tor-switch/)
 
 ### To Learn More about These Topics
 

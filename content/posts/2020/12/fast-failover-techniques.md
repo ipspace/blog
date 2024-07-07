@@ -6,7 +6,7 @@ tags:
 - IP routing
 title: 'Fast Failover: Techniques and Technologies'
 ---
-Continuing our [Fast Failover saga](/series/fast-failover.html), let's focus on techniques and technologies available to implement it (assuming you [still think it's worth the effort](/2020/11/fast-failover-challenge.html)).
+Continuing our [Fast Failover saga](/series/fast-failover/), let's focus on techniques and technologies available to implement it (assuming you [still think it's worth the effort](/2020/11/fast-failover-challenge/)).
 
 {{<note info>}}The following text is heavily based on comments [Jeff Tantsura](https://www.linkedin.com/in/jeff-tantsura/) wrote on one of my LinkedIn posts as well as the original blog post. Thank you!{{</note>}}
 
@@ -46,4 +46,4 @@ Fast Rehash is a forwarding construct, where the next-hop (could be called diffe
 
 Fast-rehash protects only connected links and doesn’t require any additional computation (ECMP alternatives are per definition loop-free). It is usually implemented in data center fabrics.
 
-Regardless of the technology used, the failover from lost active path(s) to a backup path could be [implemented in hardware or software](/2020/11/fast-failover-implementation.html). Hardware failover usually takes less than a millisecond, while software failover (example: rehashing of ECMP next hops in software, and downloading new ECMP buckets into hardware) takes ~50-100 milliseconds.
+Regardless of the technology used, the failover from lost active path(s) to a backup path could be [implemented in hardware or software](/2020/11/fast-failover-implementation/). Hardware failover usually takes less than a millisecond, while software failover (example: rehashing of ECMP next hops in software, and downloading new ECMP buckets into hardware) takes ~50-100 milliseconds.

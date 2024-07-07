@@ -1,5 +1,5 @@
 ---
-url: /2013/05/tail-f-network-control-system-first.html
+url: /2013/05/tail-f-network-control-system-first/
 title: "Tail-f Network Control System – the First Impressions"
 date: "2013-05-16T07:06:00.000+02:00"
 tags: [ SDN,network management,OpenFlow ]
@@ -9,7 +9,7 @@ tags: [ SDN,network management,OpenFlow ]
 <p>Tail-f built a service provisioning platform. Yeah, I know, that's a boring topic, we've seen so many of them - they are either too simplistic to be useful, or too expensive and require as much customization as a typical SAP deployment (read: it stays forever in the "almost done" state and you never get rid of the consultants). What's interesting is the way Tail-f approached the problem.</p>
 <p>Network Control System describes services you want to offer in your network in YANG. It has a large library of device models (routers, switches, firewalls, load balancers …) also described in YANG. Their "magic glue" ties the two - when you deploy a new service for a customer, NCS automatically figures out what needs to be done in individual devices. No surprises there; I would use the same architecture.</p>
 <p>Tail-f realized they have to live in real world if they want to make real-life revenue from real service providers. NCS thus doesn't rely on OpenFlow or any other emerging technology but supports a very wide range of device configuration mechanisms, including OpenFlow, NETCONF, SNMP (yes, there are still boxes out there using the Wellfleet model of SNMP-based configuration) and CLI. No real surprises there either; they're smart realistic Swedes.</p>
-<p>As one would expect, NCS offers web-based UI and numerous northbound APIs (NETCONF, REST, Java) … but also a network-wide CLI. Imagine being able to configure the services on the whole network (not just on the switches like you can do with <a href="/2012/09/qfabric-behind-curtain-i-was-spot-on.html">QFabric</a>) through a single CLI management point, and being able to do diffs to figure out what changed - network wide. How cool is that?</p>
+<p>As one would expect, NCS offers web-based UI and numerous northbound APIs (NETCONF, REST, Java) … but also a network-wide CLI. Imagine being able to configure the services on the whole network (not just on the switches like you can do with <a href="/2012/09/qfabric-behind-curtain-i-was-spot-on/">QFabric</a>) through a single CLI management point, and being able to do diffs to figure out what changed - network wide. How cool is that?</p>
 <p>However, what really astonished me was a single implementation detail: once you create a new service (using whichever northbound configuration mechanism), NCS configures the network devices in an all-or-nothing (ACID) transaction using two-phase commit and doing full rollback if a single device configuration fails. Network-wide ACID transactions? Wow.</p>
 <p>Want to know more? Me too. I'm currently waiting for Carl to send me more details; expect more blog posts once I digest them.</p>
 

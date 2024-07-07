@@ -11,7 +11,7 @@ tags:
 - WAN
 - high availability
 title: Public Cloud Cannot Change the Laws of Physics
-url: /2020/01/public-cloud-cannot-change-laws-of.html
+url: /2020/01/public-cloud-cannot-change-laws-of/
 ---
 Listening to public cloud evangelists and marketing departments of vendors selling over-the-cloud networking solutions or multi-cloud orchestration systems, you could start to believe that migrating your workload to a public cloud would solve all your problems... and if you're gullible enough to listen to them, you'll get the results you deserve.
 
@@ -19,7 +19,7 @@ Unfortunately, nothing can change the fundamental laws of physics, networking, o
 <!--more-->
 -   **Latency** remains a performance killer, and if you replace sub-millisecond latency you get within your data center with several milliseconds typical of hybrid cloud deployments, the performance of your applications will inevitably plummet;
 -   **Bandwidth** is still limited and [more expensive than you think](http://blog.thestateofme.com/2019/12/12/the-great-bandwidth-swindle/);
--   [**Data has mass and gravity**](/2013/05/data-has-mass-and-gravity.html), and the location of data usually dictates the location of compute infrastructure. In other words, you can't move to the cloud and leave your data behind.
+-   [**Data has mass and gravity**](/2013/05/data-has-mass-and-gravity/), and the location of data usually dictates the location of compute infrastructure. In other words, you can't move to the cloud and leave your data behind.
 
 Then there are so-called soft skills. You can either master a new environment, or try to use it the way you handled the old one (example: using a screwdriver as a hammer). Organizations believing they can simply migrate their existing workloads into public clouds are usually rewarded with outlandish bills.
 

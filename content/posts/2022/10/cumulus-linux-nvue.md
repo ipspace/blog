@@ -9,7 +9,7 @@ tags:
 - Cumulus Linux
 title: 'Cumulus Linux NVUE: an Incomplete Data Model'
 ---
-A few weeks ago I described how Cumulus Linux tried to ~~put lipstick on a pig~~ [reduce the Linux data plane configuration pains](/2022/09/linux-data-plane-configuration.html) with [Network Command Line Utility](/2022/09/cumulus-nclu.html). NCLU is a thin shim that takes CLI arguments, translates them into *FRR* or *ifupdown* configuration syntax, and updates the configuration files (similar to what Ansible is doing with ***something*\_config** modules).
+A few weeks ago I described how Cumulus Linux tried to ~~put lipstick on a pig~~ [reduce the Linux data plane configuration pains](/2022/09/linux-data-plane-configuration/) with [Network Command Line Utility](/2022/09/cumulus-nclu/). NCLU is a thin shim that takes CLI arguments, translates them into *FRR* or *ifupdown* configuration syntax, and updates the configuration files (similar to what Ansible is doing with ***something*\_config** modules).
 
 Obviously that wasn't good enough. [Cumulus Linux 4.4 introduced NVIDIA User Experience](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-44/System-Configuration/NVIDIA-User-Experience-NVUE/)[^NV] -- a full-blown configuration engine with its own data model and REST API[^NNC].
 <!--more-->
@@ -94,7 +94,7 @@ Well, as always there's an ugly workaround -- you can use [NVUE snippets](https:
 
 [^OTF]: ... or any other text file if you like editing files through REST API
 
-[^CNC]: [Other vendors aren't much better](/2018/01/use-yang-data-models-to-configure.html)
+[^CNC]: [Other vendors aren't much better](/2018/01/use-yang-data-models-to-configure/)
 
 [^NXOS]: The whole thing reminds me of early NETCONF on Cisco Nexus OS that produced **show** printout in text format... but nicely wrapped in XML envelope.
 

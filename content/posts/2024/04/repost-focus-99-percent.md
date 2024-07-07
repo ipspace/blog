@@ -3,7 +3,7 @@ title: "Repost: Think About the 99% of the Users"
 date: 2024-04-25 08:37:00+0100
 tags: [ design ]
 ---
-Daniel left a [very relevant comment](/2024/03/fabric-designs-size-matters.html#2132) on my [Data Center Fabric Designs: Size Matters](/2024/03/fabric-designs-size-matters.html) blog post, describing how everyone rushes to sell the newest gizmos and technologies to the unsuspecting (and sometimes too-awed) users[^ABC]:
+Daniel left a [very relevant comment](/2024/03/fabric-designs-size-matters/#2132) on my [Data Center Fabric Designs: Size Matters](/2024/03/fabric-designs-size-matters/) blog post, describing how everyone rushes to sell the newest gizmos and technologies to the unsuspecting (and sometimes too-awed) users[^ABC]:
 
 [^ABC]: I let Grammarly do a bit of a cleanup.
 ---
@@ -18,4 +18,4 @@ And what are we all talking about? The new stuff for the 1%. It takes years for 
 
 ---
 
-Speaking of BGP: did you know that most data center fabrics ([including early AWS fabrics](https://medium.com/the-elegant-network/what-ive-learned-about-scaling-ospf-in-datacenters-7100c33ce63c)) are [small enough to run OSPF as the IGP](/2018/05/is-ospf-or-is-is-good-enough-for-my.html), and that you can [build VXLAN-based L2VPN without EVPN](/2022/09/mlag-bridging-evpn.html)?
+Speaking of BGP: did you know that most data center fabrics ([including early AWS fabrics](https://medium.com/the-elegant-network/what-ive-learned-about-scaling-ospf-in-datacenters-7100c33ce63c)) are [small enough to run OSPF as the IGP](/2018/05/is-ospf-or-is-is-good-enough-for-my/), and that you can [build VXLAN-based L2VPN without EVPN](/2022/09/mlag-bridging-evpn/)?

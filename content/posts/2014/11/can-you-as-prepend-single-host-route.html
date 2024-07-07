@@ -1,5 +1,5 @@
 ---
-url: /2014/11/can-you-as-prepend-single-host-route.html
+url: /2014/11/can-you-as-prepend-single-host-route/
 title: "Can You AS-Prepend a Single Host Route?"
 date: "2014-11-28T11:18:00.000+01:00"
 tags: [ Internet,BGP ]
@@ -7,15 +7,15 @@ tags: [ Internet,BGP ]
 
 <p>Someone recently sent me this question:</p>
 <blockquote class="cite">Is it possible to prepend one IP address from a public IPv4 segment?</blockquote>
-<p>I don’t want to know what <a href="/2013/08/temper-your-macgyver-streak.html">crazy stunt</a> this engineer was forced to pull off, but just in case you land in a similar quandary here’s how you shoelace yourself out of it.<!--more--></p>
+<p>I don’t want to know what <a href="/2013/08/temper-your-macgyver-streak/">crazy stunt</a> this engineer was forced to pull off, but just in case you land in a similar quandary here’s how you shoelace yourself out of it.<!--more--></p>
 <p class="warn">Before going into details, do remember that even if you know how to do something, it’s sometimes not recommended (or wise or safe) to do it. You’ve been warned.</p>
-<ul class="ListParagraph"><li>You can apply <a href="/2008/02/bgp-essentials-as-path-prepending.html">BGP AS-path prepending</a> to a route that’s present in the router’s BGP table. To be able to prepend a host prefix, we have to get the host prefix into the BGP table first.</li>
-<li>To get an IP prefix into the BGP table, it has to be present in the IP routing table first. After you get the IP prefix into the IP routing table you can <a href="/2011/08/road-to-complex-designs-is-paved-with.html">use <strong>network </strong>statement or <strong>redistribute </strong>command</a> to insert it into the BGP table.</li>
-<li>There are numerous tricks to get a host route into the IP routing table. You could configure a loopback interface on the server and run OSPF with it, use a static route that points to another IP address on that same server (probably even to the same IP address if you specify outgoing interface in the IP static route), use Route Health Injection on a load balancer, or try your luck at internetworking archeology and dig out <a href="/2012/08/mobile-arp-in-enterprise-networks.html">mobile ARP</a>.</li>
+<ul class="ListParagraph"><li>You can apply <a href="/2008/02/bgp-essentials-as-path-prepending/">BGP AS-path prepending</a> to a route that’s present in the router’s BGP table. To be able to prepend a host prefix, we have to get the host prefix into the BGP table first.</li>
+<li>To get an IP prefix into the BGP table, it has to be present in the IP routing table first. After you get the IP prefix into the IP routing table you can <a href="/2011/08/road-to-complex-designs-is-paved-with/">use <strong>network </strong>statement or <strong>redistribute </strong>command</a> to insert it into the BGP table.</li>
+<li>There are numerous tricks to get a host route into the IP routing table. You could configure a loopback interface on the server and run OSPF with it, use a static route that points to another IP address on that same server (probably even to the same IP address if you specify outgoing interface in the IP static route), use Route Health Injection on a load balancer, or try your luck at internetworking archeology and dig out <a href="/2012/08/mobile-arp-in-enterprise-networks/">mobile ARP</a>.</li>
 </ul>
-<p class="info">Enterasys has a <a href="/2013/08/enterasys-host-routing-optimal-l3.html">fully supported feature</a> similar to mobile ARP on their data center switches.</p>
-<ul class="ListParagraph"><li>Now that you managed to get the host route into the BGP table, create a prefix list to match it, and <a href="/2011/10/bgp-and-route-maps.html">use the prefix list in a route-map</a> to do all the prepending you want to do.</li>
+<p class="info">Enterasys has a <a href="/2013/08/enterasys-host-routing-optimal-l3/">fully supported feature</a> similar to mobile ARP on their data center switches.</p>
+<ul class="ListParagraph"><li>Now that you managed to get the host route into the BGP table, create a prefix list to match it, and <a href="/2011/10/bgp-and-route-maps/">use the prefix list in a route-map</a> to do all the prepending you want to do.</li>
 </ul>
-<p>On, and don’t forget that most ISPs won’t be too happy to see your /32 in their BGP table, so talk with your ISP first, and make sure you <a href="/2012/10/setting-no-export-bgp-community.html">tag the host route with <strong>no-export </strong>community</a> so you don’t pollute the global Internet with your tricks.</p>
+<p>On, and don’t forget that most ISPs won’t be too happy to see your /32 in their BGP table, so talk with your ISP first, and make sure you <a href="/2012/10/setting-no-export-bgp-community/">tag the host route with <strong>no-export </strong>community</a> so you don’t pollute the global Internet with your tricks.</p>
 <p class="note">MPLS/VPN networks are a different story, MPLS/VPN providers care only about the number of routes you insert into the VPN. Find out the maximum and have a party ;)</p>
 

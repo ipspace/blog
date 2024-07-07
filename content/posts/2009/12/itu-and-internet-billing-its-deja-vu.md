@@ -3,7 +3,7 @@ date: 2009-12-21 06:52:00+01:00
 tags:
 - Internet
 title: 'ITU and Internet Billing: It’s a Déjà-Vu All Over Again'
-url: /2009/12/itu-and-internet-billing-its-deja-vu.html
+url: /2009/12/itu-and-internet-billing-its-deja-vu/
 ---
 My friend [Stretch](http://packetlife.net/blog/) alerted me to an [article published by BBC News](http://news.bbc.co.uk/2/hi/uk_news/politics/8417680.stm), which reports that "an EU cyber security expert" told "a House of Lords committee" (wow, that's the perfect body to deal with Internet issues) that the proposal submitted by Chinese to an ITU-T study group required "modifications to BGP" which would "threaten the stability of the entire Internet."
 
@@ -13,7 +13,7 @@ I've [tried to get to the source](http://www.itu.int/md/T09-SG03-090921/sum/en),
 
 OK, let's try to figure out what we can:
 
-**(A) What does ITU have to do with Internet billing?** Nothing at all, but (as I've [pointed out in my previous ITU-related post](/2009/11/itu-grabbing-piece-of-ipv6-pie.html)), with their precious crown jewels (ISDN, ATM) losing importance, they're trying to get their fingers into another juicy pie that will justify having more standardization meetings.
+**(A) What does ITU have to do with Internet billing?** Nothing at all, but (as I've [pointed out in my previous ITU-related post](/2009/11/itu-grabbing-piece-of-ipv6-pie/)), with their precious crown jewels (ISDN, ATM) losing importance, they're trying to get their fingers into another juicy pie that will justify having more standardization meetings.
 
 **(B) What could be the technical background?** None. As [Roland Dobbins was quick to point out](http://seclists.org/nanog/2009/Dec/624), anyone with a basic understanding of how BGP and Netflow work would realize immediately that the Chinese could get whatever traffic/billing data they want with the existing technology. Anyone familiar with the basics of BGP attributes (and extended BGP communities) would also realize that you can easily add new communities to BGP routes without upsetting anyone else. The whole shenanigan (from the Chinese as well as the EU security expert) is a smokescreen for something else.
 

@@ -3,7 +3,7 @@ date: 2007-11-29 07:37:00+01:00
 tags:
 - BGP
 title: BGP Fast Session Deactivation
-url: /2007/11/bgp-fast-session-deactivation.html
+url: /2007/11/bgp-fast-session-deactivation/
 ---
 We all know that BGP is meant to converge slowly... well, the MPLS/VPN service providers tend to disagree, as their users are not used to minute-long convergence times. One of the major components of slow BGP convergence is the time it takes a router to discover that a neighbor has disappeared. Traditionally, the BGP keepalive packets were sent every minute and it took up to three minutes to discover that a neighbor is down.
 

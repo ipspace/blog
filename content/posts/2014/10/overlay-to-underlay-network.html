@@ -4,7 +4,7 @@ tags:
 - overlay networks
 - QoS
 title: 'Overlay-to-Underlay Network Interactions: Document Your Hidden Assumptions'
-url: /2014/10/overlay-to-underlay-network.html
+url: /2014/10/overlay-to-underlay-network/
 ---
 
 <p>If you listen to the marketing departments of overlay virtual networking vendors, it looks like the world is a simple place: you deploy their solution on top of any IP fabric, and it all works.</p>
@@ -17,12 +17,12 @@ url: /2014/10/overlay-to-underlay-network.html
 <p><strong>Assumption#2</strong>: The fabric has enough bandwidth.</p>
 <p><strong>Corollary#2</strong>: We can ignore QoS.</p>
 <p>A leaf-and-spine fabric nicely fits these requirements assuming (see, even more assumptions):</p>
-<ul class="ListParagraph"><li><a href="/2013/02/the-saga-of-oversubscriptions.html">Leaf-to-spine oversubscription</a> is not too high;</li>
-<li><a href="/2014/06/mice-elephants-and-virtual-switches.html">Elephant flows</a> (example: backup) don’t interfere with mice flows (user traffic).</li>
+<ul class="ListParagraph"><li><a href="/2013/02/the-saga-of-oversubscriptions/">Leaf-to-spine oversubscription</a> is not too high;</li>
+<li><a href="/2014/06/mice-elephants-and-virtual-switches/">Elephant flows</a> (example: backup) don’t interfere with mice flows (user traffic).</li>
 </ul>
-<p>Tangential note on QoS: the only scalable way to do it is to mark traffic in end-user VMs or on the <a href="/2013/09/overlay-networks-and-qos-fud.html">virtual switches</a>, and we know how well that works in most environments. Within a single leaf-and-spine fabric it’s easier, and probably cheaper in the long term, to <a href="/2014/06/can-we-just-throw-more-bandwidth-at.html">throw more bandwidth at the problem</a>.</p>
+<p>Tangential note on QoS: the only scalable way to do it is to mark traffic in end-user VMs or on the <a href="/2013/09/overlay-networks-and-qos-fud/">virtual switches</a>, and we know how well that works in most environments. Within a single leaf-and-spine fabric it’s easier, and probably cheaper in the long term, to <a href="/2014/06/can-we-just-throw-more-bandwidth-at/">throw more bandwidth at the problem</a>.</p>
 <p>If you deploy an overlay virtual networking solution on an equidistant IP fabric, and manage to separate the storage traffic from the VM traffic (EVO:RAIL uses different uplinks for VSAN and VM traffic for a reason), you’ll do just fine. If you transport storage and VM traffic on the same server uplinks, the hidden assumptions start breaking down, although some baseline QoS on the server uplinks will probably save the day.</p>
 <p class="info">Before you start claiming that transporting VM and VSAN traffic on separate uplinks creates two SPOFs, dig into vSphere manuals and figure out how you can solve that challenge with <em>failover policy </em>on port groups.<em> </em></p>
-<p>Traditional three tier data center architectures aren’t equidistant, so expect some problems there… and do I even have to mention how well overlay virtual networks stretched over a DCI link work in practice? See also <a href="/2014/10/bad-ideas-and-abominations.html">Bad Ideas</a>.</p>
+<p>Traditional three tier data center architectures aren’t equidistant, so expect some problems there… and do I even have to mention how well overlay virtual networks stretched over a DCI link work in practice? See also <a href="/2014/10/bad-ideas-and-abominations/">Bad Ideas</a>.</p>
 <h4>If Everything Else Fails, Read the Manual</h4><p>The <em>hidden assumptions </em>are not so hidden. They’re pretty well documented in <a href="https://communities.vmware.com/servlet/JiveServlet/previewBody/27611-102-2-37003/NSX-MH-DesignGuidev4.2_Final.pdf"><em>NSX for Multiple Hypervisors Design Guide</em></a> and <a href="https://communities.vmware.com/servlet/JiveServlet/previewBody/27683-102-3-37383/NSXvSphereDesignGuidev2.1.pdf"><em>NSX for vSphere Design Guide</em></a>, but I guess one cannot expect keynote speakers, marketers, and other people with loud opinions to bother with technical details.</p>
 

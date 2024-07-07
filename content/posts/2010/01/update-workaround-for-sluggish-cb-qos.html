@@ -1,11 +1,11 @@
 ---
-url: /2010/01/update-workaround-for-sluggish-cb-qos.html
+url: /2010/01/update-workaround-for-sluggish-cb-qos/
 title: "Update: workaround for sluggish CB-QoS MIB"
 date: "2010-01-27T07:01:00.001+01:00"
 tags: [ QoS,EEM ]
 ---
 
-<p>More than a year ago, I wrote about the <a href="/2008/12/this-is-qos-who-cares-about-real-time.html">very slow update rate of the variables in the CB-QoS MIB</a>. In August <a href="/2008/12/this-is-qos-who-cares-about-real-time.html"><em>WB</em> found a workaround</a> (do a <strong>show policy-map interface </strong>before reading the counters) and now Jared has tested it and confirmed that it works. He’s configured a simple EEM applet that executes the <strong>show </strong>command once per second:</p>
+<p>More than a year ago, I wrote about the <a href="/2008/12/this-is-qos-who-cares-about-real-time/">very slow update rate of the variables in the CB-QoS MIB</a>. In August <a href="/2008/12/this-is-qos-who-cares-about-real-time/"><em>WB</em> found a workaround</a> (do a <strong>show policy-map interface </strong>before reading the counters) and now Jared has tested it and confirmed that it works. He’s configured a simple EEM applet that executes the <strong>show </strong>command once per second:</p>
 <pre class="code">event manager applet UpdateMibTables <br/>event timer watchdog time 1 <br/>action 1.0 cli command "enable" <br/>action 2.0 cli command "show policy-map int dialer0" </pre><p>With this fix, he can use the SNMP variables in other EEM applets to <a href="http://www.xmission.com/~hidden/aatqos/">detect VoIP calls within 1-2 seconds</a>.</p>
 <p class="more">Don’t forget: numerous EEM topics are described in the <a href="https://www.ipspace.net/Embedded_Event_Manager_(EEM)_Workshop"><span>Embedded Event Manager (EEM) workshop</span></a>. You can attend an online version of the workshop; we can also organize a dedicated event for your networking team.</p>
 

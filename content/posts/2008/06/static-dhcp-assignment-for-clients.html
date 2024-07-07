@@ -1,13 +1,13 @@
 ---
-url: /2008/06/static-dhcp-assignment-for-clients.html
+url: /2008/06/static-dhcp-assignment-for-clients/
 title: "Static DHCP assignment for clients without client-id"
 date: "2008-06-25T07:21:00.000+02:00"
 tags: [ DHCP ]
 ---
 
-<div class="bloggerBody"><p>A while ago I've installed Fedora Linux on one of my workstations and spent enormous amount of time trying to give it a static IP address from the Cisco IOS DHCP server. I though I was the only one dumb enough to have this problem, so I didn’t document my solution, but then <a href="/2007/09/assigning-server-ip-addresses-with-dhcp.html?showComment=1210935300000">one of the readers made a comment</a> to the <a href="/2007/09/assigning-server-ip-addresses-with-dhcp.html?showComment=1210935300000">Assigning server IP addresses with DHCP</a> post describing almost identical symptoms:</p>
+<div class="bloggerBody"><p>A while ago I've installed Fedora Linux on one of my workstations and spent enormous amount of time trying to give it a static IP address from the Cisco IOS DHCP server. I though I was the only one dumb enough to have this problem, so I didn’t document my solution, but then <a href="/2007/09/assigning-server-ip-addresses-with-dhcp/#comments">one of the readers made a comment</a> to the <a href="/2007/09/assigning-server-ip-addresses-with-dhcp/#comments">Assigning server IP addresses with DHCP</a> post describing almost identical symptoms:</p>
 <blockquote class="cite">I have a hp2300n and I want to make a static IP assignment with DHCP. Nothing is working: hardware-address, client-identifier, no prepend, 01 prepend, 00 prepend.</blockquote>
 <p>In my case, the Fedora DHCP client did not send any DHCP client-ID in the DHCPREQUEST message. One would think that the IOS DHCP server would use the MAC address as the client-ID, but that's not the case. You have to configure the <strong>hardware-address </strong>parameter in the host DHCP pool to match the MAC address of the DHCP client with the pool and the static IP address:</p>
 <pre class="code">ip dhcp pool fedi<br/>   host 192.168.200.206 255.255.255.240<br/>   <span class="high">hardware-address 000f.fe83.bca9</span><br/>   dns-server 208.67.220.220 208.67.222.222</pre></div>
-<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.</p>
+<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>
 

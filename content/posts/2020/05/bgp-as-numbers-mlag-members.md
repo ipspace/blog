@@ -35,4 +35,4 @@ Regardless of which design you choose, you still need BGP peering between MLAG m
 * Explore [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar
 * If you're interested in deploying EVPN in your data center fabric, I can highly recommend the [EVPN Technical Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar
 
-Need even more details? Explore our _[BGP in Data Center Fabrics ](/series/dcbgp.html)_ series.
+Need even more details? Explore our _[BGP in Data Center Fabrics ](/series/dcbgp/)_ series.

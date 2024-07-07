@@ -11,7 +11,7 @@ You need both. RPKI is slowly becoming the baseline of global routing hygiene (l
 <!--more-->
 {{<note info>}}Things will get even better when we start using ASPA and eventually BGPsec. For a good overview of the differences between the two read the [Fastly comments to FCC Secure Internet Routing inquiry](https://sobornost.net/~job/fastly-fcc-noi-secure-internet-routing-reply-comments-20220510-201259363-pdf.pdf) by Job Snijders.{{</note>}}
 
-If you’re providing content or e-commerce services from your own infrastructure, you SHOULD read and implement [MANRS recommendations for CDN/cloud providers](https://www.manrs.org/cdn-cloud-providers/), in particular if you care about a clueless fat-fingered router configurator accidentally advertising your IP address space (even better: [more-specific prefixes](/2019/07/rant-some-internet-service-providers.html)) to the global Internet.
+If you’re providing content or e-commerce services from your own infrastructure, you SHOULD read and implement [MANRS recommendations for CDN/cloud providers](https://www.manrs.org/cdn-cloud-providers/), in particular if you care about a clueless fat-fingered router configurator accidentally advertising your IP address space (even better: [more-specific prefixes](/2019/07/rant-some-internet-service-providers/)) to the global Internet.
 
 If you’re an ISP, then you MUST consider [MANRS for Network Operators](https://www.manrs.org/netops/). Obviously you could also pretend you don't need Internet routing security and blame everyone else[^T1] (as in: The Internet is down today)... until your customers discover The Internet still works for everyone using your competitor.
 

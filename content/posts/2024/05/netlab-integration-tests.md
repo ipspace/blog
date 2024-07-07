@@ -6,7 +6,7 @@ tags: [ automation, netlab ]
 series: [ cicd ]
 cicd_tag: testing
 ---
-Many network automation solutions generate device configurations from a data model and deploy those configurations. Last week, we focused on "*[how do we know the device data model is correct?](/2024/05/network-automation-testing.html)*" This time, we'll take a step further and ask ourselves, "*how do we know the device configurations work as expected?*"
+Many network automation solutions generate device configurations from a data model and deploy those configurations. Last week, we focused on "*[how do we know the device data model is correct?](/2024/05/network-automation-testing/)*" This time, we'll take a step further and ask ourselves, "*how do we know the device configurations work as expected?*"
 
 There are four (increasingly complex) questions our tests should answer:
 <!--more-->
@@ -17,7 +17,7 @@ There are four (increasingly complex) questions our tests should answer:
 
 **Checking configuration templates** seems easy:
 
-* Create some sample device data models. While you could create them by hand, using the results of a [data model transformation process](/2021/02/data-model-transformation.html) is a much better approach.
+* Create some sample device data models. While you could create them by hand, using the results of a [data model transformation process](/2021/02/data-model-transformation/) is a much better approach.
 * Run the device data models through configuration templates and report any errors.
 
 While that approach catches most syntax errors[^TSE], it might not catch misspelled variable names or errors in never executed expressions. To ensure flawless configuration templates (from the template language perspective), you must identify all potential code paths and create input data that triggers them all.
@@ -42,9 +42,9 @@ Please remove all ip ospf area x.x.x.x commands first.
 
 You could try to weasel out of this corner by configuring the device and comparing its running configuration with what you tried to configure. Congratulations, you just opened another massive can of worms: default settings that do not appear in device configurations and that might change across software versions.
 
-Compared to the above, **deploying device configurations** seems like a piece of cake until you encounter [yet another Ansible quirk](/2020/12/ansible-config-sections.html)[^ANS] and either decide to *force Ansible to deploy what you want because you know better* or *create a complex choreography that will persuade Ansible to deploy what you need.* Anyhow, moving on...
+Compared to the above, **deploying device configurations** seems like a piece of cake until you encounter [yet another Ansible quirk](/2020/12/ansible-config-sections/)[^ANS] and either decide to *force Ansible to deploy what you want because you know better* or *create a complex choreography that will persuade Ansible to deploy what you need.* Anyhow, moving on...
 
-[^ANS]: Sadly, Ansible remains the only tool with configuration deployment modules for a vast variety of platforms. If you work with a small number of platforms, check out [Napalm, Nornir](/2019/09/paramiko-netmiko-napalm-or-nornir.html) or [Scrapli](https://carlmontanari.github.io/scrapli/).
+[^ANS]: Sadly, Ansible remains the only tool with configuration deployment modules for a vast variety of platforms. If you work with a small number of platforms, check out [Napalm, Nornir](/2019/09/paramiko-netmiko-napalm-or-nornir/) or [Scrapli](https://carlmontanari.github.io/scrapli/).
 
 The true test of your configuration generation and deployment code is "_**Does it work in a real network**?_" That's hard[^TM]; here's what worked for us when developing _netlab_ [integration tests](https://github.com/ipspace/netlab/tree/dev/tests/integration):
 
@@ -69,7 +69,7 @@ Multiple devices failed to provide IPv6 connectivity between the hosts. When I i
 
 After realizing that, I restructured the [tests performed in this simple scenario](https://github.com/ipspace/netlab/blob/632e3c7c3da378eb289fa57921542d29c8d4ef1e/tests/integration/initial/01-interfaces.yml#L29) from *ping over IPv4 and IPv6* into:
 
-* Ping over IPv4. This should never fail unless we're dealing with a device with a [broken data plane](/2024/05/too-stupid-to-make-it-work.html).
+* Ping over IPv4. This should never fail unless we're dealing with a device with a [broken data plane](/2024/05/too-stupid-to-make-it-work/).
 * Check for the presence of the IPv6 default route on both hosts[^TPI]. This one caused the most failures (all are fixed now).
 * Ping over IPv6. This should not fail if the hosts have an IPv6 default route.
 

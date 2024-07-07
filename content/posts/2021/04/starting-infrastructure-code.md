@@ -9,9 +9,9 @@ One of my readers sent me a series of "*how do I get started with...*" questions
 
 > I've been doing networking and security for 5 years, and now I am responsible for our cloud infrastructure. Anything to do with networking and security in the cloud is my responsibility along with another team member. It is all good experience but I am starting to get concerned about not knowing automation, IaC, or any programming language.
 
-No need to worry about that, what you need (to start with) is extremely simple and easy-to-master. [Infrastructure-as-Code](/series/niac.html) is a simple concept: infrastructure configuration is defined in machine-readable format (mostly text files these days) and used by a remediation tool like Terraform that compares the actual state of the deployed infrastructure with the desired state as defined in the configuration files, and makes changes to the actual state to bring it in line with how it should look like.
+No need to worry about that, what you need (to start with) is extremely simple and easy-to-master. [Infrastructure-as-Code](/series/niac/) is a simple concept: infrastructure configuration is defined in machine-readable format (mostly text files these days) and used by a remediation tool like Terraform that compares the actual state of the deployed infrastructure with the desired state as defined in the configuration files, and makes changes to the actual state to bring it in line with how it should look like.
 <!--more-->
-Cloud automation using infrastructure-as-code concepts is infinitely simpler than generic network automation. You’re using a single tool interacting with a single consistent orchestration system over a well-defined REST API interface, and the orchestration system returns data in usable (JSON) format. When dealing with generic network automation, you’re working with numerous devices, most of them using a [broken user interface](/series/cli.html) (called CLI) that often can’t even execute consistent all-or-nothing transactions.
+Cloud automation using infrastructure-as-code concepts is infinitely simpler than generic network automation. You’re using a single tool interacting with a single consistent orchestration system over a well-defined REST API interface, and the orchestration system returns data in usable (JSON) format. When dealing with generic network automation, you’re working with numerous devices, most of them using a [broken user interface](/series/cli/) (called CLI) that often can’t even execute consistent all-or-nothing transactions.
 
 Back to automating cloud deployments with infrastructure-as-code (and we have a Buzzword Bingo Winner). Instead of chasing cloud configuration (virtual machines, disks, images, interface cards, virtual networks, subnets, access control lists, firewall settings…) through a GUI, create a text file (or a bunch of them) that defines how those objects should be configured, and mimicking Captain Picard use something like Terraform to make it so.
 
@@ -23,7 +23,7 @@ Bonus points if you go one step further: every time someone submits changes to t
 
 ## Using ipSpace.net Content to Get Started
 
-I wrote numerous blog posts about infrastructure-as-code principles, and collected them [here](/series/niac.html). I also made it part of the [Network Automation Concepts webinar](https://www.ipspace.net/Network_Automation_Concepts).
+I wrote numerous blog posts about infrastructure-as-code principles, and collected them [here](/series/niac/). I also made it part of the [Network Automation Concepts webinar](https://www.ipspace.net/Network_Automation_Concepts).
 
 [AWS](https://www.ipspace.net/Amazon_Web_Services_Networking) and [Azure](https://www.ipspace.net/Microsoft_Azure_Networking) webinars include automation section, so you’ll find some basic ideas there, and we created a [GitHub repository](https://github.com/ipspace/pubcloud) with tons of examples using  Ansible, Terraform, and cloud-specific tools like CloudFormation templates (AWS) and Resource Manager Templates (Azure).
 

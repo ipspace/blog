@@ -6,7 +6,7 @@ netlab_tag: use
 ---
 I created a [*netlab* topology](https://github.com/ipspace/netlab-examples/tree/master/BGP/Route-Leaks) you can use to practice BGP security tools I described in the [Internet Routing Security](https://www.ipspace.net/Internet_Routing_Security) webinar:
 
-* The lab topology mirrors the sample topology I described in the [Classification of BGP Route Leaks (RFC 7908)](/2023/06/bgp-route-leak-classification.html) blog post with one router per autonomous system
+* The lab topology mirrors the sample topology I described in the [Classification of BGP Route Leaks (RFC 7908)](/2023/06/bgp-route-leak-classification/) blog post with one router per autonomous system
 * BGP is configured on all devices, and EBGP sessions are set up between all directly-connected devices.
 <!--more-->
 {{<figure src="/2023/06/leak-practice-lab.png" caption="Lab topology (unfortunately turned around)">}}

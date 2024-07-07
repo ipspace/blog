@@ -2,7 +2,7 @@
 kb_section: QuantumCrypto
 minimal_sidebar: true
 title: Hype and Reality
-url: /kb/QuantumCrypto/040-hype.html
+url: /kb/QuantumCrypto/040-hype/
 ---
 Not surprisingly, vendor marketing teams don't always get it right when talking about Quantum Key Distribution (QKD) or Quantum Random Number Generators (QRNG).
 

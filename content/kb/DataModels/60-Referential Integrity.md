@@ -3,7 +3,7 @@ kb_section: DataModels
 minimal_sidebar: true
 pre_scroll: true
 title: Object Identifiers and Referential Integrity
-url: /kb/DataModels/60-Referential Integrity.html
+url: /kb/DataModels/60-Referential Integrity/
 ---
 Even our latest data model contains duplicate data - device names appear in device descriptions and links. For example:
 

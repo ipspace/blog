@@ -2,7 +2,7 @@
 kb_section: CiscoAutomation
 minimal_sidebar: true
 title: Native Web API
-url: /kb/CiscoAutomation/090-native_api.html
+url: /kb/CiscoAutomation/090-native_api/
 ---
 In 2020 every system (including network devices, web applications, ...) should be programmable via API. Actually many vendors say that their product are programmable via API, but that's not always 100% true. In fact many products do not support what I call "complete API".
 
@@ -10,10 +10,7 @@ Legacy products are usually managed via web interface and/or a proprietary CLI i
 
 Let's see an hypothetical example: `show lldp neighbors`
 
-<figure>
-  <img src="090-image1.png">
-  <figcaption>Typical interaction with a CLI-only device</figcaption>
-</figure>
+{{<figure src="../090-image1.png" caption="Typical interaction with a CLI-only device">}}
 
 1. the operator can type a command in a human readable format via CLI
 2. CLI command is translated into low level machine commands
@@ -22,10 +19,7 @@ Let's see an hypothetical example: `show lldp neighbors`
 
 Adding web API to this monolithic system results in an architecture like the following:
 
-<figure>
-  <img src="090-image2.png">
-  <figcaption>Adding web API in front of CLI interface</figcaption>
-</figure>
+{{<figure src="../090-image2.png" caption="Adding web API in front of CLI interface">}}
 
 1. An external application can retrieve LLDP neighbors using a REST API call using HTTP GET request
 2. HTTP GET request is translated into the `show lldp neighbors` CLI command
@@ -38,10 +32,7 @@ This approach allows a fast implementation of REST API on legacy products, but i
 
 Modern products are built around an API-first architecture:
 
-<figure>
-  <img src="090-image3.png">
-  <figcaption>A product with an API-first architecture</figcaption>
-</figure>
+{{<figure src="../090-image3.png" caption="A product with an API-first architecture">}}
 
 Using this approach every interaction is translated to and from REST API which is the only authorized method to interact with the device. It's obvious which method is more complete and less prone to bugs.
 

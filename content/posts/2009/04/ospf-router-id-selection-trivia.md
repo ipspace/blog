@@ -4,7 +4,7 @@ ospf_tag: details
 tags:
 - OSPF
 title: OSPF Router ID Selection Trivia
-url: /2009/04/ospf-router-id-selection-trivia.html
+url: /2009/04/ospf-router-id-selection-trivia/
 ---
 **True or false**: If you have an (enabled) loopback interface configured on the router, its IP address will always be used as the OSPF router ID.
 <!--more-->

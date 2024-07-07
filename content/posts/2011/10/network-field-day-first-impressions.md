@@ -1,6 +1,6 @@
 ---
 cdate: 2022-07-06
-comment: "In just a few months after the [ONF launch](/2011/03/open-networking-foundation-fabric.html),\
+comment: "In just a few months after the [ONF launch](/2011/03/open-networking-foundation-fabric/),\
   \ everyone was talking about OpenFlow and SDN, and Stephen Foskett, the mastermind\
   \ behind GestaltIT, decided to organize the first ever OpenFlow symposium in September\
   \ 2011. \n\nThe vendor and user presentations we’ve seen at that symposium, combined\
@@ -18,7 +18,7 @@ tags:
 - OpenFlow
 - SDN
 title: Network Field Day 2 and OpenFlow Symposium
-url: /2011/10/network-field-day-first-impressions.html
+url: /2011/10/network-field-day-first-impressions/
 ---
 We finished a fantastic [Network Field Day (second edition)](http://techfieldday.com/2011/nfd2/) yesterday. While it will take me a while (and 20+ blog posts) to recover from the information blast I received during the last two days, here are the first impressions:
 
@@ -36,7 +36,7 @@ If you were watching the video stream, you probably got sick and tired of my "wo
 
 **You'll see lots of new things in the future**. Even if you're working in an SMB environment, you might get exposed to OpenFlow in the not-too-distant future (more about that in an upcoming post).
 
-**Get ready for a bumpy ride**. Lots of exciting technologies are being developed. Some of them make perfect sense, some others less so. Some of them might work, some might fade away (not because they would be inherently bad, but because of bad execution). Now is the time to jump on those bandwagons -- get involved (hint: you just might [start with IPv6](/2011/10/do-i-need-ipv6-in-my-enterprise-again.html)), build a test lab, kick the tires, figure out whether the new technologies might be a good fit for your environment when they become stable.
+**Get ready for a bumpy ride**. Lots of exciting technologies are being developed. Some of them make perfect sense, some others less so. Some of them might work, some might fade away (not because they would be inherently bad, but because of bad execution). Now is the time to jump on those bandwagons -- get involved (hint: you just might [start with IPv6](/2011/10/do-i-need-ipv6-in-my-enterprise-again/)), build a test lab, kick the tires, figure out whether the new technologies might be a good fit for your environment when they become stable.
 
 **Full disclosure**. I visited numerous vendors during the Network Field Day and met a few more during the [OpenFlow symposium](http://techfieldday.com/2011/openflow-symposium/). My travel expenses were indirectly paid by those vendors and I received a few USB sticks and T-shirts from those vendors. Apart from that, I was not paid to write about them.
 

@@ -5,7 +5,7 @@ tags:
 - Internet
 - QoS
 title: P2P Traffic Is Bad for the Network
-url: /2010/07/p2p-traffic-is-bad-for-network.html
+url: /2010/07/p2p-traffic-is-bad-for-network/
 ---
 I'm positive you all know that. I also hope that you're making sure it's not hogging your enterprise network. Service Providers are not so fortunate -- some Internet users claim using unlimited amounts of P2P traffic is their birthright. I don't really care what kind of content these users transfer, they are consuming enormous amounts of network resources due to a combination of P2P client behavior (which is clearly "optimized" to grab as much as possible) and the default TCP/QoS interaction.
 <!--more-->

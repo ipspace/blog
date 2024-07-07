@@ -14,7 +14,7 @@ While a small company's network might not warrant a graph-focused approach (I mi
 * Application dependencies
 * Dependencies of application and infrastructure components: application stack on top of vSphere on top of data center fabric and using firewalls and load balancers which are also connected to switches, or virtualized, or... You get the idea.
 
-Just drawing the graphs would help you understand the complexities of your infrastructure (see also: [visualizing IP multicast trees](/2017/12/create-ip-multicast-tree-graphs-from.html))... but once you have the graphs in some machine-readable format, you could start using graph theory and related algorithms.
+Just drawing the graphs would help you understand the complexities of your infrastructure (see also: [visualizing IP multicast trees](/2017/12/create-ip-multicast-tree-graphs-from/))... but once you have the graphs in some machine-readable format, you could start using graph theory and related algorithms.
 
 {{<note>}}Don't even think about creating those graphs by hand. The only sane way to create them is to gather the information (preferably using an automated script), and run it through a data-munging script. That process will also ensure the information is up-to-date or easy to update when you badly need it.{{</note>}}
 

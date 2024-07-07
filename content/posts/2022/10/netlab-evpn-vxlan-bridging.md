@@ -10,7 +10,7 @@ tags:
 - netlab
 title: netlab EVPN/VXLAN Bridging Example
 ---
-[netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netlab.tools/module/vxlan/) and [EVPN control plane](https://netlab.tools/module/evpn/). Last week we [replaced a VLAN trunk with VXLAN transport](/2022/09/netlab-vxlan-bridging.html), now we'll [replace static ingress replication with EVPN control plane](https://github.com/ipspace/netlab-examples/tree/master/EVPN/vxlan-bridging).
+[netlab release 1.3](/2022/09/netlab-1-3/) introduced support for [VXLAN transport with static ingress replication](https://netlab.tools/module/vxlan/) and [EVPN control plane](https://netlab.tools/module/evpn/). Last week we [replaced a VLAN trunk with VXLAN transport](/2022/09/netlab-vxlan-bridging/), now we'll [replace static ingress replication with EVPN control plane](https://github.com/ipspace/netlab-examples/tree/master/EVPN/vxlan-bridging).
 
 {{<figure src="/2022/10/evpn-vxlan-bridging-topology.png" caption="Lab topology">}}
 <!--more-->
@@ -28,7 +28,7 @@ bgp.as: 65000
 
 Behind the scenes *netlab*:
 
-* As in the previous example, [configures OSPF and VXLAN](/2022/09/netlab-vxlan-bridging.html). VXLAN VNIs no longer use the ingress replication lists.
+* As in the previous example, [configures OSPF and VXLAN](/2022/09/netlab-vxlan-bridging/). VXLAN VNIs no longer use the ingress replication lists.
 * Starts BGP process on S1 and S2, and builds an IBGP session between the loopback interfaces.
 * Assigns EVPN RT/RD to every VLAN with a VXLAN VNI.
 * Activates EVPN address family on the IBGP session between S1 and S2.

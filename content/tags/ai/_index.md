@@ -28,7 +28,7 @@ I also decided to "kick the tires" and document my (often less-than-stellar) exp
 
 {{<series-listing tag="video">}}
 
-In 2023, Javier [published a book covering the same set of topics in way more details](/2023/02/machine-learning-network-cloud.html). I would highly recommend you read it if you want to know more.
+In 2023, Javier [published a book covering the same set of topics in way more details](/2023/02/machine-learning-network-cloud/). I would highly recommend you read it if you want to know more.
 
 ### {{<plushy master>}}What Others Are Saying
 

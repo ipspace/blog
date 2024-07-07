@@ -6,9 +6,9 @@ tags:
 - DMVPN
 - EIGRP
 title: 'Solution: EIGRP Summarization Breaks Phase 2 DMVPN'
-url: /2010/10/solution-eigrp-summarization-breaks.html
+url: /2010/10/solution-eigrp-summarization-breaks/
 ---
-Last week I posted an interesting challenge: [what happens if you configure route summarization in a Phase 2 DMVPN network](/2010/10/eigrp-summarization-in-dmvpn-phase-2.html)? The only response came from an anonymous contributor strongly suspected to be a routing/DMVPN expert working for a CCIE-related training company.
+Last week I posted an interesting challenge: [what happens if you configure route summarization in a Phase 2 DMVPN network](/2010/10/eigrp-summarization-in-dmvpn-phase-2/)? The only response came from an anonymous contributor strongly suspected to be a routing/DMVPN expert working for a CCIE-related training company.
 
 The anonymous responder was somewhat cryptic, so let's do a step-by-step explanation. We'll use a simple 3-router network; C1 is hub, R2 and R3 are spokes.
 <!--more-->

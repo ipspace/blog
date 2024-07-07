@@ -6,4 +6,4 @@ minimal_sidebar: true
 ---
 After procrastinating for months, I finally spent a few days cleaning up and organizing OSPF blog posts (it turns out I wrote almost 100 blog posts on the topic in the 18 years of blogging).
 
-{{<jump>}}[Explore the results](/tag/ospf.html){{</jump>}}
+{{<jump>}}[Explore the results](/tag/ospf/){{</jump>}}

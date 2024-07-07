@@ -4,15 +4,15 @@ tags:
 - WAN
 - ADSL
 title: ADSL Reference Diagram
-url: /2009/06/adsl-reference-diagram.html
+url: /2009/06/adsl-reference-diagram/
 lastmod: 2020-12-07 17:01:00
 ---
-I'm getting lots of ADSL QoS questions lately[^1], so it's obviously time to cover this topic. Before going into the QoS details, I want to make sure my understanding of the implications of the [baroque ADSL protocol stack](/2009/03/adsl-overhead.html) is correct.
+I'm getting lots of ADSL QoS questions lately[^1], so it's obviously time to cover this topic. Before going into the QoS details, I want to make sure my understanding of the implications of the [baroque ADSL protocol stack](/2009/03/adsl-overhead/) is correct.
 
 In the most complex case, a DSL service could have up to eight separate components (including the end-user's workstation):
 <!--more-->
 
-{{<figure src="ADSL_Reference_Diagram.png" caption="From end-user to core ISP network: ADSL components">}}
+{{<figure src="/2009/06/ADSL_Reference_Diagram.png" caption="From end-user to core ISP network: ADSL components">}}
 
 1.  End-user workstation sends IP datagrams to the local (CPE) router.
 2.  CPE router runs PPPoE session with the NAS (Network Access Server) and sends Ethernet datagrams to the DSL modem.
@@ -25,11 +25,11 @@ In the most complex case, a DSL service could have up to eight separate componen
 
 I sincerely hope no network is as complex as the above diagram. In most cases, the backhaul would be either completely ATM-based ...
 
-{{<figure src="ADSL_Reference_Diagram_ATM.png" caption="ADSL access network with ATM backhaul">}}
+{{<figure src="/2009/06/ADSL_Reference_Diagram_ATM.png" caption="ADSL access network with ATM backhaul">}}
 
 ... or Ethernet based (when the DSLAM has Ethernet uplink interface):
 
-{{<figure src="ADSL_Reference_Diagram_Ethernet.png" caption="ADSL access network with Ethernet backhaul">}}
+{{<figure src="/2009/06/ADSL_Reference_Diagram_Ethernet.png" caption="ADSL access network with Ethernet backhaul">}}
 
 The NAS could also be adjacent to DSLAM or even integrated in the same chassis.
 

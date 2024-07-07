@@ -8,7 +8,7 @@ tags:
 - data center
 - OpenFlow
 title: OpenFlow Fabric Controllers Are Light-years Away from Wireless Ones
-url: /2013/09/openflow-fabric-controllers-are-light.html
+url: /2013/09/openflow-fabric-controllers-are-light/
 ---
 When talking about OpenFlow and the whole idea of controller-based networking, people usually say "well, it's nothing radically new, we've been using wireless controllers for years and they work well, so the OpenFlow ones will work as well."
 
@@ -26,7 +26,7 @@ Data center fabrics are built from high-speed switches with tens of 10/40GE port
 
 In traditional wireless networks all traffic flows through the controller (there are [some exceptions](http://www.insearchoftech.com/2013/07/21/another-controller-less-wi-fi-solution/), but let's ignore them for the moment). The hub-and-spoke tunnels between the controller and the individual access points carry all the user traffic and the controller is doing all the smart forwarding decisions.
 
-In an OpenFlow-based fabric the controller should do a minimal amount of data-plane decisions (ideally: none) because every time you have to [punt packets to the controller](/2013/03/controller-based-packet-forwarding-in.html), you reduce the overall network performance (not to mention the dismal capabilities of today's switches when they have to do CPU-based packet forwarding across an SSL session).
+In an OpenFlow-based fabric the controller should do a minimal amount of data-plane decisions (ideally: none) because every time you have to [punt packets to the controller](/2013/03/controller-based-packet-forwarding-in/), you reduce the overall network performance (not to mention the dismal capabilities of today's switches when they have to do CPU-based packet forwarding across an SSL session).
 
 ### Amount of Traffic
 

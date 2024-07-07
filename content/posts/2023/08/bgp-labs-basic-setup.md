@@ -5,7 +5,7 @@ date: 2023-08-24 06:40:00
 tags: [ BGP, netlab ]
 netlab_tag: bgplab
 ---
-The first [BGP labs](/2023/08/bgp-hands-on-labs.html) are online. They cover the basic stuff (one has to [start with the basics](/2015/03/you-must-understand-fundamentals-to-be.html), right?):
+The first [BGP labs](/2023/08/bgp-hands-on-labs/) are online. They cover the basic stuff (one has to [start with the basics](/2015/03/you-must-understand-fundamentals-to-be/), right?):
 
 * [Configuring an EBGP session](https://bgplabs.net/basic/1-session/)
 * [Connecting to multiple upstream ISPs](https://bgplabs.net/basic/2-multihomed/)

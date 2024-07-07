@@ -13,7 +13,7 @@ tags:
 - switching
 - OpenFlow
 title: You Don’t Need OpenFlow to Solve Every Age-Old Problem
-url: /2011/09/you-dont-need-openflow-to-solve-every.html
+url: /2011/09/you-dont-need-openflow-to-solve-every/
 ---
 I read two great blog posts on Sunday: evergreen [*Fallacies of Distributed Computing*](http://lonesysadmin.net/2011/09/10/fallacies-of-distributed-computing/) from Bob Plankers and forward-looking [*Understanding Hadoop Clusters and the Network*](https://bradhedlund.com/2011/09/10/understanding-hadoop-clusters-and-the-network/) from Brad Hedlund. Read them both before continuing (they are both great reads) and try to figure out why I'm mentioning them in the same sentence (no, it's not the fact that Hadoop uses distributed computing).
 <!--more-->
@@ -23,7 +23,7 @@ OK, here's the quote that ties them together. While describing *rack awareness* 
 
 The "only" problem with Brad's reasoning is that we already have the tools to do exactly what he's looking for. The magic acronym is [LLDP (802.1AB)](http://standards.ieee.org/getieee802/download/802.1AB-2005.pdf).
 
-**LLDP has been standardized years ago** and is available on numerous platforms, including Catalyst and Nexus switches, and Linux operating system (for example, [lldpad](http://www.open-lldp.org/open-lldp) is part of the standard Fedora distribution). Not to mention that every [DCB](/tag/dcb.html)-compliant switch must support LLDP as the DCBX protocol uses LLDP to advertise DCB settings between adjacent nodes.
+**LLDP has been standardized years ago** and is available on numerous platforms, including Catalyst and Nexus switches, and Linux operating system (for example, [lldpad](http://www.open-lldp.org/open-lldp) is part of the standard Fedora distribution). Not to mention that every [DCB](/tag/dcb/)-compliant switch must support LLDP as the DCBX protocol uses LLDP to advertise DCB settings between adjacent nodes.
 
 **The LLDP MIB is standard** and allows anyone with SNMP read access to discover the exact local LAN topology -- the connected port names, adjacent nodes (and their names), and their management addresses (IPv4 or IPv6). The management addresses that should be present in LLDP advertisements can then be used to expand the topology discovery beyond the initial set of nodes (assuming your switches do include it in LLDP advertisement; for example, NX-OS does but Force10 doesn\'t).
 

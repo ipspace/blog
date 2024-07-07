@@ -6,12 +6,12 @@ tags:
 - cloud
 - overlay networks
 title: Cloud Orchestration System Is an Ideal Controller Use Case
-url: /2014/08/cloud-orchestration-system-is-ideal.html
+url: /2014/08/cloud-orchestration-system-is-ideal/
 ---
 
-<p>A while ago I explained why <a href="/2014/06/is-openflow-best-tool-for-overlay.html">OpenFlow might be a wrong tool for some jobs</a>, and why <a href="/2014/05/does-centralized-control-plane-make.html">centralized control plane might not make sense</a>, and <a href="http://cyberpunkture.net/2014/06/on-centralized-sdn-and-openflow/">quickly got misquoted as saying “controllers don’t scale”</a>. Nothing could be further from the truth, properly architected controller-based architectures can reach enormous scale – Amazon VPC is the best possible example.<!--more--></p>
+<p>A while ago I explained why <a href="/2014/06/is-openflow-best-tool-for-overlay/">OpenFlow might be a wrong tool for some jobs</a>, and why <a href="/2014/05/does-centralized-control-plane-make/">centralized control plane might not make sense</a>, and <a href="http://cyberpunkture.net/2014/06/on-centralized-sdn-and-openflow/">quickly got misquoted as saying “controllers don’t scale”</a>. Nothing could be further from the truth, properly architected controller-based architectures can reach enormous scale – Amazon VPC is the best possible example.<!--more--></p>
 <p class="note">Totally unrelated note to bloggers: please don’t use marketing whitepapers disguised as technical documents as counterarguments in technology-focused discussions. </p>
-<h4>Cloud Orchestration System as Overlay Virtual Networking Controller</h4><p>The orchestration system in an IP-aware IaaS cloud architecture has <a href="/2013/11/layer-2-and-layer-3-switching-in-vmware.html">all the information we need to set up forwarding entries</a> in an overlay virtual networking implementation:</p>
+<h4>Cloud Orchestration System as Overlay Virtual Networking Controller</h4><p>The orchestration system in an IP-aware IaaS cloud architecture has <a href="/2013/11/layer-2-and-layer-3-switching-in-vmware/">all the information we need to set up forwarding entries</a> in an overlay virtual networking implementation:</p>
 <ul class="ListParagraph"><li>Hypervisor-to-VTEP (transport IP address) mapping</li>
 <li>VM-to-hypervisor or container-to-host mapping</li>
 <li>MAC-to-VM or MAC-to-container mapping</li>
@@ -21,7 +21,7 @@ url: /2014/08/cloud-orchestration-system-is-ideal.html
 </ul>
 <p class="info">Dynamic/floating IP addresses and VM mobility might introduce some hiccups into this rosy picture, but let’s ignore them for a moment.</p>
 <p>Some cloud orchestration systems push this information straight into hypervisors (example: Hyper-V System Center Virtual Machine Manager). More scalable architectures replace a single instance of the orchestration system with a scale-out controller cluster relying on back-end database (probably what Amazon VPC and Azure are using). For extra boost in scalability, replace transactional back-end database with eventually consistent distributed database, which is usually good enough in <a href="http://it20.info/2011/04/tcp-clouds-udp-clouds-design-for-fail-and-aws/">large-scale UDP clouds</a> (don't tell me I just reinvented MPLS/VPN - I'm well aware of that analogy ;).</p>
-<p>Other implementations use more convoluted approaches, from layered controllers (example: NSX controller for OpenStack) to centralized control planes (example: Cisco Nexus 1000V). Layered controllers add complexity, but still perform remarkably well as long as they stay on the management plane. The moment a controller starts dealing with the real-time aspects of <a href="/2013/08/management-control-and-data-planes-in.html">control- or data plane</a>, its scalability plummets.</p>
+<p>Other implementations use more convoluted approaches, from layered controllers (example: NSX controller for OpenStack) to centralized control planes (example: Cisco Nexus 1000V). Layered controllers add complexity, but still perform remarkably well as long as they stay on the management plane. The moment a controller starts dealing with the real-time aspects of <a href="/2013/08/management-control-and-data-planes-in/">control- or data plane</a>, its scalability plummets.</p>
 <h4>A Few Data Points</h4><p>What I wrote above should be common sense to anyone who spent time researching or implementing large-scale networking architectures. Do we see the same trend in real-life implementations? Here are some data points from well-known commercial products.</p>
 <p>Products that stay out of the control- and data plane:</p>
 <ul class="ListParagraph"><li>A <a href="http://networkheresy.com/2013/05/30/scale-sdn-and-network-virtualization/">cluster of three NSX controllers can manage up to 3000 hosts</a>, a cluster of five controllers up to 5000 hosts (supported numbers given in NSX release notes are lower, but you get the idea);</li>

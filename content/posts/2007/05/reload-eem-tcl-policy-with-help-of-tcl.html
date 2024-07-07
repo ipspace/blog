@@ -1,5 +1,5 @@
 ---
-url: /2007/05/reload-eem-tcl-policy-with-help-of-tcl.html
+url: /2007/05/reload-eem-tcl-policy-with-help-of-tcl/
 title: "Reload EEM Tcl policy with help of Tcl shell"
 date: "2007-05-28T07:15:00.000+02:00"
 tags: [ Tcl,EEM ]
@@ -10,9 +10,9 @@ Testing Embedded Event Manager (EEM) Tcl policies is a convoluted process:<ul><l
 <li>The new version of the EEM policy has to be registered with EEM with <strong>event manager policy</strong> configuration command</li>
 <li>After all these steps, the new policy can be tested.</li>
 </ul>
-While you can <a href="/2007/03/reload-eem-tcl-policy-with-eem-applet.html">use EEM applet to automate this process</a>, slightly more flexible approach (you can specify the policy name to be replaced) can be implemented with Tcl script:<pre class="code">set policy [lindex $argv 0]<br/>set source "tftp://10.0.0.10/tcl/" # replace with your host and directory<br/>set destination "nvram:" # replace with local storage device<br/>if {[string equal $policy ""]} {<br/>return -code error "expected policy name"<br/>}<br/>puts "replacing policy: $policy"<br/>ios_config "file prompt quiet"<br/>ios_config "no event manager policy $policy" ""<br/>exec "copy $source$policy $destination$policy"<br/>ios_config "event manager policy $policy"<br/>ios_config "no file prompt quiet"</pre>To use the script, follow these steps:<ul><li>Save the script in a .tcl file (for example, changePolicy.tcl)</li>
+While you can <a href="/2007/03/reload-eem-tcl-policy-with-eem-applet/">use EEM applet to automate this process</a>, slightly more flexible approach (you can specify the policy name to be replaced) can be implemented with Tcl script:<pre class="code">set policy [lindex $argv 0]<br/>set source "tftp://10.0.0.10/tcl/" # replace with your host and directory<br/>set destination "nvram:" # replace with local storage device<br/>if {[string equal $policy ""]} {<br/>return -code error "expected policy name"<br/>}<br/>puts "replacing policy: $policy"<br/>ios_config "file prompt quiet"<br/>ios_config "no event manager policy $policy" ""<br/>exec "copy $source$policy $destination$policy"<br/>ios_config "event manager policy $policy"<br/>ios_config "no file prompt quiet"</pre>To use the script, follow these steps:<ul><li>Save the script in a .tcl file (for example, changePolicy.tcl)</li>
 <li>Change the script parameters (remote host and local storage)</li>
-<li>Save the .tcl file to your router's local storage (you can also <a href="/2007/03/running-tcl-procedures-from-command.html">run it from a remote server</a>)</li>
+<li>Save the .tcl file to your router's local storage (you can also <a href="/2007/03/running-tcl-procedures-from-command/">run it from a remote server</a>)</li>
 <li>Configure a command alias, for example <strong>alias exec eem tclsh flash:changePolicy.tcl testPolicy.tcl</strong></li>
 </ul>
 Now you can replace the target EEM Tcl policy with a simple <strong>eem</strong> command.<br/><br/>Alternatively, if you define <strong>alias exec eem tclsh flash:changePolicy.tcl</strong>, you can specify policy name as an argument to the <strong>eem</strong> command, for example <strong>eem testPolicy.tcl</strong>.

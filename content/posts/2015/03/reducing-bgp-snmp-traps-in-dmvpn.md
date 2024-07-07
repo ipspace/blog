@@ -6,9 +6,9 @@ tags:
 - DMVPN
 - BGP
 title: Reducing BGP SNMP Traps in DMVPN Networks
-url: /2015/03/reducing-bgp-snmp-traps-in-dmvpn.html
+url: /2015/03/reducing-bgp-snmp-traps-in-dmvpn/
 ---
-One of my readers decided to [build an extensive DMVPN network with BGP as the WAN routing protocol](/2014/03/scaling-bgp-based-dmvpn-networks.html) (good choice!) and configured BGP SNMP traps with **snmp-server enable traps bgp** command on the hub router to detect spoke router failures. It turns out that's not exactly a good idea.
+One of my readers decided to [build an extensive DMVPN network with BGP as the WAN routing protocol](/2014/03/scaling-bgp-based-dmvpn-networks/) (good choice!) and configured BGP SNMP traps with **snmp-server enable traps bgp** command on the hub router to detect spoke router failures. It turns out that's not exactly a good idea.
 <!--more-->
 While the recent implementation of BGP on Cisco IOS limits the amount of Syslog messages generated when a BGP neighbor is not reachable (a router would generate a logging message when the BGP neighbor is lost and when the BGP session is reestablished), BGP SNMP traps are generated more often -- every time the BGP session state machine changes state -- resulting in hundreds if not thousands of unnecessary SNMP traps.
 
@@ -18,4 +18,4 @@ Fortunately, there's always yet another nerd knob to turn, in this case, the **n
 
 ### More about DMVPN
 
-I wrote [dozens of blog posts on various aspects of DMVPN](/tag/dmvpn.html), created [three webinars](http://www.ipspace.net/DMVPN_trilogy) (one of them completely free), and included DMVPN in [ExpertExpress case studies](http://www.ipspace.net/ExpertExpress_Case_Studies). Happy exploring!
+I wrote [dozens of blog posts on various aspects of DMVPN](/tag/dmvpn/), created [three webinars](http://www.ipspace.net/DMVPN_trilogy) (one of them completely free), and included DMVPN in [ExpertExpress case studies](http://www.ipspace.net/ExpertExpress_Case_Studies). Happy exploring!

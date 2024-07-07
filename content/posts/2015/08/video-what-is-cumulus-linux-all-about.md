@@ -7,7 +7,7 @@ tags:
 - Cumulus Linux
 - video
 title: 'Video: What Is Cumulus Linux All About?'
-url: /2015/08/video-what-is-cumulus-linux-all-about.html
+url: /2015/08/video-what-is-cumulus-linux-all-about/
 video_tag: cumulus
 ---
 In May 2015 I invited Dinesh Dutt to talk about Cumulus Linux and its typical use cases on an [update session](http://www.ipspace.net/Data_Center_Fabrics_Update) of the [Data Center Fabrics Architecture](http://www.ipspace.net/Data_Center_Fabrics) webinar.

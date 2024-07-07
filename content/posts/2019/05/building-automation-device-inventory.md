@@ -3,7 +3,7 @@ date: 2019-05-07 08:33:00+02:00
 tags:
 - automation
 title: Building Automation Device Inventory with Open Source Tools
-url: /2019/05/building-automation-device-inventory.html
+url: /2019/05/building-automation-device-inventory/
 series: [ ssot ]
 ssot_tag: solution
 ---

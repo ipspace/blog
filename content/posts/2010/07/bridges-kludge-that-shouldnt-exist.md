@@ -5,7 +5,7 @@ tags:
 - switching
 - networking fundamentals
 title: 'Bridges: a Kludge that Shouldn''t Exist'
-url: /2010/07/bridges-kludge-that-shouldnt-exist.html
+url: /2010/07/bridges-kludge-that-shouldnt-exist/
 ---
 During the last weeks I tried hard to sort out my thoughts on routing and bridging; specifically, what's the difference between them and why you should use routing and not bridging in any large-scale network (regardless of whether it happens to be cramped into a single building called *Data Center*).
 
@@ -24,11 +24,11 @@ I would add one more very significant drawback: layer-3 forwarding is determinis
 
 OK, now we know bridges shouldn't exist, yet they do. What went wrong? Radia explains that as well.
 
-Approximately 30 years ago when Ethernet just started to appear, Radia was working on DECnet, one of the first truly well-designed networking protocols. DECnet was used to connect minicomputers manufactured by Digital Equipment Corporation (DEC) over WAN links and later over Ethernet ([DECnet Phase IV](http://en.wikipedia.org/wiki/DECnet)). In those days, there were no PCs and users were using [text terminals](http://en.wikipedia.org/wiki/Computer_terminal) connected to computers with RS-232 cables. Using regular cables, [RS-232 connections could be only a few meters long](#Cables) (and you had a serial port in your minicomputer for every user attached to it).
+Approximately 30 years ago when Ethernet just started to appear, Radia was working on DECnet, one of the first truly well-designed networking protocols. DECnet was used to connect minicomputers manufactured by Digital Equipment Corporation (DEC) over WAN links and later over Ethernet ([DECnet Phase IV](http://en.wikipedia.org/wiki/DECnet)). In those days, there were no PCs and users were using [text terminals](http://en.wikipedia.org/wiki/Computer_terminal) connected to computers with RS-232 cables. Using regular cables, RS-232 connections could be only a few meters long (and you had a serial port in your minicomputer for every user attached to it).
 
 DEC solved this problem by developing the first terminal servers. Obviously they had to be low(er) cost (nobody would buy another minicomputer just to connect terminals to it) with very limited RAM and CPU capabilities. Radia suggested using DECnet (@ 7:20), but the development team decided to create their own protocol ([LAT](http://en.wikipedia.org/wiki/Local_Area_Transport)) which had no layer 3 because "their customer would never want to talk between Ethernet segments" (@ 7:40).
 
-I can understand the need for a separate protocol. DECnet was a behemoth. I was "fortunate" enough to have it running on MS-DOS as Pathworks; it consumed half of the then-available 640K of RAM (that's kilo-bytes \... for those of you who think your laptop needs 4GB of RAM). What I cannot understand is the very limited perspective of LAT developers \... but then our industry is filled with relics and wrong decisions that we still have to live with decades later (my favorites: [lack of session layer in TCP/IP](/2009/08/what-went-wrong-tcpip-lacks-session.html) and the [IP multihoming](/2009/05/lack-of-ipv6-multihoming-elephant-in.html)).
+I can understand the need for a separate protocol. DECnet was a behemoth. I was "fortunate" enough to have it running on MS-DOS as Pathworks; it consumed half of the then-available 640K of RAM (that's kilo-bytes \... for those of you who think your laptop needs 4GB of RAM). What I cannot understand is the very limited perspective of LAT developers \... but then our industry is filled with relics and wrong decisions that we still have to live with decades later (my favorites: [lack of session layer in TCP/IP](/2009/08/what-went-wrong-tcpip-lacks-session/) and the [IP multihoming](/2009/05/lack-of-ipv6-multihoming-elephant-in/)).
 
 Anyhow, LAT was implemented and it was not routable \... and then all of a sudden the customers wanted to have terminal servers on one Ethernet segment talking to computers connected to another Ethernet segment. Instead of telling the LAT people to get lost (not an option, LAT-based terminal servers represented 10% of DEC's revenue) or redesign their broken protocol, the problem was rephrased as "we need a magic box that can connect two Ethernet segments" (@ 10:00).
 

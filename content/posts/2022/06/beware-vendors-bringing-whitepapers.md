@@ -6,7 +6,7 @@ tags:
 - switching
 title: Beware of Vendors Bringing White Papers
 ---
-A few weeks ago I wrote about [tradeoffs vendors have to make when designing data center switching ASICs](/2022/06/data-center-switching-asic-tradeoffs.html), followed by another blog post [discussing how to select the ASICs for various roles in data center fabrics](/2022/06/select-data-center-switching-asic.html).
+A few weeks ago I wrote about [tradeoffs vendors have to make when designing data center switching ASICs](/2022/06/data-center-switching-asic-tradeoffs/), followed by another blog post [discussing how to select the ASICs for various roles in data center fabrics](/2022/06/select-data-center-switching-asic/).
 
 You [REALLY SHOULD](https://datatracker.ietf.org/doc/html/rfc6919#section-1) read the two blog posts before moving on; here's the buffer-related TL&DR for those of you ignoring my advice ;)
 <!--more-->
@@ -18,9 +18,9 @@ I haven't received a single comment saying "_you're totally wrong and here's a g
 
 Would you expect vendor product marketers to agree with the above? Of course not. Years ago, Arista was enamored of deep-buffer switches... until Cisco launched a Jericho-based data center switch. At that point buffers stopped mattering... unless you were reading Cisco white papers.
 
-There were tons of rebuttal blog posts written at that time, so one would hope that the vendors got the message. That's too much to hope for, one of my readers [kindly pointed me to a Juniper white paper claiming just the opposite of the above TL&DR](/2022/05/network-hardware-disaggregation-2022.html#1241):
+There were tons of rebuttal blog posts written at that time, so one would hope that the vendors got the message. That's too much to hope for, one of my readers [kindly pointed me to a Juniper white paper claiming just the opposite of the above TL&DR](/2022/05/network-hardware-disaggregation-2022/#1241):
 
-{{<note info>}}The white paper discovered by my reader was removed from Juniper's web site less than 12 hours after this blog post has been published. I would like to thank [Ben Baker and his team](/2022/06/beware-vendors-bringing-whitepapers.html#1302) for a swift and decisive reaction.{{</note>}}
+{{<note info>}}The white paper discovered by my reader was removed from Juniper's web site less than 12 hours after this blog post has been published. I would like to thank [Ben Baker and his team](/2022/06/beware-vendors-bringing-whitepapers/#1302) for a swift and decisive reaction.{{</note>}}
 
 ---
 

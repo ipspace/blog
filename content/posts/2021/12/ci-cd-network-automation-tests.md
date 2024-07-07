@@ -21,7 +21,7 @@ Coming back to network automation: what tests could you run before merging and d
 
 I'm doing something along those lines in *netlab* -- running tons of transformation tests on every change and having integration tests that could run on a properly configured Ubuntu server (the hard part is the need for NOS images). Want a more complex example? [Kristian Larsson](https://www.ipspace.net/Author:Kristian_Larsson) described a [testing methodology his team is using to build large-scale automation solutions](https://my.ipspace.net/bin/list?id=NetAutSol&module=5#M5S3C) in the *[Validation, Error Handling and Unit Tests](https://my.ipspace.net/bin/list?id=NetAutSol&module=5)* part of *[Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions)* online course.
 
-If you're not developing a full-blown automation solution, you might be using tools like Ansible/Jinja2 to generate and deploy router configurations. How are you going to test them? [Some ideas are obvious](/2020/10/validating-data-gitops-automation.html):
+If you're not developing a full-blown automation solution, you might be using tools like Ansible/Jinja2 to generate and deploy router configurations. How are you going to test them? [Some ideas are obvious](/2020/10/validating-data-gitops-automation/):
 
 * You could run YAML, Ansible, and Jinja2 [linters](https://en.wikipedia.org/wiki/Lint_(software)) to identify the simple errors.
 * You could create a data model schema for your configuration files (aka *source of truth*) to check that no one made a foolish change.

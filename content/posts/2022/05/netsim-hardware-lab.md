@@ -5,7 +5,7 @@ tags:
 - netlab
 title: Configure Hardware Labs with netlab
 ---
-*[netlab](https://netlab.tools/)* started as a [simple tool to create virtual lab topologies](/2020/12/build-labs-netsim-tools.html) (I hated creating *Vagrantfiles* describing complex topologies), but when it morphed into an ever-growing "_configure all the boring stuff in your lab from a high-level description_"  thingie, it gave creative networking engineers an interesting idea: could we use this tool to do all the stuff we always hated doing in our physical labs?
+*[netlab](https://netlab.tools/)* started as a [simple tool to create virtual lab topologies](/2020/12/build-labs-netsim-tools/) (I hated creating *Vagrantfiles* describing complex topologies), but when it morphed into an ever-growing "_configure all the boring stuff in your lab from a high-level description_"  thingie, it gave creative networking engineers an interesting idea: could we use this tool to do all the stuff we always hated doing in our physical labs?
 
 My answer was always "_of course, please feel free to submit a PR_", and [Stefano Sasso](http://stefano.dscnet.org/) did just that: he implemented [_external_  orchestration provider](https://netlab.tools/providers/) that allows you to use *netlab* to configure IPv4, IPv6, VLANs, VRFs, VXLAN, LLDP, BFD, OSPFv2, OSPFv3, EIGRP, IS-IS, BGP, MPLS, BGP-LU, L3VPN (VPNv4 + VPNv6), EVPN, SR-MPLS, or SRv6 on [supported hardware devices](https://netlab.tools/platforms/).
 <!--more-->

@@ -7,7 +7,7 @@ tags:
 - automation
 title: Validating Data in GitOps-Based Automation
 ---
-Anyone using [text files as a poor man's database](/2019/04/text-files-or-relational-database.html) eventually stumbles upon the challenge left as a comment in [Automating Cisco ACI Environments](/2019/03/automating-cisco-aci-environment-with.html) blog post:
+Anyone using [text files as a poor man's database](/2019/04/text-files-or-relational-database/) eventually stumbles upon the challenge left as a comment in [Automating Cisco ACI Environments](/2019/03/automating-cisco-aci-environment-with/) blog post:
 
 > The biggest challenge we face is variable preparation and peer review process before committing variables to Git. I'd be particularly interested on how you overcome this challenge?
 
@@ -23,7 +23,7 @@ Once the initial excitement of having your first automation solution in producti
 
 Using templates to generate device configurations (or Terraform recipes or API calls) is well-understood; the next interesting challenge you have to overcome is _where do I store my data model_ (or more formally, what _data store_ do I use) and if you happen to use Ansible as the go-to tool, text files become the obvious choice. 
 
-Sprinkle version control on top of that, add some branching and merging magic and you seem to be in the green meadows of Infrastructure-as-Code (because you're describing your network as a set of YAML files) and [GitOps](/2018/08/gitops-in-networking.html) until you realize every data model suffers from GIGO problems.
+Sprinkle version control on top of that, add some branching and merging magic and you seem to be in the green meadows of Infrastructure-as-Code (because you're describing your network as a set of YAML files) and [GitOps](/2018/08/gitops-in-networking/) until you realize every data model suffers from GIGO problems.
 
 A typical GitOps workflow (although [focused on managing device configurations not data model changes](https://my.ipspace.net/bin/list?id=NetAutSol&module=2#M2S2B)) is displayed on the following diagram:
 

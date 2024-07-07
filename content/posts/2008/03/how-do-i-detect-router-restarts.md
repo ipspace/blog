@@ -4,9 +4,9 @@ tags:
 - syslog
 - EEM
 title: How Do I Detect Router Restarts?
-url: /2008/03/how-do-i-detect-router-restarts.html
+url: /2008/03/how-do-i-detect-router-restarts/
 ---
-Mike Nipp has wondered which *syslog* message to use to [reliably detect router reload](/2007/04/fix-router-configuration-after-reload.html) under all circumstances:
+Mike Nipp has wondered which *syslog* message to use to [reliably detect router reload](/2007/04/fix-router-configuration-after-reload/) under all circumstances:
 
 > The problem I had with the SYS-5-RESTART message is I don\'t think you will get one if the power is suddenly pulled from the router. It does do a SNMP-5-COLDSTART and SYS-6-BOOTTIME on boot up.
 

@@ -4,7 +4,7 @@ date: 2022-03-03 07:48:00
 tags: [ NFV ]
 lastmod: 2022-03-09 07:44:00
 ---
-Have you noticed an [interesting twist in the ICMP Redirects saga](/2022/02/nexus-icmp-redirects.html): operating systems of some network devices might install redirect entries and use them for control plane traffic -- an interesting implementation side effect of the architecture of most modern network devices.
+Have you noticed an [interesting twist in the ICMP Redirects saga](/2022/02/nexus-icmp-redirects/): operating systems of some network devices might install redirect entries and use them for control plane traffic -- an interesting implementation side effect of the architecture of most modern network devices.
 
 A large majority of network devices run on some variant of Linux or \*BSD operating system, the only true exception being ancient operating systems like Cisco IOS[^XE]. The network daemons populate various routing protocol tables and compute the best routes that somehow get merged into a single routing table *that might still be just a data structure in some user-mode process*.
 <!--more-->
@@ -21,7 +21,7 @@ Here's what you might experience when doing that:
 * Load balancers and firewalls are usually using software-based packet forwarding. There's usually no difference between running them in a sheet metal envelope or as a VM.
 * Low-end routers with CPU-based packet forwarding should behave the same way when ran as a VM... unless they're using hardware offload in which case you might experience a difference between hardware- and software implementation. I found absolutely no difference between Cisco IOS running on a low-end router and Cisco IOS running as a VM, and CSR 1000v was designed to be used as a VM anyway. Would CSR 1000v behave in exactly the same way as ISR 4000 routers? Probably not.
 * IOS XR has two simulation images, one focusing on control plane functionality (route reflector), the other one with a full data plane that is nonetheless significantly different from the hardware implementation ([source](#1073)). I still have no idea what Juniper vMX is doing apart from the obvious fact that it's implemented as two virtual machines (control-plane VM and data-plane VM). Insightful comments are most welcome.
-* Data center switches ran as virtual devices usually use Linux kernel for packet forwarding -- after all, these virtual machines are not meant to be a replacement for the actual switches. Some implementations might behave similarly to their physical counterparts, others show significant deviation from what you might expect. For example, I couldn't get [ECMP load balancing to work](/2021/11/anycast-mpls.html) with vEOS or cEOS.
+* Data center switches ran as virtual devices usually use Linux kernel for packet forwarding -- after all, these virtual machines are not meant to be a replacement for the actual switches. Some implementations might behave similarly to their physical counterparts, others show significant deviation from what you might expect. For example, I couldn't get [ECMP load balancing to work](/2021/11/anycast-mpls/) with vEOS or cEOS.
 
 Don't get me wrong: there's nothing wrong with virtual machines not implementing all the intricacies of the hardware data plane when they are supposed to be used for control-plane tests or validation... but you have to understand the limitations. You cannot expect to be able to fully validate network operation after a configuration change in a virtual lab if you cannot emulate all data plane functionality.
 

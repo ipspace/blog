@@ -10,7 +10,7 @@ tags:
 - data center
 - high availability
 title: Do I Need Redundant Firewalls?
-url: /2016/10/do-i-need-redundant-firewalls.html
+url: /2016/10/do-i-need-redundant-firewalls/
 ---
 One of my readers sent me this question:
 

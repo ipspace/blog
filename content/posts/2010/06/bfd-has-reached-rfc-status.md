@@ -5,9 +5,9 @@ tags:
 - IP routing
 - WAN
 title: BFD Has Reached RFC Status
-url: /2010/06/bfd-has-reached-rfc-status.html
+url: /2010/06/bfd-has-reached-rfc-status/
 ---
-Bidirectional Forwarding Detection (BFD) protocol has finally been published as a series of RFCs. BFD gives you [quick failure detection between L3 hops](/2008/11/bidirectional-forwarding-detection.html) (routers) regardless of the underlying technology and equipment (modems, media converters, bridges). It's been gradually introduced in Cisco IOS during the last few years; release 15.0M and 12.2SRE contain almost everything you'll ever need (missing: multihop BGP support and MPLS LSP support).
+Bidirectional Forwarding Detection (BFD) protocol has finally been published as a series of RFCs. BFD gives you [quick failure detection between L3 hops](/2008/11/bidirectional-forwarding-detection/) (routers) regardless of the underlying technology and equipment (modems, media converters, bridges). It's been gradually introduced in Cisco IOS during the last few years; release 15.0M and 12.2SRE contain almost everything you'll ever need (missing: multihop BGP support and MPLS LSP support).
 
 I wrote about BFD in *Improve the Convergence of Mission-Critical Networks with Bidirectional Forwarding Detection (BFD)* article (you'll find it somewhere in [this list](/kb/Internet/)). To learn more, read the RFCs in this order:
 <!--more-->

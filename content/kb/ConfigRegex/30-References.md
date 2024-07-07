@@ -2,7 +2,7 @@
 kb_section: ConfigRegex
 minimal_sidebar: true
 title: Requirements and References
-url: /kb/ConfigRegex/30-References.html
+url: /kb/ConfigRegex/30-References/
 ---
 The solution was tested in this environment:
 

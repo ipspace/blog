@@ -9,13 +9,13 @@ tags:
 - networking fundamentals
 title: Unnumbered Ethernet Interfaces, DHCP Edition
 ---
-Last week we explored the [basics of unnumbered IPv4 Ethernet interfaces](/2021/06/unnumbered-ethernet-interfaces.html), and how you could use them to save IPv4 address space in routed access networks. I also mentioned that you could simplify the head-end router configuration if you're using DHCP instead of per-host static routes.
+Last week we explored the [basics of unnumbered IPv4 Ethernet interfaces](/2021/06/unnumbered-ethernet-interfaces/), and how you could use them to save IPv4 address space in routed access networks. I also mentioned that you could simplify the head-end router configuration if you're using DHCP instead of per-host static routes.
 
 Obviously you'd need a smart DHCP server/relay implementation to make this work. Simplistic local DHCP server would allocate an IP address to a client requesting one, send a response and move on. Likewise, a DHCP relay would forward a DHCP request to a remote DHCP server (adding enough information to allow the DHCP server to select the desired DHCP pool) and forward its response to the client.
 <!--more-->
 What we need to make unnumbered IPv4 Ethernet interfaces work with DHCP is an extra step: as a DHCP reply (locally originated or relayed) is sent to a client connected over an unnumbered IPv4 interface, a static host route is added to the router's routing table to make that client reachable through the router.
 
-I've first seen static routes created from DHCP responses in [DHCPv6 relays supporting IPv6 prefix delegation with IA_PD option](/2010/10/dhcpv6-relaying-another-trouble-spot.html). A few years later, DHCPv6 relays started [adding host routes based on IA_NA (address allocation) responses](/2013/01/dhcpv6-based-address-allocation-on.html). Similar behavior is now available in some IPv4 DHCP implementations[^3].
+I've first seen static routes created from DHCP responses in [DHCPv6 relays supporting IPv6 prefix delegation with IA_PD option](/2010/10/dhcpv6-relaying-another-trouble-spot/). A few years later, DHCPv6 relays started [adding host routes based on IA_NA (address allocation) responses](/2013/01/dhcpv6-based-address-allocation-on/). Similar behavior is now available in some IPv4 DHCP implementations[^3].
 
 [^3]: At least in IOS XE release 16.6, pointers to other implementations are most welcome -- please write a comment.
 
@@ -93,7 +93,7 @@ S        10.42.42.2/32 is directly connected, GigabitEthernet3
 S        10.42.42.3/32 is directly connected, GigabitEthernet2
 ```
 
-From [last week's blog post](/2021/06/unnumbered-ethernet-interfaces.html) we know that's enough to make the IP routing work -- we can ping *c2* (10.42.42.2) and the other loopback interface of *rtr* (10.0.0.3) from *c1*.
+From [last week's blog post](/2021/06/unnumbered-ethernet-interfaces/) we know that's enough to make the IP routing work -- we can ping *c2* (10.42.42.2) and the other loopback interface of *rtr* (10.0.0.3) from *c1*.
 
 {{<cc>}}Connectivity tests on *c1*{{</cc>}}
 ```

@@ -9,9 +9,9 @@ tags:
 - DMVPN
 title: Building a DMVPN Test Lab with netlab
 ---
-I always love to hear about real-life [netlab](https://netlab.tools/) use cases, and try to make them even easier to implement with new netlab features -- that's how netlab got [custom Vagrant configuration templates](/2022/06/netsim-custom-vagrant-boxes.html) and [per-node configuration templates](/2023/04/netlab-merge-config.html). 
+I always love to hear about real-life [netlab](https://netlab.tools/) use cases, and try to make them even easier to implement with new netlab features -- that's how netlab got [custom Vagrant configuration templates](/2022/06/netsim-custom-vagrant-boxes/) and [per-node configuration templates](/2023/04/netlab-merge-config/). 
 
-When [Anne Baretta](/kb/NetAutJourney/index.html) sent me his initial DMVPN solution, we quickly figured out we could make it even cleaner if netlab supported [tunnel interfaces](https://netlab.tools/links/#links-tunnel); you can enjoy the results in [release 1.5.2](https://netlab.tools/release/1.5/#release-1-5-2), and [explore Anne's solution on GitHub](https://github.com/ipspace/netlab-examples/tree/master/DMVPN).
+When [Anne Baretta](/kb/NetAutJourney/) sent me his initial DMVPN solution, we quickly figured out we could make it even cleaner if netlab supported [tunnel interfaces](https://netlab.tools/links/#links-tunnel); you can enjoy the results in [release 1.5.2](https://netlab.tools/release/1.5/#release-1-5-2), and [explore Anne's solution on GitHub](https://github.com/ipspace/netlab-examples/tree/master/DMVPN).
 <!--more-->
 Let me just point out a few minor details of that solution, starting with [lab topology](https://github.com/ipspace/netlab-examples/blob/master/DMVPN/topology.yml):
 

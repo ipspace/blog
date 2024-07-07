@@ -5,7 +5,7 @@ tags:
 - DMVPN
 - multicast
 title: Spoke-to-Spoke IP Multicast over DMVPN?
-url: /2011/04/spoke-to-spoke-ip-multicast-over-dmvpn.html
+url: /2011/04/spoke-to-spoke-ip-multicast-over-dmvpn/
 ---
 A long-time reader has sent me an intriguing question: "would IP multicast work between DMVPN spokes?" In theory, the answer is "we could make it work", but we all know theory and practice are [not the same thing](http://en.wikiquote.org/wiki/Fact_and_theory).
 

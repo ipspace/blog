@@ -7,7 +7,7 @@ netlab_tag: evpn_dg
 evpn_tag: designs
 pre_scroll: True
 ---
-In the [previous blog post](/2024/04/evpn-designs-vxlan-leaf-spine-fabric.html) in the EVPN Designs series, we explored the simplest possible VXLAN-based fabric design: static ingress replication without any L2VPN control plane. This time, we'll add the simplest possible EVPN control plane: a full mesh of IBGP sessions between the leaf switches.
+In the [previous blog post](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/) in the EVPN Designs series, we explored the simplest possible VXLAN-based fabric design: static ingress replication without any L2VPN control plane. This time, we'll add the simplest possible EVPN control plane: a full mesh of IBGP sessions between the leaf switches.
 
 {{<note smallprint>}}This blog post describes an initial BGP design that we'll refine in subsequent blog posts. Having a full mesh of IBGP sessions between leaf switches might be a bad idea unless you have a tiny fabric or you're deploying a small-scale EVPN pilot.{{</note>}}
 <!--more-->
@@ -23,7 +23,7 @@ And this is how we'll use routing protocols in our fabric:
 
 {{<figure src="/2024/05/evpn-design-ibgp-full-mesh.png" caption="Full mesh of IBGP sessions between the leaf switches">}}
 
-Let's set up a lab and try it out. We'll use a lab setup similar to the [VXLAN-only fabric](/2024/04/evpn-designs-vxlan-leaf-spine-fabric.html); read that blog post (in particular the *[Creating the Lab Environment](/2024/04/evpn-designs-vxlan-leaf-spine-fabric.html#lab)* section) to get started.
+Let's set up a lab and try it out. We'll use a lab setup similar to the [VXLAN-only fabric](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/); read that blog post (in particular the *[Creating the Lab Environment](/2024/04/evpn-designs-vxlan-leaf-spine-fabric.html#lab)* section) to get started.
 
 ### Leaf-and-Spine Lab Topology
 
@@ -213,7 +213,7 @@ Total Remote Mac Addresses for this criterion: 1
 Let's start with the **benefits**:
 
 * The ingress replication lists are built automatically.
-* Each VLAN (EVPN instance) has an independent ingress replication list, which means that the client traffic is flooded only to the VTEPs with a compatible (according to route targets) EVPN instance. That's a massive win in Carrier Ethernet networks where a customer port often has a single VLAN. It is somewhat irrelevant in data center environments where we [usually configure every VLAN on every server port](/2011/12/vm-aware-networking-improves-iaas-cloud.html) so we don't have to talk with the server team.
+* Each VLAN (EVPN instance) has an independent ingress replication list, which means that the client traffic is flooded only to the VTEPs with a compatible (according to route targets) EVPN instance. That's a massive win in Carrier Ethernet networks where a customer port often has a single VLAN. It is somewhat irrelevant in data center environments where we [usually configure every VLAN on every server port](/2011/12/vm-aware-networking-improves-iaas-cloud/) so we don't have to talk with the server team.
 
 What about the **drawbacks**?
 
@@ -223,10 +223,10 @@ What about the **drawbacks**?
 
 [^AE]: Regardless of what the automation evangelists (myself included) tell you.
 
-Should you choose EVPN when building a small data center that provides VLAN connectivity? Probably not[^NT]. EVPN starts to make sense when you use advanced features like proxy ARP, multi-subnet VRFs, or the [much-praised active-active multihoming](/2022/11/mlag-vxlan-evpn.html)[^AAMH].
+Should you choose EVPN when building a small data center that provides VLAN connectivity? Probably not[^NT]. EVPN starts to make sense when you use advanced features like proxy ARP, multi-subnet VRFs, or the [much-praised active-active multihoming](/2022/11/mlag-vxlan-evpn/)[^AAMH].
 
 [^NT]: Unless you want to play with a new toy or boost your resume.
 
-[^AAMH]: The server team might [not want the link aggregation anyway](/2014/01/vsphere-does-not-need-lag-bandaids.html). Most virtualization solutions are happier with multiple independent uplinks.
+[^AAMH]: The server team might [not want the link aggregation anyway](/2014/01/vsphere-does-not-need-lag-bandaids/). Most virtualization solutions are happier with multiple independent uplinks.
 
 {{<next-in-series page="/posts/2024/05/bgp-rr-considered-harmful.html" />}}

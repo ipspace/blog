@@ -12,4 +12,4 @@ Large Language Models](https://systemsapproach.substack.com/p/looking-inside-lar
 
 > Having a model for language is different from having a model of the world.
 
-And that's a perfect explanation why it makes no sense to expect ChatGPT and friends to produce [picture-perfect device configurations](/2023/04/chatgpt-small-network-design.html) or [always-working code](/2023/04/kicking-tires-github-copilot.html).
+And that's a perfect explanation why it makes no sense to expect ChatGPT and friends to produce [picture-perfect device configurations](/2023/04/chatgpt-small-network-design/) or [always-working code](/2023/04/kicking-tires-github-copilot/).

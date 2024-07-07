@@ -28,15 +28,15 @@ Similarly, you don't need link-layer addresses on point-to-point links, and yet 
 
 {{<figure src="/2021/05/Addr-PPP-Frame.png" caption="Every PPP frame includes an unnecessary _broadcast_ destination address">}}
 
-* Ethernet was designed to be a multi-access network. Also, Ethernet switching pretends that point-to-point segments between the end nodes and switches belong to a [giant virtual multi-access cable](/2015/02/lets-get-rid-of-thick-yellow-cable.html), and thus you cannot get rid of MAC addresses. However, when we started using Ethernet for router-to-router links[^1], we could reduce the size of the Ethernet header. Still, it was more convenient to reuse existing hardware than to work hard to save the 14 bytes of every frame.
+* Ethernet was designed to be a multi-access network. Also, Ethernet switching pretends that point-to-point segments between the end nodes and switches belong to a [giant virtual multi-access cable](/2015/02/lets-get-rid-of-thick-yellow-cable/), and thus you cannot get rid of MAC addresses. However, when we started using Ethernet for router-to-router links[^1], we could reduce the size of the Ethernet header. Still, it was more convenient to reuse existing hardware than to work hard to save the 14 bytes of every frame.
 
-[^1]: Or switch-to-switch links if you're of [marketing persuasion](/2011/02/how-did-we-ever-get-into-this-switching.html).
+[^1]: Or switch-to-switch links if you're of [marketing persuasion](/2011/02/how-did-we-ever-get-into-this-switching/).
 
 A few protocols got it right, though:
 
 * [SLIP](https://en.wikipedia.org/wiki/Serial_Line_Internet_Protocol) was designed to carry IP packets over dial-up links. Adding another layer of addresses was unnecessary, and as they started from scratch and used existing character-mode hardware, they could get away with it.
 * [PPPoE](https://en.wikipedia.org/wiki/Point-to-Point_Protocol_over_Ethernet) dropped the HDLC addresses used in PPP frames and started the PPP payload with protocol ID.
-* Fibre Channel (FC) designers realized you don't need layer-2 and layer-3 addresses in a single-protocol network and decided to use layer-3 addresses everywhere. That decision confused some FC practitioners to the point where they claimed [FC is switching, not routing](/2011/07/is-fibre-channel-switching-bridging-or.html) (whatever the difference is), even though the standard documents are unambiguous.
+* Fibre Channel (FC) designers realized you don't need layer-2 and layer-3 addresses in a single-protocol network and decided to use layer-3 addresses everywhere. That decision confused some FC practitioners to the point where they claimed [FC is switching, not routing](/2011/07/is-fibre-channel-switching-bridging-or/) (whatever the difference is), even though the standard documents are unambiguous.
 
 ### Interface and Node Addresses
 

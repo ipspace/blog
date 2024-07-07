@@ -6,13 +6,13 @@ tags:
 - OpenFlow
 - Internet
 title: Could IXPs Use OpenFlow to Scale?
-url: /2013/05/could-ixps-use-openflow-to-scale.html
+url: /2013/05/could-ixps-use-openflow-to-scale/
 ---
 The SDN industry probably considers me an old and grumpy naysayer (and I'm positive Mrs Y has a special place in their hearts after [her recent blog post](http://packetpushers.net/sdn-savior-or-grifter/)), so I tried really hard to find a real-life example where OpenFlow could be used to solve [mid-market innovator's dilemma](http://telecomoccasionally.wordpress.com/2012/02/20/mid-market-innovators-dilemma/) to balance my usual [OpenFlow and SDN](http://demo.ipspace.net/get/OpenFlow%20SDN.pdf) presentation.
 <!--more-->
 [Internet Exchange Points (IXP)](http://packetpushers.net/show-24-internet-exchanges-peering/) seemed a perfect fit -- they are high-speed mission-critical environments usually implemented as geographically stretched layer-2 networks, and facing all sorts of security and scaling problems. [Deploying OpenFlow on IXP edge switches](http://demo.ipspace.net/get/Could%20IXPs%20Use%20OpenFlow%20To%20Scale.pdf) would results in standardized security posture that wouldn't rely on idiosyncrasies of particular vendor's implementation, and we could use OpenFlow to implement ARP sponge (or turn ARPs into unicasts sent to ARP server).
 
-I presented these ideas at [MENOG 12](/2013/03/the-best-of-menog-12.html) in March 2013 and got a few somewhat interested responses ... and then I asked a really good friend with significant operational experience in IXP environments for feedback. Not surprisingly, the reply was a cold shower:
+I presented these ideas at [MENOG 12](/2013/03/the-best-of-menog-12/) in March 2013 and got a few somewhat interested responses ... and then I asked a really good friend with significant operational experience in IXP environments for feedback. Not surprisingly, the reply was a cold shower:
 
 > I am not quite sure how this improves current situation. Except for the ARP sponge everything else seem to be implemented by vendors in one form or another. For the ARP sponge, AMS-IX uses great software developed in house that they've open-sourced.
 

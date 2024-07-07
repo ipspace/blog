@@ -7,7 +7,7 @@ series_weight: 1900
 tags:
 - SDN
 title: Going Back to the Mainframes?
-url: /2015/04/going-back-to-mainframes.html
+url: /2015/04/going-back-to-mainframes/
 ---
 25 years ago when I started my networking career, mainframes were all the rage, and we were doing some crazy stuff with small distributed systems that quickly adapted to topology changes, and survived link, port, and node failures. We called them *routers.*
 

@@ -1,11 +1,11 @@
 ---
-url: /2009/03/generating-layer-2-broadcast-from.html
+url: /2009/03/generating-layer-2-broadcast-from/
 title: "Generating layer-2 broadcast from a regular IP packet"
 date: "2009-03-30T07:10:00.002+02:00"
 tags: [ ARP,LAN ]
 ---
 
-<div class="bloggerBody"><p>The <a href="/2009/01/things-you-cannot-do-with-tclsh.html">Wake-on-LAN discussion</a> we had a while ago brought us nowhere; there's simply no way to generate UDP packets on the router. I <a href="/2009/01/things-you-cannot-do-with-tclsh.html?showComment=1233656100000">thought</a> I could use <a href="http://www.cisco.com/en/US/docs/ios/12_2t/12_2t2/feature/guide/ft2_apm.html">Application Performance Monitor</a>'s Tcl scripts to generate the packet, but it looks like APM has been removed from recent IOS releases (and it's not clear whether you can use APM without a peer router).</p>
+<div class="bloggerBody"><p>The <a href="/2009/01/things-you-cannot-do-with-tclsh/">Wake-on-LAN discussion</a> we had a while ago brought us nowhere; there's simply no way to generate UDP packets on the router. I <a href="/2009/01/things-you-cannot-do-with-tclsh/#comments">thought</a> I could use <a href="http://www.cisco.com/en/US/docs/ios/12_2t/12_2t2/feature/guide/ft2_apm.html">Application Performance Monitor</a>'s Tcl scripts to generate the packet, but it looks like APM has been removed from recent IOS releases (and it's not clear whether you can use APM without a peer router).</p>
 <p>The discussion nonetheless had an interesting side effect. <a href="http://www.linkedin.com/in/trobi">Robert Turnšek</a> sent me an interesting trick: with static ARP you can generate layer-2 broadcasts with a layer-3 unicast packet.</p>
 <!--more--><p>Let's assume your LAN has IP prefix 10.2.3.0/24 and you want to use 10.2.3.77 as the IP address that will generate MAC-layer broadcasts (you need to give this address to <a href="http://www.jibble.org/wake-on-lan/">a WOL program</a>). Configure <strong>arp 10.2.3.77 FFFF.FFFF.FFFF</strong> and you're done.</p>
 <p>You might wonder how this technique differs from directed subnet broadcast. The important difference is that although every IP host on the subnet will receive the layer-2 broadcast, they will ignore the packet since it's not addressed to them. This solution is thus not vulnerable to the <a href="http://en.wikipedia.org/wiki/Smurf_attack">smurf attack</a>.</p>

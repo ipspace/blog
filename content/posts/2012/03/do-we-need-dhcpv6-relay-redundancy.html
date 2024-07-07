@@ -6,11 +6,11 @@ tags:
 - workshop
 - service providers
 title: Do we need DHCPv6 Relay Redundancy?
-url: /2012/03/do-we-need-dhcpv6-relay-redundancy.html
+url: /2012/03/do-we-need-dhcpv6-relay-redundancy/
 ---
 
 <p>Instead of drinking beer and lab-testing vodka during the PLNOG party I enjoyed DHCPv6 discussions with Tomasz Mrugalski, the “master-of-last-resort” for the ISC’s <a href="http://www.isc.org/software/dhcp">DHCPv6 server</a>. I mentioned my favorite DHCPv6 relay problem (relay redundancy) and while we immediately agreed I’m right (from the academic perspective), he brought up an interesting question – is this really an operational problem?<!--more--></p>
-<h4>Some intro first</h4><p>I wrote about <a href="/search?q=DHCPv6">DHCPv6</a> <a href="/2010/10/dhcpv6-relaying-another-trouble-spot.html">relaying</a> before, but let’s revisit how it works:</p>
+<h4>Some intro first</h4><p>I wrote about <a href="/search?q=DHCPv6">DHCPv6</a> <a href="/2010/10/dhcpv6-relaying-another-trouble-spot/">relaying</a> before, but let’s revisit how it works:</p>
 <ol class="ListParagraph"><li>CPE sends DHCPv6 <em>solicit </em>message to figure out who the DHCPv6 server is;</li>
 <li>PE relays the message toward the DHCPv6 server (DHCPv6 relaying is not a simple packet forwarding, DHCPv6 relay wraps the original message into a new envelope);</li>
 <li>DHCPv6 server replies with the <em>advertise </em>message which is relayed to the CPE by the PE-router;</li>
@@ -26,13 +26,13 @@ url: /2012/03/do-we-need-dhcpv6-relay-redundancy.html
 <p>A brief overview of the process (actually, just the second half of it) is shown in the following diagram:</p>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2012/03/s1600-DHCP+relay+-+basics.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="201" src="/2012/03/s400-DHCP+relay+-+basics.png" width="400"/></a></div>
 <h4>Relaying in Redundantly Designed Networks</h4><p>Now imagine you have a switched layer-2 access network and two PE-routers connected to it for redundancy purposes.</p>
-<p class="warn">This is not a good idea – the <a href="/2011/10/ipv6-end-user-authentication-on-metro.html">first-hop switch in the service provider network should be a layer-3 device for security reasons</a>.</p>
+<p class="warn">This is not a good idea – the <a href="/2011/10/ipv6-end-user-authentication-on-metro/">first-hop switch in the service provider network should be a layer-3 device for security reasons</a>.</p>
 <p>The CPE router still sends a single <em>solicit </em>message, but each PE-router relays that to the DHCPv6 server. DHCPv6 server will send back two <em>advertise </em>messages, both will get relayed to the CPE router (each PE-router will relay the response to its relayed <em>solicit </em>message), and the CPE router will pick one or the other.</p>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2012/03/s1600-DHCP+relay+-+redundancy.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="210" src="/2012/03/s400-DHCP+relay+-+redundancy.png" width="400"/></a></div>
 <p>The CPE router subsequently sends a DHCPv6 <em>request </em>message to the selected PE-router (acting as a relay), eventually gets back the delegated prefix, and the PE-router has a static route … but the other PE-router is not aware of what’s going on.</p>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2012/03/s1600-DHCP+relay+-+problem.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="170" src="/2012/03/s400-DHCP+relay+-+problem.png" width="400"/></a></div>
 <h4>The Problem</h4><p>One of the problems is obvious – you might get suboptimal routing, because one of the PE-routers lacks routes toward destination(s) with next hop in directly connected access network … but we can solve that with routing protocols that support third-party next hops.</p>
-<p>However, matters get much worse if one of the PE-routers crashes. The static routes are lost (they can be <a href="/2011/12/dhcpv6-server-on-cisco-ios-making.html">regained with BULK LEASE mechanism once the PE-router completes the reload</a>), but in the meantime the CPE devices served by that PE-router have no connectivity, even though you have a totally redundant access network.</p>
+<p>However, matters get much worse if one of the PE-routers crashes. The static routes are lost (they can be <a href="/2011/12/dhcpv6-server-on-cisco-ios-making/">regained with BULK LEASE mechanism once the PE-router completes the reload</a>), but in the meantime the CPE devices served by that PE-router have no connectivity, even though you have a totally redundant access network.</p>
 <h4>The Question</h4><p>Is this scenario relevant? Do you use something like that in your access network? Would you be impacted? Write a comment – Tomasz needs real-life use cases.</p>
 <h4>More information</h4><ul class="ListParagraph"><li><a href="http://www.ipspace.net/Enterprise_IPv6_-_the_First_Steps"><em>Enterprise IPv6 – the first steps</em></a> webinar gives you an overview of IPv6 technologies, 4-to-6 migration alternatives and design recommendations.</li>
 <li><a href="http://www.ipspace.net/Service_Provider_IPv6_Introduction"><em>Service Provider IPv6 Introduction</em></a> is an introductory-level webinar targeting ISP environments.</li>

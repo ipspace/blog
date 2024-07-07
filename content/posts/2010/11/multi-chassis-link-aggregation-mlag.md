@@ -8,13 +8,13 @@ tags:
 - link aggregation
 - data center
 title: External Brains Driving an MLAG Cluster
-url: /2010/11/multi-chassis-link-aggregation-mlag.html
+url: /2010/11/multi-chassis-link-aggregation-mlag/
 ---
 {{<note warn>}}The architecture described in this blog post is long gone, but it's worth remembering what vendors tried in the past and why it failed -- someone will inevitably try to sell an obsolete idea as the next best thing since sliced bread (see also RFC 1925 Rule 11){{</note>}}
 
 Juniper has introduced an interesting twist to the *Stacking on Steroids* architecture: the brains of the box (control plane) are outsourced. When you want to build a *virtual chassis* (Juniper's marketing term for stack of core switches) out of EX8200 switches, you offload all the control-plane functionality (Spanning Tree Protocol, Link Aggregation Control Protocol, first-hop redundancy protocol, routing protocols) to an external box (XRE200).
 <!--more-->
-The resulting architecture is very similar to [Cisco's VSS](/2010/10/multi-chassis-link-aggregation-stacking.html), the major difference being that the internal routing engine in an EX8200 participating in a virtual chassis performs only the most rudimentary functions (chassis/linecard monitoring and maintenance).
+The resulting architecture is very similar to [Cisco's VSS](/2010/10/multi-chassis-link-aggregation-stacking/), the major difference being that the internal routing engine in an EX8200 participating in a virtual chassis performs only the most rudimentary functions (chassis/linecard monitoring and maintenance).
 
 {{<figure src="/2010/11/s400-MLAG_EX8200.png" caption="Juniper MLAG cluster with an external control plane">}}
 

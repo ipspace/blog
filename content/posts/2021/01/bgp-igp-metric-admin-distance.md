@@ -10,9 +10,9 @@ One of my readers sent me a link to an [interesting scenario described by Jeremy
 
 Imagine a network in which two edge routers advertise the same (external) BGP prefix. All other things being equal, it would make sense that other routers in the same autonomous system should use the better path out of the autonomous system. Welcome to the final tie-breaker in BGP route selection process: IGP metric.
 <!--more-->
-{{<note>}}Jeremy tried to create a realistic scenario that would resemble a real-life network design; I decided to [minimize it to a bare minimum](/2017/11/run-well-designed-experiments-to-learn.html) when reproducing it with a recent Cisco IOS version.{{</note>}}
+{{<note>}}Jeremy tried to create a realistic scenario that would resemble a real-life network design; I decided to [minimize it to a bare minimum](/2017/11/run-well-designed-experiments-to-learn/) when reproducing it with a recent Cisco IOS version.{{</note>}}
 
-{{<figure src="BGP-IGP-metric.png" caption="Simplest possible network demonstrating BGP interaction with IGP metric">}}
+{{<figure src="/2021/01/BGP-IGP-metric.png" caption="Simplest possible network demonstrating BGP interaction with IGP metric">}}
 
 When using a single routing protocol, BGP selects the closer AS exit point. BGP table on PE1 has two (almost) identical entries, the only difference being the IGP metric toward the BGP next hop. The path with the lower IGP metric is selected.
 
@@ -35,7 +35,7 @@ Paths: (2 available, best #2, table default)
 
 Now let's add EIGRP to the mix. OSPF is running throughout the whole network, EIGRP is running only between PE1 and E1.
 
-{{<figure src="BGP-IGP-metric-dual-IGP.png" caption="Adding EIGRP as the second IGP">}}
+{{<figure src="/2021/01/BGP-IGP-metric-dual-IGP.png" caption="Adding EIGRP as the second IGP">}}
 
 {{<cc>}}OSPF and EIGRP neighbors on PE1{{</cc>}}
 ```

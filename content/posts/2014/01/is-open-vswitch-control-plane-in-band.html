@@ -1,11 +1,11 @@
 ---
-url: /2014/01/is-open-vswitch-control-plane-in-band.html
+url: /2014/01/is-open-vswitch-control-plane-in-band/
 title: "Is Open vSwitch Control Plane In-Band or Out-of-Band?"
 date: "2014-01-07T07:05:00.000+01:00"
 tags: [ OpenFlow,cloud,virtualization ]
 ---
 
-<p>A few days ago I described how <a href="/2013/12/control-plane-in-openflow-networks.html">most OpenFlow data center fabric solutions use out-of-band control plane</a> (separate control-plane network). Can we do something similar when running OpenFlow switch (example: Open vSwitch) in a hypervisor host?</p>
+<p>A few days ago I described how <a href="/2013/12/control-plane-in-openflow-networks/">most OpenFlow data center fabric solutions use out-of-band control plane</a> (separate control-plane network). Can we do something similar when running OpenFlow switch (example: Open vSwitch) in a hypervisor host?</p>
 <p><strong>TL&amp;DR answer</strong>: Sure we can. Does it make sense? It depends.<!--more--></p>
 <p class="note">Open vSwitch supports <a href="http://git.openvswitch.org/cgi-bin/gitweb.cgi?p=openvswitch;a=blob;f=DESIGN;h=4d654d01d7b140a32e5974f7d0c7a08f6b5aa800;hb=HEAD#l599">in-band control plane</a>, but that’s not the focus of this post.</p>
 <p>If you buy servers with a half dozen interfaces (I wouldn't), then it makes perfect sense to follow the usual design best practices published by hypervisor vendors, and allocate a pair of interfaces to user traffic, another pair to management/control plane/vMotion traffic, and a third pair to storage traffic. Problem solved.</p>

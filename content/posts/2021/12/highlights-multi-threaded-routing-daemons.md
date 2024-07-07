@@ -3,7 +3,7 @@ title: "Highlights: Multi-Threaded Routing Daemons"
 date: 2021-12-07 07:53:00
 tags: [ IP routing, BGP ]
 ---
-The *[multi-threaded routing daemons](/2021/11/multi-threaded-routing-daemons.html)* blog post generated numerous in-depth comments here and on LinkedIn. As always, thanks a million for keeping me honest and providing more details or additional perspectives. Here are some of the best bits.
+The *[multi-threaded routing daemons](/2021/11/multi-threaded-routing-daemons/)* blog post generated numerous in-depth comments here and on LinkedIn. As always, thanks a million for keeping me honest and providing more details or additional perspectives. Here are some of the best bits.
 
 Jeff Tantsura provided the first dose of reality:
 

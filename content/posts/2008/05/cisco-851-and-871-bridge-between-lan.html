@@ -4,7 +4,7 @@ tags:
 - firewall
 - security
 title: Cisco 851 and 871 bridge between LAN and WAN interfaces during boot process
-url: /2008/05/cisco-851-and-871-bridge-between-lan.html
+url: /2008/05/cisco-851-and-871-bridge-between-lan/
 ---
 
 Euphrates Greene sent me a report of a very annoying “functionality” of Cisco 851/871: they're bridging between the <em>inside (LAN) ethernet</em> and <em>outside (WAN) ethernet</em> interfaces while they're running the ROMMON code (from the reload/power-up throughout the software decompression process until the control is transferred to the Cisco IOS). It's worth mentioning that these routers are commonly used as SOHO firewalls and that the internal LAN is exposed while the router is in the bridging mode.<br/><br/>Our security experts have replicated the behavior and reported it to Cisco PSIRT. Fortunately it's a known vulnerability, documented as CSCsd60259 (<a href="http://tools.cisco.com/Support/BugToolKit/search/getBugDetails.do?method=fetchBugDetails&amp;bugId=CSCsd60259">release note is available on CCO to registered users</a>) and <a href="http://www.cisco.com/cgi-bin/tablebuild.pl/85x87xrommon?psrtdcat20e2">fixed with a ROMMON upgrade</a>.<br/><br/>New routers are shipped with new ROMMON version, so you shouldn't be seeing this behavior on brand new boxes … but one cannot help but wonder why such a nasty behavior was not documented as a field notice/security advisory.

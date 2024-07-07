@@ -7,7 +7,7 @@ high-availability_tag: ignore
 series:
 - ha-cluster
 ---
-Dmitry Perets wrote an [excellent description of how typical firewall cluster solutions implement control-plane high availability](/2024/01/bgp-graceful-restart-harmful.html#2069), in particular, the routing protocol Graceful Restart feature (slightly edited):
+Dmitry Perets wrote an [excellent description of how typical firewall cluster solutions implement control-plane high availability](/2024/01/bgp-graceful-restart-harmful/#2069), in particular, the routing protocol Graceful Restart feature (slightly edited):
 
 ---
 

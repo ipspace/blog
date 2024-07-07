@@ -2,7 +2,7 @@
 kb_section: Tclsh
 minimal_sidebar: true
 title: Executing Cisco IOS Commands from Tcl Shell
-url: /kb/Tclsh/10-commands.html
+url: /kb/Tclsh/10-commands/
 ---
 Cisco IOS provides three mechanisms to execute CLI and configuration commands from Tcl:
 

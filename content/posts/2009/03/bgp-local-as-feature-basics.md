@@ -3,7 +3,7 @@ date: 2009-03-18 07:02:00+01:00
 tags:
 - BGP
 title: 'Network Migration with BGP Local-AS Feature'
-url: /2009/03/bgp-local-as-feature-basics.html
+url: /2009/03/bgp-local-as-feature-basics/
 ---
 I've always thought that Cisco introduced the *BGP Local-AS* feature into IOS to support complex MPLS VPN design scenarios. Obviously I was wrong, the early documentation always describes an ISP AS merging scenario. Unfortunately, all the articles I've found skip some important details: they describe the basics and the configuration commands, but forget to mention the impact on the AS paths received by the ISP customers.
 

@@ -7,7 +7,7 @@ tags:
 - WAN
 - high availability
 title: Swimlanes, Read-Write Transactions and Session State
-url: /2017/07/swimlanes-read-write-transactions-and.html
+url: /2017/07/swimlanes-read-write-transactions-and/
 ---
 Another question from someone watching my [*Designing Active-Active and Disaster Recovery Data Centers*](http://www.ipspace.net/Designing_Active-Active_and_Disaster_Recovery_Data_Centers) webinar (you know, the one where I tell people how to avoid the world-spanning-layer-2 madness):
 

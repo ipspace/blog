@@ -4,16 +4,16 @@ tags:
 - CEF
 - you've asked for it
 title: CEF punted packets
-url: /2007/01/cef-punted-packets.html
+url: /2007/01/cef-punted-packets/
 ---
 
 The packets that cannot be CEF-switched in a box with CEF switching enabled are <em>punted</em> to the next switching level (fast switching or process switching). The incoming packets can be punted for a number of reasons, for example:<ul><li>If the destination is reachable over an interface that cannot use CEF-switching due to a feature not supported by CEF (for example, X.25 link), the packet has to be fast- or process-switched.</li>
 </ul>
-<p class="info">These destinations are easily discovered by <a href="/2007/01/cef-punt-adjancency.html">inspecting the punt adjacencies</a>).</p>
+<p class="info">These destinations are easily discovered by <a href="/2007/01/cef-punt-adjancency/">inspecting the punt adjacencies</a>).</p>
 <ul><li>All packets destined for the router itself are process switched (thus punted).</li>
 <li>If the router needs to reply back to the source with an ICMP packet (redirect, unreachable ...), the reply can be generated only in the process-switching path.</li>
 <li>All packets with the IP options are punted to process switching.</li>
 <li>Fragments that have to be processed by the router are also process-switched.</li>
 </ul>
-You can inspect the amount of punted packets with the <strong>show cef not-cef-switched</strong> command.<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.</p>
+You can inspect the amount of punted packets with the <strong>show cef not-cef-switched</strong> command.<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>
 

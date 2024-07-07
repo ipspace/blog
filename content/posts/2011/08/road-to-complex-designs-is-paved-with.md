@@ -5,7 +5,7 @@ tags:
 - BGP
 - design
 title: The Road to Complex Designs Is Paved with Great Recipes
-url: /2011/08/road-to-complex-designs-is-paved-with.html
+url: /2011/08/road-to-complex-designs-is-paved-with/
 ---
 A while ago someone asked me to help him troubleshoot his Internet connectivity. He was experiencing totally weird symptoms that turned out to be a mix of MTU problems, asymmetric routing (probably combined with RPF checks on ISP side) and non-routable PE-CE subnets. While trying to figure out what might be wrong from the router configurations, I was surprised by the amount of complexity he'd managed to introduce into his DMZ design by following recipes and best practices we all dole out in blog posts, textbooks and training materials.
 <!--more-->
@@ -43,4 +43,4 @@ There are numerous changes one could make to simplify this design, for example:
 
 Last but definitely not least, **remove OSPF from DMZ**, as all the reasons for using it are gone.
 
-Anything else? Please write a comment! And while speaking of misapplied recipes, [*Knowledge or recipes*](/2008/09/knowledge-or-recipes.html) blog post comes to mind.
+Anything else? Please write a comment! And while speaking of misapplied recipes, [*Knowledge or recipes*](/2008/09/knowledge-or-recipes/) blog post comes to mind.

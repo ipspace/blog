@@ -6,7 +6,7 @@ tags:
 - workshop
 - virtualization
 title: Are you ready to change your security paradigm?
-url: /2013/04/are-you-ready-to-change-your-security.html
+url: /2013/04/are-you-ready-to-change-your-security/
 ---
 
 <p>Most application stacks built today rely on decades-old security paradigm: individual components of the stack (web servers, app servers, database servers, authentication servers ...) are placed in different security zones implemented with separate physical devices, VLANs or some other virtual networking mechanism of your choice. </p>
@@ -14,9 +14,9 @@ url: /2013/04/are-you-ready-to-change-your-security.html
 <div class="separator"><a href="/2013/04/s1600-FW_Traditional.png" imageanchor="1"><img border="0" src="/2013/04/s480-FW_Traditional.png"/></a></div>
 <p>This age-old architecture has a major flaw: once an intruder owns one of the servers in a security zone, the game is usually over (at least for that security zone) ... but it’s the best we’ve been able to build for a long time.</p>
 <p class="warn">The problem is exacerbated by the usual “best current practice” of placing servers hosting numerous applications in the same security zone to simplify the VLAN and firewall provisioning. Once an intruder breaks into the weakest application, he often has a free lunch trying to break into all other application servers in the same security zone.</p>
-<p>Numerous firewalls vendors offer an enticing alternative in the virtualized world: <a href="/2012/11/virtual-firewall-taxonomy.html">VM NIC firewall</a>. These firewalls are transparent (bump-in-the-wire) constructs implemented as a loadable hypervisor modules, traffic interception VMs, or service insertion solutions.</p>
+<p>Numerous firewalls vendors offer an enticing alternative in the virtualized world: <a href="/2012/11/virtual-firewall-taxonomy/">VM NIC firewall</a>. These firewalls are transparent (bump-in-the-wire) constructs implemented as a loadable hypervisor modules, traffic interception VMs, or service insertion solutions.</p>
 <div class="separator"><a href="/2013/04/s1600-FW_NIC.png" imageanchor="1"><img border="0" src="/2013/04/s280-FW_NIC.png"/></a></div>
-<p>Regardless of how the VM NIC firewalls are implemented (although the <a href="/2011/11/junipers-virtual-gateway-virtual.html">implementation details greatly affect their performance</a>), they offer a totally different security paradigm: each VM is protected with a firewall and everything outside of the VM is the <em>outside world </em>that needs to be tightly controlled (think of them as <em>iptables</em> implemented outside of the VM). Even the traffic between two VMs in the same security zone (using the legacy terminology – there are no security zones in the brave new world) is inspected and filtered.</p>
+<p>Regardless of how the VM NIC firewalls are implemented (although the <a href="/2011/11/junipers-virtual-gateway-virtual/">implementation details greatly affect their performance</a>), they offer a totally different security paradigm: each VM is protected with a firewall and everything outside of the VM is the <em>outside world </em>that needs to be tightly controlled (think of them as <em>iptables</em> implemented outside of the VM). Even the traffic between two VMs in the same security zone (using the legacy terminology – there are no security zones in the brave new world) is inspected and filtered.</p>
 <p>Obviously the VM NIC firewalls idea needs a central management interface to be viable (you wouldn’t want to configure each one of the VM-level firewalls manually), and there are tons of implementation details and considerations, but even assuming these things work as promised, the fundamental questions remain: </p>
 <ul class="ListParagraph"><li>Would you trust this new architecture?</li>
 <li>Are you willing to jump into the brave new world and get rid of traditional firewalls?</li>

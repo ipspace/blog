@@ -1,11 +1,11 @@
 ---
-url: /2007/11/can-i-combine-eem-applets-with-tcl.html
+url: /2007/11/can-i-combine-eem-applets-with-tcl/
 title: "Can I combine EEM applets with Tcl shell?"
 date: "2007-11-26T07:27:00.002+01:00"
 tags: [ Tcl,EEM ]
 ---
 
-When I've been [describing the limitations of kron](/2007/11/kron-poor-man-cron.html), someone quickly asked an interesting question:
+When I've been [describing the limitations of kron](/2007/11/kron-poor-man-cron/), someone quickly asked an interesting question:
 
 > As I cannot insert extra input keystrokes with EEM applet, can I run a Tcl script from it with the **action *sequence* cli command "tclsh *script*"** command and use the **typeahead** function call to get around the limitation?” 
 

@@ -1,11 +1,11 @@
 ---
-url: /2013/07/the-tools-that-i-use-drawings.html
+url: /2013/07/the-tools-that-i-use-drawings/
 title: "The Tools That I Use (Drawings)"
 date: "2013-07-11T07:09:00.000+02:00"
 lastmod: 2020-04-23 05:30:00
 ---
 
-Continuing from the previous [*Tools That I Use*](/2013/06/the-tools-that-i-use-webinars.html) post, here’s what I’m using to generate the hand drawings in blog posts and case studies.
+Continuing from the previous [*Tools That I Use*](/2013/06/the-tools-that-i-use-webinars/) post, here’s what I’m using to generate the hand drawings in blog posts and case studies.
 
 [Wacom Cintiq](https://www.wacom.com/en-us/products/pen-displays/wacom-cintiq) with SketchBook Pro has been indispensable for high-resolution drawings I used in case studies. I’ve tried to import router symbols in SketchBook Pro and make them look like they would be hand-drawn, but my illustrating skills are almost non-existent.
 

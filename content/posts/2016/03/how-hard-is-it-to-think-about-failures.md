@@ -8,7 +8,7 @@ tags:
 - virtualization
 - high availability
 title: How Hard Is It to Think about Failures?
-url: /2016/03/how-hard-is-it-to-think-about-failures.html
+url: /2016/03/how-hard-is-it-to-think-about-failures/
 ---
 Mr. A. Anonymous, frequent contributor to my blog posts left this ~~bit of wisdom~~ comment on the VMware NSX Update blog post:
 
@@ -18,7 +18,7 @@ I admit I was a bit imprecise (wasn't the first time), but is it really that har
 <!--more-->
 {{<note>}}It's amazing how many people continue to believe in infallibility of redundant architectures years after they stop believing in Santa Claus or Tooth Fairy.{{</note>}}
 
-Having redundant links (or routers or switches) [doesn't mean that your setup cannot fail](/2012/10/if-something-can-fail-it-will.html), it only means that *you might have reduced* the probability of the failure. In practice, you might have *reduced the reliability* of your system because you made it more complex and thus harder to understand, configure and monitor.
+Having redundant links (or routers or switches) [doesn't mean that your setup cannot fail](/2012/10/if-something-can-fail-it-will/), it only means that *you might have reduced* the probability of the failure. In practice, you might have *reduced the reliability* of your system because you made it more complex and thus harder to understand, configure and monitor.
 
 {{<note info>}}Terry Slattery is an unending source of war stories about people who thought they had a redundant system but didn't... like [running HSRP on only one of the redundant routers](http://www.netcraftsmen.com/what-are-critical-network-problems/).{{</note>}}
 
@@ -40,6 +40,6 @@ This could be taken care of (by setting DRS to something other than full auto, a
 
 Distributed logical routers (DLR) may experience problems at the site disconnected from the Controller Cluster. In some cases DLR-originated (ARP) and DLR-routed traffic may fail to reach destinations due to DLR\'s VNI join failure caused by loss of Controller connectivity.
 
-{{<note info>}}DLR instance on an ESXi host has to join the VNI (VXLAN segment) of the target VM if it wants to forward the traffic to the destination IP address, and that process is traffic- and not topology-driven. If you want to understand the underlying problems, read [this blog post](/2013/06/arista-eos-virtual-arp-varp-behind.html) (and follow all the links); packet walks from the [Overlay Virtual Networking webinar](http://www.ipspace.net/Overlay_Virtual_Networking) would also be useful.{{</note>}}
+{{<note info>}}DLR instance on an ESXi host has to join the VNI (VXLAN segment) of the target VM if it wants to forward the traffic to the destination IP address, and that process is traffic- and not topology-driven. If you want to understand the underlying problems, read [this blog post](/2013/06/arista-eos-virtual-arp-varp-behind/) (and follow all the links); packet walks from the [Overlay Virtual Networking webinar](http://www.ipspace.net/Overlay_Virtual_Networking) would also be useful.{{</note>}}
 
 Also, any routing topology changes learned by isolated site\'s DLR\'s Control VM dynamically via BGP or OSPF won\'t be sent to DLR kernel module on hosts, since this process relies on Controllers

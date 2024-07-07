@@ -2,7 +2,7 @@
 kb_section: DataModels
 minimal_sidebar: true
 title: Generalize the Network Data Model
-url: /kb/DataModels/30-Generalize Network Model.html
+url: /kb/DataModels/30-Generalize Network Model/
 pre_scroll: true
 ---
 After starting with [simplistic data model full of duplicate data](index.html), [removing duplicate data](10-Removing%20Duplicate%20Data.html), and [restructuring the data model into a network-focused one](20-Restructure.html) we're pretty close to an ideal solution. The only thing that still annoys me is the *left* and *right* part of an edge (link). In an undirected graph, we shouldn’t differentiate between the two ends of a connection. Furthermore, our data model can’t cope with rare multi-access links we might still find in real-life networks (examples: Carrier Ethernet E-LAN, DMVPN tunnels, wireless...).

@@ -1,11 +1,11 @@
 ---
-url: /2009/07/not-all-interfaces-are-created-equal.html
+url: /2009/07/not-all-interfaces-are-created-equal/
 title: "Not all interfaces are created equal"
 date: "2009-07-02T21:53:00.000+02:00"
 tags: [ ADSL ]
 ---
 
-<div class="bloggerBody"><p><a href="/2009/06/adsl-qos-basics.html">Two days</a> ago I’ve <a href="/2009/06/adsl-qos-basics.html?showComment=1246512697366">managed to write aGenuineStupidity</a>™ (OK, maybe I cannot get a trademark on this concept): the MQC shaping actions cannot be attached to a Dialer interface; they have to be specified on the underlying physical interface (in case of PPPoE link, the outside Ethernet interface).</p>
+<div class="bloggerBody"><p><a href="/2009/06/adsl-qos-basics/">Two days</a> ago I’ve <a href="/2009/06/adsl-qos-basics/#comments">managed to write aGenuineStupidity</a>™ (OK, maybe I cannot get a trademark on this concept): the MQC shaping actions cannot be attached to a Dialer interface; they have to be specified on the underlying physical interface (in case of PPPoE link, the outside Ethernet interface).</p>
 <p>The reason for my stupidity (apart from the obvious one: writing without testing) is the difference between true logical interfaces and dialer templates. A <strong>tunnel</strong> interface or a VLAN interface is a true logical interface; it behaves like any other interface (with a few exceptions; for example, tunnel interface does not have an output queue) and you can use most QoS actions (including shaping) on it. A <strong>dialer </strong>interface is even more “conceptual”. It can never be operational on its own – as soon as the link is established, it’s bound to a physical (for example, BRI0:1) or virtual access interface (which is yet again bound to a physical interface) and the shaping is performed on the final physical interface.</p>
 <p>This behavior (on top of being unexpectedly inconsistent) results in interesting quirks. For example, you have to shape PPPoE packets (based on their IP characteristics) on the physical Ethernet interface which usually doesn’t even have an IP address.</p>
 <p class="note">… and let’s hope that the late hour hasn’t resulted in another blunder.</p>

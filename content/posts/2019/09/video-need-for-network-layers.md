@@ -5,10 +5,10 @@ tags:
 - networking fundamentals
 - video
 title: 'Video: The Need for Network Layers'
-url: /2019/09/video-need-for-network-layers.html
+url: /2019/09/video-need-for-network-layers/
 video_tag: net101
 ---
-After identifying some of the challenges every network solution must address ([part 1](/2019/08/video-networking-challenges.html), [part 2](/2019/08/video-introducing-transmission.html), [part 3](/2019/09/video-beyond-two-nodes.html)) we tried to tackle an interesting question: "*how do you implement this whole spaghetti mess in a somewhat-reliable and structured way?*"
+After identifying some of the challenges every network solution must address ([part 1](/2019/08/video-networking-challenges/), [part 2](/2019/08/video-introducing-transmission/), [part 3](/2019/09/video-beyond-two-nodes/)) we tried to tackle an interesting question: "*how do you implement this whole spaghetti mess in a somewhat-reliable and structured way?*"
 
 The Roman Empire had an answer more than 2000 years ago: divide-and-conquer (aka "*eating the elephant one bite at a time*"). These days, we call it *layering* and *abstractions*.
 

@@ -5,10 +5,10 @@ tags:
 - data center
 - QoS
 title: Switch Buffer Sizes and Fermi Estimates
-url: /2019/06/switch-buffer-sizes-and-fermi-estimates.html
+url: /2019/06/switch-buffer-sizes-and-fermi-estimates/
 ---
 
-<p>In my <a href="/2019/06/do-packet-drops-matter-for-tcp.html">quest to understand how much buffer space we really need in high-speed switches</a> I encountered an interesting phenomenon: we no longer have the gut feeling of what makes sense, sometimes going as far as assuming that 16 MB (or 32MB) of buffer space per 10GE/25GE data center ToR switch is another $vendor shenanigan focused on cutting cost. Time for <a href="/2014/05/whitebox-switching-and-fermi-estimates.html">another set</a> of <a href="https://en.wikipedia.org/wiki/Fermi_problem">Fermi estimates</a>.</p>
+<p>In my <a href="/2019/06/do-packet-drops-matter-for-tcp/">quest to understand how much buffer space we really need in high-speed switches</a> I encountered an interesting phenomenon: we no longer have the gut feeling of what makes sense, sometimes going as far as assuming that 16 MB (or 32MB) of buffer space per 10GE/25GE data center ToR switch is another $vendor shenanigan focused on cutting cost. Time for <a href="/2014/05/whitebox-switching-and-fermi-estimates/">another set</a> of <a href="https://en.wikipedia.org/wiki/Fermi_problem">Fermi estimates</a>.</p>
 <p>Let’s take a recent data center switch using Trident II+ chipset and having 16 MB of buffer space (source: awesome <a href="https://people.ucsc.edu/~warner/buffer.html">packet buffers page</a> by <a href="https://www.linkedin.com/in/jim-warner-92392624/">Jim Warner</a>). Most of switches using this chipset have 48 10GE ports and 4-6 uplinks (40GE or 100GE).<!--more--></p>
 <div class="note" data-markdown="1">You can do similar analysis using Trident 3- or Tomahawk-based switches. I found it easier to deal with 10GE links ;) </div>
 <p>There are only two reasons we need buffers in network devices:</p>
@@ -16,8 +16,8 @@ url: /2019/06/switch-buffer-sizes-and-fermi-estimates.html
 <li>To prevent packet drops when an output interface becomes congested.</li>
 </ul>
 <p>The most important assumption we have to make is thus: <strong>where does the congestion happen?</strong> The obvious answer is <em>it depends</em> on the traffic flows crossing the switch. I’ll assume we’re solving the <em>incast</em> problem - many senders sending data to the same destination connected to a 10GE link.</p>
-<div class="note" data-markdown="1">Incast should be pretty rare in typical data center environments. You might encounter it in Map-Reduce clusters or distributed file systems (after adding a fresh node to the DFS cluster). Then there are corner cases where there's long-term congestion on ToR switch uplinks (<a href="/2019/06/do-packet-drops-matter-for-tcp.html?showComment=1559741783128#c5449698275033265922">details here</a>). In those cases you obviously need faster links or deeper buffers. </div>
-<p>Next, we have to make a lot of assumptions about the black box called ASIC that we cannot possibly learn anything about because <a href="/2016/05/what-are-problems-with-broadcom.html">Broadcom manages to hide its shortcomings under layers and layers of NDAs</a>. Making my task easier I’ll assume that:</p>
+<div class="note" data-markdown="1">Incast should be pretty rare in typical data center environments. You might encounter it in Map-Reduce clusters or distributed file systems (after adding a fresh node to the DFS cluster). Then there are corner cases where there's long-term congestion on ToR switch uplinks (<a href="/2019/06/do-packet-drops-matter-for-tcp/#c5449698275033265922">details here</a>). In those cases you obviously need faster links or deeper buffers. </div>
+<p>Next, we have to make a lot of assumptions about the black box called ASIC that we cannot possibly learn anything about because <a href="/2016/05/what-are-problems-with-broadcom/">Broadcom manages to hide its shortcomings under layers and layers of NDAs</a>. Making my task easier I’ll assume that:</p>
 <ul><li>We’re dealing with large packets (1500 bytes);</li>
 <li>Buffers are shared across all ports.</li>
 </ul>
@@ -27,9 +27,9 @@ url: /2019/06/switch-buffer-sizes-and-fermi-estimates.html
 <p>Another rule-of-thumb approach uses <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product">bandwidth-delay product</a> estimate. The reasoning is very simple: if you want to keep data flowing, the amount of data in flight has to be at least as large as the end-to-end bandwidth times one-way delay. Using 10GE link speed and 100 microsecond delay we need 125 Kbyte of data in transit, and having more buffer space than that on any single device makes little sense unless you're dealing with a corner case (see above).</p>
 <p><strong>Conclusion</strong>: Assuming the ASIC vendors got their **** together the shallow-buffer switches are more than good enough for intra-data-center traffic. Next time we’ll focus on what happens when we cross the LAN-to-WAN boundary.</p>
 <h4>Want to know more?</h4><p>Check out:</p>
-<ul><li><a href="/2017/01/to-drop-or-to-delay-thats-question-on.html">To Drop or To Delay</a> with Juho Snellman;</li>
-<li><a href="/2017/03/tcp-in-data-center-and-beyond-on.html">TCP in the Data Center</a> with Thomas Graf;</li>
+<ul><li><a href="/2017/01/to-drop-or-to-delay-thats-question-on/">To Drop or To Delay</a> with Juho Snellman;</li>
+<li><a href="/2017/03/tcp-in-data-center-and-beyond-on/">TCP in the Data Center</a> with Thomas Graf;</li>
 <li><a href="https://www.ipspace.net/Networks,_Buffers,_and_Drops">Networks, Buffers and Drops</a> free webinar with JR Rivers;</li>
 </ul>
-<p>Finally, join the <a href="https://www.ipspace.net/How_Networks_Really_Work">How Networks Really Work</a> series starting on June 18th. You could join the live session for free if you <a href="/2019/05/its-time-for-another-pet-project.html">send me a really good question</a>.</p>
+<p>Finally, join the <a href="https://www.ipspace.net/How_Networks_Really_Work">How Networks Really Work</a> series starting on June 18th. You could join the live session for free if you <a href="/2019/05/its-time-for-another-pet-project/">send me a really good question</a>.</p>
 

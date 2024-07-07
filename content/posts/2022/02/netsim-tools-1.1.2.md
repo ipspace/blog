@@ -9,7 +9,7 @@ Every time I'm writing *netsim-tools* release notes I'm amazed at the number of 
 
 {{<figure src="/2022/02/netsim-1.1.2-insights.png">}}
 
-{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab.html).{{</note>}}
+{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab/).{{</note>}}
 
 Here are the goodies from *netsim-tools* releases 1.1.1 and 1.1.2:
 <!--more-->

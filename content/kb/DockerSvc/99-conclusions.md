@@ -2,7 +2,7 @@
 kb_section: DockerSvc
 minimal_sidebar: true
 title: Conclusions
-url: /kb/DockerSvc/99-conclusions.html
+url: /kb/DockerSvc/99-conclusions/
 ---
 A brief recap of what we discovered in this article:
 

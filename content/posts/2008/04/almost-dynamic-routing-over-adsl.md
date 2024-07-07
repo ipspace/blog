@@ -5,7 +5,7 @@ tags:
 - WAN
 - ADSL
 title: Almost-Dynamic Routing over ADSL Interfaces
-url: /2008/04/almost-dynamic-routing-over-adsl.html
+url: /2008/04/almost-dynamic-routing-over-adsl/
 ---
 Recently I had to implement Internet access using ADSL as the primary link and ISDN as the backup link. Obviously the most versatile solution would use the techniques described in my [Small Site Multi-homing articles](/kb/Internet/), but the peculiarities of Cisco IOS implementation of the ADSL technology resulted in a much simpler solution.
 

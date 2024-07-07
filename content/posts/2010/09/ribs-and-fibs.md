@@ -4,7 +4,7 @@ tags:
 - switching
 - IP routing
 title: RIBs and FIBs (aka IP Routing Table and CEF Table)
-url: /2010/09/ribs-and-fibs.html
+url: /2010/09/ribs-and-fibs/
 lastmod: 2020-12-26 13:51:00
 ---
 Every now and then, I'm asked about the difference between *Routing Information Base* (RIB), also known as IP Routing Table and *Forwarding Information Base* (FIB), also known as CEF table  (on Cisco's devices) or IP forwarding table.
@@ -15,7 +15,7 @@ Let's start with an overview picture (which does tell you more than the next tho
 
 A router has numerous ways of learning the best paths toward individual IP prefixes: they might be directly connected, configured as static routes or learned through dynamic routing protocols.
 
-Each dynamic routing protocol ([including RIP](/2008/08/rip-route-database.html)) has its own set of internal data structures, known as OSPF/IS-IS database, EIGRP topology table or BGP table. The routing protocol updates its data structures based on routing protocol updates exchanged with its neighbors, eventually collecting all the relevant information. Throughout this article we'll work with 10.0.1.1/32 learned through OSPF and 10.0.11.11/32 learned through BGP, so let's inspect the relevant OSPF/BGP data structures.
+Each dynamic routing protocol ([including RIP](/2008/08/rip-route-database/)) has its own set of internal data structures, known as OSPF/IS-IS database, EIGRP topology table or BGP table. The routing protocol updates its data structures based on routing protocol updates exchanged with its neighbors, eventually collecting all the relevant information. Throughout this article we'll work with 10.0.1.1/32 learned through OSPF and 10.0.11.11/32 learned through BGP, so let's inspect the relevant OSPF/BGP data structures.
 
 ``` {.code}
 RR#show ip bgp | begin Network
@@ -87,7 +87,7 @@ Codes: * - Best, > - Installed in global RIB
 
 Both BGP and OSPF associate IP next hops with IP prefixes, but BGP simply uses the value of the next-hop attribute attached to the BGP route, whereas OSPF computes the IP address of the next-hop OSPF router with the SPF algorithm.
 
-The results of intra-routing-protocol route selection are inserted in the IP routing table (RIB) based on *administrative distance* (and there are interesting consequences if two routing protocols have the same AD). Most routing protocols don't complain when their routes are not used in the IP routing table; [BGP has a special show command that can display RIB failures](/2007/12/what-is-bgp-rib-failure.html). In our scenario, the 10.0.1.1/32 prefix is received via OSPF and BGP and the OSPF route wins as OSPF has lower AD than internal BGP route.
+The results of intra-routing-protocol route selection are inserted in the IP routing table (RIB) based on *administrative distance* (and there are interesting consequences if two routing protocols have the same AD). Most routing protocols don't complain when their routes are not used in the IP routing table; [BGP has a special show command that can display RIB failures](/2007/12/what-is-bgp-rib-failure/). In our scenario, the 10.0.1.1/32 prefix is received via OSPF and BGP and the OSPF route wins as OSPF has lower AD than internal BGP route.
 
 ``` {.code}
 RR#show ip bgp rib-failure

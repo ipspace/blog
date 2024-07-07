@@ -3,7 +3,7 @@ title: When Machine Learning in Networking Might Make Sense
 date: 2020-09-24 07:13:00
 tags: [ automation ]
 ---
-In March I explained why it's [unrealistic to expect to use machine learning to solve unknown problems in today's snowflake networks](/2020/03/machine-learning-in-networking-products.html)... but are there other problems that could be solved?
+In March I explained why it's [unrealistic to expect to use machine learning to solve unknown problems in today's snowflake networks](/2020/03/machine-learning-in-networking-products/)... but are there other problems that could be solved?
 
 Here's an idea [Paul Greenberg](https://www.linkedin.com/in/greenpau/) pointed me to: [machine learning on public DNS data](https://github.com/chanakyaekbote/coredns_ml_plugin). Let's see whether it might make sense:
 <!--more-->

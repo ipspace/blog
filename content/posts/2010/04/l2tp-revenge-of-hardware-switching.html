@@ -6,10 +6,10 @@ tags:
 - MPLS VPN
 - WAN
 title: 'L2TP: The revenge of hardware switching'
-url: /2010/04/l2tp-revenge-of-hardware-switching.html
+url: /2010/04/l2tp-revenge-of-hardware-switching/
 ---
 
-<p>Do you like the <a href="/2010/04/l2tp-default-routing-solutions.html">solutions to the L2TP default routing problem</a>? If you do, the ASR 1000 definitely doesn’t share your opinion; so far it’s impossible to configure a working combination of L2TP, IPSec (<a href="/2010/04/small-steps-to-large-complexity.html">described in the original post</a>) and PBR or VRFs:</p>
+<p>Do you like the <a href="/2010/04/l2tp-default-routing-solutions/">solutions to the L2TP default routing problem</a>? If you do, the ASR 1000 definitely doesn’t share your opinion; so far it’s impossible to configure a working combination of L2TP, IPSec (<a href="/2010/04/small-steps-to-large-complexity/">described in the original post</a>) and PBR or VRFs:</p>
 <p><strong>PBR on virtual templates:</strong> doesn’t work.</p>
 <p><strong>Virtual template interface in a VRF</strong>: IPSec termination in a VRF doesn’t work.</p>
 <p><strong>L2TP interface in a VRF</strong>: This one was closest to working. In some software releases IPSec started, but the L2TP code was not (fully?) VRF-aware, so the LNS-to-LAC packets used global routing table. In other software releases IPSec would not start.</p>
@@ -17,6 +17,6 @@ url: /2010/04/l2tp-revenge-of-hardware-switching.html
 <p>Before you start bashing Cisco, remember that ASR implements most of the packet forwarding process in hardware. While it’s very simple to stack together numerous randomly-selected features in a software implementation, it’s hard to do the same on a streamlined hardware platform. </p>
 <p>Developing custom hardware is also way more expensive than writing a few more lines of C code. When designing a hardware implementation, one is thus temped to implement only the most commonly used combinations of features (or the features used by the biggest customers). If you happen to be relying on a rarely used set of features, you’re bound to have interesting problems.</p>
 <p>With this in mind, it looks like you have only two options when deploying a device with hardware-assisted switching:</p>
-<p><strong>Minimize the number of features used by the device to an absolute minimum.</strong> This is not always a realistic option as you might be forced to increase the device count in your network (ASRs could be successfully deployed in <a href="/2010/04/small-steps-to-large-complexity.html">our sample network</a> if you’re willing to split L2TP termination and IPSec termination). You’re also left wondering why you’ve paid the premium for all the features you can’t use concurrently.</p>
+<p><strong>Minimize the number of features used by the device to an absolute minimum.</strong> This is not always a realistic option as you might be forced to increase the device count in your network (ASRs could be successfully deployed in <a href="/2010/04/small-steps-to-large-complexity/">our sample network</a> if you’re willing to split L2TP termination and IPSec termination). You’re also left wondering why you’ve paid the premium for all the features you can’t use concurrently.</p>
 <p><strong>Work with someone who understands the device’s caveats and restrictions.</strong> If you’ve just started deploying new hardware in your network, you cannot be expected to know all its intricacies (although I’m positive your <a href="http://en.wikipedia.org/wiki/Pointy-haired_Boss">PHB</a> thinks otherwise). Make heavy use of people who have done a similar job before. Engage Cisco’s Professional Services or a highly knowledgeable system integration partner (I wouldn’t even try to use resellers competing solely on low prices) that has extensive in-house lab facility (so they could stress-test the design before implementing it in your network).</p>
 

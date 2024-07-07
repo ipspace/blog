@@ -8,13 +8,13 @@ tags:
 - configuration
 title: 'Must Watch: History of Cisco IOS CLI'
 series_title: 'History of Cisco IOS CLI'
-url: /2019/04/must-watch-history-of-cisco-ios-cli.html
+url: /2019/04/must-watch-history-of-cisco-ios-cli/
 ---
 My first Cisco router was a blade for a Cabletron modular hub (anyone remembers what hubs were or a company named Cabletron?). We plugged it in, I read the documentation, figured out I had to type **conf t** and was faced with a blinking cursor staring back at me from an empty line.
 
 A few years later I was invited to beta test Cisco software release 9.21 (it wasn't called IOS yet). The best feature it had was the awesome configuration CLI with context-sensitive prompts and on-demand help.
 <!--more-->
-Fast-forward a few more years. For one reason or another, I met [Terry Slattery](https://www.ipspace.net/Author:Terry_Slattery) (second CCIE worldwide) and during one of our [always-enlightening chats](/2015/02/we-need-to-move-from-assembling-car.html) he told me he was [the guy behind the new Cisco CLI](https://www.netcraftsmen.com/the-history-of-the-cisco-cli/), permanently making him a demigod in my eyes.
+Fast-forward a few more years. For one reason or another, I met [Terry Slattery](https://www.ipspace.net/Author:Terry_Slattery) (second CCIE worldwide) and during one of our [always-enlightening chats](/2015/02/we-need-to-move-from-assembling-car/) he told me he was [the guy behind the new Cisco CLI](https://www.netcraftsmen.com/the-history-of-the-cisco-cli/), permanently making him a demigod in my eyes.
 
 It took another two decades or so before I got the whole story, this time listening to a [Network Collective podcast with Terry](https://web.archive.org/web/20191207095631/https://thenetworkcollective.com/2019/03/hon-cisco-cli/).
 

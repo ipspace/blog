@@ -27,9 +27,9 @@ Now let's focusing on the last bullet, and the potential gotchas we'd have to de
 * Recovery from botched configuration deployment
 * Handling configuration errors
 
-{{<note info>}}I wrote about some of these aspects in a [previous blog post](/2019/04/recovering-from-network-automation.html).{{</note>}}
+{{<note info>}}I wrote about some of these aspects in a [previous blog post](/2019/04/recovering-from-network-automation/).{{</note>}}
 
-Faced with a wide variety of target platforms, it's almost impossible to get SDK toolkits that would implement all the required functionality. For example, it's easy to implement rollback-on-error on Junos using its commit/rollback configuration mechanism, and a [lot harder to do it in Cisco IOS](/2017/03/netconf-transactional-consistency-on.html).
+Faced with a wide variety of target platforms, it's almost impossible to get SDK toolkits that would implement all the required functionality. For example, it's easy to implement rollback-on-error on Junos using its commit/rollback configuration mechanism, and a [lot harder to do it in Cisco IOS](/2017/03/netconf-transactional-consistency-on/).
 
 Fortunately, someone has solved the multi-vendor configuration management challenges, and it would be a waste not to look at whether [NAPALM](https://my.ipspace.net/bin/list?id=Ansible#NAPALM) (or [NetPalm if you want to have REST API](https://github.com/tbotnz/netpalm)) could provide at least some of the required functionality, potentially at a lower level of abstraction. For example, while NAPALM provides configuration _management_ (merge, replace, rollback), it does not provide configuration _generation_ based on a universal data model... but then maybe you need [ntc-rosetta](https://github.com/networktocode/ntc-rosetta).
 
@@ -41,4 +41,4 @@ As always it comes down to **knowing your tools**:
 * Find out whether the existing solutions fit your needs, and adjust your needs if needed;
 * At the very least, explore the existing solutions to figure out how they got the job done. For example, the developers of NAPALM spent years dealing with real-life production challenges, and it would be a total waste to ignore that accumulated knowledge.
 
-Oh, and the more tools you're familiar with, the better your tool selection process might be. I'm trying to keep a [list of network automation tools](/kb/Ansible/Useful_Network_Automation_Tools.html) on our web site (additions welcome), and we covered [almost a dozen of them](https://my.ipspace.net/bin/list?id=NetAutSol&module=9) in the [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course.
+Oh, and the more tools you're familiar with, the better your tool selection process might be. I'm trying to keep a [list of network automation tools](/kb/Ansible/Useful_Network_Automation_Tools/) on our web site (additions welcome), and we covered [almost a dozen of them](https://my.ipspace.net/bin/list?id=NetAutSol&module=9) in the [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course.

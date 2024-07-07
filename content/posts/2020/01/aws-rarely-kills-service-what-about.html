@@ -5,13 +5,13 @@ tags:
 - cloud
 - Ansible
 title: AWS Rarely Kills a Service. What About Your Vendor?
-url: /2020/01/aws-rarely-kills-service-what-about.html
+url: /2020/01/aws-rarely-kills-service-what-about/
 ---
 
 <p>Here’s an <a href="https://www.lastweekinaws.com/blog/5-pervasive-aws-myths-debunked/">interesting tidbit</a> from “Last Week in AWS” blog:</p>
 <blockquote><p>From a philosophical point of view, AWS fundamentally considers an API to be a promise. Services that aren’t promoted anymore are still available […] Think about that for a second - a service launched 13 years ago is still actively supported to the point where you can use it today.</p>
 </blockquote>
-<p>Compare that to <a href="https://killedbygoogle.com/">Killed By Google</a> graveyard, and you might understand why I’m a <a href="/2020/01/review-webinars-in-2019.html">bit reluctant to cover GCP in my webinars</a>.<!--more--></p>
+<p>Compare that to <a href="https://killedbygoogle.com/">Killed By Google</a> graveyard, and you might understand why I’m a <a href="/2020/01/review-webinars-in-2019/">bit reluctant to cover GCP in my webinars</a>.<!--more--></p>
 <p>But of course it’s not just Google. When I started the <a href="https://my.ipspace.net/bin/list?id=DCFabric">Data Center Fabrics</a> webinar in 2011, Cisco talked about VSS (Catalyst 6500) and vPC (Nexus switches). In the meantime they went through (at least):</p>
 <ul><li>FabricPath</li>
 <li>TRILL-will-be-there (but they never delivered);</li>
@@ -33,7 +33,7 @@ url: /2020/01/aws-rarely-kills-service-what-about.html
 <li>Hmmm… did you notice Ansible already knows about usernames and passwords? How about we use those and deprecate <strong>user</strong>, <strong>password</strong> and <strong>provider</strong> module parameters? But of course we’ll use our own stuff (<strong>authorize</strong> networking module parameter) to enter <strong>enable</strong> mode.</li>
 <li>Here’s another idea: how about using <strong>become</strong> task-level parameter that Ansible had for years to enter <strong>enable</strong> mode… but of course with a twist: you have to use <strong>become_method: enable</strong> because network devices have so many ways of entering enable mode (hint: most of them have exactly one).</li>
 </ul>
-<p>Then there’s the <strong>local</strong> connection and <strong>network_cli</strong> connection plugin, and multiple ways of dealing with REST API and NETCONF transports… and the idea to use <a href="/2019/09/measure-twice-cut-once-ansible.html">generic network modules</a> that <a href="/2019/09/measure-twice-cut-once-ansible.html?showComment=1567692682174#c3014719040287710338">survived just a few Ansible releases</a> before it was replaced with something completely different.</p>
+<p>Then there’s the <strong>local</strong> connection and <strong>network_cli</strong> connection plugin, and multiple ways of dealing with REST API and NETCONF transports… and the idea to use <a href="/2019/09/measure-twice-cut-once-ansible/">generic network modules</a> that <a href="/2019/09/measure-twice-cut-once-ansible/#c3014719040287710338">survived just a few Ansible releases</a> before it was replaced with something completely different.</p>
 <div class="note" data-markdown="1">Yes, I am “a bit” upset that I had to redo <a href="https://my.ipspace.net/bin/list?id=Ansible#NET_CMD">Ansible networking materials</a> every 6-12 months because they couldn’t make their minds up. In the last revision of the <em>device authentication</em> presentation I had to explain four different obsolete ways of doing the same thing. </div>
 <p><strong>Moral of these stories</strong>: maybe you should take long-term product stability into account when selecting a new vendor. Randy Bush <a href="http://archive.psg.com/051000.sigcomm-ivtf.pdf">called the behavior I described “throwing spaghetti at the wall”</a> and supposedly it’s a fun activity unless you happen to be the wall. Just saying…</p>
 

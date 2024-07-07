@@ -4,7 +4,7 @@ dmvpn_tag: deploy
 tags:
 - DMVPN
 title: 'DMVPN: from Concept to Pilot in 36 Hours'
-url: /2010/10/dmvpn-from-concept-to-pilot-in-36-hours.html
+url: /2010/10/dmvpn-from-concept-to-pilot-in-36-hours/
 ---
 Participants of my webinars might remember the concept of on-site workshops that I kept mentioning until the COVID-19 pandemic brought my in-person business to a halt. Almost a decade before that calamity, the networking team from a large multinational company had decided to test it in practice and invited me for a 3-day DMVPN workshop.
 

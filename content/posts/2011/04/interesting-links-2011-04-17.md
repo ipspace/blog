@@ -1,7 +1,7 @@
 ---
 date: 2011-04-17 06:54:00+02:00
 title: Interesting links (2011-04-17)
-url: /2011/04/interesting-links-2011-04-17.html
+url: /2011/04/interesting-links-2011-04-17/
 tags: [ worth reading ]
 ---
 ### Data Center

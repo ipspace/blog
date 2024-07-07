@@ -1,5 +1,5 @@
 ---
-url: /2015/07/is-linux-tcpip-stack-really-that-slow.html
+url: /2015/07/is-linux-tcpip-stack-really-that-slow/
 title: "Is Linux TCP/IP Stack Really That Slow?"
 date: "2015-07-19T09:07:00.000+02:00"
 tags: [ SDN,virtualization ]
@@ -10,14 +10,14 @@ tags: [ SDN,virtualization ]
 <p class="update">2015-07-18: The blog post was updated based on feedback by Kristian Larsson.<!--more--></p>
 <p><strong>Long story short</strong>: it’s always been possible to get good packet forwarding performance on Linux, and the solutions have been well known for years.</p>
 <h4>Before we start</h4><p>You might miss the bigger picture by focusing solely on packet forwarding performance. </p>
-<p>In many cases, 1Gbps of forwarding performance is more than good enough. In others, you cannot use hardware forwarding anyway because the problem cannot be solved in dedicated hardware at reasonable cost (example: <a href="/2015/03/tcp-optimization-with-juho-snellman-on.html">large-scale TCP optimization</a>). </p>
-<p>Finally, sometimes the amount of processing done on a single packet limits the throughput (example: <a href="/2015/01/palo-alto-virtual-firewalls-on-software.html">deep packet inspection</a>), and there’s not much you can do apart from throwing more cores at the problem (Palo Alto has a firewall with 100 Gbps throughput … using 400 cores).</p>
+<p>In many cases, 1Gbps of forwarding performance is more than good enough. In others, you cannot use hardware forwarding anyway because the problem cannot be solved in dedicated hardware at reasonable cost (example: <a href="/2015/03/tcp-optimization-with-juho-snellman-on/">large-scale TCP optimization</a>). </p>
+<p>Finally, sometimes the amount of processing done on a single packet limits the throughput (example: <a href="/2015/01/palo-alto-virtual-firewalls-on-software/">deep packet inspection</a>), and there’s not much you can do apart from throwing more cores at the problem (Palo Alto has a firewall with 100 Gbps throughput … using 400 cores).</p>
 <h4>And now let’s see how badly Linux TCP/IP stack did</h4><p>The author of the blog post I mentioned above used several tricks to achieve the target performance:</p>
 <ul class="ListParagraph"><li>Sending and receiving multiple messages at the same time instead of a single message per system call (which got him to 350 kpps)</li>
 <li>Using multi-queue NICs to spread the load across multiple CPU cores, which increased the throughput to 440 kbpps;</li>
 <li>Multi-threaded application, which finally got him to the 1 Mpps (or 1.4 Mpps on finely-tuned memory architecture).</li>
 </ul>
-<p>Not surprisingly, these are the same tricks that tools like <a href="/2015/04/ntopng-deep-dive-with-luca-deri-on.html">ntop</a> and <a href="/2015/04/pfring-deep-dive-with-luca-deri-on.html">PF_RING</a> used for years to get decent networking performance on Linux.</p>
+<p>Not surprisingly, these are the same tricks that tools like <a href="/2015/04/ntopng-deep-dive-with-luca-deri-on/">ntop</a> and <a href="/2015/04/pfring-deep-dive-with-luca-deri-on/">PF_RING</a> used for years to get decent networking performance on Linux.</p>
 <h4>Where’s the problem?</h4><p>With all this being said, why don’t we see better forwarding performance in virtual appliances doing simple packet processing? </p>
 <p>In most cases, the answer is surprisingly simple: because the vendors ported their existing code to VM format, and replaced direct access to dedicated hardware with calls to Linux kernel (thus making every possible mistake they could). Vendors that spent time optimizing the code (Vyatta, Juniper) got the performance you’d expect (Juniper managed to push 160 Gbps through their vMX).</p>
 <h4>So what was I trying to say?</h4><p>Kristian Larsson left a nice comment saying "OK, so what exactly were you trying to say?" Let me try to organize my thoughts at least a bit:</p>
@@ -30,12 +30,12 @@ tags: [ SDN,virtualization ]
 </div>
 <p class="more">And all I need now is a <a href="https://news.ycombinator.com/item?id=9819363">hacker misunderstanding my post</a> and telling me how stupid I am ;)</p>
 <h4>Interested in virtual forwarding performance?</h4><p>You’ll find tons of useful information in Software Gone Wild podcast:</p>
-<ul class="ListParagraph"><li><a href="/2014/06/snabb-switch-and-nfv-on-openstack-in.html">Snabb Switch and NFV on OpenStack</a>;</li>
-<li><a href="/2014/09/snabb-switch-deep-dive-on-software-gone.html">Snabb Switch deep dive</a>;</li>
-<li><a href="/2015/04/ntopng-deep-dive-with-luca-deri-on.html">Ntopng</a> and <a href="/2015/01/palo-alto-virtual-firewalls-on-software.html">PF_RING</a>;</li>
-<li><a href="/2015/01/palo-alto-virtual-firewalls-on-software.html">Palo Alto virtual firewall</a>;</li>
-<li><a href="/2015/03/tcp-optimization-with-juho-snellman-on.html">Large-scale TCP optimization</a>;</li>
-<li><a href="/2014/12/l2vpn-over-ipv6-with-snabb-switch-on.html">L2VPN over IPv6 with Snabb Switch</a>.</li>
+<ul class="ListParagraph"><li><a href="/2014/06/snabb-switch-and-nfv-on-openstack-in/">Snabb Switch and NFV on OpenStack</a>;</li>
+<li><a href="/2014/09/snabb-switch-deep-dive-on-software-gone/">Snabb Switch deep dive</a>;</li>
+<li><a href="/2015/04/ntopng-deep-dive-with-luca-deri-on/">Ntopng</a> and <a href="/2015/01/palo-alto-virtual-firewalls-on-software/">PF_RING</a>;</li>
+<li><a href="/2015/01/palo-alto-virtual-firewalls-on-software/">Palo Alto virtual firewall</a>;</li>
+<li><a href="/2015/03/tcp-optimization-with-juho-snellman-on/">Large-scale TCP optimization</a>;</li>
+<li><a href="/2014/12/l2vpn-over-ipv6-with-snabb-switch-on/">L2VPN over IPv6 with Snabb Switch</a>.</li>
 </ul>
 <p>I’ll also cover these topics within the <a href="http://www.ipspace.net/NFV">Network Function Virtualization</a> webinar (coming in early autumn, just before the <a href="http://www.ipspace.net/SDN,_OpenFlow_and_NFV_Workshop">SDN workshops</a>).</p>
 

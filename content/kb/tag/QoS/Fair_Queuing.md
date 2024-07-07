@@ -3,7 +3,7 @@ kb_section: QoS
 minimal_sidebar: true
 pre_scroll: true
 title: Fair Queuing in Cisco IOS
-url: /kb/tag/QoS/Fair_Queuing.html
+url: /kb/tag/QoS/Fair_Queuing/
 ---
 Fair queuing is enabled by default on all low-speed interfaces on Cisco IOS devices (high-speed interfaces use FIFO queuing as the default mechanism). It's also used to implement the queuing actions (**bandwidth** and **fair-queue**) offered by the Modular QoS CLI (MQC).
 

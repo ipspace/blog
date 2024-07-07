@@ -1,5 +1,5 @@
 ---
-url: /2008/05/continuous-display-of-top-cpu-processes.html
+url: /2008/05/continuous-display-of-top-cpu-processes/
 title: "Continuous display of top CPU processes"
 date: "2008-05-26T07:35:00.003+02:00"
 tags: [ Tcl ]

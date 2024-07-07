@@ -1,11 +1,11 @@
 ---
-url: /2013/11/use-thousandeyes-to-implement-ip-sla-on.html
+url: /2013/11/use-thousandeyes-to-implement-ip-sla-on/
 title: "Use ThousandEyes to Implement IP SLA on Steroids"
 date: "2013-11-06T07:04:00.000+01:00"
 tags: [ SDN,Internet,BGP ]
 ---
 
-<p>You did read my <a href="/2013/09/monitor-public-saas-providers-with.html">blog post on ThousandEyes</a>, didn’t you? What I forgot to mention was that they have this cool API that allows you to extract measurement data (including BGP topology) from their system. Can we do something cool with that?<!--more--></p>
+<p>You did read my <a href="/2013/09/monitor-public-saas-providers-with/">blog post on ThousandEyes</a>, didn’t you? What I forgot to mention was that they have this cool API that allows you to extract measurement data (including BGP topology) from their system. Can we do something cool with that?<!--more--></p>
 <h4>Enter the SDN Kool-Aid Factory</h4><p>Here’s a typical Internet connectivity setup used by reasonably-sized entities: two edge routers running EBGP with upstream provides and IBGP between them.</p>
 <div class="separator"><a href="/2013/11/s1600-ThousandEyes_Routers.png" imageanchor="1"><img border="0" src="/2013/11/s400-ThousandEyes_Routers.png"/></a></div>
 <p>Now let’s sprinkle a pinch of SDN pixie dust on this design.</p>
@@ -20,4 +20,4 @@ tags: [ SDN,Internet,BGP ]
 <p class="note">Speaking of abstraction layer, you just might consider using OpenDaylight for the policy distribution task and be a good netizen and contribute your code to the project.</p>
 <p>Your BGP daemon should establish IBGP connectivity with all edge routers – using IBGP allows you to use local preference to enforce your custom-picked routes over any routes the routers might choose themselves based on the usual BGP route selection rules.</p>
 <p>From there on, it’s mostly the usual BGP stuff – making sure you get the paths from the edge routers, select the best ones based on BGP attributes and results of SLA probes, and send whatever you feel your routers should be using to them (your controller doesn’t have to advertise the whole BGP table, just the exceptions).</p>
-<p>For more details, check out <a href="/2013/10/exception-routing-with-bgp-sdn-done.html">Petr Lapukhov’s BGP SDN work</a> … and you can always engage me to help you figure out the details.</p>
+<p>For more details, check out <a href="/2013/10/exception-routing-with-bgp-sdn-done/">Petr Lapukhov’s BGP SDN work</a> … and you can always engage me to help you figure out the details.</p>

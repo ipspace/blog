@@ -5,7 +5,7 @@ tags: [ BGP, security, netlab ]
 pre_scroll: True
 netlab_tag: use
 ---
-After checking what routers do when they [receive a TCP SYN packet from an unknown source](/2023/10/reject-unknown-bgp-session.html), I couldn't resist checking how they cope with TCP SYN packets with too-low TTL when using TTL security, formally known as The Generalized TTL Security Mechanism (GTSM) defined in [RFC 5082](https://datatracker.ietf.org/doc/html/rfc5082).
+After checking what routers do when they [receive a TCP SYN packet from an unknown source](/2023/10/reject-unknown-bgp-session/), I couldn't resist checking how they cope with TCP SYN packets with too-low TTL when using TTL security, formally known as The Generalized TTL Security Mechanism (GTSM) defined in [RFC 5082](https://datatracker.ietf.org/doc/html/rfc5082).
 
 **TL&DR:** Not bad: most devices I managed to test did a decent job.
 <!--more-->
@@ -189,7 +189,7 @@ There are two scenarios you might want to prevent with GTSM:
 * Establishing a BGP session with an intruder after it manages to inject a more specific route toward a valid EBGP peer. All devices I tested would pass this (pretty much hypothetical) scenario with flying colors[^DCI] 
 * Preventing denial-of-service TCP SYN attacks. Arista EOS and Cisco Nexus OS would do a much better job than Cumulus Linux because they drop packets with too-low TTL before they reach the TCP code in the Linux kernel. Obviously, once the volume of the DoS traffic exceeds the CPU capacity, your box quickly starts resembling a brick.
 
-Hardware ACLs are the only way to go if you want to have a robust high-speed solution. [Control-plane protection](/2008/11/control-plane-protection-overview.html) might be a decent first step, but it might drop good traffic together with the volumetric DoS attack. It's much better to deploy ACLs checking TCP port numbers and IP TTL on external interfaces, assuming your box has enough hardware resources to do that.
+Hardware ACLs are the only way to go if you want to have a robust high-speed solution. [Control-plane protection](/2008/11/control-plane-protection-overview/) might be a decent first step, but it might drop good traffic together with the volumetric DoS attack. It's much better to deploy ACLs checking TCP port numbers and IP TTL on external interfaces, assuming your box has enough hardware resources to do that.
 
 Finally, remember that you cannot apply GTSM to IBGP sessions in most BGP implementations. The only way to protect IBGP routers from external intruders is to deploy ACLs at the network edge or to establish IBGP sessions between IP addresses that are not announced to the outside world. That might be why we sometimes see RFC 1918 address space used for router loopbacks (and BGP router IDs).
 

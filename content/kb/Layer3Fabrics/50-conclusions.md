@@ -2,7 +2,7 @@
 kb_section: Layer3Fabrics
 minimal_sidebar: true
 title: Conclusions
-url: /kb/Layer3Fabrics/50-conclusions.html
+url: /kb/Layer3Fabrics/50-conclusions/
 ---
 Implementing resilient applications on top of redundant layer-3-only fabrics (without resorting to tricks like loopback interfaces on servers) is a hard problem that has been successfully solved only in niche domains like SS7 signaling or iSCSI fabrics.
 

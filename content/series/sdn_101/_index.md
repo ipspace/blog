@@ -4,7 +4,7 @@ layout: custom
 minimal_sidebar: true
 sidebar_box: SDN
 ---
-Open Networking Foundation (ONF -- [launched in March 2011](/2011/03/open-networking-foundation-fabric.html)) quickly defined Software Defined Networking (SDN) as architecture with centralized control plane that controls multiple physically distinct devices.
+Open Networking Foundation (ONF -- [launched in March 2011](/2011/03/open-networking-foundation-fabric/)) quickly defined Software Defined Networking (SDN) as architecture with centralized control plane that controls multiple physically distinct devices.
 
 That definition perfectly matched the needs of the ONF founding members (Google), but is it relevant to the networking community at large? Or does it make more sense to focus on network programmability and automation, or using existing protocols (BGP) in novel ways?
 

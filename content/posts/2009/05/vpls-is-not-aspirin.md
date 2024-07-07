@@ -5,7 +5,7 @@ tags:
 - switching
 - LAN
 title: VPLS Is Not Aspirin
-url: /2009/05/vpls-is-not-aspirin.html
+url: /2009/05/vpls-is-not-aspirin/
 ---
 If you're old enough to remember the days when *switches* were still called *bridges* and were used to connect multiple sites over WAN links, you've probably experienced interesting network meltdowns caused by a single malfunctioning network interface card. Some of you might have had the "privilege" of encountering another somewhat failed attempt at WAN bridging: ATM LAN Emulation (LANE) service (not to mention the "famous" Catalyst 3000 switches with LANE uplink).
 

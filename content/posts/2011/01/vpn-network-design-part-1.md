@@ -5,9 +5,9 @@ tags:
 - DMVPN
 - VPN
 title: "VPN Network Design: Selecting the Technology"
-url: /2011/01/vpn-network-design-part-1.html
+url: /2011/01/vpn-network-design-part-1/
 ---
-After all the [DMVPN-related posts](/tag/dmvpn.html) I've published in the last days, we're ready for the [OSPF-over-DMVPN design challenge](/2011/01/sometimes-you-need-to-step-back-and.html), but let's step back a few more steps and start from where every design project should start: deriving the technical requirements and the WAN network design from the business needs.
+After all the [DMVPN-related posts](/tag/dmvpn/) I've published in the last days, we're ready for the [OSPF-over-DMVPN design challenge](/2011/01/sometimes-you-need-to-step-back-and/), but let's step back a few more steps and start from where every design project should start: deriving the technical requirements and the WAN network design from the business needs.
 
 ### Do I Need a VPN?
 

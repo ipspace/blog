@@ -5,7 +5,7 @@ tags:
 - design
 - MPLS
 title: Should I Use 6PE or Native IPv6 Transport?
-url: /2012/01/should-i-use-6pe-or-native-ipv6.html
+url: /2012/01/should-i-use-6pe-or-native-ipv6/
 ---
 One of my students was watching the [*Building IPv6 Service Provider Core*](http://www.ipspace.net/Building_IPv6_Service_Provider_Core) webinar and wondered whether he should use 6PE or native IPv6 transport:
 

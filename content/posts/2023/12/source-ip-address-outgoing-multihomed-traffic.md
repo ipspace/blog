@@ -3,7 +3,7 @@ title: "Setting Source IP Address on Traffic Started by a Multihomed Host"
 date: 2023-12-20 08:39:00+01:00
 tags: [ IP routing, TCP ]
 ---
-In the [Path Failure Detection on Multi-Homed Servers](/2023/05/failure-detection-server-dual-homing.html) blog post, I mentioned [running BGP on servers](/2016/02/running-bgp-on-servers.html) as one of the best ways to detect server-to-network failures. As always, things aren't as simple as they look, as [Cathal Mooney quickly pointed out](/2023/05/failure-detection-server-dual-homing.html#1855):
+In the [Path Failure Detection on Multi-Homed Servers](/2023/05/failure-detection-server-dual-homing/) blog post, I mentioned [running BGP on servers](/2016/02/running-bgp-on-servers/) as one of the best ways to detect server-to-network failures. As always, things aren't as simple as they look, as [Cathal Mooney quickly pointed out](/2023/05/failure-detection-server-dual-homing/#1855):
 
 > One annoyance is what IP address gets used by default by the system for outbound traffic. It would be nice to have a generic OS-level way to say, "This IP on lo0 should be default for outbound IP traffic unless to the connected link subnet itself."
 
@@ -13,9 +13,9 @@ That's definitely a tough nut to crack, and Cathal described a few solutions he 
 
 You can also try a few other tricks, including:
 
-**Use multipath-aware software.** iSCSI immediately comes to mind. For more details, read the [Applications Using Multiple IP Addresses](/kb/Layer3Fabrics/20-apps.html) part of the [Redundant Layer-3-Only Data Center Fabrics](/kb/Layer3Fabrics/) document.
+**Use multipath-aware software.** iSCSI immediately comes to mind. For more details, read the [Applications Using Multiple IP Addresses](/kb/Layer3Fabrics/20-apps/) part of the [Redundant Layer-3-Only Data Center Fabrics](/kb/Layer3Fabrics/) document.
 
-**Use Multipath TCP.** Assuming you're worried about clients running on the multihomed servers[^SBL], you could use Multipath TCP to use all available external IP addresses. Once the parallel TCP sessions are established, Multipath TCP survives the loss of any one IP address. QUIC has similar capabilities but requires changes in the applications using it because we [borked the socket API](/2009/08/what-went-wrong-socket-api.html) (that's why [SCTP got nowhere](/2009/08/what-went-wrong-sctp.html)[^NICHE]).
+**Use Multipath TCP.** Assuming you're worried about clients running on the multihomed servers[^SBL], you could use Multipath TCP to use all available external IP addresses. Once the parallel TCP sessions are established, Multipath TCP survives the loss of any one IP address. QUIC has similar capabilities but requires changes in the applications using it because we [borked the socket API](/2009/08/what-went-wrong-socket-api/) (that's why [SCTP got nowhere](/2009/08/what-went-wrong-sctp/)[^NICHE]).
 
 [^SBL]: With server/daemon applications listening to incoming TCP requests on the loopback IP address.
 

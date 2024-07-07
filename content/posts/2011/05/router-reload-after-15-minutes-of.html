@@ -1,11 +1,11 @@
 ---
-url: /2011/05/router-reload-after-15-minutes-of.html
+url: /2011/05/router-reload-after-15-minutes-of/
 title: "Router reload after 15 minutes of failed pings"
 date: "2011-05-19T06:21:00.001+02:00"
 tags: [ EEM ]
 ---
 
-<p>Jeroen sent me an interesting challenge: he would like to reload the router when the 3G WAN interface gets stuck (I thought my Nokia phone is the only one exhibiting this problem, but obviously I was wrong). The <a href="/2007/04/reload-router-when-ping-fails.html">reload-on-failed-ping EEM applet I’ve published</a> would be a perfect solution, but it uses <strong>track delay </strong>and the maximum delay timeout is three minutes, while Jeroen would like to wait 15 minutes before reloading the router.<!--more--></p>
+<p>Jeroen sent me an interesting challenge: he would like to reload the router when the 3G WAN interface gets stuck (I thought my Nokia phone is the only one exhibiting this problem, but obviously I was wrong). The <a href="/2007/04/reload-router-when-ping-fails/">reload-on-failed-ping EEM applet I’ve published</a> would be a perfect solution, but it uses <strong>track delay </strong>and the maximum delay timeout is three minutes, while Jeroen would like to wait 15 minutes before reloading the router.<!--more--></p>
 <p>I had two off-the-cuff ideas: execute <strong>reload in X </strong>command when SLA fails and <strong>reload cancel</strong><strong> </strong>when SLA recovers, or use a second EEM applet with <strong>event timer watchdog </strong>that is triggered (and stopped) by the SLA-tracking applets. Both options are pretty messy so I was not really happy with either one ... and then Jeroen managed to find a third, totally unexpected solution.</p>
 <p>He decided to use the SNMP value event detector to detect SLA failure (each SLA measurement has its own MIB variables) and combined it with a trigger saying “execute this applet if the OID value is below the threshold X times in X sampling intervals.” Here’s his SLA definition (he gets extra bonus points for starting SLA measurements 30 minutes after power up) ...</p>
 <pre class="code">ip sla 10<br/> icmp-echo 10.255.251.64 source-interface Loopback0<br/> request-data-size 16384<br/> frequency 10<br/>ip sla schedule 10 life forever start-time after 00:30:00</pre><p>... and the EEM applet (the last number in the OID string has to match <strong>ip sla </strong>entry number and the polling frequency should match the <strong>ip sla </strong>frequency):</p>

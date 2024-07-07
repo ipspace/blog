@@ -5,7 +5,7 @@ tags:
 - fabric
 - QoS
 title: Queuing Mechanisms in Modern Switches
-url: /2014/05/queuing-mechanisms-in-modern-switches.html
+url: /2014/05/queuing-mechanisms-in-modern-switches/
 ---
 
 <p>A long while ago there was an interesting discussion started by Brad Hedlund (then at Dell Force10) <a href="http://bradhedlund.com/2012/05/10/comparing-efficiencies-of-fixed-vs-chassis-switches/">comparing leaf-and-spine (Clos) fabrics built from fixed-configuration pizza box switches with high-end chassis switches</a>. The comments made by other readers were all over the place (addressing pricing, wiring, power consumption) but surprisingly nobody addressed the queuing issues.</p>
@@ -25,7 +25,7 @@ url: /2014/05/queuing-mechanisms-in-modern-switches.html
 <p>Packets from a <em>priority queue </em>might be sent first (hardware checks priority queue before trying to select a packet from any other queue), and the hardware might support multiple priority levels (802.1p standard defines eight strict priority levels).</p>
 <p class="info">Real-life analogy: Business-class airport security queues that nonetheless end at the same X-ray scanner.</p>
 <div class="separator"><a href="/2014/05/s1600-QoS_PQ.jpg" imageanchor="1"><img border="0" src="/2014/05/s550-QoS_PQ.jpg"/></a><br/>Strict priority queuing</div>
-<p>Alternatively, the queues might be served in round-robin fashion while still giving some queues relatively more bandwidth than others (Weighted Round Robin – WRR). For example, <a href="/2010/09/introduction-to-8021qaz-enhanced.html">Enhanced Transmission Selection (802.1Qaz)</a> defines eight queues that can be either priority- or WRR queues.</p>
+<p>Alternatively, the queues might be served in round-robin fashion while still giving some queues relatively more bandwidth than others (Weighted Round Robin – WRR). For example, <a href="/2010/09/introduction-to-8021qaz-enhanced/">Enhanced Transmission Selection (802.1Qaz)</a> defines eight queues that can be either priority- or WRR queues.</p>
 <div class="separator"><a href="/2014/05/s1600-QoS_WDRR.jpg" imageanchor="1"><img border="0" src="/2014/05/s550-QoS_WDRR.jpg"/></a><br/>Weighted round-robin queuing</div>
 <p>Simple round robin algorithms use per-queue byte count quotas. For example, the hardware sends at least 10.000 bytes worth of data from queue#1 every time queue#1 is served (this is how <em>custom queuing </em>used to work in Cisco IOS).</p>
 <p>These algorithms are obviously not precise (unless you’re using fixed-size packets or cells), as they always send a bit more than the queue’s quota worth of data. This deficiency is fixed in the Weighted Deficit Round Robin (WDRR) algorithms that reduce the per-queue byte count of the next round robin cycle by the amount of excess traffic sent in the current cycle.</p>

@@ -4,7 +4,7 @@ tags:
 - BGP
 title: 'Advertising Public IP Prefixes into the Internet'
 series: bgp-essentials
-url: /2008/01/bgp-essentials-advertising-public-ip.html
+url: /2008/01/bgp-essentials-advertising-public-ip/
 ---
 The routing information you source into the public Internet with BGP should be as accurate and stable as possible. The best way to achieve this goal is to statically configure the IP prefixes you've been allocated on your core routers and advertise them into BGP:
 

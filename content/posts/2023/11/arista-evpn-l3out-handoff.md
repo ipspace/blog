@@ -7,7 +7,7 @@ tags:
 - WAN
 title: VXLAN/EVPN Layer-3 Handoff (L3Out) on Arista EOS
 ---
-A while ago, I published a blog post describing how to [establish a LAN/WAN L3 boundary in VXLAN/EVPN networks using Cisco NX-OS](/2023/09/evpn-wan-handoff-l3out.html). At that time, I promised similar information for Arista EOS. Here it is, coming straight from [Massimo Magnani](https://www.linkedin.com/in/massimo-magnani-8b3a59/). The useful part of what follows is his; all errors were introduced during my editing process.
+A while ago, I published a blog post describing how to [establish a LAN/WAN L3 boundary in VXLAN/EVPN networks using Cisco NX-OS](/2023/09/evpn-wan-handoff-l3out/). At that time, I promised similar information for Arista EOS. Here it is, coming straight from [Massimo Magnani](https://www.linkedin.com/in/massimo-magnani-8b3a59/). The useful part of what follows is his; all errors were introduced during my editing process.
 
 ---
 

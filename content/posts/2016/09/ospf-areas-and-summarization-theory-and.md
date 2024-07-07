@@ -5,7 +5,7 @@ tags:
 - design
 - OSPF
 title: 'OSPF Areas and Summarization: Theory and Reality'
-url: /2016/09/ospf-areas-and-summarization-theory-and.html
+url: /2016/09/ospf-areas-and-summarization-theory-and/
 ---
 While most readers, commenters, and Twitterati agreed with my take on the uselessness of OSPF areas and inter-area summarization in the 21st century, a few of them pointed out that [in practice, the theory and practice are not the same](http://c2.com/cgi/wiki?DifferenceBetweenTheoryAndPractice). Unfortunately, most counterexamples failed due to broken implementations or vendor "optimizations."
 <!--more-->
@@ -32,7 +32,7 @@ Well done, Cisco! Seeing you guys supporting clean and straightforward network d
 
 ### Old Gear
 
-Finally, there's always a dinosaur hiding in a dusty closet. As an [anonymous commenter wrote](/2016/09/do-we-still-need-ospf-areas-and.html?showComment=1473093047491#c2289999859109206256):
+Finally, there's always a dinosaur hiding in a dusty closet. As an [anonymous commenter wrote](/2016/09/do-we-still-need-ospf-areas-and/#c2289999859109206256):
 
 > Got some customers still using very old routers managing critical services with 7+ yrs uptime that can't process a large DB and cannot be touched whatever is the issue/project.
 

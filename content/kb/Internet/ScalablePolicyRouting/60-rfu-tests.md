@@ -3,7 +3,7 @@ kb_section: ScalablePolicyRouting
 minimal_sidebar: true
 pre_scroll: true
 title: Ready-for-Use Tests
-url: /kb/Internet/ScalablePolicyRouting/60-rfu-tests.html
+url: /kb/Internet/ScalablePolicyRouting/60-rfu-tests/
 ---
 To test the correct operation of the policy routing in your network, you should perform at least the following tests:
 

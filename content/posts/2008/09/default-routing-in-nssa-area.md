@@ -4,7 +4,7 @@ ospf_tag: default
 tags:
 - OSPF
 title: Default Routing in NSSA Area
-url: /2008/09/default-routing-in-nssa-area.html
+url: /2008/09/default-routing-in-nssa-area/
 ---
 The [RFC 3101](http://tools.ietf.org/html/rfc3101#page-6) (OSPF NSSA Option) states:
 

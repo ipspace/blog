@@ -4,13 +4,13 @@ dmvpn_tag: quirk
 tags:
 - DMVPN
 title: DMVPN Spoke NHRP Behavior Changed in IOS Release 15.0M
-url: /2011/04/dmvpn-spoke-nhrp-behavior-changed-in.html
+url: /2011/04/dmvpn-spoke-nhrp-behavior-changed-in/
 ---
 In the good old days, we (thought we) knew how Phase 2 DMVPN works and what happens when the spoke-to-spoke session cannot be established. As I discovered when developing the lab configurations for the [*DMVPN: New Features in IOS Release 15*](https://www.ipspace.net/DMVPN150) webinar, that behavior has forever changed (and not for the better) sometime in the 12.4T (or 15.0M) release. I blame the introduction of NAT awareness in IOS release 12.4(15)T, but it could be another totally unrelated change.
 <!--more-->
 I've set up a small lab network (actually reused the lab configurations you get as part of the [DMVPN - From Basics to Scalable Networks](https://www.ipspace.net/DMVPN:_From_Basics_to_Scalable_Networks) or [DMVPN New Features](https://www.ipspace.net/DMVPN_New_Features) webinars) shown in the following diagram to illustrate the change in the behavior. After OSPF populated the routing tables on all routers, I pinged the loopback interface of R3 from R2.
 
-{{<figure src="s1600-DMVPN_NHRP_Lab.png">}}
+{{<figure src="/2011/04/s1600-DMVPN_NHRP_Lab.png">}}
 
 ### The Old Behavior
 
@@ -59,4 +59,4 @@ As you can see, the expiration time of the fake NHRP entry is 3 minutes, while t
 
 ### Is This a Problem?
 
-Yes it is; it's a huge problem in some redundant network designs. [Read this blog post](/2013/04/the-impact-of-changed-nhrp-behavior-in.html) for more details; they are also explained in my [DMVPN webinars](http://www.ipspace.net/DMVPN_trilogy).
+Yes it is; it's a huge problem in some redundant network designs. [Read this blog post](/2013/04/the-impact-of-changed-nhrp-behavior-in/) for more details; they are also explained in my [DMVPN webinars](http://www.ipspace.net/DMVPN_trilogy).

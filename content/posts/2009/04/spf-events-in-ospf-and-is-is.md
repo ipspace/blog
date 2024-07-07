@@ -6,7 +6,7 @@ tags:
 - IS-IS
 - OSPF
 title: SPF Events in OSPF and IS-IS
-url: /2009/04/spf-events-in-ospf-and-is-is.html
+url: /2009/04/spf-events-in-ospf-and-is-is/
 ---
 Link-state algorithms select the best routes through a two-step process:
 

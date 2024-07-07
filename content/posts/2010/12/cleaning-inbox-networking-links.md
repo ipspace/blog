@@ -1,7 +1,7 @@
 ---
 date: 2010-12-20 07:05:00.001000+01:00
 title: 'Cleaning the Inbox: Networking Links'
-url: /2010/12/cleaning-inbox-networking-links.html
+url: /2010/12/cleaning-inbox-networking-links/
 tags: [ worth reading ]
 ---
 I published this blog post in December 2010. As I was cleaning it up 10 years later, only three out of original 11 links still worked. Whatever...

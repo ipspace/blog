@@ -18,8 +18,8 @@ In the previous MLAG Deep Dive blog posts we discussed the innards of a standalo
 A few notes before we get to the cumbersome details:
 
 * We still need the peer link between the MLAG cluster members. Replacing the peer link with a virtual link over the VXLAN fabric is another interesting topic that we'll deal with some other time.
-* Connecting MLAG clusters in a [traditional bridging fabric](/2022/09/mlag-bridging-evpn.html) is boring. Every MLAG cluster looks like a dual-homed host to adjacent clusters.
-* Considerations similar to the ones described in this blog post apply to other transport technologies (TRILL, SPBM) or [proprietary fabric solutions](/2022/05/cisco-fabric-path-and-friends.html), but we won't discuss them because those technologies aren't exactly mainstream anymore.
+* Connecting MLAG clusters in a [traditional bridging fabric](/2022/09/mlag-bridging-evpn/) is boring. Every MLAG cluster looks like a dual-homed host to adjacent clusters.
+* Considerations similar to the ones described in this blog post apply to other transport technologies (TRILL, SPBM) or [proprietary fabric solutions](/2022/05/cisco-fabric-path-and-friends/), but we won't discuss them because those technologies aren't exactly mainstream anymore.
 
 ### Dynamic MAC Learning Ruins the Day
 
@@ -56,7 +56,7 @@ There's a simple solution to this conundrum: use a different source VTEP IP addr
 
 [^CPIP]: It looks like the ASICs used in Cisco Nexus switches can do that -- this is exactly the functionality required for their EVPN vPC Multihoming implementation.
 
-Looking at various VXLAN implementations, it seems like the above requirements aren't exactly a walk in the park. Obviously we don't know what data center switch ASICs can do ([thanks a million](/2016/05/what-are-problems-with-broadcom.html), Broadcom, NVIDIA and friends), and people who could answer that question are not allowed to, but if you could say something without violating an NDA signed in blood, or send me an anonymous hint, you'd be most welcome. 
+Looking at various VXLAN implementations, it seems like the above requirements aren't exactly a walk in the park. Obviously we don't know what data center switch ASICs can do ([thanks a million](/2016/05/what-are-problems-with-broadcom/), Broadcom, NVIDIA and friends), and people who could answer that question are not allowed to, but if you could say something without violating an NDA signed in blood, or send me an anonymous hint, you'd be most welcome. 
 
 Finally, this is the perfect moment for EVPN pundits to tell me how all the problems I just described get solved with EVPN multihoming. That's not exactly true, and we'll discuss the nuances in the next blog post in this series.
 
@@ -67,13 +67,13 @@ Now that we know how unicast forwarding works in MLAG clusters connected to a VX
 Outbound direction is easy: 
 
 * Packets received from a host (orphan or MLAG-connected) are flooded to all other hosts, the peer link *and the VXLAN fabric*.
-* Packets received from the peer link *should not be flooded to the VXLAN fabric*, as the MLAG peer already did that. From the perspective of the egress ACL discussed in [MLAG Layer-2 Flooding](/2022/06/mlag-deep-dive-flooding.html) blog post, VXLAN interface should be treated like an MLAG interface.
+* Packets received from the peer link *should not be flooded to the VXLAN fabric*, as the MLAG peer already did that. From the perspective of the egress ACL discussed in [MLAG Layer-2 Flooding](/2022/06/mlag-deep-dive-flooding/) blog post, VXLAN interface should be treated like an MLAG interface.
 
 Now for the inbound direction, where the fabric could use IP multicast or ingress replication to flood BUM traffic.
 
 When the VXLAN fabric uses **multicast-based** BUM flooding, all egress devices listening to the VNI IP multicast address receive all the flooded traffic, and the MLAG cluster members might have a fun time deciding who should forward the flooded packets to the MLAG hosts[^OHE].
 
-The easiest solution to this challenge is to use a single MLAG cluster member as a dedicated flooder and register the VNI IP multicast address only on that node[^REGALL]. The Ethernet frames received from the VXLAN fabric would be flooded to all ports on the dedicated flooder -- including the peer link -- and the other member(s) of the MLAG cluster would use the exact [same procedures they used in standalone MLAG cluster](/2022/06/mlag-deep-dive-flooding.html).[^REGCOM]
+The easiest solution to this challenge is to use a single MLAG cluster member as a dedicated flooder and register the VNI IP multicast address only on that node[^REGALL]. The Ethernet frames received from the VXLAN fabric would be flooded to all ports on the dedicated flooder -- including the peer link -- and the other member(s) of the MLAG cluster would use the exact [same procedures they used in standalone MLAG cluster](/2022/06/mlag-deep-dive-flooding/).[^REGCOM]
 
 [^REGALL]: Alternatively, all members of MLAG cluster could listen to the VNI IP multicast address, and everyone but the dedicated flooder ignores BUM packets received over the VXLAN interface. Not listening to IP multicast might be simpler ;)
 
@@ -81,7 +81,7 @@ The easiest solution to this challenge is to use a single MLAG cluster member as
 
 What about VXLAN fabrics using **ingress replication**? That's an even easier one. All MLAG cluster members advertise the same anycast VTEP IP address, and that address is used in the ingress replication lists on all other VTEPs. 
 
-When an ingress VTEP sends a replicated BUM packet to the anycast VTEP IP address, it's received by a random MLAG cluster members. That switch can treat the flooded packet like it would be coming from an MLAG host: flood it to all other ports and the peer link. The [standard MLAG flooding procedures](/2022/06/mlag-deep-dive-flooding.html) take care of further flooding.
+When an ingress VTEP sends a replicated BUM packet to the anycast VTEP IP address, it's received by a random MLAG cluster members. That switch can treat the flooded packet like it would be coming from an MLAG host: flood it to all other ports and the peer link. The [standard MLAG flooding procedures](/2022/06/mlag-deep-dive-flooding/) take care of further flooding.
 
 [^OHE]: Orphan hosts are easy ;)
 

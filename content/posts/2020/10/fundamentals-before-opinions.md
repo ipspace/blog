@@ -15,7 +15,7 @@ Interestingly, that's exactly how IP works:
 
 So where's the problem, and why do we need endless discussions about stretched VLANs? Unfortunately (to continue the ZIP code analogy), some people got their town planning experience playing with Lego City (aka Loopback Interface), think that whatever they figured out in that limited domain translates into real life, and expect to be able to carry their street address with them wherever they go.
 
-That approach doesn't work in real cities, but IT is different, and anyone [throwing a big-enough tantrum](/2013/04/this-is-what-makes-networking-so-complex.html) can bend reality and force everyone else to [implement the warped reality](/2013/01/long-distance-vmotion-stretched-ha.html) no matter the resulting costs.
+That approach doesn't work in real cities, but IT is different, and anyone [throwing a big-enough tantrum](/2013/04/this-is-what-makes-networking-so-complex/) can bend reality and force everyone else to [implement the warped reality](/2013/01/long-distance-vmotion-stretched-ha/) no matter the resulting costs.
 
 But doesn't it work really well with mobile phone numbers... and why wouldn't the same approach work with IP addresses? According to my limited understanding of how [phone number portability](https://en.wikipedia.org/wiki/Local_number_portability) works we'd be comparing apples and bricks (not even oranges):
 
@@ -28,7 +28,7 @@ Anyway, back to my discussion. People don't love to hear their opinions aren't g
 
 While LISP might have some good ideas, it doesn't change IP addressing concepts in any way, and it's just a cache-based forwarding scheme[^1] with a DNS-like mapping service building an IP-over-IP overlay, proving the wisdom of RFC 1925 rule 6 and 6a. 
 
-Also, once we'd decouple application endpoints from IP addresses using some sort of service discovery (see also: [missing session layer](/2009/08/what-went-wrong-tcpip-lacks-session.html)) we wouldn't need LISP anyway.
+Also, once we'd decouple application endpoints from IP addresses using some sort of service discovery (see also: [missing session layer](/2009/08/what-went-wrong-tcpip-lacks-session/)) we wouldn't need LISP anyway.
 
 The next step was a brief detour into FG NET-2030 initiative (yay, [just the right way to solve all problems Internet has](https://labs.apnic.net/?p=1318)), and I finally had enough after reading this one:
 

@@ -6,7 +6,7 @@ tags:
 - DMVPN
 - OSPF
 title: Configuring OSPF in a Phase 2 DMVPN network
-url: /2011/01/configuring-ospf-in-phase-2-dmvpn.html
+url: /2011/01/configuring-ospf-in-phase-2-dmvpn/
 ---
 Cliffs Notes version (details in the [DMVPN webinar](https://www.ipspace.net/DMVPN_Technology_and_Configuration)):
 

@@ -5,18 +5,18 @@ tags:
 - SAN
 - workshop
 title: ATAoE Is Alive and Well
-url: /2013/10/ataoe-is-alive-and-well.html
+url: /2013/10/ataoe-is-alive-and-well/
 ---
 
-<p>A while ago I <a href="/2010/09/ataoe-for-converged-data-center.html">wrote about ATAoE</a> and <a href="/2010/09/ataoe-response-from-coraid.html">why I think a layer-2-only TFTP-like protocol shouldn’t be used these days</a>. As always, the answer to that black-and-white opinion (and I’m full of them) is “it depends” – ATAoE works great if you do it right.<!--more--></p>
-<p>A reader who wanted to stay anonymous for obvious reasons <a href="/2010/09/ataoe-response-from-coraid.html?showComment=1373011174266#c1688616394278747346">provided great feedback in a comment to my ATAoE post</a>. Focus on the first paragraph and its message: <a href="/2013/03/does-dedicated-iscsi-infrastructure.html">keep the storage network totally separate</a> and build it from scratch.</p>
+<p>A while ago I <a href="/2010/09/ataoe-for-converged-data-center/">wrote about ATAoE</a> and <a href="/2010/09/ataoe-response-from-coraid/">why I think a layer-2-only TFTP-like protocol shouldn’t be used these days</a>. As always, the answer to that black-and-white opinion (and I’m full of them) is “it depends” – ATAoE works great if you do it right.<!--more--></p>
+<p>A reader who wanted to stay anonymous for obvious reasons <a href="/2010/09/ataoe-response-from-coraid/#c1688616394278747346">provided great feedback in a comment to my ATAoE post</a>. Focus on the first paragraph and its message: <a href="/2013/03/does-dedicated-iscsi-infrastructure/">keep the storage network totally separate</a> and build it from scratch.</p>
 <style> blockquote.margin p:not(:nth-child(1)) { margin-top: 1em; }</style><blockquote class="cite margin"><p>One of things that people who have not deployed ATAoE think is that it's intended to be just plugged into any old network port on any old switch you have lying around the building. That's far from the typical case - an isolated SAN attached only to provide storage. You don't have authentication on your SAS extenders, so why have it on ATAoE?</p>
 <p>We've adopted it over iSCSI (initially running in tandem with iSCSI, but after a few months the benefits were very clearly in favour of ATAoE) for all of our (oil/gas geological) bulk storage uses for 2 years now. You could probably call it Big Data, at over 3000 disks total and 5 Petabytes of data per site. </p>
 <p>An unplanned side effect of this is that we have now abandoned all the Microsoft storage and use Debian and FreeBSD, giving us a lot less trouble overall, which was quite a surprise here. </p>
 <p>At the time you wrote your blog post, we were just commissioning the systems, so I read it with great interest and I worried. I have to say that in practice, we haven't hit any of the worries you raised. The speeds over iSCSI on the same architecture were a big plus and it was far simpler to set up and in use is totally transparent and hasn't given a single problem down to the protocol choice, which is more than we can say for the iSCSI half of the project, which was disappointing in comparison.</p>
 <p>Note that we don't use Coraid, so this is purely a comment on Debian-based ATAoE itself. </p>
 </blockquote>
-<p>The same reader <a href="/2010/09/ataoe-response-from-coraid.html?showComment=1373057822611#c5913173387673563628">provided more details in a follow-up comment</a>, concluding with the typical vendor response to ATAoE deployment plans:</p>
+<p>The same reader <a href="/2010/09/ataoe-response-from-coraid/#c5913173387673563628">provided more details in a follow-up comment</a>, concluding with the typical vendor response to ATAoE deployment plans:</p>
 <blockquote class="cite">The vendor-free approach has been extremely flexible though I can see some major problems for the salesmen due to this - they were very hostile and the scare stories were getting tedious. They have gone strangely quiet now :-)</blockquote>
 <p>Would I recommend ATAoE based on this feedback? No, but it does prove that you can get many things to work great if you do proper planning and design (and this is the point where I have to mention that <a href="http://www.ipspace.net/Consulting">I can help you if needed</a>).</p>
 

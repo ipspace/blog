@@ -6,7 +6,7 @@ tags:
 - DMVPN
 - WAN
 title: Should I Use L2VPN+MACSEC or L3VPN+GETVPN?
-url: /2016/09/should-i-use-l2vpnmacsec-or-l3vpngetvpn.html
+url: /2016/09/should-i-use-l2vpnmacsec-or-l3vpngetvpn/
 ---
 Here are the outlines of an interesting [ExpertExpress](http://www.ipspace.net/ExpertExpress) discussion:
 
@@ -24,7 +24,7 @@ The first recommendation I made was *try to be as independent from your Service 
 There are (at least) two ways to achieve that goal:
 
 -   Buy L2VPN and run traditional IP routing on top of it.
--   Buy L3VPN and build an overlay (CE-to-CE tunnels) on top of it. Don't run routing protocol with the SP but rely on PE-CE subnets for transport connectivity (an architecture recently [remarketed as SD-WAN](/2015/06/software-defined-wanwell-orchestrated.html)).
+-   Buy L3VPN and build an overlay (CE-to-CE tunnels) on top of it. Don't run routing protocol with the SP but rely on PE-CE subnets for transport connectivity (an architecture recently [remarketed as SD-WAN](/2015/06/software-defined-wanwell-orchestrated/)).
 
 The beauty of the second approach: you can use it with every VPN service (or even across the Internet) from every SP worldwide, which puts your SP in an awkward spot during the contract negotiation.
 

@@ -2,7 +2,7 @@
 kb_section: CiscoAutomation
 minimal_sidebar: true
 title: Screen and Web Scraping
-url: /kb/CiscoAutomation/050-scraping.html
+url: /kb/CiscoAutomation/050-scraping/
 ---
 Screen/Web scraping refers to the process of translating the output displayed by software (for example, a network device CLI) into a data structure. More generally, I include in this category all automation scripts that try to emulate humans while they are interacting with a device. As you will see later, this is the rudest but also pretty effective way to automate many devices. Rude because interpreting the output of a screen is very risky, painful and slow; effective because many devices don't offer alternatives.
 

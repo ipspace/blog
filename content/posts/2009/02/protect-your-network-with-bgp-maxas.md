@@ -3,7 +3,7 @@ date: 2009-02-17 12:07:00.002000+01:00
 tags:
 - BGP
 title: Protect Your Network with BGP maxas-limit
-url: /2009/02/protect-your-network-with-bgp-maxas.html
+url: /2009/02/protect-your-network-with-bgp-maxas/
 lastmod: 2020-12-05 07:59:00
 ---
 In February 2009, a greenhorn ISP (they joined RIPE less than four months before the incident) in central Europe managed to generate a BGP update with too many AS numbers in the AS path, confusing older routers. [You can find the details in an old Renesys blog post](https://web.archive.org/web/20110211072612/http://www.renesys.com/blog/2009/02/the-flap-heard-around-the-worl.shtml); at the peak of the instability, they were receiving over 100.000 BGP updates *per second*.

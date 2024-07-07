@@ -11,7 +11,7 @@ tags:
 title: 'Video: EVPN Multihoming Deep Dive'
 video_tag: evpn
 ---
-After starting the [EVPN multihoming versus MLAG](https://my.ipspace.net/bin/list?id=EVPN#MH) presentation (part of [EVPN Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar) with the [taxonomy of EVPN-based multihoming](/2022/10/video-evpn-multihoming-overview.html), Lukas Krattiger did a [deep dive into its intricacies](https://my.ipspace.net/bin/get/EVPN/M2%20-%20EVPN%20Multihoming%20Deep%20Dive.mp4?doccode=EVPN) including:
+After starting the [EVPN multihoming versus MLAG](https://my.ipspace.net/bin/list?id=EVPN#MH) presentation (part of [EVPN Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar) with the [taxonomy of EVPN-based multihoming](/2022/10/video-evpn-multihoming-overview/), Lukas Krattiger did a [deep dive into its intricacies](https://my.ipspace.net/bin/get/EVPN/M2%20-%20EVPN%20Multihoming%20Deep%20Dive.mp4?doccode=EVPN) including:
 
 * EVPN route types needed to support multihoming
 * A typical sequence of EVPN updates during multihoming setup

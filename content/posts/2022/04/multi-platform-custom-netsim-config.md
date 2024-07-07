@@ -7,7 +7,7 @@ tags:
 - netlab
 title: netlab Multi-Platform Custom Configuration Templates
 ---
-In the _[Building a BGP Anycast Lab](/2021/12/bgp-anycast-lab.html)_ I described how you could use custom configuration templates to extend the *netlab* functionality. 
+In the _[Building a BGP Anycast Lab](/2021/12/bgp-anycast-lab/)_ I described how you could use custom configuration templates to extend the *netlab* functionality. 
 
 That example used Cisco IOS... but what if you want to test the same functionality on multiple platforms? *[netlab](https://netlab.tools/)* provides a nice trick: the [custom configuration template](https://netlab.tools/groups/#custom-configuration-templates) could point to a directory with platform-specific templates. Let me show you how that works...
 <!--more-->
@@ -49,7 +49,7 @@ nodes:
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
 
-Now for the multi-platform custom configuration trick: we'll specify *directories* instead of *template file names* in group **config** attributes (read the [BGP anycast](/2021/12/bgp-anycast-lab.html) blog post for more details).
+Now for the multi-platform custom configuration trick: we'll specify *directories* instead of *template file names* in group **config** attributes (read the [BGP anycast](/2021/12/bgp-anycast-lab/) blog post for more details).
 
 {{<cc>}}Using directories as custom configuration templates{{</cc>}}
 ```

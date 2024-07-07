@@ -4,9 +4,9 @@ ospf_tag: details
 tags:
 - OSPF
 title: Inter-Process OSPF Route Selection Rules
-url: /2013/03/inter-process-ospf-route-selection-rules.html
+url: /2013/03/inter-process-ospf-route-selection-rules/
 ---
-[Nicolas Michel](https://plus.google.com/103779506789076415201/posts) left an interesting comment (quoting [Cisco's documentation](http://www.cisco.com/en/US/tech/tk365/technologies_white_paper09186a0080531fd2.shtml#routepref)) on my [OSPF Route Selection Rules](/2008/01/e1-and-e2-routes-in-ospf.html) blog post:
+[Nicolas Michel](https://plus.google.com/103779506789076415201/posts) left an interesting comment (quoting [Cisco's documentation](http://www.cisco.com/en/US/tech/tk365/technologies_white_paper09186a0080531fd2.shtml#routepref)) on my [OSPF Route Selection Rules](/2008/01/e1-and-e2-routes-in-ospf/) blog post:
 
 > ... The OSPF route selection rule is that intra-area routes are preferred over inter-area routes, which are preferred over external routes. However, this rule should apply to routes learned via the same process ...
 
@@ -16,9 +16,9 @@ As you know, OSPF goes through the following process to select the best (candida
 
 -   Run intra-area SPF for every area to which the router is connected;
 -   Run inter-area and external route selection process (actually a distance-vector calculation, because only the costs are compared);
--   Offer the best routes (according to [OSPF route selection rules as implemented by Cisco IOS](/2008/01/e1-and-e2-routes-in-ospf.html)) to the routing table.
+-   Offer the best routes (according to [OSPF route selection rules as implemented by Cisco IOS](/2008/01/e1-and-e2-routes-in-ospf/)) to the routing table.
 
-While the information about OSPF cost and route type gets copied to the routing table (but not the forwarding table -- the [RIBs and FIBs](/2010/09/ribs-and-fibs.html) blog post explains the difference) or you wouldn't be able to see it with **show ip route** command, that information is not used when the router compares routes arriving into the IP routing table from multiple sources (routing protocols, static routes...).
+While the information about OSPF cost and route type gets copied to the routing table (but not the forwarding table -- the [RIBs and FIBs](/2010/09/ribs-and-fibs/) blog post explains the difference) or you wouldn't be able to see it with **show ip route** command, that information is not used when the router compares routes arriving into the IP routing table from multiple sources (routing protocols, static routes...).
 
 If multiple routing protocols offer the same IP prefix (with potentially different next hops) to the IP routing table, *the entry with the lowest administrative distance* *(AD)* *always wins*, regardless of its other attributes.
 

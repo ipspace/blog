@@ -9,7 +9,7 @@ tags:
 title: 'Video: Comparing Routing and Bridging'
 video_tag: net101
 ---
-After covering the [basics of transparent Ethernet bridging](/2021/04/video-transparent-bridging-fundamentals.html) and [IP routing](/2021/05/video-ip-routing-fundamentals.html), we're finally [ready to compare the two](https://my.ipspace.net/bin/get/Net101/BR2%20-%20Comparing%20Bridging%20and%20Routing.mp4). Enjoy the ride ;)
+After covering the [basics of transparent Ethernet bridging](/2021/04/video-transparent-bridging-fundamentals/) and [IP routing](/2021/05/video-ip-routing-fundamentals/), we're finally [ready to compare the two](https://my.ipspace.net/bin/get/Net101/BR2%20-%20Comparing%20Bridging%20and%20Routing.mp4). Enjoy the ride ;)
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/BR2%20-%20Comparing%20Bridging%20and%20Routing.mp4){{</jump>}}
 

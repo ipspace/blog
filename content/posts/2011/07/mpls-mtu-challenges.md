@@ -5,7 +5,7 @@ tags:
 - workshop
 - MPLS VPN
 title: The MPLS MTU Challenges
-url: /2011/07/mpls-mtu-challenges.html
+url: /2011/07/mpls-mtu-challenges/
 ---
 \@MCL_Nicolas sent me the [following tweet](http://twitter.com/MCL_Nicolas/status/86838923019558912):
 

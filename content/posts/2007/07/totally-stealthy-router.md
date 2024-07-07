@@ -3,7 +3,7 @@ date: 2007-07-17 07:23:00+02:00
 tags:
 - security
 title: Totally Stealthy Router
-url: /2007/07/totally-stealthy-router.html
+url: /2007/07/totally-stealthy-router/
 ---
 In response to the post detailing router response to port scans, one of my readers asked an interesting question:
 

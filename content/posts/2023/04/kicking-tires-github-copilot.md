@@ -52,4 +52,4 @@ I'm sure you get performance improvement using GitHub Copilot in real-world scen
 
 ### Back to Networking
 
-Want to know whether AI/ML makes sense in networking and how you could use these technologies? You'll love the [AI/ML in Networking: the Good, the Bad, and the Ugly](https://www.ipspace.net/AI_and_ML_in_Networking) webinar by Javier Antich (available with the [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)). He also [wrote a book on the topic](/2023/02/machine-learning-network-cloud.html) that's definitely worth buying.
+Want to know whether AI/ML makes sense in networking and how you could use these technologies? You'll love the [AI/ML in Networking: the Good, the Bad, and the Ugly](https://www.ipspace.net/AI_and_ML_in_Networking) webinar by Javier Antich (available with the [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)). He also [wrote a book on the topic](/2023/02/machine-learning-network-cloud/) that's definitely worth buying.

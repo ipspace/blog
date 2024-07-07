@@ -10,4 +10,4 @@ Michael Mullany analyzed [20 years of Gartner hype cycles](https://www.linkedin.
 * We might get the idea right and fail badly at implementation
 * It takes a lot longer to solve some problems than anyone expected
 
-Enjoy the reading, and keep these lessons in mind the next time you’ll be sitting in a software-defined, intent-based or [machine-learning](/2018/10/worth-watching-machine-learning-in.html) $vendor presentation.
+Enjoy the reading, and keep these lessons in mind the next time you’ll be sitting in a software-defined, intent-based or [machine-learning](/2018/10/worth-watching-machine-learning-in/) $vendor presentation.

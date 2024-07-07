@@ -11,7 +11,7 @@ A picture is worth a thousand words, so here's the diagram of what I had in mind
 <!--more-->
 {{<figure src="/2021/09/4-switch-fabric.png" caption="Four Switch Fabric">}}
 
-Although a four-switch fabric does look like a leaf-and-spine fabric if you squint hard enough it's not. It's just four switches with a full mesh of links between them, and although [full mesh does happen to be the worst possible fabric architecture](/2012/04/full-mesh-is-worst-possible-fabric.html) it's good enough for this particular use case assuming the traffic requirements aren't too high.
+Although a four-switch fabric does look like a leaf-and-spine fabric if you squint hard enough it's not. It's just four switches with a full mesh of links between them, and although [full mesh does happen to be the worst possible fabric architecture](/2012/04/full-mesh-is-worst-possible-fabric/) it's good enough for this particular use case assuming the traffic requirements aren't too high.
 
 Talking about traffic requirements -- my subscriber also wondered if it's worth optimizing server connectivity:
 

@@ -8,7 +8,7 @@ tags:
 title: 'Video: Machine Learning Techniques'
 video_tag: ai
 ---
-After [Javier Antich](https://www.ipspace.net/Author:Javier_Antich) walked us through the [AI/ML hype](/2021/10/video-ai-ml-introduction.html) and described the [basics of machine learning](/2021/12/video-machine-learning-101.html) it was time for a [more thorough look](https://my.ipspace.net/bin/get/AI/2.2%20-%20Machine%20Learning%20Techniques.mp4?doccode=AI) at: 
+After [Javier Antich](https://www.ipspace.net/Author:Javier_Antich) walked us through the [AI/ML hype](/2021/10/video-ai-ml-introduction/) and described the [basics of machine learning](/2021/12/video-machine-learning-101/) it was time for a [more thorough look](https://my.ipspace.net/bin/get/AI/2.2%20-%20Machine%20Learning%20Techniques.mp4?doccode=AI) at: 
 
 * Machine learning techniques, including *unsupervised learning* (clustering and anomaly detection), *supervised learning* (regression, classification and generation) and *reinforced learning*
 * Machine learning implementations, including *neural networks*, *deep neural networks* and *convolutional neural networks*.

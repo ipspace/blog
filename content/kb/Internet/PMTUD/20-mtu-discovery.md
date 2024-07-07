@@ -2,7 +2,7 @@
 kb_section: PMTUD
 minimal_sidebar: true
 title: Path MTU Discovery
-url: /kb/Internet/PMTUD/20-mtu-discovery.html
+url: /kb/Internet/PMTUD/20-mtu-discovery/
 ---
 The early IPv4 host implementations were extremely simple: if the destination IPv4 address was directly connected, the interface MTU size was used; otherwise the MTU was fixed at 576 bytes. This algorithm proved impractical in both low-speed networks due to extra overhead introduced by small packet sizes as well as in high-speed networks due to extra CPU utilization required to process the same amount of data. Furthermore, as the routers started being used to connect LAN segments (for example, in collapsed backbone scenarios), the usage of small packet sizes between LAN segments was bordering on ridiculous.
 

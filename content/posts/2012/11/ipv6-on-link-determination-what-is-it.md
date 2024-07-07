@@ -4,7 +4,7 @@ tags:
 - IPv6
 title: IPv6 On-Link Determination
 subtitle: What Is It And Why Do We Need It?
-url: /2012/11/ipv6-on-link-determination-what-is-it.html
+url: /2012/11/ipv6-on-link-determination-what-is-it/
 ---
 When an IPv4/IPv6 host wants to send a packet to another host, it has to answer the following simple questions:
 
@@ -13,7 +13,7 @@ When an IPv4/IPv6 host wants to send a packet to another host, it has to answer 
 
 In IPv4 world, the host can get all the information it needs through DHCP. In IPv6 world, things are way more complex (but also way more *correct* if you're a theoretician).
 <!--more-->
-{{<note>}}This post is a follow-up to the [IPv6 Router Advertisement Deep Dive](/2012/11/ipv6-router-advertisements-deep-dive.html) post.{{</note>}}
+{{<note>}}This post is a follow-up to the [IPv6 Router Advertisement Deep Dive](/2012/11/ipv6-router-advertisements-deep-dive/) post.{{</note>}}
 
 ### The Magic of the Subnet Mask
 

@@ -5,13 +5,13 @@ tags:
 - overlay networks
 - virtualization
 title: Networking Enhancements in Windows Server 2012 R2
-url: /2013/08/networking-enhancements-in-windows.html
+url: /2013/08/networking-enhancements-in-windows/
 ---
 
-<p>The “<a href="/2013/08/whats-coming-in-hyper-v-network.html">What’s coming in Hyper-V Network Virtualization (Windows Server 2012 R2)</a>” blog post got way too long, so I had to split it in two parts: Hyper-V Network Virtualization and the rest of the features (this post).<!--more--></p>
+<p>The “<a href="/2013/08/whats-coming-in-hyper-v-network/">What’s coming in Hyper-V Network Virtualization (Windows Server 2012 R2)</a>” blog post got way too long, so I had to split it in two parts: Hyper-V Network Virtualization and the rest of the features (this post).<!--more--></p>
 <p><strong>Stateful VM NIC firewalls</strong>. Windows Server 2012 included some basic VM NIC filtering functionality. Release 2 has built-in stateful firewall. It’s similar to vShield App or Juniper’s VGW – it can create per-flow ACL entries for return traffic, but does not inspect TCP session validity or perform IP/TCP reassembly. </p>
 <p><strong>Dynamic NIC teaming</strong> can spread a single TCP flow across multiple outbound NICs – a great solution for I/O intensive applications that need more than 10GE per single flow (obviously it only works with ToR switches that have 40GE uplinks, 10GE port channel uplinks on most ToR switches would push all traffic of the same flow onto the same 10GE uplink).</p>
-<p><strong>Hyper-V Network Virtualization is now part of extensible switch</strong>. The initial release of HNV was implemented as a device filter sitting between a physical NIC and the <a href="/2013/05/hyper-v-30-extensible-virtual-switch.html">extensible switch</a>. Switch extensions had no access to HNV (just to customer VM traffic) as all the encap/decap operations happened after the traffic has already left the extensible switch on its way toward the physical NIC.</p>
+<p><strong>Hyper-V Network Virtualization is now part of extensible switch</strong>. The initial release of HNV was implemented as a device filter sitting between a physical NIC and the <a href="/2013/05/hyper-v-30-extensible-virtual-switch/">extensible switch</a>. Switch extensions had no access to HNV (just to customer VM traffic) as all the encap/decap operations happened after the traffic has already left the extensible switch on its way toward the physical NIC.</p>
 <p>Next release of HNV will integrate HNV with the extensible switch, giving switch extensions access to customer (VM) and provider (underlay) traffic – ideal if you want to capture or filter both VM-side traffic and encapsulated traffic.</p>
 <p><strong>Virtual RSS (vRSS)</strong> uses <a href="http://en.wikipedia.org/wiki/VMQ">VMQ</a> to extend <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff556942(v=vs.85).aspx">Receive Side Scaling</a> into VMs – traffic received by a VM can spread across multiple vCPUs. Ideal for high-performance appliances (firewalls, load balancers).</p>
 <p><strong>Remote live monitoring</strong> similar to SPAN and ERSPAN, including traffic captures for offline analysis.</p>
@@ -19,7 +19,7 @@ url: /2013/08/networking-enhancements-in-windows.html
 <h4>More information</h4><ul class="ListParagraph"><li><a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> webinar</li>
 <li><a href="http://www.ipspace.net/Overlay_Virtual_Networking">Overlay Virtual Networks Explained</a> webinar</li>
 <li><a href="http://www.ipspace.net/Virtual_Firewalls">Virtual Firewalls</a> webinar</li>
-<li><a href="/2012/12/hyper-v-network-virtualization-wnvnvgre.html">Hyper-V Network Virtualization: Simply Amazing</a></li>
+<li><a href="/2012/12/hyper-v-network-virtualization-wnvnvgre/">Hyper-V Network Virtualization: Simply Amazing</a></li>
 <li><a href="http://blogs.technet.com/b/networking/archive/2013/07/31/transforming-your-datacenter-networking.aspx">What’s New in Windows Server 2012 R2 Networking</a> (Microsoft blog post)</li>
 <li><a href="http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/MDC-B216">What’s New in Windows Server 2012 R2 Networking</a> (TechEd video)</li>
 <li><a href="http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/MDC-B380">Deep Dive on Hyper-V Network Virtualization in Windows Server 2012 R2</a> (TechEd video)</li>

@@ -6,7 +6,7 @@ tags:
 - video
 - QoS
 title: Combining MPLS/VPN, MPLS-TE and QoS on MPLS Talks
-url: /2015/02/combining-mplsvpn-mpls-te-and-qos-on.html
+url: /2015/02/combining-mplsvpn-mpls-te-and-qos-on/
 ---
 In the final part of our MPLS-focused discussion (now part of [MPLS Essentials](https://www.ipspace.net/MPLS_Essentials) webinar), Seamus wanted to know how one could [combine MPLS/VPN, MPLS-TE and QoS](https://my.ipspace.net/bin/get/MPLS101/9%20-%20MPLS-TE%2C%20MPLS-VPN%20and%20QoS.mp4?doccode=MPLS101) (for example, sending VoIP traffic for one customer over a different path).
 

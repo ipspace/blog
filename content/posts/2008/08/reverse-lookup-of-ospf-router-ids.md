@@ -4,7 +4,7 @@ ospf_tag: config
 tags:
 - OSPF
 title: Reverse Lookup of OSPF Router IDs
-url: /2008/08/reverse-lookup-of-ospf-router-ids.html
+url: /2008/08/reverse-lookup-of-ospf-router-ids/
 ---
 If you store the reverse mapping for the routers' loopback interfaces in DNS or configure the name-to-address mappings with the **ip host** commands, you can use the **ip ospf name-lookup** global configuration command to display the OSPF router IDs as router names.
 <!--more-->

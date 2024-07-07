@@ -2,10 +2,10 @@
 date: 2009-04-02 07:05:00.002000+02:00
 tags:
 - BGP
-title: BGP Route Reflector update groups (technical details)
-url: /2009/04/bgp-route-reflector-update-groups.html
+title: BGP Route Reflector Update Groups (technical details)
+url: /2009/04/bgp-route-reflector-update-groups/
 ---
-One of the readers of my [BGP Route Reflectors](/2008/08/bgp-route-reflector-details.html) article spotted an "_obvious deviation from how we always though the route reflectors work_":
+One of the readers of my [BGP Route Reflectors](/2008/08/bgp-route-reflector-details/) article spotted an "_obvious deviation from how we always though the route reflectors work_":
 
 > An IBGP route received from a route-reflector client is sent to all IBGP peers, **including the client from which it was received.** 
 
@@ -21,7 +21,7 @@ The traditional BGP route reflector (RR) rules (specified in [RFC 1966](http://
 
 The behavior of Cisco IOS BGP Route Reflector code was tested in the following network. All routers were running IOS release 12.2(33)SRC3 (other recent IOS releases exhibit the same behavior).
 
-{{<figure src="RR_Update_Testbed.png" caption="Route Reflector testbed">}}
+{{<figure src="/2009/04/RR_Update_Testbed.png" caption="Route Reflector testbed">}}
 
 ## Router Configurations
 

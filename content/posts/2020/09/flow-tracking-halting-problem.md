@@ -7,7 +7,7 @@ tags:
 - security
 title: Using Flow Tracking to Build Firewall Rulesets... and Halting Problem
 ---
-Peter Welcher identified the biggest network security hurdle faced by most enterprise IT environments in [his comment](/2020/09/considerations-host-based-firewalls.html#111) to [Considerations for Host-based Firewalls (Part 1)](/2020/09/considerations-host-based-firewalls.html) blog post:
+Peter Welcher identified the biggest network security hurdle faced by most enterprise IT environments in [his comment](/2020/09/considerations-host-based-firewalls/#111) to [Considerations for Host-based Firewalls (Part 1)](/2020/09/considerations-host-based-firewalls/) blog post:
 
 > I have NEVER found a customer application team that can tell me all the servers they are using, their IP addresses, let alone the ports they use.
 

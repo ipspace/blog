@@ -11,7 +11,7 @@ title: 'netsim-tools: New in December 2021'
 * [Jeroen van Bemmel](https://github.com/jbemmel) contributed support for Nokia SR Linux and SR OS (including initial device configuration, OSPF, ISIS, BGP, and SR-MPLS).
 * I added Vagrant box names for IOSv, CSR and vSRX on VirtualBox. You still have to build the boxes, but at least you won’t have to change the default settings.
 
-{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab.html).{{</note>}}
+{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab/).{{</note>}}
 <!--more-->
 But wait, there's more ;)
 

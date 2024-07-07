@@ -6,7 +6,7 @@ series:
 tags:
 - automation
 title: CLI or API… Again (and Again and Again…)
-url: /2017/10/cli-or-api-again-and-again-and-again.html
+url: /2017/10/cli-or-api-again-and-again-and-again/
 ---
 Got this comment on one of my blog posts:
 
@@ -22,10 +22,10 @@ Sometimes I wonder whether it's worth wasting everyone's time trying to debunk v
 
 Anyway, here are a few things I wrote on the topic. You might want to read them first ;)
 
--   [What is this API thingy?](/2014/07/what-is-this-api-thingy.html) where I said "API is just CLI for program-to-program communication;
--   [CLI and API Myths](/2013/06/cli-and-api-myths.html) explaining how they're just two sides of the same coin);
--   [CLI or API? Do you really have to ask?](/2014/02/cli-or-api-wait-do-you-really-have-to.html) where I went into how trivial it is to implement both if you have the right architecture;
--   [To API or not to API?](/2016/10/to-api-or-not-to-api.html) in which I went into the details of why network device CLI (as opposed to CLI in general) sucks;
+-   [What is this API thingy?](/2014/07/what-is-this-api-thingy/) where I said "API is just CLI for program-to-program communication;
+-   [CLI and API Myths](/2013/06/cli-and-api-myths/) explaining how they're just two sides of the same coin);
+-   [CLI or API? Do you really have to ask?](/2014/02/cli-or-api-wait-do-you-really-have-to/) where I went into how trivial it is to implement both if you have the right architecture;
+-   [To API or not to API?](/2016/10/to-api-or-not-to-api/) in which I went into the details of why network device CLI (as opposed to CLI in general) sucks;
 
 ### Back to CLI versus API
 

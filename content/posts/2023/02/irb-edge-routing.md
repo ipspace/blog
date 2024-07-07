@@ -52,7 +52,7 @@ There are no good solutions to this problem; the only thing you can do is to cho
 
 [^FWC]: One of my customers managed to (consistently) crash a firewall from a major vendor when doing daily backups over the network.
 
-You'll find more details in the [VRRP, Anycasts, Fabrics and Optimal Forwarding](/2013/06/vrrp-anycasts-fabrics-and-optimal.html) blog post.
+You'll find more details in the [VRRP, Anycasts, Fabrics and Optimal Forwarding](/2013/06/vrrp-anycasts-fabrics-and-optimal/) blog post.
 
 ### What's Next?
 

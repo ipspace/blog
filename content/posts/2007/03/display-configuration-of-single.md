@@ -5,7 +5,7 @@ tags:
 - command line interface
 - configuration
 title: Display Configuration of a Single Interface
-url: /2007/03/display-configuration-of-single.html
+url: /2007/03/display-configuration-of-single/
 ---
 Displaying configuration of a single interface can be a time-consuming task if your router has extremely long configuration (for example, high-end device with hundreds of interfaces, route-maps, access-lists etc.). In this case, the **interface** keyword of the **show running-config** command becomes extremely useful.
 <!--more-->

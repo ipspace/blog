@@ -47,7 +47,7 @@ And then the feature requests started:
 
 The list of MPLS/VPN features goes on and on. We have VRF selection using PBR, half-duplex VRF, RT rewrite, Inter-AS MPLS/VPN, RT-based ORF... There's a story behind every one of these features, often starting with a large service provider forcing a vendor to implement a nerd knob to fix a broken design.
 
-On top of that, service providers lacking the technical skills needed to run an outsourced core IP network increased the bad rap of MPLS/VPN technology. I had several customers who went directly from Frame Relay to Internet-based IPsec VPNs because they didn't trust the service provider to do a decent job. Those same service providers [want to offer managed SD-WAN services today](/2020/03/sdwan-service-provider-perspective.html). I wish their customers plenty of luck; they might need it 🥴
+On top of that, service providers lacking the technical skills needed to run an outsourced core IP network increased the bad rap of MPLS/VPN technology. I had several customers who went directly from Frame Relay to Internet-based IPsec VPNs because they didn't trust the service provider to do a decent job. Those same service providers [want to offer managed SD-WAN services today](/2020/03/sdwan-service-provider-perspective/). I wish their customers plenty of luck; they might need it 🥴
 
 In the meantime (it's been over 20 years since my MPLS/VPN book was published), Carrier Ethernet became a viable alternative, and as much as it hurts me, I'm usually recommending customer-managed routers attached to Carrier Ethernet as a better (and safer) alternative to MPLS/VPN. You'll find more details in the _[Choose the Optimal VPN Service](https://www.ipspace.net/Choose_the_Optimal_VPN_Service)_ webinar.
 

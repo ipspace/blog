@@ -7,7 +7,7 @@ tags:
 - IPv6
 - workshop
 title: IPv6 Myths
-url: /2010/02/ipv6-myths.html
+url: /2010/02/ipv6-myths/
 ---
 Once you've spent a few hours trying to understand the implications of IPv6, you quickly realize that the only significant change is the increase in the address length. All the other goals that some people had been talking about were either forgotten or failed due to huge mismatch between idealistic view of the Internet IPv6 developers had 15 years ago and today's reality. However, you still find mythical properties of IPv6 propagated across the Internet. Here are a few I've found; add your favorites in the comments.
 

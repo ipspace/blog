@@ -9,7 +9,7 @@ tags:
 - LISP
 title: Cache-Based Packet Forwarding
 ---
-In the previous blog post in this series I described [how convoluted routing table lookups could become](/2022/02/packet-forwarding-header-lookup.html) when you have to deal with numerous layers of indirection (BGP prefix ⇨ BGP next hop ⇨ IGP next hop ⇨ link bundle ⇨ outgoing interface). Modern high-end hardware can deal with the resulting complexity; decades ago we had to use router CPU to do multiple (potentially recursive) lookups in the IP routing table (there was no FIB at that time).
+In the previous blog post in this series I described [how convoluted routing table lookups could become](/2022/02/packet-forwarding-header-lookup/) when you have to deal with numerous layers of indirection (BGP prefix ⇨ BGP next hop ⇨ IGP next hop ⇨ link bundle ⇨ outgoing interface). Modern high-end hardware can deal with the resulting complexity; decades ago we had to use router CPU to do multiple (potentially recursive) lookups in the IP routing table (there was no FIB at that time).
 
 Network devices were always pushed to the bleeding edge of performance, and smart programmers always tried to optimize the CPU-intensive processes. One of the obvious packet forwarding optimizations relied on the fact that within a short timeframe most packets have to be forwarded to a small set of destinations. Welcome to the wonderful world of cache-based forwarding.
 <!--more-->
@@ -54,7 +54,7 @@ But wait, it gets worse. Every few years someone gets the awesome idea of cachin
 
 ### Another Data Point for RFC 1925 Rule 11
 
-When I was updating this blog post to ensure everyone understands I'm referring to the _original_ LISP ideas, I remembered an [extensive comment Victor Moreno wrote](/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html#5200837098827991481) in 2017 on my _[Why Is Cisco Pushing LISP in Enterprise Campus?](/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html)_ blog post.
+When I was updating this blog post to ensure everyone understands I'm referring to the _original_ LISP ideas, I remembered an [extensive comment Victor Moreno wrote](/2017/09/why-is-cisco-pushing-lisp-in-enterprise/#5200837098827991481) in 2017 on my _[Why Is Cisco Pushing LISP in Enterprise Campus?](/2017/09/why-is-cisco-pushing-lisp-in-enterprise/)_ blog post.
 
 > The impact of mobility events in a LISP network (as you know from past reviews published in your blog) is limited to signaling amongst the network elements involved in active connections between the devices. However, the impact of mobility events in a BGP network is unbound. Even if you have conditional FIB programming, all changes are pushed to all participants. 
 

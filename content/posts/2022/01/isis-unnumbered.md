@@ -6,12 +6,12 @@ tags:
 - IS-IS
 title: Running IS-IS over Unnumbered Ethernet Interfaces
 ---
-Last time we figured out that we [cannot run OSPF over unnumbered interfaces](/2022/01/ospf-unnumbered.html) that are not point-to-point links because OSPF makes assumptions about interface IP addresses. IS-IS makes no such assumptions; IPv4 and IPv6 prefixes are just a bunch of TLVs exchanged between routers over a [dedicated layer-3 protocol](/2009/06/is-is-is-not-running-over-clnp.html) with ridiculously long network addresses. 
+Last time we figured out that we [cannot run OSPF over unnumbered interfaces](/2022/01/ospf-unnumbered/) that are not point-to-point links because OSPF makes assumptions about interface IP addresses. IS-IS makes no such assumptions; IPv4 and IPv6 prefixes are just a bunch of TLVs exchanged between routers over a [dedicated layer-3 protocol](/2009/06/is-is-is-not-running-over-clnp/) with ridiculously long network addresses. 
 
 Could we thus build a totally unnumbered IP network with IS-IS even when the network contains multi-access segments? It depends:
 <!--more-->
 * It works like a charm on Arista EOS and Cisco IOS XE.
-* Cisco NXOS [has a few quirks](/2022/01/isis-unnumbered.html#addendum-nxos-quirks).
+* Cisco NXOS [has a few quirks](#addendum-nxos-quirks).
 * Junos vSRX works well with unnumbered IPv4 P2P links. IPv6 works like a charm (no surprise there due to link-local addresses).
 
 We'll use the following lab topology to run our tests. All devices run the same network operating system. All physical interfaces are unnumbered -- the only IP addresses in the lab are assigned to loopback interfaces. P2P links have cost 10, the LAN link has cost 5.
@@ -74,7 +74,7 @@ i L2     10.0.0.2 [115/15] via 10.0.0.2, 00:17:05, GigabitEthernet3
 i L2     10.0.0.3 [115/15] via 10.0.0.3, 00:16:39, GigabitEthernet3
 ```
 
-Looks good. Loopback interfaces of other routers are reachable over GigabitEthernet3... but the next hop is the loopback IP address itself, so we need some ARP glue ([more details](/2021/06/unnumbered-ethernet-interfaces.html)). Do we have it?
+Looks good. Loopback interfaces of other routers are reachable over GigabitEthernet3... but the next hop is the loopback IP address itself, so we need some ARP glue ([more details](/2021/06/unnumbered-ethernet-interfaces/)). Do we have it?
 
 ```
 r1#show arp 10.0.0.0 255.0.0.0

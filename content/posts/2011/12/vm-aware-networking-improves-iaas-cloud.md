@@ -5,12 +5,12 @@ tags:
 - cloud
 - virtualization
 title: VM-aware Networking Improves IaaS Cloud Scalability
-url: /2011/12/vm-aware-networking-improves-iaas-cloud.html
+url: /2011/12/vm-aware-networking-improves-iaas-cloud/
 lastmod: 2024-05-20 17:58:00+02:00
 ---
-In the [*VMware vSwitch -- the baseline of simplicity*](/2011/12/vmware-vswitch-baseline-of-simplicity.html) post I described simple layer-2 switches offered by most hypervisor vendors and the scalability challenges you face when trying to build large-scale solutions with them. You can solve at least one of the scalability issues: VM-aware networking solutions available from most data center networking vendors dynamically adjust the list of VLANs on server-to-switch links.
+In the [*VMware vSwitch -- the baseline of simplicity*](/2011/12/vmware-vswitch-baseline-of-simplicity/) post I described simple layer-2 switches offered by most hypervisor vendors and the scalability challenges you face when trying to build large-scale solutions with them. You can solve at least one of the scalability issues: VM-aware networking solutions available from most data center networking vendors dynamically adjust the list of VLANs on server-to-switch links.
 <!--more-->
-{{<note warn>}}The blog post was written more than a decade ago. In the meantime, EVB failed miserably, and most vendors stopped talking about automated VLAN provisioning. The kludges they had to implement to work around [VMware's ignorance of networking](/2019/10/the-cost-of-disruptiveness-and.html) were probably too brittle.{{</note>}}
+{{<note warn>}}The blog post was written more than a decade ago. In the meantime, EVB failed miserably, and most vendors stopped talking about automated VLAN provisioning. The kludges they had to implement to work around [VMware's ignorance of networking](/2019/10/the-cost-of-disruptiveness-and/) were probably too brittle.{{</note>}}
 
 ### What's the Problem
 
@@ -31,9 +31,9 @@ The wide range of VLANs configured on all server-facing ports causes indiscrimin
 
 ### The "Standard" Solution
 
-[VSI Discovery Protocol (VDP)](/2011/05/edge-virtual-bridging-evb-8021qbg-eases.html), part of Edge Virtual Bridging (EVB, 802.1Qbg) would solve that problem, but it's not implemented in any virtual switch. Consequently, there's no support in the physical switches, although [HP](http://h30499.www3.hp.com/hpeb/attachments/hpeb/bladesblog00/130/1/VEPA-EVB%20Industry%20Whitepaper.pdf) and [Force10](/2011/04/new-data-center-switches-from-force10.html) keep promising EVB support; HP for more than a year.
+[VSI Discovery Protocol (VDP)](/2011/05/edge-virtual-bridging-evb-8021qbg-eases/), part of Edge Virtual Bridging (EVB, 802.1Qbg) would solve that problem, but it's not implemented in any virtual switch. Consequently, there's no support in the physical switches, although [HP](http://h30499.www3.hp.com/hpeb/attachments/hpeb/bladesblog00/130/1/VEPA-EVB%20Industry%20Whitepaper.pdf) and [Force10](/2011/04/new-data-center-switches-from-force10/) keep promising EVB support; HP for more than a year.
 
-The closest we've ever got to a shipping EVB-like product is [Cisco's VM-FEX](/2011/08/vm-fex-how-convoluted-can-you-get.html). The Virtual Ethernet Module (VEM) running within the vSphere kernel uses a protocol similar to VDP to communicate its VLAN/interface needs with the UCS manager.
+The closest we've ever got to a shipping EVB-like product is [Cisco's VM-FEX](/2011/08/vm-fex-how-convoluted-can-you-get/). The Virtual Ethernet Module (VEM) running within the vSphere kernel uses a protocol similar to VDP to communicate its VLAN/interface needs with the UCS manager.
 
 {{<figure src="/2011/12/s320-Lochnessmonster.jpg" href="http://en.wikipedia.org/wiki/Loch_Ness_Monster" caption="More people have seen Nessie than an EVB-compliant vSwitch">}}
 
@@ -41,7 +41,7 @@ The closest we've ever got to a shipping EVB-like product is [Cisco's VM-FEX](/2
 
 ### The Real-World Workarounds
 
-Faced with the lack of EVB support (or any other similar control-plane protocol) in the vSwitches, the networking vendors implemented a variety of kludges. Some of them were implemented in the access-layer switches (Arista's [VM Tracer](/2011/06/automatic-edge-vlan-provisioning-with.html), Force10's HyperLink, Brocade's vCenter Integration), others in network management software (Juniper's Junos Space Virtual Control and ALU's OmniVista Virtual Machine Monitor).
+Faced with the lack of EVB support (or any other similar control-plane protocol) in the vSwitches, the networking vendors implemented a variety of kludges. Some of them were implemented in the access-layer switches (Arista's [VM Tracer](/2011/06/automatic-edge-vlan-provisioning-with/), Force10's HyperLink, Brocade's vCenter Integration), others in network management software (Juniper's Junos Space Virtual Control and ALU's OmniVista Virtual Machine Monitor).
 
 In all cases, a VM-aware solution must first discover the network topology. Almost all solutions send CDP packets from access-layer switches and use CDP[^CDP] listeners in the vSphere hosts to discover host-to-switch connectivity. The CDP information gathered by vSphere hosts is usually extracted from vCenter using VMware's API (yes, you typically have to talk to the vCenter if you want to communicate with the VMware environment).
 
@@ -49,7 +49,7 @@ In all cases, a VM-aware solution must first discover the network topology. Almo
 
 Have you noticed I mentioned VMware API in the previous paragraph? Because no hypervisor vendor bothered to implement a standard protocol, the networking vendors have to implement a different solution for each hypervisor. Almost all of the VM-aware solutions support vSphere/vCenter, a few vendors claim they also support Xen, KVM, or Hyper-V, and I haven't seen anyone supporting anything beyond the big four.
 
-After the access-layer topology has been discovered, the VM-aware solutions track VM movements between hypervisor hosts and dynamically adjust the VLAN range on access-layer switch ports. Ideally, you'd combine that with MVRP in the network core to trim the VLANs further, but only a few vendors implemented MVRP (and supposedly, only a few customers are using it). [QFabric](/search?q=qfabric) is a shining (proprietary) exception: because its architecture mandates [single ingress lookup which should result in a list of egress ports](/2011/09/qfabric-part-3-forwarding.html), it also performs optimum VLAN flooding.
+After the access-layer topology has been discovered, the VM-aware solutions track VM movements between hypervisor hosts and dynamically adjust the VLAN range on access-layer switch ports. Ideally, you'd combine that with MVRP in the network core to trim the VLANs further, but only a few vendors implemented MVRP (and supposedly, only a few customers are using it). [QFabric](/search?q=qfabric) is a shining (proprietary) exception: because its architecture mandates [single ingress lookup which should result in a list of egress ports](/2011/09/qfabric-part-3-forwarding/), it also performs optimum VLAN flooding.
 
 {{<note info>}}MVRP became obsolete once we started using VXLAN and EVPN. EVPN automatically builds optimal ingress replication lists based on VLANs configured on edge ports.{{</note>}}
 

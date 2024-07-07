@@ -7,7 +7,7 @@ tags:
 - data center
 - EVPN
 title: 'Interview: Active-Active Data Centers With VXLAN and EVPN'
-url: /2018/11/interview-active-active-data-centers.html
+url: /2018/11/interview-active-active-data-centers/
 ---
 Christoph Jaggi asked me a few questions about using VXLAN with EVPN to build data center fabrics and interconnects (including active/active data centers). The German version [was published on Inside-IT](https://www.inside-it.ch/articles/53019); here's the English version.
 

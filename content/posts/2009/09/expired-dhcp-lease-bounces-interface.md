@@ -3,7 +3,7 @@ date: 2009-09-16 07:25:00.001000+02:00
 tags:
 - DHCP
 title: Expired DHCP Lease Bounces the Interface
-url: /2009/09/expired-dhcp-lease-bounces-interface.html
+url: /2009/09/expired-dhcp-lease-bounces-interface/
 ---
 You would think that an expired DHCP lease is not a big deal for a DHCP client. Although the interface IP address is lost, you can always try to get a new address from the DHCP server.
 

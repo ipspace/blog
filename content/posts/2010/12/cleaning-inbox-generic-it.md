@@ -1,7 +1,7 @@
 ---
 date: 2010-12-24 05:50:00+01:00
 title: 'Cleaning the Inbox: Generic IT'
-url: /2010/12/cleaning-inbox-generic-it.html
+url: /2010/12/cleaning-inbox-generic-it/
 tags: [ worth reading ]
 ---
 Last gems found in dusty corners of my cluttered Inbox:

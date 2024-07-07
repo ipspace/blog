@@ -4,7 +4,7 @@ ospf_tag: details
 tags:
 - OSPF
 title: Common Sense Prevails Over RFC 2328
-url: /2008/02/common-sense-prevails-over-rfc-2328.html
+url: /2008/02/common-sense-prevails-over-rfc-2328/
 ---
 When trying to extract the OSPF route selection rules from [RFC 2328](http://rfc.net/rfc2328.html), I\'ve stumbled across a [very weird rule (section 16.4.1)](http://rfc.net/rfc2328.html#p175): if an ASBR within a non-backbone area advertises an external route (or if the forwarding address is within the non-backbone area), it\'s preferred over external routes advertised by ASBRs in other areas *regardless of its metric*. I simply had to test this on Cisco IOS ... and found out that Cisco engineers prefer common sense to OSPF RFC.
 <!--more-->

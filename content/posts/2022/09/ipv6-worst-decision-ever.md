@@ -7,7 +7,7 @@ A few weeks ago, Daniel Dib tweeted a slide from Radia Perlman's presentation in
 
 {{<figure src="/2022/09/ipv6-worst-decision-ever.png">}}
 <!--more-->
-Could we use CLNP as the next-generation IP? Of course, and we could have saved a few years -- [CLNP](/tag/clnp.html) was already a mature protocol. Sadly, it turned out even IETF wasn't pragmatic enough to acknowledge superior technology from what some considered their arch-enemy. You'll find a few juicy details in [The Elements of Networking Style](https://www.amazon.com/Elements-Networking-Style-Animadversions-Intercomputer/dp/0595088791) by Michael A. Padlipsky.
+Could we use CLNP as the next-generation IP? Of course, and we could have saved a few years -- [CLNP](/tag/clnp/) was already a mature protocol. Sadly, it turned out even IETF wasn't pragmatic enough to acknowledge superior technology from what some considered their arch-enemy. You'll find a few juicy details in [The Elements of Networking Style](https://www.amazon.com/Elements-Networking-Style-Animadversions-Intercomputer/dp/0595088791) by Michael A. Padlipsky.
 
 Regardless of that not-so-brilliant episode in IETF history, I inevitably get upset when CLNP aficionados use bogus arguments to justify their gripes. The "Worst Decision Ever" slide contains a bunch of them, starting with these:
 
@@ -21,6 +21,6 @@ What mattered in 1980s obviously still matters in 2020s: when every data center 
 
 Another reason for the explosion of bridged solutions was the simplicity of the protocol stack. You had to implement STP -- which could easily fit into the 64 KB address space of an 8-bit CPU -- instead of a dozen network layer protocols and a bunch of associated routing protocols[^NLP].
 
-**Long story short**: Using CLNP instead of IPv6 would not change a thing. We would still want to use lower-cost connectivity solutions (Ethernet), and vendors trying to implement a networking stack with minimum investment would still [create crappy bridges](/2019/10/the-cost-of-disruptiveness-and.html) or [spaghetti mess of static routes and NAT](/2020/08/docker-swarm-services.html).
+**Long story short**: Using CLNP instead of IPv6 would not change a thing. We would still want to use lower-cost connectivity solutions (Ethernet), and vendors trying to implement a networking stack with minimum investment would still [create crappy bridges](/2019/10/the-cost-of-disruptiveness-and/) or [spaghetti mess of static routes and NAT](/2020/08/docker-swarm-services/).
 
 [^NLP]: If you're old enough to remember the IPX, DECnet, CLNP, AppleTalk, Banyan Vines, XNS, Apollo Domain... you probably know what I'm talking about.

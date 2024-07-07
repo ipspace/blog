@@ -4,9 +4,9 @@ ospf_tag: fa
 tags:
 - OSPF
 title: Why OSPF Needs Forwarding Address With NSSA Areas
-url: /2017/02/why-ospf-needs-forwarding-address-with.html
+url: /2017/02/why-ospf-needs-forwarding-address-with/
 ---
-In the previous blog posts I described how [OSPF tries to solve some broken designs](/2017/01/ospf-forwarding-address-yet-another.html) with Forwarding Address field in Type-5 LSA -- a [kludge that unnecessarily increases the already too-high complexity of OSPF](/2017/01/ospf-forwarding-address-yak-take-2.html).
+In the previous blog posts I described how [OSPF tries to solve some broken designs](/2017/01/ospf-forwarding-address-yet-another/) with Forwarding Address field in Type-5 LSA -- a [kludge that unnecessarily increases the already too-high complexity of OSPF](/2017/01/ospf-forwarding-address-yak-take-2/).
 
 NSSA areas make the whole thing worse: OSPF needs a Forwarding Address in Type-5 LSAs generated from Type-7 LSAs to ensure optimal packet forwarding. Here's why:
 <!--more-->

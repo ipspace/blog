@@ -5,7 +5,7 @@ tags:
 - EEM
 - show filters
 title: Periodic execution of IOS show commands
-url: /2007/05/periodic-execution-of-ios-show-commands.html
+url: /2007/05/periodic-execution-of-ios-show-commands/
 ---
 
 If you want to execute IOS show commands periodically (for example, to monitor router status or take snapshots of routing tables), you can combine new output redirection features introduced in IOS release 12.2T in an Embedded Event Manager (EEM) applet. For example, to store the brief interface status into a file on an FTP server, use the following EEM applet:<pre class="code">event manager applet SaveInterfaceStatus<br/> event timer watchdog name SaveIfStat time 60<br/> action 1.0 cli command "show ip interface brief | redirect ftp://<em>username</em>@<em>password</em>:<em>host</em>/<em>path</em>"<br/> action 2.0 syslog msg "Interface status saved"</pre>Notes: <ul><li>The <strong>timer watchdog</strong> EEM event defines a recurring event triggered every X seconds.</li>

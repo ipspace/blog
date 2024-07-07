@@ -42,7 +42,7 @@ With that in mind, how about an alternate idea: instead of deploying Ultra Traff
 
 [^CODEL]: Good congestion management mechanisms could be surprisingly simple. See [CoDel](https://en.wikipedia.org/wiki/CoDel) for more details.
 
-As for *QUIC is a firehose*, that could be true, but that would be nothing new; we experienced the same drama at least a half dozen times, starting with "UDP will kill TCP!" Remember the days of "[BitTorrent will bring down our networks](/2010/07/p2p-traffic-is-bad-for-network.html)"? How about the days of "Video will kill our networks"? Either the QUIC-based applications behave politely enough not to be noticed, or we'll experience another round of countermeasures along the lines of [RFC 6057](https://www.rfc-editor.org/rfc/rfc6057.html)[^NAR]. In the meantime, can we please keep monitoring and running our networks without the unnecessary drama?
+As for *QUIC is a firehose*, that could be true, but that would be nothing new; we experienced the same drama at least a half dozen times, starting with "UDP will kill TCP!" Remember the days of "[BitTorrent will bring down our networks](/2010/07/p2p-traffic-is-bad-for-network/)"? How about the days of "Video will kill our networks"? Either the QUIC-based applications behave politely enough not to be noticed, or we'll experience another round of countermeasures along the lines of [RFC 6057](https://www.rfc-editor.org/rfc/rfc6057.html)[^NAR]. In the meantime, can we please keep monitoring and running our networks without the unnecessary drama?
 
 [^NAR]: RFC 6057 is worth reading. It has "*protocol agnostic*" in the title for a good reason and needs no application recognition to work.
 

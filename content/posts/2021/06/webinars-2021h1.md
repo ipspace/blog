@@ -3,7 +3,7 @@ title: "Webinars in the First Half of 2021"
 date: 2021-06-28 07:04:00
 tags: [ training ]
 ---
-It's time for another _this is what we did in the last six months_ blog post. Instead of writing another wall-of-text, I just [updated the one I published in early January](/2021/01/planning-webinars-2021.html). Here are the highlights:
+It's time for another _this is what we did in the last six months_ blog post. Instead of writing another wall-of-text, I just [updated the one I published in early January](/2021/01/planning-webinars-2021/). Here are the highlights:
 
 * Completed webinars: [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive), [Cisco ACI Deep Dive](https://www.ipspace.net/Cisco_ACI_Deep_Dive)
 * Totally unplanned: [AI/ML in Networking](https://www.ipspace.net/AI_and_ML_in_Networking)
