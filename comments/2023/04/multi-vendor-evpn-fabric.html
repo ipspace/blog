@@ -1,0 +1,89 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1783">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Chinar Trivedi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1783" href="#1783">20 April 2023 02:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Great Blog as usual, Ivan.
+I agree your OSPF Area0 P2P recommendation as Underlay, however what&#39;s your take on OSPF Unnumbered for building underlay? I am not talking of course in Multi-vendor OSPF-Unnumbered. Just in general? and how about BGP-unnumbered underlays with RFC-5549 ? just for building underlays?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1784">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1784" href="#1784">20 April 2023 07:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>OSPF unnumbered is perfectly fine if it&#39;s implemented correctly on all boxes. I got it working on Arista (required a tweak), IOS, IOS-XE, NXOS, Junos, Cumulus... Details in https://blog.ipspace.net/2022/01/ospf-unnumbered.html</p>
+
+<p>Unnumbered BGP is a totally different beast. It makes sense only with EBGP when the BGP configuration supports <strong>neighbor interface</strong> command (mostly FRR-based implementations), but that quickly results in all sorts of weirdness unless the vendor is willing to run EVPN AF over those same EBGP sessions. Run away from crazy stuff like EBGP-over-EBGP or IBGP-over-EBGP, or grab a bag of popcorn and read https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html and all the links (or https://blog.ipspace.net/series/dcbgp.html)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1817">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Craig Weinhold</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1817" href="#1817">05 May 2023 04:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;Use a single vendor for a layer&quot; is cheating and needs more nuance.  E.g., &quot;multicast routing will likely fail between leaves of different vendors&quot; or &quot;isolating leaves of different vendors by VRF or L3 can help avoid L2 interop problems.&quot;</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1819">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1819" href="#1819">05 May 2023 04:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I guess we&#39;re almost in sync.</p>
+
+<p>&quot;use a single vendor for a layer&quot; means &quot;don&#39;t use leafs (or spines) from two vendors&quot;. No nuance necessary, just don&#39;t do it.</p>
+
+<p>Also, &quot;Multicast routing will like fail&quot; means you were not following the &quot;Stay with EVPN-driven ingress replication&quot; ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

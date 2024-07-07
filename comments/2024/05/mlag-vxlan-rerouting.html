@@ -1,0 +1,166 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2250">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">HEMANTH RAJ</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2250" href="#2250">16 May 2024 07:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>We dont use vpc in our setup for vxlan and evpn.We use individual Unique next hop for each Leaf pair .In this case convergence works out easily, when S1--A link fails, S1 withdraws the MAC address and IP address and traffic automatically switches from S1 to S2.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2252">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2252" href="#2252">16 May 2024 08:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>That is true, but some people with operational experience keep complaining about convergence times. Anyhow, we&#39;ll cover this setup in the next blog post.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2255">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">HEMANTH RAJ</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2255" href="#2255">16 May 2024 05:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>For convergence, set the MAC address aging timer to 10 seconds and underlying routing protocol should be ISIS where the next hop is pointed to the new next hop.</p>
+
+<p>Use arping on the Linux Host to send traffic locally so that the local switch doesnt timeout the MAC and withdraw the prefixes.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2256">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2256" href="#2256">16 May 2024 05:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Well-implemented MLAG with a peer link can give you convergence in milliseconds. What convergence time are you talking about?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2258">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">HEMANTH RAJ</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2258" href="#2258">16 May 2024 06:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Convergence of MAC IP in the customer network. 
+Vlan based MAC network and VNI based MAC network.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2251">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">HEMANTH RAJ</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2251" href="#2251">16 May 2024 08:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Many servers (hosts) dont support vpc or multi chassis LAG and hence it is easy to implement vxlan evpn fabrics without LAGs</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2253">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2253" href="#2253">16 May 2024 08:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It&#39;s true that many servers don&#39;t support VPC/MLAG. To be fair, I&#39;ve never seen one unless you count Cumulus Linux as a host ;)</p>
+
+<p>However, that&#39;s irrelevant. The beauty of MLAG is that the server <em>does not know</em> it&#39;s connected to two switches. See https://blog.ipspace.net/2010/10/multi-chassis-link-aggregation-basics.html for more details.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2254">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">HEMANTH RAJ</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2254" href="#2254">16 May 2024 05:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In the scenario which i am working , We have ESXi hosts with 2 uplinks connected to two Leaf switches,ESXi doesnt support vpc and hence broadcast hashing is not possible.</p>
+
+<p>Esxi sends broadcast traffic on two uplinks and creates a loop with vpc peer link.</p>
+
+<p>When u create vpc on the two  switches, on ESXi puts a error message saying 
+LACP system ID is different. In ESxi LACP system ID has to be same on both the leaf switches.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2257">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2257" href="#2257">16 May 2024 05:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I guess it&#39;s time to go back to the basics of how ESXi networking works. Either you have LAG configured on both ends of the link, or you have a disaster on your hands (blog posts were written about this at least 15 years ago).</p>
+
+<p>Also, if a host complains about a mismatch in the remote LACP system ID, then you configured MLAG incorrectly.</p>
+
+<p>However, this is totally off-topic, so let&#39;s stop the discussion.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

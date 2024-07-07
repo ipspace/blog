@@ -1,0 +1,56 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1814">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Someone</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1814" href="#1814">04 May 2023 07:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>What you&rsquo;ve described in this article, and in the previous ones in this subject should be the case but is not always true. I&rsquo;ve been suffering for some time a problem related with the mac learning in EVPN from a big vendor, you can call it faulty implementation or feature, that&rsquo;s up to anyone reading this.</p>
+
+<p>The ESXi hosts are truly&hellip; if not silent, shy hosts; they don&rsquo;t say a thing with the vmkernel vmotion interface until they have some VM to move. The ARP cache entries timeout is 20 minutes in VMware, the vendors switch mac address aging time is less and DRS is enabled at low sensibility (few vm moves). It&rsquo;s true that the ESXi hosts send out an ARP request, create some ICMP packets and then the TCP session for the vmotion, they are truly polite. The problem that I suffered is that in some implementation of one vendor, a specific silicon can take up to two seconds to realize that it has a new mac to advertise, and then create the route type-2 advertisement. So, ARP, ICMP and TCP are being flooded until the remote switch learns the VTEP that has the ESXi behind and with HER/ingress replication this is a huge problem. </p>
+
+<p>Then we have the RARP problem after the vmotion, if we take the same random time between zero and two seconds, the traffic destinated to this VM is going to go back to the old VTEP instead the actual one until convergence is achieved.</p>
+
+<p>The sad solution is to limit the unknown unicast traffic and increase the mac aging-time to reduce the possibility of this problem.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1815">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1815" href="#1815">04 May 2023 08:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks a million, now it makes perfect sense. I should have seen that (oh, the &quot;beauty&quot; of perfect hindsight). Will rewrite the blog post accordingly.</p>
+
+<p>As for &quot;two seconds to report a new MAC address&quot;, that&#39;s plain ridiculous. I&#39;m always amazed what vendors can get away with without anyone crucifying them in public.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

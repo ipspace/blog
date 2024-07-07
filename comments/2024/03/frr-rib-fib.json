@@ -1,0 +1,44 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "20 March 2024 06:15",
+               "html": "<p>Arista probably has a closely tied together set of processes and as such it is trivial for BGP to see the state of the rib and know it does not need to install the route(this is speculation I have no special knowledge of how Arista is put together).  FRR has no such tight coupling where it is a bit expensive for BGP to query the state of the rib.  It is easier for it to just install the route and let the rib sort it out.  It might be interesting to explore the different architectures from different vendors about how things are actually put together.</p>\n\n<p>As far as I can tell, Linux had the local table(255) support added when table lookups where considered fairly expensive so you put all the local routes in table 255 and when a packet comes in you look in that table first for delivery, then you would fall back to the normal(254) table for forwarding the route if it was not local.  This of course falls apart when vrf&#39;s were added to the mix and all the local routes for the vrf are in the vrf table in the linux kernel.  Furthermore if you want to add on to this fun in linux, look at a <code>noprefixroute</code> for when adding addresses to an interface in Linux.  It creates an address that will not allow forwarding of packets to that network off box.  Some interface management systems have started using this causing fun in FRR.</p>\n\n<p>Another bit that surprises people in FRR land is when BGP is receiving a prefix that matches a locally redistributed route into BGP.  Depending on order of reception sometimes the BGP route is in the rib and sometimes it is not.  There is no good answer from FRR&#39;s perspective here especially if we want to follow RFC&#39;s from what I can tell.</p>\n\n<p>And as an aside, I added Local routes recently into FRR and that code should be available in the 10.0 release that is coming in a week or so here.</p>\n\n<p>All in all you are correct there are quite a few quirks in linux networking.  I think most of them stem from the fact it was a server first platform.  I don&#39;t think anything is insurmountable though, just things you need to be aware of.</p>\n",
+               "id": "2143",
+               "name": " Donald Sharp",
+               "pub": "2024-03-20T18:15:05",
+               "ref": "2142",
+               "type": "comment"
+            },
+            {
+               "date": "21 March 2024 02:35",
+               "html": "<p>@Donald: Thanks a million for all the details!</p>\n\n<p>BTW, it&#39;s not just Arista EOS. The &quot;let the routes complete to get into RIB&quot; idea came from the early days of Cisco IOS, when the RIB was also used for packet forwarding.</p>\n\n<p>While that behavior definitely looks more familiar to some old-timers, it definitely requires tighter coupling between the routing table and the routing protocols.</p>\n",
+               "id": "2147",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-21T14:35:17",
+               "ref": "2143",
+               "type": "comment"
+            },
+            {
+               "date": "21 March 2024 02:11",
+               "html": "<p>I just got hit with the noprefixroute issue on Ubuntu. Network Manager strikes again! I lost a few hours trying to figure that one out &#x1F629;. We only use Debian+FRR in production, so this was only in a lab for developing P4 apps thank goodness.</p>\n",
+               "id": "2146",
+               "name": "Clay Curtis",
+               "pub": "2024-03-21T14:11:58",
+               "ref": "2143",
+               "type": "comment"
+            }
+         ],
+         "date": "20 March 2024 11:29",
+         "html": "<p>Some network operating systems also show <em>all</em> routes in the routing table, and use a <em>flag</em> in the output to indicate the routes written to the forwarding information base, e.g., Huawei VRP or ExtremeXOS.</p>\n",
+         "id": "2142",
+         "name": "Erik Auerswald",
+         "pub": "2024-03-20T11:29:36",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2024/03/frr-rib-fib.html"
+}

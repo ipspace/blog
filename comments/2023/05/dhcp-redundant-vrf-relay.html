@@ -1,0 +1,76 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1831">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Yauhen Viadzishchau</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1831" href="#1831">26 May 2023 10:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>There is no sw3 on the picture. :)</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1832">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1832" href="#1832">27 May 2023 07:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Oh, the beauties of copy/paste &#x1F974; Thank you, fixed.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1833">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Chinar Trivedi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1833" href="#1833">28 May 2023 05:43</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>Curious, 
+In actual production environments, if DHCP Server is outside your Fabric, then on Border/Service Leafs, then the DHCP Server route will be learned via an Edge Firewall (most typically).
+if DHCP Server is learned on Border Leaf,
+this will be the Traffic flow :</p>
+
+<p>DHCP Server IP X.X.X.X------&gt;Outside-VRF-Red(VRF-lite of Border Leaf)-------F/W Outside Zone-------&gt;Firewall (Does Inter-VRF routing)---------&gt;Inside-VRF-Green (EVPN-IP-VRF of Border Leaf now)-----Border Leaf--------&gt;Type-5-L3-EVPN Route within IP-VRF Green-------&gt;Access Leaf VTEP VRF Green------DHCP Client Y.Y.Y.Y (DHCP client is part of  VRF Green)</p>
+
+<ol>
+<li>Curious in this entire DORA process and DHCP relaying, should the DHCP DORA messages ever be passing through a Firewall?</li>
+<li>If a Firewall has to definitely be in the path, will everything work hunky-dory the same way in the Inter-VRF DHCP Relaying, especially in EVPN DAG &amp; Option 82 case?</li>
+<li>What&#39;s Ivan&#39;s recommendation?</li>
+</ol>
+
+<p>thnx
+Chinar</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

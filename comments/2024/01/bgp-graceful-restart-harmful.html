@@ -1,0 +1,214 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2069">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Dmitry Perets</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2069" href="#2069">17 January 2024 03:05</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Most of the HA clustering solutions for stateful firewalls that I know implement a single-brain model, where the entire cluster is seen by the outside network as a single node. On the node which is currently primary runs the control plane (hence I call it single-brain). Sessions are syncronized between the nodes, as well as the forwarding plane. Therefore, in the event of HA failover, all the existing sessions are preserved, and user traffic can just keep flowing. You can get a subsecond failover, delayed only by the failure detection (which is based on HA keepalives sent back-to-back between the nodes, as well as link failure detection and things like that). 
+But since it is a single-brain solution, the BGP daemon runs only on the primary node. Upon HA failover, it starts from scratch on the ex-secondary (new primary). This is where Graceful Restart comes into play, because it allows your peers to keep their forwarding state, believeing that your HA clustering solution successfully did the same on your side. Hence, you get your Non-Stop Forwarding and you don&#39;t bother the rest of your network with BGP convergence, while the new HA primary re-establishes its BGP control plane. </p>
+
+<p>This is the most common use case for BGP GR that I saw in my career at least... There are also dual-brain HA solutions, where every node runs its own independent BGP/OSPF/whatever. But like I said, most of the stateful firewall vendors I encountered offer this single-brain solution, based on NSF + BGP GR.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2070">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dmitry Perets</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2070" href="#2070">17 January 2024 03:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>By the way, since we are a bit nerdy here, I&#39;d claim that the router X1 did not behave nicely, according to your description =) You say that the primary uplink failed. Then, three minutes later, the BGP Hold Timer expired. At this point, as per your conclusion, the router X1 assumed that C1 was restarting and entered the GR Helper mode, adding two more minutes to your misery. Well... it shouldn&#39;t have! The Hold Timer expiration is not a valid reason to assume GR. BGP GR process is initiated by a new OPEN message sent by the restarting peer. We could claim (as it is useful) that detecting TCP session death could also be considered as the start of GR. But not the Hold Timer expiration! If the Hold Timer expires, and the peer didn&#39;t send a new OPEN by that time, then the peer is just dead. No GR. So e.g. see RFC 4724 and the changes to the BGP FSM. It doesn&#39;t change the standard BGP behavior expected upon Hold Timer expiration. And neither should it.</p>
+
+<p>One last point - regarding BFD... It makes a huge difference whether BFD is sharing fate with control plane or not (that is, whether the C-bit is set - as per section 4.3 in RFC 5882). If BFD is sharing fate with control plane, then upon losing BFD, the remote peer cannot understand whether you are dead or just restarting. The previous expectation to receive an OPEN message is no longer enough, because you obviously cannot send this message faster than BFD loss. Hence, this combination of BGP GR + control-dependent BFD is totally harmful and makes no sense. BUT the combination of BGP GR + control-independent BFD is good, because it helps you distinguish between a forwarding-plane failure (in which case the routes must be flushed asap) and GR (in which case the routes must be preserved). </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2071">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2071" href="#2071">17 January 2024 04:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Since we are a bit nerdy ;) Quoting RFC 4724:</p>
+
+<p>&gt; When the Receiving Speaker detects termination of the TCP session for a BGP session with a peer that has advertised the Graceful Restart Capability, it MUST retain the routes received from the peer for all the address families that were previously received in the Graceful Restart Capability and MUST mark them as stale routing information.</p>
+
+<p>The termination of TCP session is detected when the TCP Hold Timer expires, and that&#39;s when the routes go into STALE state but are retained. After that...</p>
+
+<p>&gt; If the session does not get re-established within the &quot;Restart Time&quot; that the peer advertised previously, the Receiving Speaker MUST delete all the stale routes from the peer that it is retaining.</p>
+
+<p>And because Cisco IOS advertises the 2-minute restart time, the peer waits for five minutes before triggering the convergence process.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2072">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dmitry Perets</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2072" href="#2072">17 January 2024 04:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; The termination of TCP session is detected when the TCP Hold Timer expires, and that&#39;s when the routes go into STALE state but are retained. </p>
+
+<p>That&#39;s not how I read it. The Hold Timer expiration indicates the termination of the BGP session, not of the TCP session. I don&#39;t think they mean this kind of termination in this passage. </p>
+
+<p>Proof: section 5 of that RFC where they propose the changes to the finite-state machine. Specifically:</p>
+
+<p>Replace this text:</p>
+
+<pre><code>  If the local system receives a NOTIFICATION message (Event 24 or
+  Event 25), or a TcpConnectionFails (Event 18) from the underlying
+  TCP, the local system:
+  &amp;lt;&amp;lt;blah-blah&amp;gt;&amp;gt;
+</code></pre>
+
+<p>with</p>
+
+<pre><code>  If the local system receives a NOTIFICATION message (Event 24 or
+  Event 25), or if the local system receives a TcpConnectionFails
+  (Event 18) from the underlying TCP and the Graceful Restart
+  capability with one or more AFIs/SAFIs has not been received for
+  the session, the local system:
+  &amp;lt;&amp;lt;blah-blah&amp;gt;&amp;gt;
+
+  However, if the local system receives a TcpConnectionFails (Event
+  18) from the underlying TCP, and the Graceful Restart Capability
+  with one or more AFIs/SAFIs has been received for the session, the
+  local system:
+
+     - sets the ConnectRetryTimer to zero,
+
+     - retains all routes associated with this connection according
+       to section &amp;quot;Procedures for the Receiving Speaker&amp;quot; of this
+       (Graceful Restart) specification,
+
+    &amp;lt;blah-blah&amp;gt;
+</code></pre>
+
+<p>In other words, they refer here to the termination of the underlying TCP connection. Not a BGP event, but a TCP event! 
+Not BGP that kills the underlying TCP (as in Hold Timer expiration), but the other way around.
+Example: imagine that your HA cluster fails over, but still doesn&#39;t send the new OPEN message (forgot ;)). The peer still doesn&#39;t know anything about this, so from its perspective the old TCP socket is still established, and so is the old BGP session. So it will send its next BGP Keepalive as usual, using that TCP connection, right?  Except that on the other side we now have a new fresh primary node, which knows nothing about this TCP connection. Therefore, upon receiving a TCP segment which is not a SYN, it will react with TCP RST (or silently drop it, but that will not demonstrate my case, so let&#39;s assume it replies with TCP RST ;)). Upon receivng this TCP RST, the peer understands that something is wrong with that TCP connection. So it&#39;s a TCP event, not a BGP event! And I believe it&#39;s this kind of events that will result in TcpConnectionFail (Event 18) they refer above. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2075">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dmitry Perets</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2075" href="#2075">17 January 2024 04:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; The termination of TCP session is detected when the TCP Hold Timer expires, and that&#39;s when the routes go into STALE state but are retained. </p>
+
+<p>That&#39;s not how I read it. The Hold Timer expiration indicates the termination of the BGP session, not of the TCP session. I don&#39;t think they mean this kind of termination in this passage. </p>
+
+<p>Proof: section 5 of that RFC where they propose the changes to the finite-state machine. Specifically:</p>
+
+<p>Replace this text:</p>
+
+<pre><code>  If the local system receives a NOTIFICATION message (Event 24 or
+  Event 25), or a TcpConnectionFails (Event 18) from the underlying
+  TCP, the local system:
+  ..blah-blah..
+</code></pre>
+
+<p>with</p>
+
+<pre><code>  ..blah-blah..
+
+  However, if the local system receives a TcpConnectionFails (Event
+  18) from the underlying TCP, and the Graceful Restart Capability
+  with one or more AFIs/SAFIs has been received for the session, the
+  local system:
+
+     - sets the ConnectRetryTimer to zero,
+
+     - retains all routes associated with this connection according
+       to section &amp;quot;Procedures for the Receiving Speaker&amp;quot; of this
+       (Graceful Restart) specification,
+
+    ..blah-blah..
+</code></pre>
+
+<p>In other words, they refer here to the termination of the underlying TCP connection. Not a BGP event, but a TCP event! </p>
+
+<p>Not BGP that kills the underlying TCP (as in Hold Timer expiration), but the other way around.</p>
+
+<p>Example: imagine that your HA cluster fails over, but still doesn&#39;t send the new OPEN message (forgot ;)). The peer still doesn&#39;t know anything about this, so from its perspective the old TCP socket is still established, and so is the old BGP session. So it will send its next BGP Keepalive as usual, using that TCP connection, right?  Except that on the other side we now have a new fresh primary node, which knows nothing about this TCP connection. Therefore, upon receiving a TCP segment which is not a SYN, it will react with TCP RST (or silently drop it, but that will not demonstrate my case, so let&#39;s assume it replies with TCP RST ;)). Upon receivng this TCP RST, the peer understands that something is wrong with that TCP connection. So it&#39;s a TCP event, not a BGP event! And I believe it&#39;s this kind of events that will result in TcpConnectionFail (Event 18) they refer above. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2081">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bruno</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2081" href="#2081">22 January 2024 10:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>RFC 9494 (Long-Lived Graceful Restart for BGP) de-preferences the routes under GR. This (immediately)  triggers BGP convergence toward the backup routes. So I don&#39;t think this is quite the same as GR and that your last sentence is fair.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2082">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2082" href="#2082">23 January 2024 04:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for the feedback. While you&#39;re right that the routes marked with LLGR_STALE are de-preferenced, (if I&#39;m reading the RFC correctly) the depreferencing kicks in only if the neighbor already marked the routes with LLGR_STALE (in which case they&#39;re pretty useless anyway unless they&#39;re the only route to the destination) or if the GR helper marks them, which only happens after the GR timeout expires.</p>
+
+<p>So, yet again assuming I&#39;m reading the RFC correctly, the LLGR procedures kick in after the GR timeout expires. Until then, it&#39;s the same as GR. Obviously, one could lower the GR timer now that we have LLGR, but that just opens another can of worms.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

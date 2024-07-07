@@ -1,0 +1,72 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "12 May 2024 06:56",
+               "html": "<p>Wow. Cool trick! I never managed to get it to work on Cisco IOS.</p>\n",
+               "id": "2247",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-05-12T18:56:27",
+               "ref": "2245",
+               "type": "comment"
+            }
+         ],
+         "date": "12 May 2024 02:18",
+         "html": "<p>I used this technique on a Sup720 on the Cat 6500 platform.  The FIB could only hold 239k prefixes.  After that it would process switch, which was death on that platform.</p>\n\n<p>We had a full Internet table in the BGP database.  The RAM was not the problem, it held the entire Internet.  But the FIB was the limit.</p>\n\n<p>With the table-map command we could selectively load only certain routes into the RIB, which would then load into the FIB.</p>\n\n<p>The syntax was non-intuitive.  Table-map was designed to adjust the prefixes before loading them into the RIB, not eliminate them entirely!  I tried to set the admin distance of the undesired routes to 255 (unreachable) but the CLI didn&#39;t take it.  I got it to work by setting the metric to 4294967295.  I only knew that was the largest number by using the &quot;?&quot; in the CLI.</p>\n\n<p>That did it!  Something with metric 4294967295 was unreachable, so it didn&#39;t load into the RIB/FIB.</p>\n",
+         "id": "2245",
+         "name": " Dan Massameno",
+         "pub": "2024-05-12T14:18:37",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "18 May 2024 07:56",
+               "html": "<p>Sure, I have two scenarios in mind:</p>\n\n<ul>\n<li>Run EBGP with the PE router to get the local prefixes and multihop EBGP with a core router to get the transit prefixes.</li>\n<li>Pull the circuit to a core router (although I&#39;ll use VXLAN instead of VPLS).</li>\n</ul>\n\n<p>It will take me a while to get there though ;)</p>\n",
+               "id": "2263",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-05-18T07:56:25",
+               "ref": "2262",
+               "type": "comment"
+            },
+            {
+               "date": "19 May 2024 04:16",
+               "html": "<p>&gt; Run EBGP with the PE router to get the local prefixes and multihop EBGP with a core router to get the transit prefixes.</p>\n\n<p>IMO:\nI personally dislike this model as both a customer of a transit provider (had terrible nightmares with a carrier that did this) and as the transit service provider myself (if I&#39;m the one who designed the network). It just leads to configuration pollution for no good reason (on both sides), other than laziness, to create (hopefully it&#39;s automated in the backend) a Pseudowire from PE to the real edge router for a clean hand-off.</p>\n\n<p>&gt; Pull the circuit to a core router (although I&#39;ll use VXLAN instead of VPLS).</p>\n\n<p>What&#39;s your reasoning behind VXLAN though? For an SP network? Curious :)</p>\n",
+               "id": "2266",
+               "name": "Daryll Swer",
+               "pub": "2024-05-19T16:16:58",
+               "ref": "2263",
+               "type": "comment"
+            },
+            {
+               "date": "19 May 2024 06:21",
+               "html": "<p>&gt; IMO: I personally dislike this model as both a customer of a transit provider (had terrible nightmares with a carrier that did this) and as the transit service provider myself (if I&#39;m the one who designed the network).</p>\n\n<p>It depends on how much customer traffic would have to go through the network core anyway. That depends on the traffic profile, the size of the network, where the first router with the full routing table is... What&#39;s optimal for an access network might not be best for a large SP with lots of regional traffic.</p>\n\n<p>Anyway, the idea of the labs is to let people explore how to do things in a controlled environment.</p>\n\n<p>&gt; What&#39;s your reasoning behind VXLAN though? For an SP network? Curious :)</p>\n\n<p>If you&#39;re already running MPLS, the I guess adding a new LSP is not such a big deal (particularly in the EVPN days). Things are different if you have a pure IP network (see for example https://blog.ipspace.net/2013/11/deutsche-telekom-terastream-designed.html).</p>\n\n<p>A lot of IXPs are using VXLAN instead of VLPS these days, and there are large WAN networks using it: https://blog.ipspace.net/2017/06/packet-fabric-on-software-gone-wild.html</p>\n",
+               "id": "2268",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-05-19T18:21:53",
+               "ref": "2266",
+               "type": "comment"
+            },
+            {
+               "date": "20 May 2024 05:54",
+               "html": "<p>I&#39;ve heard of/seen Packet Fabric before. But I&#39;m not sure &ldquo;a lot of IXPs&rdquo; are using VXLAN. Arguably, the largest global &ldquo;commercial&rdquo; IXP is using MPLS + EVPN:\nhttps://www.de-cix.net/en/about-de-cix/news/peering-lans-2-0-evpn-rollout-on-the-de-cix-apollon-platform</p>\n\n<p>The largest IXP in India (a country that&#39;s larger than many nations globally by land-mass) is also using MPLS still (with EVPN mostly likely, haven&#39;t spoken to them in a long time).</p>\n",
+               "id": "2271",
+               "name": " Daryll Swer",
+               "pub": "2024-05-20T17:54:28",
+               "ref": "2268",
+               "type": "comment"
+            }
+         ],
+         "date": "17 May 2024 05:40",
+         "html": "<p>Would you be interested in labbing up my eBGP based SP design, Ivan? It particularly solves or rather prevents the need of flooding full tables into the network devices beyond the edge (border) routers, small, medium and big networks.</p>\n\n<p>For instance, if I had a DIA/Transit customer, they do not peer with my PE router, my PE router will transport that customer&#39;s L2 over a pseudowire back to my real edge, whereby there, they directly peer with my full table-capable router (and should they choose, which I recommend, get a full table export from my side to their side as well).</p>\n\n<p>P/PEs would only have a few entries of each other&#39;s loopbacks for LDP/BGP signalled VPLS etc. Not more than a few tens or hundreds routes tops.</p>\n",
+         "id": "2262",
+         "name": " Daryll Swer",
+         "pub": "2024-05-17T17:40:28",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2024/05/bgp-labs-reduce-fib.html"
+}

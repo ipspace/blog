@@ -1,0 +1,67 @@
+{
+   "comments": [
+      {
+         "date": "30 May 2023 11:18",
+         "html": "<p>If you happen to run bare metal kubernetes/openshift with e.g. Calico or Cilium CNI, running BGP between server and ToR almost becomes the default deployment.\nObviously, now we&#39;re not in enterprise IT virtualisation territory anymore (although kubevirt could <em>functionally</em> provide most of the desired technology...)</p>\n",
+         "id": "1845",
+         "name": " Albert Siersema",
+         "pub": "2023-05-30T11:18:28",
+         "type": "comment"
+      },
+      {
+         "date": "30 May 2023 04:03",
+         "html": "<p>The answer is BGP + BFD. This project adds FRR on each server and then advertise all host and potentially also client VM IPs as /32 routes to the leafs. No M-LAG, VLANs does not span over multiple racks. There are some caveats since does not yet support accelerated datapath like DPDK. Maybe someone will add ES-IS to FRR in the near future... </p>\n\n<p>https://developers.redhat.com/articles/2022/09/22/learn-about-new-bgp-capabilities-red-hat-openstack-17#</p>\n",
+         "id": "1847",
+         "name": "Petrus Potgieter",
+         "pub": "2023-05-30T16:03:59",
+         "type": "comment"
+      },
+      {
+         "date": "30 May 2023 04:08",
+         "html": "<p>Great points in this article, moving the resilience from L2 to L3 brilliant.</p>\n",
+         "id": "1848",
+         "name": "Luis",
+         "pub": "2023-05-30T16:08:22",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2023 04:28",
+         "html": "<p>amazing article Ivan. What i ran into the other day was a switch fault resitting the config to vanilla so SW port is up / NIC is up and forwarding, into nowhere. server dies. Indeed asking the host HSRP ish protocol to reach the DG/NH or not that would be good. FRR looks good, we did OSPF on LANs in my BT time for stacks of pizza&#39;s and what came after that. Not so sure if BGP in the ToR boils my cookie. But great article thanks.    </p>\n",
+         "id": "1850",
+         "name": "martijn jansen",
+         "pub": "2023-05-31T16:28:48",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 June 2023 08:25",
+               "html": "<p>A few other tricks (I guess I&#39;ll have to write a follow-up blog post one of these days):</p>\n\n<ul>\n<li>Assign the same IP address to the loopback and all uplinks. Obviously that makes running BGP sessions a bit harder, so you have to run them over IPv6 LLA</li>\n<li>Don&#39;t care about the outbound sessions (too much)</li>\n<li>Use MP-TCP for outbound sessions</li>\n<li>Use MPIO for iSCSI</li>\n</ul>\n",
+               "id": "1856",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-06-06T20:25:04",
+               "ref": "1855",
+               "type": "comment"
+            },
+            {
+               "date": "07 June 2023 01:47",
+               "html": "<p>The IPv6 link-local is a very nice approach alright (even better when combined with automatic neighbor discovery).  You could probably get away without the IP on each uplink in a lot of cases as the system will pick a GUA/IPv4 from the loopback if it&#39;s the only choice.</p>\n",
+               "id": "1858",
+               "name": "Cathal Mooney",
+               "pub": "2023-06-07T13:47:49",
+               "ref": "1856",
+               "type": "comment"
+            }
+         ],
+         "date": "06 June 2023 07:19",
+         "html": "<p>The routed way is definitely good, at the cost perhaps of some complexity you <em>see</em>.</p>\n\n<p>One annoyance is what IP address gets used by default by the system for outbound traffic.  It would be nice to have a generic OS-level way to say &quot;this IP on lo0 should be default for outbound IP traffic unless to the connected link subnet itself&quot;.</p>\n\n<p>Obviously some software allows you to specify the source IP to use, but again more complexity in config.  And some doesn&#39;t.  I&#39;ve solved it before with an iptables/nft SNAT rule for everything not on the connected subnet, but again it&#39;s messier than one would like.  </p>\n",
+         "id": "1855",
+         "name": " Cathal Mooney",
+         "pub": "2023-06-06T19:19:31",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2023/05/failure-detection-server-dual-homing.html"
+}

@@ -1,0 +1,142 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1901">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1901" href="#1901">30 August 2023 10:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The behavior of Arista EOS to use recursive next-hop resolution for static routes can be surprising, since most other router implementations do not do that.  One common expectation, satisfied by many router implementations, is that a static route with only an IP as next-hop specification is only active in the routing table (and installed in the forwarding database) when the next hop lies in a directly connected subnet of an active interface.</p>
+
+<p>The Linux <em>kernel</em> implementation for static routes is different from both Arista EOS and usual router implementations in that a static route stays active when the outgoing interface goes down, creating a blackhole. (Current userspace, e.g., NetworkManager, removes static routes pointing to inactive interfaces.)</p>
+
+<p>(BTW, the <em>Baron M&uuml;nchhausen</em> static route <code>ip route 10.1.0.5/32 ethernet 2 10.1.0.5</code> is technically identical to <code>ip route 10.1.0.5/32 ethernet 2</code>, thus there is no reason to expect it to work differently. ;-) )</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1902">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1902" href="#1902">30 August 2023 03:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; The Linux kernel implementation for static routes is different from both Arista EOS and usual router implementations in that a static route stays active when the outgoing interface goes down, creating a blackhole.</p>
+
+<p>That&#39;s good to know. Thank you!</p>
+
+<p>You can get the exact same behavior with <strong>permanent</strong> option of <strong>ip route</strong> command on Cisco IOS.</p>
+
+<p>Also, at least some IGP routes stay in the routing table after the interface failure, see https://blog.ipspace.net/2020/12/what-happens-after-link-failure.html for details.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2248">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2248" href="#2248">14 May 2024 10:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hello. I have a network with nexus 7000 and 9000 as a core routers. And a static routes pointing to the clients vlan interfaces. And on nexus 7000 I see a strange behavior: if I create a route to a server for ex. ip route 1.1.1.1/32 vlan 113 the router doesn&#39;t add arp record for 15 min., until adjacency manager adds such route automatically. Then the network on the server starts working. In the same time on nexus 9000 arp record is added immediately. 
+If you can - please help to resolve this issue. I can provide any additional info needed. Thanks in advance.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2249">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2249" href="#2249">15 May 2024 08:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Unfortunately, I can&#39;t help you. The device behavior obviously depends on hardware and software implementation (and version), so you should probably contact vendor TAC.</p>
+
+<p>Also, while I understand why you might want to use host routes pointing to interfaces, that&#39;s not necessarily the best possible design ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2259">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2259" href="#2259">17 May 2024 07:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Are you sure that it is a hardware problem? We use proxy arp also, so is there possibility that there is just some kind of tricky misconfiguration?
+There is no information about AM behavior at all, and your blog has the best information about arp I&#39;ve seen, so you are my last chance)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2260">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2260" href="#2260">17 May 2024 07:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I am not sure about anything. Based on what you described, the behavior seems platform-specific, so there&#39;s nothing anyone can do apart from trying it out on the platforms in question.</p>
+
+<p>As I already told you, the only way you might eventually get a definitive answer would be Cisco TAC.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2272">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2272" href="#2272">20 May 2024 06:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Wish I had access to cisco TAC.</p>
+
+<p>Thanks anyway, your blog is awesome.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

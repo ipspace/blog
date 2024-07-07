@@ -1,0 +1,72 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "05 April 2024 02:28",
+               "html": "https: //www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics<br />\n\n<p>BTW, I found the EBGP-over-EBGP approach too abhorrent to describe it.</p>\n\n<p>Also: https://blog.ipspace.net/tag/evpn.html#rants</p>\n",
+               "id": "2183",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-04-05T14:28:46",
+               "ref": "2182",
+               "type": "comment"
+            },
+            {
+               "date": "05 April 2024 11:41",
+               "html": "<p>All of this nonsense complexity wouldn&#39;t exist if we just stopped spanning and stretching Ethernet and instead either develop a successor to Ethernet, or move to layer 3-only hardware + networking. STP wasn&#39;t enough, came SPB and TRILL, wasn&#39;t enough, came VXLAN/EVPN <em>sigh</em>, next up, Ethernet over HTTPS Port 443 &mdash; half-joking, but probably will become reality as the industry is moving everything to port 443 like SSH3 now.</p>\n\n<p>I&#39;m currently trying to push IPv6-native-layer-3-only approach for Docker/Swarm at least:\nhttps://github.com/docker/docs/issues/19556</p>\n\n<p>K8s apparently has some eBPF based &quot;DSR&quot; and similar that removes the need for layer 2 adjacency (VXLAN/EVPN encap) - However, it is to be noted I&#39;m no expert on K8s. You can find some info on this on that Docker issue, other users talked about it.</p>\n",
+               "id": "2184",
+               "name": " Daryll Swer",
+               "pub": "2024-04-05T23:41:51",
+               "ref": "2183",
+               "type": "comment"
+            },
+            {
+               "date": "11 April 2024 05:54",
+               "html": "<p>SPB/TRILL were (are?) both great ideas that should have seen more market acceptance. Simple, reliable, scalable. What&#39;s not to like?</p>\n\n<p>So why did the industry buck those technologies and pivot to VXLAN and EVPN?  I blame software. The SDN movement has only ever wanted IP connectivity (&quot;We&#39;ll take it from here&quot; was their mantra). They had painfully little interest in layer-2 design, efficiency be damned. </p>\n\n<p>The hardware folks could have doubled-down on L2, as Avaya did. But many saw existential risk, as if a few Stanford Linux nerds would somehow make hardware irrelevant (or commodity). So, faster than you can say &quot;openflow&quot;, the HW companies embraced IP overlays, imagining a world of HW and SW VTEPs passing packets around while humming kumbaya.   (to date, HW/SW overlay integration is extremely rare)</p>\n\n<p>Who cares if the configuration is complex and individualized? Why aren&#39;t you using a controller or automation?\nWho cares if MTU blows up? That&#39;s a software problem.\nWho cares if TCP offloads fail. That&#39;s a NIC problem.\nWho cares if traffic flow is incomprehensible complex with the rabbit hole of nested overlays, distributed gateways, and multiple routing tiers? That&#39;s job security.</p>\n",
+               "id": "2206",
+               "name": " Craig W",
+               "pub": "2024-04-11T17:54:21",
+               "ref": "2184",
+               "type": "comment"
+            },
+            {
+               "date": "06 April 2024 08:15",
+               "html": "https: //www.ietf.org/archive/id/draft-bouaram-ethernet-over-https-00.html<br />\n\n\n",
+               "id": "2185",
+               "name": "BOGDAN GOLAB",
+               "pub": "2024-04-06T08:15:58",
+               "ref": "2184",
+               "type": "comment"
+            }
+         ],
+         "date": "05 April 2024 02:10",
+         "html": "<p>&gt; IBGP-over-EBGP or EBGP-over-EBGP</p>\n\n<p>What? There are people doing that? I wasn&#39;t even aware nor seen that before, crazy.</p>\n",
+         "id": "2182",
+         "name": " Daryll Swer",
+         "pub": "2024-04-05T14:10:39",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 April 2024 01:44",
+               "html": "<p>I even checked the release date of this RFC. It&#39;s not April 1st...</p>\n",
+               "id": "2188",
+               "name": "BOGDAN GOLAB",
+               "pub": "2024-04-06T13:44:50",
+               "ref": "2187",
+               "type": "comment"
+            }
+         ],
+         "date": "06 April 2024 12:00",
+         "html": "<p>@Bogdan Golab</p>\n\n<p>I am speechless&hellip;</p>\n",
+         "id": "2187",
+         "name": " Daryll Swer",
+         "pub": "2024-04-06T12:00:40",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2024/04/spb-trill-evpn.html"
+}

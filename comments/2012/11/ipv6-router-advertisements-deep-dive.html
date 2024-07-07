@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>12 comments:</h4>
+  <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -189,6 +189,80 @@
               </span>
             </div>
             <div class="comment-content">That sounds about right (and yes, IIRC that&#39;s what the RFC says). Interesting to see radvd being so strict. However, you can still advertise the prefix with long-enough lifetime and without on-link bit, and when that&#39;s picked up, stop advertising it and wait for 2 hours.</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2104">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Scott</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2104" href="#2104">22 February 2024 06:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;A prefix information option with both A and L flags unset is meaningless and might as well be removed.&quot;</p>
+
+<p>I&#39;m not sure this is true.  You can statically address a host, prevent it from also using SLAAC (A=0) and want to force everything to a default router (L=0).</p>
+
+<p>I assume you could so some creative routing A=0,L=0 too.  ie. one router is the default but another might be a better first hop for a specific prefix.</p>
+
+<p>I&#39;ve been trying to get private vlans working with FreeBSD hosts but when you statically assign an IPv6 address it adds the derived prefix to the prefix table as on-link, even with a router advertising the prefix with L=0.  Same for Windows.  One workaround is to use /128 as the prefixlen for the static address.  If you&#39;re not using community vlans that&#39;s not great though as hosts in the same community would still talk via a router.</p>
+
+<p>This behaviour of both OSes seems contrary to RFC 5942: &quot;The assignment of an IPv6 address ... MUST NOT implicitly cause a prefix derived from that address to be treated as on-link and added to the Prefix List.&quot;</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2105">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2105" href="#2105">22 February 2024 07:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; This behaviour of both OSes seems contrary to RFC 5942: &quot;The assignment of an IPv6 address ... MUST NOT implicitly cause a prefix derived from that address to be treated as on-link and added to the Prefix List.&quot;</p>
+
+<p>One could argue that you&#39;re not assigning an address but a prefix to an interface as you specify the prefix length when configuring the interface IPv6 address.</p>
+
+<p>As for &quot;the hosts can talk through a router&quot;, that&#39;s always the case with private VLANs, and you have to stop that on the router.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2106">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Scott</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2106" href="#2106">22 February 2024 12:57</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for the reply Ivan.</p>
+
+<p>When I said &quot;that&#39;s not great though as hosts in the same community would still talk via a router&quot; - this is not the behaviour you want on a community vlan (otherwise why would you create the community vlan in the first place?).  It&#39;s isolated vlans where you want layer 2 segmentation.</p>
+
+<p>Private vlans with inter-host controls performed at the router are made possible for IPv4 by a combination of local routing, no ip redirects, and local proxy-arp.  However for IPv6, while the first two functions are possible (at least on a Cisco router), the third is not.  It makes sense that IPv6 local proxy-arp is unavailable/impossible since ND is done with multicasts, not broadcasts.  Therefore to get private vlans working with IPv6 you must be able to force the hosts to consider the prefix derived by their address and prefix length to be considered &quot;off-link&quot;, and therefore they should forward all traffic to the default router. (Mimicking the local proxy-arp behaviour).</p>
+
+<p>As I said both Windows and FreeBSD (I&#39;m yet to test Linux) both add the derived prefix to the prefix table when you statically configure an address - despite what they may learn from an RA - and in violation of RFC 5942.  On the other hand if they use SLAAC by learning the prefix from an RA, then if that RA says the prefix is not on-link (L=0) then neither OS adds the prefix to the prefix table.</p>
+
+<p>So I have successfully implemented isolated private vlans with IPv6 with SLAAC/DHCPv6, but not static addressing.  Well, static with /128 prefix lengths work.</p>
+
+<p>Have you ever come across private vlans and IPv6?</p>
+
+<p>Thanks.</p>
+</div>
           </div>
         </li>
       </div>

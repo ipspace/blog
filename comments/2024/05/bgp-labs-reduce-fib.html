@@ -1,0 +1,163 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2245">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Dan Massameno</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2245" href="#2245">12 May 2024 02:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I used this technique on a Sup720 on the Cat 6500 platform.  The FIB could only hold 239k prefixes.  After that it would process switch, which was death on that platform.</p>
+
+<p>We had a full Internet table in the BGP database.  The RAM was not the problem, it held the entire Internet.  But the FIB was the limit.</p>
+
+<p>With the table-map command we could selectively load only certain routes into the RIB, which would then load into the FIB.</p>
+
+<p>The syntax was non-intuitive.  Table-map was designed to adjust the prefixes before loading them into the RIB, not eliminate them entirely!  I tried to set the admin distance of the undesired routes to 255 (unreachable) but the CLI didn&#39;t take it.  I got it to work by setting the metric to 4294967295.  I only knew that was the largest number by using the &quot;?&quot; in the CLI.</p>
+
+<p>That did it!  Something with metric 4294967295 was unreachable, so it didn&#39;t load into the RIB/FIB.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2247">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2247" href="#2247">12 May 2024 06:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Wow. Cool trick! I never managed to get it to work on Cisco IOS.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2262">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daryll Swer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2262" href="#2262">17 May 2024 05:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Would you be interested in labbing up my eBGP based SP design, Ivan? It particularly solves or rather prevents the need of flooding full tables into the network devices beyond the edge (border) routers, small, medium and big networks.</p>
+
+<p>For instance, if I had a DIA/Transit customer, they do not peer with my PE router, my PE router will transport that customer&#39;s L2 over a pseudowire back to my real edge, whereby there, they directly peer with my full table-capable router (and should they choose, which I recommend, get a full table export from my side to their side as well).</p>
+
+<p>P/PEs would only have a few entries of each other&#39;s loopbacks for LDP/BGP signalled VPLS etc. Not more than a few tens or hundreds routes tops.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2263">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2263" href="#2263">18 May 2024 07:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Sure, I have two scenarios in mind:</p>
+
+<ul>
+<li>Run EBGP with the PE router to get the local prefixes and multihop EBGP with a core router to get the transit prefixes.</li>
+<li>Pull the circuit to a core router (although I&#39;ll use VXLAN instead of VPLS).</li>
+</ul>
+
+<p>It will take me a while to get there though ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2266">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Daryll Swer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2266" href="#2266">19 May 2024 04:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; Run EBGP with the PE router to get the local prefixes and multihop EBGP with a core router to get the transit prefixes.</p>
+
+<p>IMO:
+I personally dislike this model as both a customer of a transit provider (had terrible nightmares with a carrier that did this) and as the transit service provider myself (if I&#39;m the one who designed the network). It just leads to configuration pollution for no good reason (on both sides), other than laziness, to create (hopefully it&#39;s automated in the backend) a Pseudowire from PE to the real edge router for a clean hand-off.</p>
+
+<p>&gt; Pull the circuit to a core router (although I&#39;ll use VXLAN instead of VPLS).</p>
+
+<p>What&#39;s your reasoning behind VXLAN though? For an SP network? Curious :)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2268">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2268" href="#2268">19 May 2024 06:21</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; IMO: I personally dislike this model as both a customer of a transit provider (had terrible nightmares with a carrier that did this) and as the transit service provider myself (if I&#39;m the one who designed the network).</p>
+
+<p>It depends on how much customer traffic would have to go through the network core anyway. That depends on the traffic profile, the size of the network, where the first router with the full routing table is... What&#39;s optimal for an access network might not be best for a large SP with lots of regional traffic.</p>
+
+<p>Anyway, the idea of the labs is to let people explore how to do things in a controlled environment.</p>
+
+<p>&gt; What&#39;s your reasoning behind VXLAN though? For an SP network? Curious :)</p>
+
+<p>If you&#39;re already running MPLS, the I guess adding a new LSP is not such a big deal (particularly in the EVPN days). Things are different if you have a pure IP network (see for example https://blog.ipspace.net/2013/11/deutsche-telekom-terastream-designed.html).</p>
+
+<p>A lot of IXPs are using VXLAN instead of VLPS these days, and there are large WAN networks using it: https://blog.ipspace.net/2017/06/packet-fabric-on-software-gone-wild.html</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2271">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daryll Swer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2271" href="#2271">20 May 2024 05:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&#39;ve heard of/seen Packet Fabric before. But I&#39;m not sure &ldquo;a lot of IXPs&rdquo; are using VXLAN. Arguably, the largest global &ldquo;commercial&rdquo; IXP is using MPLS + EVPN:
+https://www.de-cix.net/en/about-de-cix/news/peering-lans-2-0-evpn-rollout-on-the-de-cix-apollon-platform</p>
+
+<p>The largest IXP in India (a country that&#39;s larger than many nations globally by land-mass) is also using MPLS still (with EVPN mostly likely, haven&#39;t spoken to them in a long time).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

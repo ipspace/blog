@@ -88,9 +88,25 @@
          "name": " Kent",
          "pub": "2023-02-23T07:50:26",
          "type": "comment"
+      },
+      {
+         "date": "07 April 2023 06:42",
+         "html": "<p>Late to the party, but I&#39;d like to comment on Homa insistence on spraying. I think it is just dead end optimization in data centers going forward. Spraying basically relies on two things:\n- network is very symmetrical and all we&#39;ll ever need is ECMP or WCMP at most (think Clos)\n- everybody else is doing spraying - otherwise we&#39;ll have transient hotspots</p>\n\n<p>But what we see now is some ideas from HPC world slowly percolating into IP/Ethernet data center world, including new topologies. And all interesting (as in smaller diameter, larger network with the same number of switches and links) topologies are less symmetrical than Clos and utilize non-minimal paths. In fact, most of their capacity is via non-minimal paths. Topologies with non minimal paths require some forwarding and routing tricks, but they also require global adaptive routing for efficient utilization. ECMP just can&#39;t describe desired behavior like utilizing shortest paths first and then non-minimal ones and trying alternative paths instead of reducing rate as a possible reaction to congestion. Global adaptive routing in turn needs some identifiable long-lived traffic artefacts, otherwise there is nothing to move to an alternative path and no way to adapt.</p>\n\n<p>PS. Google had a series of papers at SIGCOMM 2022 about their Dragonfly+ - like data center topology and adaptive routing.</p>\n",
+         "id": "1747",
+         "name": "Dmitry Afanasiev",
+         "pub": "2023-04-07T06:42:56",
+         "type": "comment"
+      },
+      {
+         "date": "07 April 2023 11:42",
+         "html": "<p>Thanks for the comment. I still think that Clos is the optimal any-to-any fabric, both from the switch- and bandwidth utilization perspective.</p>\n\n<p>https://blog.ipspace.net/2012/04/full-mesh-is-worst-possible-fabric.html</p>\n\n<p>Obviously Google had to depart from that when they effectively reinvented what Plexxi has been selling a decade ago (although Google claims they can flip the spine mirrors whereas Plexxi had fixed topology), and in scenarios where you have a bunch of cables (physical, virtual, or mirrored) between leaf switches you have to get creative.</p>\n\n<p>https://blog.ipspace.net/2013/09/the-plexxi-challenge-or-dont-blame-tools.html</p>\n",
+         "id": "1751",
+         "name": "Ivan Pepelnjak",
+         "pub": "2023-04-07T11:42:46",
+         "type": "comment"
       }
    ],
-   "count": 5,
+   "count": 7,
    "type": "post",
    "url": "2023/01/data-center-tcp-replacement.html"
 }

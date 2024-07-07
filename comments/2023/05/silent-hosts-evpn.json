@@ -1,0 +1,26 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "04 May 2023 08:20",
+               "html": "<p>Thanks a million, now it makes perfect sense. I should have seen that (oh, the &quot;beauty&quot; of perfect hindsight). Will rewrite the blog post accordingly.</p>\n\n<p>As for &quot;two seconds to report a new MAC address&quot;, that&#39;s plain ridiculous. I&#39;m always amazed what vendors can get away with without anyone crucifying them in public.</p>\n",
+               "id": "1815",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-05-04T20:20:31",
+               "ref": "1814",
+               "type": "comment"
+            }
+         ],
+         "date": "04 May 2023 07:25",
+         "html": "<p>Hi Ivan,</p>\n\n<p>What you&rsquo;ve described in this article, and in the previous ones in this subject should be the case but is not always true. I&rsquo;ve been suffering for some time a problem related with the mac learning in EVPN from a big vendor, you can call it faulty implementation or feature, that&rsquo;s up to anyone reading this.</p>\n\n<p>The ESXi hosts are truly&hellip; if not silent, shy hosts; they don&rsquo;t say a thing with the vmkernel vmotion interface until they have some VM to move. The ARP cache entries timeout is 20 minutes in VMware, the vendors switch mac address aging time is less and DRS is enabled at low sensibility (few vm moves). It&rsquo;s true that the ESXi hosts send out an ARP request, create some ICMP packets and then the TCP session for the vmotion, they are truly polite. The problem that I suffered is that in some implementation of one vendor, a specific silicon can take up to two seconds to realize that it has a new mac to advertise, and then create the route type-2 advertisement. So, ARP, ICMP and TCP are being flooded until the remote switch learns the VTEP that has the ESXi behind and with HER/ingress replication this is a huge problem. </p>\n\n<p>Then we have the RARP problem after the vmotion, if we take the same random time between zero and two seconds, the traffic destinated to this VM is going to go back to the old VTEP instead the actual one until convergence is achieved.</p>\n\n<p>The sad solution is to limit the unknown unicast traffic and increase the mac aging-time to reduce the possibility of this problem.</p>\n",
+         "id": "1814",
+         "name": "Someone",
+         "pub": "2023-05-04T19:25:55",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2023/05/silent-hosts-evpn.html"
+}

@@ -1,274 +1,282 @@
 {
-  "comments": [
-    {
-      "date": "14 November 2011 10:14",
-      "html": "MPLS vs. traditional design during an earthquake:<br /><br />http://ripe63.ripe.net/archives/video/184/<br /><br />Worth watching, real data from Randy (IIJ)",
-      "id": "7466931480656276800",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Jan Zorz",
-      "profile": null,
-      "pub": "2011-11-14T10:14:47.111+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 10:15",
-      "html": "slides: http://ripe63.ripe.net/presentations/128-111102.ripe-quake.pdf",
-      "id": "2146442247329103004",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Jan Zorz",
-      "profile": null,
-      "pub": "2011-11-14T10:15:32.465+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 10:40",
-      "html": "How to make this funny graphs?",
-      "id": "4520279180591312906",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Lorenzo",
-      "profile": null,
-      "pub": "2011-11-14T10:40:16.098+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 13:13",
-      "html": "Not exactly (at least not the slides). Randy explained how a traditional well-designed routing-only IP network survived a major link outage. No surprises there, he knows what he&#39;s doing ;)",
-      "id": "7385705810874615140",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2011-11-14T13:13:06.372+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 13:15",
-      "html": "See the last paragraph in this blog post: http://blog.ioshints.info/2011/10/l2-or-l3-switching-in-campus-networks.html",
-      "id": "8346201377232298883",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2011-11-14T13:15:09.517+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 16:40",
-      "html": "Another interesting case where IGP-LDP sync is useful is when (OSPF or IS-IS) adjacency is &quot;up&quot; but LDP session is down. Without IGP-LDP sync a router does not change IGP path (since it does not see any topology change), therefore traffic between the two routers is black-holed (label from the other router missing !). With IG-LDP sync enabled, the IGP change path even when the LDP session is down and the (OSPF or IS-IS) adjacency is &quot;up&quot; (tested with IOS, works fine !). Principle is obviously the same, advertise link where LDP session fails with the highest metric possible.",
-      "id": "4951639236389405702",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": null,
-      "pub": "2011-11-14T16:40:33.208+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 17:50",
-      "html": "I think if LDP run order mode, then there is no need for this. whenever ingress router get a label, it has to be distributed by egress, there is no black-hole in design.",
-      "id": "6953415054663463246",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "igp2bgp",
-      "profile": null,
-      "pub": "2011-11-14T17:50:40.588+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 18:01",
-      "html": "I started from different assumptions. <br />As Ivan wrote &quot;when using independent label distribution and liberal label retention mode (default settings on most modern routers)&quot;,  I assumed independent label distribution and liberal retention mode. In this case black-holes are surely possible, you get a black-hole as soon as LDP session on a link drops down (in VPN service, this happens even if LDP session drops down on the last link of the path).",
-      "id": "8529170222888630936",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": null,
-      "pub": "2011-11-14T18:01:12.491+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 18:37",
-      "html": "juniper support order mode and igp-ldp sync, not sure what might be the deployment scenario? independent mode is default for IOS, not juniper, right?  <br />http://www.juniper.net/techpubs/en_US/junos11.3/topics/reference/standards/ldp.html",
-      "id": "8603857661989381235",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "igp2bgp",
-      "profile": null,
-      "pub": "2011-11-14T18:37:35.123+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "14 November 2011 19:23",
-      "html": "Not sure ordered mode makes much difference (but have to check what Junos really does). Anyhow, if an LDP session breaks (or is not established yet), LSP along IGP best path either breaks or is not available at all (which might be the case in ordered mode). No difference from the packet forwarding perspective.",
-      "id": "8914631786810822110",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2011-11-14T19:23:23.091+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 00:38",
-      "html": "after heavy reading, i think in case of order ldp mode, router a will retain the lbl and ingress router won&#39;t have lsp tunnel to forwarding traffic.  ldp/igp sync up do make sense in case of order mode.",
-      "id": "6888424669457703569",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "igp2bgp",
-      "profile": null,
-      "pub": "2011-11-15T00:38:59.060+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 03:28",
-      "html": "Another valuable IGP command to prevent blackholing is:<br />max-metric router-lsa on-startup 120<br /><br />Also, for the edge devices BGP PIC can again accelerate repair for backup paths. I would like to see an article on BGP PIC, especially the &quot;no bgp recursion host&quot; piece.",
-      "id": "7960740927308847432",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "nosx",
-      "profile": null,
-      "pub": "2011-11-15T03:28:09.088+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 09:08",
-      "html": "JUNOS also defaults to independent mode and liberal retention. One difference with IOS is that JUNOS advertise label bindings only for loopback interface instead of advertising label bindings for each network in routing table (as IOS does). You may change the default behaviour in both cases. My opinion is that JUNOS view is neater, since in a well designed IP/MPLS backbone, what you really need is a full mesh of LSP MPLS between loopbacks of PE routers (used for the full logical mesh of iBGP sessions). Adveritising label bindings for networks used to numeber point-to-point links or broadcast segments inside backbone infrastructure is a quite useless exercise.",
-      "id": "6147207312793019356",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": null,
-      "pub": "2011-11-15T09:08:30.045+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 09:15",
-      "html": "Right, if you break LSP traffic is black-holed (as a matter of fact there is an exception, if the LSP breaks on the last link and traffic is forwarded through a single MPLS label, because of PHP, traffic is not black-holed). As I pointed out in a previous post, this problem may be solved also by IGP-LDP sync.",
-      "id": "5965363083339748322",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": null,
-      "pub": "2011-11-15T09:15:09.404+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 09:53",
-      "html": "If the last hop in LSP breaks, BGP-free core continues to work, but MPLS/VPN breaks. Unless the egress PE-router signals implicit-null, the penultimate hop&#39;s outbound label is &quot;NO LABEL&quot;, not &quot;POP&quot;, so all the labels are removed from the stack.",
-      "id": "9080739914439852730",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2011-11-15T09:53:39.001+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 09:55",
-      "html": "Actually, Junos uses ordered, not independent mode. Just tested it yesterday - unless you have LDP session on the last hop, the routers a few hops away don&#39;t see the label for egress PE loopback.",
-      "id": "3110576724847844327",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2011-11-15T09:55:32.598+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 15:44",
-      "html": "I apologize, you are right.<br />JUNOS defaults:<br />Downstream Unsolicited label distribution (as opposed to Downstream on Demand), <br />Ordered label distribution control (as opposed to Independent), <br />Liberal label retention (as opposed to Conservative)<br /><br />Anyway, my claim on traffic black-hole remains valid, independently of label allocation mode.",
-      "id": "6240939946586671446",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": null,
-      "pub": "2011-11-15T15:44:02.273+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 18:33",
-      "html": "Excellent post again Ivan. Not an MPLS expert but read your books and others. I can understand the Targeted option and to another extent fast reroute to provide a &quot;feasible successor&quot; like quick change.<br />What about the impact of NSF and BFD features in the IGP, they too if used have an affect on the process as well. Any thoughts?<br /><br />Also, what about &quot; donwstream on demand&quot; vs. &quot;unsolcited downstream&quot; label distribution methods as part of the equation, any thoughts?",
-      "id": "4153202097007420651",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "jsicuran",
-      "profile": null,
-      "pub": "2011-11-15T18:33:58.159+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "15 November 2011 18:42",
-      "html": "also, it seems we are getting to a point in the industry that the MTU is becoming an item to be constantly considered and not overlooked or taken for granted across many network technologies, such as wireless, wan, lan, ipv6, mpls, vpns(all flavors), vpls, fabrics, security etc.",
-      "id": "2308044348963737332",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "jsicuran",
-      "profile": null,
-      "pub": "2011-11-15T18:42:33.161+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "23 January 2012 07:26",
-      "html": "Curious, if it were an L2VPN between In/E-gress in your diagram above, would router A still send it as native IP packet to D (after the physical link between A and D is restored) ? Would there not be a VPN label on top of the IP packet ? Saw this in the 2-label VPN link you had mentioned (that there&#39;ll be a vpn label)<br /><br />Thanks.",
-      "id": "3336683233065702307",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "BV",
-      "profile": null,
-      "pub": "2012-01-23T07:26:46.467+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "23 January 2012 08:41",
-      "html": "Before A receives a label mapping for Eg from D, the outbound action for Eg would be &quot;untagged&quot;. Any labeled packets trying to cross that link would probably be dropped. Just guessing though ...",
-      "id": "5721181027179487385",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2012-01-23T08:41:42.690+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "date": "29 October 2015 12:39",
-      "html": "Ivan, I know this is an older post but still great! I was researching the Session Protection feature for my studies, and was glad to find your blog. ",
-      "id": "2003804686652235996",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Kim Bartlett",
-      "profile": "https://au.linkedin.com/pub/kim-bartlett/17/721/74a",
-      "pub": "2015-10-29T12:39:23.165+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "05 November 2016 10:19",
-          "html": "I don&#39;t think so. LFA kicks in as a temporary measure after a link loss. Simple Segment Routing would be my preferred alternative these days.",
-          "id": "800071677470416182",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-11-05T10:19:19.125+01:00",
-          "ref": "2025265063334625620",
-          "type": "comment"
-        }
-      ],
-      "date": "04 November 2016 01:15",
-      "html": "would LFA help to keep the traffic on A-B-C-D path when link comes up between A-D until a label is received? LFA should install FRR route towards B on A and it should still be effective until a new route/label is received from D after link up. Link up should be a MBB scenario, IMO. ",
-      "id": "2025265063334625620",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/05595770841652422055",
-      "pub": "2016-11-04T01:15:22.212+01:00",
-      "ref": "7990809298436608135",
-      "type": "comment"
-    }
-  ],
-  "count": 24,
-  "id": "7990809298436608135",
-  "type": "post",
-  "url": "2011/11/ldp-igp-synchronization-in-mpls.html"
+   "comments": [
+      {
+         "date": "14 November 2011 10:14",
+         "html": "MPLS vs. traditional design during an earthquake:<br /><br />http://ripe63.ripe.net/archives/video/184/<br /><br />Worth watching, real data from Randy (IIJ)",
+         "id": "7466931480656276800",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Jan Zorz",
+         "profile": null,
+         "pub": "2011-11-14T10:14:47.111+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 10:15",
+         "html": "slides: http://ripe63.ripe.net/presentations/128-111102.ripe-quake.pdf",
+         "id": "2146442247329103004",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Jan Zorz",
+         "profile": null,
+         "pub": "2011-11-14T10:15:32.465+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 10:40",
+         "html": "How to make this funny graphs?",
+         "id": "4520279180591312906",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Lorenzo",
+         "profile": null,
+         "pub": "2011-11-14T10:40:16.098+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 13:13",
+         "html": "Not exactly (at least not the slides). Randy explained how a traditional well-designed routing-only IP network survived a major link outage. No surprises there, he knows what he&#39;s doing ;)",
+         "id": "7385705810874615140",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2011-11-14T13:13:06.372+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 13:15",
+         "html": "See the last paragraph in this blog post: http://blog.ioshints.info/2011/10/l2-or-l3-switching-in-campus-networks.html",
+         "id": "8346201377232298883",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2011-11-14T13:15:09.517+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 16:40",
+         "html": "Another interesting case where IGP-LDP sync is useful is when (OSPF or IS-IS) adjacency is &quot;up&quot; but LDP session is down. Without IGP-LDP sync a router does not change IGP path (since it does not see any topology change), therefore traffic between the two routers is black-holed (label from the other router missing !). With IG-LDP sync enabled, the IGP change path even when the LDP session is down and the (OSPF or IS-IS) adjacency is &quot;up&quot; (tested with IOS, works fine !). Principle is obviously the same, advertise link where LDP session fails with the highest metric possible.",
+         "id": "4951639236389405702",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": null,
+         "pub": "2011-11-14T16:40:33.208+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 17:50",
+         "html": "I think if LDP run order mode, then there is no need for this. whenever ingress router get a label, it has to be distributed by egress, there is no black-hole in design.",
+         "id": "6953415054663463246",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "igp2bgp",
+         "profile": null,
+         "pub": "2011-11-14T17:50:40.588+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 18:01",
+         "html": "I started from different assumptions. <br />As Ivan wrote &quot;when using independent label distribution and liberal label retention mode (default settings on most modern routers)&quot;,  I assumed independent label distribution and liberal retention mode. In this case black-holes are surely possible, you get a black-hole as soon as LDP session on a link drops down (in VPN service, this happens even if LDP session drops down on the last link of the path).",
+         "id": "8529170222888630936",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": null,
+         "pub": "2011-11-14T18:01:12.491+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 18:37",
+         "html": "juniper support order mode and igp-ldp sync, not sure what might be the deployment scenario? independent mode is default for IOS, not juniper, right?  <br />http://www.juniper.net/techpubs/en_US/junos11.3/topics/reference/standards/ldp.html",
+         "id": "8603857661989381235",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "igp2bgp",
+         "profile": null,
+         "pub": "2011-11-14T18:37:35.123+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "14 November 2011 19:23",
+         "html": "Not sure ordered mode makes much difference (but have to check what Junos really does). Anyhow, if an LDP session breaks (or is not established yet), LSP along IGP best path either breaks or is not available at all (which might be the case in ordered mode). No difference from the packet forwarding perspective.",
+         "id": "8914631786810822110",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2011-11-14T19:23:23.091+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 00:38",
+         "html": "after heavy reading, i think in case of order ldp mode, router a will retain the lbl and ingress router won&#39;t have lsp tunnel to forwarding traffic.  ldp/igp sync up do make sense in case of order mode.",
+         "id": "6888424669457703569",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "igp2bgp",
+         "profile": null,
+         "pub": "2011-11-15T00:38:59.060+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 03:28",
+         "html": "Another valuable IGP command to prevent blackholing is:<br />max-metric router-lsa on-startup 120<br /><br />Also, for the edge devices BGP PIC can again accelerate repair for backup paths. I would like to see an article on BGP PIC, especially the &quot;no bgp recursion host&quot; piece.",
+         "id": "7960740927308847432",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "nosx",
+         "profile": null,
+         "pub": "2011-11-15T03:28:09.088+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 09:08",
+         "html": "JUNOS also defaults to independent mode and liberal retention. One difference with IOS is that JUNOS advertise label bindings only for loopback interface instead of advertising label bindings for each network in routing table (as IOS does). You may change the default behaviour in both cases. My opinion is that JUNOS view is neater, since in a well designed IP/MPLS backbone, what you really need is a full mesh of LSP MPLS between loopbacks of PE routers (used for the full logical mesh of iBGP sessions). Adveritising label bindings for networks used to numeber point-to-point links or broadcast segments inside backbone infrastructure is a quite useless exercise.",
+         "id": "6147207312793019356",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": null,
+         "pub": "2011-11-15T09:08:30.045+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 09:15",
+         "html": "Right, if you break LSP traffic is black-holed (as a matter of fact there is an exception, if the LSP breaks on the last link and traffic is forwarded through a single MPLS label, because of PHP, traffic is not black-holed). As I pointed out in a previous post, this problem may be solved also by IGP-LDP sync.",
+         "id": "5965363083339748322",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": null,
+         "pub": "2011-11-15T09:15:09.404+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 09:53",
+         "html": "If the last hop in LSP breaks, BGP-free core continues to work, but MPLS/VPN breaks. Unless the egress PE-router signals implicit-null, the penultimate hop&#39;s outbound label is &quot;NO LABEL&quot;, not &quot;POP&quot;, so all the labels are removed from the stack.",
+         "id": "9080739914439852730",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2011-11-15T09:53:39.001+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 09:55",
+         "html": "Actually, Junos uses ordered, not independent mode. Just tested it yesterday - unless you have LDP session on the last hop, the routers a few hops away don&#39;t see the label for egress PE loopback.",
+         "id": "3110576724847844327",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2011-11-15T09:55:32.598+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 15:44",
+         "html": "I apologize, you are right.<br />JUNOS defaults:<br />Downstream Unsolicited label distribution (as opposed to Downstream on Demand), <br />Ordered label distribution control (as opposed to Independent), <br />Liberal label retention (as opposed to Conservative)<br /><br />Anyway, my claim on traffic black-hole remains valid, independently of label allocation mode.",
+         "id": "6240939946586671446",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": null,
+         "pub": "2011-11-15T15:44:02.273+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 18:33",
+         "html": "Excellent post again Ivan. Not an MPLS expert but read your books and others. I can understand the Targeted option and to another extent fast reroute to provide a &quot;feasible successor&quot; like quick change.<br />What about the impact of NSF and BFD features in the IGP, they too if used have an affect on the process as well. Any thoughts?<br /><br />Also, what about &quot; donwstream on demand&quot; vs. &quot;unsolcited downstream&quot; label distribution methods as part of the equation, any thoughts?",
+         "id": "4153202097007420651",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "jsicuran",
+         "profile": null,
+         "pub": "2011-11-15T18:33:58.159+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2011 18:42",
+         "html": "also, it seems we are getting to a point in the industry that the MTU is becoming an item to be constantly considered and not overlooked or taken for granted across many network technologies, such as wireless, wan, lan, ipv6, mpls, vpns(all flavors), vpls, fabrics, security etc.",
+         "id": "2308044348963737332",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "jsicuran",
+         "profile": null,
+         "pub": "2011-11-15T18:42:33.161+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "23 January 2012 07:26",
+         "html": "Curious, if it were an L2VPN between In/E-gress in your diagram above, would router A still send it as native IP packet to D (after the physical link between A and D is restored) ? Would there not be a VPN label on top of the IP packet ? Saw this in the 2-label VPN link you had mentioned (that there&#39;ll be a vpn label)<br /><br />Thanks.",
+         "id": "3336683233065702307",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "BV",
+         "profile": null,
+         "pub": "2012-01-23T07:26:46.467+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "23 January 2012 08:41",
+         "html": "Before A receives a label mapping for Eg from D, the outbound action for Eg would be &quot;untagged&quot;. Any labeled packets trying to cross that link would probably be dropped. Just guessing though ...",
+         "id": "5721181027179487385",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2012-01-23T08:41:42.690+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "29 October 2015 12:39",
+         "html": "Ivan, I know this is an older post but still great! I was researching the Session Protection feature for my studies, and was glad to find your blog. ",
+         "id": "2003804686652235996",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Kim Bartlett",
+         "profile": "https://au.linkedin.com/pub/kim-bartlett/17/721/74a",
+         "pub": "2015-10-29T12:39:23.165+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "05 November 2016 10:19",
+               "html": "I don&#39;t think so. LFA kicks in as a temporary measure after a link loss. Simple Segment Routing would be my preferred alternative these days.",
+               "id": "800071677470416182",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-11-05T10:19:19.125+01:00",
+               "ref": "2025265063334625620",
+               "type": "comment"
+            }
+         ],
+         "date": "04 November 2016 01:15",
+         "html": "would LFA help to keep the traffic on A-B-C-D path when link comes up between A-D until a label is received? LFA should install FRR route towards B on A and it should still be effective until a new route/label is received from D after link up. Link up should be a MBB scenario, IMO. ",
+         "id": "2025265063334625620",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/05595770841652422055",
+         "pub": "2016-11-04T01:15:22.212+01:00",
+         "ref": "7990809298436608135",
+         "type": "comment"
+      },
+      {
+         "date": "24 May 2023 12:40",
+         "html": "<p>I am wondering whether the various vendors&#39; implementations allow the IGP and the LDP to be always synchronised in an ECMP scenario, this way making this feature not needed in such scenario. I&#39;m also wondering whether this is true for label imposition as well as for label swapping. Will be investigating soon but should anyone have any info already and willing to share, it&#39;d be highly appreciated ! </p>\n\n<p>Cheers/Ciao </p>\n\n<p>Andrea</p>\n",
+         "id": "1830",
+         "name": " ANDREA DI DONATO",
+         "pub": "2023-05-24T12:40:36",
+         "type": "comment"
+      }
+   ],
+   "count": 24,
+   "id": "7990809298436608135",
+   "type": "post",
+   "url": "2011/11/ldp-igp-synchronization-in-mpls.html"
 }

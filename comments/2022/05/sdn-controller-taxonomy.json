@@ -18,9 +18,28 @@
          "name": " James Harr",
          "pub": "2022-05-19T19:29:40",
          "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "02 November 2023 06:36",
+               "html": "<p>While the idea of sending crafted packets from any interface and getting them back sounds great (and I know people who did exactly that with static MPLS labels and crafted MPLS label stacks), you cannot use that for anything that needs to scale (= ARP) or has to be real-time (= BFD).</p>\n\n<p>I&#39;m pretty sure you can get close to &quot;send a packet down a customer pipe&quot; with some MPLS and FlowSpec tricks, but of course it&#39;s ugly.</p>\n\n<p>In the end, OpenFlow is a nice way of programming TCAM (= packet filters) and doing special stuff like we&#39;re discussing now, but they were selling it as a game-changer (and a few people got $1.26BN out of that pipe dream).</p>\n",
+               "id": "1979",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-11-02T18:36:33",
+               "ref": "1978",
+               "type": "comment"
+            }
+         ],
+         "date": "02 November 2023 04:10",
+         "html": "<p>OF took a beating because of the &quot;just send the unknown packet to the controller&quot; behaviour. It didn&#39;t scale at all, it was often the reason OF was cast as an &#39;academic&#39; pipe dream. In truth, to build a network that rivals MPLS-VPN you don&#39;t need that feature at all.</p>\n\n<p>I&#39;ve often thought of trying to replace Openflow, OF signalling, Ethernet transport, etc. in the SDN and SDN controller with counterparts from the world of MPLS.  An SDN controller is essentially a PCE, replace the OF protocol with Netconf (or your flavor of the day).  PCEP comes close to what&#39;s required but something was always missing:</p>\n\n<p>The ability to send/detect crafted traffic from the control plane, through the data plane and back again is missing from any current IP network architecture I can think of.  In an OF SDN I can craft a packet in the controller, send that packet via the control plane to any switch and have that packet sent on a data plane link. I can program the rest of my switches to detect such a packet, stamp it, and send it back to the controller.  Need to detect physical links in an OF network? Need to send a packet down a customer pipe to confirm the service?  It was a really handy feature and I don&#39;t think it exists in the IP world today.  Without such a feature, we won&#39;t get true controller-based networks in IP.</p>\n\n<p>for background, i was at Juniper during the creation of Northstar, was a big internal user of the WANDL acquisition upon which it was based, and I ran the Telstra SDN for 3 years.</p>\n",
+         "id": "1978",
+         "name": " jeff young",
+         "pub": "2023-11-02T04:10:39",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2022/05/sdn-controller-taxonomy.html"
 }

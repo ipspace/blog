@@ -1,199 +1,218 @@
 {
-  "comments": [
-    {
-      "date": "24 July 2008 16:25",
-      "html": "Good explanation.  How does the gratuitious arp work then in the \"show ip dhcp conflict\"?<BR/><BR/>Any inside?",
-      "id": "6613442684591517644",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2008-07-24T16:25:00.000+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "09 August 2008 17:03",
-      "html": "Will check &amp; post.",
-      "id": "3746192084709188861",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Ivan Pepelnjak",
-      "profile": "https://www.blogger.com/profile/13457151406311272386",
-      "pub": "2008-08-09T17:03:00.000+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "01 September 2010 10:02",
-      "html": "Just ran into this issue, i imagined how it worked. Great explanation, will disable the conflicts logging, even if is interesting to know that there was a problem.<br /><br />There is no timer that could automagically clear the list of bindings (simmilar to errdisable recovery cause ...) ?",
-      "id": "5798342334719339790",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Jan",
-      "profile": null,
-      "pub": "2010-09-01T10:02:02.000+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "09 April 2011 16:56",
-      "html": "Ivan, I&#39;ve reading your blog for years, this is my first question. I manage a largish network with 100 sites and about 4000 Cisco devices. For the last 10 years we used a single, centralized ISC DHCP server. Recently for various reasons too involved to explain here, it has become retarded. IN desperation I have enabled dhcp on all our 100 or so 6500s. We are not logging dchp conflicts, and so far all seems OK. However, I miss the extensive logging we used to obtain with ISC. I was thinking of enabling a DHCP db agent and turning on conflict logging, but your blog post above gives me pause. I&#39;ve been googling madly and can&#39;t find much info on the use of an external dhcp db server, or how to configure it.<br /><br />Is there a way to obtain more info about the dhcp bindings and clients without having either a single point of failure (the external db server) or worrying about the problems with conflicts you describe above?<br /><br />TIA,<br /><br />Steve",
-      "id": "4150454183311152808",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "stevecrye",
-      "profile": null,
-      "pub": "2011-04-09T16:56:32.000+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "10 May 2011 08:19",
-      "html": ":-P :-P :-P :-P",
-      "id": "8061297383289445424",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2011-05-10T08:19:55.325+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "15 February 2012 09:59",
-      "html": "This saved me today, thanks!",
-      "id": "5466430761859485598",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2012-02-15T09:59:37.573+01:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "02 August 2012 11:34",
-          "html": "Conflict logging works well only if you use persistent bindings (dhcp database) to preserve DHCP server state across reloads, otherwise turn it off.",
-          "id": "3392137933315675743",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-08-02T11:34:39.862+02:00",
-          "ref": "8882874879511645701",
-          "type": "comment"
-        },
-        {
-          "date": "29 May 2013 10:32",
-          "html": "I think his answer is this....apparently when the WAPs were already active with an IP and the dhcp server was rebooted, the current WAPS IPs were placed into the exclusive list (address conflict) as the DHCP server attempted to distribute and address to a WAP requesting an IP. Once in that list I beleive the dhcp server will not give out that address even to the device that may be requesting to renew it&#39;s address with its same address. Hence the dhcp pool is reduced to the point that there are not even addresses to allocate. I think the DHCP server should recognize that a device requesting to renew its ip address should be regiven that same address along with deleting the address from the excluded list. I do not remember the dhcp packet commands in detail but I thought a renewing dhcp client shared the current IP address assigned to it with the server.   Too lazy to look it all up..sorry",
-          "id": "4349159824771324500",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2013-05-29T10:32:51.029+02:00",
-          "ref": "8882874879511645701",
-          "type": "comment"
-        }
-      ],
-      "date": "02 August 2012 06:57",
-      "html": "Hi Ivan,<br /><br />I&#39;m glad I found your post as it explains a problem I had to deal with this morning.  Unfortunately our department is going to be dealing with this A LOT more in the coming months so I&#39;m hoping you can provide more info.<br /><br />Our department is going to be installing and supporting WiFi for hotels around the country.  One of our installs this morning had a massive failure.  The site has ~50 WAPs in a /26 DHCP pool with 62 usable addresses.  When the router running the DHCP server reloaded it saw those 50 WAPs using the IPs they&#39;d been assigned and marked those IPs as conflcts.  That meant when it came time for the WAPs to release/renew their leases there were only ~10 IPs available in the pool.  We got a call from the site saying the whole site was down.<br /><br />What I don&#39;t understand is if this is how DHCP works, how does DHCP work at all?  I&#39;ve never heard of this happening before anywhere I&#39;ve worked and I can&#39;t believe it&#39;s because DHCP servers have never reloaded.  There has to be some workaround or something... can you please provide some info on this part of it?<br /><br />Thanks!<br />~Steve",
-      "id": "8882874879511645701",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2012-08-02T06:57:53.588+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "30 August 2012 18:27",
-          "html": "Great feature, but it seems to be available only in 12.2SRE. Let&#39;s hope it will eventually appear in mainstream IOS releases.<br /><br />Thank you!",
-          "id": "7575641206147395787",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-08-30T18:27:16.985+02:00",
-          "ref": "2741785768893607421",
-          "type": "comment"
-        }
-      ],
-      "date": "29 August 2012 22:32",
-      "html": "well, nothing prevents you from adding conflict resolution interval to tell dhcp server check and clear conflicts once a day and not try to do this every time bumps into conflict over and over again:<br /><br />ip dhcp conflict resolution interval 1440<br /><br />",
-      "id": "2741785768893607421",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2012-08-29T22:32:26.506+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "24 January 2014 11:49",
-      "html": "big thank you )))",
-      "id": "5885629152759443251",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Mariya",
-      "profile": "https://www.blogger.com/profile/10357076188769322020",
-      "pub": "2014-01-24T11:49:54.731+01:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "21 October 2014 06:02",
-      "html": "Easy peesy - thanks Ivan!",
-      "id": "2012352126332603705",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2014-10-21T06:02:17.984+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "01 June 2015 18:25",
-      "html": "GREAT!! We&#39;ve just fixed an issue here at the company with your tips. Thanks",
-      "id": "1715902876219399940",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2015-06-01T18:25:39.126+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "13 October 2015 15:48",
-      "html": "I just encountered this issue in a VoIP implementation.  Address pool exhaustion after a router reload due to conflict logging.  What I don&#39;t understand is this.  Let&#39;s suppose conflict logging is disabled and the router is reloaded.  What happens when a DHCP client tries to renew an address?  Does the router grant the request and record that as a valid lease?",
-      "id": "8803859704696728490",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2015-10-13T15:48:01.610+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "26 October 2016 22:36",
-      "html": "Is there a default timer for an IP to be on the conflict zone of DHCP?",
-      "id": "9216519400752312700",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/02955332649862163847",
-      "pub": "2016-10-26T22:36:07.271+02:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    },
-    {
-      "date": "07 November 2016 08:53",
-      "html": "clear ip dhcp conflict address helped as we could not figure out what was exhausting the dhcp pool.",
-      "id": "7586651564356659659",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2016-11-07T08:53:43.615+01:00",
-      "ref": "6865884968198166303",
-      "type": "comment"
-    }
-  ],
-  "count": 17,
-  "id": "6865884968198166303",
-  "type": "post",
-  "url": "2007/08/dhcp-conflict-logging-true-story.html"
+   "comments": [
+      {
+         "date": "24 July 2008 16:25",
+         "html": "Good explanation.  How does the gratuitious arp work then in the \"show ip dhcp conflict\"?<BR/><BR/>Any inside?",
+         "id": "6613442684591517644",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2008-07-24T16:25:00.000+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "09 August 2008 17:03",
+         "html": "Will check &amp; post.",
+         "id": "3746192084709188861",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Ivan Pepelnjak",
+         "profile": "https://www.blogger.com/profile/13457151406311272386",
+         "pub": "2008-08-09T17:03:00.000+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "01 September 2010 10:02",
+         "html": "Just ran into this issue, i imagined how it worked. Great explanation, will disable the conflicts logging, even if is interesting to know that there was a problem.<br /><br />There is no timer that could automagically clear the list of bindings (simmilar to errdisable recovery cause ...) ?",
+         "id": "5798342334719339790",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Jan",
+         "profile": null,
+         "pub": "2010-09-01T10:02:02.000+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "09 April 2011 16:56",
+         "html": "Ivan, I&#39;ve reading your blog for years, this is my first question. I manage a largish network with 100 sites and about 4000 Cisco devices. For the last 10 years we used a single, centralized ISC DHCP server. Recently for various reasons too involved to explain here, it has become retarded. IN desperation I have enabled dhcp on all our 100 or so 6500s. We are not logging dchp conflicts, and so far all seems OK. However, I miss the extensive logging we used to obtain with ISC. I was thinking of enabling a DHCP db agent and turning on conflict logging, but your blog post above gives me pause. I&#39;ve been googling madly and can&#39;t find much info on the use of an external dhcp db server, or how to configure it.<br /><br />Is there a way to obtain more info about the dhcp bindings and clients without having either a single point of failure (the external db server) or worrying about the problems with conflicts you describe above?<br /><br />TIA,<br /><br />Steve",
+         "id": "4150454183311152808",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "stevecrye",
+         "profile": null,
+         "pub": "2011-04-09T16:56:32.000+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "10 May 2011 08:19",
+         "html": ":-P :-P :-P :-P",
+         "id": "8061297383289445424",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2011-05-10T08:19:55.325+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "15 February 2012 09:59",
+         "html": "This saved me today, thanks!",
+         "id": "5466430761859485598",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2012-02-15T09:59:37.573+01:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "02 August 2012 11:34",
+               "html": "Conflict logging works well only if you use persistent bindings (dhcp database) to preserve DHCP server state across reloads, otherwise turn it off.",
+               "id": "3392137933315675743",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-08-02T11:34:39.862+02:00",
+               "ref": "8882874879511645701",
+               "type": "comment"
+            },
+            {
+               "date": "29 May 2013 10:32",
+               "html": "I think his answer is this....apparently when the WAPs were already active with an IP and the dhcp server was rebooted, the current WAPS IPs were placed into the exclusive list (address conflict) as the DHCP server attempted to distribute and address to a WAP requesting an IP. Once in that list I beleive the dhcp server will not give out that address even to the device that may be requesting to renew it&#39;s address with its same address. Hence the dhcp pool is reduced to the point that there are not even addresses to allocate. I think the DHCP server should recognize that a device requesting to renew its ip address should be regiven that same address along with deleting the address from the excluded list. I do not remember the dhcp packet commands in detail but I thought a renewing dhcp client shared the current IP address assigned to it with the server.   Too lazy to look it all up..sorry",
+               "id": "4349159824771324500",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2013-05-29T10:32:51.029+02:00",
+               "ref": "8882874879511645701",
+               "type": "comment"
+            }
+         ],
+         "date": "02 August 2012 06:57",
+         "html": "Hi Ivan,<br /><br />I&#39;m glad I found your post as it explains a problem I had to deal with this morning.  Unfortunately our department is going to be dealing with this A LOT more in the coming months so I&#39;m hoping you can provide more info.<br /><br />Our department is going to be installing and supporting WiFi for hotels around the country.  One of our installs this morning had a massive failure.  The site has ~50 WAPs in a /26 DHCP pool with 62 usable addresses.  When the router running the DHCP server reloaded it saw those 50 WAPs using the IPs they&#39;d been assigned and marked those IPs as conflcts.  That meant when it came time for the WAPs to release/renew their leases there were only ~10 IPs available in the pool.  We got a call from the site saying the whole site was down.<br /><br />What I don&#39;t understand is if this is how DHCP works, how does DHCP work at all?  I&#39;ve never heard of this happening before anywhere I&#39;ve worked and I can&#39;t believe it&#39;s because DHCP servers have never reloaded.  There has to be some workaround or something... can you please provide some info on this part of it?<br /><br />Thanks!<br />~Steve",
+         "id": "8882874879511645701",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2012-08-02T06:57:53.588+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "30 August 2012 18:27",
+               "html": "Great feature, but it seems to be available only in 12.2SRE. Let&#39;s hope it will eventually appear in mainstream IOS releases.<br /><br />Thank you!",
+               "id": "7575641206147395787",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-08-30T18:27:16.985+02:00",
+               "ref": "2741785768893607421",
+               "type": "comment"
+            }
+         ],
+         "date": "29 August 2012 22:32",
+         "html": "well, nothing prevents you from adding conflict resolution interval to tell dhcp server check and clear conflicts once a day and not try to do this every time bumps into conflict over and over again:<br /><br />ip dhcp conflict resolution interval 1440<br /><br />",
+         "id": "2741785768893607421",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2012-08-29T22:32:26.506+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "24 January 2014 11:49",
+         "html": "big thank you )))",
+         "id": "5885629152759443251",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Mariya",
+         "profile": "https://www.blogger.com/profile/10357076188769322020",
+         "pub": "2014-01-24T11:49:54.731+01:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "21 October 2014 06:02",
+         "html": "Easy peesy - thanks Ivan!",
+         "id": "2012352126332603705",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2014-10-21T06:02:17.984+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "01 June 2015 18:25",
+         "html": "GREAT!! We&#39;ve just fixed an issue here at the company with your tips. Thanks",
+         "id": "1715902876219399940",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2015-06-01T18:25:39.126+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "13 October 2015 15:48",
+         "html": "I just encountered this issue in a VoIP implementation.  Address pool exhaustion after a router reload due to conflict logging.  What I don&#39;t understand is this.  Let&#39;s suppose conflict logging is disabled and the router is reloaded.  What happens when a DHCP client tries to renew an address?  Does the router grant the request and record that as a valid lease?",
+         "id": "8803859704696728490",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2015-10-13T15:48:01.610+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "26 October 2016 22:36",
+         "html": "Is there a default timer for an IP to be on the conflict zone of DHCP?",
+         "id": "9216519400752312700",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/02955332649862163847",
+         "pub": "2016-10-26T22:36:07.271+02:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "date": "07 November 2016 08:53",
+         "html": "clear ip dhcp conflict address helped as we could not figure out what was exhausting the dhcp pool.",
+         "id": "7586651564356659659",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2016-11-07T08:53:43.615+01:00",
+         "ref": "6865884968198166303",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "01 January 2024 09:00",
+               "html": "<p>If you can safely assume that all clients do DAD detection, that DAD detection works well enough for your needs (false negatives can be fun to troubleshoot), and that you don&#39;t care about the longer setup time repeated DAD might cause, you&#39;re absolutely right.</p>\n\n<p>Unfortunately, I don&#39;t have enough insight into what large-scale production environments are doing these days.</p>\n",
+               "id": "2063",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-01-01T09:00:52",
+               "ref": "2062",
+               "type": "comment"
+            }
+         ],
+         "date": "01 January 2024 06:22",
+         "html": "<p>Hi Thanks for the clarification.\nI have one doubt.</p>\n\n<p>Client uses GARP &amp; DAD to detect those conflicts. Client side detection is assumed better i think as it reduces load on dhcp server.\nWill disabling the dhcp conflict on dhcp server be useful if conflict is detected by a client ?</p>\n",
+         "id": "2062",
+         "name": " Karn",
+         "pub": "2024-01-01T06:22:46",
+         "type": "comment"
+      }
+   ],
+   "count": 15,
+   "id": "6865884968198166303",
+   "type": "post",
+   "url": "2007/08/dhcp-conflict-logging-true-story.html"
 }

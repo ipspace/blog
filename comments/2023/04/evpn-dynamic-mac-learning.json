@@ -1,0 +1,120 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "27 April 2023 07:53",
+               "html": "<p>Lovely. Thanks a million for sharing this one!</p>\n",
+               "id": "1795",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T07:53:51",
+               "ref": "1788",
+               "type": "comment"
+            }
+         ],
+         "date": "26 April 2023 09:59",
+         "html": "<p>I had an issue with Control Plane learning in an EVPN Fabric. But its a bit special. \nThe old fabric was FabricPath, the new one an Arista VXLAN EVPN fabric using ESIs instead of MLAGs. After all was setup and tested, we connected the two fabric together using a vPC/ESI and everything was fine for a while. \nThen vMotion happend, most VMs where fine but there were always some VMs that got stuck or had errors during vMotion and they needed to run vMotion for them again. It took us some time to get the issue, because its two issues resulting in this behaviour. \nFabricPath doesn&#39;t learn the MAC address of a sender with the first paket, which is usually a broadcast (ARP). It only learns the MAC if the paket thats sent is NOT a broadcast. That means: Host A doest ARP for Host B, nothing learned; Host B answers to Host A, Host B MAC learned; Host A sends a paket to Host B, Host A MAC learned.\nThat extra paket takes some time, in our troubleshooting it was less then 50ms but still more then it would usually be. During that time, the Arista fabric also received the broadcast (ARP) and looped it back to the Cisco FabricPath fabric, because the Arista EVPN fabric wasn&#39;t fast enough to propagade the learned MAC to the ESI peer. Therefore the L2 split horizion of the ESI didn&#39;t work. \nI can&#39;t remember anymore why the next part happend, but the Cisco fabric learned now the MAC coming form the Aristas and began sending the traffic towards that empty new fabric. That only lasted as long as it took that other host to send another paket and FabricPath to learn that this MAC is on a Cisco Switch and not behind the Arista fabric. But it was enough to break some vMotion actions. \nThe solution was easy, we only use one switch of the EVPN fabric during the migration. Therefor there was no ESI anymore. But other than that? No issues. </p>\n",
+         "id": "1788",
+         "name": " Daniel S",
+         "pub": "2023-04-26T09:59:34",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "27 April 2023 07:53",
+               "html": "<p>Control-plane MAC learning in service provider environment never made sense to me. After all, you&#39;re selling bandwidth, and don&#39;t care (too much) how that bandwidth is used. Tracking customer MAC addresses is just asking for trouble and support calls when things go sideways.</p>\n\n<p>However, when BGP is the answer no matter what the question is, or when you try to boil the ocean (hint: replace MLAG with ESI) you get the current state of affairs ;)</p>\n\n<p>I know some service providers and IXPs use VXLAN encapsulation (to provide layer-2 transport over IP network) without EVPN. There might be a reason for that ;)</p>\n",
+               "id": "1794",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T07:53:16",
+               "ref": "1789",
+               "type": "comment"
+            }
+         ],
+         "date": "26 April 2023 10:08",
+         "html": "<p>Interesting subject! \nI&#39;ve also recently noticed some vendors claiming that dataplane MAC learning is so much better because it reduces the number of BGP updates in large scale SP EVPN deployments. Apparently, some of them are working on IETF drafts to bring dataplane MAC learning &quot;back&quot; to EVPN.\nNot sure if this is really a relevant point - we know that BGP scales nicely, and its relatively easy to deploy virtualized RR with sufficient VPU resources.</p>\n",
+         "id": "1789",
+         "name": " Johannes Resch",
+         "pub": "2023-04-26T10:08:53",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "27 April 2023 07:56",
+               "html": "<p>This definitely looks like a bug in ACI to me, but it&#39;s ghastly. It&#39;s even worse than what we encountered in early NSX versions (NSX controller losing track of MAC addresses after vCenter SOAP API broke down).</p>\n\n<p>However, limiting DRS to a single VPC leaf pair might not be the right answer (unless you used VM affinity within a subset of HA cluster) -- you want the VMs to be restarted automatically even if both leaves blow up (for example, due to a VPC bug).</p>\n",
+               "id": "1796",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T07:56:49",
+               "ref": "1790",
+               "type": "comment"
+            },
+            {
+               "date": "27 April 2023 10:30",
+               "html": "<p>&gt; This definitely looks like a bug in ACI to me</p>\n\n<p>A colleague mentioned encountering this ACI problem as well, but they opened a case with the vendor and the bug was fixed (hearsay, I was not involved).</p>\n",
+               "id": "1799",
+               "name": "Erik Auerswald",
+               "pub": "2023-04-27T10:30:13",
+               "ref": "1796",
+               "type": "comment"
+            }
+         ],
+         "date": "26 April 2023 10:50",
+         "html": "<p>Since you&#39;ve mentioned ACI specifically and stated &raquo;nobody ever complained about the connectivity problems following VM moves&laquo;: We&#39;ve encountered VM connectivity issues after VM movements from one vPC leaf pair to a different vPC leaf pair with ACI. The issue did not occur immediately (due to ACI&#39;s bounce entries) and only sometimes, which made it very difficult to reproduce synthetically, but due to DRS and a large number of VMs it occurred frequently enough, that it was a serious problem for us.</p>\n\n<p>The problem was, that sometimes the COOP database entry (ACI&#39;s separate control plane for MACs and host addresses) was not updated correctly to point to the new leaf pair. After the bounce entry on the old leaf pair expired (630 seconds by default), traffic to the VM was mostly blackholed, since remote endpoint learning is disabled on border leafs and always forwarded to the spines underlay IP address for proxying.</p>\n\n<p>In the end we gave up and limited the VM migration domain to a single VPC leaf pair. VMware recommends a maximum number of 64 hosts per cluster anyway.</p>\n",
+         "id": "1790",
+         "name": "Sebastian Schrader",
+         "pub": "2023-04-26T10:50:12",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "27 April 2023 07:59",
+               "html": "<p>Would love to know more about this one. So far, it looks more like a mismatch between ARP and MAC timeouts to me, potentially combined with weird behavior like &quot;don&#39;t learn MAC addresses from broadcasts, because ESXi should announce the moved MAC address immediately after vMotion. Solving the problem with NMAP also points in that direction.</p>\n",
+               "id": "1797",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T07:59:41",
+               "ref": "1792",
+               "type": "comment"
+            }
+         ],
+         "date": "26 April 2023 06:52",
+         "html": "<p>Few years ago in EVPN network, I saw drops on the multicast queue (ingress replication goes to that queue).\nAfter analyzing it we found that the root cause is vmotion (The hosts in that vlan are silent ) which starts at a very high rate before the source leaf learns the destination MAC. \nThe quick and ugly solution was to scan the vmotion vlan with NMAP every few minutes so the leafs would have all of the MAC address in their EVPN database.</p>\n",
+         "id": "1792",
+         "name": " Nitzan",
+         "pub": "2023-04-26T18:52:36",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "27 April 2023 08:00",
+               "html": "<p>&gt; While there have been detection issues with vMotion, I&#39;ve never heard any server admins complain about any network hickups with vMotion when it&#39;s working correctly</p>\n\n<p>That has been my experience as well, so it was even more interesting to see all the counterexamples.</p>\n",
+               "id": "1798",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T08:00:40",
+               "ref": "1793",
+               "type": "comment"
+            },
+            {
+               "date": "28 April 2023 02:05",
+               "html": "<p>I think the counterexamples mentioned were all control plane issues. If the control plane is working correctly, I think most of the time no one notices any packets dropped (hence no complaints). When I learned vMotion as part of a VMware certification course (I had to be VCP certified to teach UCS back in the day) I was on a virtual desktop as it bounced back and forth between ESXi hosts and there wasn&#39;t anything I could do to notice it was occurring. It seemed like sorcery! </p>\n\n<p>I&#39;ve definitely run into apps that said you can&#39;t vMotion their apps, such as Arista CloudVision with virtual CVP nodes. But those are pretty rare. </p>\n",
+               "id": "1803",
+               "name": " Tony Bourke",
+               "pub": "2023-04-28T02:05:04",
+               "ref": "1798",
+               "type": "comment"
+            }
+         ],
+         "date": "27 April 2023 01:54",
+         "html": "<p>While there have been detection issues with vMotion, I&#39;ve never heard any server admins complain about any network hickups with vMotion when it&#39;s working correctly (and they&#39;re not shy about letting you know when the network isn&#39;t doing its job, even when it is). Sure, lots more packets that we think may get dropped, but if they&#39;re not perceptible so it&#39;s effectively flawless (for most workloads).  </p>\n\n<p>It&#39;s kind of like a switch with 20 &micro;s of latency versus one with 1 ns of latency port-to-port.  It&#39;s a 20x higher latency, but for the vast majority of workloads, especially virtual workloads, the difference is imperceptible.</p>\n\n<p>There are some applications that are less drop sensitive, and they generally will have a vMotion prohibition. But those are rare.  </p>\n",
+         "id": "1793",
+         "name": " Tony Bourke",
+         "pub": "2023-04-27T01:54:14",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2023/04/evpn-dynamic-mac-learning.html"
+}

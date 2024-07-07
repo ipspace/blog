@@ -1,0 +1,108 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2191">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Tony P</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2191" href="#2191">10 April 2024 11:15</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>World&#39;s by far not taht simple especially if sessions can be asymmetric ;-) HA in such scenario is extremely hard to build, especially since it&#39;s not a 2 controller through backplane scenario but &quot;arbitrary distrance, arbitrary delay, may be just a piece of wet string&quot; ;-) For two boxes working solutions from reputable vendors are available since long time, more than two leads into weird stuff like Paxos quickly.  There are other, clever ways to deal with HA and asymmetry as well you may want to dig in as well ;-) </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2193">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daniel S</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2193" href="#2193">11 April 2024 07:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You run BGP. You can configure your routing policies that half your traffic is on one firewall and the rest on the other. Hence you can get your symmetric traffic with a bit of work in BGP and still don&#39;t need to rely on the SPOC in a HA-Cluster. But yes, you need to establish the sessions new if something fails. </p>
+
+<p>But I get you and I think that this approach is only viable when you need really high availbability. Not your standard enterprise where they whine a bit when something doesn&#39;t work. Stuff that really needs to stay up all the time, depends on this kind of designs. They don&#39;t stack, they don&#39;t cluster some stuff together. They design around that and make it always work. Which costs quite a bit more, but they know why they pay the premium. </p>
+
+<p>For most enterprises its just a cluster and everything is fine. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2195">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Martin Rusko</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2195" href="#2195">11 April 2024 07:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Dear Ivan,</p>
+
+<p>you are of course allowed to mention in your blog post that a single VLAN is also a single failure domain. See, how very gracious we, your readers, are. :-)</p>
+
+<p>And because you are correct, the best is to avoid shared L2 even for single control plane HA clusters. I know it can be done with Juniper firewalls, where the trick is to have local bridging on each upstream or downstream router, but not between the routers. In that case, node0:if0+node1:if0=reth0 is connected to the bridge at R1 router and node0:if1+node1:if1=reth1 is connected to the bridge at R2 router. So no matter which node is active, reth0 and reth1 points to both R1 and R2 routers. Each node needs to be connected to both routers, true, but if in your picture X1+C1 and X2+C2 are collapsed to R1 and R2, then you can have the equivalent setup without any more ports in use.</p>
+
+<p>Similarly, on the management side, OoB interfaces (fxp0 for Juniper) don&#39;t have to share the same L2. The so called master-only IP address can be made available with BFD, because the standby node does not run the BFD.</p>
+
+<p>So you truly don&#39;t need to tie your routers with any shared L2 just because of the firewall clusters. And then there is also Multinode HA, which I think Dmitry also mentioned in his post, where nodes are running their own control plane protocols.</p>
+
+<p>Cheers,
+Martin</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2196">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeff Behrns</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2196" href="#2196">11 April 2024 08:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Pick your poison. Firewall vendors suck at implementing BGP even more than HA. And if we&#39;re having an honest discussion, network layer firewalls are in general nothing but theater, providing an illusion of &quot;security&quot;.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2197">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bram</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2197" href="#2197">11 April 2024 11:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Integrating stateful devices in a network design is always painful.
+Ideally these devices are avoided by integrating network security in the OS/application, something that is likely feasible with a hyperscaler but unlikely to happen in a typical enterprise, due to the variety of workloads in the enterprise.</p>
+
+<p>Using dynamic routing with individual firewalls works well for north-south flows, or in a VRF sandwich design. I&#39;m most familiar with PANW firewalls, which have a feature where you can synchronize the stateful sessions between independent firewalls, ensuring the second firewall is ready to take over. Another challenge is to keep the configuration in sync, this should be trivial nowadays with firewall management platforms or various automation capabilities.</p>
+
+<p>Something what is harder to address is deeper datacenter segmentation. Hypervisor integrated firewalls or host based solutions are the ideal solution, but often cannot address 100% of the workloads. When trying to address this with traditional stateful firewalls in a independent (non-HA cluster) design, things can get complicated quiet fast. Things such as PBR or ePBR can be leveraged, but require a thoughtful design around probing and keeping redirect ACL&#39;s sane. Opting for a HA-cluster where the stateful firewall is your default gateway is less complex from a operational perspective.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

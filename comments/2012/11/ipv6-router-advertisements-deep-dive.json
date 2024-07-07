@@ -1,150 +1,178 @@
 {
-  "comments": [
-    {
-      "date": "21 November 2012 08:39",
-      "html": "Hi Ivan,<br /><br />I disagree with a few things here:<br /><br />- &quot;You MUST clear the A flag in the prefixes advertised by the router to enforce DHCPv6 address assignment&quot; - disagree. It is my understanding that the SLAAC (A flag) and DHCPv6 (M flag) are mutually independent. If you set both, the host will obtain addresses from both methods. RFC4861 section 3 says clearly that SLAAC and DHCPv6 is &quot;*and*/or&quot;, not strictly &quot;or&quot;.<br /><br />- &quot;Removing the on-link prefix from the RA messages will stop SLAAC&quot; - if you by this mean &quot;clearing the L flag&quot;, I disagree. SLAAC works for off-link prefixes just as well as for on-link ones. If you on the other hand meant &quot;removing the prefix information option completely&quot;, I agree.<br /><br />- &quot;The routers supporting SLAAC ...&quot; - this is somewhat misleading. Routers don&#39;t support SLAAC, hosts do. The only thing the router does is to inform the host that it may perform SLAAC or not by using the A flag.<br /><br />Other than that, a few other things I&#39;ve found that people often find confusing, include:<br /><br />- The O flag is meaningless if the M flag is set, as the O flag is basically a subset of the M flag.<br /><br />- When it comes to DNS server assignment, there are OS-es that only support DHCPv6 (e.g., Windows), and there are some that only support the RDNSS Option (e.g., Mac OS X 10.6.x). Therefore, for maximum host compatibility, I recommend using both simultaneously.<br /><br />- A prefix information option with both A and L flags unset is meaningless and might as well be removed.<br /><br />- SLAAC can only occur for prefixes with a length of 64, so setting the A flag for other prefix lenghts is meaningless. (The L flag, on the other hand, works for any prefix length.)<br /><br />- DHCPv6 does not carry prefix length information, so a prefix information option with L=1 is the *only* way a host may acquire an on-link route.<br /><br />- Receipt of a RA (with lifetime &gt; 0) will cause the host to install a default route to the RA&#39;s source address. This is the *only* way to advertise a default route in IPv6 (on Ethernet at least), as DHCPv6 cannot carry this information. Furthermore, the RA is guaranteed to come from a link-local address (within fe80::/64), which is crucial in making off-link prefixes work.<br /><br />Tore",
-      "id": "3819131404503107092",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tore Anderson",
-      "profile": "http://fud.no",
-      "pub": "2012-11-21T08:39:53.408+01:00",
-      "ref": "3271191509856219976",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "21 November 2012 18:40",
-          "html": "Follow-up post scheduled for early next week. I wouldn&#39;t want to bore my US readers with these details during the Thanksgiving weekend.",
-          "id": "378502923533836977",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-11-21T18:40:12.287+01:00",
-          "ref": "1032736693214825654",
-          "type": "comment"
-        }
-      ],
-      "date": "21 November 2012 13:39",
-      "html": "A prefix information option with both A and L flags unset is meaningless and might as well be removed.<br />  --- Why is this?  <br /><br />BTW I&#39;m really confused as to what on-link is.  In IPv4 on-link meant that you would send a broadcast to find a neighbor rather than direct to the router.  How does this compare to IPv6 and why cant SLAAC be on-link?<br /><br />",
-      "id": "1032736693214825654",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "IPv6 Newb",
-      "profile": null,
-      "pub": "2012-11-21T13:39:05.448+01:00",
-      "ref": "3271191509856219976",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "21 November 2012 18:46",
-          "html": "Thank you! Updated.",
-          "id": "2196658346716991054",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-11-21T18:46:45.186+01:00",
-          "ref": "3562244710228533733",
-          "type": "comment"
-        }
-      ],
-      "date": "21 November 2012 15:30",
-      "html": "I don&#39;t think I&#39;d be recommending L-less RA as a security / TE measure, the hosts could just as well configure the addressing statically!",
-      "id": "3562244710228533733",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "lochii",
-      "profile": "http://www.convergence.cx",
-      "pub": "2012-11-21T15:30:03.706+01:00",
-      "ref": "3271191509856219976",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "09 January 2016 20:32",
-          "html": "I wouldn&#39;t. NLB is an obsolete technology, and I don&#39;t know how well it&#39;s integrated with IPv6 (if at all).",
-          "id": "982560681846771604",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-01-09T20:32:04.977+01:00",
-          "ref": "5252787293725762242",
-          "type": "comment"
-        },
-        {
-          "date": "10 January 2016 04:30",
-          "html": "Where did you read that NLB is obsolete ?<br /><br />- I am confirming that NLB works very well for both IPv4 and IPv6.<br /><br />The issue I have is with RAs (and the crippled DHCPv6 services not being able to send a *specific* Default Gateway).",
-          "id": "8481492716320897759",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "amatesi",
-          "profile": "https://www.blogger.com/profile/05159931748069732652",
-          "pub": "2016-01-10T04:30:48.105+01:00",
-          "ref": "5252787293725762242",
-          "type": "comment"
-        }
-      ],
-      "date": "09 January 2016 13:13",
-      "html": "Hi Ivan and sorry for the late comment - I was wondering if you knew how to deal with NLB-scenarios?<br /><br />In other words, say you have 2 hosts configured with (Windows) NLB (whereas 2 hosts share the same IPv6 Address).<br /><br />- Let&#39;s say the shared IPv6 Address is meant to be used as the Default Gateway on a LAN.<br /><br />How would you go about it?",
-      "id": "5252787293725762242",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "amatesi",
-      "profile": "https://www.blogger.com/profile/05159931748069732652",
-      "pub": "2016-01-09T13:13:29.895+01:00",
-      "ref": "3271191509856219976",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "02 January 2018 14:21",
-          "html": "Advertise the same prefix without the on-link bit? Change the lifetime of the prefix to zero?",
-          "id": "7669921197466117326",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-01-02T14:21:37.492+01:00",
-          "ref": "4215441707238964151",
-          "type": "comment"
-        }
-      ],
-      "date": "02 January 2018 13:40",
-      "html": "Hi Ivan,<br /><br />I just had a case where an RA dropped to a VLAN where it doesn&#39;t belong. This caused servers to add an prefix to their routing tables as &quot;on-link&quot;.<br /><br />While it&#39;s possible to set the lifetime of the router itself to 0 and remove the default route from the routing table I haven&#39;t found a way to remove the on-link route automatically as well.<br /><br />Do you know if this possible using NDP?<br /><br />Thanks<br />Michael",
-      "id": "4215441707238964151",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Michael",
-      "profile": "http://layer9.wordpress.com",
-      "pub": "2018-01-02T13:40:32.578+01:00",
-      "ref": "3271191509856219976",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "02 January 2018 20:29",
-          "html": "That sounds about right (and yes, IIRC that&#39;s what the RFC says). Interesting to see radvd being so strict. However, you can still advertise the prefix with long-enough lifetime and without on-link bit, and when that&#39;s picked up, stop advertising it and wait for 2 hours.",
-          "id": "8816866990371059001",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-01-02T20:29:32.905+01:00",
-          "ref": "7332360291502466404",
-          "type": "comment"
-        }
-      ],
-      "date": "02 January 2018 15:14",
-      "html": "Thanks. I already tried that and it didn&#39;t work. According to the manpage of radvd (which is used for sending the RAs) the lifetime for on-link determination of the prefix will be ignored by the client when set to less than two hours:<br /><br />&gt; AdvValidLifetime seconds|infinity<br />&gt;<br />&gt; The  length  of  time in seconds (relative to the time the packet is sent) that the<br />&gt; prefix is valid for the purpose of on-link determination.  The symbolic value infinity<br />&gt; represents infinity (i.e. a value of all one bits (0xffffffff)). The valid lifetime is<br />&gt; also used by RFC 4862.<br />&gt;<br />&gt; Note that clients will ignore AdvValidLifetime of an existing prefix if the lifetime is<br />&gt; below two hours, as required in RFC 4862 Section 5.5.3 point e).<br /><br />I have not read the RFC yet. At least I was able to reduce the lifetime of the routing table entry to two hours. Which however, if this happens in production, is not very helpful.<br />",
-      "id": "7332360291502466404",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Michael",
-      "profile": "http://layer9.wordpress.com",
-      "pub": "2018-01-02T15:14:33.506+01:00",
-      "ref": "3271191509856219976",
-      "type": "comment"
-    }
-  ],
-  "count": 12,
-  "id": "3271191509856219976",
-  "type": "post",
-  "url": "2012/11/ipv6-router-advertisements-deep-dive.html"
+   "comments": [
+      {
+         "date": "21 November 2012 08:39",
+         "html": "Hi Ivan,<br /><br />I disagree with a few things here:<br /><br />- &quot;You MUST clear the A flag in the prefixes advertised by the router to enforce DHCPv6 address assignment&quot; - disagree. It is my understanding that the SLAAC (A flag) and DHCPv6 (M flag) are mutually independent. If you set both, the host will obtain addresses from both methods. RFC4861 section 3 says clearly that SLAAC and DHCPv6 is &quot;*and*/or&quot;, not strictly &quot;or&quot;.<br /><br />- &quot;Removing the on-link prefix from the RA messages will stop SLAAC&quot; - if you by this mean &quot;clearing the L flag&quot;, I disagree. SLAAC works for off-link prefixes just as well as for on-link ones. If you on the other hand meant &quot;removing the prefix information option completely&quot;, I agree.<br /><br />- &quot;The routers supporting SLAAC ...&quot; - this is somewhat misleading. Routers don&#39;t support SLAAC, hosts do. The only thing the router does is to inform the host that it may perform SLAAC or not by using the A flag.<br /><br />Other than that, a few other things I&#39;ve found that people often find confusing, include:<br /><br />- The O flag is meaningless if the M flag is set, as the O flag is basically a subset of the M flag.<br /><br />- When it comes to DNS server assignment, there are OS-es that only support DHCPv6 (e.g., Windows), and there are some that only support the RDNSS Option (e.g., Mac OS X 10.6.x). Therefore, for maximum host compatibility, I recommend using both simultaneously.<br /><br />- A prefix information option with both A and L flags unset is meaningless and might as well be removed.<br /><br />- SLAAC can only occur for prefixes with a length of 64, so setting the A flag for other prefix lenghts is meaningless. (The L flag, on the other hand, works for any prefix length.)<br /><br />- DHCPv6 does not carry prefix length information, so a prefix information option with L=1 is the *only* way a host may acquire an on-link route.<br /><br />- Receipt of a RA (with lifetime &gt; 0) will cause the host to install a default route to the RA&#39;s source address. This is the *only* way to advertise a default route in IPv6 (on Ethernet at least), as DHCPv6 cannot carry this information. Furthermore, the RA is guaranteed to come from a link-local address (within fe80::/64), which is crucial in making off-link prefixes work.<br /><br />Tore",
+         "id": "3819131404503107092",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tore Anderson",
+         "profile": "http://fud.no",
+         "pub": "2012-11-21T08:39:53.408+01:00",
+         "ref": "3271191509856219976",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "21 November 2012 18:40",
+               "html": "Follow-up post scheduled for early next week. I wouldn&#39;t want to bore my US readers with these details during the Thanksgiving weekend.",
+               "id": "378502923533836977",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-11-21T18:40:12.287+01:00",
+               "ref": "1032736693214825654",
+               "type": "comment"
+            }
+         ],
+         "date": "21 November 2012 13:39",
+         "html": "A prefix information option with both A and L flags unset is meaningless and might as well be removed.<br />  --- Why is this?  <br /><br />BTW I&#39;m really confused as to what on-link is.  In IPv4 on-link meant that you would send a broadcast to find a neighbor rather than direct to the router.  How does this compare to IPv6 and why cant SLAAC be on-link?<br /><br />",
+         "id": "1032736693214825654",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "IPv6 Newb",
+         "profile": null,
+         "pub": "2012-11-21T13:39:05.448+01:00",
+         "ref": "3271191509856219976",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "21 November 2012 18:46",
+               "html": "Thank you! Updated.",
+               "id": "2196658346716991054",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-11-21T18:46:45.186+01:00",
+               "ref": "3562244710228533733",
+               "type": "comment"
+            }
+         ],
+         "date": "21 November 2012 15:30",
+         "html": "I don&#39;t think I&#39;d be recommending L-less RA as a security / TE measure, the hosts could just as well configure the addressing statically!",
+         "id": "3562244710228533733",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "lochii",
+         "profile": "http://www.convergence.cx",
+         "pub": "2012-11-21T15:30:03.706+01:00",
+         "ref": "3271191509856219976",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "09 January 2016 20:32",
+               "html": "I wouldn&#39;t. NLB is an obsolete technology, and I don&#39;t know how well it&#39;s integrated with IPv6 (if at all).",
+               "id": "982560681846771604",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-01-09T20:32:04.977+01:00",
+               "ref": "5252787293725762242",
+               "type": "comment"
+            },
+            {
+               "date": "10 January 2016 04:30",
+               "html": "Where did you read that NLB is obsolete ?<br /><br />- I am confirming that NLB works very well for both IPv4 and IPv6.<br /><br />The issue I have is with RAs (and the crippled DHCPv6 services not being able to send a *specific* Default Gateway).",
+               "id": "8481492716320897759",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "amatesi",
+               "profile": "https://www.blogger.com/profile/05159931748069732652",
+               "pub": "2016-01-10T04:30:48.105+01:00",
+               "ref": "5252787293725762242",
+               "type": "comment"
+            }
+         ],
+         "date": "09 January 2016 13:13",
+         "html": "Hi Ivan and sorry for the late comment - I was wondering if you knew how to deal with NLB-scenarios?<br /><br />In other words, say you have 2 hosts configured with (Windows) NLB (whereas 2 hosts share the same IPv6 Address).<br /><br />- Let&#39;s say the shared IPv6 Address is meant to be used as the Default Gateway on a LAN.<br /><br />How would you go about it?",
+         "id": "5252787293725762242",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "amatesi",
+         "profile": "https://www.blogger.com/profile/05159931748069732652",
+         "pub": "2016-01-09T13:13:29.895+01:00",
+         "ref": "3271191509856219976",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "02 January 2018 14:21",
+               "html": "Advertise the same prefix without the on-link bit? Change the lifetime of the prefix to zero?",
+               "id": "7669921197466117326",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-01-02T14:21:37.492+01:00",
+               "ref": "4215441707238964151",
+               "type": "comment"
+            }
+         ],
+         "date": "02 January 2018 13:40",
+         "html": "Hi Ivan,<br /><br />I just had a case where an RA dropped to a VLAN where it doesn&#39;t belong. This caused servers to add an prefix to their routing tables as &quot;on-link&quot;.<br /><br />While it&#39;s possible to set the lifetime of the router itself to 0 and remove the default route from the routing table I haven&#39;t found a way to remove the on-link route automatically as well.<br /><br />Do you know if this possible using NDP?<br /><br />Thanks<br />Michael",
+         "id": "4215441707238964151",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Michael",
+         "profile": "http://layer9.wordpress.com",
+         "pub": "2018-01-02T13:40:32.578+01:00",
+         "ref": "3271191509856219976",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "02 January 2018 20:29",
+               "html": "That sounds about right (and yes, IIRC that&#39;s what the RFC says). Interesting to see radvd being so strict. However, you can still advertise the prefix with long-enough lifetime and without on-link bit, and when that&#39;s picked up, stop advertising it and wait for 2 hours.",
+               "id": "8816866990371059001",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-01-02T20:29:32.905+01:00",
+               "ref": "7332360291502466404",
+               "type": "comment"
+            }
+         ],
+         "date": "02 January 2018 15:14",
+         "html": "Thanks. I already tried that and it didn&#39;t work. According to the manpage of radvd (which is used for sending the RAs) the lifetime for on-link determination of the prefix will be ignored by the client when set to less than two hours:<br /><br />&gt; AdvValidLifetime seconds|infinity<br />&gt;<br />&gt; The  length  of  time in seconds (relative to the time the packet is sent) that the<br />&gt; prefix is valid for the purpose of on-link determination.  The symbolic value infinity<br />&gt; represents infinity (i.e. a value of all one bits (0xffffffff)). The valid lifetime is<br />&gt; also used by RFC 4862.<br />&gt;<br />&gt; Note that clients will ignore AdvValidLifetime of an existing prefix if the lifetime is<br />&gt; below two hours, as required in RFC 4862 Section 5.5.3 point e).<br /><br />I have not read the RFC yet. At least I was able to reduce the lifetime of the routing table entry to two hours. Which however, if this happens in production, is not very helpful.<br />",
+         "id": "7332360291502466404",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Michael",
+         "profile": "http://layer9.wordpress.com",
+         "pub": "2018-01-02T15:14:33.506+01:00",
+         "ref": "3271191509856219976",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "22 February 2024 07:22",
+               "html": "<p>&gt; This behaviour of both OSes seems contrary to RFC 5942: &quot;The assignment of an IPv6 address ... MUST NOT implicitly cause a prefix derived from that address to be treated as on-link and added to the Prefix List.&quot;</p>\n\n<p>One could argue that you&#39;re not assigning an address but a prefix to an interface as you specify the prefix length when configuring the interface IPv6 address.</p>\n\n<p>As for &quot;the hosts can talk through a router&quot;, that&#39;s always the case with private VLANs, and you have to stop that on the router.</p>\n",
+               "id": "2105",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-02-22T07:22:09",
+               "ref": "2104",
+               "type": "comment"
+            },
+            {
+               "date": "22 February 2024 12:57",
+               "html": "<p>Thanks for the reply Ivan.</p>\n\n<p>When I said &quot;that&#39;s not great though as hosts in the same community would still talk via a router&quot; - this is not the behaviour you want on a community vlan (otherwise why would you create the community vlan in the first place?).  It&#39;s isolated vlans where you want layer 2 segmentation.</p>\n\n<p>Private vlans with inter-host controls performed at the router are made possible for IPv4 by a combination of local routing, no ip redirects, and local proxy-arp.  However for IPv6, while the first two functions are possible (at least on a Cisco router), the third is not.  It makes sense that IPv6 local proxy-arp is unavailable/impossible since ND is done with multicasts, not broadcasts.  Therefore to get private vlans working with IPv6 you must be able to force the hosts to consider the prefix derived by their address and prefix length to be considered &quot;off-link&quot;, and therefore they should forward all traffic to the default router. (Mimicking the local proxy-arp behaviour).</p>\n\n<p>As I said both Windows and FreeBSD (I&#39;m yet to test Linux) both add the derived prefix to the prefix table when you statically configure an address - despite what they may learn from an RA - and in violation of RFC 5942.  On the other hand if they use SLAAC by learning the prefix from an RA, then if that RA says the prefix is not on-link (L=0) then neither OS adds the prefix to the prefix table.</p>\n\n<p>So I have successfully implemented isolated private vlans with IPv6 with SLAAC/DHCPv6, but not static addressing.  Well, static with /128 prefix lengths work.</p>\n\n<p>Have you ever come across private vlans and IPv6?</p>\n\n<p>Thanks.</p>\n",
+               "id": "2106",
+               "name": " Scott",
+               "pub": "2024-02-22T12:57:24",
+               "ref": "2105",
+               "type": "comment"
+            }
+         ],
+         "date": "22 February 2024 06:20",
+         "html": "<p>&quot;A prefix information option with both A and L flags unset is meaningless and might as well be removed.&quot;</p>\n\n<p>I&#39;m not sure this is true.  You can statically address a host, prevent it from also using SLAAC (A=0) and want to force everything to a default router (L=0).</p>\n\n<p>I assume you could so some creative routing A=0,L=0 too.  ie. one router is the default but another might be a better first hop for a specific prefix.</p>\n\n<p>I&#39;ve been trying to get private vlans working with FreeBSD hosts but when you statically assign an IPv6 address it adds the derived prefix to the prefix table as on-link, even with a router advertising the prefix with L=0.  Same for Windows.  One workaround is to use /128 as the prefixlen for the static address.  If you&#39;re not using community vlans that&#39;s not great though as hosts in the same community would still talk via a router.</p>\n\n<p>This behaviour of both OSes seems contrary to RFC 5942: &quot;The assignment of an IPv6 address ... MUST NOT implicitly cause a prefix derived from that address to be treated as on-link and added to the Prefix List.&quot;</p>\n",
+         "id": "2104",
+         "name": "Scott",
+         "pub": "2024-02-22T06:20:21",
+         "type": "comment"
+      }
+   ],
+   "count": 7,
+   "id": "3271191509856219976",
+   "type": "post",
+   "url": "2012/11/ipv6-router-advertisements-deep-dive.html"
 }

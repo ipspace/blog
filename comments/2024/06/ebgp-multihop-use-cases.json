@@ -1,0 +1,224 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "26 June 2024 08:55",
+               "html": "<p>Although more a technicality than a use case...</p>\n",
+               "id": "2297",
+               "name": "Francois F",
+               "pub": "2024-06-26T08:55:19",
+               "ref": "2296",
+               "type": "comment"
+            },
+            {
+               "date": "26 June 2024 08:56",
+               "html": "<p>True, if you want to run a pure IPv4 setup, but then you&#39;d need a route for the EBGP endpoint, so it&#39;s either dynamic routing (and why would you use that with EBGP?) or static route.</p>\n\n<p>Maybe I could make this somewhat reasonable with DHCP over unnumbered VLANs.</p>\n",
+               "id": "2298",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T08:56:50",
+               "ref": "2296",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 08:51",
+         "html": "<p>You would need it over unnumbered interfaces too</p>\n",
+         "id": "2296",
+         "name": "Francois F",
+         "pub": "2024-06-26T08:51:29",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 June 2024 03:33",
+               "html": "<p>This is the scenario I have used multihop for, when there was a fw or device that wasn&#39;t going to play well with bgp in the middle. </p>\n",
+               "id": "2304",
+               "name": "Merrill Hammond",
+               "pub": "2024-06-26T15:33:16",
+               "ref": "2299",
+               "type": "comment"
+            },
+            {
+               "date": "26 June 2024 04:21",
+               "html": "<p>Thank you. Peering across a firewall is a clear winner ;)</p>\n",
+               "id": "2306",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:21:53",
+               "ref": "2304",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 09:25",
+         "html": "<p>When a firewall is in the path and doesn&#39;t support BGP, or can&#39;t handle the full Internet routing table, multihop EBGP is useful. This also applies when firewall administrators prefer not to manage BGP routing technology.</p>\n",
+         "id": "2299",
+         "name": "Mehdi SFAR",
+         "pub": "2024-06-26T09:25:50",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 June 2024 04:23",
+               "html": "<p>Thank you. That would definitely be a use case, but way too complex for an intro-to-BGP lab exercise. Will add it as a challenge lab if I ever decide to create MPLS/VPN labs though.</p>\n",
+               "id": "2307",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:23:03",
+               "ref": "2300",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 09:38",
+         "html": "<p>Inter-AS Option-C? Although this might align with your point #1</p>\n\n<p>https://learningnetwork.cisco.com/s/question/0D53i00000Ksqy9CAB/interas-option-c</p>\n\n<p>mh eBGP between RR inter-AS, carrying AFI/SAFIs typical of the service-layer, like VPNv4/6 or L2</p>\n",
+         "id": "2300",
+         "name": "Harley Bristow",
+         "pub": "2024-06-26T09:38:37",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 June 2024 04:24",
+               "html": "<p>Thanks a million. Peering across a firewall is a clear winner (simple, easy-to-explain use case), but I will definitely add at least the basic redundancy if not the full-blown multi-site setup as challenge labs.</p>\n",
+               "id": "2308",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:24:22",
+               "ref": "2301",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 09:57",
+         "html": "<p>You have to connect two administrative domains with a firewall (or even with double chained diverse firewalls) separation. You want to keep the firewalls BGP free, not impacted by the configuration of the two domains. You use only static routing between the border routers through the firewalls. So the interconnect is very robust and stable.\nYou are not allowed to use tunnels, since you want to see the traffic in the firewalls in their natural form for filtering and analysis. Multicast shall be also supported.\nUse multi-hop eBGP to dynamically advertise routes from the two administrative domains.</p>\n\n<p>Start with a single path and then go to the next level of complexity:\nYou have two geographically separated sites for the firewalls. Each site has a double redundancy in border routers and firewalls. So you have 4 possible paths between the two administrative domains. \nNow you have to configure a quick failover between those 4 paths using multi-hop BFD to detect path failures. \nAll physical connections are 1 Gbps, so overhead is not an issue.</p>\n\n<p>Next step:\nConfigure active-active usage of the 4 paths. Load balance the traffic so that a path failure would temporarily impact only a portion of the traffic (even that we have a quick failover).</p>\n\n<p>This is a real life example. I have seen it in mission critical or safety critical networks or even in service provider networks.</p>\n",
+         "id": "2301",
+         "name": "Bela Varkonyi",
+         "pub": "2024-06-26T09:57:19",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 June 2024 04:30",
+               "html": "<p>Thank you! I should remember the details (as I was doing Azure webinars not so long ago), but I guess I&#39;ll have to go over the slide deck again.</p>\n\n<p>IIRC, it&#39;s effectively a riff on the &quot;low-end router in the middle,&quot; this time the Azure virtual router with no externally visible control plane.</p>\n\n<p>Might add this as an advanced scenario (if I figure out how to emulate the Azure environment).</p>\n",
+               "id": "2309",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:30:22",
+               "ref": "2302",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 12:26",
+         "html": "<p>Within Azure vWAN you need eBGP multihop, otherwise there is no connection to your neighbour within Azure. And to reach the neighbour, you will need to add a static route towards Microsofts default gateway since there is no other underlay.\nNot sure if its the same contruct on other public clouds.</p>\n",
+         "id": "2302",
+         "name": " Stephan Lochner",
+         "pub": "2024-06-26T12:26:50",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 June 2024 04:32",
+               "html": "<p>Thank you! Effectively this is a firewall-on-a-fat-stick scenario with two VRFs on the same router.</p>\n\n<p>Will add it as an advanced scenario as it requires twiddling router IDs as well.</p>\n",
+               "id": "2310",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:32:36",
+               "ref": "2303",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 12:35",
+         "html": "<p>We use eBGP multi-hop in 2 main use-cases, but both are similar.\n1. for lab environment.\nWe use a single switch that uplinks to the cores and has 2 connections towards a firewall (one inside in VRF A, one outside for LAB environment in VRF B). It keeps the firewall outside BGP, with only static routes and its easier for a local person with less experience to configure.</p>\n\n<ol>\n<li>For local internet egress.\nAs sites use sd-wan with no DIA, whenever we need one we use a similar use-case.\nSwitch uplinks to cores and 2 connections to firewall (one inside one outside in different VRFs), outside just advertises the default route towards the campus, while sd-wan advertises more specific routes + default route with worse metrics.</li>\n</ol>\n",
+         "id": "2303",
+         "name": " Alexander N.",
+         "pub": "2024-06-26T12:35:41",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 June 2024 04:35",
+               "html": "<p>Thank you. Added as &quot;Centralized route collection service&quot;</p>\n",
+               "id": "2311",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:35:54",
+               "ref": "2305",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 04:02",
+         "html": "<p>Peering with RouteViews outside of IXs</p>\n",
+         "id": "2305",
+         "name": "Steve Dodd",
+         "pub": "2024-06-26T16:02:10",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 June 2024 05:31",
+               "html": "<p>&gt; but if you&#39;re looking to add more BGP labs</p>\n\n<p>I hoped to wrap up this project after almost a year, but new ideas keep coming in. Not that I would mind ;)</p>\n\n<p>&gt; something focused on RPKI might be cool to have</p>\n\n<p>Thank you, will add to the list of ideas.</p>\n\n<p>&gt; It can run containerized in containerlab.</p>\n\n<p>That&#39;s great to know. Netlab can run a mix of VMs and containers (using containerlab), so the deployment seems to be a no-brainer. Can I contact you for details once I find time to work on this one?</p>\n",
+               "id": "2313",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T17:31:34",
+               "ref": "2312",
+               "type": "comment"
+            },
+            {
+               "date": "28 June 2024 09:51",
+               "html": "<p>&gt; Can I contact you for details once I find time to work on this one?</p>\n\n<p>Sure thing. I need to do some legwork anyway, maybe I can provide a draft? I&#39;m writing with a named account so you have my e-mail.</p>\n",
+               "id": "2320",
+               "name": "Jaap de Vos",
+               "pub": "2024-06-28T09:51:43",
+               "ref": "2313",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 04:58",
+         "html": "<p>Not what you asked, but if you&#39;re looking to add more BGP labs then something focused on RPKI might be cool to have. Routinator (by NLnet Labs) is the easiest way I&#39;ve found to lab RPKI. It can run containerized in containerlab. Stuffing it into a Vagrant box for easier netlab support shouldn&#39;t be difficult either.</p>\n",
+         "id": "2312",
+         "name": "Jaap de Vos",
+         "pub": "2024-06-26T16:58:32",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "27 June 2024 06:24",
+               "html": "<p>Thank you. You gave me idea for yet another BGP lab ;)</p>\n",
+               "id": "2317",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-27T18:24:26",
+               "ref": "2314",
+               "type": "comment"
+            }
+         ],
+         "date": "26 June 2024 05:52",
+         "html": "<p>We use multihop eBGP sessions for sending remote trigger black hole routes with one of our transit providers. </p>\n",
+         "id": "2314",
+         "name": " Josh Hoppes",
+         "pub": "2024-06-26T17:52:29",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "27 June 2024 06:25",
+               "html": "<p>That&#39;s exactly what I&#39;ve been doing in the 1990s, and the &quot;uncommon port type&quot; was an async link.</p>\n\n<p>Functionally this is equivalent to peering over the firewall, so I&#39;ll probably keep that one.</p>\n\n<p>Thank you!</p>\n",
+               "id": "2318",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-27T18:25:38",
+               "ref": "2316",
+               "type": "comment"
+            }
+         ],
+         "date": "27 June 2024 05:25",
+         "html": "<p>Maybe a simple scenario might be that there is link with special requirements, say, high-bandwidth or an uncommon port type. A router (not a switch) is available to handle the link, and can forward traffic, but it can&#39;t do BGP. And the router that can do BGP can&#39;t handle the link.</p>\n",
+         "id": "2316",
+         "name": " Octavio",
+         "pub": "2024-06-27T17:25:00",
+         "type": "comment"
+      }
+   ],
+   "count": 10,
+   "type": "post",
+   "url": "2024/06/ebgp-multihop-use-cases.html"
+}

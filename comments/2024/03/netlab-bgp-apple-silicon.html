@@ -1,0 +1,211 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2135">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Dagoberto Alzamora</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2135" href="#2135">19 March 2024 01:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This is great; thanks for sharing, Ivan. May I know the specs of your Mac Book Pro?&nbsp; </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2136">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2136" href="#2136">19 March 2024 08:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I was testing the labs on a MacBook Air (M2) with 8 GB of RAM</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2138">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erjol</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2138" href="#2138">19 March 2024 01:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, thanks for sharing this. However, there seem to be an issue when running the bgp lab 0-ffrouting. </p>
+
+<pre>
+ERRO[0000] failed deploy links for node &quot;rtr&quot;: failed to Statfs &quot;/proc/4928/ns/net&quot;: no such file or directory
+</pre>
+
+<p>and then the deployment seems to fail too. </p>
+
+<pre>
+fatal: [x1]: UNREACHABLE! =&gt; changed=false
+  msg: &#39;Failed to create temporary directory. In some cases, you may have been able to authenticate and did not have permissions on the target directory. Consider changing the remote tmp path in ansible.cfg to a path rooted in &quot;/tmp&quot;, for more error information use -vvv. Failed command was: ( umask 77 &amp;&amp; mkdir -p &quot;` echo ~/.ansible/tmp `&quot;&amp;&amp; mkdir &quot;` echo ~/.ansible/tmp/ansible-tmp-1710850548.1555705-5034-172158355871746 `&quot; &amp;&amp; echo ansible-tmp-1710850548.1555705-5034-172158355871746=&quot;` echo ~/.ansible/tmp/ansible-tmp-1710850548.1555705-5034-172158355871746 `&quot; ), exited with result 1&#39;
+  unreachable: true
+</pre>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2139">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2139" href="#2139">19 March 2024 06:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Did you change the external devices from Cumulus Linux to FRR (https://bgplabs.net/1-setup/#setting-up-the-labs)?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2140">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erjol</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2140" href="#2140">20 March 2024 11:05</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I had changed them in the defaults.yml, but apparently the issue was that I needed to change them in the lab&#39;s topology.yml file too. Thanks!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2141">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2141" href="#2141">20 March 2024 11:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ouch, good one. Will fix. Thank you!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2145">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2145" href="#2145">21 March 2024 02:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks a million for reporting this. Fixed, a plugin switches the devices in that lab from CL to FRR when running on <strong>aarch64</strong> architecture.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2175">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Abu-bakar Dongula</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2175" href="#2175">04 April 2024 09:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Anyone having issues installing containerlab?</p>
+
+<p>Install containerlab version 0.49.0
+Downloading https://github.com/srl-labs/containerlab/releases/download/v0.49.0/containerlab_0.49.0_linux_amd64.deb
+curl: (60) SSL certificate problem: unable to get local issuer certificate
+More details here: https://curl.se/docs/sslcerts.html</p>
+
+<p>curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+Failed to install containerlab with the arguments provided: -v 0.49.0
+Accepted cli arguments are:
+        [--help|-h ] -&gt;&gt; prints this help
+        [--version|-v &lt;desired_version&gt;] . When not defined it fetches the latest release from GitHub
+        e.g. --version v0.1.1
+        [--use-pkg]  -&gt;&gt; install from deb/rpm packages
+        [--no-sudo]  -&gt;&gt; install without sudo
+        [--verify-checksum]  -&gt;&gt; verify checksum of the downloaded file
+        For support, go to https://github.com/srl-labs/containerlab/issues</p>
+
+<p>Installation script containerlab.sh failed, exiting...</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2177">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2177" href="#2177">04 April 2024 05:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have no idea what happened to you. I started a fresh multipass Ubuntu 22.04 instance, followed the recipe, and got containerlab 0.49.0 installed. </p>
+
+<p>I did a bit of a search on the error message you got, and all hits hint that it&#39;s a local SSL/CA issue.</p>
+
+<p>Did you try to install containerlab on some other platform? Please note that a fresh Ubuntu 22.04 instance is the only environment in which I have any chance of figuring out what might be wrong. Trying to replicate anything else is way beyond my skill set.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2181">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Abu-bakar Dongula</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2181" href="#2181">05 April 2024 09:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Got it working by exporting local trusted root certs to ubuntu instance and updating the certs. I think because of the company&#39;s IT certs.
+Thanks</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

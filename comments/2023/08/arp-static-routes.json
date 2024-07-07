@@ -1,0 +1,72 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "30 August 2023 03:32",
+               "html": "<p>&gt; The Linux kernel implementation for static routes is different from both Arista EOS and usual router implementations in that a static route stays active when the outgoing interface goes down, creating a blackhole.</p>\n\n<p>That&#39;s good to know. Thank you!</p>\n\n<p>You can get the exact same behavior with <strong>permanent</strong> option of <strong>ip route</strong> command on Cisco IOS.</p>\n\n<p>Also, at least some IGP routes stay in the routing table after the interface failure, see https://blog.ipspace.net/2020/12/what-happens-after-link-failure.html for details.</p>\n",
+               "id": "1902",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-08-30T15:32:12",
+               "ref": "1901",
+               "type": "comment"
+            }
+         ],
+         "date": "30 August 2023 10:00",
+         "html": "<p>The behavior of Arista EOS to use recursive next-hop resolution for static routes can be surprising, since most other router implementations do not do that.  One common expectation, satisfied by many router implementations, is that a static route with only an IP as next-hop specification is only active in the routing table (and installed in the forwarding database) when the next hop lies in a directly connected subnet of an active interface.</p>\n\n<p>The Linux <em>kernel</em> implementation for static routes is different from both Arista EOS and usual router implementations in that a static route stays active when the outgoing interface goes down, creating a blackhole. (Current userspace, e.g., NetworkManager, removes static routes pointing to inactive interfaces.)</p>\n\n<p>(BTW, the <em>Baron M&uuml;nchhausen</em> static route <code>ip route 10.1.0.5/32 ethernet 2 10.1.0.5</code> is technically identical to <code>ip route 10.1.0.5/32 ethernet 2</code>, thus there is no reason to expect it to work differently. ;-) )</p>\n",
+         "id": "1901",
+         "name": "Erik Auerswald",
+         "pub": "2023-08-30T10:00:34",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "15 May 2024 08:56",
+               "html": "<p>Unfortunately, I can&#39;t help you. The device behavior obviously depends on hardware and software implementation (and version), so you should probably contact vendor TAC.</p>\n\n<p>Also, while I understand why you might want to use host routes pointing to interfaces, that&#39;s not necessarily the best possible design ;)</p>\n",
+               "id": "2249",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-05-15T08:56:20",
+               "ref": "2248",
+               "type": "comment"
+            },
+            {
+               "date": "17 May 2024 07:12",
+               "html": "<p>Are you sure that it is a hardware problem? We use proxy arp also, so is there possibility that there is just some kind of tricky misconfiguration?\nThere is no information about AM behavior at all, and your blog has the best information about arp I&#39;ve seen, so you are my last chance)</p>\n",
+               "id": "2259",
+               "name": "Ivan",
+               "pub": "2024-05-17T07:12:33",
+               "ref": "2249",
+               "type": "comment"
+            },
+            {
+               "date": "17 May 2024 07:46",
+               "html": "<p>I am not sure about anything. Based on what you described, the behavior seems platform-specific, so there&#39;s nothing anyone can do apart from trying it out on the platforms in question.</p>\n\n<p>As I already told you, the only way you might eventually get a definitive answer would be Cisco TAC.</p>\n",
+               "id": "2260",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-05-17T07:46:31",
+               "ref": "2259",
+               "type": "comment"
+            },
+            {
+               "date": "20 May 2024 06:04",
+               "html": "<p>Wish I had access to cisco TAC.</p>\n\n<p>Thanks anyway, your blog is awesome.</p>\n",
+               "id": "2272",
+               "name": "Ivan ",
+               "pub": "2024-05-20T18:04:57",
+               "ref": "2260",
+               "type": "comment"
+            }
+         ],
+         "date": "14 May 2024 10:42",
+         "html": "<p>Hello. I have a network with nexus 7000 and 9000 as a core routers. And a static routes pointing to the clients vlan interfaces. And on nexus 7000 I see a strange behavior: if I create a route to a server for ex. ip route 1.1.1.1/32 vlan 113 the router doesn&#39;t add arp record for 15 min., until adjacency manager adds such route automatically. Then the network on the server starts working. In the same time on nexus 9000 arp record is added immediately. \nIf you can - please help to resolve this issue. I can provide any additional info needed. Thanks in advance.</p>\n",
+         "id": "2248",
+         "name": "Ivan ",
+         "pub": "2024-05-14T22:42:10",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2023/08/arp-static-routes.html"
+}

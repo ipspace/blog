@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "06 March 2024 03:12",
+         "html": "<p>Hello,</p>\n\n<p>First of all, thank you for all the information you share here. It is really useful.</p>\n\n<p>For several reason we have been dealing with ansible 2.10 for a while and the solution we found to this problem was to remove the endline by using YAML multiline block definition options. We always use &quot;&gt;-&quot; instead of &quot;&gt;&quot; when we want to define a variable using set_fact, so it removes that final endline.</p>\n\n<p>Here it is an example based on yours for this behaviour in ansible 2.10.17.</p>\n\n<p>Variable a is set using &#39;&gt;&#39; and variable b using &#39;&gt;-&#39;. First one is set to a string while the second one is set as intended to false.</p>\n\n<pre>\r\n&gt; cat playbook.yml\r\n---\r\n- name: Test playbook\r\n  hosts: localhost\r\n  gather_facts: no\r\n  tasks:\r\n  - set_fact:\r\n      a: &gt;\r\n        &#123;&#123; 123 == 345 or\r\n           123 &gt; 345 &#125;&#125;\r\n      b: &gt;-\r\n        &#123;&#123; 123 == 345 or\r\n           123 &gt; 345 &#125;&#125;\r\n\r\n&gt; ansible-playbook -v playbook.yml\r\n...\r\nPLAY [Test playbook] ***********************************************************************************\r\n\r\nTASK [set_fact] ****************************************************************************************\r\nok: [localhost] =&gt; &#123;&quot;ansible_facts&quot;: &#123;&quot;a&quot;: &quot;False\\n&quot;, &quot;b&quot;: false&#125;, &quot;changed&quot;: false&#125;\r\n\r\nPLAY RECAP *********************************************************************************************\r\nlocalhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   \r\n</pre>\n\n<p>Hope it helps.\nBest regards</p>\n",
+         "id": "2129",
+         "name": " MIguel",
+         "pub": "2024-03-06T15:12:13",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2024/03/ansible-multiline-expressions.html"
+}

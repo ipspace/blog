@@ -1,0 +1,72 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "05 March 2024 01:21",
+               "html": "<p>&gt; &quot;crazy ideas of running IBGP over EBGP&quot; allow you to achieve exactly what was mentioned in the first question - EVPN-VXLAN fabric with spines doing only plain IPv4 forwarding with eBGP signaling.</p>\n\n<p>As long as you don&#39;t run BGP RR on the spines ;) For whatever crazy reason, most vendors promoting this design forget about this tiny little detail ;))</p>\n\n<p>&gt; I doubt you can find more interoperable protocol than eBGP AFI/SAFI 1/1. Definitely better than OSPF in this aspect. Try to change my mind ;)</p>\n\n<p>Trying to change ingrained beliefs is futile. Let&#39;s just say that most of the Internet runs on OSPF/IS-IS + IBGP/EBGP, and it mostly works.</p>\n\n<p>&gt; I personally saw networks built using one vendor for TORs and 2 different vendors for spines, and this design makes a lot of sense for many reasons.</p>\n\n<p>... at scale.</p>\n",
+               "id": "2122",
+               "name": " Ivan Pepelnjak",
+               "pub": "2024-03-05T13:21:05",
+               "ref": "2121",
+               "type": "comment"
+            }
+         ],
+         "date": "05 March 2024 11:47",
+         "html": "<p>Rant is mentioned in the title, so let&#39;s fuel it a bit ;)</p>\n\n<p>&quot;crazy ideas of running IBGP over EBGP&quot; allow you to achieve exactly what was mentioned in the first question - EVPN-VXLAN fabric with spines doing only plain IPv4 forwarding with eBGP signaling.</p>\n\n<p>I doubt you can find more interoperable protocol than eBGP AFI/SAFI 1/1. Definitely better than OSPF in this aspect. Try to change my mind ;)</p>\n\n<p>I personally saw networks built using one vendor for TORs and 2 different vendors for spines, and this design makes a lot of sense for many reasons.</p>\n",
+         "id": "2121",
+         "name": " Alex",
+         "pub": "2024-03-05T11:47:47",
+         "type": "comment"
+      },
+      {
+         "date": "05 March 2024 03:38",
+         "html": "<p>Average company is blessed beyond their wildest dreams to find an engineer who understands what a BPDU is and that bridging loops are bad.  L2oL3, MP-BGP AFIs, ESIs, VTEPs....not supportable by 99% of the wild.  All just pushing the needle on sales.  4k VLAN limit isn&#39;t a valid argument in the 99% either.</p>\n",
+         "id": "2123",
+         "name": " Jeff Behrns",
+         "pub": "2024-03-05T15:38:31",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 March 2024 07:58",
+               "html": "<p>OSPF was brand new at that time and (according to some rumors) wasn&#39;t implemented optimally on some platforms. The fact that it was overspecified and that Cisco kept pushing its own routing algorithm (IGRP, later EIGRP) didn&#39;t help either.</p>\n\n<p>Anyway, getting OSPF to work reliably across three major vendors at that time was a bit of a challenge, not to mention four versions of OSPFv2 (1247, 1583, 2178, 2328) and stuff that kept appearing, like NSSA and demand circuits.</p>\n\n<p>FWIW, Nexus OS has (had?) the &quot;rfc1583compatibility&quot; nerd knob, and RFC 1583 was published in March 1994 (= exactly 30 years ago).</p>\n",
+               "id": "2125",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-06T07:58:03",
+               "ref": "2124",
+               "type": "comment"
+            }
+         ],
+         "date": "05 March 2024 11:32",
+         "html": "<p>Thanks for your rant, very interesting! Could you please explain the mid-1990&#39;s OSPF debacle, for those of us (just slightly) younger?</p>\n",
+         "id": "2124",
+         "name": " Enrique Vallejo",
+         "pub": "2024-03-05T23:32:46",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 March 2024 02:21",
+               "html": "<p>&gt; All good and valid here except OSPF is not trivial - those who have implemented it do know.</p>\n\n<p>Is bloatware we made out of the three-napkin protocol any simpler? I found a simple scenario a few days ago where different implementations disagree on what the result should be almost 30 years after the BGP4 specs were written. Details coming in a blog post (where else ;)</p>\n",
+               "id": "2127",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-06T14:21:09",
+               "ref": "2126",
+               "type": "comment"
+            }
+         ],
+         "date": "06 March 2024 10:01",
+         "html": "<p>All good and valid here except OSPF is not trivial - those who have implemented it do know.</p>\n",
+         "id": "2126",
+         "name": " Hannes Gredler",
+         "pub": "2024-03-06T10:01:38",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2024/03/multivendor-evpn-revisited.html"
+}

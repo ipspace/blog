@@ -1,0 +1,35 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "22 March 2024 08:58",
+               "html": "<p>Where&#39;s the fun in that? The lab has a <em>Verification</em> section to help you check whether you filtered out all the unwanted prefixes.</p>\n",
+               "id": "2151",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-22T08:58:03",
+               "ref": "2148",
+               "type": "comment"
+            },
+            {
+               "date": "23 March 2024 03:18",
+               "html": "<p>Maybe something along these lines (done with FRR):  </p>\n\n<pre>\r\nhostname rtr\r\n!\r\nrouter bgp 65000\r\n neighbor 10.1.0.1 peer-group CUSTOMER\r\n neighbor 10.1.0.5 peer-group CUSTOMER\r\n !\r\n address-family ipv4 unicast\r\n  neighbor CUSTOMER maximum-prefix 5\r\n  neighbor CUSTOMER route-map CUSTOMER_IN in\r\n exit-address-family\r\n!\r\nip prefix-list MORE_SPECIFIC_PREFIXES seq 5 permit 0.0.0.0/0 ge 25 le 32\r\nip prefix-list LESS_SPECIFIC_PREFIXES seq 5 permit 0.0.0.0/0 ge 0 le 15\r\nip prefix-list RFC_1918 seq 5 permit 10.0.0.0/8 ge 8 le 32\r\nip prefix-list RFC_1918 seq 10 permit 169.254.0.0/16 ge 16 le 32\r\nip prefix-list RFC_1918 seq 15 permit 172.16.0.0/12 ge 12 le 32\r\nip prefix-list RFC_1918 seq 20 permit 192.168.0.0/16 ge 16 le 32\r\n!\r\nbgp as-path access-list MORE_THAN_FIVE_AS_PREPEND permit ([0-9]+)_\\1_\\1_\\1_\\1_\\1_\r\nbgp as-path access-list MORE_THAN_ONE_AS permit [0-9]+_[0-9]+\r\n!\r\nroute-map CUSTOMER_IN deny 10\r\n match ip address prefix-list RFC_1918\r\n!\r\nroute-map CUSTOMER_IN deny 20\r\n match ip address prefix-list MORE_SPECIFIC_PREFIXES\r\n!\r\nroute-map CUSTOMER_IN deny 30\r\n match ip address prefix-list LESS_SPECIFIC_PREFIXES\r\n!\r\nroute-map CUSTOMER_IN deny 40\r\n match as-path MORE_THAN_ONE_AS\r\n!\r\nroute-map CUSTOMER_IN deny 50\r\n match as-path MORE_THAN_FIVE_AS_PREPEND\r\n!\r\nroute-map CUSTOMER_IN permit 100\r\n</pre>  </p>\n\n<p>I couldn&#39;t get the AS prepend regex working with FRR &#x1F937;&zwj;&#x2642;&#xFE0F;</p>\n",
+               "id": "2156",
+               "name": "Anonymous",
+               "pub": "2024-03-23T15:18:21",
+               "ref": "2148",
+               "type": "comment"
+            }
+         ],
+         "date": "21 March 2024 08:05",
+         "html": "<p>You categorized it as a challenge. Will you also publish solutions for your challenges?</p>\n",
+         "id": "2148",
+         "name": "Anonymous",
+         "pub": "2024-03-21T20:05:49",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2024/03/bgp-labs-stop-configuration-errors.html"
+}

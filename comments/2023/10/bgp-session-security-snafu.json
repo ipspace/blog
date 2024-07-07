@@ -1,0 +1,62 @@
+{
+   "comments": [
+      {
+         "date": "02 October 2023 08:37",
+         "html": "<p>It may interest readers that the GTSM RFC5082 specifies a sending TTL of 255, where one might have expected a TTL equal to the maximum number of hops acceptable</p>\n\n<p>This implies a TTL of 253 is considered &quot;too low&quot; for a standard directly connected EBGP peering session</p>\n",
+         "id": "1948",
+         "name": "Jeroen van Bemmel",
+         "pub": "2023-10-02T20:37:16",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "03 October 2023 08:22",
+               "html": "<p>I hoped that GTSM would be implemented in CoPP ACL (the only place where it would make sense) or failing that in <strong>iptables</strong> in Linux-based devices. Looks like I was way too optimistic (again).</p>\n\n<p>As for &quot;it works on one of the two BGP speakers&quot;, you can drop packets when the source or destination port is 179 and TTL is too low, and allow all other packets with source or destination port 179 (or just let them through)</p>\n",
+               "id": "1950",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-10-03T08:22:17",
+               "ref": "1949",
+               "type": "comment"
+            },
+            {
+               "date": "03 October 2023 12:59",
+               "html": "<p>Thanks, legitimate BGP packets entering a BGP speaker have either a source or destination port of 179, this takes care of both directions.</p>\n\n<p>Back in the day, I had hoped that SSH service ACLs were implemented in some kind of control plane ACL. But then I tested it on different devices: some would look at the source address only after starting SSH session establishment. Thus service ACLs would not protect from vulnerabilities in the SSH session establishment code. I would expect similar problems might occur with any service on a router.</p>\n\n<p>(I still use service ACLs for hardening, I see it as one element in a defense in depth approach.)</p>\n",
+               "id": "1951",
+               "name": "Erik Auerswald",
+               "pub": "2023-10-03T12:59:12",
+               "ref": "1950",
+               "type": "comment"
+            }
+         ],
+         "date": "02 October 2023 11:00",
+         "html": "<p>One might be able to combine an inbound interface ACL with the GTSM idea. If the system allows to match on TTL in combination with IP, protocol (TCP), and port, this could be used to drop packets with too low TTL value. GTSM still needs to be enabled so that the BGP speakers use high instead of low TTL values.</p>\n\n<p>This is not perfect, e.g., it only works on one of the two BGP speakers of a session (the one that answers a SYN sent to TCP port 179), but it could help against some random attacker from across the Internet intending to send a crafted OPEN message for remote code execution.</p>\n",
+         "id": "1949",
+         "name": "Erik Auerswald",
+         "pub": "2023-10-02T23:00:56",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 October 2023 09:39",
+               "html": "<p>Most network devices these days run on Linux (or xBSD). The xNIX TCP stack cannot filter incoming sessions based on source IP addresses, you&#39;d have to deploy iptables (or equivalent) filters to get that done.</p>\n\n<p>It looks like no networking vendor cares enough to get that done (or even better: deploy BGP protection ACLs in hardware), and the end-users are not screaming loud enough to force them to do so.</p>\n\n<p>Cisco IOS is different because it uses home-grown TCP stack.</p>\n",
+               "id": "1959",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-10-04T09:39:28",
+               "ref": "1958",
+               "type": "comment"
+            }
+         ],
+         "date": "04 October 2023 09:29",
+         "html": "<p>Pardon my ignorance (my knowledge of BGP is very rusty), but this statement:</p>\n\n<p>&quot;Most BGP routers (apart from Cisco IOS) accepted incoming TCP sessions on port 179 from IP addresses that were not configured as BGP neighbors.&quot;</p>\n\n<p>I&#39;d think it&#39;d be obvious for BGP routers to only accept incoming sessions from configured BGP neighbors, right? Because BGP is the most critical infrastructure, the backbone of the Internet, why would you want your router to accept incoming session from anyone but KNOWN sources? What&#39;s the rationale?  </p>\n",
+         "id": "1958",
+         "name": " Minh",
+         "pub": "2023-10-04T09:29:07",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2023/10/bgp-session-security-snafu.html"
+}

@@ -1,0 +1,110 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2178">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2178" href="#2178">04 April 2024 05:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I think you got it wrong, Ivan.  </p>
+
+<p>The goal is not to build anything BGP-free. That is heresy! <br />
+The goal is that BGP replaces everything else. Just the opposite of what you do here. <br />
+In the end, only BGP will survive!!  </p>
+
+<p>All hail BGP.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2179">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2179" href="#2179">04 April 2024 05:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The hardware vendors must love you ;) Imagine having a million routes on every high-speed switch ;))</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2180">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Daryll Swer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2180" href="#2180">05 April 2024 06:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>eBGP driven networks (MPLS included) have only a few (or rather necessary) routes in each device all the way down, even in large scale networks. Aggregation of the routed blocks takes place in each hierarchy from edge all the down, routes are respectively aggregate blackhole in each device going downwards from the edge. Easier with IPv6-native networks, though. Default routes are used for egress back up.</p>
+
+<p>Let&#39;s say I have a /20 v4 range and a /32 v6 range blackholed aggregate on my edge router, from there let&#39;s say I route a /24 and /48 downwards to my core router, that /24, /48 is blackhole aggregated on the core, and now let&#39;s say from the layer 3 distribution (downstream of my core), I want to route a /25 to rack05 and a /25 to rack06 and same thing for two /49s, the more specific aggregate are blackholed on my layer 3 distribution before finally being routed to where they are needed (also over eBGP and also blackholed on the &ldquo;destination&rdquo; node).</p>
+
+<p>So edge has full tables, static blackholes, /20, /32 and one /24 and /48 from internal-AS, that&#39;s only two BGP routes from internal-AS, my core has only two BGP routes learnt from downstream L3 dist. peer, it has only one BGP route from the edge, which is a default route for egress back up. My L3 dist has only four BGP routes learnt over BGP from the destination node, one default route for egress back up to the core.</p>
+
+<p>I don&#39;t know why there&#39;s a misconception that BGP driven networks have full table dumps everywhere, this is false. Full tables are limited only to edge routers (Border router, DFZ-Facing router).</p>
+
+<p>Let&#39;s use your diagram example from this article itself:
+Let us assume:
+PE1 is in Site01
+P (core) is in Site02
+PE2 is in Site03</p>
+
+<p>Objective is Pseudowire for E1&lt;&gt;E2</p>
+
+<p>PE1 &lt;&gt; PE2 distance is about 1 Kilometre.</p>
+
+<p>LDP enabled.
+Single-area OSPF (with BFD probably on directly connected interfaces) across all three devices (PE, P), they learn each other&#39;s loopback IPs.</p>
+
+<p>eBGP peer between PE1 (AS4200000000) and PE2 (4200000001) using source loopback and dst also loopback, use the BGP to signal VPLS.</p>
+
+<p>Routing Table on PE1 (PE2 just flip device names):
+Directly Connected addressing route between PE1 and P
+Loopback IP of the P
+Loopback IP of PE2</p>
+
+<h1 id="ofroutes3">of routes, 3</h1>
+
+<p>Routing Table on P:
+Directly Connected addressing route between P and PE1
+Directly Connected addressing route between P and PE2
+Loopback IP of PE1
+Loopback IP of PE2</p>
+
+<h1 id="ofroutes4">of routes, 4</h1>
+
+<p>May interest some folks:
+I was once sent a config dump of a Tier 1 carrier&#39;s PE router and figured out a way to simplify the design further with eBGP. I.e. if your customer is paying for DIA/IP Transit, you could remove route reflectors completely, by running an eBGP signalled pseudowire from the PE router sitting at a CO or cell site, the pseudowire rides over your LSP core, it finally terminates on the DFZ-facing edge router, customer gets seamless L2 directly to the edge, this way you can dump them full tables without any complexity.</p>
+
+<p>I once dealt with DIA/IP Transit port from Vodafone in Spain, and they didn&#39;t have this design and required us to mess with different BGP sessions for default route and separate session for full tables over a routed /32 and /128 from their side to a router, which was then peered with a different route reflector on their end, horrible mess, took them about a week to get the whole thing working. With my approach, one BGP session per address family for customer POV and also eliminates MTU mess-ups, assuming that you the architect made it company-wide policy that no device in an LSP does L3 MTU lower than 9k and L2 MTU lower than 9216 &mdash; Another story, we&#39;ve had a carrier sell us L2VPN transport whereby on the primary path they delivered 9k as requested, but came a fibre cut, and the protection path had 1400 MTU on L3, you can imagine us scratching heads for 30 mins on why our BGP peer over this session wouldn&#39;t come up.</p>
+
+<p>Side note: For L2VPN services, it&#39;d be nice if carriers enabled this by default, instead of waiting for customer to request it:
+https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/statement/forwarding-options-l2circuit-control-passthrough.html</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

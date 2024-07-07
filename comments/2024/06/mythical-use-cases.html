@@ -1,0 +1,66 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2288">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2288" href="#2288">12 June 2024 10:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have an old-style, robust solution if you have a central backup server.</p>
+
+<p>It is based on my experience that many of such servers to be backed up have unused ethernet ports.</p>
+
+<p>Just connect the backup server to a simple front-end switch (maybe some leftover) and connect to the unused port of each server to be backed up using a direct optical cable from this front-end switch to the target server. </p>
+
+<p>No complexity, no race conditions with the primary traffic. Keep it simple...</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2289">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2289" href="#2289">12 June 2024 03:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You&#39;re absolutely right, thank you. I wanted to mention a separate network for the backup traffic, but unfortunately, I decided to skip that topic. Will fix ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2290">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daniel S</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2290" href="#2290">12 June 2024 03:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thats the way. We always called that the servicenet, because it was not only for backups but also for other services all servers needed but where not really meant for the frontend. See, if you have bunch of SAP/Web/DB/whatever servers from different customers, you need to make sure the updates work properly, the backups, NTP, licensing, monitoring and a lot of other stuff maybe (totally depends on systems, apps, customer). It&#39;s way easier to seperate this traffic from the production network to the servicenet and deal with it in there. For security reasons we always used private VLANs in there, just no server could talk to any other server on that network. Everything ends at the servicenet-firewall, but you also could use a router and ACLs to keep them from accessing each other and consider buying a smaller firewall. Then you&#39;d have more throughput. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

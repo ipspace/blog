@@ -1,0 +1,130 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1845">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Albert Siersema</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1845" href="#1845">30 May 2023 11:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>If you happen to run bare metal kubernetes/openshift with e.g. Calico or Cilium CNI, running BGP between server and ToR almost becomes the default deployment.
+Obviously, now we&#39;re not in enterprise IT virtualisation territory anymore (although kubevirt could <em>functionally</em> provide most of the desired technology...)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1847">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Petrus Potgieter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1847" href="#1847">30 May 2023 04:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The answer is BGP + BFD. This project adds FRR on each server and then advertise all host and potentially also client VM IPs as /32 routes to the leafs. No M-LAG, VLANs does not span over multiple racks. There are some caveats since does not yet support accelerated datapath like DPDK. Maybe someone will add ES-IS to FRR in the near future... </p>
+
+<p>https://developers.redhat.com/articles/2022/09/22/learn-about-new-bgp-capabilities-red-hat-openstack-17#</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1848">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Luis</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1848" href="#1848">30 May 2023 04:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Great points in this article, moving the resilience from L2 to L3 brilliant.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1850">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">martijn jansen</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1850" href="#1850">31 May 2023 04:28</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>amazing article Ivan. What i ran into the other day was a switch fault resitting the config to vanilla so SW port is up / NIC is up and forwarding, into nowhere. server dies. Indeed asking the host HSRP ish protocol to reach the DG/NH or not that would be good. FRR looks good, we did OSPF on LANs in my BT time for stacks of pizza&#39;s and what came after that. Not so sure if BGP in the ToR boils my cookie. But great article thanks.    </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1855">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Cathal Mooney</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1855" href="#1855">06 June 2023 07:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The routed way is definitely good, at the cost perhaps of some complexity you <em>see</em>.</p>
+
+<p>One annoyance is what IP address gets used by default by the system for outbound traffic.  It would be nice to have a generic OS-level way to say &quot;this IP on lo0 should be default for outbound IP traffic unless to the connected link subnet itself&quot;.</p>
+
+<p>Obviously some software allows you to specify the source IP to use, but again more complexity in config.  And some doesn&#39;t.  I&#39;ve solved it before with an iptables/nft SNAT rule for everything not on the connected subnet, but again it&#39;s messier than one would like.  </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1856">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1856" href="#1856">06 June 2023 08:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>A few other tricks (I guess I&#39;ll have to write a follow-up blog post one of these days):</p>
+
+<ul>
+<li>Assign the same IP address to the loopback and all uplinks. Obviously that makes running BGP sessions a bit harder, so you have to run them over IPv6 LLA</li>
+<li>Don&#39;t care about the outbound sessions (too much)</li>
+<li>Use MP-TCP for outbound sessions</li>
+<li>Use MPIO for iSCSI</li>
+</ul>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1858">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Cathal Mooney</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1858" href="#1858">07 June 2023 01:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The IPv6 link-local is a very nice approach alright (even better when combined with automatic neighbor discovery).  You could probably get away without the IP on each uplink in a lot of cases as the system will pick a GUA/IPv4 from the loopback if it&#39;s the only choice.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -72,6 +72,74 @@ It is working fine for us but I am trying to understand where the problem lies w
 <p>There&#39;s nothing wrong with what you&#39;re doing if it works for you, and you&#39;re happy with whatever level of complexity you had to deal with to get it done. There&#39;s also the question of configuration defaults: EBGP in the data center is trivial with Cumulus and gets pretty messy with any other gear, in particular when you hit vendor limitations that push you toward IBGP-between-loopbacks-over-EBGP.</p>
 
 <p>You&#39;ll find tons of details in https://www.ipspace.net/kb/tag/BGP-DC.html</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2085">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ned K</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2085" href="#2085">02 February 2024 07:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi, the url specified in the comments (https://www.ipspace.net/kb/tag/BGP-DC.html) does not work. Could you please fix it? Thanks</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2086">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2086" href="#2086">02 February 2024 08:25</a>
+              </span>
+            </div>
+            <div class="comment-content">The content has moved to https: //blog.ipspace.net/series/dcbgp.html, and unfortunately, I can&#39;t fix a URL in an old comment &#x1F937;&zwj;&#x2642;&#xFE0F;<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2279">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Sakar</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2279" href="#2279">30 May 2024 09:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;Alternatively, advertise the default route from all BGP speakers into IGP; the BGP router closest to the user(s) will pick up the traffic and sort it out.&quot;</p>
+
+<p>Does this have a potential to cause a routing loop? An IGP router could send traffic to CE-A, CE-A might have learnt better path to the given destination from iBGP session with CE-B and in attempt to reach via CE-B, send the traffic back to the same IGP router.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2281">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2281" href="#2281">31 May 2024 10:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You&#39;re right. I should have been more explicit and pointed out that all routers in the transit path need enough routing information. Will fix the blog post.</p>
 </div>
           </div>
         </li>

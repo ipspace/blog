@@ -1,0 +1,64 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "27 November 2023 12:55",
+               "html": "<p>Selective route download is more generic (or at least it could be): whenever a more-specific and a less-specific prefix have the same next hop, there&#39;s no need for the more-specific prefix. More details in https://blog.ipspace.net/2022/05/living-small-forwarding-tables.html and https://datatracker.ietf.org/doc/html/rfc6769</p>\n\n<p>Obviously, there&#39;s a tradeoff: you can&#39;t use PIC or any other similar FIB reprogramming optimization tool. See https://blog.ipspace.net/2012/01/prefix-independent-convergence-pic.html and https://blog.ipspace.net/2020/11/fast-failover-implementation.html for details.</p>\n",
+               "id": "2003",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-11-27T12:55:05",
+               "ref": "2002",
+               "type": "comment"
+            }
+         ],
+         "date": "27 November 2023 12:22",
+         "html": "<p>Hi,</p>\n\n<p>If I understand correctly this is what&#39;s taken advantage of in conjunction with BGP selective download to carry full view in RIB while only programming default route in FIB on below use case.</p>\n\n<p>https://www.cisco.com/c/dam/en/us/products/collateral/routers/asr-920-series-aggregation-services-router/asr920-full-internet-routing-capability.pdf</p>\n\n<p>Best</p>\n",
+         "id": "2002",
+         "name": "Billy",
+         "pub": "2023-11-27T12:22:59",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "28 November 2023 11:31",
+               "html": "<p>I got bitten a few weeks ago by Arista EOS having a DHCP-derived default route in the main routing table. It&#39;s not their fault; they&#39;re doing things the way they should be done -- I should have used the management VRF.</p>\n\n<p>FWIW, I wrote about the fast neighbor deactivation in Cisco IOS a long while ago; it looks like I have to resurrect that article ;)</p>\n",
+               "id": "2005",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-11-28T11:31:21",
+               "ref": "2004",
+               "type": "comment"
+            }
+         ],
+         "date": "27 November 2023 08:59",
+         "html": "<p>I faced this problem some years ago. I wanted the BGP route to get invalid when there is no available /32 route for the next-hop. In IOS you can do this with Selective BGP Next-Hop Route Filtering (https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-3s/irg-xe-3s-book/bgp-support-for-next-hop-address-tracking.html). The command is &ldquo;bgp next-hop route-map xxx&rdquo;. So the route-map could match only the prefix of your network&rsquo;s loopbacks.</p>\n\n<p>You can achieve the same for fast neighbor deactivation when there is no specific route for the neighbors address. neighbor xxx fall-over route-map xxxx.</p>\n",
+         "id": "2004",
+         "name": " Michael Milaitis",
+         "pub": "2023-11-27T20:59:25",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "12 December 2023 10:13",
+               "html": "<p>Thank you! Much appreciated!</p>\n",
+               "id": "2038",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-12-12T10:13:36",
+               "ref": "2037",
+               "type": "comment"
+            }
+         ],
+         "date": "12 December 2023 10:06",
+         "html": "<p>Hi Ivan,</p>\n\n<p>Tried this experiment with juniper mx routers. I have used 17.16* IPs in local lab instead of 172.16*. Observed that junOS uses the default route to resolve the BGP next hops and correctly displays the routing entry it used:</p>\n\n<p>root@mx1# run show route 10.0.0.1 extensive</p>\n\n<p>inet.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)\n10.0.0.1/32 (1 entry, 1 announced)\nTSI:\nKRT in-kernel 10.0.0.1/32 -&gt; &#123;indirect(1048574)&#125;\n        *BGP    Preference: 170/-101\n                Next hop type: Indirect, Next hop index: 0 =------ next hop type is indirect</p>\n\n<pre><code>            Address: 0x7b3fef4\n            Next-hop reference count: 6, key opaque handle: 0x0, non-key opaque handle: 0x0\n            Source: 10.0.0.2\n            Next hop type: Router, Next hop index: 572\n            Next hop: 17.16.1.2 via ge-0/0/1.0, selected =--- physical next-hop\n            Session Id: 150\n            Protocol next hop: 17.16.0.1 =--- logical next-hop\n            Indirect next hop: 0x758b6cc 1048574 INH Session ID: 337\n            State: &amp;lt;Active Int Ext&amp;gt;\n            Local AS: 65002 Peer AS: 65002\n            Age: 3:56   Metric2: 0\n            Validation State: unverified\n            Task: BGP_65002.10.0.0.2\n            Announcement bits (2): 0-KRT 5-Resolve tree 1\n            AS path: 65001 I\n            Accepted\n            Localpref: 100\n            Router ID: 128.52.34.21\n            Thread: junos-main\n            Indirect next hops: 1\n                    Protocol next hop: 17.16.0.1 Metric: 0 ResolvState: Resolved\n                    Indirect next hop: 0x758b6cc 1048574 INH Session ID: 337\n                    Indirect path forwarding next hops: 1\n                            Next hop type: Router\n                            Next hop: 17.16.1.2 via ge-0/0/1.0\n                            Session Id: 150\n                            0.0.0.0/0 Originating RIB: inet.0   =---- the source of the indirect next-hop\n                              Metric: 0 Node path count: 1\n                              Forwarding nexthops: 1\n                                    Next hop type: Router\n                                    Next hop: 17.16.1.2 via ge-0/0/1.0\n                                    Session Id: 150\n</code></pre>\n\n<p>root@mx1# run show route 17.16.0.1</p>\n\n<p>inet.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)\n+ = Active Route, - = Last Active, * = Both</p>\n\n<p>0.0.0.0/0          *[OSPF/150] 00:06:44, metric 0, tag 0\n                    &gt;  to 17.16.1.2 via ge-0/0/1.0</p>\n",
+         "id": "2037",
+         "name": " Vinay",
+         "pub": "2023-12-12T10:06:12",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2023/11/bgp-next-hop-via-default-route.html"
+}

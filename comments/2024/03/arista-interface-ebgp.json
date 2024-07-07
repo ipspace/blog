@@ -1,0 +1,54 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "22 March 2024 03:28",
+               "html": "<p>Thanks for the feedback. I think I got it to work without the &quot;ip routing ipv6 interfaces&quot;, but of course, that was in a virtual lab.</p>\n\n<p>Maybe I didn&#39;t make the network big enough (so I had no transit switches), or the Linux TCP/IP stack (cEOS container) accepts IPv4 packets, whereas the forwarding ASIC is not programmed to accept them without that magic nerd knob.</p>\n",
+               "id": "2154",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-22T15:28:21",
+               "ref": "2152",
+               "type": "comment"
+            }
+         ],
+         "date": "22 March 2024 10:12",
+         "html": "<p>Hi Ivan, \nwe did a few projects using this method and it works absolutly great and you can use mostly the same configlets in CVP for all switches, that makes it really handy. \nFor the command &quot;&zwnj;ip routing ipv6 interfaces&quot;; I learned it during testing for the first project where we used this and its basically a switch to allow routing through your box with IPv4 over IPv6 interfaces. Without that command, we could send data from a leaf to the spine. But the spine did just nothing, it was a blackhole. Only with that command the forwarding would work and then everything was fine. </p>\n",
+         "id": "2152",
+         "name": " Daniel S",
+         "pub": "2024-03-22T10:12:02",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "23 March 2024 05:33",
+               "html": "<p>I&#39;m all up for 100% (okay, more like 99.99%) layer-3 eBGP driven networks. SP, DC, Enterprise, Home Lab? Everything 100% (meaning 99%) eBGP Driven networks. Easy to configure, easy to manipulate/traffic engineer with granular route filters with various attributes such as BGP communities, no full-mesh nonsense (or route reflectors) as was/is the case with iBGP. eBGP all the way to the host on DC networks, BGP multipathing included for your network-level load balancing for K8s (or possibly Docker Swarm) clusters etc, augmented with BGP communities to influence paths from host upto the DFZ even. With BGP, you can build unconventional topologies in any shape or form as you see fit. IGPs make the network flat and hence have some limitations.</p>\n\n<p>Here&#39;s an example of why IGPs simply don&#39;t scale for TE properly:\nhttps://anuragbhatia.com/2022/04/networking/isp-column/inefficient-igp-can-make-ebgp-go-wild/</p>\n\n<p>When I say eBGP driven layer 3-only networks, it does not imply that MPLS isn&#39;t in use, it doesn&#39;t imply that VXLAN/EVPN isn&#39;t in use (for DC networking), these &ldquo;transport&rdquo; protocols are very much in use, but they are BGP driven, such as BGP signalled VPLS. It also does <em>not</em> imply IGPs aren&#39;t in use - they are, but they are limited in functionality to the purpose of only establishing loopback learning/adjacency for adjacent peers in a network segment (like say an MPLS cloud) or path.</p>\n\n<p>BGP, at most basic operational use, is very easy to work with and scales if you need it to.</p>\n\n<p>However, currently, there&#39;s not much documentation or blog posts or tutorials on how to design eBGP driven SP networks (which is something I do in production), there is some documentation for DCs, but even that largely assumes a typical Spine/Leaf/Clos topology. I&#39;ve worked in a DC environment where we took some inspiration from the hypercube network topology concept (and therefore it really wasn&#39;t a clos topology) and everything was 100% eBGP, up-to the host, almost everything was interconnected on layer 1 for adjacent devices Spine&lt;&gt;Spine, Leaf&lt;&gt;Leaf etc &mdash; It was more like a mix of SP and DC networking.</p>\n\n<p>The basic visual representation of this eBGP approach:\nVertical paths = eBGP up/down with private ASN numbering and default routes for egress back up. remove-private-as on the edge routers that talks DFZ.\nHorizontal paths = IGP + iBGP or IGP/LDPv6 etc as and when required for loopback learning.</p>\n\n<p>So coming to &ldquo;numbering&rdquo;, I would probably be okay with &ldquo;unnumbered&rdquo; (link-local IPv6) interfaces for establishing adjacency for the horizontal paths. However, for the vertical paths, I&#39;d still use route-able IPv6 GUA addressing to help make my life easier when running a traceroute or troubleshooting etc.</p>\n\n<p>But at the same time, life&#39;s easy for numbered IPv6 GUA interfaces if you use something similar to my geographical denomination model for IP(v6) addressing architecture:\nhttps://www.daryllswer.com/ipv6-architecture-and-subnetting-guide-for-network-engineers-and-operators/</p>\n",
+               "id": "2157",
+               "name": " Daryll Swer",
+               "pub": "2024-03-23T17:33:50",
+               "ref": "2153",
+               "type": "comment"
+            },
+            {
+               "date": "28 March 2024 07:58",
+               "html": "<p>I&#39;m absolutly behind you on. For the folks working with BGP all day, its nice to have it everywhere. For everybody else (and thats 90% of networking guys and girls)  BGP is a hellhole which they don&#39;t want to touch. Those people are really left behind with all the fabrics. Even after multiple trainings and workshops, they still forget what is in the underlay or overlay and don&#39;t know why you would build stuff like that.\nAnd everybody that worked with SPB or Fabricpath will totally agree. I had a few years working with Fabricpath. After understanding how everything worked together, it was so easy. You couldn&#39;t do something wrong. Absolutly perfect for a DC. Would have loved to deploy that in campus if the boxes would have supported it. \nAnd we know why Cisco dropped it. After many years they officially told us that it was scrapped because they wanted to push ACI. They absolutly knew that Fabricpath was good enough for 90% of enterprises and ACI would never take off. </p>\n",
+               "id": "2165",
+               "name": " Daniel S",
+               "pub": "2024-03-28T07:58:27",
+               "ref": "2153",
+               "type": "comment"
+            }
+         ],
+         "date": "22 March 2024 01:54",
+         "html": "<p>This is some neat config.  Not needing to configure explicit IP addresses on links is a simplification.  KISS.</p>\n\n<p>But it strikes me that the entire industry lost out when we didn&#39;t do SPB or TRILL.  Specifically, I like how Avaya did SPB.</p>\n\n<ol>\n<li><p>IS-IS as an interior routing protocol can handle 1,000s of routers.  We don&#39;t need anything more scalable like BGP unless you&#39;re AWS/Microsoft/Google/Facebook.</p></li>\n<li><p>IS-IS doesn&rsquo;t need addressing because it&rsquo;s an ISO protocol.  As long as the interface can run Ethernet, an adjacency can form.  No IPv4 or IPv6 addresses needed, link-local or otherwise.</p></li>\n<li><p>Keep in mind, all this &ldquo;Interface EBGP Session&rdquo; stuff is needed to bootstrap all the other stuff we will need: multi-protocol BGP, adjusting the NLRI in BGP, VXLAN-GPO, loopbacks for the VTEPs, routing protocols to coordinate with the devices in the overlay (e.g., firewalls), etc. </p></li>\n</ol>\n\n<p>Agghh!   Why are we making this so complex?  I&rsquo;m probably preaching to the choir on this forum.  </p>\n",
+         "id": "2153",
+         "name": " Dan Massameno",
+         "pub": "2024-03-22T13:54:59",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2024/03/arista-interface-ebgp.html"
+}

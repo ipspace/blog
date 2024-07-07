@@ -1,0 +1,44 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "19 April 2024 07:38",
+               "html": "<p>I probably agree with most what you wrote, but there&#39;s a stomping elephant in the room called Android :( Unfortunately the people controlling its IPv6 stack think they can do whatever they feel like doing regardless of the impact on everyone else.</p>\n",
+               "id": "2226",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-04-19T19:38:36",
+               "ref": "2225",
+               "type": "comment"
+            },
+            {
+               "date": "20 April 2024 03:56",
+               "html": "<p>I believe you and I have interacted in the past on v6ops IETF mailing list on DHCPv6 support issues for god-almighty Android. We&#39;re on the same page on this topic.</p>\n\n<p>I recommend Android users to connect to v4-only RFC1918 VLAN/SSID and then VPN from there and finally get /128 GUA on the VPN interface on the client side. WireGuard works well for this one and a company can automate it with middle-ware like headscale/tailscale or whatever take your pick middle-ware.</p>\n\n<p>If the employees or employer don&#39;t like this, then buy everyone an iPhone or recommend it &ldquo;If you want native IPv6, Switch to iPhone&rdquo;.</p>\n",
+               "id": "2227",
+               "name": " Daryll Swer",
+               "pub": "2024-04-20T15:56:35",
+               "ref": "2226",
+               "type": "comment"
+            },
+            {
+               "date": "21 April 2024 12:54",
+               "html": "<p>That kind of iPhone encouragement is the type of forced compliance that&#39;d get me to go seek a job offer from the companies biggest competitor and then when they ask why I&#39;m leaving I tell them &quot;you wouldn&#39;t give me good internet.&quot; Personally I&#39;m sort of neutral on Android&#39;s lack of DHCP support but I understand their concerns and share some of them and I understand the argument going the other way.</p>\n",
+               "id": "2228",
+               "name": " Scoopta",
+               "pub": "2024-04-21T00:54:41",
+               "ref": "2227",
+               "type": "comment"
+            }
+         ],
+         "date": "19 April 2024 11:22",
+         "html": "<p>Just opt for RFC7217 if not ia_na and/or ia_pd (for the CLAT thing).</p>\n\n<p>If these are Linux hosts we&#39;re talking about, disable &ldquo;use_tempaddr&rdquo; and generate stable-private addresses by configuring &ldquo;stable_secret&rdquo; and &ldquo;addr_gen_mode&rdquo;:\nhttps://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt</p>\n\n<p>Similarly, the Linux feature above <em>should</em> exist for Windows and macOS. And if the feature is supported, then forget about temporary addresses and configure a persistent &ldquo;private&rdquo; address instead. Meaning, each host will use only one /128 for its lifetime.</p>\n\n<p>I&#39;m a strong advocate for BCOP-690 (yes I know it&#39;s SP-oriented) and do not believe in this crap about &ldquo;Privacy extension rotation or dynamic IPs will magically stop big bro from tracking you&rdquo; &mdash; No, I personally use analytics tools and no, dynamic IPs doesn&#39;t stop tracking in any shape or form. This is a tinfoil conspiracy theory that tracking is dropped dead on dynamic IPs that seems popular in EU for some reason and parts of Asia (where I am based in).</p>\n\n<p>So, in addition to BCOP-690, I explicitly configured pref-lifetime and valid-lifetime to infinity on the upstream router. I don&#39;t believe in &ldquo;dynamic IPs&rdquo; for anything in IPv6 world.</p>\n",
+         "id": "2225",
+         "name": "Daryll Swer ",
+         "pub": "2024-04-19T11:22:41",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2024/04/ipv6-slaac-unintended-consequences.html"
+}

@@ -1,0 +1,293 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1952">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> tmp</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1952" href="#1952">03 October 2023 01:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>i think that the amount of reordering caused by packet spraying in data centers is widely overestimated. see also: https://engineering.purdue.edu/~ychu/publications/infocom13_pktspray.pdf
+if one finds that the paths are too asymmetrical in delay, flowlets or something more advanced such as hula might be thinkable. 
+at that scale though, it might be worth looking into optical circuit switching.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1954">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1954" href="#1954">04 October 2023 08:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>From what I see, DC is a blanket term that has lost meaning, just like &#39;Cloud&#39;. Different kinds of DC have different kinds of workload and traffic pattern. Flowlets switching, including Cisco&#39;s own solution (forgot its name) are not designed for the scale of HPC, so they&#39;re untested solutions for that kind of environment and likely won&#39;t scale. </p>
+
+<p>Turbulence modeling in particular, is extremely data and network intensive due to the nature of Turbulence -- the number of degrees of freedom scale exponentially with model size, which is why weather forecasting cannot forecast very far, while climate modeling is totally hopeless. These are the ultimate Big Data scenarios, and as usual, almost never get mentioned in mainstream press because they&#39;re super hard and not trendy. But they require as much horsepower as the biggest supercomputer fabrics can muster just to solve a tiny fraction of their problems. So claims that AI/ML require more processing power than what comes before them -- which is the impression I&#39;m getting these days -- don&#39;t stand up to scrutiny.</p>
+
+<p>HPC DCs that work on things like Turbulence often use Dragonfly Fabric Topology -- to minimize network diameter -- with per-packet Adaptive Routing, so asymmetric routing and out-of-order delivery become a big problem the higher the fabric gets utilized. </p>
+
+<p>Circuit switching using optical paths does away with reordering, but it&#39;s physically expensive and therefore doesn&#39;t not get implemented in the big HPC fabrics, and is not mentioned in the Broadcom solution either. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1963">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">tmp</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1963" href="#1963">05 October 2023 05:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; Flowlets switching, including Cisco&#39;s own solution (forgot its name) are not designed for the scale of HPC, so they&#39;re untested solutions for that kind of environment and likely won&#39;t scale. </p>
+
+<p>Whether they scale depends entirely on the implementation. If you work around having to hold states for all available paths, it scales. Untested for that kind of environment, yes, but only because most people don&#39;t have access to one. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1955">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1955" href="#1955">04 October 2023 09:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; Circuit switching using optical paths does away with reordering, but it&#39;s physically expensive and therefore doesn&#39;t not get implemented in the big HPC fabrics</p>
+
+<p>It also requires reasonably-stable traffic distribution to work well. That&#39;s why it works for Google -- if you have enough (somewhat predictable) traffic, the patterns are stable enough at the network core for optical switching to work well.</p>
+
+<p>&gt; and is not mentioned in the Broadcom solution either.</p>
+
+<p>Because Broadcom does not sell anything along those lines?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1962">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dip singh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1962" href="#1962">04 October 2023 10:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; Circuit switching using optical paths does away with reordering, but it&#39;s &gt;physically expensive and therefore doesn&#39;t not get implemented in the big 
+&gt; HPC fabrics</p>
+
+<p>&gt;It also requires reasonably-stable traffic distribution to work well. That&#39;s &gt;why it works for Google -- if you have enough (somewhat predictable) &gt;traffic, the patterns are stable enough at the network core for optical &gt;switching to work well.</p>
+
+<p>Google has tooling around Topology engineering (Ref: Section 4 https://dl.acm.org/doi/pdf/10.1145/3544216.3544265 and https://dl.acm.org/doi/pdf/10.1145/3603269.3604836), which re-configures logical connectivity as the Traffic/Topology evolves. Having systems that can operate this kind of network is a lot more crucial and generally out of reach from most folks if one digs into what it takes to build these kinds of systems.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1957">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1957" href="#1957">04 October 2023 09:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Looks like even for ML workload, network bottleneck can become severe:</p>
+
+<p>https://blog.apnic.net/2023/08/10/large-language-models-the-hardware-connection/</p>
+
+<p>&quot;But, in many training workloads, GPU utilization hovers around 50% or less due to memory and network bottlenecks.&quot;</p>
+
+<p>&quot;Google trained all its LLM models, LaMDA, MUM, and PaLM, in a TPU v4 pod and they claim very high TPU utilizations (over 55%) for training.&quot;</p>
+
+<p>55% TPU cluster utilization is considered good. So obviously they want to improve. But will UltraEthernet provide the answer?</p>
+
+<p>So I watched &quot;Broadcom Ethernet Fabric for AI and ML at Scale&quot;. They already introduced this concept of cell-spraying fabric a few years back in a paper. Looks like they&#39;re now putting that concept in action. The problem is: scale matters. Inside a xbar switch, high throughput and ECMP are achieved through cell-switching -- the power of a central fabric scheduler like iSlip therefore is vital to xbar performance -- while latency and HOL blocking are achieved with VOQ -- without VOQ, input-buffered switches&#39; performance tops out 58% for the most simple type of traffic, due to HOL blocking. </p>
+
+<p>But when they try to turn it into a network-wide fabric, they don&#39;t have a central scheduler to arbitrate cells efficiently, so what do they rely on? Distributed scheduling at each node from what I understand. But that solution is no longer the simple VOQ xbar like those found in the single-stage Cisco 12000 series (designed by Nick Mckeown) or the multi-stage CRS router. </p>
+
+<p>Memory-less xbar (the xbar itself doesn&#39;t have any buffer) routers don&#39;t have an out of order delivery problem, so output interfaces don&#39;t worry about cell reordering; they only do SAR (segmentation and reassembly) function. Virtual switch built using an aggregation of smaller switches, like the solution Broadcom proposes in their vids, DO. This is the same out-of-order delivery problem that affects buffered-crossbar routers. </p>
+
+<p>How do Broadcom deal with reordering? I don&#39;t see that mentioned -- if I did miss something in their presentation(s), pls point out. Reordering at the destination switch? Damn. That&#39;s a lot of work. They did mention credit-based flow control, which is nonsense. Priority flow control creates HOL blocking, the same problem that stops input-buffered switches&#39; performance at 58% for the most simple type of traffic, for which VOQ was designed to address. Plus, PFC (credit-based FC a variant) makes the circuitry more complex, and therefore harder to produce and test for; all this means higher price for the network devices. Which leads us right to the next problem: &quot;virtual switch that can supposedly have up to 32.000 ports&quot;.</p>
+
+<p>If this kind of chassis is built using VOQ doctrine, I don&#39;t think it&#39;s physically possible. Because in VOQ system, each port, and in this case, it means each physical port on a switch -- any switch in the fabric -- has to have a VOQ for the other 32000 ports in the chassis. Let&#39;s say that leaf switch has 64 ports. That means 64x32000 VOQs. This is just too much. How are you gonna design the physical circuitry for this? How big will the PCB become, and how many layers will it have??? What about the heat this monster will dissipate, will it melt up or otherwise damage the material? And who&#39;s paying for the power bill? Color me skeptical, but I&#39;ll believe it when I see it. </p>
+
+<p>For these reasons, I think their solution will be subpar, just like the others mentioned in the APNIC article.</p>
+
+<p>Also, the solution for this particular kind of problem already exists, in the form of Dragonfly HPC fabrics with Adaptive routing. No need for crappy PFC. Deadlock is avoided with the use of Virtual Channel and some form of valley-free routing.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1960">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1960" href="#1960">04 October 2023 11:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; How do Broadcom deal with reordering? I don&#39;t see that mentioned</p>
+
+<p>Of course not, that&#39;s their secret sauce.</p>
+
+<p>&gt; Reordering at the destination switch? Damn. That&#39;s a lot of work.</p>
+
+<p>Not if you use a trick similar to RDMA -- use fixed-length cells, and copy incoming cells into the right place in the buffer memory (in reality: probably use some scatter/gather trick to avoid copying overhead). The only thing left is to deal with packet losses and retransmissions (or you ignore them like ATM did).</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1961">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Wes Felter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1961" href="#1961">04 October 2023 06:35</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I can answer some of this since I worked on a Broadcom Jericho DDC in 2015-2017. Cells are indeed put back into order at the egress ASIC (otherwise packets would be corrupted). I think packets are also kept in order although I&#39;m not sure how. Forwarding logic isn&#39;t duplicated for each port so you don&#39;t need 64x32,000 VOQs, just 32,000 in each ASIC which can be stored in on-chip SRAM. All the ASICs are now 500W monsters and all the PCBs are thicc af (as the kids say) so IMO you might as well use the best ASIC. At the time we found that Jericho+Ramon was actually slightly cheaper and noticeably faster than Tomahawk.</p>
+
+<p>Note that Ultra Ethernet works differently from DNX/Jericho so today&#39;s DNX networks aren&#39;t a preview of how Ultra Ethernet will look (although one&#39;s available today and the other is not). It sounds like Ultra Ethernet will have NIC-to-NIC congestion management and reordering while DNX does everything inside the switch. Mellanox is already selling some flavor of NIC/DPU-based congestion management.</p>
+
+<p>It&#39;s easy to say something like adaptive routing with virtual channels and valley-free routing like all the academic papers but Ethernet ASICs either don&#39;t support those features or they&#39;ve never been turned on (maybe they don&#39;t work). It&#39;s possible that Ultra Ethernet will get those features in a more reliable and standardized way.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1966">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1966" href="#1966">05 October 2023 09:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Wes, thx for the info!! Re the VOQ being stored in on-chip SRAM, basically Broadcom has traded one problem for another: space for time. If they create separate 32k VOQs per port, it&#39;ll blow up the size of their ASIC, increasing power draw considerably. So they opted to have the VOQ share the on-chip SRAM. Now speed becomes the problem, considering situations when thousands or tens of thousands (or way more) of cells are arriving simultaneously, which happen because of the sheer size of their proposed fabric. SRAM speed (even the multiport variety which enables several accesses at once) is always the weak link in the chain when it comes to ASIC processing power. Now it&#39;s made way worse with the sheer number of VOQs. SRAM is heat-prone too, so the bigger amount, the worse. </p>
+
+<p>OTOH, If they split the memory into 32k VOQ, that will help the speed at the expense of space and power. So my guess is they opt for midway approach between the 2 extremes. Still, due to the sheer number of VOQs, there&#39;re situations like that I mention, that will create big bottleneck and congestion spreading. </p>
+
+<p>&quot;I think packets are also kept in order although I&#39;m not sure how.&quot;</p>
+
+<p>This is the big problem. Like I said, memoryless-xbar has no OOO (out of order) delivery problem. But buffered xbar routers do experience OOO cell arrival. You&#39;d expect more of this OOO problem under high loads. Indeed, our friend Andrei has brought up one case from his own experience stress-testing Juniper routers a few decades back:</p>
+
+<p>https://blog.ipspace.net/2020/05/ip-packet-reordering.html#64</p>
+
+<p>This is not a bug, but functioned as design, and it applies equally to virtual xbar fabric made out of member switches, as we&#39;ve been discussing here. The OOO problem gets worse with the buffer depth of the transit switches, or the offered-load level, or both. And don&#39;t forget, xbar devices achieve their performance not just with VOQ, but as importantly, with fabric speedup, generally x2 (xbar speed twice the collective speed of the total number of ports in the fabric), though the higher the speedup, the better the performance/work-conservation. Speed-up is very difficult the bigger the virtual fabric gets for obvious reason. It&#39;ll require either much more powerful switches in the middle that act as the xbar, or many more switches there than at the edge. That adds up both CAPEX and OPEX, and increases MTBF. The fabric can be built without the speedup, but its performance will be underwhelming, with OOO getting worse. </p>
+
+<p>HPC people realize this, the absurdity of building a monstrous fabric. They opt for making smaller fabrics and interconnecting them instead.</p>
+
+<p>&quot;It&#39;s easy to say something like adaptive routing with virtual channels and valley-free routing like all the academic papers but Ethernet ASICs either don&#39;t support those features or they&#39;ve never been turned on&quot;</p>
+
+<p>As I mentioned in my previous comment to Dip, adaptive routing in hardware with VC and Valiant (a form valley-free routing) has been in place for many years in HPC clusters. They work fine. So if Ethernet can&#39;t provide similar functionalities, it can keep underperforming. </p>
+
+<p>Overall, while I think it&#39;s good for Broadcom to go ahead and implement the cell-spraying concept they put in their paper a few years back, given what we&#39;ve discussed so far, this fabric lags behind the existing HPC architecture, which has been designed to deal with more bursty traffic pattern, the hardest type of traffic, and therefore, is well-placed to handle more stable AI/ML workload. But again, scale matters, so certain customers with less demanding workloads might find them worth the money for their needs. This discussion is to to belittle Broadcom, only to discuss the pros and cons as we find them. </p>
+
+<p>Also, as you said, UltraEthernet might be different. So let&#39;s wait and see what it&#39;ll look like when it finally comes out. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1965">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1965" href="#1965">05 October 2023 07:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Dip, thx for links!! Going through the first one -- the 2nd paper is basically a more particular application of the first one -- gives me the impression that Google got a fair bit of inspiration from Cray Cascade&#39;s Dragonfly HPC fabric design. Cray Cascade is the predecessor of Clay Slingshot, the topology/fabric used by some of today&#39;s biggest supercomputers, incl. Aurora. Cray architecture, in a nutshell, is Dragonfly topology using adaptive routing in hardware, with Virtual Channel and Valiant routing (a form of valley-free routing) employed to avoid deadlock &amp; increase throughput and latency. Google&#39;s direct-connect and non-shortest path routing are also part of the philosophy underpinning Cray&#39;s design.</p>
+
+<p>Indeed in section 7, they mentioned it: &quot;The direct-connect Jupiter topology adopts a similar hybrid approach as in Dragonfly+ [32] where aggregation blocks with Clos-based topology are directly connected. Compared to hardware-based adaptive routing in Dragonfly+, Jupiter provides software-based traffic engineering that can work on legacy commodity silicon switches.&quot;</p>
+
+<p>There&#39;re some minor differences, including Google using SDN to compute path for topology engineering (fancy term for traffic engineering), while Cray uses adaptive routing in hardware, but the overarching concepts are the same. For me, this is a testimony of the power of the Dragonfly design. </p>
+
+<p>Ivan raised a valid point as well, relatively stable traffic matrix is needed for optical switching to work, because as we know, MEMS optical switching is much slower than electrical switching, and so opting for a circuit design to remove this problem, is a much better choice for optical switches. For long-lived elephant flows (stable traffic) which characterize AI/ML traffic, this paradigm fits well, that&#39;s why Google pursued it. They said as much in the 2 papers.</p>
+
+<p>Section 4.6 of the first one also admits topology engineering is also an infrequent exercise, and the bulk of traffic engineering is still done by good old-fashion routing:</p>
+
+<p>&quot;Thanks to OCS, topology engineering can be optimized to be on-par with (or faster than) routing changes. However, based on simulation results, we find that block-level topology reconfiguration more frequent than every few weeks yields limited benefits [46]. This is because of two main reasons: 1) concerning throughput, most traffic changes can be adequately handled by routing. The kind of traffic change that requires assistance from topology tends to happen rather slowly. 2&quot;</p>
+
+<p>Goes to show timeless fundamentals never go out of styles, and simplicity trumps complexity most of the time. ANd for this particular reason, I disagreed with Ivan&#39;s statement: &quot;Unless you work for a hyperscaler or train ML models on GPU clusters with tens of thousands of nodes, in which case I hope you&rsquo;re not reading this blog for anything else but its entertainment value.&quot; As with all fields, no one knows it all and everyone makes mistakes here and there. So for people like Ivan who understand the history of networking and its the timeless principles, his blog entries, esp. in-depth articles like this one here, would always offer food for thought for networkers of all levels. Working for the biggest providers in the world is no substitute for understanding history and its universal patterns, so it&#39;s not a condition sufficient to be a great networker. </p>
+
+<p>Also, Google&#39;s 1st paper mentions a great bit of technology: the optical circulator. It enables bidirectional operation of DCNI links to halve the number of required OCS ports and fibers utilizing birefringence (double refractive index material) crystals and taking advantage of bosonic (not subject to Pauli&#39;s exclusion principle that applies to Fermions like electrons) and chargeless natures of photons so that superimposed lights don&#39;t destroy each other (applicable for linear optics which is what&#39;s going on inside the fibers). I consider this kind of thing real progress (not done by Google btw), because hardware is a lot more always difficult than software.  </p>
+
+<p>Cheers!</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2149">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jacob O.</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2149" href="#2149">22 March 2024 02:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Reading this article and these comments has been a true pleasure. I&#39;m going out on a limb here a bit, but what about using mesh PCIe (or later bus/protocols) to provide the ability to virtualize the resources of all interconnected machines and similarly provide data transfer using whatever protocols are specified by the application+ layers? This has the benefit of expanding the available memory (or compute) to the sum of all chipset limits while doing nifty networking fun in the process? The bus architecture of PCIe isn&#39;t ideal, so hopefully they flatten that architecture (and maybe even returning to parallel with a future proofing towards a return to analog). </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2223">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Himanshu P</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2223" href="#2223">17 April 2024 08:41</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&rsquo;ve recently read your insightful blog on Ultra Ethernet and its predecessor. I&rsquo;ve also gone through the Ultra Ethernet Consortium&rsquo;s progress towards the v1.0 set of specifications and the position paper on Ultra Ethernet. Both resources mention the Ultra Ethernet Transport protocol, described as an open protocol specification designed to operate over IP and Ethernet.</p>
+
+<p>In the specification article, the UEC stack includes a Transport layer, and a dedicated Transport working group is developing specifications for an AI/HPC transport. This leads me to question whether TCP/UDP will be superseded by a new transport specifically designed for AI/HPC applications. If this is the case, will there be any adapter or converter libraries available to facilitate this transition? Could you provide further details on this matter?</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

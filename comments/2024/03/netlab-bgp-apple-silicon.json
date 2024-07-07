@@ -1,0 +1,100 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "19 March 2024 08:53",
+               "html": "<p>I was testing the labs on a MacBook Air (M2) with 8 GB of RAM</p>\n",
+               "id": "2136",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-19T08:53:29",
+               "ref": "2135",
+               "type": "comment"
+            }
+         ],
+         "date": "19 March 2024 01:49",
+         "html": "<p>This is great; thanks for sharing, Ivan. May I know the specs of your Mac Book Pro?&nbsp; </p>\n",
+         "id": "2135",
+         "name": " Dagoberto Alzamora",
+         "pub": "2024-03-19T01:49:43",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "19 March 2024 06:20",
+               "html": "<p>Did you change the external devices from Cumulus Linux to FRR (https://bgplabs.net/1-setup/#setting-up-the-labs)?</p>\n",
+               "id": "2139",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-19T18:20:05",
+               "ref": "2138",
+               "type": "comment"
+            },
+            {
+               "date": "20 March 2024 11:05",
+               "html": "<p>I had changed them in the defaults.yml, but apparently the issue was that I needed to change them in the lab&#39;s topology.yml file too. Thanks!</p>\n",
+               "id": "2140",
+               "name": "Erjol",
+               "pub": "2024-03-20T11:05:07",
+               "ref": "2139",
+               "type": "comment"
+            },
+            {
+               "date": "20 March 2024 11:06",
+               "html": "<p>Ouch, good one. Will fix. Thank you!</p>\n",
+               "id": "2141",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-20T11:06:23",
+               "ref": "2140",
+               "type": "comment"
+            },
+            {
+               "date": "21 March 2024 02:03",
+               "html": "<p>Thanks a million for reporting this. Fixed, a plugin switches the devices in that lab from CL to FRR when running on <strong>aarch64</strong> architecture.</p>\n",
+               "id": "2145",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-03-21T14:03:43",
+               "ref": "2141",
+               "type": "comment"
+            }
+         ],
+         "date": "19 March 2024 01:23",
+         "html": "<p>Hi Ivan, thanks for sharing this. However, there seem to be an issue when running the bgp lab 0-ffrouting. </p>\n\n<pre>\r\nERRO[0000] failed deploy links for node &quot;rtr&quot;: failed to Statfs &quot;/proc/4928/ns/net&quot;: no such file or directory\r\n</pre>\n\n<p>and then the deployment seems to fail too. </p>\n\n<pre>\r\nfatal: [x1]: UNREACHABLE! =&gt; changed=false\r\n  msg: &#39;Failed to create temporary directory. In some cases, you may have been able to authenticate and did not have permissions on the target directory. Consider changing the remote tmp path in ansible.cfg to a path rooted in &quot;/tmp&quot;, for more error information use -vvv. Failed command was: ( umask 77 &amp;&amp; mkdir -p &quot;` echo ~/.ansible/tmp `&quot;&amp;&amp; mkdir &quot;` echo ~/.ansible/tmp/ansible-tmp-1710850548.1555705-5034-172158355871746 `&quot; &amp;&amp; echo ansible-tmp-1710850548.1555705-5034-172158355871746=&quot;` echo ~/.ansible/tmp/ansible-tmp-1710850548.1555705-5034-172158355871746 `&quot; ), exited with result 1&#39;\r\n  unreachable: true\r\n</pre>\n",
+         "id": "2138",
+         "name": "Erjol",
+         "pub": "2024-03-19T13:23:38",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 April 2024 05:34",
+               "html": "<p>I have no idea what happened to you. I started a fresh multipass Ubuntu 22.04 instance, followed the recipe, and got containerlab 0.49.0 installed. </p>\n\n<p>I did a bit of a search on the error message you got, and all hits hint that it&#39;s a local SSL/CA issue.</p>\n\n<p>Did you try to install containerlab on some other platform? Please note that a fresh Ubuntu 22.04 instance is the only environment in which I have any chance of figuring out what might be wrong. Trying to replicate anything else is way beyond my skill set.</p>\n",
+               "id": "2177",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-04-04T17:34:41",
+               "ref": "2175",
+               "type": "comment"
+            },
+            {
+               "date": "05 April 2024 09:42",
+               "html": "<p>Got it working by exporting local trusted root certs to ubuntu instance and updating the certs. I think because of the company&#39;s IT certs.\nThanks</p>\n",
+               "id": "2181",
+               "name": "Abu-bakar Dongula",
+               "pub": "2024-04-05T09:42:48",
+               "ref": "2177",
+               "type": "comment"
+            }
+         ],
+         "date": "04 April 2024 09:54",
+         "html": "<p>Anyone having issues installing containerlab?</p>\n\n<p>Install containerlab version 0.49.0\nDownloading https://github.com/srl-labs/containerlab/releases/download/v0.49.0/containerlab_0.49.0_linux_amd64.deb\ncurl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html</p>\n\n<p>curl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.\nFailed to install containerlab with the arguments provided: -v 0.49.0\nAccepted cli arguments are:\n        [--help|-h ] -&gt;&gt; prints this help\n        [--version|-v &lt;desired_version&gt;] . When not defined it fetches the latest release from GitHub\n        e.g. --version v0.1.1\n        [--use-pkg]  -&gt;&gt; install from deb/rpm packages\n        [--no-sudo]  -&gt;&gt; install without sudo\n        [--verify-checksum]  -&gt;&gt; verify checksum of the downloaded file\n        For support, go to https://github.com/srl-labs/containerlab/issues</p>\n\n<p>Installation script containerlab.sh failed, exiting...</p>\n",
+         "id": "2175",
+         "name": "Abu-bakar Dongula",
+         "pub": "2024-04-04T09:54:38",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2024/03/netlab-bgp-apple-silicon.html"
+}

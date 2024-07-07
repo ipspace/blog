@@ -1,0 +1,308 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2045">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2045" href="#2045">19 December 2023 08:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>There&#39;s a hint in your topology file.  </p>
+
+<p>&gt; Each one has a public AS number.  </p>
+
+<p>None of them has a public AS number. They all have a private AS number.</p>
+
+<p>&gt; The only change you can make is a new BGP session between PE2 and PE2.  </p>
+
+<p>It should be PE3 there.  </p>
+
+<p>To meet your requirements I would configure BGP with something along &quot;neighbor 172.29.42.x local-as 65003 no-prepend&quot; on PE2 respectively &quot;neighbor 172.29.42.x local-as 65000 no-prepend&quot; on PE3 and &quot;neighbor 172.29.42.x next-hop-self&quot; on both PE2 and PE3.  </p>
+
+<p>I haven&#39;t tested it with your lab tool.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2046">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> chris</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2046" href="#2046">19 December 2023 11:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Not sure it would work, it seems that you cannot use local-as with the same value as the AS of the peer:</p>
+
+<p>https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/13761-39.html</p>
+
+<p>&quot;Local-AS cannot have the local BGP protocol AS number or the AS number of the remote peer.&quot;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2047">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2047" href="#2047">20 December 2023 08:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Anonymous: thanks a million for the typo report. Hopefully, I fixed everything you mentioned.</p>
+
+<p>As for the &quot;hint in the topology file&quot; -- I had to use that parameter to prevent the automatic configuration of a BGP session between PE2 and PE3. Found a better way to do that.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2053">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2053" href="#2053">20 December 2023 06:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@chris: You were right (at least for Cisco IOS).  </p>
+
+<p>I found a convoluted solution (not sure if it still meets all requirements):  </p>
+
+<pre>
+PE2#
+router bgp 65000
+ neighbor 10.0.0.2 remote-as 65000
+ neighbor 10.0.0.2 update-source 10.0.0.3
+ neighbor 10.0.0.2 next-hop-self all
+ neighbor 172.29.24.1 remote-as 65003
+ neighbor 172.29.24.1 local-as 65003
+ neighbor 172.29.24.1 route-reflector-client
+ neighbor 172.29.24.1 route-map NEXT_HOP in
+!
+route-map NEXT_HOP permit 10 
+ set ip next-hop 172.29.24.1
+</pre>  </p>
+
+<pre>
+PE3#
+router bgp 65003
+ neighbor 10.0.0.5 remote-as 65003
+ neighbor 10.0.0.5 update-source 10.0.0.4
+ neighbor 10.0.0.5 next-hop-self all
+ neighbor 172.29.24.2 remote-as 65003
+ neighbor 172.29.24.2 route-reflector-client
+ neighbor 172.29.24.2 route-map NEXT_HOP in
+!
+route-map NEXT_HOP permit 10 
+ set ip next-hop 172.29.24.2
+</pre>  </p>
+
+<p>I tested it in my own lab.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2051">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> PJO</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2051" href="#2051">20 December 2023 01:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I think i got it right !
+My only assumption is that the PE/RR peers use next-hop-self knobs, which makes sense at least for PE1 and PE4. An alternative is to advertise the network 172.29.42.0/24 into BGP, which is not forbidden :)</p>
+
+<p>For my lab, i replaced backbone AS by 5000 and 5003 in order to use public AS and it is still OK !</p>
+
+<p>Thanks Ivan for the fun !</p>
+
+<pre>
+x2#sh ip bgp | b Netw
+     Network          Next Hop            Metric LocPrf Weight Path
+ *&gt;  192.168.100.0    10.1.0.17                              0 5003 65100 i
+ *&gt;  192.168.107.0    0.0.0.0                  0         32768 i
+x2#
+</pre>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2052">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2052" href="#2052">20 December 2023 02:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Looks like you lost the customer prefixes (192.168.1.0/24 and 192.168.3.0/24). Have no idea what could cause that as the transit prefixes got across.</p>
+
+<p>Also, did you preserve the next hops of the BGP prefixes across both autonomous systems (the last &quot;at the end of the migration project&quot; bullet)?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2054">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> PJO</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2054" href="#2054">20 December 2023 07:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yes, i forgot to configure the customer prefixes. 
+But worst, i do not have the expected next-hops at PE1 and PE4 !
+-&gt; Back to study :)</p>
+
+<p>Question: Are we allowed to add static routes or to edit the isis/ospf configuration ? </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2058">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2058" href="#2058">21 December 2023 03:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; Are we allowed to add static routes</p>
+
+<p>I wouldn&#39;t (and you don&#39;t need them)</p>
+
+<p>&gt; or to edit the isis/ospf configuration</p>
+
+<p>As long as you don&#39;t change anything on any other router. However, the real-life answer would probably be &quot;<em><em></em></em> NO!!!&quot;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2060">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> PJO</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2060" href="#2060">22 December 2023 04:58</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>OK, this time, the lab pass the verifications, and, yes, no static routes and no IGP changes !</p>
+
+<p>next-hop is not modified by the bgp session between PE4 and PE3 :
+<pre>
+PE1#sh ip bgp 192.168.3.0
+BGP routing table entry for 192.168.3.0/24, version 25
+Paths: (1 available, best #1, table default)
+  Advertised to update-groups:
+     5         
+  Refresh Epoch 1
+  (5003)
+    10.0.0.6 (metric 11) from 10.0.0.2 (10.0.0.2)
+      Origin IGP, metric 0, localpref 100, valid, internal, best
+      Community: internet
+      Originator: 10.0.0.3, Cluster list: 10.0.0.2
+PE1#
+</pre>
+
+<p>and x1/x2 receive exactly 3 prefixes with the correct AS-path :
+<pre>
+x1#sh ip bgp | b Netw
+     Network          Next Hop            Metric LocPrf Weight Path
+ *&gt;  192.168.1.0      10.1.0.1                 0             0 5000 i
+ *&gt;  192.168.3.0      10.1.0.1                               0 5000 i
+ *&gt;  192.168.100.0    0.0.0.0                  0         32768 i
+ *&gt;  192.168.107.0    10.1.0.1                               0 5000 65107 i
+x1#
+</pre>
+
+<p>Thanks again Ivan !</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2061">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2061" href="#2061">22 December 2023 05:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I built it with netlab and FRR containers. Here is my solution for configuration:  </p>
+
+<pre>
+hostname pe2
+!
+router bgp 65000
+ neighbor 172.29.42.2 remote-as 65003
+ neighbor 172.29.42.2 local-as 65003 no-prepend replace-as
+ !
+ address-family ipv4 unicast
+  network 10.0.0.1/32 route-map NO_EXPORT
+  network 172.29.42.0/24 route-map NO_EXPORT
+  neighbor 172.29.42.2 activate
+  neighbor 172.29.42.2 route-reflector-client
+ exit-address-family
+exit
+!
+route-map NO_EXPORT permit 10
+ set community no-export
+</pre>  </p>
+
+<pre>
+hostname pe3
+!
+router bgp 65003
+ neighbor 172.29.42.1 remote-as 65003
+ !
+ address-family ipv4 unicast
+  network 10.0.0.6/32 route-map NO_EXPORT
+  network 172.29.42.0/24 route-map NO_EXPORT
+  neighbor 172.29.42.1 activate
+  neighbor 172.29.42.1 route-reflector-client
+ exit-address-family
+exit
+!
+route-map NO_EXPORT permit 10
+ set community no-export
+</pre>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

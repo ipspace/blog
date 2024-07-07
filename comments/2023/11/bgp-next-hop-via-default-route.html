@@ -1,0 +1,183 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2002">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Billy</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2002" href="#2002">27 November 2023 12:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi,</p>
+
+<p>If I understand correctly this is what&#39;s taken advantage of in conjunction with BGP selective download to carry full view in RIB while only programming default route in FIB on below use case.</p>
+
+<p>https://www.cisco.com/c/dam/en/us/products/collateral/routers/asr-920-series-aggregation-services-router/asr920-full-internet-routing-capability.pdf</p>
+
+<p>Best</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2003">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2003" href="#2003">27 November 2023 12:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Selective route download is more generic (or at least it could be): whenever a more-specific and a less-specific prefix have the same next hop, there&#39;s no need for the more-specific prefix. More details in https://blog.ipspace.net/2022/05/living-small-forwarding-tables.html and https://datatracker.ietf.org/doc/html/rfc6769</p>
+
+<p>Obviously, there&#39;s a tradeoff: you can&#39;t use PIC or any other similar FIB reprogramming optimization tool. See https://blog.ipspace.net/2012/01/prefix-independent-convergence-pic.html and https://blog.ipspace.net/2020/11/fast-failover-implementation.html for details.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2004">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Michael Milaitis</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2004" href="#2004">27 November 2023 08:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I faced this problem some years ago. I wanted the BGP route to get invalid when there is no available /32 route for the next-hop. In IOS you can do this with Selective BGP Next-Hop Route Filtering (https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-3s/irg-xe-3s-book/bgp-support-for-next-hop-address-tracking.html). The command is &ldquo;bgp next-hop route-map xxx&rdquo;. So the route-map could match only the prefix of your network&rsquo;s loopbacks.</p>
+
+<p>You can achieve the same for fast neighbor deactivation when there is no specific route for the neighbors address. neighbor xxx fall-over route-map xxxx.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2005">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2005" href="#2005">28 November 2023 11:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I got bitten a few weeks ago by Arista EOS having a DHCP-derived default route in the main routing table. It&#39;s not their fault; they&#39;re doing things the way they should be done -- I should have used the management VRF.</p>
+
+<p>FWIW, I wrote about the fast neighbor deactivation in Cisco IOS a long while ago; it looks like I have to resurrect that article ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2037">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Vinay</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2037" href="#2037">12 December 2023 10:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>Tried this experiment with juniper mx routers. I have used 17.16* IPs in local lab instead of 172.16*. Observed that junOS uses the default route to resolve the BGP next hops and correctly displays the routing entry it used:</p>
+
+<p>root@mx1# run show route 10.0.0.1 extensive</p>
+
+<p>inet.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
+10.0.0.1/32 (1 entry, 1 announced)
+TSI:
+KRT in-kernel 10.0.0.1/32 -&gt; &#123;indirect(1048574)&#125;
+        *BGP    Preference: 170/-101
+                Next hop type: Indirect, Next hop index: 0 =------ next hop type is indirect</p>
+
+<pre><code>            Address: 0x7b3fef4
+            Next-hop reference count: 6, key opaque handle: 0x0, non-key opaque handle: 0x0
+            Source: 10.0.0.2
+            Next hop type: Router, Next hop index: 572
+            Next hop: 17.16.1.2 via ge-0/0/1.0, selected =--- physical next-hop
+            Session Id: 150
+            Protocol next hop: 17.16.0.1 =--- logical next-hop
+            Indirect next hop: 0x758b6cc 1048574 INH Session ID: 337
+            State: &amp;lt;Active Int Ext&amp;gt;
+            Local AS: 65002 Peer AS: 65002
+            Age: 3:56   Metric2: 0
+            Validation State: unverified
+            Task: BGP_65002.10.0.0.2
+            Announcement bits (2): 0-KRT 5-Resolve tree 1
+            AS path: 65001 I
+            Accepted
+            Localpref: 100
+            Router ID: 128.52.34.21
+            Thread: junos-main
+            Indirect next hops: 1
+                    Protocol next hop: 17.16.0.1 Metric: 0 ResolvState: Resolved
+                    Indirect next hop: 0x758b6cc 1048574 INH Session ID: 337
+                    Indirect path forwarding next hops: 1
+                            Next hop type: Router
+                            Next hop: 17.16.1.2 via ge-0/0/1.0
+                            Session Id: 150
+                            0.0.0.0/0 Originating RIB: inet.0   =---- the source of the indirect next-hop
+                              Metric: 0 Node path count: 1
+                              Forwarding nexthops: 1
+                                    Next hop type: Router
+                                    Next hop: 17.16.1.2 via ge-0/0/1.0
+                                    Session Id: 150
+</code></pre>
+
+<p>root@mx1# run show route 17.16.0.1</p>
+
+<p>inet.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both</p>
+
+<p>0.0.0.0/0          *[OSPF/150] 00:06:44, metric 0, tag 0
+                    &gt;  to 17.16.1.2 via ge-0/0/1.0</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2038">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2038" href="#2038">12 December 2023 10:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you! Much appreciated!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,154 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2121">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Alex</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2121" href="#2121">05 March 2024 11:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Rant is mentioned in the title, so let&#39;s fuel it a bit ;)</p>
+
+<p>&quot;crazy ideas of running IBGP over EBGP&quot; allow you to achieve exactly what was mentioned in the first question - EVPN-VXLAN fabric with spines doing only plain IPv4 forwarding with eBGP signaling.</p>
+
+<p>I doubt you can find more interoperable protocol than eBGP AFI/SAFI 1/1. Definitely better than OSPF in this aspect. Try to change my mind ;)</p>
+
+<p>I personally saw networks built using one vendor for TORs and 2 different vendors for spines, and this design makes a lot of sense for many reasons.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2122">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2122" href="#2122">05 March 2024 01:21</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; &quot;crazy ideas of running IBGP over EBGP&quot; allow you to achieve exactly what was mentioned in the first question - EVPN-VXLAN fabric with spines doing only plain IPv4 forwarding with eBGP signaling.</p>
+
+<p>As long as you don&#39;t run BGP RR on the spines ;) For whatever crazy reason, most vendors promoting this design forget about this tiny little detail ;))</p>
+
+<p>&gt; I doubt you can find more interoperable protocol than eBGP AFI/SAFI 1/1. Definitely better than OSPF in this aspect. Try to change my mind ;)</p>
+
+<p>Trying to change ingrained beliefs is futile. Let&#39;s just say that most of the Internet runs on OSPF/IS-IS + IBGP/EBGP, and it mostly works.</p>
+
+<p>&gt; I personally saw networks built using one vendor for TORs and 2 different vendors for spines, and this design makes a lot of sense for many reasons.</p>
+
+<p>... at scale.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2123">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeff Behrns</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2123" href="#2123">05 March 2024 03:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Average company is blessed beyond their wildest dreams to find an engineer who understands what a BPDU is and that bridging loops are bad.  L2oL3, MP-BGP AFIs, ESIs, VTEPs....not supportable by 99% of the wild.  All just pushing the needle on sales.  4k VLAN limit isn&#39;t a valid argument in the 99% either.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2124">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Enrique Vallejo</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2124" href="#2124">05 March 2024 11:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for your rant, very interesting! Could you please explain the mid-1990&#39;s OSPF debacle, for those of us (just slightly) younger?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2125">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2125" href="#2125">06 March 2024 07:58</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>OSPF was brand new at that time and (according to some rumors) wasn&#39;t implemented optimally on some platforms. The fact that it was overspecified and that Cisco kept pushing its own routing algorithm (IGRP, later EIGRP) didn&#39;t help either.</p>
+
+<p>Anyway, getting OSPF to work reliably across three major vendors at that time was a bit of a challenge, not to mention four versions of OSPFv2 (1247, 1583, 2178, 2328) and stuff that kept appearing, like NSSA and demand circuits.</p>
+
+<p>FWIW, Nexus OS has (had?) the &quot;rfc1583compatibility&quot; nerd knob, and RFC 1583 was published in March 1994 (= exactly 30 years ago).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2126">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Hannes Gredler</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2126" href="#2126">06 March 2024 10:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>All good and valid here except OSPF is not trivial - those who have implemented it do know.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2127">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2127" href="#2127">06 March 2024 02:21</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; All good and valid here except OSPF is not trivial - those who have implemented it do know.</p>
+
+<p>Is bloatware we made out of the three-napkin protocol any simpler? I found a simple scenario a few days ago where different implementations disagree on what the result should be almost 30 years after the BGP4 specs were written. Details coming in a blog post (where else ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
