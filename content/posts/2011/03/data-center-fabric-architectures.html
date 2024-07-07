@@ -4,7 +4,6 @@ tags:
 - link aggregation
 - switching
 - data center
-- workshop
 title: The Data Center Fabric architectures
 url: /2011/03/data-center-fabric-architectures/
 needs_fix: true
@@ -13,7 +12,7 @@ needs_fix: true
 <p>Have you noticed how quickly <em>fabric </em>got as meaningless as <em>switching </em>and <em>cloud</em>? Everyone is selling you <em>data center fabric </em>and no two vendors have something remotely similar in mind. You know it’s always more fun to look beyond white papers and marketectures and figure out what’s really going on behind the scenes (warning: you might be <a href="http://en.wikipedia.org/wiki/The_Wizard_of_Oz_(1939_film)">as disappointed as Dorothy was</a>). I was able to identify three major architectures (at least two of them claiming to be omnipotent fabrics).</p>
 <h4>Business as usual</h4><p>Each networking device (let’s confuse everyone and call them <a href="/2011/02/how-did-we-ever-get-into-this-switching/"><em>switches</em></a>)<em> </em>works independently and remains a separate management and configuration entity. This approach has been used for decades in building the global Internet and thus has proven scalability. It also has well-known drawbacks (large number of managed devices) and usually requires thorough design to scale well.</p>
 <!--more--><p>As the long-distance bridging fever spreads across data centers, <em>business-as-usual </em>approach has to replace STP with a more scalable protocol. TRILL and SPB (802.1aq) are the standard candidates; Cisco’s FabricPath is a proprietary alternative.</p>
-<p>As long as access-layer switches are not TRILL/SPB-enabled, we need multi-chassis link aggregation (<a href="/search?q=MLAG">MLAG</a>) to optimize bandwidth utilization. Those of you that worked with multichassis multilink PPP (MMP) in the past would probably agree with me that MLAG is also <em>business as usual</em>.</p>
+<p>As long as access-layer switches are not TRILL/SPB-enabled, we need multi-chassis link aggregation (<a href="/series/mlag">MLAG</a>) to optimize bandwidth utilization. Those of you that worked with multichassis multilink PPP (MMP) in the past would probably agree with me that MLAG is also <em>business as usual</em>.</p>
 <p><strong>Example</strong>: Cisco’s Nexus 7000 with FabricPath and VPC, Brocade’s VCS</p>
 <h4>The Borg</h4><p>In the <em>Borg </em>architecture (lovingly known as <a href="/2010/10/multi-chassis-link-aggregation-stacking/"><em>stacking on steroids</em></a>) numerous switches decide to form a collective and elect the central brain (or <a href="/2010/11/multi-chassis-link-aggregation-mlag/">outsource the brainy functions to an external device</a>) that controls the whole hive. The cluster of devices appears as a single control- and management-plane entity to the outside world. It’s managed as a single device, has a single configuration and one set of routing adjacencies with the outside world.</p>
 <p><strong>Examples</strong>: stackable switches, Juniper’s virtual chassis, HP’s IRF, Cisco’s VSS</p>

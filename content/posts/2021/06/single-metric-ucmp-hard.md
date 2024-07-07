@@ -20,7 +20,7 @@ It obviously makes sense to spread the load between E1 and E2 in a 2:1 ratio (â…
 
 There's absolutely no way that you would get the load balancing ratios right in a single-metric routing protocol without getting insane trying to tweak the link metrics. You _could_ get the metrics just right with some interesting math, using a tool like Cariden MATE, or using MPLS-TE tunnels (where the load balancing ratio is determined by relative tunnel bandwidth)... but it's not trivial.
 
-How about the data center anycast use case I [mentioned the last time](/2021/06/tcp-anycast-hard/)?
+How about the data center anycast use case I [mentioned the last time](/2021/05/tcp-anycast-hard/)?
 
 {{<figure src="/2021/06/Anycast-TCP.png">}}
 

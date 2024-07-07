@@ -2,7 +2,6 @@
 date: 2013-04-24T06:59:00.000+02:00
 tags:
 - firewall
-- workshop
 - virtualization
 - high availability
 title: Resiliency of VM NIC firewalls
@@ -16,7 +15,7 @@ url: /2013/04/resiliency-of-vm-nic-firewalls/
 <div class="separator"><a href="/2013/04/s1600-VGW_SlowPath.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="178" src="/2013/04/s320-VGW_SlowPath.png" width="320"/></a></div>
 <p>You could configure what happens when the firewall VM crashes in vShield release 5 and later – it’s either fail-open or fail-close, but neither one is a good option. vSphere HA cluster doesn’t react to firewall VM crashes (why should it), leaving the VMs residing on the same host either unprotected or isolated from the network.</p>
 <p class="info">vShield Edge is a totally different beast – the latest release has high-availability features including stateful failover ... but then it’s a routed firewall, not a VM NIC firewall.</p>
-<p><a href="/2012/10/cisco-virtual-security-gateway-vsg-101/">Cisco’s VSG</a> is a totally different story – it has <a href="http://www.cisco.com/en/US/docs/switches/datacenter/vsg/sw/4_2_1_VSG_1_3_1/vsg/configuration/guide/vsg_config_high_availability.html">full high-availability with stateful failover</a>.</p>
+<p>Cisco’s VSG is a totally different story – it has <a href="http://www.cisco.com/en/US/docs/switches/datacenter/vsg/sw/4_2_1_VSG_1_3_1/vsg/configuration/guide/vsg_config_high_availability.html">full high-availability with stateful failover</a>.</p>
 <h4>VM NIC firewalls implemented in the hypervisor kernel</h4><p>Although Juniper’s vGW uses the same API as VMware’s vShield App firewall, its implementation is totally different – <a href="/2011/11/junipers-virtual-gateway-virtual/">all the firewalling functionality is implemented in a loadable vSphere kernel module</a>. The control VM (still running on the same vSphere host) is used solely for configuration, monitoring and logging purposes, and you can have a HA pair of them (on each vSphere host) in mission-critical environments.</p>
 <div class="separator"><a href="/2013/04/s1600-VGW_FastPath.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="178" src="/2013/04/s320-VGW_FastPath.png" width="320"/></a></div>
 <p>I can only guess what happens if the vGW kernel module crashes, but hopefully it brings down the whole vSphere host, in which case vSphere HA kicks in and restarts the VMs on other hosts in the same cluster.</p>

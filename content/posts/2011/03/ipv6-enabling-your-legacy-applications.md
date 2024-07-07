@@ -57,4 +57,4 @@ create ltm virtual webServerV6 {
 
 {{<note info>}}You have to use **snat** or **snatpool** parameter when doing IPv6-to-IPv4 load balancing. If the expected number of client sessions is small, use **snat automap**. If you expect more than a few thousand concurrent sessions, use a SNAT pool.{{</note>}}
 
-**Test the new virtual server**. If you're too lazy to modify your DNS server (like I was), point your browser to [http://\[fd00:dead:beef:1::1\]/](http://%5Bfd00:dead:beef:1::1%5D/). The *external* interface of my virtual BIG-IP is bridged to the Ethernet interface of my Linux host, so I was immediately able to connect to the IPv6 version of my web server from other hosts within my LAN (yeah, I'm still waiting for an IPv6 prefix from my DSL provider \... are you listening, [\@RagnarBelial?]{.screen-name}).
+**Test the new virtual server**. If you're too lazy to modify your DNS server (like I was), point your browser to http://[fd00:dead:beef:1::1]. The *external* interface of my virtual BIG-IP is bridged to the Ethernet interface of my Linux host, so I was immediately able to connect to the IPv6 version of my web server from other hosts within my LAN.

@@ -26,7 +26,7 @@ Changing the Software-Defined terminology to something that makes sense is a los
 All of the functions you mentioned can be abstracted and made simpler to consume. For example:
 
 -   [Microsegmentation solutions](https://my.ipspace.net/bin/get?doc=8b38b330-ba2f-11e5-a2b0-005056880254) automatically deploy [distributed firewall rules built from data contained in orchestration system](/2015/03/microsegmentation-in-vmware-nsx-on/) (example: VM names or groups mapped into IP addresses);
--   [Software-Defined WAN solutions](/search?q=sd-wan) automatically protect all traffic transported across public networks;
+-   [Software-Defined WAN solutions](/tag/sd-wan/) automatically protect all traffic transported across public networks;
 -   [Service chaining solutions](https://my.ipspace.net/bin/get?doc=cb9671a6-bfb1-11e5-a2b0-005056880254) allow an operator to stitch together multiple security services on demand.
 -   [Network Function Virtualization](http://www.ipspace.net/Network_Function_Virtualization) (NFV) frameworks allow users to deploy instances of security functions on as-needed basis.
 

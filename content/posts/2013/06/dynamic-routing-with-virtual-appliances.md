@@ -28,7 +28,7 @@ Now imagine inserting a router between the firewall and the outside world, alloc
 
 You could easily preconfigure the ToR switches (or core switches -- depending on your data center design) with BGP peer templates, allowing them to accept BGP connections from a range of directly connected IP addresses, assign outside IP address to the virtual routers via DHCP (potentially running on the same ToR switch), and use MD5 authentication to provide some baseline security.
 
-An even better solution would be a central BGP route server where you could do some serious authentication and route filtering. Also, you could [anycast](../../series/anycast/) the same IP address in multiple data centers, making it easier for the edge virtual router to find its BGP neighbor even after the whole application stack has been migrated to a different location.
+An even better solution would be a central BGP route server where you could do some serious authentication and route filtering. Also, you could [anycast](/series/anycast/) the same IP address in multiple data centers, making it easier for the edge virtual router to find its BGP neighbor even after the whole application stack has been migrated to a different location.
 
 This twist on the original idea makes the virtual application stack totally portable between compatible infrastructures. It doesn't matter what VLAN the target data center is using, it doesn't matter what IP subnet is configured on that VLAN, when you move the application stack the client-facing router gets an outside address, establishes a BGP session with someone, and starts advertising the public-facing address range of the application.
 
