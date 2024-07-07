@@ -5,7 +5,7 @@ tags:
 title: The Value of Being a CCIE
 url: /2008/07/value-of-being-ccie/
 ---
-I was very pleasantly surprised by the supportive comments to [my CCIE-related post](http://localhost:1313/2008/07/why-im-no-longer-active-ccie.html); I didn't realize there are so many CCIEs out there that feel the same way I do. Will we change anything? We can only hope; the CCIE program is orders of magnitude smaller than the Cisco's equipment sales.
+I was very pleasantly surprised by the supportive comments to [my CCIE-related post](/2008/07/why-im-no-longer-active-ccie.html); I didn't realize there are so many CCIEs out there that feel the same way I do. Will we change anything? We can only hope; the CCIE program is orders of magnitude smaller than the Cisco's equipment sales.
 
 A few of the comments also asked for my opinion on the value of CCIE certification and whether it's worth pursuing. Obviously, the short answer is *yes*.
 <!--more-->

@@ -279,7 +279,7 @@ That's totally weird: L3 is advertising the anycast prefix with the original nex
 Here's what's going on:
 
 * L2 has two equal-cost paths to the anycast prefix;
-* It tries to do its best, changing the next hop to itself ([more details](/2011/08/bgp-next-hop-processing.html#bgp-next-hop-is-not-changed-on-ibgp-sessions)) to make sure it will get the traffic for the anycast prefix and spread it across multiple egress paths;
+* It tries to do its best, changing the next hop to itself ([more details](/2011/08/bgp-next-hop-processing/#bgp-next-hop-is-not-changed-on-ibgp-sessions)) to make sure it will get the traffic for the anycast prefix and spread it across multiple egress paths;
 * Changing the next hop is unnecessary as we've configured *Additional Paths*, but it looks like those two bits of BGP code don't work together in the Cisco IOS release I was running. I retried with IOS XE 16.06 and got the same results.
 
 Next time: fixing the problem the right way with *DMZ Link Bandwidth*.

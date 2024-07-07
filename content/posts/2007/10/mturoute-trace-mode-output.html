@@ -5,7 +5,7 @@ date: "2007-10-10T07:56:00.000+02:00"
 tags: [ IP routing ]
 ---
 
-Continuing from the <a href="/2007/10/mturoute-ping-mode-output/">previous mturoute-related post</a>, this is how the <a href="/search?q=mturoute"><em>mturoute</em> utility</a> behaves when you start it in traceroute mode (with the -t flag):<ul><li>Similar to Windows <strong>tracert</strong>, it tries to find the successive hops in the path by sending ICMP echo packets with increasing values of TTL field.</li>
+Continuing from the <a href="/2007/10/mturoute-ping-mode-output/">previous mturoute-related post</a>, this is how the <a href="/2007/09/mturoute-utility-that-measures-hop-by/"><em>mturoute</em> utility</a> behaves when you start it in traceroute mode (with the -t flag):<ul><li>Similar to Windows <strong>tracert</strong>, it tries to find the successive hops in the path by sending ICMP echo packets with increasing values of TTL field.</li>
 <p class="note">Contrary to Cisco IOS and most Unix systems that send UDP packets to high-numbered ports, <strong>tracert</strong> uses ICMP echo packets.</p>
 <li>For each router found in the path (= source IP address in the ICMP TTL exceeded message), <em>mturoute</em> tries to find path MTU to that hop using the same algorithm as in the ping mode.</li>
 <li>During the bisecting phase, the <em>mturoute</em> does not print all the messages it prints in the ping mode, but just the cryptic signs (+/-/u/.) indicating its progress. Their meaning is documented in the previous post.</li>

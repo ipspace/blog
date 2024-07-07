@@ -3,9 +3,12 @@ date: 2007-02-05T18:13:00.000+01:00
 tags:
 - firewall
 - you've asked for it
-title: Default action in firewall policy maps
+title: Default Action in Firewall Policy Maps
 url: /2007/02/default-action-in-firewall-policy-maps/
 ---
-
-Marko asked a <a href="/2006/11/deploying-zone-based-firewalls.html#comment-3118173507826160763">very interesting question</a>: What is the default class policy in a firewall policy-map (<strong>policy-map type inspect</strong>)? Or, using his original wording, "is it mandatory to use <strong>class class-default/drop</strong>" at the end of every policy map?<br/><br/>As it turns out, the default action for any class (unless you specify otherwise) is <strong>drop</strong>. By default, packets not matched by any traffic class are therefore dropped (unless you specify a different action in the <strong>class-default</strong>), similar to well-known <strong>ip access-list</strong> behavior.<!--more-->I've tested this feature using a reverse setup: web traffic mapped into a class with no action and all other traffic being inspected in the class-default:<pre class="code">class-map type inspect match-all web<br/> match protocol http<br/>!<br/>policy-map type inspect InToOut<br/> class type inspect web<br/> class class-default<br/>  inspect<br/>!<br/>zone security Inside<br/>zone security Outside<br/>zone-pair security InToOut source Inside destination Outside<br/> service-policy type inspect InToOut</pre>As expected, HTTP traffic (port 80) was the only traffic blocked by the firewall.
+<p>Marko asked a <a href="/2006/11/deploying-zone-based-firewalls/#c3118173507826160763">very interesting question</a>: What is the default class policy in a firewall policy-map (<strong>policy-map type inspect</strong>)? Or, using his original wording, "is it mandatory to use <strong>class class-default/drop</strong>" at the end of every policy map?<br/><br/>As it turns out, the default action for any class (unless you specify otherwise) is <strong>drop</strong>. By default, packets not matched by any traffic class are therefore dropped (unless you specify a different action in the <strong>class-default</strong>), similar to well-known <strong>ip access-list</strong> behavior.</p>
+<!--more-->
+<p>I've tested this feature using a reverse setup: web traffic mapped into a class with no action and all other traffic being inspected in the class-default:</p>
+<pre class="code">class-map type inspect match-all web<br/> match protocol http<br/>!<br/>policy-map type inspect InToOut<br/> class type inspect web<br/> class class-default<br/>  inspect<br/>!<br/>zone security Inside<br/>zone security Outside<br/>zone-pair security InToOut source Inside destination Outside<br/> service-policy type inspect InToOut</pre>
+<p>As expected, HTTP traffic (port 80) was the only traffic blocked by the firewall.</p>
 

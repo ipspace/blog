@@ -5,7 +5,7 @@ tags: [ automation ]
 series: [ ssot ]
 ssot_tag: details
 ---
-Last year I wrote an article describing data model optimization going from a simple *[this is what we need to configure individual devices](/kb/DataModels/index/)* to a highly polished high-level *[network nodes and links](/kb/DataModels/40-Link%20Prefixes.html)* model. Not surprisingly, as [Jeremy Schulman](https://www.ipspace.net/Author:Jeremy_Schulman) was quick to point out, the latter one had Jinja2 templates you wouldn't want to debug. Ever. You can't run away from complexity... but you can manage it.
+Last year I wrote an article describing data model optimization going from a simple *[this is what we need to configure individual devices](/kb/DataModels/)* to a highly polished high-level *[network nodes and links](/kb/DataModels/40-Link%20Prefixes/)* model. Not surprisingly, as [Jeremy Schulman](https://www.ipspace.net/Author:Jeremy_Schulman) was quick to point out, the latter one had Jinja2 templates you wouldn't want to debug. Ever. You can't run away from complexity... but you can manage it.
 
 Many successful network automation solutions (example: Cisco NSO) solve the "*we'd love to work with high-level data models but hate complex templates*" challenge with *data transformation*: operators work with an abstracted data model describing services, nodes and links, and the device configuration templates use low-level data derived from the abstracted data models through a series of *business logic* rules or lookups (aka *network design*). 
 <!--more-->

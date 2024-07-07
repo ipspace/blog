@@ -3,7 +3,7 @@ title: "Repost: State of Lisp Implementations (2024)"
 date: 2024-05-07 08:21:00+0200
 tags: [ LISP ]
 ---
-You might remember [Béla Várkonyi's](https://www.linkedin.com/in/belavarkonyi/) use of LISP to build resilient ground-to-airplane networks from [last week's repost](/2024/05/repost-lisp-mobility/). It seems he's not exactly happy with the current level of LISP support, at least based on what he wrote as a response to [Jeff McLaughlin's](https://www.linkedin.com/in/ccie14023/) [claim](/2024/04/mobility-campus-networks-lisp-evpn/#2211) that "_I can tell you that our support for EVPN does not, in any way, indicate the retirement of LISP for SD-Access._":
+You might remember [Béla Várkonyi's](https://www.linkedin.com/in/belavarkonyi/) use of LISP to build resilient ground-to-airplane networks from [last week's repost](/2024/04/repost-lisp-mobility/). It seems he's not exactly happy with the current level of LISP support, at least based on what he wrote as a response to [Jeff McLaughlin's](https://www.linkedin.com/in/ccie14023/) [claim](/2024/04/mobility-campus-networks-lisp-evpn/#2211) that "_I can tell you that our support for EVPN does not, in any way, indicate the retirement of LISP for SD-Access._":
 
 ---
 

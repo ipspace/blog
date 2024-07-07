@@ -4,7 +4,7 @@ date: 2023-02-22 06:45:00
 lastmod: 2023-03-02 15:13:00
 tags: [ automation ]
 ---
-A senior engineer at Juniper Networks wasn't happy with me [mentioning](/2023/02/cisco-ios-bgp-update-delay.html#fn:2) *resource hogs* and *Junos platforms* in the same statement. Instead of engaging in never-ending _angels dancing on pins_ deliberations comparing the virtues of Junos with other network operating systems, I decided to throw a bit of real-life data into the mix -- I [created a simple script](https://github.com/ipspace/netlab-examples/tree/master/timing) that measures:
+A senior engineer at Juniper Networks wasn't happy with me [mentioning](/2023/02/cisco-ios-bgp-update-delay/#fn:2) *resource hogs* and *Junos platforms* in the same statement. Instead of engaging in never-ending _angels dancing on pins_ deliberations comparing the virtues of Junos with other network operating systems, I decided to throw a bit of real-life data into the mix -- I [created a simple script](https://github.com/ipspace/netlab-examples/tree/master/timing) that measures:
 
 * The time it takes to execute **vagrant up** to start a single network device.
 * The time it takes to deploy simple initial configuration on that device.

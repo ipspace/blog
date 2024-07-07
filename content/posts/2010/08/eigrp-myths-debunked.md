@@ -6,7 +6,7 @@ tags:
 title: EIGRP Myths Debunked
 url: /2010/08/eigrp-myths-debunked/
 ---
-[Matthew Norwood](http://twitter.com/matthewnorwood) performed a really thorough EIGRP research and [unearthed a lot of myths around it](http://networktherapy.wordpress.com/2010/07/29/how-much-do-you-really-know-about-technology-x), some of them coming from official documentation, Cisco Press books (hopefully not [mine](http://www.amazon.com/gp/product/1578701651?ie=UTF8&tag=cisioshinandt-20&linkCode=xm2&camp=1789&creativeASIN=1578701651)) and other sources. It's time to debunk a few of them (read the [comments to Matthew's post](#comment-7) to find the sources of the following "wisdoms").
+[Matthew Norwood](http://twitter.com/matthewnorwood) performed a really thorough EIGRP research and [unearthed a lot of myths around it](http://networktherapy.wordpress.com/2010/07/29/how-much-do-you-really-know-about-technology-x), some of them coming from official documentation, Cisco Press books (hopefully not [mine](http://www.amazon.com/gp/product/1578701651?ie=UTF8&tag=cisioshinandt-20&linkCode=xm2&camp=1789&creativeASIN=1578701651)) and other sources. It's time to debunk a few of them.
 
 {{<note info>}}To learn more about routing protocols, watch our [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar{{</note>}}
 

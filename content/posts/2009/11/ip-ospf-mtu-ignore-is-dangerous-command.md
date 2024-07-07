@@ -6,10 +6,10 @@ tags:
 title: “ip ospf mtu-ignore” Is a Dangerous Command
 url: /2009/11/ip-ospf-mtu-ignore-is-dangerous-command/
 ---
-A while ago, I wrote about the [problems caused by MTU mismatch between OSPF neighbors](/2007/10/ospf-neighbors-stuck-in-exstart/) and warned that the **ip ospf mtu-ignore** interface configuration command that supposedly solves the problem could cause significant headaches. Last week's challenge was a simple illustration of what could happen if you [force OSPF neighbors to establish a session even though their interface MTUs don't match](/2009/11/challenge-ospf-neighbor-changing-state/) (the very first comment correctly identified the issue).
-<!--more-->
-This is the router configuration I've used to generate the problem:
+A while ago, I wrote about the [problems caused by MTU mismatch between OSPF neighbors](/2007/10/ospf-neighbors-stuck-in-exstart/) and warned that the **ip ospf mtu-ignore** interface configuration command that supposedly solves the problem could cause significant headaches.
 
+These are the router configurations I've used to generate the problem described in this blog post.
+<!--more-->
 {{<cc>}}A1 Configuration{{</cc>}}
 ```
 hostname A1

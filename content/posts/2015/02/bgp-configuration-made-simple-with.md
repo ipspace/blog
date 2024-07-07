@@ -10,7 +10,7 @@ dcbgp_tag: cl
 series:
 - dcbgp
 ---
-BGP is without doubt the most scalable routing protocol, which made it a popular choice for large-scale deployments from service provider networks to [enterprise WAN/VPN](/search?q=DMVPN+BGP) networks and even [data centers](/2013/10/exception-routing-with-bgp-sdn-done/). Its only significant drawback is the tedious configuration process (which almost reminds me of writing COBOL programs decades ago).
+BGP is without doubt the most scalable routing protocol, which made it a popular choice for large-scale deployments from service provider networks to [enterprise WAN/VPN](/2014/03/scaling-bgp-based-dmvpn-networks/) networks and even [data centers](/2013/10/exception-routing-with-bgp-sdn-done/). Its only significant drawback is the tedious configuration process (which almost reminds me of writing COBOL programs decades ago).
 <!--more-->
 The Cumulus Networks routing team decided to change that and added numerous BGP configuration enhancements to Quagga (now FRR), the routing daemon used by Cumulus Linux. You might want to watch the [Data Center Architectures](https://vimeo.com/119403106) video from [Cumulus' Network Field Day 9 presentation](http://techfieldday.com/appearance/cumulus-networks-presents-at-networking-field-day-9/) for the introduction to the topic before delving into the details.
 

@@ -37,7 +37,7 @@ The missing bit: IP multicast (well, I'm not missing it ;).
 
 EVPN has built-in support for edge multihoming based on Ethernet Segment Identifiers (ESI). Preventing layer-2 forwarding loops is still tricky, but at least it's a contained problem solved within the standard, not a heap of kludges.
 
-**Edge load balancing**. The EVPN standard describes how you can use ESI to enable load balancing across the EVPN backbone toward a device connected to two PE routers (MLAG). Using that functionality, some vendors (starting with Juniper) claim they eliminated the need for MLAG clusters at the network edge, further claiming a significant reduction in complexity ([more details](/tag/evpn.html#mlag)).
+**Edge load balancing**. The EVPN standard describes how you can use ESI to enable load balancing across the EVPN backbone toward a device connected to two PE routers (MLAG). Using that functionality, some vendors (starting with Juniper) claim they eliminated the need for MLAG clusters at the network edge, further claiming a significant reduction in complexity ([more details](/tag/evpn/#mlag)).
 
 ### Want to Know More?
 
