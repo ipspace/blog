@@ -9,7 +9,7 @@ tags:
 - switching
 title: 'MLAG Deep Dive: Dynamic MAC Learning'
 ---
-In the [first blog post](/2022/06/mlag-deep-dive-overview/) of the [*MLAG Technology Deep Dive* series](/series/mlag.html#technology-deep-dive), we explored the components of an MLAG system and the fundamental control plane requirements. 
+In the [first blog post](/2022/06/mlag-deep-dive-overview/) of the [*MLAG Technology Deep Dive* series](/series/mlag/#technology-deep-dive), we explored the components of an MLAG system and the fundamental control plane requirements. 
 
 This post focuses on a major building block of the layer-2 data plane functionality: MAC learning. We'll keep using the same network topology with two switches and five hosts, and assume our system tries its best to implement [hot-potato switching](/2010/12/multi-chassis-link-aggregation-mlag-and/) (sending the frames toward the destination MAC address on the shortest possible path).
 <!--more-->

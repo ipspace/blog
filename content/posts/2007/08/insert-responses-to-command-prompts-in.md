@@ -8,7 +8,7 @@ url: /2007/08/insert-responses-to-command-prompts-in/
 
 I have been aware of the [**typeahead**](http://www.cisco.com/en/US/products/sw/iosswrel/ps5207/products_feature_guide09186a00801a75a7.html#wp1027195) Tcl command for months, but somehow I never got it to work. 
 
-It works perfectly in IOS release 12.4(15)T (it might have something to do with [other fixes to Tclsh](/2007/08/you-fix-some-you-break-some/)), so to clear interface counters ([as Michal would like to do](/2007/04/execute-multiple-commands-at-once.html#comment-1688346259298046702)), this is what you can do:
+It works perfectly in IOS release 12.4(15)T; this is what you have to do to clear interface counters:
 <!--more-->
 ``` code
 typeahead "y"

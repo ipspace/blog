@@ -20,7 +20,7 @@ Anycast works best with simple request-response UDP applications (for example, D
 
 Using anycast for TCP sessions is trickier. It works reasonably well in the global Internet where the anycast endpoints are far enough from each other and true equal-cost multipathing is rare.  [CloudFlare is using anycast globally](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) and managed to tweak their TCP/IP stack to use [anycast source IP addresses](/2022/12/worth-reading-cloudflare-egress-anycast/). LinkedIn has fewer points-of-presence and [decided to use regional anycast](https://engineering.linkedin.com/network-performance/tcp-over-ip-anycast-pipe-dream-or-reality).
 
-Using anycast TCP endpoints in data centers is harder and requires [fine-tuned interaction with network-layer multipathing](/2021/05/tcp-anycast-hard/) as well as a [bag of intricate tricks](/2021/05/tcp-anycast-hard.html#making-local-tcp-anycast-work).
+Using anycast TCP endpoints in data centers is harder and requires [fine-tuned interaction with network-layer multipathing](/2021/05/tcp-anycast-hard/) as well as a [bag of intricate tricks](/2021/05/tcp-anycast-hard/#making-local-tcp-anycast-work).
 
 For more details, watch the [Load Balancing and Scale-Out Architectures](https://my.ipspace.net/bin/list?id=DC30#LOAD_BALANCING) part of the [Data Center Infrastructure for Networking Engineers](https://www.ipspace.net/Data_Center_Infrastructure_for_Networking_Engineers) webinar and the [Global Accelerator](https://my.ipspace.net/bin/list?id=AWSNET#LB) video in the [Amazon Web Services Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) webinar.
 

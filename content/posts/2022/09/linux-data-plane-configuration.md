@@ -20,7 +20,7 @@ There are two major ways of configuring data plane constructs (interfaces, port 
 
 [^DEV]: Everything is a device on Linux -- physical interface, VLAN subinterface,  port channel, bridge, VLAN interface, VRF, tunnel, loopback... You get the idea ;)
 
-You don't want to use the CLI commands to manipulate network devices; it's a highway to [CRUD hell](/2018/09/infrastructure-as-code-netconf-and-rest.html#crud-hell) and really hard to do right if you want to build idempotent configuration scripts (scripts that won't crash and burn if you run them more than once). If you treasure your sanity, an intent-based system is the only way to go.
+You don't want to use the CLI commands to manipulate network devices; it's a highway to [CRUD hell](/2018/09/infrastructure-as-code-netconf-and-rest/#crud-hell) and really hard to do right if you want to build idempotent configuration scripts (scripts that won't crash and burn if you run them more than once). If you treasure your sanity, an intent-based system is the only way to go.
 
 To make matters even more interesting, you can choose among a plethora of intent-based systems, all solving the same problem in slightly different ways. Focusing on Cumulus Linux made my life easier: it uses an improved version of *[ifupdown](https://manpages.ubuntu.com/manpages/bionic/man5/interfaces.5.html)* that knows how to handle the newer networking constructs like VRFs.
 

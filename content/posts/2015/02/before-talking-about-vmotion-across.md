@@ -16,7 +16,6 @@ I expect to hear a lot about the ["wonderful" idea of moving running VMs 100 mse
 
 -   [Hot and cold VM mobility](/2013/02/hot-and-cold-vm-mobility/)
 -   [vMotion: an elephant in the data center](/2010/09/vmotion-elephant-in-data-center-room/)
--   [Live VM mobility network requirements](/2013/07/live-vm-mobility-network-requirements/)
 -   [Video: networking requirements for VM mobility](/2012/03/video-networking-requirements-for-vm/)
 -   [vMotion and VXLAN](/2014/05/vmotion-and-vxlan/)
 

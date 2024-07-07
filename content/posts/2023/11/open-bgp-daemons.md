@@ -22,7 +22,7 @@ To make matters worse, for Shodan to displays the BGP messages:
 -   A BGP-speaking device must be reachable from the global Internet (not a good idea).
 -   It must accept TCP sessions on port 179 from unknown IP addresses (bad, but that's how this world works).
 -   It must be able to complete TCP session establishment, which means that it's sending BGP TCP packets with TTL much greater than one and not checking the incoming TTL (can't make a public comment, we're in the NSFW territory).
--   It must send a few BGP messages before closing the session. While there might be a number of open-source BGP daemons exhibiting that behavior, I found a [single networking vendor in that category in my tests](/2023/10/reject-unknown-bgp-session.html#ugly) (and yes, they do set TTL to 255 on EBGP sessions by default just to make sure they can reply to anyone who wants to talk with them).
+-   It must send a few BGP messages before closing the session. While there might be a number of open-source BGP daemons exhibiting that behavior, I found a [single networking vendor in that category in my tests](/2023/10/reject-unknown-bgp-session/#ugly) (and yes, they do set TTL to 255 on EBGP sessions by default just to make sure they can reply to anyone who wants to talk with them).
   
 The reality is probably less dramatic. Any BGP-speaking router might have dozens of interfaces with dozens of IP addresses you can reach from the Internet. Still, that's a lot of potentially vulnerable devices[^FUD].
 

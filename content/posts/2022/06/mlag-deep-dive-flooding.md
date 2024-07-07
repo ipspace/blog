@@ -10,7 +10,7 @@ tags:
 - switching
 title: 'MLAG Deep Dive: Layer-2 Flooding'
 ---
-In the [previous blog post](/2022/06/mlag-deep-dive-mac-learning/) of the [*MLAG Technology Deep Dive* series](/series/mlag.html#technology-deep-dive), we explored the intricacies of layer-2 unicast forwarding. Now let's focus on layer-2 BUM[^BUM] flooding functionality of an MLAG system. 
+In the [previous blog post](/2022/06/mlag-deep-dive-mac-learning/) of the [*MLAG Technology Deep Dive* series](/series/mlag/#technology-deep-dive), we explored the intricacies of layer-2 unicast forwarding. Now let's focus on layer-2 BUM[^BUM] flooding functionality of an MLAG system. 
 
 Our network topology will have two switches and five hosts, some connected to a single switch. That's not a good idea in an MLAG environment, but even if you have a picture-perfect design with everything redundantly connected, you will have to deal with it after a single link failure.
 <!--more-->
@@ -52,7 +52,7 @@ In our example, the switch software would configure an entry saying "_drop a pac
 {{<next-in-series page="/posts/2022/06/mlag-active-active-layer3.md">}}
 ### What's Next?
 
-We're only three blog posts into this series and we already got layer-2 forwarding sorted out. It's time to move to layer-3 challenges, starting with active/active layer-3 forwarding – the topic of the next blog post in the [MLAG Deep Dive series](/series/mlag.html#technology-deep-dive).{{</next-in-series>}}
+We're only three blog posts into this series and we already got layer-2 forwarding sorted out. It's time to move to layer-3 challenges, starting with active/active layer-3 forwarding – the topic of the next blog post in the [MLAG Deep Dive series](/series/mlag/#technology-deep-dive).{{</next-in-series>}}
 
 ### Revision History
 

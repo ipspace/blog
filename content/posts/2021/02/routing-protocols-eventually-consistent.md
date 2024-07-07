@@ -17,7 +17,7 @@ I have bad news: the design requirements for link state protocols effectively pr
 <!--more-->
 Big picture first: as I explained in the [Routing Protocols](https://my.ipspace.net/bin/list?id=Net101#ROUTING) part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar, link state protocols use a distributed database (OSPF or IS-IS topology database) with numerous instances of the same application (SPF algorithm) using the data from that database. 
 
-Next step: a few design requirements. Routing protocols have to be resilient against all sorts of network failures including link loss, node loss, or network partitioning. Combine that with the idea of using a distributed database, consider the impact of CAP theorem, and you'll quickly realize that the only way forward is to use [*eventually consistent database* with *last-writer-wins* edit conflict resolution](/2021/02/state-consistency-distributed-controllers.html#consistency-requirements). 
+Next step: a few design requirements. Routing protocols have to be resilient against all sorts of network failures including link loss, node loss, or network partitioning. Combine that with the idea of using a distributed database, consider the impact of CAP theorem, and you'll quickly realize that the only way forward is to use [*eventually consistent database* with *last-writer-wins* edit conflict resolution](/2021/02/state-consistency-distributed-controllers/#consistency-requirements). 
 
 {{<note info>}}If the previous sentence sounded like Latin, start with [State Consistency in Distributed SDN Controller Clusters](/2021/02/state-consistency-distributed-controllers/) blog post.{{</note>}} 
 

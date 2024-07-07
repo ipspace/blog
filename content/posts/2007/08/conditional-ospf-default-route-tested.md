@@ -9,7 +9,7 @@ title: 'Conditional OSPF Default Route: Tested Configuration'
 url: /2007/08/conditional-ospf-default-route-tested/
 ---
 One of my readers asked for a working configuration of the [conditional OSPF default route advertisement feature](/2007/06/ospf-default-route-design-scenarios/). In my scenario, the OSPF default route would be announced whenever an Internet prefix (172.18.0.0/16) would be present in the IP routing table.
-
+<!--more-->
 ``` code
 router ospf 1
  log-adjacency-changes
@@ -30,4 +30,4 @@ route-map FromInternet permit 10
 **Caveats:**
 
 -   The route map configured in the **default-information originate** command tests the IP prefixes in the IP routing table. You can thus match only on those attributes that are present in the IP routing table (IP prefix, metric, next-hop), not on additional BGP attributes (like AS-path), which would be really cool
--   Contrary to what [Sebastian wrote in his comment](/2007/06/ospf-default-route-design-scenarios.html#comment-5507351136262865205), you don't have to redistribute the BGP route into OSPF to make it work in IOS release 12.4(11)T or 12.2SRC, but it looks the IP prefix you test cannot be a subnet.
+-   Contrary to what [Sebastian wrote in his comment](/2007/06/ospf-default-route-design-scenarios/#c5507351136262865205), you don't have to redistribute the BGP route into OSPF to make it work in IOS release 12.4(11)T or 12.2SRC, but it looks the IP prefix you test cannot be a subnet.

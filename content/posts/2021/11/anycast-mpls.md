@@ -41,7 +41,7 @@ nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
 
-{{<note info>}}I [created the network diagram](https://netlab.tools/outputs/graph/) with **netlab create -o graph** command followed by **‌dot -Grankdir=RL -T png -o graph.ospf.png graph.dot** (using the [*rankdir* trick Jeroen van Bemmel taught me](/2021/11/bgp-multipath-netsim-tools.html#off-topic-nicer-looking-graphs)).{{</note>}}
+{{<note info>}}I [created the network diagram](https://netlab.tools/outputs/graph/) with **netlab create -o graph** command followed by **‌dot -Grankdir=RL -T png -o graph.ospf.png graph.dot** (using the [*rankdir* trick Jeroen van Bemmel taught me](/2021/11/bgp-multipath-netsim-tools/#off-topic-nicer-looking-graphs)).{{</note>}}
 
 **Next step**: starting the lab with **[netlab up](https://netlab.tools/netlab/up/)** and waiting a minute or so.
 

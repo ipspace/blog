@@ -8,7 +8,7 @@ title: Creating VRF Lite Labs With netlab
 ---
 I always found VRF lab setups a chore. On top of the usual IPAM tasks you have to create VRFs, assign route targets and route distinguishers, do that on every PE-router in your lab... before you can start working on interesting things.
 
-I tried to remove as much friction as I could with the *netlab* [VRF configuration module](https://netlab.tools/module/vrf/) -- let me walk you through a few simple examples[^FANBOY] which will also serve to [illustrate the VRF configuration differences between Cisco IOS and Arista EOS](/2022/04/netsim-vrf-lite.html#differences).
+I tried to remove as much friction as I could with the *netlab* [VRF configuration module](https://netlab.tools/module/vrf/) -- let me walk you through a few simple examples[^FANBOY] which will also serve to [illustrate the VRF configuration differences between Cisco IOS and Arista EOS](/2022/04/netsim-vrf-lite/#differences).
 <!--more-->
 [^FANBOY]: Yes, I'm a fanboy, but it's a great tool ;)
 

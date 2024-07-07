@@ -11,7 +11,7 @@ tags:
 title: Whose Failure Domain Is It?
 url: /2014/03/whose-failure-domain-is-it/
 ---
-*Draco* made a [valid comment](/2014/02/keep-your-failure-domains-small/#c8785876830767953728) to my [*Keep Your Failure Domain Small*](/2014/02/keep-your-failure-domains-small.html?showComment=1392697415285) post:
+*Draco* made a [valid comment](/2014/02/keep-your-failure-domains-small/#c8785876830767953728) to my [*Keep Your Failure Domain Small*](/2014/02/keep-your-failure-domains-small/) post:
 
 > What could a small ISP do to limit failure domains? Metro Ethernet and MPLS Virtual Private LAN service are all the rage, and offers customers the promise of being able to connect all their branch offices together, and use the same set of VLANs with free Layer 2 connectivity between their sites. It\'s either: extend the failure domains, or lose out in selling the service, b/c the customer will buy from another ISP.
 

@@ -6,7 +6,7 @@ tags:
 title: Technology Is Supposed to Be Simple, Right?
 url: /2008/04/technology-is-supposed-to-be-simple/
 ---
-In his comment to the [announcement](/2008/04/cisco-ios-ntp-essentials/) of my NTP article, [Joe said](/2008/04/cisco-ios-ntp-essentials/#2435803387271874058):
+In his comment to the one of my NTP articles, Joe said:
 
 > This is part of the problem with NTP. It\'s way more complicated then it needs to be. You shouldn\'t have to understand so much of it to use it on your routers. Take a look at openntpd. It\'s free and runs on bsd or linux.
 

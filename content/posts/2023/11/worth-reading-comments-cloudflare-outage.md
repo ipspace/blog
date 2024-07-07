@@ -14,8 +14,8 @@ Cloudflare experienced a significant outage in early November 2023 and published
 
 Also (unrelated to Cloudflare outage):
 <!--more-->
-* Even Cloudflare can get an outage. Don't expect your *[stretched VLAN](/series/dr.html#stretched-vlans)* fairyland to survive the encounter with reality.
+* Even Cloudflare can get an outage. Don't expect your *[stretched VLAN](/series/dr/#stretched-vlans)* fairyland to survive the encounter with reality.
 * Keep your design [as simple as possible](/2021/02/fast-simple-disaster-recovery-solution/)
-* Don't rely on [vendor-supplied miracles](/series/dr.html#vendors)
+* Don't rely on [vendor-supplied miracles](/series/dr/#vendors)
 * Unless you can stress-test your ideas, leave the high-level decisions (for example, [when to failover](/2016/05/unexpected-recovery-might-kill-your/)) to humans.
 * Automate the low-level operations as much as you can

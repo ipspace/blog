@@ -5,7 +5,7 @@ tags: [ LISP, BGP ]
 ---
 LISP started as yet-another ocean-boiling project focused initially on solving the "_we use locators as identifiers_" mess ([not quite](/2022/03/lisp-false-economy/)), and providing scalable IPv6 connectivity over IPv4-only transport networks by adding another layer of indirection and thus yet again proving RFC 1925 rule 6a. At least those are the diagrams I remember from the early "look at this wonderful tool" presentations explaining for example how Facebook is using LISP to deploy IPv6 (more details in [this presentation](https://archive.nanog.org/meetings/nanog50/presentations/Tuesday/NANOG50.Talk9.lee_nanog50_atlanta_oct2010_007_publish.pdf)).
 
-Somehow that use case failed to gain traction and so the pivots[^SLFP] started explaining how one can use LISP to solve IP mobility or IP multihoming or [live VM migration](/2011/06/inter-dc-ip-based-vmotion-with-lisp/), or to implement IP version of conversational learning in Cisco SD-Access. After a few years of those pivots, I started dismissing LISP with a short "*[cache-based forwarding never worked well](/2022/02/cache-based-forwarding/)*" counterargument.
+Somehow that use case failed to gain traction and so the pivots[^SLFP] started explaining how one can use LISP to solve IP mobility or IP multihoming or live VM migration, or to implement IP version of conversational learning in Cisco SD-Access. After a few years of those pivots, I started dismissing LISP with a short "*[cache-based forwarding never worked well](/2022/02/cache-based-forwarding/)*" counterargument.
 <!--more-->
 [^SLFP]: Also known as "solutions looking for a problem"
 

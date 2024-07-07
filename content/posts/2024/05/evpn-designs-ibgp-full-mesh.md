@@ -23,7 +23,7 @@ And this is how we'll use routing protocols in our fabric:
 
 {{<figure src="/2024/05/evpn-design-ibgp-full-mesh.png" caption="Full mesh of IBGP sessions between the leaf switches">}}
 
-Let's set up a lab and try it out. We'll use a lab setup similar to the [VXLAN-only fabric](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/); read that blog post (in particular the *[Creating the Lab Environment](/2024/04/evpn-designs-vxlan-leaf-spine-fabric.html#lab)* section) to get started.
+Let's set up a lab and try it out. We'll use a lab setup similar to the [VXLAN-only fabric](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/); read that blog post (in particular the *[Creating the Lab Environment](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab)* section) to get started.
 
 ### Leaf-and-Spine Lab Topology
 
@@ -61,7 +61,7 @@ tools:
   graphite:
 {{</printout>}}
 
-Most of the topology file is [explained in the previous blog post](/2024/04/evpn-designs-vxlan-leaf-spine-fabric.html#topo); all we had to do to get from a VXLAN fabric to a full-blown EVPN fabric were three changes[^SPO]:
+Most of the topology file is [explained in the previous blog post](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#topo); all we had to do to get from a VXLAN fabric to a full-blown EVPN fabric were three changes[^SPO]:
 
 * Line 8: The BGP AS number used in the lab[^BAG]
 * Line 9: Our fabric will have BGP sessions between IPv4 loopback addresses, but we'll not run the IPv4 address family over these sessions.
