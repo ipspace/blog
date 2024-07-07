@@ -24,7 +24,8 @@
     {{ if not $full }}
       {{ $url := urls.Parse .Permalink }}
       {{ $plink := .Permalink }}
-      {{ with index .Site.Data.comment_count $url.Path }}
+      {{ $cpath := printf "%s.html" (strings.TrimSuffix "/" $url.Path) }}
+      {{ with index .Site.Data.comment_count $cpath }}
         <a class="post__comment-link" href="{{ $plink }}#comments">
           <svg class="post__comments-icon">
             <use xlink:href="#icon-comments"></use>

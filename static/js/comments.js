@@ -60,6 +60,15 @@ function get_comment_server() {
     'https://my.ipspace.net/';
 }
 
+function get_post_url() {
+  url = location.pathname;
+  if (url.indexOf('.html') >= 0) {
+    return url;
+  }
+  url = url.replace(/\/$/, "");
+  return url + '.html';
+}
+
 function add_comment_form(event) {
   var me = $(this)
   var comment_block = me.closest("li.comment")
@@ -76,7 +85,7 @@ function add_comment_form(event) {
   }
 
   $.ajax({
-      url: get_comment_server()+"bin/comment/get?url="+location.pathname+reply_url,
+      url: get_comment_server()+"bin/comment/get?url="+get_post_url()+reply_url,
       dataType: 'html',
       xhrFields: { withCredentials: true },
       success: function(data) { comment_form.html(data); },
@@ -106,7 +115,7 @@ $(function() {
   var server = get_comment_server()
   $(".post__comment-add").click(function () {
     $.ajax({
-        url: server+"bin/comment/get?url="+location.pathname,
+        url: server+"bin/comment/get?url="+get_post_url(),
         dataType: 'html',
         xhrFields: { withCredentials: true },
         success: function(data) { $("#post__comment-form").html(data); },
@@ -119,6 +128,6 @@ $(function() {
     var recent = $("<div id='recent_comments' style='clear: both;'></div>");
     var cmtlist = $("#comments");
     recent.appendTo(cmtlist);
-    recent.load(server+"bin/comment/list?url="+location.pathname,comment_postprocessing);
+    recent.load(server+"bin/comment/list?url="+get_post_url(),comment_postprocessing);
   }
 });
