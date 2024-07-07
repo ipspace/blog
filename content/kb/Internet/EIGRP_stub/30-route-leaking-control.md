@@ -7,7 +7,7 @@ url: /kb/Internet/EIGRP_stub/30-route-leaking-control/
 ---
 The introduction of EIGRP route leaking on the stub routers has to be based on a thoroughly checked network design. Imagine a scenario where the link bandwidth between A2 and B2 is significantly lower than the one between A1 and B1:
 
-{{<figure src="EIGRP_7.gif" caption="Remote site with a primary and a backup uplink">}}
+{{<figure src="/kb/Internet/EIGRP_stub/EIGRP_7.gif" caption="Remote site with a primary and a backup uplink">}}
 
 If the route leaking is configured on B1 and B2 to leak the default route, B2 will leak the default route back to A2, which will store it in its EIGRP topology database:
 

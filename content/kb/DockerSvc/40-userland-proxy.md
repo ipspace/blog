@@ -4,12 +4,12 @@ minimal_sidebar: true
 title: Docker Userland Proxy
 url: /kb/DockerSvc/40-userland-proxy/
 ---
-In the [previous section](30-nat-iptables.html) we identified two scenarios where Docker cannot use **iptables** NAT rules to map a [*published* port](20-Published.html) to a container service:
+In the [previous section](/kb/DockerSvc/30-nat-iptables/) we identified two scenarios where Docker cannot use **iptables** NAT rules to map a [*published* port](/kb/DockerSvc/20-Published/) to a container service:
 
 * When a container connected to another Docker network tries to reach the service (Docker is blocking direct communication between Docker networks);
 * When a local process tries to reach the service through loopback interface.
 
-In both cases, Docker uses a userland (Linux process) TCP or UDP proxy. You can easily identify the proxy with **netstat** command after starting a container with a published port (we'll yet again use [our standard Flask application](10-Exposed.html)):
+In both cases, Docker uses a userland (Linux process) TCP or UDP proxy. You can easily identify the proxy with **netstat** command after starting a container with a published port (we'll yet again use [our standard Flask application](/kb/DockerSvc/10-Exposed/)):
 
 {{<cc>}}Userland proxy created to support a published port{{</cc>}}
 ```

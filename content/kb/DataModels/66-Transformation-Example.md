@@ -5,7 +5,7 @@ pre_scroll: true
 title: Data Transformation Example
 url: /kb/DataModels/66-Transformation-Example/
 ---
-Let's illustrate the data transformation concepts with a simple example: we'll transform our [highly optimized data model with automatic IP address allocation](40-Link%20Prefixes.html) into a set of device-level data models [identical to what we started with](index.html). Our transformation should take data describing nodes and links...
+Let's illustrate the data transformation concepts with a simple example: we'll transform our [highly optimized data model with automatic IP address allocation](/kb/DataModels/40-Link%20Prefixes/) into a set of device-level data models [identical to what we started with](/kb/DataModels/). Our transformation should take data describing nodes and links...
 
 {{<cc>}}Data structure describing routers, links, and stub VLAN interfaces{{</cc>}}
 ```
@@ -73,11 +73,11 @@ Repeat the iteration through **links** dictionary, and whenever you find an elem
 
 ---
 
-Not surprisingly, the logic is almost exactly the same as [what we used to create device configurations](40-Link%20Prefixes.html#generatingnodeipaddresses).
+Not surprisingly, the logic is almost exactly the same as [what we used to create device configurations](/kb/DataModels/40-Link%20Prefixes/#generatingnodeipaddresses).
 
 ## Jinja2 Transformation Template
 
-Creating a [Jinja2 transformation template](https://github.com/ipspace/ansible-examples/blob/master/Data-Models/Transformation/device-data.j2) was surprisingly easy &ndash; I started with the template used to create device configurations from the [final data model](40-Link%20Prefixes.html) as it already contained the necessary business logic, and changed its output from device configuration statements to YAML elements:
+Creating a [Jinja2 transformation template](https://github.com/ipspace/ansible-examples/blob/master/Data-Models/Transformation/device-data.j2) was surprisingly easy &ndash; I started with the template used to create device configurations from the [final data model](/kb/DataModels/40-Link%20Prefixes/) as it already contained the necessary business logic, and changed its output from device configuration statements to YAML elements:
 
 {{<cc>}}Data Transformation Template{{</cc>}}
 ```
@@ -179,7 +179,7 @@ hosts.yml: network.yml
 
 **Notes:**
 
-* As [stated previously](65-Data-Transformation.html#datatransformationimplementationoptions), using Ansible to perform data model manipulation is not always a good idea.
+* As [stated previously](/kb/DataModels/65-Data-Transformation/#datatransformationimplementationoptions), using Ansible to perform data model manipulation is not always a good idea.
 * It's almost always easier to write a Python program to transform the data than trying to get it done with a Jinja2 template.
 * You don't need an Ansible playbook to use Jinja2 templates, but it's definitely a convenient way of using them.
 
@@ -218,6 +218,6 @@ neighbors:
   ip: 172.16.0.2
 ```
 
-Once we have the device-level data, we can use the templates from the [initial solution](index.html) to create device configurations.
+Once we have the device-level data, we can use the templates from the [initial solution](/kb/DataModels/) to create device configurations.
 
 <!-- need a comment -->

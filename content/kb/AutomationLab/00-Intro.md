@@ -10,9 +10,9 @@ tags: [ automation ]
 ---
 To complete the exercises included in the [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course (or to do your own exploration into the world of network automation) you’ll need a reliable lab environment. There are three major steps you have to complete to get there:
 
-- [Create an environment capable of running network automation tools](10-Ansible_Environment.html) you want to use. We'll focus on getting Ansible and NAPALM up and running.
-- [Build a networking lab](20-Networking_Lab.html) using either physical or virtual devices.
-- [Establish connectivity](30-Connectivity.html) between your network automation environment and your networking lab.
+- [Create an environment capable of running network automation tools](/kb/AutomationLab/10-Ansible_Environment/) you want to use. We'll focus on getting Ansible and NAPALM up and running.
+- [Build a networking lab](/kb/AutomationLab/20-Networking_Lab/) using either physical or virtual devices.
+- [Establish connectivity](/kb/AutomationLab/30-Connectivity/) between your network automation environment and your networking lab.
 
 The rest of this document describes some of the potential approaches to building a network automation lab. Don’t limit yourself to what’s described here – go out and experiment.
 

@@ -17,11 +17,11 @@ In this article, we’ll explore the typical problems that the EIGRP stub router
 
 Let’s start with an easy example: a central site router linked to a large number of remote offices over slow speed or unreliable links. The WAN network could be implemented with Frame Relay, Carrier Ethernet or DMVPN; the scaling challenges of EIGRP remain the same regardless of the underlying WAN technology.
 
-{{<figure src="EIGRP_1.gif" caption="Simple hub-and-spoke WAN network">}}
+{{<figure src="/kb/Internet/EIGRP_stub/EIGRP_1.gif" caption="Simple hub-and-spoke WAN network">}}
 
 Each time a single remote office becomes unreachable, the central site router starts the Diffusing Update Algorithm (DUAL) process, querying all other remote office routers to determine whether they might have a better path to the lost destination:
 
-{{<figure src="EIGRP_2.gif" caption="DUAL query process in the hub-and-spoke network">}}
+{{<figure src="/kb/Internet/EIGRP_stub/EIGRP_2.gif" caption="DUAL query process in the hub-and-spoke network">}}
 
 As the remote offices have no connectivity apart from their upstream link, these queries are obviously a waste of bandwidth and processing power. Even worse, in larger networks they might cause a Stuck-in-Active (SIA) event, potentially bringing down an EIGRP adjacency between core routers, thus resulting in a massive network blackout (SIA events are a major cause of network outages in poorly designed EIGRP networks).
 

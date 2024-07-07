@@ -4,7 +4,7 @@ minimal_sidebar: true
 title: Data Model Transformation Concepts
 url: /kb/DataModels/65-Data-Transformation/
 ---
-Our journey took us from the [initial simplistic data model full of duplicate data](index.html) to [highly optimized data model with automatic IP address allocation](40-Link%20Prefixes.html). However, as we kept simplifying the data model and squeezing out redundancies, the complexity of our templates increased dramatically &ndash; we replaced explicit (data) complexity with hidden (template) complexity.
+Our journey took us from the [initial simplistic data model full of duplicate data](/kb/DataModels/) to [highly optimized data model with automatic IP address allocation](/kb/DataModels/40-Link%20Prefixes/). However, as we kept simplifying the data model and squeezing out redundancies, the complexity of our templates increased dramatically &ndash; we replaced explicit (data) complexity with hidden (template) complexity.
 
 While it's hard to reduce overall system complexity, sometimes we can at least control where we want to have it. It doesn't make sense to push the complexity onto system operators; after all, we use network automation to make changes to the network more reliable, and burdening operators with a complex data model will not get us there. 
 

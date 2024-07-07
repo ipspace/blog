@@ -15,7 +15,7 @@ In a simpler solution that relies on text files to store the network data model 
 * Conformance with a data model schema;
 * Referential integrity.
 
-Using our [latest data model with per-link prefixes](40-Link%20Prefixes.html) that is stored as a bunch of Ansible **host_vars** files and a **network.yml** file, the validation pipeline should check whether:
+Using our [latest data model with per-link prefixes](/kb/DataModels/40-Link%20Prefixes/) that is stored as a bunch of Ansible **host_vars** files and a **network.yml** file, the validation pipeline should check whether:
 
 * All files conform to YAML syntax (you can use tools like **yamllint** to do that);
 * Host facts for each host include **hostname** and **bgp_as** values;

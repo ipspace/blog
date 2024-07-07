@@ -57,7 +57,7 @@ UDP flooding implemented in PERL was used to generate the background load and sa
 
 Two sets of measurements were performed. In the first test, a continuous flood of constantly-spaced fixed-size packets sent to a single UDP port was generated (similar to constant bit rate traffic). This traffic stream generated a single conversation in the fair queuing model used on the WAN interface.
 
-{{<note note>}}Cisco IOS uses [fair queuing](Fair_Queuing.html) as soon as a service policy including a queuing action is configured on an interface.{{</note>}}
+{{<note note>}}Cisco IOS uses [fair queuing](/kb/tag/QoS/Fair_Queuing/) as soon as a service policy including a queuing action is configured on an interface.{{</note>}}
 
 The second test flooded the WAN link with variable-sized packets sent at a fixed interval to random destination UDP ports. The generated bandwidth varied widely due to random packet sizes and the traffic stream generated hundreds of conversations in the fair queuing structure.
 
@@ -113,8 +113,8 @@ The tests were performed at line speeds of 128 and 512 kbps with different **tx
 
 The test result values are triplets: minimum, average and maximum measured value as reported by IP SLA.
 
-{{<figure src="../TX-Ring-Result-512.png" caption="Test results at 512 kbps">}}
+{{<figure src="/kb/tag/QoS/TX-Ring-Result-512.png" caption="Test results at 512 kbps">}}
 
-{{<figure src="../TX-Ring-Result-128.png" caption="Test results at 128 kbps">}}
+{{<figure src="/kb/tag/QoS/TX-Ring-Result-128.png" caption="Test results at 128 kbps">}}
 
   

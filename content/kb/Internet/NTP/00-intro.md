@@ -20,4 +20,4 @@ The PKI certificates require time that is accurate to a few hours. On the other 
 
 {{<note info>}}Even if you have the most accurate time on your routers, it won’t be very helpful unless you use it in syslog messages (configured with the [service timestamps](http://www.cisco.com/en/US/docs/ios/12_3/configfun/command/reference/cfr_1g07.html#wp1029551) global configuration command).{{</note>}}
 
-Last but not least, if you decide to offload various network services to routers, you could use them as local NTP servers (together with being DHCP- and [DNS proxy servers](/2006/08/using-router-as-dns-proxy-server/)).
+Last but not least, if you decide to offload various network services to routers, you could use them as local NTP servers (together with being DHCP- and DNS proxy servers).

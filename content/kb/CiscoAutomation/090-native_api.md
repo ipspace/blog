@@ -10,7 +10,7 @@ Legacy products are usually managed via web interface and/or a proprietary CLI i
 
 Let's see an hypothetical example: `show lldp neighbors`
 
-{{<figure src="../090-image1.png" caption="Typical interaction with a CLI-only device">}}
+{{<figure src="/kb/CiscoAutomation/090-image1.png" caption="Typical interaction with a CLI-only device">}}
 
 1. the operator can type a command in a human readable format via CLI
 2. CLI command is translated into low level machine commands
@@ -19,7 +19,7 @@ Let's see an hypothetical example: `show lldp neighbors`
 
 Adding web API to this monolithic system results in an architecture like the following:
 
-{{<figure src="../090-image2.png" caption="Adding web API in front of CLI interface">}}
+{{<figure src="/kb/CiscoAutomation/090-image2.png" caption="Adding web API in front of CLI interface">}}
 
 1. An external application can retrieve LLDP neighbors using a REST API call using HTTP GET request
 2. HTTP GET request is translated into the `show lldp neighbors` CLI command
@@ -28,11 +28,11 @@ Adding web API to this monolithic system results in an architecture like the fol
 5. Output is formatted into a human readable format
 6. Output is formatted into JSON via "[screen scraping](https://en.wikipedia.org/wiki/Data_scraping#Screen_scraping)"
 
-This approach allows a fast implementation of REST API on legacy products, but it is not efficient because vendor programmers need to map each CLI command to a REST API and parse (see [screen and web scraping](050-scraping.html)) the human-readable printout into a structured objects like JSON or XML document. It's obvious what could be wrong using this approach. In practice, following this method, vendors often don't offer a complete API, but just a few calls that they think might be most useful to their customers.
+This approach allows a fast implementation of REST API on legacy products, but it is not efficient because vendor programmers need to map each CLI command to a REST API and parse (see [screen and web scraping](/kb/CiscoAutomation/050-scraping/)) the human-readable printout into a structured objects like JSON or XML document. It's obvious what could be wrong using this approach. In practice, following this method, vendors often don't offer a complete API, but just a few calls that they think might be most useful to their customers.
 
 Modern products are built around an API-first architecture:
 
-{{<figure src="../090-image3.png" caption="A product with an API-first architecture">}}
+{{<figure src="/kb/CiscoAutomation/090-image3.png" caption="A product with an API-first architecture">}}
 
 Using this approach every interaction is translated to and from REST API which is the only authorized method to interact with the device. It's obvious which method is more complete and less prone to bugs.
 
@@ -41,4 +41,4 @@ Cisco ACI is an example of product built around REST API. In fact REST API is th
 ### More to explore
 
 * We discussed the same dilemma in [Network Automation 101](https://www.ipspace.net/Network_Automation_101) webinar
-* Phil Shafer described the history of one of the first API-based network operating systems (Junos) in [Episode 85](https://blog.ipspace.net/2017/12/how-did-netconf-start-on-software-gone.html) of [Software Gone Wild](https://www.ipspace.net/Podcast/Software_Gone_Wild/) podcast.
+* Phil Shafer described the history of one of the first API-based network operating systems (Junos) in [Episode 85](/2017/12/how-did-netconf-start-on-software-gone/) of [Software Gone Wild](https://www.ipspace.net/Podcast/Software_Gone_Wild/) podcast.

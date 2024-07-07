@@ -26,7 +26,7 @@ To give you a few examples - you can do all these things (and many more) with El
 
 Enterprise-level scalable and resilient ELK architectures will be discussed in the future. We'll start with a simple ELK configuration useful as a learning lab:
 
-{{<figure src="../elk-1.png" caption="A simple ELK(B) architecture">}}
+{{<figure src="/kb/ELK/elk-1.png" caption="A simple ELK(B) architecture">}}
 
 - Logstash is the first log receiver you'll focus on to ingest Syslog and NetFlow logs. Logstash parses and enriches logs before storing them to Elasticsearch.
 - Beats are agents installed into Linux or Windows systems to collect logs. Beats can write directly to Elasticsearch, but I usually prefer to pass them trough Logstash for enrichment.

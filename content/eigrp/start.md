@@ -9,8 +9,8 @@ When I was writing the [EIGRP Network Design Solutions](http://www.ciscopress.co
 <!--more-->
 To fix that, I migrated the missing information to ipSpace.net blog:
 
-* [Solutions to selected exercises](/eigrp/exercise_index.html)
-* [Router configurations](/eigrp/config_index.html) needed to reproduce the DUAL examples in the book.
+* [Solutions to selected exercises](/eigrp/exercise_index/)
+* [Router configurations](/eigrp/config_index/) needed to reproduce the DUAL examples in the book.
 
 Hope you'll find them useful\
 Ivan
