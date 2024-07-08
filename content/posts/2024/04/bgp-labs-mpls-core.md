@@ -16,5 +16,3 @@ That should be an easy task if you configured MPLS in the past, so try to spice 
 * Use SR/MPLS instead of LDP
 * Do it on a platform you're not familiar with (hint: Arista vEOS is a bit different from Cisco IOS)
 * Try to get it running on FRR containers.
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/challenge/40-mpls-core/){{</jump>}}

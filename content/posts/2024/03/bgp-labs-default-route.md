@@ -14,5 +14,3 @@ If you're an Internet Service Provider running BGP with your customers, you migh
 Likewise, you might want to send the default route in an enterprise network from WAN edge routers to site core routers and might have to use BGP to get the routing information across the firewalls.
 
 In both cases, you have to advertise the default route in BGP updates, and we know that every routing protocol handles default routes slightly differently. You can practice the BGP way of advertising the default route in the [next BGP lab exercise](https://bgplabs.net/basic/c-default-route/).
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/basic/c-default-route/){{</jump>}}

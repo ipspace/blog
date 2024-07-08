@@ -15,5 +15,3 @@ In the [BGP Route Aggregation lab](https://bgplabs.net/basic/8-aggregate/) you c
 * Prefix-based filtering of outbound BGP updates
 
 {{<figure src="https://bgplabs.net/basic/topology-aggregate.png">}}
-
-Note: if you want to keep things simple, [run BGP labs with _netlab_](https://bgplabs.net/1-setup/) ([other options](https://bgplabs.net/external/)).

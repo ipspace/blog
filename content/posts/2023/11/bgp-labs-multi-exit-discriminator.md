@@ -12,5 +12,3 @@ In the previous labs, we used [BGP weights](https://bgplabs.net/policy/1-weights
 Most edge (end-customer) networks face a different problem -- they want to influence the incoming traffic flow, and one of the tools they can use is [BGP Multi-Exit Discriminator (MED)](https://bgplabs.net/policy/6-med/).
 
 {{<figure src="https://bgplabs.net/policy/topology-med.png">}}
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/policy/6-med/){{</jump>}}
