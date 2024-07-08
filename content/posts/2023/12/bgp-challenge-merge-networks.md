@@ -12,5 +12,3 @@ Here's a challenge in case you get bored during the Christmas break: [merge two 
 {{<figure src="https://bgplabs.net/challenge/topology-merge-as.png">}}
 
 Hopefully, you won't have to deal with something similar in real life, but then we know that crazy requirements trump good designs any day of the week.
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/challenge/20-merge-as/){{</jump>}}

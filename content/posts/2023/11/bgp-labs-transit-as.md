@@ -12,5 +12,3 @@ Last time we [built a network with two adjacent BGP routers](https://bgplabs.net
 {{<figure src="https://bgplabs.net/ibgp/topology-ibgp-transit.png">}}
 <!--more-->
 There are at least four ways to get connectivity between PE2 and EXT routers. The [lab exercise](https://bgplabs.net/ibgp/2-transit/) doesn't allow you to use route redistribution or aggregation/default route. You could use MPLS (or SRv6) if you wish, or give up and do what's usually done in large networks running BGP.
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/ibgp/2-transit/){{</jump>}}

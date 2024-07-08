@@ -10,5 +10,3 @@ redirect: https://bgplabs.net/basic/b-max-prefix/
 Here's an easy way to stop fat-finger incidents in which an end-user autonomous system redistributes IGP into BGP or advertises the whole DFZ routing table from affecting the entire Internet: limit the number of BGP prefixes your routers accept from your customers. You can practice this nifty feature in the [next BGP lab exercise](https://bgplabs.net/basic/b-max-prefix/).
 
 {{<figure src="https://bgplabs.net/basic/topology-max-prefix.png">}}
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/basic/b-max-prefix/){{</jump>}}

@@ -12,5 +12,3 @@ If you insist on building your network with EBGP as a better IGP, make sure your
 Want to practice that neat trick? Check out the [EBGP Sessions over IPv6 LLA Interfaces](https://bgplabs.net/basic/d-interface/) lab exercise.
 
 {{<figure src="https://bgplabs.net/basic/topology-interface-ebgp.png">}}
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/basic/d-interface/){{</jump>}}

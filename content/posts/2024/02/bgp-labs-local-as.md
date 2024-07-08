@@ -12,5 +12,3 @@ Can you use BGP to connect to the global Internet without having a public BGP AS
 {{<figure src="https://bgplabs.net/session/topology-localas.png">}}
 
 That's one of the many use cases for the **local-as** functionality available in most BGP implementations. You can practice it in the [Use Multiple AS Numbers on the Same Router](https://bgplabs.net/session/3-localas/) lab exercise.
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/session/3-localas/){{</jump>}}

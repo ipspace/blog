@@ -10,5 +10,3 @@ redirect: https://bgplabs.net/challenge/30-reduce-fib/
 Here's another BGP lab challenge to start your weekend: use RIB-to-FIB filters to reduce the forwarding table size on access routers in a large Service Provider network.
 
 {{<figure src="https://bgplabs.net/challenge/topology-reduce-fib.png" width="400">}}
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/challenge/30-reduce-fib/){{</jump>}}

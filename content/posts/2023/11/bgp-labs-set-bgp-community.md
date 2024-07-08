@@ -12,5 +12,3 @@ It's hard to influence the behavior of someone with strong opinions (just ask an
 An easy solution to this problem was proposed in 1990s -- what if we could attach [some extra attributes](https://www.rfc-editor.org/rfc/rfc1997.html) (called *communities* just to confuse everyone) to BGP updates and use them to [tell adjacent autonomous systems to lower their BGP local preference](https://www.rfc-editor.org/rfc/rfc1998.html)? You can practice doing that in the _[Attach BGP Communities to Outgoing BGP Updates](https://bgplabs.net/policy/8-community-attach/)_ lab exercise.
 
 {{<figure src="https://bgplabs.net/policy/topology-community-attach.png">}}
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/policy/8-community-attach/){{</jump>}}

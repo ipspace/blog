@@ -12,5 +12,3 @@ Configuring an IBGP session on a route reflector takes a half-dozen parameters, 
 Wouldn't it be nice if you could group those parameters into a template and apply the template to a neighbor? Most BGP implementations have something along those lines. That feature could be called a *session template* or a *peer group*, and you can practice it in the [next BGP lab exercise](https://bgplabs.net/session/6-templates/).
 
 {{<figure src="https://bgplabs.net/session/topology-session-templates.png">}}
-
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/session/6-templates/){{</jump>}}
