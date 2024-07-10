@@ -91,7 +91,7 @@ blog_skip_url() {
 }
 
 blog_md_to_html() {
-  echo $1|sed 's#[.]md$#.html#'
+  echo $1|sed 's#[.]md$#/#'
 }
 
 blog_html_to_md() {
