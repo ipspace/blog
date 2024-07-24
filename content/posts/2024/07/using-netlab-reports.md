@@ -1,5 +1,5 @@
 ---
-date: 2024-07-25 09:14:00+02:00
+date: 2024-07-26 09:14:00+02:00
 netlab_tag: guidelines
 tags: [ netlab ]
 title: "Using netlab Reports"
