@@ -99,6 +99,26 @@ With an L2VPN you just have to accept a few parameters and you can connect immed
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2344">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dmytro Shypovalov</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2344" href="#2344">25 July 2024 07:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I don&#39;t really understand the first 2 arguments, how is that different from SR-MPLS?</p>
+
+<p>The summarization argument is interesting. This obviously is applicable only to hierarchical designs, with multiple IGP domains. So with appropriate addressing of locators, you can advertise only a summary route to other domains.</p>
+
+<p>My question is whether there are ASICs that support longest prefix match for SRv6 locators? LPM is more complicated and expensive than exact match, and now this has to be implemented for a new encapsulation. And how is this done, I presume recirculation similar to what happens in L3VPN with per-VRF label? I haven&#39;t worked with SRv6 but very curious to look at hardware limitations and caveats. What I know for sure is that SID depth for SRv6 is typically much lower than for SR-MPLS, which limits traffic engineering capabilities.</p>
+
+<p>Also, while SR-MPLS strictly speaking doesn&#39;t have summarization, you can use IS-IS area proxy and advertise only area segment into L2, so routers won&#39;t receive L1 routes/SID. This will save FIB space. The downside is that controller will be required to reach routers inside L1, so it&#39;s not the most robust design, but allows to do &quot;sort of&quot; summarization with SR-MPLS.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
