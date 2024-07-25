@@ -1,5 +1,6 @@
 ---
 title: "Worth Reading: The AI Supply Paradox"
+series_title: "The AI Supply Paradox"
 date: 2023-12-17 06:57:00
 tags: [ worth reading, AI ]
 AI_tag: read
