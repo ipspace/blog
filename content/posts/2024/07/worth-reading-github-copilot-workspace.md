@@ -1,5 +1,6 @@
 ---
 title: "Worth Reading: GitHub Copilot Workspace Review"
+series_title: "GitHub Copilot Workspace Review"
 date: 2024-07-15 07:26:00+0200
 tags: [ worth reading, AI ]
 ai_tag: read

@@ -1,5 +1,6 @@
 ---
 title: "Worth Reading: ChatGPT Does Not Summarize"
+series_title: "ChatGPT Does Not Summarize"
 date: 2024-05-31 07:37:00+0200
 tags: [ worth reading, AI ]
 ai_tag: read

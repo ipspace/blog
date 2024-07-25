@@ -1,5 +1,6 @@
 ---
 title: "Worth Reading: AI Is Still a Delusion"
+series_title: "AI Is Still a Delusion"
 date: 2024-07-17 07:36:00+0200
 tags: [ worth reading, AI ]
 ai_tag: read
