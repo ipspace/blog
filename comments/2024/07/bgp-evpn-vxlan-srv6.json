@@ -38,6 +38,15 @@
                "pub": "2024-07-25T19:40:07",
                "ref": "2343",
                "type": "comment"
+            },
+            {
+               "date": "26 July 2024 12:39",
+               "html": "<p>&gt; how is that different from SR-MPLS?</p>\n\n<p>The first argument is not very impressive. Right now people have to give every box in their network one or more IPv4 addresses, one or more IPv6 address, and one or more SR-MPLS labels. That&#39;s 3 address-spaces to take numbers from. If you do SRv6, where labels are just IPv6 addresses (or IPv6 prefixes, depending on how you look at locators), you have only 2 address spaces. I don&#39;t think that is a huge benefit. I don&#39;t run a network. I was just repeating what I heard.</p>\n\n<p>The 2nd argument requires a bit more knowledge about SR6v. Remember, SRv6 locators are just IPv6 addresses. An operator reserves a prefix to cut locators out. So suppose they assign a /48 for the locators. Lets say we use 1:2:3::0/48. Then you need to cut individual locators for each router. Let&#39;s take 16 bits for that. So now the locator for router N is 1:2:3:N::/64. Now you want to assign locators for flex-algos. Let&#39;s use 8 bits for that. So the locator for router N, flex-algo F is: 1:2:3:N:F0::/72. That&#39;s it. That&#39;s the bits you need for SRv6 routing.</p>\n\n<p>But you still have the last 56 bits that are zeros. Unused. You could use them. The idea is that you can but &quot;instructions&quot; into those 56 bits. An operator and a parameter. Or an operator and two parameter. And you might be able to fix more than one instruction in those 56 bits. The instructions could be: &quot;this packet needs to go through a firewall&quot;. Or &quot;this packet needs to go through NAT&quot;. I don&#39;t know much about real world application, but that is the idea.</p>\n\n<p>You&#39;re not gonna be able to do this with SR-MPLS. With SR-MPLS you get 20 bit address-space. And that is it. Not enough to do fancy things. (Unless you go stack a shitload of labels, maybe).</p>\n",
+               "id": "2345",
+               "name": "Henk  ",
+               "pub": "2024-07-26T00:39:28",
+               "ref": "2344",
+               "type": "comment"
             }
          ],
          "date": "25 July 2024 11:18",
