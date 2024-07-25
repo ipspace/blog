@@ -59,6 +59,50 @@ With an L2VPN you just have to accept a few parameters and you can connect immed
 
 <p>The Metro Ethernet Forum has tons of specifications on the different VPN services. There you can see clearly the difference.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2343">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2343" href="#2343">25 July 2024 12:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; What&#39;s the point of SRv6?</p>
+
+<p>Firstly, I&#39;m not speaking for my employer here. I have hardly worked yet on SRv6 myself. My team-mates do that. I focus on other stuff for now.</p>
+
+<p>There are several benefits of SRv6 that I&#39;ve heard of.</p>
+
+<p>1) You&#39;ll have one address space for addresses and labels. Some people like that.</p>
+
+<p>2) You have network programmability inside your SIDs. You can do stuff like NFV, etc. I have no idea how many networks really use this.</p>
+
+<p>3) You can have non-SRv6 speakers in your SRv6 network. As the destination-addresses, which are SIDs/locators, are still just IPv6-addresses, any router that does IPv6 but not SRv6, can still be deployed in your SRv6 network.</p>
+
+<p>Personally I don&#39;t care about that reason. I really dislike it when a nice clean new technology gets mucked up, just so it is a bit easier to migrate an existing network. The migrations will finished within a few years. And then you have those ugly details and hacks remaining for the next 3 decades.</p>
+
+<p>4) You can summarize locators.</p>
+
+<p>This is the big benefit in my eyes. We know how to build a network with a 1000 or so routers, in one IGP domain. But once we go bigger, things are not trivial anymore. We can use BGP to glue parts of the network together. We can divide an IGP into areas. But that causes other problems or inefficiencies. E.g. if you do SR-MPLS, what MPLS labels are your L1L2 routers gonna advertise? They&#39;ll need to advertise all MPLS labels for all the loopbacks in the L1 area. And the other way around (L2-&gt;L1) is even worse (even more loopbacks). We can not (really) summarize MPLS labels in the control plane. And we sure as hell can not summarize MPLS labels in the dataplane.</p>
+
+<p>With SRv6, this problem is solved. The L1L2 routers can summarize not only the regular prefixes in the area, but also the locators, the flex-algo locators, etc. The only remaining problem is when BGP-speakers expect to see /32s (or /128s) for every peer they talk to. There are no elegant solutions for this yet, so it would be the next problem to fix.</p>
+
+<p>You probably don&#39;t care about summarizable locators, or networks with 10k+ routers. But in the end: &quot;the only problem is scalability&quot;. (I though that was a quote from Randy Bush. But Google can&#39;t find it. So not sure). My big interest in my career has been scalability in routing protocols. (And performance, robustness and convergence, as they are all closely related). So I like it when SRv6 locators can be summarized.</p>
+
+<p>Or maybe someone with a lot of cash to spend on new routers can ask their supplier for summarizable MPLS labels? :) In today&#39;s companies, nobody will listen to a simple engineer as myself. But if a large ISP or hyperscaler, with a fat wallet, asks for something, that could make a difference. :) But then, nobody asked for summarizable MPLS labels during the last 25 years, so I expect nobody will any time soon.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
