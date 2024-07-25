@@ -120,6 +120,36 @@ With an L2VPN you just have to accept a few parameters and you can connect immed
         </li>
       </div>
       <div>
+        <li class="comment" id="2346">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk  </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2346" href="#2346">26 July 2024 12:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; advertise only a summary route to other domains</p>
+
+<p>Domains or areas, yes. As I heard tli once say: &quot;the only real tool we have for scalability is hierarchy with summarization&quot;. We have that in IGPs with areas. Or multiple IGP domains with redistribution (which is not much different). But if the areas have limitations, and you can&#39;t really use them, we have no real tool for scalability.</p>
+
+<p>&gt; there are ASICs that support longest prefix match for SRv6 locators?</p>
+
+<p>Remember that SRv6 locators look just like IPv6 addresses. And hardware has been capable to do LPM for IPv6 for decades. So yeah.</p>
+
+<p>&gt;  SID depth for SRv6 is typically much lower than for SR-MPLS</p>
+
+<p>Yes. But how many SIDs do you really need? For TI-LFA 2 SIDs is usually enough (for the P-node and the Q-node). For uloop-avoidance, 1 or 2 SIDs, is usually enough. For VPNs you might need 2 SIDs. Only for real TE you might need more. I&#39;ve heard in the real world, have 2-3 SIDs is usually enough for TE. Also, I think MTUs are huge these days. So the overhead of a few SIDs doesn&#39;t matter. The only issue is how many SIDs can a router deal with itself? (I have no idea, tbh. I am not a hardware guy).</p>
+
+<p>&gt; you can use IS-IS area proxy and advertise only area segment into L2, so routers won&#39;t receive L1 routes/SID.</p>
+
+<p>I don&#39;t think this does what you want it to do. There are other, simpler ways to advertise &quot;a prefix of MPLS labels&quot;. See binding-SIDs. The problem is that when the control-plane knows about these &quot;MPLS prefixes&quot;, the hardware does not. So any packet destined for a label out of such  a &quot;MPLS prefix&quot; can not be forwarded. If it was up to me (but it isn&#39;t), the next feature for SR/MPLS forwarding hardware for all vendors would be the ability to do LPM for labels. I think that would help build easier larger more scalable networks. But if we don&#39;t have that in SR-MPLS, we do have it in SRv6.</p>
+
+<p>And that was my point. Summarizable SRv6 SIDs (aka locators) allow you to build much larger networks.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
         <li class="comment" id="2345">
           <div class="comment-block">
             <div class="comment-header">
