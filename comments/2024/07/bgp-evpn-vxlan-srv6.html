@@ -242,6 +242,32 @@ https://datatracker.ietf.org/doc/html/rfc8754#name-segment-routing-header</p>
 
 <p>With uSIDs, you use a slightly different header format than the straight-forward SRH header. I think the SRH is still used. But in stead of holding N * 128 bits, it holds info in a smarter way. E.g. in my example above, I suggested we&#39;d carve all locators out of a /48 block. If you do that, you don&#39;t need to repeat that /48 in every SID. You&#39;d have a one-time &quot;Locator-block&quot; in the SRH. And then all SIDs don&#39;t need to mention/repeat those 48 bits. Similarly, if you use 16 bits to identifier a router, and 8 bits for the flex-algo number (or 0 for algo-0), then you still have 56 bits set to 0 in every locator. So you don&#39;t need to put those bits in the SRH either. (Unless you wanna put instructions&amp;arguments in those 56 bits). That&#39;s the idea. Of course there all these little details to make things more complex.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2351">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk  </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2351" href="#2351">26 July 2024 06:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; I&#39;m curious to see an existing design leveraging SRv6 to solve actual problems</p>
+
+<p>I work for a vendor. I&#39;m just a simple programmer. And as I said, I don&#39;t do much work on SRv6. (I work on IS-IS. But currently my interest lies in flooding (performance, robustness, scalability, etc). I&#39;ve also done a bit of work to improve visibility of IS-IS (new show command, improved existing show commands, done CPU profiling, kicking the shit out of IS-IS in my testbed and see what code consumes the CPU, lots of fun things).</p>
+
+<p>Most customers don&#39;t like it if vendors would educate their competition about the details and secrets of their own networks. So even if I knew more about SRv6 in the real world, I probably couldn&#39;t tell you. Vendors have PMs. They know these things. And they know what they can share. Some customers don&#39;t mind being references to other customers, regarding SRv6. Talk to a PM, and he might be able to tell you more. Sorry.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
