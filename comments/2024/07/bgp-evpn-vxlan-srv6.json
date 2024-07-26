@@ -82,9 +82,17 @@
          "name": "Bela Varkonyi",
          "pub": "2024-07-25T11:18:58",
          "type": "comment"
+      },
+      {
+         "date": "26 July 2024 06:14",
+         "html": "<p>&gt; Is this also true for uSID?</p>\n\n<p>Yes.  </p>\n\n<p>SRv6 works like this: after the normal IPv6 header, there is a new header, the SRH (Segment Routing Header). The SRH holds a list of all IPv6 addresses/locators of intermediate routers that have to be traversed in the path to the destination. Each router on this list must be a SRv6 speaker. But the other intermediate routers do not need to be SRv6 capable.</p>\n\n<p>The originating (or ingress) router puts the locator/IPv6 address of the first hop in the destination address of the normal IPv6 header. (And fills the SRH with all locators to traverse). Then the packet gets routed (via SRv6 speakers and/or non-SRv6 speakers) to the first hop. Like the IPv4 loose source routing option was supposed to work (before it was banned from real networks).</p>\n\n<p>When the packet reaches the first intermediate hop, that router will replace the destination address in the IPv6 header with the next locator from the list in the SRH. And sends the packet to the next hop in the SRv6-path. And so on.</p>\n\n<p>The SRH header containst a list of N IPv6 addresses for N intermediate hops. So if you send the packet across 5 hops, your SRH header will be 5 * 16 = 80 octets (plus 8 for the fixed size part of the SRH) = 88 octets. That&#39;s a lot of overhead.</p>\n\n<p>See: <br />\nhttps://datatracker.ietf.org/doc/html/rfc8754#name-segment-routing-header</p>\n\n<p>With uSIDs, you use a slightly different header format than the straight-forward SRH header. I think the SRH is still used. But in stead of holding N * 128 bits, it holds info in a smarter way. E.g. in my example above, I suggested we&#39;d carve all locators out of a /48 block. If you do that, you don&#39;t need to repeat that /48 in every SID. You&#39;d have a one-time &quot;Locator-block&quot; in the SRH. And then all SIDs don&#39;t need to mention/repeat those 48 bits. Similarly, if you use 16 bits to identifier a router, and 8 bits for the flex-algo number (or 0 for algo-0), then you still have 56 bits set to 0 in every locator. So you don&#39;t need to put those bits in the SRH either. (Unless you wanna put instructions&amp;arguments in those 56 bits). That&#39;s the idea. Of course there all these little details to make things more complex.</p>\n",
+         "id": "2350",
+         "name": "Henk  ",
+         "pub": "2024-07-26T18:14:51",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2024/07/bgp-evpn-vxlan-srv6.html"
 }
