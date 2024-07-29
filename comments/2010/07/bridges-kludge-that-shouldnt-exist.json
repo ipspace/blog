@@ -1,153 +1,164 @@
 {
-  "comments": [
-    {
-      "date": "12 July 2010 08:22",
-      "html": "A few words in defense of bridging :) I would not say that bridging, interpreted as multiaccess link &quot;extension&quot; is *all* bad (what method is used for such extension is not important at the moment). &quot;Bridging&quot; defined as above has one huge benefit - simple ad-hoc deployment, which was so important in 80s and 90s. <br /><br />Even now, in the days of where uPnP and Zeroconf have been available for a while (though never widely accepted) using ethernet &quot;bridging&quot; (defined as single-linke extension) is the simplest and cheapest way of hooking network devices with minimum (initial) headache. At least without hiring a networking expert :) And in *some* situations this works just fine.<br /><br />The main problem (and benefit at the same time!) of any ad-hoc technology is low manageability. I would like to stress out that it IS possible to develop a scalable multi-access link technology (though TRILL is not an example :). There are Ethernet &quot;modifications&quot; that scale perfectly in the sense that they may accomodate tens of thousands of nodes on a single virtual link without any problems. However, it&#39;s almost impossible to properly manage an unstructured ad-hoc network; neither is possible to implement  a complex security policy.<br /><br />Is there a solution? Well yes, create another overlay structure on top of the ad-hoc topology (e.g. require all nodes to register, authenticate and join a community/group) and use it for management. Works, but removes the only single benefit that ad-hoc bridging had! :)",
-      "id": "1443091361053906694",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Petr Lapukhov",
-      "profile": null,
-      "pub": "2010-07-12T08:22:46.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "12 July 2010 10:10",
-      "html": "STP is *not* a masterpiece of engineering, by  a long shot.<br /><br />It is possible to design resilient and scalable L2 network. It takes care, discipline and foresight, just like any other engineering task.",
-      "id": "4668044225598451412",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Dmitri Kalintsev",
-      "profile": null,
-      "pub": "2010-07-12T10:10:48.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "25 February 2015 20:05",
-          "html": "STP timers of that time were based on the prevalent bridge  processors/cipsets capability that were available then. It id evolve with the RSTP. and other enhances. Yes STP is not perfect but how many extensions were added to BGP OSPF and EIGRP for additional uses over time for example?",
-          "id": "2540586450896378244",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "jsicuran",
-          "profile": "http://www.amilabs.com",
-          "pub": "2015-02-25T20:05:12.341+01:00",
-          "ref": "7695281775126250682",
-          "type": "comment"
-        }
-      ],
-      "date": "12 July 2010 17:41",
-      "html": "&quot;STP is *not* a masterpiece of engineering, by a long shot.&quot;<br /><br />^ Agreed. The original 802.1D was embarrassingly slow and limited. It took the better part of a decade to evolve into something half-decent.",
-      "id": "7695281775126250682",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "stretch",
-      "profile": null,
-      "pub": "2010-07-12T17:41:07.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "12 July 2010 18:15",
-      "html": "Transparent bridging is obviously a failure (more about that in another post). In my opinion, it&#39;s impossible to design resilient &amp; scalable L2 network without introducing so many features that it&#39;s in the end indistinguishable from a L3 network. If you believe otherwise, please show me an example.<br /><br />Next, do not forget that the bridges&#39; hardware at that time was severely limited. It&#39;s easy to be smart and creative when you have 4GB of RAM and a CPU that&#39;s faster than yesterday&#39;s mainframes. When all you have is 64KB of RAM and a 4MHz CPU (or something equivalent), your options are &quot;somewhat&quot; limited. Designing a protocol that has very low CP+RAM requirements and almost-constant complexity is good engineering.<br /><br />Last but not least, don&#39;t blame STP for the monstrosity of transparent bridging. STP is just a protocol that finds a loop-free topology. If it&#39;s too slow for you, you can always fine-tune the timers. &quot;Original&quot; OSPF, IS-IS or BGP are also embarrassingly slow. Just imagine: 40 seconds just to discover your neighbor is down (or 3 minutes in BGP case) ... unbelievable. What were those idiots thinking? Oh, maybe, just maybe, they were forced to run those protocols on 64 kbps links instead of 10Gbps ones.",
-      "id": "1450579875162831207",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2010-07-12T18:15:09.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "12 July 2010 19:09",
-      "html": "I disagree, STP is an elegant and highly functional protocol that is a masterpiece of design. What is also true, is that it was designed for Z80 CPU&#39;s and very low memory and hasn&#39;t been upgraded like many other protocols. <br /><br />The limitations are not inherent in the protocol, but in the way people implement.",
-      "id": "8681768812940492144",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "etherealmind",
-      "profile": null,
-      "pub": "2010-07-12T19:09:33.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "12 July 2010 20:08",
-      "html": "Speaking of bridging I wonder why no one mentioned PBB/PBT and connection-oriented Ethernet in general :)",
-      "id": "5839662910838005301",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Petr Lapukhov",
-      "profile": null,
-      "pub": "2010-07-12T20:08:55.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "12 July 2010 20:38",
-      "html": "OK, I&#39;ll pick up that challenge. But first we need some baseline stuff ... coming in a few days.",
-      "id": "2675333747894014521",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2010-07-12T20:38:05.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "13 July 2010 03:59",
-      "html": "Thanks for this post and for the link to the Radia video. I&#39;ll definitely watch it. I&#39;m currently studying for my SWITCH exam and it was nice to hear some positive things about STP.",
-      "id": "249479723278220394",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Blake Erickson",
-      "profile": null,
-      "pub": "2010-07-13T03:59:10.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "14 July 2010 13:36",
-      "html": "&gt; please show me an example<br /><br />A ~400 site network a couple of my ex-colleagues designed, built (around 2002) and operated for about 6 years for one of key customers. Two &quot;head offices&quot; and ~400 branches, running between 10 and 100 Mbit/s each. HO sites were connected using 8-link Gigabit Ethernet channels. Purely switched network, using only MST+ and LAG, nothing else. Equipment-wise - a bunch of 4500s at larger sites, 3550s serving groups of closely located branches and media converters at the branches themselves. *Not one* major outage (and yes, the network was fully alarmed for connectivity *and* performance, using IP SLA). Maybe lucky.<br /><br />That is probably the most prominent example. Since then we&#39;ve all gone VPLS, so no more true blue switched Ethernet. That said, the local incumbent still operates their Carrier Ethernet platform in the true blue fashion. 7600s, 3550s, 3750s, etc. They also didn&#39;t have too many misfortunes. Until about couple weeks ago, when they did. Apparently due to a failed card somewhere. Yes, many, *many* angry and some *very* angry customers, as yes, these networks are not too easy to troubleshoot, when they &quot;go&quot;, so it took some hours to get the network back. :)",
-      "id": "8913107626330329797",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Dmitri Kalintsev",
-      "profile": null,
-      "pub": "2010-07-14T13:36:08.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "14 July 2010 15:49",
-      "html": "@Dmitri: I must admit, I&#39;m totally impressed. Would you be willing to share more information with me?",
-      "id": "4962645199977121127",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2010-07-14T15:49:53.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "14 July 2010 23:36",
-      "html": "Yes, of course. Could we take it offline? I assume you can see my email address, to which the notifications from this blog go?",
-      "id": "8078990719361321615",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Dmitri Kalintsev",
-      "profile": null,
-      "pub": "2010-07-14T23:36:12.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    },
-    {
-      "date": "14 July 2010 23:43",
-      "html": "We probably have different definitions of elegance and function. For a bit of a perspective, mine includes the ability to fail in a safe manner and an ability to facilitate fault finding with reasonable ease. Judging by the real life examples of what I have seen to date, the STP is none of that, irrespective of how much bad poetry is written to describe it&#39;s workings. :)",
-      "id": "117473017346669577",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Dmitri Kalintsev",
-      "profile": null,
-      "pub": "2010-07-14T23:43:57.000+02:00",
-      "ref": "5144052081826315430",
-      "type": "comment"
-    }
-  ],
-  "count": 13,
-  "id": "5144052081826315430",
-  "type": "post",
-  "url": "2010/07/bridges-kludge-that-shouldnt-exist.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "29 July 2024 11:12",
+               "html": "<p>The simplicity of Ethernet connection provisioning is still an important feature. That is why service providers prefer offering L2 connectivity. Provisioning could become easy, automated, quick, even through multiple service provider sections. Metro Ethernet Forum has some specifications for this...\nL3 connectivity provisioning between a LAN and a WAN is more complicated, time and resource consuming.</p>\n",
+               "id": "2352",
+               "name": "Bela Varkonyi",
+               "pub": "2024-07-29T11:12:37",
+               "ref": "1443091361053906694",
+               "type": "comment"
+            }
+         ],
+         "date": "12 July 2010 08:22",
+         "html": "A few words in defense of bridging :) I would not say that bridging, interpreted as multiaccess link &quot;extension&quot; is *all* bad (what method is used for such extension is not important at the moment). &quot;Bridging&quot; defined as above has one huge benefit - simple ad-hoc deployment, which was so important in 80s and 90s. <br /><br />Even now, in the days of where uPnP and Zeroconf have been available for a while (though never widely accepted) using ethernet &quot;bridging&quot; (defined as single-linke extension) is the simplest and cheapest way of hooking network devices with minimum (initial) headache. At least without hiring a networking expert :) And in *some* situations this works just fine.<br /><br />The main problem (and benefit at the same time!) of any ad-hoc technology is low manageability. I would like to stress out that it IS possible to develop a scalable multi-access link technology (though TRILL is not an example :). There are Ethernet &quot;modifications&quot; that scale perfectly in the sense that they may accomodate tens of thousands of nodes on a single virtual link without any problems. However, it&#39;s almost impossible to properly manage an unstructured ad-hoc network; neither is possible to implement  a complex security policy.<br /><br />Is there a solution? Well yes, create another overlay structure on top of the ad-hoc topology (e.g. require all nodes to register, authenticate and join a community/group) and use it for management. Works, but removes the only single benefit that ad-hoc bridging had! :)",
+         "id": "1443091361053906694",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Petr Lapukhov",
+         "profile": null,
+         "pub": "2010-07-12T08:22:46.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "12 July 2010 10:10",
+         "html": "STP is *not* a masterpiece of engineering, by  a long shot.<br /><br />It is possible to design resilient and scalable L2 network. It takes care, discipline and foresight, just like any other engineering task.",
+         "id": "4668044225598451412",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Dmitri Kalintsev",
+         "profile": null,
+         "pub": "2010-07-12T10:10:48.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "25 February 2015 20:05",
+               "html": "STP timers of that time were based on the prevalent bridge  processors/cipsets capability that were available then. It id evolve with the RSTP. and other enhances. Yes STP is not perfect but how many extensions were added to BGP OSPF and EIGRP for additional uses over time for example?",
+               "id": "2540586450896378244",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "jsicuran",
+               "profile": "http://www.amilabs.com",
+               "pub": "2015-02-25T20:05:12.341+01:00",
+               "ref": "7695281775126250682",
+               "type": "comment"
+            }
+         ],
+         "date": "12 July 2010 17:41",
+         "html": "&quot;STP is *not* a masterpiece of engineering, by a long shot.&quot;<br /><br />^ Agreed. The original 802.1D was embarrassingly slow and limited. It took the better part of a decade to evolve into something half-decent.",
+         "id": "7695281775126250682",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "stretch",
+         "profile": null,
+         "pub": "2010-07-12T17:41:07.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "12 July 2010 18:15",
+         "html": "Transparent bridging is obviously a failure (more about that in another post). In my opinion, it&#39;s impossible to design resilient &amp; scalable L2 network without introducing so many features that it&#39;s in the end indistinguishable from a L3 network. If you believe otherwise, please show me an example.<br /><br />Next, do not forget that the bridges&#39; hardware at that time was severely limited. It&#39;s easy to be smart and creative when you have 4GB of RAM and a CPU that&#39;s faster than yesterday&#39;s mainframes. When all you have is 64KB of RAM and a 4MHz CPU (or something equivalent), your options are &quot;somewhat&quot; limited. Designing a protocol that has very low CP+RAM requirements and almost-constant complexity is good engineering.<br /><br />Last but not least, don&#39;t blame STP for the monstrosity of transparent bridging. STP is just a protocol that finds a loop-free topology. If it&#39;s too slow for you, you can always fine-tune the timers. &quot;Original&quot; OSPF, IS-IS or BGP are also embarrassingly slow. Just imagine: 40 seconds just to discover your neighbor is down (or 3 minutes in BGP case) ... unbelievable. What were those idiots thinking? Oh, maybe, just maybe, they were forced to run those protocols on 64 kbps links instead of 10Gbps ones.",
+         "id": "1450579875162831207",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2010-07-12T18:15:09.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "12 July 2010 19:09",
+         "html": "I disagree, STP is an elegant and highly functional protocol that is a masterpiece of design. What is also true, is that it was designed for Z80 CPU&#39;s and very low memory and hasn&#39;t been upgraded like many other protocols. <br /><br />The limitations are not inherent in the protocol, but in the way people implement.",
+         "id": "8681768812940492144",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "etherealmind",
+         "profile": null,
+         "pub": "2010-07-12T19:09:33.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "12 July 2010 20:08",
+         "html": "Speaking of bridging I wonder why no one mentioned PBB/PBT and connection-oriented Ethernet in general :)",
+         "id": "5839662910838005301",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Petr Lapukhov",
+         "profile": null,
+         "pub": "2010-07-12T20:08:55.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "12 July 2010 20:38",
+         "html": "OK, I&#39;ll pick up that challenge. But first we need some baseline stuff ... coming in a few days.",
+         "id": "2675333747894014521",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2010-07-12T20:38:05.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "13 July 2010 03:59",
+         "html": "Thanks for this post and for the link to the Radia video. I&#39;ll definitely watch it. I&#39;m currently studying for my SWITCH exam and it was nice to hear some positive things about STP.",
+         "id": "249479723278220394",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Blake Erickson",
+         "profile": null,
+         "pub": "2010-07-13T03:59:10.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "14 July 2010 13:36",
+         "html": "&gt; please show me an example<br /><br />A ~400 site network a couple of my ex-colleagues designed, built (around 2002) and operated for about 6 years for one of key customers. Two &quot;head offices&quot; and ~400 branches, running between 10 and 100 Mbit/s each. HO sites were connected using 8-link Gigabit Ethernet channels. Purely switched network, using only MST+ and LAG, nothing else. Equipment-wise - a bunch of 4500s at larger sites, 3550s serving groups of closely located branches and media converters at the branches themselves. *Not one* major outage (and yes, the network was fully alarmed for connectivity *and* performance, using IP SLA). Maybe lucky.<br /><br />That is probably the most prominent example. Since then we&#39;ve all gone VPLS, so no more true blue switched Ethernet. That said, the local incumbent still operates their Carrier Ethernet platform in the true blue fashion. 7600s, 3550s, 3750s, etc. They also didn&#39;t have too many misfortunes. Until about couple weeks ago, when they did. Apparently due to a failed card somewhere. Yes, many, *many* angry and some *very* angry customers, as yes, these networks are not too easy to troubleshoot, when they &quot;go&quot;, so it took some hours to get the network back. :)",
+         "id": "8913107626330329797",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Dmitri Kalintsev",
+         "profile": null,
+         "pub": "2010-07-14T13:36:08.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "14 July 2010 15:49",
+         "html": "@Dmitri: I must admit, I&#39;m totally impressed. Would you be willing to share more information with me?",
+         "id": "4962645199977121127",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2010-07-14T15:49:53.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "14 July 2010 23:36",
+         "html": "Yes, of course. Could we take it offline? I assume you can see my email address, to which the notifications from this blog go?",
+         "id": "8078990719361321615",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Dmitri Kalintsev",
+         "profile": null,
+         "pub": "2010-07-14T23:36:12.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      },
+      {
+         "date": "14 July 2010 23:43",
+         "html": "We probably have different definitions of elegance and function. For a bit of a perspective, mine includes the ability to fail in a safe manner and an ability to facilitate fault finding with reasonable ease. Judging by the real life examples of what I have seen to date, the STP is none of that, irrespective of how much bad poetry is written to describe it&#39;s workings. :)",
+         "id": "117473017346669577",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Dmitri Kalintsev",
+         "profile": null,
+         "pub": "2010-07-14T23:43:57.000+02:00",
+         "ref": "5144052081826315430",
+         "type": "comment"
+      }
+   ],
+   "count": 12,
+   "id": "5144052081826315430",
+   "type": "post",
+   "url": "2010/07/bridges-kludge-that-shouldnt-exist.html"
 }
