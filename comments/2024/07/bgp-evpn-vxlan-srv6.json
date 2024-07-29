@@ -101,9 +101,17 @@
          "name": "Henk  ",
          "pub": "2024-07-26T18:14:51",
          "type": "comment"
+      },
+      {
+         "date": "29 July 2024 04:54",
+         "html": "<p>I found this presentation explains SRv6 uSID and compares it to classic SRv6.</p>\n\n<p>Introduction to SRv6 uSID Technology.\nwww.ciscolive.com/c/dam/r/ciscolive/emea/docs/2024/pdf/BRKSPG-2203.pdf</p>\n\n<p>Assuming that a network implements the F3216 uSID format and the operator reserved FC00::/24 for SRv6</p>\n\n<p>&gt;summarize locators\nFC00:00TT::/32 for a block, different blocks assigned to each flex algo slice and domain, max 57k routers per domain/slice.\nFC00:00TT:SS00::/40  per set, one or more sets is assigned to an area or region. Up to 224 sets, e000 to ffff is for 8192 functions local to the node.\nFC00:00TT:SSII::/48 per node, up to 256 nodes per set</p>\n\n<p>&quot;SSII&quot; is a 16bit uSID</p>\n\n<p>Access areas could have just two /24 routes via the area border routers, maybe multiple /32 if more path control is required for flex-algo.\nAggregation and core areas would have the /40 aggregates of the other areas and the /32 of other domains.\nInside each area is the /48 routes for locator uSIDs of the other routers within that area.</p>\n\n<p>&gt;SID depth for SRv6 is typically much lower than for SR-MPLS\nNot for F3216 uSID format, a single IPv6 header can take 6 x uSIDs without even using the SR extension header. If a platform can push 3 SR extension headers then it gives a total of 24 labels deep.\nI think most use cases will not need an SR extension header, 5 transport SIDs + 1 function SID (replace MPLS service label).\nFlex algo removed the need for long label stacks to force a path calculated on TE metric or constraints like &quot;use only routers on plane-A&quot;.\nExtension header is needed when the first 32bits of the destination address must be changed along the path for inter-domain routing. <br />\nThere are other formats which pack even more uSIDs in one IPv6 header, but that results in a uSID with only 8bits.</p>\n\n<p>&gt;different from SR-MPLS\nA large network (&gt; 1000 routers) design with SR-MPLS requires binding SIDs between areas, a set of PCE&#39;s must see the full topology via BGP-LS feeds from each region and then give small access routers the path via the anycast binding SIDs by using PCEP with on demand next hop. Seems easier to just aggregate inter-region routes.\nSRv6 seems to get more acceptance than MPLS in the datacentre to be an alternative to VXLAN, it&#39;s supported in Cilium, eBPF, FD.io, Sonic</p>\n",
+         "id": "2353",
+         "name": "Petrus Potgieter",
+         "pub": "2024-07-29T16:54:27",
+         "type": "comment"
       }
    ],
-   "count": 3,
+   "count": 4,
    "type": "post",
    "url": "2024/07/bgp-evpn-vxlan-srv6.html"
 }

@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -268,6 +268,47 @@ https://datatracker.ietf.org/doc/html/rfc8754#name-segment-routing-header</p>
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2353">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Petrus Potgieter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2353" href="#2353">29 July 2024 04:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I found this presentation explains SRv6 uSID and compares it to classic SRv6.</p>
+
+<p>Introduction to SRv6 uSID Technology.
+www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2024/pdf/BRKSPG-2203.pdf</p>
+
+<p>Assuming that a network implements the F3216 uSID format and the operator reserved FC00::/24 for SRv6</p>
+
+<p>&gt;summarize locators
+FC00:00TT::/32 for a block, different blocks assigned to each flex algo slice and domain, max 57k routers per domain/slice.
+FC00:00TT:SS00::/40  per set, one or more sets is assigned to an area or region. Up to 224 sets, e000 to ffff is for 8192 functions local to the node.
+FC00:00TT:SSII::/48 per node, up to 256 nodes per set</p>
+
+<p>&quot;SSII&quot; is a 16bit uSID</p>
+
+<p>Access areas could have just two /24 routes via the area border routers, maybe multiple /32 if more path control is required for flex-algo.
+Aggregation and core areas would have the /40 aggregates of the other areas and the /32 of other domains.
+Inside each area is the /48 routes for locator uSIDs of the other routers within that area.</p>
+
+<p>&gt;SID depth for SRv6 is typically much lower than for SR-MPLS
+Not for F3216 uSID format, a single IPv6 header can take 6 x uSIDs without even using the SR extension header. If a platform can push 3 SR extension headers then it gives a total of 24 labels deep.
+I think most use cases will not need an SR extension header, 5 transport SIDs + 1 function SID (replace MPLS service label).
+Flex algo removed the need for long label stacks to force a path calculated on TE metric or constraints like &quot;use only routers on plane-A&quot;.
+Extension header is needed when the first 32bits of the destination address must be changed along the path for inter-domain routing. <br />
+There are other formats which pack even more uSIDs in one IPv6 header, but that results in a uSID with only 8bits.</p>
+
+<p>&gt;different from SR-MPLS
+A large network (&gt; 1000 routers) design with SR-MPLS requires binding SIDs between areas, a set of PCE&#39;s must see the full topology via BGP-LS feeds from each region and then give small access routers the path via the anycast binding SIDs by using PCEP with on demand next hop. Seems easier to just aggregate inter-region routes.
+SRv6 seems to get more acceptance than MPLS in the datacentre to be an alternative to VXLAN, it&#39;s supported in Cilium, eBPF, FD.io, Sonic</p>
+</div>
           </div>
         </li>
       </div>
