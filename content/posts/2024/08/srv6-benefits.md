@@ -27,8 +27,26 @@ You probably don't care about summarizable locators, or networks with 10k+ route
 
 Or maybe someone with a lot of cash to spend on new routers can ask their supplier for summarizable MPLS labels? :) In today's companies, nobody will listen to a simple engineer as myself. But if a large ISP or hyperscaler, with a fat wallet, asks for something, that could make a difference. :) But then, nobody asked for summarizable MPLS labels during the last 25 years, so I expect nobody will any time soon.
 
----
-
+{{<long-quote>}}
 To recap, the only good reason to use SRv6 is to eliminate hierarchical MPLS (or is it seamless MPLS?). Is that worth the effort (and the investment into new ASICs)? I don't know.
 
 Also, I'm still persuaded that using NSH or SRv6 to implement service insertion is not much better than VLAN chaining, but of course, you're most welcome to leave a pointer to a real-life (as opposed to PowerPoint-based) counterexample in the comments.
+
+Anyway, in a follow-up comment, [Henk explained](https://blog.ipspace.net/2024/07/bgp-evpn-vxlan-srv6/#2345) what he meant with "network programmability within a SID".
+{{</long-quote>}}
+
+The 2nd argument requires a bit more knowledge about SR6v. Remember, SRv6 locators are just IPv6 addresses. An operator reserves a prefix to cut locators out. So suppose they assign a /48 for the locators. Lets say we use 1:2:3::0/48. Then you need to cut individual locators for each router. Let's take 16 bits for that. So now the locator for router N is 1:2:3:N::/64. Now you want to assign locators for flex-algos. Let's use 8 bits for that. So the locator for router N, flex-algo F is: 1:2:3:N:F0::/72. That's it. That's the bits you need for SRv6 routing.
+
+But you still have the last 56 bits that are zeros. Unused. You could use them. The idea is that you can but "instructions" into those 56 bits. An operator and a parameter. Or an operator and two parameter. And you might be able to fix more than one instruction in those 56 bits. The instructions could be: "this packet needs to go through a firewall". Or "this packet needs to go through NAT". I don't know much about real world application, but that is the idea.
+
+You're not gonna be able to do this with SR-MPLS. With SR-MPLS you get 20 bit address-space. And that is it. Not enough to do fancy things. (Unless you go stack a shitload of labels, maybe).
+
+{{<long-quote>}}
+Finally, SRv6 headers take more space than MPLS labels, potentially resulting in hardware limitations (number of SIDs you can insert into a packet). However, [according to Henk](https://blog.ipspace.net/2024/07/bgp-evpn-vxlan-srv6/#2346), you might not need more than a few SIDs.
+{{</long-quote>}}
+
+For TI-LFA 2 SIDs is usually enough (for the P-node and the Q-node). For uloop-avoidance, 1 or 2 SIDs, is usually enough. For VPNs you might need 2 SIDs. Only for real TE you might need more. I've heard in the real world, have 2-3 SIDs is usually enough for TE. Also, I think MTUs are huge these days. So the overhead of a few SIDs doesn't matter. The only issue is how many SIDs can a router deal with itself? (I have no idea, tbh. I am not a hardware guy).
+
+---
+
+Comments? Counterarguments? You know where to leave them ;)
