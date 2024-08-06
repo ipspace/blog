@@ -1,0 +1,33 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2359">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bram</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2359" href="#2359">06 August 2024 03:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have done some migrations on existing hardware, moving from one technology to another. Often related to ACI: either sone enterprises who bought Nexus 9K switches where transitioning to ACI or SDN was mentioned as a benefit during the sales cycle, or enterprises who got ACI form the start but are not using any of its distinguishing features and wanted to get rid of the added &lsquo;complexity&rsquo;.</p>
+
+<p>The transition strategy always used a &lsquo;seed&rsquo; network, using new spine switches and at least a single pair of leaf switches (of each interface &lsquo;type&rsquo;). Which is L2 connected to the existing environment.
+The idea is to free up the first pair of leaf switches by moving the workloads towards the new &lsquo;seed&rsquo; leaf switches. Next the original leaf switches can be converted or re-configured and added to the new &lsquo;seed&rsquo; network. This process is repeated till all workloads are moved. At a certain point also the L3 functionality must also be converted to the new network, mostly done at the end or after moving 50% of workloads.</p>
+
+<p>For sure this can be a lengthy process (depending on fabric size and how many new leaf &lsquo;seed&rsquo; switches can be purchased), but by using virtualization or application high availability to your advantage, it can be greatly de-risked.</p>
+
+<p>Unless the pain points of a certain technology are enormous, mostly some strategic planning is done along the way, a certain type of leaf switches are nearing EOL, or the server team requires higher bandwidth interfaces. These initiatives make it easier to defend this approach towards the business.</p>
+
+<p>From my experience, transitioning technologies on existing hardware is rather rare, adopting new technologies often is done during hardware lifecycle, where all hardware is replaced by newer models, supporting the latest and greatest features. Migration approaches are similar, but you have full new fabric available, which eases the transition.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
