@@ -9,7 +9,7 @@ tags:
 - design
 - BGP
 - EVPN
-title: Typical EVPN BGP Routing Designs
+title: Scaling EVPN BGP Routing Designs
 url: /2018/05/typical-evpn-bgp-routing-designs/
 ---
 As discussed in a [previous blog post](/2018/05/what-is-evpn/), IETF designed EVPN to be next-generation BGP-based VPN technology providing scalable layer-2 and layer-3 VPN functionality. EVPN was initially designed to be used with MPLS data plane and was later extended to use numerous data plane encapsulations, VXLAN being the most common one.

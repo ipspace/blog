@@ -15,7 +15,11 @@ Before going into the technical details, let's start with the basics: What is EV
 
 ### {{<plushy master>}}EVPN Designs {#designs}
 
-EVPN was designed to be used in an IBGP environment on top of an IGP. With the eruption of *EBGP as better IGP* hype, many vendors tried to adapt EVPN to an environment running EBGP instead of OSPF. We covered typical EVPN designs in these blog posts:
+EVPN was designed to be used in an IBGP environment on top of an IGP. With the eruption of *EBGP as better IGP* hype, many vendors tried to adapt EVPN to an environment running EBGP instead of OSPF. We covered some of the typical EVPN designs in these blog posts:
+
+{{<series-listing tag="designs">}}
+
+Other blog posts focus on various design details:
 
 {{<series-listing tag="design">}}
 
