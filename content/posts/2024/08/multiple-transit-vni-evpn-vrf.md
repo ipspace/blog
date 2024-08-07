@@ -142,4 +142,4 @@ Total Mac Addresses for this criterion: 2
 
 **TL&DR:** Just because you could doesn't mean that you should. 
 
-{{<next-in-series page="/posts/x/x/common-services-evpn-design.html">}}However, you could use this capability to implement common-services VRFs with EVPN. More about that in another blog post.{{</next-in-series>}}
+{{<next-in-series page="/posts//2024/08/evpn-common-services-vrf.html">}}However, you could use this capability to implement common-services VRFs with EVPN. More about that in another blog post.{{</next-in-series>}}

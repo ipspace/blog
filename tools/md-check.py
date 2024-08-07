@@ -90,8 +90,15 @@ def check_file(path,listing):
         reportError("Expected path prefix %s" % pathprefix,path)
 
     tags = frontmatter.get('tags')
-    if type(tags) is not list:
+    if not isinstance(tags,list):
       reportError("Tags are missing or not a list",path)
+      return
+    
+    for t in tags:
+      t = t.lower()
+      if os.path.isdir(f'content/tags/{t}'):
+        if f'{t}_tag' not in frontmatter:
+          reportError(f'{t}_tag frontmatter field is missing',path)
 
 args = parseCLI()
 #LOGGING = args.logging or args.verbose
