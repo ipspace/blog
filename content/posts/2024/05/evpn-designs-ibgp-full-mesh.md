@@ -71,7 +71,7 @@ Most of the topology file is [explained in the previous blog post](/2024/04/evpn
 
 [^SPO]: Sometimes it pays off to have a flexible high-level tool ;)
 
-Assuming you already did the previous homework, starting the lab is time.
+Assuming you already did the previous homework, it's time to start the lab with the **netlab up** command.
 
 ### Behind the Scenes
 
