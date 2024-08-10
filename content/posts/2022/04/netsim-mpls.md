@@ -18,4 +18,4 @@ title: netlab MPLS Support
 
 It's never been easier to build full-blown MPLS/VPN labs ;)... if you're OK with [using Cisco IOS or Arista EOS](https://netlab.tools/module/mpls/#platform-support). Please feel free to [submit a PR](https://netlab.tools/dev/guidelines/) to add support for other platforms.
 
-You might want to start with the [VRF tutorial](https://netlab.tools/example/vrf-tutorial/) to see how simple it is to define VRFs, and [follow the installation guide](https://netlab.tools/install/) to set up your lab -- if you're semi-fluent in Linux (and don't care about [data plane quirks](/2022/03/dataplane-quirks-virtual-devices/)), the easiest option would be to run Arista cEOS.
+You might want to start with the [VRF tutorial](https://netlab.tools/example/vrf-tutorial/) to see how simple it is to define VRFs, and [follow the installation guide](https://netlab.tools/install/) to set up your lab -- if you're semi-fluent in Linux, the easiest option would be to run Arista cEOS.

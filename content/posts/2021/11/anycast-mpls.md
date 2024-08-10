@@ -124,7 +124,7 @@ l2>show mpls lfib route detail | section 10.0.0.42
                  interface Ethernet3
 ```
 
-The final test (**traceroute** from L1 to anycast IP address) failed on Arista cEOS or vEOS. The data plane implementation of Arista's virtual devices seems to be a bit limited: even though there are several next hops in the EOS routing table and LFIB, I couldn't find a nerd knob to force more than one entry into Linux routing table (which is used for packet forwarding).
+The final test (**traceroute** from L1 to anycast IP address) failed on Arista cEOS or vEOS. The data plane implementation of Arista's virtual devices seems to be a bit limited: even though there are several next hops in the EOS routing table and LFIB, I couldn't find a nerd knob to force more than one entry into the Linux routing table (which is used for packet forwarding).
 
 However, if you repeat the same tests on Cisco IOS with **ip cef load-sharing algorithm include-ports source destination** configured, you'll see **traceroute** printouts ending on different anycast nodes:
 
@@ -198,6 +198,9 @@ Next:
 * Execute **netlab up**
 
 ### Revision History
+
+2024-08-10
+: MPLS data plane works in cEOS release 4.32.1F and is supported in _netlab_ release 1.9.0
 
 2023-02-02
 : Moved back to vEOS -- cEOS does not support MPLS data plane and _netlab_ refuses to configure MPLS on cEOS.
