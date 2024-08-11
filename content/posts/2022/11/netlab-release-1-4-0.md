@@ -35,8 +35,14 @@ Finally, a few long-overdue items:
 
 -   **node\_data** is deprecated – you can [specify node attributes directly in group data](https://netlab.tools/groups/#setting-node-data-in-groups).
 -   Strict validation of topology, node, group, VLAN, VRF, and addressing attributes (see also [Breaking changes](https://netlab.tools/release/1.4/#breaking-changes))
--   ‘Device quirks’ framework deals with implementation limitations of individual virtual network devices (example: Arista cEOS does not support MPLS transport)
+-   ‘Device quirks’ framework deals with implementation limitations of individual virtual network devices
 
 Upgrading is as easy as ever: execute `pip3 install --upgrade networklab`.
 
 New to *netlab*? Start with the [Getting Started document](https://netlab.tools/tutorials/) and the [installation guide](https://netlab.tools/install/).
+
+### Revision History
+
+2024-08-10
+: MPLS data plane works in cEOS release 4.32.1F and is supported in _netlab_ release 1.9.0. Removed a mention of MPLS on cEOS as a device quirk.
+

@@ -30,10 +30,14 @@ Don't get me wrong: there's nothing wrong with virtual machines not implementing
 Some vendors provide virtual versions of their network operating systems in container format. You SHOULD NOT use them for anything more than control-plane functionality. Here are just a few minor details we found so far:
 
 * The last time I tested Juniper cRPD it couldn't report its interfaces, making it impossible to use Ansible to configure it.
-* Arista cEOS does not seem to have a working MPLS data plane. **ping mpls** and **traceroute mpls** work across a network of vEOS (VM) devices, but not cEOS containers (HT: [Bogdan Golab](https://www.linkedin.com/in/bogdan-golab-258558/)).
 * It's pretty much impossible to load a kernel module within a container. For example, Cumulus implementation of MLAG does not work in a container due to a custom **bridge** kernel module. Michael Kashin solved that problem by [packing a Firecracker VM into a container](https://networkop.co.uk/post/2021-05-cumulus-ignite/). While that approach solves the data plane issues, it loses most benefits we could get from containerized network devices like a single copy of Linux or shared code/memory.
 
 ### Revision History
+
+### Revision History
+
+2024-08-10
+: MPLS data plane works in cEOS release 4.32.1F and is supported in _netlab_ release 1.9.0. Removed a mention of that limitation.
 
 2022-03-09
 : Added a few container quirks.
