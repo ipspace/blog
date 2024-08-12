@@ -9,7 +9,7 @@ Wes made an [interesting comment](https://blog.ipspace.net/2024/08/data-center-f
 
 Paraphrasing the [famous Dinesh Dutt's Autocon1 remark](https://youtu.be/6mNLESvNuCs?si=C4rBX1r3XTA6WGTX&t=1849): I couldn't disagree with you more.
 <!--more-->
-While it's true that VXLAN allows you to build scalable layer-2 networks (while remaining limited to 4K VLANs per edge device) and that the network industry is on a VXLAN/EVPN lemming run, I [forcefully disagree that the path from VLANs is more VLANs](2020/03/should-i-go-with-vxlan-or-mlag-with-stp/).
+While it's true that VXLAN allows you to build scalable layer-2 networks (while remaining limited to 4K VLANs per edge device) and that the network industry is on a VXLAN/EVPN lemming run, I [forcefully disagree that the path from VLANs is more VLANs](/2020/03/should-i-go-with-vxlan-or-mlag-with-stp/).
 
 The VLAN-only data center fabrics have two major problems:
 
