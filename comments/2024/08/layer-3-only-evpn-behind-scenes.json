@@ -37,9 +37,17 @@
          "name": "Martin Rusko",
          "pub": "2024-08-13T17:07:35",
          "type": "comment"
+      },
+      {
+         "date": "13 August 2024 10:24",
+         "html": "<p>AFAIK, not all the vendors require to have <em>dynamic virtual VLANs</em> to map a L3VNI.</p>\n\n<p>I.e., Aruba CX and Dell OS10 don&#39;t (and - despite I hope nobody&#39;s doing that - you can potentially use for your network all the VLAN IDs).</p>\n\n<p>Additionally, they also allow to statically set the <em>router-mac</em> to use on the L3VNI and RT5 announces (i.e. https://www.arubanetworks.com/techdocs/AOS-CX/10.08/HTML/vxlan/Content/Chp_EVPN/EVPN_cmds/vir-mac.htm)</p>\n\n<p>Also Linux (frr, vyos, ...) does not require dynamic vlans, but instead requires to allocate a <em>dedicated bridge interface</em> (with no bridge slaves, apart from the vxlan device which maps the vni id) to be used for r-macs.</p>\n",
+         "id": "2382",
+         "name": " Stefano Sasso",
+         "pub": "2024-08-13T22:24:23",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2024/08/layer-3-only-evpn-behind-scenes.html"
 }
