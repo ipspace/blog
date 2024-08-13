@@ -55,6 +55,39 @@
 <p>With that in mind, if I have to provide maybe 100-200 server ports in a DC network for a medium-sized enterprise, taking all dependencies into account, VLAN-only <em>could</em> be the better solution if it&#39;s done right.
 For anything bigger than that, I&#39;d clearly vote for a VXLAN-based solution (and educating the staff, if necessary), not necessarily because of scale, but because of resiliency.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2376">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2376" href="#2376">13 August 2024 06:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>While I completely agree with your &quot;knowledge of the staff&quot; caveat, do keep in mind that you don&#39;t need EVPN. All you need to deploy a VXLAN fabric is:</p>
+
+<ul>
+<li>Core IP routing (they should know OSPF anyway)</li>
+<li>A VXLAN interface on every edge switch</li>
+<li>A mapping from VLAN to VNI for every fabric-wide VLAN</li>
+<li>Ingress replication list which can be preset.</li>
+</ul>
+
+<p>I would say that the configuration burden is comparable to what you have to do to get an MLAG-based fabric running (particularly if you&#39;re not running LAG with servers).</p>
+
+<p>Even the VXLAN-related show commands are almost identical (at least on Arista EOS) to the VLAN-related ones.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>

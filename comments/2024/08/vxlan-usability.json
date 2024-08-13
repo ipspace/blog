@@ -20,6 +20,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "13 August 2024 06:48",
+               "html": "<p>While I completely agree with your &quot;knowledge of the staff&quot; caveat, do keep in mind that you don&#39;t need EVPN. All you need to deploy a VXLAN fabric is:</p>\n\n<ul>\n<li>Core IP routing (they should know OSPF anyway)</li>\n<li>A VXLAN interface on every edge switch</li>\n<li>A mapping from VLAN to VNI for every fabric-wide VLAN</li>\n<li>Ingress replication list which can be preset.</li>\n</ul>\n\n<p>I would say that the configuration burden is comparable to what you have to do to get an MLAG-based fabric running (particularly if you&#39;re not running LAG with servers).</p>\n\n<p>Even the VXLAN-related show commands are almost identical (at least on Arista EOS) to the VLAN-related ones.</p>\n",
+               "id": "2376",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-08-13T06:48:43",
+               "ref": "2372",
+               "type": "comment"
+            }
+         ],
          "date": "12 August 2024 09:56",
          "html": "<p>Well, while the statement from Wes is not correct (obviously...), the answer to the question &quot;To VXLAN or not to VXLAN...&quot; is &quot;It depends...&quot;, imho, RFC 1925 does also apply here (in many ways).</p>\n\n<p>In general, from my experience with many enterprise customers, the biggest issue with a VXLAN- or any other fabric is today still the knowledge of the staff that would have to run it, actually &amp; sadly.</p>\n\n<p>With that in mind, if I have to provide maybe 100-200 server ports in a DC network for a medium-sized enterprise, taking all dependencies into account, VLAN-only <em>could</em> be the better solution if it&#39;s done right.\nFor anything bigger than that, I&#39;d clearly vote for a VXLAN-based solution (and educating the staff, if necessary), not necessarily because of scale, but because of resiliency.</p>\n",
          "id": "2372",
