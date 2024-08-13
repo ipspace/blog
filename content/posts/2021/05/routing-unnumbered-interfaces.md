@@ -47,12 +47,14 @@ Consider a simple 2-router network with a GRE tunnel between the routers.
 
 {{<figure src="/2021/05/Addr-GRE-Lab.png" caption="Simple 2-router lab">}}
 
-We'll use static routes instead of a routing protocol and will add the following static route for remote loopback interface pointing to the tunnel:
+We'll use static routes instead of a routing protocol and will add the following static route for the remote loopback interface[^RLB] pointing to the tunnel:
 
 {{<cc>}}Static route pointing to a GRE tunnel{{</cc>}}
 ```
 ip route 10.0.0.2 255.255.255.255 Tunnel0
 ```
+
+[^RLB]: Please note that loopback interfaces on network devices usually use regular IP addresses, not the 127.0.0.0/8 subnet ([more details](/2021/05/routing-unnumbered-interfaces/)).
 
 The route appears in the routing table *without any next-hop information*, the only unusual bit of the printout is the claim that it's a *directly connected* route.
 
@@ -183,3 +185,8 @@ That trick helps you build the outgoing layer-2 header -- there's a well-defined
 [^2]: Or whatever the underlying address of the outgoing interface is -- it could be another IP address when doing tunneling.
 
 [^4]: Trying to implement this concept, you'll also encounter an interesting  Socket API challenge: at some point in time, you'll have to send unicast OSPF packets to an IP address that's not (yet) in your routing table. The details are left as an exercise for the reader.
+
+### Revision History
+
+2024-08-13
+: Added a note explaining that network devices usually use regular IP addresses, not the 127.0.0.0/8 subnet, on the loopback interfaces.
