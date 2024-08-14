@@ -120,6 +120,75 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2384">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Stefano Sasso</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2384" href="#2384">14 August 2024 11:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt;&gt; AFAIK, not all the vendors require to have dynamic virtual VLANs to map a L3VNI.</p>
+
+<p>&gt; Don&#39;t require or don&#39;t show them? Also, what they&#39;re doing in a VM might be different from what they&#39;re doing in ASIC.</p>
+
+<p>Talking about (BCM) ASIC here. </p>
+
+<p>Let&#39;s put this way: they do not require a <em>strict</em> VLAN, allowing the user to use all the possible VLANs ID (I know this because I did a qualification testing using all the vlans at the same time plus vxlan distributed irb).</p>
+
+<p>But since you triggered my curiosity, I went into the BCM shell to check.</p>
+
+<p>Seems that BCM chipsets allows to define a <em>VLAN</em> ID &gt; 4096, and so <em>vendor</em> uses them for vxlan operations. This is what I see from the BCM shell on a fabric leaf which has only l3 vnis:</p>
+
+<pre>
+SAI.0&gt; l3 intf show
+Free L3INTF entries: 16369
+Unit  Intf  VRF Group VLAN    Source Mac     MTU TTL Tunnel InnerVlan  NATRealm
+------------------------------------------------------------------
+0     1     -3    0     4095 1c:72:1d:bf:e8:80  16383 1    0     0     0
+0     2     -3    0     4095 1c:72:1d:bf:e8:99  1600 1    0     0     0
+0     3     -3    0     4095 1c:72:1d:bf:e8:9d  1600 1    0     0     0
+0     4     -3    0     4095 1c:72:1d:bf:e8:99  1600 1    0     0     0
+0     5     -3    0     4095 1c:72:1d:bf:e8:9d  1600 1    0     0     0
+0     4096  -3    0     28672 1c:72:1d:bf:e8:80  16383 1    0     0     0
+0     16376 2     0     28680 1c:72:1d:bf:e8:d3  9184 1    0     0     0
+0     16377 1     0     28679 1c:72:1d:bf:e8:d3  9184 1    0     0     0
+0     16378 5     0     28678 00:00:66:66:05:06  9184 1    0     0     0
+0     16379 4     0     28677 00:00:66:66:05:06  9184 1    0     0     0
+0     16380 3     0     28676 00:00:66:66:05:06  9184 1    0     0     0
+0     16381 2     0     28675 00:00:66:66:05:06  9184 1    0     0     0
+0     16382 1     0     28674 00:00:66:66:05:06  9184 1    0     0     0
+</pre>
+
+<p>And <code>00:00:66:66:05:06</code> is the rMAC I statically defined on this leaf.</p>
+
+<p>So, a virtual interface, with <em>VLAN</em> id <em>28XXX</em> is created for each VRF/L3 VNI, with the defined mac.</p>
+
+<p>But no VLAN space of the ASIC is used:</p>
+
+<pre>
+SAI.0&gt; vlan show
+vlan 1  ports xe1-xe23 (0x00000000000000000000000000000000000000000000000000007ff800001ffc), untagged xe1-xe23 (0x00000000000000000000000000000000000000000000000000007ff800001ffc) MCAST_FLOOD_UNKNOWN
+vlan 4095       ports ce,xe (0x0000000000000000000000000000000000000000000000000008fff800023ffe), untagged ce,xe (0x0000000000000000000000000000000000000000000000000008fff800023ffe) MCAST_FLOOD_UNKNOWN
+SAI.0&gt;
+</pre>
+
+<p>Then the virtual interface is used as <em>egress operation</em> for the VRF&#39;s routes. i.e.,</p>
+
+<pre>
+SAI.0&gt; l3 egress show 412291
+Entry  Mac                 Vlan INTF PORT MOD MPLS_LABEL ToCpu Drop RefCount L3MC
+412291  00:00:66:66:01:06 28675 16381     1    0        -1   no   no   37   no
+</pre>
+
+<p>in the above case, a specific route is sent to the rmac 00:00:66:66:01:06, which is another leaf, using the virtual interface 16381.</p>
+
+<p>WRT Cumulus, if I&#39;m not wrong it uses the Linux switchdev framework. Unfortunately it seems the documentation is not complete, so if a kernel programmer could have a look into it we can answer also that point ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
