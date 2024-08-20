@@ -1,6 +1,6 @@
 ---
 title: "Repost: Why Are Layer-2 VPNs So Popular?"
-date: 2024-08-27 08:35:00+0200
+date: 2024-09-03 08:35:00+0200
 tags: [ VPN, bridging ]
 ---
 [Béla Várkonyi](https://www.linkedin.com/in/belavarkonyi/) wrote a [succinct comment](https://blog.ipspace.net/2024/07/bgp-evpn-vxlan-srv6/#2341) explaining why so many customers prefer layer-2 VPNs over layer-3 VPNs:
