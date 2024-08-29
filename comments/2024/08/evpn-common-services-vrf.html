@@ -32,6 +32,26 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2398">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Keanu L </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2398" href="#2398">29 August 2024 11:41</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>Out of curiosity, for the design you implemented for the centralized firewall, was your VPN label allocation for the HUB VRF done per prefix or per CE allocation?</p>
+
+<p>With per VRF VPN label allocation, the PE hosting the hub VRF would perform an IP lookup after popping the VPN label. Since it has all the routes to the other spokes, traffic between spoke sites would be possible without going through the firewall. Spokes could reach each other via the hub, as they are drawn by the default route.</p>
+
+<p>I had a similar use case for a customer in Arista, where currently only the per VRF label allocation mode is supported. We had to be a bit more creative and ended up using two HUB VRFs: one for traffic coming from the spokes (HUB-IN) and one for traffic going to the spokes (HUB-OUT). The first HUB VRF would only export the default route learned from the firewall in MP-BGP, while the second VRF would only import the spokes&#39; routes.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
