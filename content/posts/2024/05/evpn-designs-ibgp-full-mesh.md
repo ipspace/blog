@@ -25,7 +25,7 @@ And this is how we'll use routing protocols in our fabric:
 
 Let's set up a lab and try it out. We'll use a lab setup similar to the [VXLAN-only fabric](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/); read that blog post (in particular the *[Creating the Lab Environment](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab)* section) to get started.
 
-### Leaf-and-Spine Lab Topology
+### Leaf-and-Spine Lab Topology {#topo}
 
 This is the _netlab_ lab topology description we'll use to set up IBGP full mesh carrying EVPN updates in our leaf-and-spine fabric.
 
@@ -71,7 +71,7 @@ Most of the topology file is [explained in the previous blog post](/2024/04/evpn
 
 [^SPO]: Sometimes it pays off to have a flexible high-level tool ;)
 
-Assuming you already did the previous homework, it's time to start the lab with the **netlab up** command.
+Assuming you already did the previous homework, it's time to start the lab with the **netlab up** command. You can also [start the lab in a GitHub Codespace](/2024/07/netlab-examples-codespaces/) (the directory is `EVPN/ibgp-full-mesh`); you'll still have to [import the Arista cEOS container](/2024/07/arista-eos-codespaces/), though.
 
 ### Behind the Scenes
 

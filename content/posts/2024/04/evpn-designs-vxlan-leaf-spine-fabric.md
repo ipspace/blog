@@ -97,6 +97,8 @@ I prefer using Arista cEOS containers on Ubuntu to run EVPN labs:
 
 Using cEOS containers, you can run your tests on any x86 VM running on your laptop, your virtualization cluster[^VMW], or in a public cloud. Alternatively, if you want to [run EVPN labs on recent Apple laptops](/2024/03/netlab-bgp-apple-silicon/), use the FRR containers.
 
+You can also [start the lab in a GitHub Codespace](/2024/07/netlab-examples-codespaces/) (the directory is `EVPN/vxlan-fabric`); you'll still have to [import the Arista cEOS container](/2024/07/arista-eos-codespaces/), though.
+
 {{<note info>}}
 Starting with *netlab* release 1.8.0, you can [override the default device- and provider with environment variables](https://netlab.tools/defaults/#changing-defaults-with-environment-variables). To use my EVPN lab topologies with FRR containers, execute **export NETLAB_DEVICE=frr** in your Ubuntu VM.
 
