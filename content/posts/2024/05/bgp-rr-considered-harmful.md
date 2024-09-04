@@ -51,3 +51,5 @@ Finally, [Kristijan Taskovski](https://www.linkedin.com/in/kristijan-taskovski/)
 * You REALLY SHOULD automate the fabric configuration and SHOULD NOT use a BGP full mesh in manually configured fabrics having more than a few leaves.
 
 Anything else? Please leave a comment.
+
+{{<next-in-series page="/posts/2024/08/evpn-designs-ibgp-rr.md" />}}
