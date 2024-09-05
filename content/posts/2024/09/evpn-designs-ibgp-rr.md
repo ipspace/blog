@@ -1,7 +1,7 @@
 ---
 title: "EVPN Designs: Scaling IBGP with Route Reflectors"
 series_title: "Scaling IBGP with Route Reflectors"
-date: 2024-08-05 07:47:00+0200
+date: 2024-09-05 11:47:00+0200
 tags: [ EVPN, design, netlab, vxlan ]
 netlab_tag: evpn_dg
 evpn_tag: designs
