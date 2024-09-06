@@ -16,6 +16,36 @@
 So if there are no special constraints, then it is better to forward all additional paths to the RR clients, so they can select an alternate path locally without waiting for the RR to give a new hint.
 Failover performance might improve for the price of more memory resources used. </p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2408">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Petrus Potgieter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2408" href="#2408">06 September 2024 01:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The problem where RR selects only the best path is relevant to the IPv4 and IPv6 address families.</p>
+
+<p>This problem does not occur with the VPN address families (VPNv4, VPNv6, EVPN) if unique RDs are used, the BGP additional paths feature is not required. With EVPN address family the leaf switch adds its unique 64bit route distinguisher ( 10.0.0.1:1000 for leaf1) in front of the host1 MAC route.  The EVPN table would have a 112 bit entry like this; &ldquo;0001:10.0.0.1:1000: aac1.ab47.22a3&rdquo; the extra 0001 in front indicates that this is using the type 1 RD format.</p>
+
+<p>In this example the hosts are connected to a single leaf, there is only one BGP path, the same path is learnt from both RRs. However, there are 2 OSPF paths and L2 will use ECMP to the VTEP of L1 via both S1 and S2, even if BGP (RR function) is disabled on S2. </p>
+
+<p>If we change the example so that Host1 was connected to both L1 and L2 then S1 and S2 will receive different EVPN routes from L1 and L2 and they will by default reflect both routes to RR clients L3 and L4.</p>
+
+<p>i.e.   0001:10.0.0.1:1000: aac1.ab47.22a3 and  0001:10.0.0.2:1000: aac1.ab47.22a3 are different EVPN routes because the RD part is different, and the RRs do not compare them with each other to select the best one. When Leaf3 import these 2 EVPN routes into the same vrf, because they have the same route target, then Leaf3 may see 2 paths to the same destination Host1. To use both these BGP paths in ECMP the leafs may have a config like &ldquo;bgp maxpath 2&rdquo;. Perhaps this is more relevant to border leafs advertising type5 routes from layer3 neighbors. For dual connected servers, typically L1 and L2 will be in a vPC or M-LAG pair and share an anycast VTEP IP for advertising the routes of dual connected hosts. In this case Leaf3 learns the same BGP path from different origins but now that anycast VTEP is reachable via 4 OSPF paths.     </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
