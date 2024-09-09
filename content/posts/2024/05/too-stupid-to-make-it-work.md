@@ -1,6 +1,7 @@
 ---
 title: "Famous Last Words: I'm Too Stupid for That"
 date: 2024-05-06 08:25:00+0200
+lastmod: 2024-09-09 16:26:00+02:00
 tags: [ virtualization ]
 ---
 Some networking vendors realized that one way to gain mindshare is to make their network operating systems available as free-to-download containers or virtual machines. That's the right way to go; I love their efforts and point out who went down that path whenever possible[^AOT] (as well as others like Cisco who try to make our lives miserable).
@@ -11,7 +12,7 @@ However, those virtual machines better work out of the box, or you'll get frustr
 <!--more-->
 [^CB]: Paraphrased as the *I'm too stupid for that* clickbait.
 
-The Junos vPTX DHCP FUBAR was a [simple mistake](/2023/10/vjunos-declines-dhcp-address/#1974), but it was impossible to diagnose or fix from the outside[^MT3M]. Also, it proved (to me) that the vPTX target audience is not people who run virtual machines in environments where the management IP address allocation is done via DHCP. I can't imagine a scenario where someone doing the most rudimentary tests with something like *vagrant-libvirt* (or any other cloud environment) would miss that problem.
+The Junos vPTX DHCP FUBAR was a [simple mistake](/2023/10/vjunos-declines-dhcp-address/#1974) fixed in the next software release (vPTX works flawlessly with _netlab_ now), but it was impossible to diagnose or fix from the outside[^MT3M]. Also, it proved (to me) that the vPTX target audience is not people who run virtual machines in environments where the management IP address allocation is done via DHCP. I can't imagine a scenario where someone doing the most rudimentary tests with something like *vagrant-libvirt* (or any other cloud environment) would miss that problem.
 
 [^MT3M]: Taking more than three months to release a fix is a different story. Einstein was right; time really is relative.
 
@@ -39,6 +40,11 @@ But wait, it gets better. I also tried out the Dell Enterprise Sonic image. Its 
 
 Finally, there's Nokia. People like Roman Dodin and Jeroen van Bemmel are doing a great job, only to have their hard work tarnished by stupidities like [this one](https://github.com/nokia/ansible-networking-collections/issues/23), which we had to "fix" with [downgrading Ansible to release 4.10](https://github.com/ipspace/netlab/blob/2177d6cb797bd26340ebd594218fca194bc9b1fd/netsim/install/grpc.sh#L36) and downloading `nokia.grpc` collection from GitHub (instead of Ansible Galaxy) when using Nokia devices in _netlab_. Nobody updated the `nokia.grpc` Ansible Galaxy collection in years (or [merged a simple PR](https://github.com/nokia/ansible-networking-collections/pull/27) that would get rid of `nokia.grpc` collection crashing Ansible), and it took the Ansible team [a year and a half](https://github.com/ansible/ansible/pull/79372) to [merge the fix on the Ansible side into release 9.5.1](https://github.com/ansible/ansible/pull/82956).
 
+{{<note update>}}**September 9th 2024:** In the meantime, Nokia released `nokia.srlinux` Ansible Galaxy collection, and Jeroen van Bemmel made it work with *netlab* and fixed most of the configuration templates. In August 2024, I added the polishing touches and made his work part of [*netlab* release 1.9.0-post1](https://netlab.tools/release/1.9/#release-1-9-0-post1). The convoluted software installation needed to use Nokia SR Linux is gone (and it works like a charm).
+
+However (you knew this was coming, right?), _netlab_ still uses `nokia.grpc` collection to configure Nokia SR OS, and (as of September 2024) that collection hasn't been changed since [January 2022](https://github.com/nokia/ansible-networking-collections/commit/f7b6aa79d87c509cd297c122b24018530250288e). We also have no idea what's on Ansible Galaxy; the last time the version number was changed on the `nokia.grpc` collection was in [February 2020](https://github.com/nokia/ansible-networking-collections/commit/6b572c3591256745cf7a555cce97cd0b0142addb), so even if someone published the fixes, we have no way of knowing that. I honestly didn't expect to see Nokia-branded abandonware.
+{{</note>}}
+
 To wrap up:
 
 * Making your software widely available has worked for numerous companies and might work for niche networking vendors. 
@@ -51,3 +57,8 @@ To wrap up:
 Without all of the above, please don't waste everyone's time releasing images you claim could be used in virtual labs. A broken image does more harm than good.
 
 Also, it's not such a stretch goal. Arista vEOS/cEOS, Aruba CX, Cumulus, Cisco (ASAv, IOSv, IOS-XE, IOS-XR, NexusOS), Juniper vSRX, Mikrotik RouterOS7, Nokia SR Linux, and Vyos worked for me out of the box on the first try.
+
+### Revision History
+
+2024-09-09
+: Added information about `nokia.srlinux` Ansible collection
