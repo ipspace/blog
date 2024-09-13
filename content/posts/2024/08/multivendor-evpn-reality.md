@@ -3,6 +3,7 @@ title: "Multivendor EVPN Just Works"
 date: 2024-08-27 08:07:00+0200
 tags: [ EVPN ]
 evpn_tag: intro
+series_weight: 440
 ---
 Shipping [_netlab_ release 1.9.0](/2024/08/netlab-1-9-0-routing-policies/) included running 36 hours of [integration tests](https://github.com/ipspace/netlab/tree/dev/tests/integration), including [fifteen VXLAN/EVPN tests](https://github.com/ipspace/netlab/tree/dev/tests/integration/evpn) covering:
 

@@ -2,7 +2,7 @@
 title: "Layer-3-Only EVPN: Behind the Scenes"
 date: 2024-08-13 10:08:00+0200
 tags: [ EVPN ]
-evpn_tag: designs
+evpn_tag: vpn_topo
 ---
 In the [previous blog post](/2024/08/netlab-layer-3-only-evpn/), I described how to build a lab to explore the layer-3-only EVPN design and asked you to do that and figure out what's going on behind the scenes. If you didn't find time for that, let's do it together in this blog post. To keep it reasonably short, we'll focus on the EVPN control plane and leave the exploration of the data-plane data structures for another blog post.
 

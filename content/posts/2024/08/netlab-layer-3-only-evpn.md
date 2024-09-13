@@ -3,6 +3,7 @@ title: "Building Layer-3-Only EVPN Lab"
 date: 2024-08-08 08:38:00+0200
 tags: [ EVPN, VXLAN, netlab ]
 netlab_tag: vxlan_evpn
+evpn_tag: vpn_topo
 ---
 A few weeks ago, [Roman Dodin mentioned layer-3-only EVPNs](https://www.linkedin.com/posts/rdodin_yesterday-i-threw-in-a-question-if-someone-activity-7221853963795472384-9TB9/): a layer-3 VPN design with no stretched VLANs in which EVPN is used to transport VRF IP prefixes.
 

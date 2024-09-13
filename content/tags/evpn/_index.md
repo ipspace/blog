@@ -23,6 +23,10 @@ Other blog posts focus on various design details:
 
 {{<series-listing tag="design">}}
 
+Finally, several blog posts describe various EVPN VPN topologies:
+
+{{<series-listing tag="vpn_topo">}}
+
 ### {{<plushy magic>}}EVPN Implementation Details {#mlag}
 
 There are tons of tiny little things that can go wrong when you try to deploy EVPN. I documented them as I stumbled upon them:
