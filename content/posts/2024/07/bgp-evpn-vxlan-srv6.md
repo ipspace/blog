@@ -2,6 +2,8 @@
 title: "BGP, EVPN, VXLAN, or SRv6?"
 date: 2024-07-25 07:55:00+0200
 tags: [ BGP, EVPN, VXLAN, segment routing ]
+evpn_tag: intro
+series_weight: 460
 ---
 Daniel Dib [asked an interesting question](https://www.linkedin.com/feed/update/urn:li:activity:7221449552220823552?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7221449552220823552%2C7221746944149180416%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287221746944149180416%2Curn%3Ali%3Aactivity%3A7221449552220823552%29) on LinkedIn when considering an RT5-only EVPN design:
 

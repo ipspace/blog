@@ -3,7 +3,7 @@ title: "Common Services VRF with EVPN Control Plane"
 date: 2024-08-29 07:49:00+0200
 tags: [ EVPN, netlab ]
 netlab_tag: vxlan_evpn
-evpn_tag: designs
+evpn_tag: vpn_topo
 ---
 After discovering that some EVPN implementations support multiple transit VNI values in a single VRF, I had to check whether I could implement a _common services_ L3VPN with EVPN.
 

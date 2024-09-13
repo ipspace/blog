@@ -5,6 +5,7 @@ tags:
 - EVPN
 - MPLS VPN
 title: EVPN Is More than VPLS on Steroids
+series_weight: 480
 url: /2018/02/evpn-is-more-than-vpls-on-steroids/
 ---
 [Tiziano Tofoni](https://www.linkedin.com/in/tiziano-tofoni-1361759/) wrote a lengthy comment on my [EVPN in small data center fabrics](/2018/02/using-evpn-in-very-small-data-center/) blog post continuing the excellent discussion we started over a beer last October. Today, I'll address the first part:

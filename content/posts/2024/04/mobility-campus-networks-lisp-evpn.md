@@ -2,6 +2,8 @@
 title: "LISP vs EVPN: Mobility in Campus Networks"
 date: 2024-04-11 08:29:00+0200
 tags: [ EVPN, LISP ]
+evpn_tag: rant
+lisp_tag: rant
 ---
 I decided not to get involved in the EVPN-versus-LISP debates anymore; I'd [written everything I had to say about LISP](/tag/lisp/). However, I still get annoyed when experienced networking engineers fall for marketing gimmicks disguised as technical arguments. Here's a recent one:
 

@@ -2,6 +2,8 @@
 title: "Why Are We Using EVPN Instead of SPB or TRILL?"
 date: 2024-04-05 08:17:00+0200
 tags: [ bridging, fabric, EVPN ]
+series_weight: 420
+evpn_tag: intro
 ---
 Dan left an [interesting comment](/2024/03/arista-interface-ebgp/#2153) on one of my [previous blog posts](/2024/03/arista-interface-ebgp/):
 
