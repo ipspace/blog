@@ -12,7 +12,7 @@ Let's see how that works.
 <!--more-->
 You'll need a working _netlab_ installation if you want to follow along. If you don't have that:
 
-* Open the BGP labs in GitHub codespaces
+* Open the [BGP labs](https://bgplabs.net/) in [GitHub codespaces](https://bgplabs.net/4-codespaces/)
 * Switch to the `basic/1-session` directory
 * Execute `netlab up`
 
