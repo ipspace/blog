@@ -50,6 +50,6 @@ The final piece of the puzzle: the routing protocols. We're assuming that the ro
 
 [^NYNC]: Now you know why you can configure OSPF router ID of individual VRF instances on most network devices.
 
-<span></span>{{<next-in-series page="/posts/2024/09/hub-spoke-single-pe.md">}}
+<span></span>{{<next-in-series page="/posts/2024/09/hub-spoke-single-pe.html">}}
 Now that we've covered the theory, it's time to get our hands dirty. In the next blog post, we'll try to keep things as simple as possible and implement the hub-and-spoke VPN on a single PE router.
 {{</next-in-series>}}
