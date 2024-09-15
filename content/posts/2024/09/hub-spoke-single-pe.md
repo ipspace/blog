@@ -1,6 +1,6 @@
 ---
 title: "Hub-and-Spoke VPN on a Single PE-Router"
-date: 2024-09-14 17:59:00+0200
+date: 2024-09-17 07:59:00+0200
 tags: [ netlab, VPN, design ]
 netlab_tag: vlan_vrf
 series: hub_spoke_vpn
