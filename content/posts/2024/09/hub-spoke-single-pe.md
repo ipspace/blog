@@ -167,6 +167,70 @@ traceroute to ce_s2 (10.0.0.4), 30 hops max, 46 byte packets
 
 The printout tells us that the packets traverse `s_1` VRF on PE, CE_HUB, and `hub_egress` VRF on PE before arriving at CE_S2. Mission accomplished.
 
+We can also trace the propagation of BGP routing information between VRFs on the PE router:
+
+{{<printout>}}
+pe>show ip bgp 10.0.0.4/32 vrf all
+BGP routing table information for VRF default
+Router identifier 10.0.0.1, local AS number 65000
+BGP routing table information for VRF hub_egress
+Router identifier 10.0.0.1, local AS number 65000
+BGP routing table entry for 10.0.0.4/32
+ Paths: 1 available
+  65102
+    10.1.0.5 from 10.1.0.5 (10.0.0.4), imported VPN-IPv4 route, RD 65000:2
+      Origin IGP, metric 0, localpref 100, IGP metric 0, weight 0, tag 0
+      Received 00:04:30 ago, valid, external, best
+      Extended Community: Route-Target-AS:65000:4
+      Rx SAFI: Unicast
+      Leaked from VRF s_2
+BGP routing table information for VRF hub_ingress
+Router identifier 10.0.0.1, local AS number 65000
+BGP routing table entry for 10.0.0.4/32
+ Paths: 1 available
+  65100 65100 65102
+    10.1.0.9 from 10.1.0.9 (10.0.0.2)
+      Origin IGP, metric 0, localpref 100, IGP metric 0, weight 0, tag 0
+      Received 00:04:29 ago, valid, external, best
+      Rx SAFI: Unicast
+BGP routing table information for VRF s_1
+Router identifier 10.0.0.1, local AS number 65000
+BGP routing table entry for 10.0.0.4/32
+ Paths: 1 available
+  65100 65100 65102
+    10.1.0.9 from 10.1.0.9 (10.0.0.2), imported VPN-IPv4 route, RD 65000:3
+      Origin IGP, metric 0, localpref 100, IGP metric 0, weight 0, tag 0
+      Received 00:04:29 ago, valid, external, best
+      Extended Community: Route-Target-AS:65000:3
+      Rx SAFI: Unicast
+      Leaked from VRF hub_ingress
+BGP routing table information for VRF s_2
+Router identifier 10.0.0.1, local AS number 65000
+BGP routing table entry for 10.0.0.4/32
+ Paths: 2 available
+  65102
+    10.1.0.5 from 10.1.0.5 (10.0.0.4)
+      Origin IGP, metric 0, localpref 100, IGP metric 0, weight 0, tag 0
+      Received 00:04:30 ago, valid, external, best
+      Rx SAFI: Unicast
+  65100 65100 65102
+    10.1.0.9 from 10.1.0.9 (10.0.0.2), imported VPN-IPv4 route, RD 65000:3
+      Origin IGP, metric 0, localpref 100, IGP metric 0, weight 0, tag 0
+      Received 00:04:29 ago, valid, external
+      Extended Community: Route-Target-AS:65000:3
+      Rx SAFI: Unicast
+      Leaked from VRF hub_ingress
+{{</printout>}}
+
+* VRF S_2 has a route for 10.0.0.4/32 that was advertised by CE_S2 (lines 39-43), and another route leaked from the `hub_ingress` VRF (lines 44-50). The route advertised by CE_S2 is better due to a shorter AS path (line 42)
+* The best route from VRF S_2 is leaked into the `hub_egress` VRF (lines 6-14).
+* The BGP route in the `hub_egress` VRF is advertised to CE_HUB.
+* CE_HUB advertises the same route (with a longer AS path) back to the PE router, this time in the `hub_ingress` VRF (lines 17-23). Please note how the BGP next hop has changed from 10.1.0.5 (CE_S2) to 10.1.0.9 (CE_HUB).
+* The route from the `hub_ingress` VRF is leaked into the `s_1` (lines 26-34) and `s_2` VRF (lines 44-50).
+* The route leaked from the `hub_ingress` VRF into the `s_1` VRF is the only route for 10.0.0.4/32 in that VRF. It's selected as the best BGP route (line 31) and advertised to CE_S1.
+
+It's also interesting to inspect the inter-VRF forwarding information displayed by the **show ip route vrf all** command. This bit is left as an exercise for the readers who were interested enough to start the lab ;)
+
 {{<next-in-series page="/posts/2024/09/hub-spoke-evpn.html">}}
 Now that we know how to implement hub-and-spoke VPN on a single PE router, it's trivial to migrate the design to an MPLS/VPN or EVPN network. All we have to do is stretch the VRFs across multiple PE routers; the topic of the next blog post in this series.
 {{</next-in-series>}}
