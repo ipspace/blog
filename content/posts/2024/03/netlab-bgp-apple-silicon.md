@@ -43,6 +43,13 @@ $ netlab install ubuntu containerlab ansible
 % multipass shell
 ```
 
+* You might have to increase the memory allocated to the VM and the number of virtual CPUs it gets. Add these commands in front of the `multipass shell` command:
+
+```
+% multipass set local.primary.cpus=4
+% multipass set local.primary.memory=8G
+```
+
 * The multipass instance [does not have the Linux kernel drivers](https://netlab.tools/caveats/#frr) we need for FRR management VRF and MPLS forwarding. Log into the Ubuntu instance and install the missing generic Linux drivers:
 
 ```
@@ -63,3 +70,7 @@ $ netlab test clab
 ```
 
 You're ready to run labs using FRR containers on your Apple laptop. Install [BGP labs](https://bgplabs.net/1-setup/#setting-up-the-labs) and have fun ;)
+
+{{<next-in-series page="/posts/2024/09/srlinux-arm-apple-silicon.html">}}
+Coming up next: running SR Linux containers on ARM/Apple silicon.
+{{</next-in-series>}}
