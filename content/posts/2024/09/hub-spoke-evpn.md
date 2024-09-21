@@ -263,7 +263,7 @@ BGP routing table entry for 10.0.0.7/32
 
 The data-plane setup is very similar to the one we've observed in the [common services VRF scenario](/2024/08/evpn-common-services-vrf/). You can find the details there or start the lab and explore.
 
-{{<next-in-series page="/posts/2024/09/hub-spoke-mpls.html">}}
+{{<next-in-series page="/posts/2024/09/hub-spoke-one-arm.html">}}
 For the sake of completeness, I'll do another blog post implementing hub-and-spoke VPN with MPLS transport and MPLS/VPN control plane, but it might take a while.
 {{</next-in-series>}}
 
