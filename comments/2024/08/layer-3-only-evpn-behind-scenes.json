@@ -74,9 +74,17 @@
          "name": " Stefano Sasso",
          "pub": "2024-08-13T22:24:23",
          "type": "comment"
+      },
+      {
+         "date": "02 October 2024 05:32",
+         "html": "<p>Hi Ivan, </p>\n\n<p>Minh Ha asked a question in a previous post I&#39;ve linked at the bottom and I just happened to stumble into the same question. It comes from Hannes Gredler&#39;s &quot;The Complete IS-IS Routing Protocol.&quot; The question specifically regards the potential loop that could be created if you actually ran a routing protocol over the tunnel interface. The author starts by saying,</p>\n\n<p>&quot;Things behave really badly if the total IGP cost over the tunnel undermines the total topologies&rsquo; cost. What happens next is that the tunnel &ldquo;wraps&rdquo; around itself, ultimately causing a meltdown of the entire network.&quot;</p>\n\n<p>He finishes the paragraph with this: &quot;Because no Hellos are sent down the tunnel there is no infinite recursion problem.&quot;</p>\n\n<p>I can&#39;t see why you <em>couldn&#39;t</em> run an IGP over the tunnel. But, of course, this creates redundant state, and with it more churn, so you <em>shouldn&#39;t</em> run a real IIH-based adjacency. The tunnel itself is based on other next-hops, so forwarding adjacency forgoes a real adjacency IIH-based adjacency because we can tie tunnel state to whether or not we have an IGP route to the endpoint.</p>\n\n<p>I&#39;ve been sitting with pen and paper to try and make heads or tails of what he&#39;s saying here and I can&#39;t seem to wrap my brain around what he means. </p>\n\n<p>Any insight would be greatly appreciated!!!</p>\n\n<p>https://blog.ipspace.net/2020/08/worth-reading-default-isis-configuration-prefix-bloat/</p>\n",
+         "id": "2428",
+         "name": " James G",
+         "pub": "2024-10-02T17:32:27",
+         "type": "comment"
       }
    ],
-   "count": 3,
+   "count": 4,
    "type": "post",
    "url": "2024/08/layer-3-only-evpn-behind-scenes.html"
 }
