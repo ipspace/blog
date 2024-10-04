@@ -9,9 +9,10 @@ I spent a few days in a beautiful place with suboptimal Internet connectivity. T
 
 Big things first. I added validation to these labs:
 
-* [Use BGP Timers and BFD to Speed Up BGP Convergence](https://bgplabs.net/basic/7-bfd/)
-* [EBGP Sessions over IPv6 LLA Interfaces](https://bgplabs.net/basic/d-interface/)
 * [MD5 Passwords and GTSM](https://bgplabs.net/basic/6-protect/)
+* [Use BGP Timers and BFD to Speed Up BGP Convergence](https://bgplabs.net/basic/7-bfd/)
+* [BGP Route Aggregation](https://bgplabs.net/basic/8-aggregate/)
+* [EBGP Sessions over IPv6 LLA Interfaces](https://bgplabs.net/basic/d-interface/)
 * [Establish an IBGP Session](https://bgplabs.net/ibgp/1-edge/)
 * [Build a Transit Network with IBGP](https://bgplabs.net/ibgp/2-transit/)
 * [Use BGP Route Reflectors](https://bgplabs.net/ibgp/3-rr/)
