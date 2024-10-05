@@ -52,4 +52,4 @@ Finally, [Kristijan Taskovski](https://www.linkedin.com/in/kristijan-taskovski/)
 
 Anything else? Please leave a comment.
 
-{{<next-in-series page="/posts/2024/08/evpn-designs-ibgp-rr.md" />}}
+{{<next-in-series page="/posts/2024/09/evpn-designs-ibgp-rr.md" />}}

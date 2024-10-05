@@ -213,4 +213,4 @@ What about the **drawbacks**?
 
 Should you use route reflectors when building an EVPN-based leaf-and-spine fabric? I would. Should you deploy them on spine switches? Most probably, yes (but see the [caveats I already mentioned](#caveats)). Would you deploy them on all spine switches (assuming there are more than two)? It depends; it's a tradeoff between resilience and memory utilization.
 
-{{<next-in-series page="/posts/2024/09/tbc.md" />}}
+{{<next-in-series page="/posts/2024/10/evpn-designs-ebgp.md" />}}
