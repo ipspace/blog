@@ -1,6 +1,6 @@
 ---
 title: "IS-IS Labs: Configure IS-IS Routing for IPv4"
-series_title: "Use BFD to Speed Up Convergence"
+series_title: "Configure IS-IS Routing for IPv4"
 date: 2024-09-30 08:21:00+02:00
 tags: [ IS-IS, netlab ]
 netlab_tag: ignore
