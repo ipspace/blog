@@ -2,6 +2,7 @@
 title: "EVPN Designs: EBGP Everywhere"
 series_title: "EBGP Everywhere"
 date: 2024-10-08 08:12:00+0200
+lastmod: 2024-10-10 18:04:00+0200
 tags: [ EVPN, design, netlab, vxlan ]
 netlab_tag: evpn_dg
 evpn_tag: designs
@@ -64,6 +65,7 @@ addressing.p2p.ipv4: True
 evpn.as: 65000
 evpn.session: [ ebgp ]
 bgp.community.ebgp: [ standard, extended ]
+bgp.sessions.ipv4: [ ebgp ]
 
 plugin: [ fabric ]
 fabric:
@@ -99,10 +101,11 @@ The [VXLAN Leaf-and-Spine Fabric](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/
 * Line 5: We need a global AS number to set the route targets for EVPN layer-2 segments[^NART]
 * Line 6: EVPN has to be enabled on EBGP sessions
 * Line 7: Switches must send extended BGP communities on EBGP sessions
-* Line 13: The BGP AS number on the spine switches is set to 65100
-* Line 15: The BGP AS number on the individual leaf switches is set to 65000 + switch ID ([more details](https://netlab.tools/plugins/fabric/#leaf-and-spine-parameters), [example](https://netlab.tools/plugins/fabric/#building-an-ebgp-fabric))
-* Line 19: Leaf switches are running VLANs, VXLAN, BGP, and EVPN
-* Line 21: Spine switches are running BGP and EVPN
+* Line 8: We don't need an IBGP session between S1 and S2 (by default, _netlab_ tries to build IBGP sessions between routers in the same autonomous system). The fabric has only EBGP sessions.
+* Line 14: The BGP AS number on the spine switches is set to 65100
+* Line 16: The BGP AS number on the individual leaf switches is set to 65000 + switch ID ([more details](https://netlab.tools/plugins/fabric/#leaf-and-spine-parameters), [example](https://netlab.tools/plugins/fabric/#building-an-ebgp-fabric))
+* Line 20: Leaf switches are running VLANs, VXLAN, BGP, and EVPN
+* Line 22: Spine switches are running BGP and EVPN
 
 [^NART]: netlab is not using automatic EVPN route targets or route distinguishers.
 
@@ -241,3 +244,8 @@ Caveats[^NXOS]? Extra nerd knobs? Run away and use IBGP-over-IGP.
 [^NXOS]: Cisco Nexus OS documentation still claims that "In a VXLAN EVPN setup that has 2K VNI scale configuration, the control plane downtime may take more than 200 seconds. To avoid potential BGP flap, extend the graceful restart time to 300 seconds." I'm unsure whether that would apply to an EBGP session restart due to a link flap, but it might explain why they're talking about EVPN EBGP sessions between loopback interfaces.
 
 {{<next-in-series page="/posts/2024/09/tbc.md" />}}
+
+### Revision History
+
+2024-10-10
+: Removed the unnecessary IBGP session between S1 and S2 based on the [feedback by AW](https://blog.ipspace.net/2024/10/evpn-designs-ebgp/#2436).
