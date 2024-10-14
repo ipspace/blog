@@ -98,6 +98,8 @@ Another reason could be the underlying hardware -- I have a feeling that the dat
 
 [^EVPN]: I wonder 
 
+{{<next-in-series page="/posts/2021/12/highlights-multi-threaded-routing-daemons.html" />}}
+
 ### Revision History
 
 2021-11-26
