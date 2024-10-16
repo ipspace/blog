@@ -50,3 +50,5 @@ On the other hand, TCP IP was never designed as the networking protocol. As its 
 The nodes in that WAN network were called IMPs (interface message processors), and each IMP would have a few trunk ports (uplinks) and a few host ports -- something like a data center switch with a maximum port speed of 56 kbps. Like in Fibre Channel, the host interface address was the port number on an IMP, and every host was supposed to have just one connection to one IMP. A host connected to two IMPs would belong to two different networks, and as expected, the results of doing that weren't exactly pretty.
 
 A few years later, Ethernet happened, and when the IP hosts got Ethernet adapters, everyone forgot that IP was supposed to be running *on top of a network-layer protocol* and used IP for what it was never designed to do. The rest, as they say, is history.
+
+{{<next-in-series page="/posts/2024/10/comparing-ip-clnp-addressing.md" />}}
