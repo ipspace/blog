@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "17 October 2024 06:27",
+               "html": "<p>Scalability in large segments. IP nodes communicate only when they must, and the adjacency rules are predefined. CLNP nodes have to maintain soft state through periodic refreshes.</p>\n\n<p>It&#39;s like SR-MPLS with a PCEP controller versus MPLS-TE with RSVP.</p>\n",
+               "id": "2442",
+               "name": " Ivan Pepelnjak",
+               "pub": "2024-10-17T18:27:23",
+               "ref": "2441",
+               "type": "comment"
+            }
+         ],
          "date": "17 October 2024 06:21",
          "html": "<p>Why would IP be the &quot;winner&quot; for finding adjacent nodes?</p>\n\n<p>To send traffic, both IP and CLNP build a &quot;kind of&quot; ARP table (let&#39;s say &quot;neighbor&quot; table).\nIP needs to check network mask before looking at this &quot;neighbor&quot; table.\nCLNP can use it directly =&gt; looks better to me.</p>\n\n<p>But what if there are a LOT of nodes in a segment?\nIP doesn&#39;t need to keep track of nodes it doesn&#39;t communicate with =&gt; can a good point\nMust CLNP keep track of every nodes? Can it send ES-ES requests like ARP?</p>\n",
          "id": "2441",
