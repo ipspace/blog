@@ -176,17 +176,24 @@ Feb 16 17:57:25 l2 LdpAgent: %LDP-6-SESSION_UP: Peer LDP ID: 10.0.0.5:0, Peer IP
 Feb 16 17:57:25 l2 LdpAgent: %LDP-4-DUPLICATE_PEER_INTERFACE_IP: Duplicate interface IP 10.0.0.42 detected on 10.0.0.5:0
 ```
 
-The setup still works, but the extraneous syslog messages might upset an overly fastidious networking engineer. To make LDP happy, run BGP (not OSPF) with the anycast servers, and distribute labels for anycast addresses with IPv4/IPv6 labeled unicast (BGP-LU) address family. 
-
-Yeah, I know I have to set up another lab to prove that ;) Mañana...
+The setup still works, but the extraneous syslog messages might upset an overly fastidious networking engineer. To make LDP happy, run BGP (not OSPF) with the anycast servers and distribute labels for anycast addresses with IPv4/IPv6 labeled unicast (BGP-LU) address family. 
 
 [^PLINK]: You can also use the list of local addresses to identify parallel links.
 
 [^LDPDup]: The error messages appear only on devices that have more than one LDP session to anycast servers (L2 in our lab topology).
 
+{{<next-in-series page="/posts/2021/12/bgp-anycast-lab.md" />}}
+
 ### Build Your Own Lab
 
-To replicate this experiment:
+You can replicate this experiment within your browser (but you'll be limited to Arista cEOS containers):
+
+* [Open the *netlab-examples* repository in GitHub Codespaces](/2024/07/netlab-examples-codespaces/)
+* [Install the Arista cEOS container in your codespace](/2024/07/arista-eos-codespaces/)
+* Change directory to `routing/anycast-mpls-ospf`
+* Start the lab with **clab** provider: **netlab up -p clab**
+
+If you want to use your own infrastructure:
 
 * [Set up a Linux server or virtual machine](https://netlab.tools/install/#creating-the-lab-environment). If you don't have a preferred distribution, use Ubuntu.
 * [Install netlab and the other prerequisite software](https://netlab.tools/install/ubuntu/)
@@ -198,6 +205,9 @@ Next:
 * Execute **netlab up**
 
 ### Revision History
+
+2024-10-20
+: Added GitHub Codespaces instructions
 
 2024-08-10
 : MPLS data plane works in cEOS release 4.32.1F and is supported in _netlab_ release 1.9.0
