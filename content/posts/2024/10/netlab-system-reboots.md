@@ -51,9 +51,12 @@ However, if you execute **netlab up --snapshot**, you tell *netlab* to bypass it
 
 [^LL]: The **netlab up --snapshot** command reads the lab topology from the transformed snapshot file, usually created simultaneously with the Vagrant and Containerlab configuration files. Assuming that you can tell Vagrant or Containerlab to (re)start existing stuff is thus relatively safe.
 
-Containers are a different story. They do not have persistent storage, so you cannot expect them to retain device configuration across failures or reboots. Even worse, **containerlab** complains that the containers already exist; it wants to see the **--reconfigure** flag to stop and redeploy them. Cleaning up the artifacts with **netlab down** and starting the lab from scratch seems to be the only option.
+Containers are a different story. They do not have persistent storage, so you cannot expect them to retain device configuration across failures or reboots. Even worse, **containerlab** complains that the containers already exist; it wants to see the **--reconfigure** flag to remove and redeploy them.
 
-**Notes:**
+Cleaning up the artifacts with **netlab down** and starting the lab from scratch is the only option in *netlab* release 1.9.1[^NR]; we're [adding the **--reconfigure** flag](https://github.com/ipspace/netlab/issues/1397) in release 1.9.2. If you're impatient, add the following line to `~/.netlab.yml`:
 
-* You can use **netlab restart** instead of **netlab down** followed by **netlab up**.
-* It looks like it's OK to use the containerlab **--reconfigure** flag regardless of the lab state; we might add this functionality in the next *netlab* release. I promise to update this blog post if we improve the restart functionality ;)
+```
+providers.clab.start: sudo -E containerlab deploy --reconfigure -t clab.yml
+```
+
+Finally, what happens if a lab topology uses a combination of virtual machines and containers? Thanks for the question; [I'm working on it](https://github.com/ipspace/netlab/issues/1404). At the moment, Vagrant throws a nasty error message and gives up. **netlab down --cleanup** followed by **netlab up** (or **netlab restart**) is the only way to go.
