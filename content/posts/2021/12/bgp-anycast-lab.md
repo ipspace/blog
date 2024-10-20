@@ -66,7 +66,7 @@ nodes:
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
 
-{{<note>}}The above topology file would result in a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment. We'll [fix that with a _netlab_ plugin](/2022/01/netsim-plugins/).{{</note>}}
+{{<note>}}The above topology file would result in a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment. We'll [fix that with a _netlab_ plugin](/2022/01/netsim-plugins/), because that's way more fun than [setting the **bgp.sessions** parameter](https://netlab.tools/module/bgp/#node-configuration-parameters).{{</note>}}
 
 I knew I would have to enable *[BGP Additional Paths](/2021/12/bgp-multipath-addpath/)* in AS 65000 to ensure L1 gets multiple paths toward the anycast prefix (we'll need that when we add MPLS transport to the lab), and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netlab-examples/blob/master/BGP/Multipath/topology.yml)):
 
@@ -125,14 +125,7 @@ groups:
 nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 ```
 
-Final touch: *netlab* release 1.1 added stricter checks of module- and node data, so I had to tell the tool that I want to use **bgp.anycast** node attribute:
-
-{{<cc>}}Defining a [custom BGP attribute](https://netlab.tools/extend-attributes/){{</cc>}}
-```
-defaults.bgp.extra_attributes.node: [ anycast ]
-```
-
-Release 1.5 introduced even better attribute checks -- it allows us to specify the type of individual attributes. We know that we want the **bgp.anycast** attribute to be an IPv4 prefix; instead of specifying **extra_attributes** we can just add the new attribute to BGP module attributes:
+Final touch: *netlab* checks module- and node data, so I had to tell the tool that I want to use **bgp.anycast** node attribute that has to be an IPv4 prefix:
 
 {{<cc>}}Defining a new node-level BGP attribute that must be an IPv4 prefix{{</cc>}}
 ```
@@ -285,6 +278,9 @@ Here's what's going on:
 Next time: fixing the problem the right way with *DMZ Link Bandwidth*.
 
 ### Revision History
+
+2024-10-20
+: Simplified the "adding bgp.anycast attribute" bit
 
 2023-02-03
 : Introduced new features available in release 1.5.0

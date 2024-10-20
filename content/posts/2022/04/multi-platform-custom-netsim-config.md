@@ -22,7 +22,7 @@ We'll start with the [BGP anycast topology](https://github.com/ipspace/netlab-ex
 {{<cc>}}Lab topology definition{{</cc>}}
 ```
 module: [ ospf, bgp ]
-defaults.bgp.extra_attributes.node: [ anycast ]
+defaults.bgp.attributes.node.anycast: { type: ipv4, use: prefix }
 
 bgp:
   as_list:
