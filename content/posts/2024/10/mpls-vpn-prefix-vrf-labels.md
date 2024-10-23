@@ -33,7 +33,7 @@ EVPN with the VXLAN data plane is usually more limited. VXLAN VNI is a VLAN in d
 
 Rarely. In most scenarios, the default label allocation policy works quite well unless you want to have [the full Internet routing table in a VRF](/2012/07/is-it-safe-to-run-internet-in-vrf/), in which case [per-VRF label might not be a bad idea](https://blog.ipspace.net/2013/02/internet-in-vrf-and-lfib-explosion/).
 
-Another exception is a [one-arm hub-and-spoke VPN](/2024/09/hub-spoke-one-arm/) that [does not work with the per-VRF labels](/2024/09/hub-spoke-one-arm/#per-prefix-or-per-vrf-labels). PIC Edge and [EIBGP load balancing](/2013/06/eibgp-load-balancing/) also require per-prefix or per-VRF labels (PIC Edge details coming in another blog post). Finally, Carrier's Carrier architecture (is anyone using that?) has to preserve end-to-end LSPs, so it needs per-prefix labels. Have I missed anything else? Please leave a comment.
+Another exception is a [one-arm hub-and-spoke VPN](/2024/09/hub-spoke-one-arm/) that [does not work with the per-VRF labels](/2024/09/hub-spoke-one-arm/#per-prefix-or-per-vrf-labels). PIC Edge, [EIBGP load balancing](/2013/06/eibgp-load-balancing/), and [Egress Peer Engineering](/2024/10/worth-reading-egress-peer-engineering/) also require per-prefix or per-next-hop labels (PIC Edge details coming in another blog post). Finally, Carrier's Carrier architecture (is anyone using that?) has to preserve end-to-end LSPs, so it needs per-prefix labels. Have I missed anything else? Please leave a comment.
 
 Anyway, why do we have so many options? As is often the case, vendor are solving their hardware challenges with software.
 
