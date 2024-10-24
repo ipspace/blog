@@ -2,7 +2,6 @@
 title: "Public Videos: Active-Active and DR Data Centers"
 date: 2024-10-25 09:22:00+0200
 expiryDate: 2025-01-25 00:00:00
-draft: True
 tags: [  ]
 ---
 ![](/2024/10/dalle-dc-disaster.png)

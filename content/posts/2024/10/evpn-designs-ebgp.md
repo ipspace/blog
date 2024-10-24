@@ -41,6 +41,7 @@ What could possibly go wrong? Starting with the *EBGP-as-better-IGP* idea:
 The only control-plane stack that makes EBGP as easy to deploy as IGP is still FRRouting. Multiple vendors support IPv6 LLA EBGP sessions, but most of them expect you to navigate the unexpected configuration requirements like *[we have to define a peer group for interface EBGP sessions](https://blog.ipspace.net/2024/03/arista-interface-ebgp/)*.
 
 Now for the EVPN address family considerations:
+{ #evpn-considerations }
 
 * The EVPN next hop (VTEP) should not change across the data center fabric; you wouldn't want intermediate nodes to do VXLAN-to-VXLAN bridging[^MCD]. The spine switches, thus, should not change the BGP next hop on EBGP sessions, but that's not how EBGP works. Some vendors tweak the default EBGP behavior in the EVPN address family and leave the BGP next-hop unchanged. Others require a configuration nerd knob.
 * EVPN has an excellent *auto RT* functionality that automatically sets the EVPN route targets based on the device's BGP AS number and VLAN ID. That does not work across multiple autonomous systems unless the vendor (like Cumulus Linux) decides it's OK to ignore the AS number part of EVPN route targets[^NAGA]
@@ -53,7 +54,7 @@ Finally, the elephant in the room. Some vendors seem to have [suboptimal EVPN im
 
 We'll leave those discussions for another time and explore the more straightforward scenario of running the IPv4 and EVPN address families on the same EBGP sessions. We'll use a lab setup similar to the [IBGP Full Mesh Between Leaf Switches](/2024/05/evpn-designs-ibgp-full-mesh/); read that blog post as well as the *[Creating the Lab Environment](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab)* section of the first blog post in this series to get more details.
 
-### Leaf-and-Spine EBGP-Everywhere Lab Topology
+### Leaf-and-Spine EBGP-Everywhere Lab Topology {#lab}
 
 This is the [_netlab_ lab topology description](https://github.com/ipspace/netlab-examples/blob/master/EVPN/ebgp/topology.yml) we'll use to set up IPv4+EVPN EBGP sessions between leaf and spine switches.
 
@@ -111,7 +112,7 @@ The [VXLAN Leaf-and-Spine Fabric](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/
 
 Assuming you already did the previous homework, it's time to start the lab with the **netlab up** command. You can also [start the lab in a GitHub Codespace](/2024/07/netlab-examples-codespaces/) (the directory is `EVPN/ebgp`); you'll still have to [import the Arista cEOS container](/2024/07/arista-eos-codespaces/), though.
 
-### Behind the Scenes
+### Behind the Scenes {#bds}
 
 This is the FRRouting BGP configuration of L1. As you can see, it's as concise as it can get. The spine configuration is almost identical; it has more EBGP neighbors but no additional nerd knobs.
 
@@ -243,7 +244,7 @@ Caveats[^NXOS]? Extra nerd knobs? Run away and use IBGP-over-IGP.
 
 [^NXOS]: Cisco Nexus OS documentation still claims that "In a VXLAN EVPN setup that has 2K VNI scale configuration, the control plane downtime may take more than 200 seconds. To avoid potential BGP flap, extend the graceful restart time to 300 seconds." I'm unsure whether that would apply to an EBGP session restart due to a link flap, but it might explain why they're talking about EVPN EBGP sessions between loopback interfaces.
 
-{{<next-in-series page="/posts/2024/09/tbc.md" />}}
+{{<next-in-series page="/posts/2024/10/evpn-designs-ebgp-ebgp.md" />}}
 
 ### Revision History
 
