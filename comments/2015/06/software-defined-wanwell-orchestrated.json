@@ -1,313 +1,324 @@
 {
-  "comments": [
-    {
-      "date": "23 June 2015 08:34",
-      "html": "I see a lot of reinventing the wheel these days with all the SDN hype going on. In many cases they are even reinventing broken wheels. There are protocols that have 20-30 years of exposure to the real world (BGP) so to say that you can design something better than that, takes a pretty big ego.<br /><br />I&#39;m not saying there isn&#39;t room for innovation but there is no gain in inventing something new if there is already a suitable tool out there.<br /><br />What&#39;s funny is that people are even repeating the same mistakes of the past. I&#39;m actually writing an article on the subject. I think you may find it interesting.",
-      "id": "5054406911629823583",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Daniel Dib",
-      "profile": "http://lostintransit.se",
-      "pub": "2015-06-23T08:34:50.309+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "date": "23 June 2015 14:30",
-      "html": "Reading this I was wondering if you were aware of Internet2&#39;s AL2S service (http://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-features). It essentially offers a GUI portal as well as API/OpenFlow programmability for extending arbitrary VLANs between participating member sites using the Internet2 backbone. In this sense it&#39;s a full SDN platform you can use for programming WAN connectivity. This includes being able to program the path between I2 backbone nodes that the VLAN will take, as well as a backup path to swing to should a primary path segment fail. Interestingly this isn&#39;t just used by members for various research and education purposes, but is in fact used by I2 itself. I2 is its own customer with this product, and the routed I2 backbone - the IP services most people associate with I2 - runs on top of AL2S itself.<br /><br />It&#39;s an interesting example of SDN being used for WAN provisioning used in full production for a rather large amount of traffic and with quite a few customers, albeit in a manner put together by I2 and its NOC and software developers themselves rather than buying a product from a vendor.",
-      "id": "3056877878788929948",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2015-06-23T14:30:31.315+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "date": "23 June 2015 19:29",
-      "html": "&quot;When an SD-WAN edge node powers up, it has to connect to the controller and register its outside (WAN) IP addresses with the controller. &quot; - Looks like LISP can do this. outside (WAN)IP address is your RLOC, Controller is MS, and prefix is EID.  ",
-      "id": "4147404353197272883",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "shah",
-      "profile": "https://www.blogger.com/profile/15818883829738651247",
-      "pub": "2015-06-23T19:29:37.718+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "24 June 2015 00:50",
-          "html": "So you are saying:<br />1) distributed configuration of many devices is a pain. it would be nice to have centralized configuration.<br />2) the average networking guy doesn&#39;t know all these fancy protocols. it would be nice if they could have a generic way to configure abstract stuff, without the need to understand the underlying protocols.<br /><br />I agree. Of course.<br />But I don&#39;t agree that you need new technology under the hood. You can do it with existing technology and protocols. You just need a new user-interface. Or paradigm. Or approach. Or whatever you want to call it.<br /><br />Or is this too simplistic ?",
-          "id": "7869836546200628446",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Gryz",
-          "profile": null,
-          "pub": "2015-06-24T00:50:31.817+02:00",
-          "ref": "2571409177871545580",
-          "type": "comment"
-        },
-        {
-          "date": "24 June 2015 14:37",
-          "html": "Hi Jordan,<br /><br />Thank you for thoughtful comment. I think you might be over-optimistic in regard to the whole &quot;controller-based&quot; hype. <br /><br />As Gryz pointed out, there&#39;s absolutely no reason you couldn&#39;t have done the same thing with existing devices (we just didn&#39;t for zillions of reasons). Also, most of the SD-WAN solutions use exactly the same mechanisms as existing hybrid WAN solutions, you just don&#39;t see the complexity.<br /><br />Finally, speaking of complexity, you wrote &quot;SD-WAN makes the complex easy, which has been one of the promises of SDN from the beginning&quot;. I sincerely hope you don&#39;t believe that. Do a deep dive into any SDN technology or product, and you&#39;ll find plenty of untested complexity with as-of-yet-unknown side effects. What many SDx solutions give you is the _appearance_ of being easy, and I have hoped we&#39;ve learned how reliable those appearances are based on our experience with single-pane-of-whatever systems.",
-          "id": "2264397655710077820",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-06-24T14:37:38.788+02:00",
-          "ref": "2571409177871545580",
-          "type": "comment"
-        },
-        {
-          "date": "24 June 2015 15:41",
-          "html": "Gryz,<br /><br />I agree with everything you stated.  I&#39;m not a fan of the proprietary methods being implemented but am a fan of a centrally controlled WAN architecture.  It&#39;s should be simply a management shift, not necessarily a technology shift.<br /><br />Ivan,<br /><br />I knew opening my mouth on your blog was risky :)  You may be correct.  I may be over-optimistic to the controller hype.  I&#39;m not naive enough to believe SD-WAN providers are going to deliver on *everything* they have promised.  I do believe they have the ability to deliver enhancements on the simplification of management and centralized visibility mentioned in my previous comment.  We don&#39;t at all disagree on the fact that they should be using established/standardized tech where possible but I do believe they are working to deliver on a valuable concept if done correctly.  Like all things in this world, I could be wrong and it all depends on practical implementation (something we have yet to see in any decent scale). ",
-          "id": "393978055051752871",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Jordan Martin",
-          "profile": "http://www.twitter.com/bcjordo",
-          "pub": "2015-06-24T15:41:02.325+02:00",
-          "ref": "2571409177871545580",
-          "type": "comment"
-        },
-        {
-          "date": "24 June 2015 15:58",
-          "html": "Jordan,<br /><br />&quot;I knew opening my mouth on your blog was risky :)&quot; - it isn&#39;t. No networking engineer was ever harmed doing that (I can&#39;t guarantee the same for marketers and trolls ;)<br /><br />&quot;I do believe they are working to deliver on a valuable concept if done correctly&quot; - we&#39;re in total agreement. I just hate all the hype floating around and still think we should focus on viability of underlying technologies. Understanding them is the first step toward understanding their limitations.",
-          "id": "5131560523261007886",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-06-24T15:58:26.663+02:00",
-          "ref": "2571409177871545580",
-          "type": "comment"
-        }
-      ],
-      "date": "23 June 2015 21:12",
-      "html": "Ivan,<br /><br />Generally, I agree that the SD-WAN vendors are simply rehashing older technology in generally proprietary ways.  Where I begin to disagree is that the new model doesn&#39;t offer some advantages we don&#39;t currently have.  <br /><br />The primary differentiation for me is the concept of &quot;local perspective&quot; vs &quot;controller perspective&quot;.  As engineers we tend to shy away from protocols like PBR because of the local perspective problem.  As we implement fancy new ways to forward our traffic as determined by policy/logic (rather than destination IP) we are required to implement those changes across a myriad of devices to avoid issues like asynchronous forwarding.  Since every device makes the decisions locally, this policy tends to be unique per device and as such ends up being a pain to manage in the long run.  Additionally, changes to the policy usually require a reconfiguration of each device (and again, uniquely since they aren&#39;t all the same).  Moving to a centralized &quot;controller perspective&quot; version of configuration removes a lot of the hassle of implementing these technologies and by doing so is reducing cost and administrative complexity.  That is a good thing and opens up the use of these technologies to organizations who would benefit from them but may not have the advanced level of expertise on staff to manage them in their current state.<br /><br />Similarly, the &quot;localized perspective&quot; issue raises it&#39;s head again when we talk about state monitoring and correction.  You are correct that many engineers are not thrilled with the performance of previous generations of WAN optimization but they suffered from the same localized perspective issues.  Traffic quality was determined wholly by the receiving end of the link and because of that it was unreliable to depend on.  The &quot;controller perspective&quot; of these new SD-WAN options are able to make decisions with data from both the transmit and receive end of the link.  It&#39;s not a guarantee but it should dramatically improve detection of line degradation, and consequently which corrective measures to take to resolve them.<br /><br />My last point is this... I don&#39;t think SD-WAN is meant to appeal to high end engineers.  SD-WAN is going to be wildly successful because the people who will buy into the concept (and ultimately pay to have it installed) couldn&#39;t describe the features of any of the technology/acronyms you used in your post.  It makes the complex easy, which has been one of the promises of SDN from the beginning.  None of the tech is new, but it is becoming far more accessible because of this new way of implementing it.",
-      "id": "2571409177871545580",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Jordan Martin",
-      "profile": "https://twitter.com/bcjordo",
-      "pub": "2015-06-23T21:12:46.065+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "24 June 2015 07:51",
-          "html": "Unfortunately you need all the wheels I mentioned if you want to have a reasonably-well-functioning hybrid WAN (oops. Software-Defined WAN) solution. <br /><br />I agree it&#39;s complex, but unfortunately we cannot do any better with the technologies we use today (TCP/IP).",
-          "id": "330154072962917978",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-06-24T07:51:29.730+02:00",
-          "ref": "8182403080993310571",
-          "type": "comment"
-        },
-        {
-          "date": "24 June 2015 16:24",
-          "html": "Then why not abstract all that complexity into a secret sauce in a shiny new SD-WAN box? After all, isn&#39;t that one of the tenets of SDN?",
-          "id": "4803133324465145990",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "George",
-          "profile": null,
-          "pub": "2015-06-24T16:24:56.894+02:00",
-          "ref": "8182403080993310571",
-          "type": "comment"
-        },
-        {
-          "date": "24 June 2015 18:26",
-          "html": "Sure... until you have to figure out why it stopped working ;) You can reformat your Windows laptop when it breaks down; I&#39;m not sure many people can do the same with their WAN network.",
-          "id": "8024353663537294650",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-06-24T18:26:17.698+02:00",
-          "ref": "8182403080993310571",
-          "type": "comment"
-        },
-        {
-          "date": "24 June 2015 21:07",
-          "html": "True, but I&#39;d rather call the vendor and have them figure it out than me having to troubleshoot 8 different protocols at 3 am on a Saturday night.",
-          "id": "8802038778801138505",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "George",
-          "profile": null,
-          "pub": "2015-06-24T21:07:14.691+02:00",
-          "ref": "8182403080993310571",
-          "type": "comment"
-        },
-        {
-          "date": "24 June 2015 21:10",
-          "html": "... And this is the point where we&#39;ll have to agree to disagree",
-          "id": "8223495374130469118",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-06-24T21:10:28.644+02:00",
-          "ref": "8182403080993310571",
-          "type": "comment"
-        },
-        {
-          "date": "25 June 2015 11:16",
-          "html": "... because the vendor service desk will, of course, fix this in no time.",
-          "id": "3180242418979814916",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2015-06-25T11:16:18.073+02:00",
-          "ref": "8182403080993310571",
-          "type": "comment"
-        }
-      ],
-      "date": "23 June 2015 23:33",
-      "html": "Who are you and what have you done with complexity-hating Ivan?!   ;)",
-      "id": "8182403080993310571",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "George",
-      "profile": null,
-      "pub": "2015-06-23T23:33:59.547+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "date": "23 June 2015 23:50",
-      "html": "I cant help to think that you are talking about Greg Ferro when you mention this<br /><br />- &quot;It\u2019s so entertaining listening to people who once touted the benefits of multi-vendor networks suddenly promoting the benefits of undocumented proprietary solutions \u201cbecause they are so much better than routing protocols.\u201d<br /><br />=) ",
-      "id": "8824073488458656095",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Pablo Lucena",
-      "profile": "https://www.blogger.com/profile/17397115945095847918",
-      "pub": "2015-06-23T23:50:42.136+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "date": "24 June 2015 10:31",
-      "html": "&#39;One of the Software Defined Evangelists has declared 2015 as the Year of SD-WAN&#39;.<br /><br />I take it there are no prizes for guessing who? :-(",
-      "id": "9060802130652270193",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/10887180078826517514",
-      "pub": "2015-06-24T10:31:32.032+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "date": "25 June 2015 05:41",
-      "html": "I&#39;d personally use the SD-WAN stuff to get rid of old school engineers in my company that are hogging all the legacy GRE/IKE/whathaveyou gear and refusing to share info. I think that&#39;s a great use case. =)",
-      "id": "2175097296353502174",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2015-06-25T05:41:24.937+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "date": "25 June 2015 10:11",
-      "html": "i&#39;m happy that one with the Ivan&#39;s standing wrote such declaration of war to sd-FUD-wan. Apart technical analysis i can still hardly imagine the business case behind this, any thoughts?  ",
-      "id": "7439029678138007417",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2015-06-25T10:11:39.640+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "06 July 2015 16:39",
-          "html": "When you see a single large-scale production deployment of this concept (preferably in enterprise network, not @ Google, Amazon or Facebook), please let me know.",
-          "id": "110709384237829145",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-07-06T16:39:25.703+02:00",
-          "ref": "5258759858462531488",
-          "type": "comment"
-        },
-        {
-          "date": "06 July 2015 21:35",
-          "html": "I&#39;m sure there are many POC out there nearly &quot;ready&quot; for production deployment... ",
-          "id": "5868619944728159126",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Matt Conran",
-          "profile": "http://network-insight.net",
-          "pub": "2015-07-06T21:35:24.141+02:00",
-          "ref": "5258759858462531488",
-          "type": "comment"
-        },
-        {
-          "date": "06 July 2015 21:48",
-          "html": "Have you been involved in one? Have you seen a technical description of one that would be anywhere near the nirvana you&#39;re aiming at?",
-          "id": "232238443764753856",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-07-06T21:48:33.113+02:00",
-          "ref": "5258759858462531488",
-          "type": "comment"
-        }
-      ],
-      "date": "06 July 2015 09:26",
-      "html": "I think application segmentation will play a big role driving the business case for SD-WAN. The ability to have the application choose the topology brings the application requirement closer to the network. Applications adapting to network metrics ( whatever they are)<br /> and changing its topology based on certain metrics is pretty cool",
-      "id": "5258759858462531488",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Matt Conran",
-      "profile": "http://network-insight.net",
-      "pub": "2015-07-06T09:26:46.684+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "date": "21 July 2015 20:10",
-      "html": "I love the title of your post\u2026 There\u2019s something to be said about a system that is designed to work together from the beginning as supposed to after the fact trying to duct tape different technologies together and call that a system. <br /><br />To me, what is exciting with SD-WAN is that visibility is a key use case for SD-WAN. For once, network management isn\u2019t an after thought. ",
-      "id": "1785984542241580057",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ulrica de Fort-Menares",
-      "profile": "http://www.liveaction.com",
-      "pub": "2015-07-21T20:10:39.945+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "22 August 2015 19:53",
-          "html": "Hi Cristiano,<br /><br />I agree with you that DMVPN is sort-of lock-in because there&#39;s a single vendor that decided to use this specific mix of standard protocols to implement mGRE overlay on top of IPsec.<br /><br />However, every single protocol used in the DMVPN mix is a standard protocol, and apart from NHRP extensions needed to handle NAT traversal reliable, I don&#39;t think Cisco modified any of them, so in theory someone else could replicate what they did (modulo any patents - have to write a blog post on that topic, maybe someone knows the answer).<br /><br />In any case, as you&#39;re dealing with a mixed bag of standard protocols, you have at least a fighting chance of figuring out what&#39;s going on, for example by firing up Wireshark and troubleshooting your problem (or at least identifying what the problem is). You have zero chance to do that with undocumented proprietary protocols.<br /><br />Do you agree?",
-          "id": "5266086216204678075",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-08-22T19:53:15.334+02:00",
-          "ref": "216551617146183320",
-          "type": "comment"
-        }
-      ],
-      "date": "21 August 2015 21:27",
-      "html": "Hey Ivan nice post as usual. You are the best. However ?I got this point <br /><br />&quot;The architecture of most SD-WAN products is thus much cleaner and easier to configure than traditional hybrid networks. However, do keep in mind that most of them use proprietary protocols, resulting in a perfect lock-in.&quot;<br /><br />In this case I should consider that today using tools like DMVPN I&#39;m not locked-in ? Just Curious It\u00b4s usual have interoperability in this type of network with multiple nodes in remote sites ? I mean to scale I have to use something like DMVPN for instance, So for me we already live in a lock-in world. Do you agree ?",
-      "id": "216551617146183320",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Cristiano Monteiro",
-      "profile": "https://www.blogger.com/profile/13737367363943291643",
-      "pub": "2015-08-21T21:27:02.006+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    },
-    {
-      "date": "31 May 2017 01:45",
-      "html": "O sancta simplicitas! (lat). Great article, thank you.",
-      "id": "8868473199649156843",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2017-05-31T01:45:53.830+02:00",
-      "ref": "1309866375970304811",
-      "type": "comment"
-    }
-  ],
-  "count": 27,
-  "id": "1309866375970304811",
-  "type": "post",
-  "url": "2015/06/software-defined-wanwell-orchestrated.html"
+   "comments": [
+      {
+         "date": "23 June 2015 08:34",
+         "html": "I see a lot of reinventing the wheel these days with all the SDN hype going on. In many cases they are even reinventing broken wheels. There are protocols that have 20-30 years of exposure to the real world (BGP) so to say that you can design something better than that, takes a pretty big ego.<br /><br />I&#39;m not saying there isn&#39;t room for innovation but there is no gain in inventing something new if there is already a suitable tool out there.<br /><br />What&#39;s funny is that people are even repeating the same mistakes of the past. I&#39;m actually writing an article on the subject. I think you may find it interesting.",
+         "id": "5054406911629823583",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Daniel Dib",
+         "profile": "http://lostintransit.se",
+         "pub": "2015-06-23T08:34:50.309+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "date": "23 June 2015 14:30",
+         "html": "Reading this I was wondering if you were aware of Internet2&#39;s AL2S service (http://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-features). It essentially offers a GUI portal as well as API/OpenFlow programmability for extending arbitrary VLANs between participating member sites using the Internet2 backbone. In this sense it&#39;s a full SDN platform you can use for programming WAN connectivity. This includes being able to program the path between I2 backbone nodes that the VLAN will take, as well as a backup path to swing to should a primary path segment fail. Interestingly this isn&#39;t just used by members for various research and education purposes, but is in fact used by I2 itself. I2 is its own customer with this product, and the routed I2 backbone - the IP services most people associate with I2 - runs on top of AL2S itself.<br /><br />It&#39;s an interesting example of SDN being used for WAN provisioning used in full production for a rather large amount of traffic and with quite a few customers, albeit in a manner put together by I2 and its NOC and software developers themselves rather than buying a product from a vendor.",
+         "id": "3056877878788929948",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2015-06-23T14:30:31.315+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "21 November 2024 05:27",
+               "html": "<p>Yes, nice example.\nLISP is at least an official IETF standard, not proprietary.\nAlthough most vendors dropped it, but you still have some open source implementations, or you could develop your own, since things are not hidden.</p>\n",
+               "id": "2461",
+               "name": "Bela Varkonyi",
+               "pub": "2024-11-21T17:27:30",
+               "ref": "4147404353197272883",
+               "type": "comment"
+            }
+         ],
+         "date": "23 June 2015 19:29",
+         "html": "&quot;When an SD-WAN edge node powers up, it has to connect to the controller and register its outside (WAN) IP addresses with the controller. &quot; - Looks like LISP can do this. outside (WAN)IP address is your RLOC, Controller is MS, and prefix is EID.  ",
+         "id": "4147404353197272883",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "shah",
+         "profile": "https://www.blogger.com/profile/15818883829738651247",
+         "pub": "2015-06-23T19:29:37.718+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "24 June 2015 00:50",
+               "html": "So you are saying:<br />1) distributed configuration of many devices is a pain. it would be nice to have centralized configuration.<br />2) the average networking guy doesn&#39;t know all these fancy protocols. it would be nice if they could have a generic way to configure abstract stuff, without the need to understand the underlying protocols.<br /><br />I agree. Of course.<br />But I don&#39;t agree that you need new technology under the hood. You can do it with existing technology and protocols. You just need a new user-interface. Or paradigm. Or approach. Or whatever you want to call it.<br /><br />Or is this too simplistic ?",
+               "id": "7869836546200628446",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Gryz",
+               "profile": null,
+               "pub": "2015-06-24T00:50:31.817+02:00",
+               "ref": "2571409177871545580",
+               "type": "comment"
+            },
+            {
+               "date": "24 June 2015 14:37",
+               "html": "Hi Jordan,<br /><br />Thank you for thoughtful comment. I think you might be over-optimistic in regard to the whole &quot;controller-based&quot; hype. <br /><br />As Gryz pointed out, there&#39;s absolutely no reason you couldn&#39;t have done the same thing with existing devices (we just didn&#39;t for zillions of reasons). Also, most of the SD-WAN solutions use exactly the same mechanisms as existing hybrid WAN solutions, you just don&#39;t see the complexity.<br /><br />Finally, speaking of complexity, you wrote &quot;SD-WAN makes the complex easy, which has been one of the promises of SDN from the beginning&quot;. I sincerely hope you don&#39;t believe that. Do a deep dive into any SDN technology or product, and you&#39;ll find plenty of untested complexity with as-of-yet-unknown side effects. What many SDx solutions give you is the _appearance_ of being easy, and I have hoped we&#39;ve learned how reliable those appearances are based on our experience with single-pane-of-whatever systems.",
+               "id": "2264397655710077820",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-06-24T14:37:38.788+02:00",
+               "ref": "2571409177871545580",
+               "type": "comment"
+            },
+            {
+               "date": "24 June 2015 15:41",
+               "html": "Gryz,<br /><br />I agree with everything you stated.  I&#39;m not a fan of the proprietary methods being implemented but am a fan of a centrally controlled WAN architecture.  It&#39;s should be simply a management shift, not necessarily a technology shift.<br /><br />Ivan,<br /><br />I knew opening my mouth on your blog was risky :)  You may be correct.  I may be over-optimistic to the controller hype.  I&#39;m not naive enough to believe SD-WAN providers are going to deliver on *everything* they have promised.  I do believe they have the ability to deliver enhancements on the simplification of management and centralized visibility mentioned in my previous comment.  We don&#39;t at all disagree on the fact that they should be using established/standardized tech where possible but I do believe they are working to deliver on a valuable concept if done correctly.  Like all things in this world, I could be wrong and it all depends on practical implementation (something we have yet to see in any decent scale). ",
+               "id": "393978055051752871",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Jordan Martin",
+               "profile": "http://www.twitter.com/bcjordo",
+               "pub": "2015-06-24T15:41:02.325+02:00",
+               "ref": "2571409177871545580",
+               "type": "comment"
+            },
+            {
+               "date": "24 June 2015 15:58",
+               "html": "Jordan,<br /><br />&quot;I knew opening my mouth on your blog was risky :)&quot; - it isn&#39;t. No networking engineer was ever harmed doing that (I can&#39;t guarantee the same for marketers and trolls ;)<br /><br />&quot;I do believe they are working to deliver on a valuable concept if done correctly&quot; - we&#39;re in total agreement. I just hate all the hype floating around and still think we should focus on viability of underlying technologies. Understanding them is the first step toward understanding their limitations.",
+               "id": "5131560523261007886",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-06-24T15:58:26.663+02:00",
+               "ref": "2571409177871545580",
+               "type": "comment"
+            }
+         ],
+         "date": "23 June 2015 21:12",
+         "html": "Ivan,<br /><br />Generally, I agree that the SD-WAN vendors are simply rehashing older technology in generally proprietary ways.  Where I begin to disagree is that the new model doesn&#39;t offer some advantages we don&#39;t currently have.  <br /><br />The primary differentiation for me is the concept of &quot;local perspective&quot; vs &quot;controller perspective&quot;.  As engineers we tend to shy away from protocols like PBR because of the local perspective problem.  As we implement fancy new ways to forward our traffic as determined by policy/logic (rather than destination IP) we are required to implement those changes across a myriad of devices to avoid issues like asynchronous forwarding.  Since every device makes the decisions locally, this policy tends to be unique per device and as such ends up being a pain to manage in the long run.  Additionally, changes to the policy usually require a reconfiguration of each device (and again, uniquely since they aren&#39;t all the same).  Moving to a centralized &quot;controller perspective&quot; version of configuration removes a lot of the hassle of implementing these technologies and by doing so is reducing cost and administrative complexity.  That is a good thing and opens up the use of these technologies to organizations who would benefit from them but may not have the advanced level of expertise on staff to manage them in their current state.<br /><br />Similarly, the &quot;localized perspective&quot; issue raises it&#39;s head again when we talk about state monitoring and correction.  You are correct that many engineers are not thrilled with the performance of previous generations of WAN optimization but they suffered from the same localized perspective issues.  Traffic quality was determined wholly by the receiving end of the link and because of that it was unreliable to depend on.  The &quot;controller perspective&quot; of these new SD-WAN options are able to make decisions with data from both the transmit and receive end of the link.  It&#39;s not a guarantee but it should dramatically improve detection of line degradation, and consequently which corrective measures to take to resolve them.<br /><br />My last point is this... I don&#39;t think SD-WAN is meant to appeal to high end engineers.  SD-WAN is going to be wildly successful because the people who will buy into the concept (and ultimately pay to have it installed) couldn&#39;t describe the features of any of the technology/acronyms you used in your post.  It makes the complex easy, which has been one of the promises of SDN from the beginning.  None of the tech is new, but it is becoming far more accessible because of this new way of implementing it.",
+         "id": "2571409177871545580",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Jordan Martin",
+         "profile": "https://twitter.com/bcjordo",
+         "pub": "2015-06-23T21:12:46.065+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "24 June 2015 07:51",
+               "html": "Unfortunately you need all the wheels I mentioned if you want to have a reasonably-well-functioning hybrid WAN (oops. Software-Defined WAN) solution. <br /><br />I agree it&#39;s complex, but unfortunately we cannot do any better with the technologies we use today (TCP/IP).",
+               "id": "330154072962917978",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-06-24T07:51:29.730+02:00",
+               "ref": "8182403080993310571",
+               "type": "comment"
+            },
+            {
+               "date": "24 June 2015 16:24",
+               "html": "Then why not abstract all that complexity into a secret sauce in a shiny new SD-WAN box? After all, isn&#39;t that one of the tenets of SDN?",
+               "id": "4803133324465145990",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "George",
+               "profile": null,
+               "pub": "2015-06-24T16:24:56.894+02:00",
+               "ref": "8182403080993310571",
+               "type": "comment"
+            },
+            {
+               "date": "24 June 2015 18:26",
+               "html": "Sure... until you have to figure out why it stopped working ;) You can reformat your Windows laptop when it breaks down; I&#39;m not sure many people can do the same with their WAN network.",
+               "id": "8024353663537294650",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-06-24T18:26:17.698+02:00",
+               "ref": "8182403080993310571",
+               "type": "comment"
+            },
+            {
+               "date": "24 June 2015 21:07",
+               "html": "True, but I&#39;d rather call the vendor and have them figure it out than me having to troubleshoot 8 different protocols at 3 am on a Saturday night.",
+               "id": "8802038778801138505",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "George",
+               "profile": null,
+               "pub": "2015-06-24T21:07:14.691+02:00",
+               "ref": "8182403080993310571",
+               "type": "comment"
+            },
+            {
+               "date": "24 June 2015 21:10",
+               "html": "... And this is the point where we&#39;ll have to agree to disagree",
+               "id": "8223495374130469118",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-06-24T21:10:28.644+02:00",
+               "ref": "8182403080993310571",
+               "type": "comment"
+            },
+            {
+               "date": "25 June 2015 11:16",
+               "html": "... because the vendor service desk will, of course, fix this in no time.",
+               "id": "3180242418979814916",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2015-06-25T11:16:18.073+02:00",
+               "ref": "8182403080993310571",
+               "type": "comment"
+            }
+         ],
+         "date": "23 June 2015 23:33",
+         "html": "Who are you and what have you done with complexity-hating Ivan?!   ;)",
+         "id": "8182403080993310571",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "George",
+         "profile": null,
+         "pub": "2015-06-23T23:33:59.547+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "date": "23 June 2015 23:50",
+         "html": "I cant help to think that you are talking about Greg Ferro when you mention this<br /><br />- &quot;It’s so entertaining listening to people who once touted the benefits of multi-vendor networks suddenly promoting the benefits of undocumented proprietary solutions “because they are so much better than routing protocols.”<br /><br />=) ",
+         "id": "8824073488458656095",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Pablo Lucena",
+         "profile": "https://www.blogger.com/profile/17397115945095847918",
+         "pub": "2015-06-23T23:50:42.136+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "date": "24 June 2015 10:31",
+         "html": "&#39;One of the Software Defined Evangelists has declared 2015 as the Year of SD-WAN&#39;.<br /><br />I take it there are no prizes for guessing who? :-(",
+         "id": "9060802130652270193",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/10887180078826517514",
+         "pub": "2015-06-24T10:31:32.032+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "date": "25 June 2015 05:41",
+         "html": "I&#39;d personally use the SD-WAN stuff to get rid of old school engineers in my company that are hogging all the legacy GRE/IKE/whathaveyou gear and refusing to share info. I think that&#39;s a great use case. =)",
+         "id": "2175097296353502174",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2015-06-25T05:41:24.937+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "date": "25 June 2015 10:11",
+         "html": "i&#39;m happy that one with the Ivan&#39;s standing wrote such declaration of war to sd-FUD-wan. Apart technical analysis i can still hardly imagine the business case behind this, any thoughts?  ",
+         "id": "7439029678138007417",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2015-06-25T10:11:39.640+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 July 2015 16:39",
+               "html": "When you see a single large-scale production deployment of this concept (preferably in enterprise network, not @ Google, Amazon or Facebook), please let me know.",
+               "id": "110709384237829145",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-07-06T16:39:25.703+02:00",
+               "ref": "5258759858462531488",
+               "type": "comment"
+            },
+            {
+               "date": "06 July 2015 21:35",
+               "html": "I&#39;m sure there are many POC out there nearly &quot;ready&quot; for production deployment... ",
+               "id": "5868619944728159126",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Matt Conran",
+               "profile": "http://network-insight.net",
+               "pub": "2015-07-06T21:35:24.141+02:00",
+               "ref": "5258759858462531488",
+               "type": "comment"
+            },
+            {
+               "date": "06 July 2015 21:48",
+               "html": "Have you been involved in one? Have you seen a technical description of one that would be anywhere near the nirvana you&#39;re aiming at?",
+               "id": "232238443764753856",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-07-06T21:48:33.113+02:00",
+               "ref": "5258759858462531488",
+               "type": "comment"
+            }
+         ],
+         "date": "06 July 2015 09:26",
+         "html": "I think application segmentation will play a big role driving the business case for SD-WAN. The ability to have the application choose the topology brings the application requirement closer to the network. Applications adapting to network metrics ( whatever they are)<br /> and changing its topology based on certain metrics is pretty cool",
+         "id": "5258759858462531488",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Matt Conran",
+         "profile": "http://network-insight.net",
+         "pub": "2015-07-06T09:26:46.684+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "date": "21 July 2015 20:10",
+         "html": "I love the title of your post… There’s something to be said about a system that is designed to work together from the beginning as supposed to after the fact trying to duct tape different technologies together and call that a system. <br /><br />To me, what is exciting with SD-WAN is that visibility is a key use case for SD-WAN. For once, network management isn’t an after thought. ",
+         "id": "1785984542241580057",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ulrica de Fort-Menares",
+         "profile": "http://www.liveaction.com",
+         "pub": "2015-07-21T20:10:39.945+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "22 August 2015 19:53",
+               "html": "Hi Cristiano,<br /><br />I agree with you that DMVPN is sort-of lock-in because there&#39;s a single vendor that decided to use this specific mix of standard protocols to implement mGRE overlay on top of IPsec.<br /><br />However, every single protocol used in the DMVPN mix is a standard protocol, and apart from NHRP extensions needed to handle NAT traversal reliable, I don&#39;t think Cisco modified any of them, so in theory someone else could replicate what they did (modulo any patents - have to write a blog post on that topic, maybe someone knows the answer).<br /><br />In any case, as you&#39;re dealing with a mixed bag of standard protocols, you have at least a fighting chance of figuring out what&#39;s going on, for example by firing up Wireshark and troubleshooting your problem (or at least identifying what the problem is). You have zero chance to do that with undocumented proprietary protocols.<br /><br />Do you agree?",
+               "id": "5266086216204678075",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-08-22T19:53:15.334+02:00",
+               "ref": "216551617146183320",
+               "type": "comment"
+            }
+         ],
+         "date": "21 August 2015 21:27",
+         "html": "Hey Ivan nice post as usual. You are the best. However ?I got this point <br /><br />&quot;The architecture of most SD-WAN products is thus much cleaner and easier to configure than traditional hybrid networks. However, do keep in mind that most of them use proprietary protocols, resulting in a perfect lock-in.&quot;<br /><br />In this case I should consider that today using tools like DMVPN I&#39;m not locked-in ? Just Curious It´s usual have interoperability in this type of network with multiple nodes in remote sites ? I mean to scale I have to use something like DMVPN for instance, So for me we already live in a lock-in world. Do you agree ?",
+         "id": "216551617146183320",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Cristiano Monteiro",
+         "profile": "https://www.blogger.com/profile/13737367363943291643",
+         "pub": "2015-08-21T21:27:02.006+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2017 01:45",
+         "html": "O sancta simplicitas! (lat). Great article, thank you.",
+         "id": "8868473199649156843",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2017-05-31T01:45:53.830+02:00",
+         "ref": "1309866375970304811",
+         "type": "comment"
+      }
+   ],
+   "count": 13,
+   "id": "1309866375970304811",
+   "type": "post",
+   "url": "2015/06/software-defined-wanwell-orchestrated.html"
 }
