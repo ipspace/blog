@@ -51,7 +51,7 @@ All of those goodies are gone with the EBGP-only design. The EBGP session is gon
 
 It's worth noting that the heavy lifting described in the previous paragraph is a control-plane-only activity. There has been no change in the end-to-end reachability, but the EVPN routes temporarily had one less alternate path while *all other attributes were unchanged*, and the CPUs were busy. 
 
-### Fixing the Route Churn with EBGP-over-EBGP
+### Fixing the Route Churn with EBGP-over-EBGP {#fix}
 
 Now imagine that your Product Manager rushes into the room yelling, "_We MUST have EVPN over EBGP. The competitors are looking cooler than we are and are beating us_." At the same time, you know your EVPN implementation does not perform well when faced with an onslaught of tens of thousands of updates. What do you do? You tell the PM that he better spin a great story about why EVPN AF on an EBGP session between loopbacks advertised by a regular EBGP session makes perfect sense. I've seen some of those arguments parroted in blog comments, and they did not make a lot of sense apart from the underlying "_this is how we minimize route churn_" part, but then you might as well [admit you have an implementation issue](https://blog.ipspace.net/2019/04/dont-sugarcoat-challenges-you-have/) and move on.
 
