@@ -41,7 +41,7 @@ Adding route reflectors to an IBGP-based EVPN network is trivial:
 
 Let's set up a lab and try it out. We'll use a lab setup similar to the [IBGP Full Mesh Between Leaf Switches](/2024/05/evpn-designs-ibgp-full-mesh/); read that blog post as well as the *[Creating the Lab Environment](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab)* section of the first blog post in this series to get more details.
 
-### Leaf-and-Spine EVPN IBGP/RR Lab Topology
+### Leaf-and-Spine EVPN IBGP/RR Lab Topology {#lab}
 
 This is the [_netlab_ lab topology description](https://github.com/ipspace/netlab-examples/blob/master/EVPN/ibgp-rr/topology.yml) we'll use to set up the hub-and-spoke IBGP sessions using spine switches as route reflectors:
 

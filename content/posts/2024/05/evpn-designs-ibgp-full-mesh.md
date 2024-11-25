@@ -9,7 +9,7 @@ pre_scroll: True
 ---
 In the [previous blog post](/2024/04/evpn-designs-vxlan-leaf-spine-fabric/) in the EVPN Designs series, we explored the simplest possible VXLAN-based fabric design: static ingress replication without any L2VPN control plane. This time, we'll add the simplest possible EVPN control plane: a full mesh of IBGP sessions between the leaf switches.
 
-{{<note smallprint>}}This blog post describes an initial BGP design that we'll refine in subsequent blog posts. Having a full mesh of IBGP sessions between leaf switches might be a bad idea unless you have a tiny fabric or you're deploying a small-scale EVPN pilot.{{</note>}}
+{{<note smallprint>}}This blog post describes an initial BGP design that we'll [refine in subsequent blog posts](/2024/09/evpn-designs-ibgp-rr/). Having a full mesh of IBGP sessions between leaf switches might be a bad idea unless you have a tiny fabric or you're deploying a small-scale EVPN pilot.{{</note>}}
 <!--more-->
 This is the fabric we're working with:
 
