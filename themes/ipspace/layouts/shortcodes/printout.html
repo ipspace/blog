@@ -1,4 +1,4 @@
-<pre class="printout">
+<pre class="printout"{{- with (.Get "start") -}} style="counter-set: line {{ . }}"{{- end -}}>
 {{- $range := split (trim .Inner "\n\r") "\n" -}}
 {{- range $range -}}
 <code>{{ printf "%s\n" . }}</code>
