@@ -25,8 +25,10 @@
     {{ range first 1 $pages }}
       <a href="{{ .Permalink }}">{{ or .Params.index_title .Params.title }}</a> »
     {{ end }}
+    {{ or .Params.toc_title .Title }}
+  {{ else }}
+    {{ .Params.title }}
   {{ end }}
-  {{ or .Params.toc_title .Title }}
 </p>
 {{ end }}
 {{ partial "kb-section-intro.html" . }}
