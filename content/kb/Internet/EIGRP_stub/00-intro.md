@@ -6,6 +6,7 @@ toc_title: Introduction
 url: /kb/Internet/EIGRP_stub/
 tags: [ EIGRP ]
 eigrp_tag: basic
+index: true
 ---
 Enhanced Interior Gateway Routing Protocol (EIGRP), Cisco’s proprietary yet hugely successful and widely deployed routing protocol, is known to behave disappointingly in inadequately designed networks. Cisco has improved EIGRP’s behavior dramatically with the introduction of *stub routers* in Cisco IOS release 12.0(7)T (integrated in IOS release 12.1, thus being available for a number of years). However, this feature has remained a well-hidden mystery, appearing in a [short whitepaper](http://www.cisco.com/en/US/tech/tk365/technologies_white_paper0900aecd8023df6f.shtml), a [Networkers presentation](http://www.cisco.com/application/pdf/en/us/guest/products/ps6630/c1161/cdccont_0900aecd80310eff.pdf) and getting a few slides in Building Scalable Cisco Internetworks (BSCI) course.
 

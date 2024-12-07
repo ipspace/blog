@@ -32,7 +32,7 @@ I also decided to clean up, update and repost some of them on ipSpace.net.
 * [Changing the Routing Protocol in Your Network](https://learning.nil.com/tips-and-tricks/technical-articles/show/changing-the-routing-protocol-in-your-network/)
 * [Scaling EIGRP Networks with Stub Routers](EIGRP_stub/)
 * [The OSPF Default Mysteries](https://learning.nil.com/tips-and-tricks/technical-articles/show/the-ospf-default-mysteries/)
-* [When OSPF Becomes a Distance Vector Protocol](https://learning.nil.com/tips-and-tricks/technical-articles/show/when-ospf-becomes-a-distance-vector-protocol/)
+* [When OSPF Becomes a Distance Vector Protocol](OSPF_DV/)
 
 ### VPN
 
