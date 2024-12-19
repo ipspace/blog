@@ -47,7 +47,8 @@ I also decided to clean up, update and repost some of them on ipSpace.net.
 
 ### Router Management
 
-* [Router Configuration Management](RouterConfigManagement/)
+* [Log Changes to Router Configurations](ConfigChangeLogging/)
+* [Compare Snapshots of Router Configurations](ConfigDiff/)
 * [Replacing Configuration on a Working Router](https://learning.nil.com/tips-and-tricks/technical-articles/show/replacing-configuration-on-a-working-router/)
 <!--
 * [Enhance the IOS User Interface](https://learning.nil.com/tips-and-tricks/technical-articles/show/enhance-the-ios-user-interface/)
