@@ -17,7 +17,7 @@ I also decided to clean up, update and repost some of them on ipSpace.net.
 
 ### Building Scalable Fast-Converging Networks
 
-* [Increase the Stability of your Network](https://learning.nil.com/tips-and-tricks/technical-articles/show/increase-the-stability-of-your-network/)
+* [Increase the Stability of your Network](EventDampening/)
 * [Bring your Network Closer to Five Nines with Graceful Shutdown](https://learning.nil.com/tips-and-tricks/technical-articles/show/bring-your-network-closer-to-five-nines-with-graceful-shutdown/)
 * [Scalable Policy Routing](ScalablePolicyRouting/)
 * [Designing Fast Converging BGP Networks](https://learning.nil.com/tips-and-tricks/technical-articles/show/designing-fast-converging-bgp-networks/)
