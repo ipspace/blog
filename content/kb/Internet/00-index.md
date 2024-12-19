@@ -47,10 +47,12 @@ I also decided to clean up, update and repost some of them on ipSpace.net.
 
 ### Router Management
 
-* [Router Configuration Management ... Too Good to be True?](https://learning.nil.com/tips-and-tricks/technical-articles/show/router-configuration-management-...-too-good-to-be-true/)
+* [Router Configuration Management](RouterConfigManagement/)
 * [Replacing Configuration on a Working Router](https://learning.nil.com/tips-and-tricks/technical-articles/show/replacing-configuration-on-a-working-router/)
+<!--
 * [Enhance the IOS User Interface](https://learning.nil.com/tips-and-tricks/technical-articles/show/enhance-the-ios-user-interface/)
 * [Cisco Router: the Swiss Army Knife of Network Services](https://learning.nil.com/tips-and-tricks/technical-articles/show/cisco-router-the-swiss-army-knife-of-network-services/)
+-->
 * [Secure Time Management](https://learning.nil.com/tips-and-tricks/technical-articles/show/secure-time-management/)
 * [Network Time Protocol (NTP) In a Nutshell](NTP/)
 
