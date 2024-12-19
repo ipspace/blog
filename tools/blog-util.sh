@@ -26,6 +26,7 @@ Usage:
   blog title  - get a title of a published blog post. Use URL to print title on STDOUT,
                 'clip' for clipboard-to-clipboard operation, or 'md' for Markdown
                 clipboard-to-clipboard operation.
+  blog table  - transform tab-separated table on clipboard into Markdown table
 
   blog diff   - start 'git diff --word-diff'
   blog commit - add content to commit staging area, commit with message
@@ -187,6 +188,9 @@ case "$1" in
       blog_start_hugo
       open "http://localhost:1313/draft/$(blog_md_to_html $(basename $BLOG_FILE))"
     fi
+    ;;
+  table)
+    pbpaste|$SCRIPT_DIR/paste-table.py|pbcopy
     ;;
   title)
     URL=$(pbpaste)

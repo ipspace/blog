@@ -1,45 +1,45 @@
 ---
-kb_section: EventDampening
+kb_section: RouterConfigManagement
 minimal_sidebar: true
 pre_scroll: true
-title: Configure and Monitor IP Event Dampening
-date: 2025-01-08 08:18:00+0100
+title: What’s Going On?
+date: 2025-01-15 08:01:00+0100
 ---
-The IP Event Dampening is configured with a single interface-level configuration command **dampening \[ *half-time* *reuse-threshold* *suppress-threshold* *max-suppress-time* \[ restart *penalty* \] \]** (the default values assumed by Cisco IOS are summarized in the next table). You can change as many parameters as you wish; if you specify a different half-time period and don’t specify the maximum suppress time, it’s four times the half-time period.
+Network managers who implemented centralized Authentication, Authorization, and Accounting (AAA) with Cisco’s proprietary TACACS+ protocol could log any command executed on the routers in their network for ages; the rest of us could only guess what someone configuring our routers did to them. The Configuration Change Notification feature, first introduced in IOS release 12.3(14)T and integrated into the mainstream release 12.4, solves this problem. After you configure it, all the configuration commands entered on the router are stored in a circular buffer (you can even specify its length) and optionally sent to a *syslog* server. A typical configuration is shown in the following printout:
 
-| Parameter	| Default value |
-|-----------|--------------:|
-| half time	| 5 seconds |
-| reuse threshold	| 1000 |
-| suppress threshold | 2000 |
-| maximum suppress time	| 20 seconds |
-{ .fmtTable style="width: auto" }
-
-The **dampening** command can be applied only on physical interfaces; IP event dampening does not work on subinterfaces or virtual templates. The events triggering the dampening penalty include a change in the interface state (loss of carrier) and the line protocol state.
-
-There are two confusingly similar commands that monitor the IP event dampening feature: the **show dampening interface**  displays an overview of the IP event dampening configuration and the **show interface dampening** displays the actual status of every interface where the IP event dampening is configured.
-
-{{<cc>}}Display a summary of the IP event-dampening configuration{{</cc>}}
+{{<cc>}}Configuration commands for Configuration Change Notification and Logging feature{{</cc>}}
 ```
-router#show dampening interface
-2 interfaces are configured with dampening.
-1 interface is being suppressed.
-Features that are using interface dampening:
-  IP Routing
-  HSRP
+archive
+ log config
+  logging enable
+  logging size 200
+  notify syslog
+  hidekeys
 ```
 
-{{<cc>}}Per-interface status of the IP event dampening{{</cc>}}
+{{<note>}}The **hidekeys** command hides the passwords and other sensitive information in the log buffer and syslog messages.{{</note>}}
+
+After configuring the Configuration Change Logging, all configuration commands are stored in a circular buffer in the router’s memory. You can inspect the commands with the **show archive log config** command, which displays all configuration commands recently entered on the router or commands entered by a particular user or even within a single configuration session (from the moment you enter **configure terminal** to the time you exit the configuration mode). A sample printout of this command is shown below:
+
+{{<cc>}}Display of logged configuration commands{{</cc>}}
 ```
-router#show interfaces dampening
-Serial0/0/0
-  Flaps Penalty  Supp ReuseTm HalfL ReuseV SuppV MaxSTm MaxP Restart
-      0       0 FALSE       0    20   1000  2000   80  16000       0
-Serial0/1/0
-  Flaps Penalty  Supp ReuseTm HalfL ReuseV SuppV MaxSTm MaxP Restart
-      0    2245  TRUE      33    15    500  2000   60   8000     500
+fw#show archive log config all
+ idx   sess           user@line      Logged command
+    1     1        console@console  |  logging enable
+    2     1        console@console  |  logging size 200
+    3     1        console@console  |  notify syslog
+    4     2        console@console  |archive
+    5     2        console@console  | log config
+    6     2        console@console  |  hidekeys
 ```
 
-The IP Event Dampening feature generates no logging messages; the only means to detect when an interface has been suppressed and later unsuppressed is through the **debug dampening interface** command.
+If you’ve configured the **notify syslog** option of the **log config** configuration command, all configuration commands entered on a router are also sent to the logging subsystem, which delivers them to various logging destinations, including console and *syslog* hosts. The syslog messages usually contain the username and the configuration command, but they could also report changes in significant data structures. For example, if you add a local user with the **username** command, the router will generate the two *syslog* messages:
 
-{{<note>}}You cannot use the event tracking feature of Cisco IOS, as the **track interface ip routing** command does not consider the dampening status of the interface and reports it as *up* even when it’s dampened.{{</note>}}
+{{<cc>}}Syslog messages generated by security-relevant configuration command{{</cc>}}
+```
+fw#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+fw(config)#user x password y
+01:43:06: %PARSER-5-CFGLOG_LOGGEDCMD: User:console  logged command:username x password *****
+01:43:06: %PARSER-5-CFGLOG_LOGGEDCMD: User:console  logged command:!config: USER TABLE MODIFIED
+```
