@@ -3,7 +3,7 @@ kb_section: RouterConfigManagement
 minimal_sidebar: true
 title: Cisco IOS Router Configuration Management
 toc_title: Introduction
-tags: [ IP routing ]
+tags: [ network management ]
 date: 2025-01-15 08:01:00+0100
 index: true
 alt_section: posts
