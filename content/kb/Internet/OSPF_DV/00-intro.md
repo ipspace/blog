@@ -15,7 +15,7 @@ We were always told that Open Shortest Path First (OSPF) is a fast converging li
 In this article, I’ll illustrate how this unexpected behavior can affect the convergence of your network and how you can use proprietary extensions of Cisco IOS to alleviate the undesired side effects of OSPF.
 <!--more-->
 
-{{<note migrated>}}This article was written in 2007 and has been updated and republished on ipSpace.net in 2023. The printouts were taken on an old release of Cisco IOS, but I don't expect to see much change in the recent IOS/XE releases. This is how OSPF works; I reproduced the behavior in a very recent FRRouting release.{{</note>}}
+{{<note migrated>}}This article was written in 2007 and has been updated and republished on ipSpace.net in December 2024. The printouts were taken on an old release of Cisco IOS, but I don't expect to see much change in the recent IOS/XE releases. This is how OSPF works; I reproduced the behavior in a very recent FRRouting release.{{</note>}}
 
 ## The Scenario
 
