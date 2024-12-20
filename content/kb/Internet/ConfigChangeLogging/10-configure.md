@@ -3,7 +3,7 @@ kb_section: ConfigChangeLogging
 minimal_sidebar: true
 pre_scroll: true
 title: Who Did It?
-date: 2025-01-15 08:01:00+0100
+date: 2025-02-12 08:01:00+0100
 ---
 The Configuration Change Notification feature is configured within the **log config** part of the **archive** section, and its configuration is rather trivial:
 

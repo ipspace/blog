@@ -1,9 +1,9 @@
 ---
-kb_section: RouterConfigManagement
+kb_section: ConfigDiff
 minimal_sidebar: true
 pre_scroll: true
 title: Order-Sensitive Configurations
-date: 2025-01-15 08:01:00+0100
+date: 2025-03-12 07:51:00+0100
 ---
 Based on the first tests, it was obvious that the Contextual Configuration Diff feature correctly identifies most of the changes made to the Cisco IOS configuration. It was time to stress-test this feature with configuration structures that are order-sensitive. I’ve started with traditional IP access lists:
 
