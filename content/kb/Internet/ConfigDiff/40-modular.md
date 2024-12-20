@@ -1,9 +1,9 @@
 ---
-kb_section: RouterConfigManagement
+kb_section: ConfigDiff
 minimal_sidebar: true
 pre_scroll: true
 title: Modular Objects
-date: 2025-01-15 08:01:00+0100
+date: 2025-03-12 07:51:00+0100
 ---
 The final group of tests focused on Modular CLI commands (**class-maps** and **policy-maps**). As these structures are used to configure more and more Cisco IOS features (starting with Quality of Service, they are now used for access control, firewall configuration, and a variety of other IOS features), it’s very important that their changes are correctly identified. I’ve started with an easy task – a few classes were added to a policy-map.
 
