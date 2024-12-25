@@ -1,6 +1,6 @@
 ---
 title: "Configuring IP Addresses Won't Make You an Expert"
-date: 2025-01-08 06:39:00+0100
+date: 2025-01-09 06:39:00+0100
 tags: [ netlab ]
 netlab_tag: overview
 ---
