@@ -7,7 +7,9 @@ A Thought Leader[^TL] recently published a LinkedIn article comparing IGP and BG
 
 > iBGP designs would require route reflectors and additional processing, which could result in slightly slower convergence.
 
-**TL&DR**: If you're building a simple leaf-and-spine fabric, the choice of the routing protocol does not matter (but you already knew that if you read this blog).
+Let's see whether that claim makes any sense.
+
+**TL&DR**: No. If you're building a simple leaf-and-spine fabric, the choice of the routing protocol does not matter (but you already knew that if you read this blog).
 <!--more-->
 [^TL]: Who else would publish an introductory article on LinkedIn?
 
