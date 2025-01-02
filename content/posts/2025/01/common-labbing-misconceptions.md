@@ -38,6 +38,6 @@ Finally:
 
 > How is netlab different from CML
 
-Ignoring the "GUI versus infrastructure-as-code" conceptual differences, I was told that CML no longer includes _Autonetkit_, which means you must do most of your device configuration from scratch, like with GNS3 or EVE-NG (as opposed to getting a ready-to-run network with _netlab, see above for details).
+Ignoring the "GUI versus infrastructure-as-code" conceptual differences, I was told that CML no longer includes _Autonetkit_, which means you must do most of your device configuration from scratch, like with GNS3 or EVE-NG (as opposed to getting a ready-to-run network with _netlab_, see above for details).
 
 If you know more, please leave a comment.
