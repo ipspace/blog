@@ -1,0 +1,37 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2500">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Piotr Boguszewski</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2500" href="#2500">09 January 2025 12:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hello Ivan,</p>
+
+<p>good find on this particular BIRD OSPFv3 configuration.It reminded me of my findings when it comes to using BIRD specifically when configuring the Administrative Distance (<em>Cisco term</em>) or Route Preference Value (<em>Juniper term</em>) and its default behaviour in BIRD. I will be using the AD (Administrative Distance) term below to describe the behaviour when dealing with dynamic routing.</p>
+
+<p>Every dynamic routing protocol implementation has following AD default values: a directly connected route - <strong>0</strong>, static route - <strong>1</strong>, eBGP - <strong>20</strong> and so on, with minor differences between vendors.  BIRD&#39;s default AD (protocol preference) is <a href="https://gitlab.nic.cz/labs/bird/-/blob/v3.0.0/nest/route.h#L909-923">upside down</a>. BIRD directly connected route has the default AD - <strong>240</strong>, static route - <strong>200</strong>, BGP - <strong>100</strong>, Unknown - <strong>0</strong>. Created a <a href="https://www.uni-koeln.de/~pbogusze/posts/Administrative_Distance_on_various_network_operating_systems.html">default AD setting overview table</a> listing all the vendors that I could make some hand&#39;s on experience.</p>
+
+<p>Addionally every dynamic routing protocol implementation uses the AD like following: the <em>lower</em> the AD the more <strong>preferred</strong> the routing protocol. BIRD&#39;s AD behaviour is the exact opposite - the <em>higher</em> the AD the more <strong>preferred</strong> the routing protocol, please <a href="https://bird.network.cz/pipermail/bird-users/2019-March/013146.html">see this mailing list entry</a>:</p>
+
+<ul>
+<li>Bird preference value: higher is more preferred</li>
+<li>Cisco/Juniper AD value: lower is more preferred</li>
+</ul>
+
+<p>Setting up a BIRD router in a multi-vendor netlab running multiple dynamic routing protocols is a very interesting, when purely academic, experience. There are a lot more odd settings and default behaviours in BIRD I do not want to write about here, and the missing pieces in the official documentation makes BIRD not better. BIRD has its own use cases where it does its job good it is the preferred route server for many users.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
