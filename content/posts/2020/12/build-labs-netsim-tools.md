@@ -6,6 +6,8 @@ tags:
 - netlab
 title: Build Your Virtual Lab Faster with netlab
 ---
+_This blog post describes the reasons I started working on netlab. We got incredibly far in the meantime; check [netlab documentation](https://netlab.tools/) for more details._
+
 I love my new Vagrant+Libvirt virtual lab environment -- it creates virtual machines in parallel and builds labs much faster than my previous VirtualBox-based setup. Eight CPU cores and 32 GB of RAM in my Intel NUC don't hurt either. 
 
 However, it's still ridiculously boring to set up a new lab. Vagrantfiles describing the private networks I need for routing protocol focused network simulations are a mess to write, and it takes way too long to log into all the devices, configure common parameters, enable interfaces...
