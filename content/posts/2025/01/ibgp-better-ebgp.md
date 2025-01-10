@@ -135,6 +135,8 @@ PING leaf-2 (10.0.0.2) from 10.0.0.1 : 72(100) bytes of data.
 rtt min/avg/max/mdev = 0.349/0.493/0.649/0.096 ms, ipg/ewma 1.000/0.572 ms
 ```
 
+Want to repeat my tests? The easiest way would be to use [netlab-examples repository with GitHub Codespaces](/2024/07/netlab-examples-codespaces/) ([import Arista EOS container if needed](https://blog.ipspace.net/2024/07/arista-eos-codespaces/) and change the directory to `BGP/interface-IBGP`).
+
 ### Benefits and Drawbacks
 
 Should you use this design? Probably not, but let's go through the benefits and drawbacks:
