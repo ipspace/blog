@@ -39,7 +39,7 @@ The above diagram already hints at a number of details:
 
 All that would be easy to do. Unfortunately, there's an additional detail:
 
-* [BGP next hops are not supposed to change within an autonomous system](https://blog.ipspace.net/2011/08/bgp-next-hop-processing/). IBGP should be just to exchange reachability information, and IGP should be used to resolve the next hops.
+* [BGP next hops are not supposed to change within an autonomous system](https://blog.ipspace.net/2011/08/bgp-next-hop-processing/). IBGP should be used just to exchange reachability information, and IGP should be used to resolve the next hops.
 * Within an IBGP-only network, [contrary to what I wrote a while ago](/2022/10/bgp-route-reflector-next-hops/), the route reflectors have to change the BGP next hops to mimic the behavior of EBGP sessions.
 * That is a direct violation of the SHOULD NOT directive of the [RFC 4456 Section 10](https://datatracker.ietf.org/doc/html/rfc4456#section-10), and some implementations might not allow you to tweak that rule.[^SN]
 
