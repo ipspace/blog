@@ -61,6 +61,19 @@ Finally:
 
 * Dell OS10 takes a particularly creative approach: it switches to the checksum calculation used by the other VRRP device.
 
+{{<long-quote>}}
+Enrique Vallejo and Erik Auerswald added some interesting details in their comments:
+
+* TCP and UDP checksums include pseudo-headers. A naive reading of RFC 5798 would thus result in "_VRRP is another transport protocol; let's do the same thing we did for TCP and UDP._"
+* Previous VRRP RFCs were clear: the checksum is calculated only on the VRRP message. An ossified reading of RFC 5798 would be "_gee, there's no pseudo-header in IPv4, that must apply to IPv6 only._" or even "_we already have the code for IPv4, let's reuse it_" (we know [how well that ends](https://en.wikipedia.org/wiki/Ariane_flight_V88)).
+* There's still no excuse for the lack of interoperability testing and two sets of incompatible implementations, considering all early adopters chose the same way to interpret the vague RFC wording.
+{{</long-quote>}}
+
 Fortunately, you can make Arista EOS RFC 9568-compliant with the **‌vrrp ipv4 checksum pseudo-header exclude** configuration command, and FRR has **no vrrp checksum-with-ipv4-pseudoheader** command since [late 2022](https://github.com/FRRouting/frr/pull/12390).
 
 However, as is often the case, downstream distros can take a long time to pick up the changes. Cumulus Linux release 5.10 still uses an older FRR version, and the current (as of January 2025) VyOS Vagrant box (v20240817.00.20) has no nerd knob to configure the underlying FRR VRRP process.
+
+### Revision History
+
+2025-01-23
+: Added more nuanced reasons for the bifurcated reading of the RFC 5798
