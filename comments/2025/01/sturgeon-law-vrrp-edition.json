@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "23 January 2025 10:59",
+               "html": "<p>&gt; The original IP specification does not define a pseudo-header, but it is defined in transport protocols</p>\n\n<p>Wow. Thanks a million. From that perspective, the alternate interpretation of the RFC makes sense. Have to reword that paragraph.</p>\n\n<p>&gt; I suppose that compatibility with existing deployments was more relevant than functionality.</p>\n\n<p>All early implementations used a single (interoperable) approach, so one would hope that everyone else would lean the same way, but of course, that never happens. Some people write code in perfect isolation &#x1F937;&zwj;&#x2642;&#xFE0F;</p>\n\n<p>From the &quot;what&#39;s out there&quot; perspective, it makes sense to define the majority view as the &quot;correct&quot; one, or we could look at the authors of the new RFC and draw whatever conclusions &#x1F61C;</p>\n",
+               "id": "2506",
+               "name": "Ivan Pepelnjak",
+               "pub": "2025-01-23T10:59:05",
+               "ref": "2505",
+               "type": "comment"
+            }
+         ],
          "date": "23 January 2025 10:49",
          "html": "<p>Very interesting!</p>\n\n<p>It&#39;s surprising that the initial VRRPv3 RFC 5798 refers to the IPv6 RFC to define the pseudo-header calculation, leaving the behavior with IPv4 undefined. </p>\n\n<p>If I understand correctly, the original IP specification does not define a pseudo-header, but it is defined in transport protocols (TCP and UDP both include the same exact definition for the pseudo-header fields) in order to calculate a valid checksum that does not depend on varying IPv4 fields such as TTL. Since IPv6 is defined after TCP and UDP, they had to include the pseudo-header calculation mechanism in the RFC for TCP and UDP use.</p>\n\n<p>However, to me it&#39;s more surprising that when they identified the VRRPv3 ambiguity and clarified it in RFC 9568, they didn&#39;t refer to the pseudo-header definition in RFCs 793/768 (TCP/UDP) but instead preferred to avoid using any field from IPv4. I mean: if the pseudo-header is useful (since it was employed it in the first case), why not using it in IPv4? I suppose that compatibility with existing deployments was more relevant than functionality. </p>\n",
          "id": "2505",
