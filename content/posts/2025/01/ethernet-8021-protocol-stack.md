@@ -30,7 +30,7 @@ Now that we know way too much about the stuff we were never interested in, let's
 * We might want to group physical links into Link Aggregation Groups (LAGs). LACP (or PAgP) also has to work directly on top of the MAC layer.
 * The link aggregation groups (LAGs) are the logical links that Spanning Tree Protocol tries to block to prevent loops. STP is thus above LACP, as is Shortest Path Bridging (SPB).
 * Finally, we might want to implement multiple virtual links on top of logical links. That's where the VLAN encapsulation comes into play.
-* DTP (Dynamic Trunking Protocol) and its rarely used IEEE equivalent MVRP (Multiple VLAN Registration Protocol) are VLAN provisioning protocols and thus run aside from VLAN encapsulation.
+* DTP (Dynamic Trunking Protocol), VTP (VLAN Trunking Protocol), and their rarely used IEEE cousin MVRP (Multiple VLAN Registration Protocol) are VLAN provisioning protocols and thus run aside from VLAN encapsulation.
 * Per-VLAN spanning tree protocols must be associated with individual VLANs. Thus, their packets (BPDUs) include VLAN encapsulation.
 
 {{<figure src="/2025/01/eps-llc-protocols.png">}}
@@ -54,3 +54,8 @@ However, you can *combine* these devices in way too many ways[^BVL]. For example
 To get a setup that will interoperate with almost anything else out there, you have to create a VLAN-aware Linux bridge to put VLANs where they belong: *on top of* STP-enabled links.
 
 [^BVL]: I never tried to create a bond device out of VLAN interfaces, but I wouldn't be surprised to see it work.
+
+### Revision History
+
+2025-01-24
+: Added VTP to the list of VLAN provisioning protocols.
