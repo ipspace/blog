@@ -1,6 +1,6 @@
 ---
 title: "netlab 1.9.3: MLAG, Static Routes, Node Cloning"
-series_title: "MLAG, Static Routes, Node Cloning"
+series_title: "MLAG, Static Routes, Node Cloning (Release 1.9.3)"
 date: 2025-01-10 08:15:00+01:00
 tags: [ netlab ]
 netlab_tag: release

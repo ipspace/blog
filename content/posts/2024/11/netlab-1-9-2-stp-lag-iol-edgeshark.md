@@ -1,6 +1,6 @@
 ---
 title: "netlab 1.9.2: STP, LAG, Cisco IOL, Edgeshark"
-series_title: "Spanning Tree, Link Aggregation, Cisco IOS-on-Linux, Edgeshark"
+series_title: "Spanning Tree, Link Aggregation, Cisco IOS-on-Linux, Edgeshark (Release 1.9.2)"
 date: 2024-11-04 08:13:00+02:00
 tags: [ netlab ]
 netlab_tag: release
