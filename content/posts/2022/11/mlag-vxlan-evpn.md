@@ -72,13 +72,7 @@ Once you implement proxy ARP and anycast gateway, you can go one step further: a
 
 Coming back to the "*EVPN multihoming makes MLAG obsolete*" myth: for every complex problem, there's a solution that is simple, neat, and wrong (and works best in PowerPoint). MLAG is no exception.
 
-### More Information
-
-* Data Center Network Reference Architecture part of [Data Center Networking](https://my.ipspace.net/bin/list?id=DC30#NETWORKING) section of [Data Center Infrastructure for Networking Engineers](https://www.ipspace.net/Data_Center_Infrastructure_for_Networking_Engineers) webinar describes MLAG details and typical MLAG implementations.
-* Watch [VXLAN Deep Dive](https://www.ipspace.net/VXLAN_Technical_Deep_Dive) webinar to learn more about VXLAN.
-* [EVPN Multihoming](https://my.ipspace.net/bin/list?id=EVPN#MH) section of [EVPN Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar explains most of the EVPN-related intricate details.
-
-All three webinars are available with [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/).
+{{<next-in-series page="/posts/2023/05/mlag-without-peer-link.md" />}}
 
 ### Revision History
 
