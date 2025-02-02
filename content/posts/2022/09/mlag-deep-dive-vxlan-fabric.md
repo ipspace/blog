@@ -85,15 +85,9 @@ When an ingress VTEP sends a replicated BUM packet to the anycast VTEP IP addres
 
 [^OHE]: Orphan hosts are easy ;)
 
-### More Information
-
-Watch the [VXLAN Deep Dive](https://www.ipspace.net/VXLAN_Technical_Deep_Dive) webinar if you want to know more about  VXLAN, and [EVPN Multihoming](https://my.ipspace.net/bin/list?id=EVPN#MH) section of [EVPN Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar if you want to skip ahead and learn more about EVPN-based MLAG clusters.
-
-Both webinars are available with [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/).
-
 ### Revision History
 
 2022-09-28
-: Added flooding considerations, including outbound flooding based on comment by Erik Auerswald
+: Added flooding considerations, including outbound flooding, based on a comment by Erik Auerswald
 
-{{<next-in-series page="/posts/mlag-deep-dive-evpn-multihoming.md" />}}
+{{<next-in-series page="/posts/2022/11/mlag-vxlan-evpn.md" />}}

@@ -230,7 +230,7 @@ traceroute to ce_s2 (10.0.0.7), 30 hops max, 46 byte packets
 
 Finally, a quick detour. If you use VXLAN transport with the EVPN control plane, the VRF transit VNI acts like a per-VRF label (it identifies the VRF on the egress router). Thus, it's impossible to implement a one-arm hub-and-spoke topology with VXLAN transport.
 
-{{<next-in-series page="/posts/2024/09/mpls-vpn-label-allocation.html">}}
+{{<next-in-series page="/posts/2024/10/mpls-vpn-prefix-vrf-labels.md">}}
 You'll have to wait for the next blog post if you want to know more about MPLS/VPN label allocation options.
 {{</next-in-series>}}
 

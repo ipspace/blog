@@ -35,7 +35,7 @@ And [also](https://twitter.com/mipsytipsy/status/1628299299867226113):
 
 FWIW, you should read the whole thread (assuming Twitter still works when you're reading this) and the [resulting blog post](https://charity.wtf/2023/03/09/architects-anti-patterns-and-organizational-fuckery/), and continue with Martin Fowler 's take on [Who Needs an Architect](https://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf).
 
-{{<next-in-series page="/posts/2023/03/leaf-four-uplinks.md">}}
+{{<next-in-series page="/posts/2023/03/leaf-switches-four-uplinks.md">}}
 ### What Happened to Switches with Four Uplinks?
 
 The original version of this blog post (see *revision history* below) talked about leaf switches with four uplinks. I quickly got corrected -- many modern leaf switches have four uplinks. What happened? We'll explore that in the next blog post in this series.{{</next-in-series>}}
