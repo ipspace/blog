@@ -74,3 +74,5 @@ You're ready to run labs using FRR containers on your Apple laptop. Install [BGP
 {{<next-in-series page="/posts/2024/09/srlinux-arm-apple-silicon.html">}}
 Coming up next: running SR Linux containers on ARM/Apple silicon.
 {{</next-in-series>}}
+
+{{<note info>}}Arista has a preview ARM image of the cEOS container, and someone [made Cisco IOL container work on a Mac](https://www-packetswitch-co-uk.cdn.ampproject.org/c/s/www.packetswitch.co.uk/running-containerlab-in-macos-cisco-iol-ceos-2/amp/).{{</note>}}
