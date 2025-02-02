@@ -48,7 +48,7 @@ Does that mean using a CLNP-like design with node-level network addresses would 
 * [Node-level network addresses are harder to summarize](/2015/10/was-clnp-really-broken/). In IP networks, routers must know about subnets and directly connected nodes. In CLNP networks, routers must know about all nodes in an area.
 * Regardless of what some academics claim, [node-level addresses wouldn't solve the multihoming problem](/2010/12/clnp-and-multihoming-myths/). They would get rid of the loopback interface hack and resolve the [local multihoming issue](/2019/10/saved-tcp-is-most-expensive-part-of/) (node connected to the network with two or more interfaces) for good... but it's impossible to solve the challenge of nodes connected to multiple networks (example: WiFi and LTE, or two upstream ISPs) without a [proper session-layer protocol](/2009/08/what-went-wrong-tcpip-lacks-session/).
 
-However, it still doesn't make sense to be forced to use an IP subnet for every point-to-point router-to-router[^4] link. Welcome to the mysterious world of unnumbered IP interfaces -- the topic of the next blog post in this series.
+**Slightly off-topic:** It still doesn't make sense to be forced to use an IP subnet for every point-to-point router-to-router[^4] link. Welcome to the [mysterious world of unnumbered IP interfaces](/2021/05/fundamentals-unnumbered-ip-interfaces/).
 
 ### Solving Local IP Multihoming with Loopback Interfaces
 

@@ -35,7 +35,9 @@ The only way to make anycast UCMP work well is to realize the problem has two co
 * **Network topology component** -- find the end-to-end paths from ingress to egress devices
 * **Endpoint reachability component** -- find how many endpoints are connected to every egress device and change the load balancing ratios accordingly.
 
-Do we have a set of routing protocols that could do all that? Of course, one of them is called BGP 😉... and in the next blog post in this series, we'll use BGP to solve the problem.
+Do we have a set of routing protocols that could do all that? Of course, one of them is called BGP 😉
+
+{{<next-in-series page="/posts/2021/06/ucmp-bgp-link-bandwidth.md" />}}
 
 ### More to Explore
 

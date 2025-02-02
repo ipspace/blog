@@ -49,10 +49,7 @@ In our example, the switch software would configure an entry saying "_drop a pac
 
 [^ML]: All problems in networking that are worth solving can be solved with one or more additional MPLS labels 😜
 
-{{<next-in-series page="/posts/2022/06/mlag-active-active-layer3.md">}}
-### What's Next?
-
-We're only three blog posts into this series and we already got layer-2 forwarding sorted out. It's time to move to layer-3 challenges, starting with active/active layer-3 forwarding – the topic of the next blog post in the [MLAG Deep Dive series](/series/mlag/#technology-deep-dive).{{</next-in-series>}}
+{{<next-in-series page="/posts/2022/06/mlag-active-active-layer3.md" />}}
 
 ### Revision History
 

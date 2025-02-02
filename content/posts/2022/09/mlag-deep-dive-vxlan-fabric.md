@@ -58,7 +58,7 @@ There's a simple solution to this conundrum: use a different source VTEP IP addr
 
 Looking at various VXLAN implementations, it seems like the above requirements aren't exactly a walk in the park. Obviously we don't know what data center switch ASICs can do ([thanks a million](/2016/05/what-are-problems-with-broadcom/), Broadcom, NVIDIA and friends), and people who could answer that question are not allowed to, but if you could say something without violating an NDA signed in blood, or send me an anonymous hint, you'd be most welcome. 
 
-Finally, this is the perfect moment for EVPN pundits to tell me how all the problems I just described get solved with EVPN multihoming. That's not exactly true, and we'll discuss the nuances in the next blog post in this series.
+Finally, this is the perfect moment for EVPN pundits to tell me how all the problems I just described get solved with EVPN multihoming. That's not exactly true, and we'll discuss the nuances in [another blog post in this series](/2022/11/mlag-vxlan-evpn/).
 
 ### Flooding Considerations
 
