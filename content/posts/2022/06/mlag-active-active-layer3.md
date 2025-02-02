@@ -91,7 +91,4 @@ There were many things that made little sense when I wrote the first draft of th
 
 It goes without saying that all the errors left in the blog post are mine ;)
 
-{{<next-in-series page="/posts/2022/09/mlag-deep-dive-vxlan-fabric.md">}}
-### What's Next?
-
-We covered the basics of layer-2 and layer-3 forwarding in an MLAG cluster. Time for more interesting topics, starting with "_how do we integrate MLAG with VXLAN?_" – the topic of the next blog post in the [MLAG Deep Dive series](/series/mlag/#technology-deep-dive).{{</next-in-series>}}
+{{<next-in-series page="/posts/2022/09/mlag-deep-dive-vxlan-fabric.md" />}}

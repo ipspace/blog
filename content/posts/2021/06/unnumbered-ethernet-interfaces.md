@@ -94,7 +94,9 @@ Internet  10.2.1.2                1   5254.00e3.3048  ARPA   GigabitEthernet2
 Internet  10.2.1.3                1   5254.00cb.bf02  ARPA   GigabitEthernet3
 ```
 
-Mission accomplished? Not exactly. While it's possible to automate static route configuration, we still need to tell the clients what IP addresses to use. Time to add DHCP to the picture -- the topic of the next blog post in [this series](/series/unnumbered-interfaces/).
+Mission accomplished? Not exactly. While it's possible to automate static route configuration, we still need to tell the clients what IP addresses to use. Time to add DHCP to the picture.
+
+{{<next-in-series page="/posts/2021/06/unnumbered-ethernet-dhcp.md" />}}
 
 ### Want to Know More?
 

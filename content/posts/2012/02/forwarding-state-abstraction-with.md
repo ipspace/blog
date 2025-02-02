@@ -52,12 +52,10 @@ With ***tagging*** or ***labeling*** a short tag is attached in front of the dat
 
 MPLS-over-Ethernet commonly used in today's high-speed networks is an abomination as it uses both L2 tunneling between adjacent LSRs and labeling \... but that's what you get when you have to reuse existing hardware to support new technologies.
 
-### Next steps
-
-In the next blog post we'll focus on [how you could use these techniques in the very limited world of OpenFlow 1.0](/2012/02/virtual-circuits-in-openflow-10-world/).
+{{<next-in-series page="/posts/2012/02/virtual-circuits-in-openflow-10-world.md" />}}
 
 ### Revision History
 
 2022-02-16
-: Cleaned up the blog post, added a note listing the obsolete technologies.
+: Cleaned up the blog post and added a note listing the obsolete technologies.
 

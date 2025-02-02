@@ -13,7 +13,7 @@ tags:
 - networking fundamentals
 title: Graceful Restart (GR) 101
 ---
-In the *Non-Stop Forwarding* (NSF) article, I mentioned that the routers adjacent to the device using NSF have to play along to make the idea work. That capability is called *Graceful Restart*. Today we'll explore its intricate details, be diplomatic, and leave the shortcomings and tradeoffs for the next blog post.
+In the *Non-Stop Forwarding* (NSF) article, I mentioned that the routers adjacent to the device using NSF have to play along to make the idea work. That capability is called *Graceful Restart*. Today we'll explore its intricate details, be diplomatic, and leave the shortcomings and tradeoffs for [another blog post](/2021/10/graceful-restart-control-plane-protocols/).
 
 ## The Problem
 

@@ -137,7 +137,7 @@ BGP routing table entry for mac-ip 5254.005e.10e0, Route Distinguisher: 10.0.0.3
       MPLS label: 435899 ESI: 0000:0000:0000:0000:0000
 ```
 
-The flexibility of using dynamically-built mesh of pseudowires to transport L2VPN data enables EVPN to mirror the capabilities of MPLS/VPN to support all sorts of crazy VPN topologies. It's trivial to build a common services VPN or a hub-and-spoke VPN (Carrier Ethernet E-Tree service) -- take my configurations and play with import/export route targets, or wait for the next blog post in this series.
+The flexibility of using a dynamically built mesh of pseudowires to transport L2VPN data enables EVPN to mirror the capabilities of MPLS/VPN to support all sorts of crazy VPN topologies. It's trivial to build a common services VPN or a hub-and-spoke VPN (Carrier Ethernet E-Tree service) -- take my configurations and play with import/export route targets, or [read this blog post for more details](/2024/10/mpls-vpn-prefix-vrf-labels/).
 
 ### Want to Know More?
 
