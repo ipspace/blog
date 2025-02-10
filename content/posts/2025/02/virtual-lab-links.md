@@ -24,7 +24,7 @@ The *virtual NIC* in the above diagram is not necessarily an interface. The virt
 
 {{<figure src="/2025/02/vlinks-vnic.png" caption="Hypervisor software emulates virtual interfaces">}}
 
-### KVM/libvirt Networks Use Linux Bridges
+### KVM/libvirt Networks Use Linux Bridges {#qemu}
 
 While it's hard to figure out what's going on behind the scenes in VMware ESXi, it's trivial to explore the Linux virtual networking. Let's set up a very simple [netlab topology](https://netlab.tools/topology-overview/) with two hosts connected to a shared segment:
 
@@ -85,7 +85,7 @@ $ ip -d link show vgif_h1_1
     bridge_slave state forwarding priority 32 cost 100 hairpin off guard off root_block off fastleave off learning on flood on port_id 0x8002 port_no 0x2 designated_port 32770 designated_cost 0 designated_bridge 8000.52:54:0:f9:71:91 designated_root 8000.52:54:0:f9:71:91 hold_timer    0.00 message_age_timer    0.00 forward_delay_timer    0.00 topology_change_ack 0 config_pending 0 proxy_arp off proxy_arp_wifi off mcast_router 1 mcast_fast_leave off mcast_flood on mcast_to_unicast off neigh_suppress off group_fwd_mask 0 group_fwd_mask_str 0x0 vlan_tunnel off isolated off addrgenmode eui64 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
 ```
 
-### Connecting Containers to Linux Bridges
+### Connecting Containers to Linux Bridges {#docker}
 
 Container orchestration solutions use a slightly different approach. Container interfaces are Linux interfaces *in a different network namespace*. That makes it impossible to connect them to a Linux bridge. To connect a container to a Linux bridge, you have to:
 
@@ -174,4 +174,4 @@ Linux bridges have a tiny problem: Linux developers know too much about networki
 
 You could replace Linux bridges with Open vSwitches (you're allowed to forward anything in the brave new Software Defined world) or find a hack that will result in a point-to-point link between two virtual machines or containers -- the topic of the next blog post.
 
-{{<next-in-series page="/posts/2025/02/no-such-post">}}**Coming up next:** point-to-point links in virtual labs{{</next-in-series>}}
+{{<next-in-series page="/posts/2025/02/virtual-labs-p2p-links.md">}}**Coming up next:** point-to-point links in virtual labs{{</next-in-series>}}
