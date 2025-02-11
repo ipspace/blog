@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "11 February 2025 03:19",
+         "html": "<p>In IOS-XE (and IIRC in classic IOS, don&#39;t know for IOSv) you can configure a subinterface with vlan 1 tagging <em>if</em> there is already another subinterface with another vlan configured as native :</p>\n\n<p>interface GigabitEthernet0/0/1.700\n encapsulation dot1q 700 native\ninterface GigabitEthernet0/0/1.1\n encapsulation dot1q 1</p>\n\n<p>If you delete the Gi0/0/1.700, the native keyword is automagically added back on the Gi0/0/1.1 (and brokes whatever you tried to achieve) ... there should always be one native ! :-)</p>\n",
+         "id": "2522",
+         "name": " bjo",
+         "pub": "2025-02-11T15:19:56",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2025/02/tagged-vlan-1.html"
+}

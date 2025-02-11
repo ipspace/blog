@@ -1,0 +1,31 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2522">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> bjo</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2522" href="#2522">11 February 2025 03:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In IOS-XE (and IIRC in classic IOS, don&#39;t know for IOSv) you can configure a subinterface with vlan 1 tagging <em>if</em> there is already another subinterface with another vlan configured as native :</p>
+
+<p>interface GigabitEthernet0/0/1.700
+ encapsulation dot1q 700 native
+interface GigabitEthernet0/0/1.1
+ encapsulation dot1q 1</p>
+
+<p>If you delete the Gi0/0/1.700, the native keyword is automagically added back on the Gi0/0/1.1 (and brokes whatever you tried to achieve) ... there should always be one native ! :-)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
