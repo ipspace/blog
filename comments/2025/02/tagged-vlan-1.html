@@ -77,6 +77,30 @@ interface GigabitEthernet0/0/1.1
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2526">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2526" href="#2526">11 February 2025 07:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>For the mentioned examples VLAN 1 is special in that it already exists in the factory defaults. But, VLAN ID 1 is not so special that tagging or not would be handled differently to other VLAN IDs (COMWARE and VRP also support <em>trunk</em> ports with a native VLAN, but the <em>hybrid</em> configuration does away with this idea).</p>
+
+<p>A configuration examples for the obsolete Enterasys switches would be: <code>set vlan egress 1 ge.2.2 tagged</code></p>
+
+<p>For EXOS this would be: <code>configure vlan 1 add ports 2 tagged</code></p>
+
+<p>For any other VLAN ID, just replace the &quot;1&quot; with the other ID, the command is the same.</p>
+
+<p>On those switches, I never use(d) <em>any</em> untagged VLAN on an inter switch link (aka &quot;trunk&quot;). L2 protocol data units without VLAN tag work just fine on such links.</p>
+
+<p>In practice, I usually remove(d) VLAN 1 from every port, i.e., <code>clear vlan egress 1 *.*.*</code> on Enterasys and <code>configure vlan 1 delete ports all</code> on EXOS. (Yes, from factory defaults this removes all VLANs from all ports. One then adds what is really intended for static use.)</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
