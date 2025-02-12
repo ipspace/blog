@@ -4,7 +4,7 @@ minimal_sidebar: true
 title: Log Changes to Router Configurations
 toc_title: Introduction
 tags: [ network management ]
-date: 2025-02-12 08:01:00+0100
+date: 2025-02-14 08:01:00+0100
 index: true
 alt_section: posts
 url: /kb/Internet/ConfigChangeLogging/

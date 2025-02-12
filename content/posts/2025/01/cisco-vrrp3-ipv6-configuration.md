@@ -119,3 +119,12 @@ invalid-type-pkts-rcvd    : 0                             address-list-errors   
 pkt-length-errors         : 0
 omit-skew-time : no
 ```
+
+Want more details? Jeff McLaughlin published an [interesting behind-the-scenes view of how the CLI sausage is made](https://subnetzero.info/2025/02/07/vrrp-why/)[^MN]
+
+[^MN]: While also misspelling my name, but who's counting ;)
+
+### Revision History
+
+2025-02-12
+: Added a link to Jeff McLaughlin's blog post
