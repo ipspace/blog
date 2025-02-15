@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>18 comments:</h4>
+  <h4>13 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -250,6 +250,24 @@
               </span>
             </div>
             <div class="comment-content">I hate to give this answer, but: It depends.<br /><br />Given the typical tools of VLAN and VRF, many datacenters would find that VRF support is lacking and/or burdensome to support in access and aggregation tiers. So VLANs make more sense, bridging at the access/agg with routing happening in the &quot;core&quot; or WAN edge. Of course, this also gives a larger broadcast domain and might facilitate mobility, plug and play behaviors, etc.<br /><br />As to traffic patterns: If we&#39;re using VRFs for  the routing edge, then maybe it doesn&#39;t matter - if the VRFs are supporting different VPNs then inter-VLAN traffic isn&#39;t likely anyway. On the other hand, if each VRF is routing (e.g. locally) between multiple VLANs then you get a traffic trombone. It&#39;s not very efficient of course, in terms of capacity etc, but even a &quot;traffic trombone&quot; is possibly a good tradeoff in terms of centralizing the VRF capability and configuration. And as you point out, we may have this traffic pattern anyway because of e.g. the location of the security edge (firewall) or load-balancer.<br /><br />In other environments, VRF support may not be necessary for L3, e.g. because we&#39;re attaching everything to &quot;the Internet&quot; or some other common network. In that case, it might make more sense to route in the access and/or aggregation layer. Plain L3 routing is more likely to be supported in various equipment, and it&#39;s somewhat easier to manage.<br /><br />And we can always run both L2 and L3 throughout the datacenter - L3 on the access node for routing to the Internet and L2 for carrying traffic to centralized VRF PEs, or something like that. You can probably imagine other ways to combine these; the point is that each design will be judged based on the purpose / goal of the datacenter, so there&#39;s probably no &quot;one size fits all&quot; answer here.<br /><br />Of course, all of this might become moot with overlays and SDN architectures. At some point, the underlying network can be all-L3 and the &quot;service&quot; can be a mix of L2 and L3. Depending on how much control is built into the control plane, we might be able to do interesting policy and non-traditional forwarding... But that&#39;s a topic for another day. :)</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2528">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2528" href="#2528">15 February 2025 05:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>13 years later, some things haven&#39;t changed much</p>
+
+<p>I recently joined a new company, and I&#39;m told that while designs started out with L3 at ToRs, things have standardized on L2-only ToRs with routing at the core switches (VRRP pair per VLAN). The reason is because of what invariably happened: Applications would grow out of their initial /24 subnet, and the team would have to stretch the original /24 VLAN - which had now gotten too small - to a new pair of Tor switches.</p>
+
+<p>It&#39;s not about &quot;optimal L3 forwarding&quot; - it&#39;s about configurations that don&#39;t need to change</p>
+</div>
           </div>
         </li>
       </div>
