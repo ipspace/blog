@@ -6,7 +6,7 @@ tags: [ worth reading ]
 The [results](https://tests.netlab.tools/) of [_netlab_ integration tests](https://github.com/ipspace/netlab/tree/dev/tests/integration) are stored in [YAML files](https://github.com/ipspace/netlab/tree/integration_tests), making it easy to track ~~changes~~ [improvements with Git](https://github.com/ipspace/netlab/commits/integration_tests/). However, once I added the _time of test_ and _netlab version_ to the test results, I could no longer use **git diff** to figure out which test results changed after a test run -- everything changed.
 
 For example, these are partial test results from the OSPFv2 tests:
-
+<!--more-->
 ```
 $ cat frr/clab/ospf/ospfv2/results.yaml
 01-network:
