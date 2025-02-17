@@ -1,7 +1,8 @@
 ---
 title: "Tagged VLAN 1 In a Trunk Is a Really Bad Idea"
 date: 2025-02-11 08:05:00+0100
-tags: [ bridging, LAN ]
+tags: [ bridging, LAN, netlab ]
+netlab_tag: quirks
 ---
 It all started with a [netlab](https://github.com/ipspace/netlab) issue describing [different interpretations of VLAN 1 in a trunk](https://github.com/ipspace/netlab/issues/1876). While  Cumulus NVUE (the way the [_netlab_ configuration template](https://github.com/ipspace/netlab/blob/dev/netsim/ansible/templates/vlan/cumulus_nvue.j2) configures it) assumes that the VLAN 1 in a trunk is tagged, Arista EOS assumes it's the native VLAN.
 

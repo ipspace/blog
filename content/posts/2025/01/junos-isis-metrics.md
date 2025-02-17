@@ -1,7 +1,8 @@
 ---
 title: "Weird Junos IS-IS Metrics"
 date: 2025-01-14 08:13:00+0100
-tags: [ IS-IS ]
+tags: [ IS-IS, netlab ]
+netlab_tag: quirks
 ---
 _As part of the [netlab](https://netlab.tools/) development process, I run almost [200 integration tests](https://tests.netlab.tools/) on more than [20 platforms](https://netlab.tools/platforms/) (over a dozen operating systems), and the amount of weirdness I discover is unbelievable._
 

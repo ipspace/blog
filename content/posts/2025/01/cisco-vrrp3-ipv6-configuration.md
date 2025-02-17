@@ -1,7 +1,8 @@
 ---
 title: "Cisco VRRPv3 IPv6 Configuration Sucks"
 date: 2025-01-27 08:20:00+0100
-tags: [ IP routing ]
+tags: [ IP routing, netlab ]
+netlab_tag: quirks
 ---
 _I spent way too much time ironing out the VRRPv3 quirks on the [dozen (or so) platforms](https://netlab.tools/module/gateway/) supported by [netlab](https://netlab.tools/). This is the second blog post describing some of the ridiculous stuff I had to deal with._
 

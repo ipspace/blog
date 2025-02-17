@@ -1,7 +1,8 @@
 ---
 title: "Please Wait While We're Preparing Your Interfaces"
 date: 2025-02-05 07:59:00+0100
-tags: [ virtualization ]
+tags: [ netlab ]
+netlab_tag: quirks
 ---
 Once a virtual machine running a network operating system boots, you'd expect its data-plane interfaces to be operational, right? Some vendors disagree. It takes over a minute for some network operating systems to figure out they have this thing called *interfaces*.[^GN]
 
