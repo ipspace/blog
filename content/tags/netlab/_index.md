@@ -51,6 +51,10 @@ For more information, explore the [Open-Source BGP Configuration Labs](https://b
 
 {{<series-listing tag="contribute">}}
 
+### {{<plushy angry>}}Weird Stuff We Discovered in netlab Integration Tests
+
+{{<series-listing tag="quirks">}}
+
 ### Release Notes
 
 {{<series-listing tag="release" reverse="true">}}

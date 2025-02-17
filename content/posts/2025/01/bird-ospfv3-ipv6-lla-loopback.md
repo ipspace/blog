@@ -1,7 +1,9 @@
 ---
 title: "OSPFv3 on Bird Needs IPv6 LLA on the Loopback Interface"
 date: 2025-01-07 07:58:00+0100
-tags: [ IPv6, OSPFv3 ]
+tags: [ IPv6, OSPF, netlab ]
+netlab_tag: quirks
+ospf_tag: details
 ---
 _Wanted to share this "too weird to believe" SNAFU I found when running integration tests with the Bird routing daemon. It's irrelevant unless you want Bird to advertise the IPv6 prefix configured on the main loopback interface (`lo`) with OSPFv3._
 

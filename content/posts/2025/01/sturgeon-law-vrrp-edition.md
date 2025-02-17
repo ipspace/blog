@@ -1,7 +1,8 @@
 ---
 title: "Sturgeon's Law, VRRPv3 Edition"
 date: 2025-01-23 08:37:00+0100
-tags: [ IP routing, LAN ]
+tags: [ IP routing, LAN, netlab ]
+netlab_tag: quirks
 ---
 _I just wasted several days trying to figure out how to make the [dozen (or so) platforms](https://netlab.tools/module/gateway/) for which we implemented VRRPv3 in [netlab](https://netlab.tools/) work together. This is the first in a series of blog posts describing the [ridiculous stuff](https://en.wikipedia.org/wiki/Sturgeon%27s_law) we discovered during that journey_
 
