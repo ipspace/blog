@@ -34,6 +34,8 @@ I can't possibly fathom how one could recover from that situation if one had nev
 
 Anyway, that shouldn't be a big deal. Download a newer version of the Vagrant box (one published within 6 months) and move on. Well, that no longer works. The latest release of the public [CumulusCommunity/cumulus-vx](https://portal.cloud.hashicorp.com/vagrant/discover/CumulusCommunity/cumulus-vx/versions) box is almost exactly 6 months old, and the newest box is only 12 days younger (hooray, we got another week to go).
 
+{{<note info>}}Jeroen van Bemmel [found a workaround](https://github.com/ipspace/netlab/issues/1938#issuecomment-2663860073) that fixes the VM disk extracted from Vagrant box.{{</note>}}
+
 Like any other vendor that doesn't want to alienate their potential customers[^CSCO], NVIDIA offers software download options, carefully protected with an email-collecting regwall. OK, that's par for the course. However, the Vagrant boxes you can download have no version information (will they never learn?) and have the same password expiration policy[^IT]. It looks like we'll have to go through the hassle of downloading and installing a new box every few months.
 
 [^CSCO]: As opposed to Cisco making it impossible to download even a crippled version of its ancient operating system without a support contract.
