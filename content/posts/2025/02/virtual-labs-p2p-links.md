@@ -8,7 +8,7 @@ In the [previous blog post](/2025/02/virtual-lab-links/), I described the usual 
 
 In this blog post, we'll see how KVM/QEMU/libvirt/Vagrant use UDP tunnels to connect virtual machines, and how containerlab creates point-to-point vEth links between Linux containers.
 <!--more-->
-### QEMU UDP Tunnels
+### QEMU UDP Tunnels {#qemu}
 
 I [already mentioned](/2025/02/virtual-lab-links/#qemu) that [QEMU](https://en.wikipedia.org/wiki/QEMU) (the program that does all the real work when you run KVM virtual machines on a Linux server) emulates a virtual NIC for its VM guest and shuffles packets between the input/output queues of the virtual NIC and a Linux tap interface connected to a Linux bridge.
 
@@ -58,7 +58,7 @@ Finally, it's worth mentioning an unpleasant quirk of the UDP tunnels. They don'
 
 [^CCC]: Good luck enabling it through a half-dozen layers of abstraction ;)
 
-### Point-to-Point Container Links
+### Point-to-Point Container Links {#clab}
 
 Docker [implements container networking](/2025/02/virtual-lab-links/#docker) with vEth pairs, connecting one end of the virtual cable to a Linux bridge and placing the other end of the cable into a container network namespace.
 
@@ -87,4 +87,4 @@ Finally, as I mentioned packet capture woes of UDP tunnels: **tcpdump** works on
 
 Point-to-point UDP tunnels or vEth pairs are a much better option than Linux bridges if you want to build a realistic network in a virtual lab. They transparently pass traffic between network devices, allowing you to test layer-2 control-plane protocols like STP or LACP and evading the stupidities like the [default dropping of bridged IPv6 traffic](https://github.com/ipspace/netlab/issues/1669#issuecomment-2585778785).
 
-{{<next-in-series page="/posts/2025/02/no-such-post">}}**Coming up next:** stub interfaces in virtual labs{{</next-in-series>}}
+{{<next-in-series page="/posts/2025/02/virtual-dummy-interfaces.md">}}**Coming up next:** stub interfaces in virtual labs{{</next-in-series>}}
