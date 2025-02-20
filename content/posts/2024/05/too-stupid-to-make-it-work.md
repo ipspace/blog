@@ -1,12 +1,12 @@
 ---
 title: "Famous Last Words: I'm Too Stupid for That"
 date: 2024-05-06 08:25:00+0200
-lastmod: 2024-09-09 16:26:00+02:00
+lastmod: 2025-02-20 09:52:00+01:00
 tags: [ virtualization ]
 ---
 Some networking vendors realized that one way to gain mindshare is to make their network operating systems available as free-to-download containers or virtual machines. That's the right way to go; I love their efforts and point out who went down that path whenever possible[^AOT] (as well as others like Cisco who try to make our lives miserable).
 
-[^AOT]: As of today: Cumulus Linux, Dell OS10, Dell Sonic, FRR, Juniper vPTX, Mikrotik RouterOS7, Nokia SR Linux, and Vyos. Registration (but nothing more) is required for Arista vEOS/cEOS, Aruba CX, and Cisco Nexus OS. The virtual machines might not support all control- or data-plane features you're interested in. As always, YMMV.
+[^AOT]: As of February 2025: Dell OS10, Dell Sonic, FRR, Juniper vPTX, Mikrotik RouterOS7, Nokia SR Linux, and Vyos (Cumulus Linux has [left the *nice guys* community](/2025/02/goodbye-cumulus-community/)). Registration (but nothing more) is required for Arista vEOS/cEOS, Aruba CX, Cisco Nexus OS, and Cumulus Linux. The virtual machines might not support all control- or data-plane features you're interested in. As always, YMMV.
 
 However, those virtual machines better work out of the box, or you'll get frustrated engineers who will give up and never touch your warez again, or as someone said in a LinkedIn comment to my blog post describing how [Junos vPTX consistently rejects its DHCP-assigned IP address](/2023/10/vjunos-declines-dhcp-address/): "_If I had encountered an issue like this before seeing Ivan’s post, I would have definitely concluded that I am doing it wrong._"[^CB]
 <!--more-->
@@ -16,11 +16,13 @@ The Junos vPTX DHCP FUBAR was a [simple mistake](/2023/10/vjunos-declines-dhcp-a
 
 [^MT3M]: Taking more than three months to release a fix is a different story. Einstein was right; time really is relative.
 
-Unfortunately, it's not just Juniper[^NWTBP]. I built a Dell OS10 Vagrant box a few days ago, and its SSH server fails to start in approximately 30% of the cases, making it totally useless in any sort of CI/CD pipeline or any environment more complex than a virtual console cable attached to the virtual serial port. Here are sample _netlab_ integration test results for Dell OS10; the **crashed** entries are caused by a failed SSH server (Vagrant couldn't connect to the VM)[^MTU].
+Unfortunately, it's not just Juniper[^NWTBP]. I built a Dell OS10 release 5.6.2 Vagrant box, and its SSH server fails to start in approximately 30% of the cases, making it totally useless in any sort of CI/CD pipeline or any environment more complex than a virtual console cable attached to the virtual serial port. Here are sample _netlab_ integration test results for Dell OS10; the **crashed** entries are caused by a failed SSH server (Vagrant couldn't connect to the VM)[^MTU].
 
 {{<figure src="/2024/05/dell-os10-results.jpg">}}
 
 [^MTU]: Most of the *validation failed* results were caused by OSPF failing to start due to MTU mismatches. You can find the latest test results [here](https://tests.netlab.tools/_html/dellos10-libvirt).
+
+{{<note info>}}**February 20th 2025**: After several failed attempts, Dell got their act together. Dell OS release 5.6.6 works like a charm.{{</note>}}
 
 Based on what's packed with the Dell OS10 image[^TAT], their target audience seems to be GNS3 users point-and-clicking their way around. Who am I to question their business decisions? However, it might be worth pointing out that an unreliable SSH server might scare away people believing in programmability and automation. Do they really want to compete with Cisco and Arista on who has a better lab GUI?
 
@@ -62,3 +64,6 @@ Also, it's not such a stretch goal. Arista vEOS/cEOS, Aruba CX, Cumulus, Cisco (
 
 2024-09-09
 : Added information about `nokia.srlinux` Ansible collection
+
+2025-02-20
+: Working Cumulus Linux boxes are no longer available without registration. Dell OS10 release 5.6.6 works.
