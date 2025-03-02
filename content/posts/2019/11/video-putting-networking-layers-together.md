@@ -7,6 +7,7 @@ tags:
 title: 'Video: Putting the Networking Layers Together'
 url: /2019/11/video-putting-networking-layers-together/
 video_tag: net101
+networking-fundamentals_tag: v_c
 ---
 The [previous videos](https://my.ipspace.net/bin/list?id=Net101) from the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar covered [an overview of networking challenges](https://my.ipspace.net/bin/list?id=Net101#CHALLENGES) and the importance of networking layers.
 

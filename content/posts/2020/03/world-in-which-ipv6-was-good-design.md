@@ -2,6 +2,8 @@
 title: "MUST READ: The World in Which IPv6 Was a Good Design"
 tags: [ IPv6, networking fundamentals ]
 date: 2020-03-26 07:43:00
+networking-fundamentals_tag: rant
+series_title: "The World in Which IPv6 Was a Good Design"
 ---
 
 A lot of people are confused about the [roles of network layers](/2019/09/response-osi-model-is-lie/) ([some more than others](/2020/03/omg-what-is-layer-2/)), the interactions between MAC addresses, IP addresses, and TCP/UDP port numbers, the [differences between routing and bridging](/2011/07/is-fibre-channel-switching-bridging-or/)... and why [it's so bad to bridge across large distances ](/2020/02/live-vmotion-into-vmware-on-aws-cloud/)(or in large networks).

@@ -7,6 +7,7 @@ tags:
 - networking fundamentals
 title: 'Video: Typical Large-Scale Bridging Use Cases'
 video_tag: net101
+networking-fundamentals_tag: v_s
 ---
 In the previous video in the _[Switching, Routing and Bridging](https://my.ipspace.net/bin/list?id=Net101#SWITCH)_ section of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar we [compared transparent bridging with IP routing](/2021/06/video-routing-bridging/). Not surprisingly (given my well-known bias toward stable solutions) I recommended using IP routing as much as possible, but there are still people out there pushing large-scale transparent bridging solutions. 
 

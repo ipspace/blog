@@ -1,7 +1,9 @@
 ---
-title: "OSI Layers in Routing Protocols"
-date: 2024-03-26 06:53:00+0100
-tags: [ networking fundamentals ]
+date: 2024-03-26 06:53:00+01:00
+networking-fundamentals_tag: deep
+tags:
+- networking fundamentals
+title: OSI Layers in Routing Protocols
 ---
 Now and then, someone [rediscovers that IS-IS does not run on top of CLNP or IP](/2009/06/is-is-is-not-running-over-clnp/) and claims that, therefore, it must be a layer-2 protocol. Even [vendors' documentation](https://www.juniper.net/documentation/us/en/software/junos/is-is/topics/concept/isis-layer2-mapping.html) is not immune.
 

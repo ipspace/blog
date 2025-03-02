@@ -19,6 +19,7 @@ tags:
 - OpenFlow
 title: Management, Control, and Data Planes in Network Devices and Systems
 url: /2013/08/management-control-and-data-planes-in/
+networking-fundamentals_tag: must
 ---
 Every single network device (or a distributed system like [QFabric](/2011/09/qfabric-part-1-hardware-architecture/)) has to perform at least three distinct activities:
 

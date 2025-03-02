@@ -4,6 +4,7 @@ date: 2024-02-19 11:22:00+0100
 tags: [ networking fundamentals ]
 comment: |
   In early 2020 I created the _[Network Layer Addressing](https://my.ipspace.net/bin/get/Net101/NA3.1%20-%20Network%20Layer%20Addressing.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of the second part of that video.
+networking-fundamentals_tag: addr
 ---
 The fun question about network layer addresses is: are we addressing nodes or individual node interfaces? On the data link layer, we never had this issue because it was obvious that a data link layer endpoint is an interface, so each interface should have a unique data link layer address.
 

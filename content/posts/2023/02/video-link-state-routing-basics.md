@@ -7,6 +7,7 @@ tags:
 - video
 title: 'Video: Link State Routing Protocol Basics'
 video_tag: net101
+networking-fundamentals_tag: v_r
 ---
 The [Routing Protocols Overview](/2022/11/video-routing-protocols-overview/) part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar introduced the concepts of _distance-vector_ and _link-state_ routing protocols. Next step: the [basics of link-state routing protocols](https://my.ipspace.net/bin/get/Net101/RP2.1%20-%20Link%20State%20Routing%20Protocol%20Basics.mp4?doccode=Net101).
 

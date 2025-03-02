@@ -2,6 +2,7 @@
 title: "Why Do We Need Source IP Addresses in IP Headers?"
 date: 2023-09-26 06:40:00
 tags: [ networking fundamentals ]
+networking-fundamentals_tag: addr
 ---
 After discussing [names, addresses and routes](/2023/09/names-addresses-routes/), and the [various addresses we might need in a networking stack](/2023/09/addresses-in-network-stack/), we're ready to tackle an interesting comment [made by a Twitter user](https://twitter.com/odecentralize/status/1659947153999970305) as a reply to my *[Why Is Source Address Validation Still a Problem?](/2023/05/worth-reading-source-address-validation-still-a-problem/)* blog post:
 

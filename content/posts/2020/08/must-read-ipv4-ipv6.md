@@ -2,6 +2,8 @@
 title: "MUST READ: IPv4, IPv6, and a Sudden Change in Attitude"
 tags: [ IPv6, networking fundamentals ]
 date: 2020-08-07 07:43:00
+networking-fundamentals_tag: rant
+series_title: "IPv4, IPv6, and a Sudden Change in Attitude"
 ---
 [Avery Pennarun](https://www.linkedin.com/in/apenwarr/) continued his [if only IPv6 would be less academic](https://apenwarr.ca/log/20170810) saga with a must-read [IPv4, IPv6, and a sudden change in attitude](https://apenwarr.ca/log/20200708) article in which he (among other things) correctly identified IPv6 as a typical example of [second-system effect](https://en.wikipedia.org/wiki/Second-system_effect):
 

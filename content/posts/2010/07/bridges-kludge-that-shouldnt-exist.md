@@ -4,6 +4,7 @@ tags:
 - bridging
 - switching
 - networking fundamentals
+networking-fundamentals_tag: rant
 title: 'Bridges: a Kludge that Shouldn''t Exist'
 url: /2010/07/bridges-kludge-that-shouldnt-exist/
 ---

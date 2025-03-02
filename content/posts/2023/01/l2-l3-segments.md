@@ -2,6 +2,8 @@
 title: "Relationships between Layer-2 (VLAN) and Layer-3 (Subnet) Segments"
 date: 2023-01-19 07:23:00
 tags: [ networking fundamentals ]
+networking-fundamentals_tag: must
+series_weigth: 200
 ---
 Sometimes it takes me years to answer interesting questions, like the one [I got in a tweet in 2021](https://twitter.com/webernetz/status/1450559574927364097):
 

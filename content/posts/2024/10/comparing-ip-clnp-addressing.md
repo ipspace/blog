@@ -1,9 +1,15 @@
 ---
-title: "Comparing IP and CLNP: Finding Adjacent Nodes"
-date: 2024-10-17 08:10:00+0100
-tags: [ networking fundamentals ]
-comment: |
-  In early 2020 I created the _[Comparing IP and CLNP Addressing](https://my.ipspace.net/bin/get/Net101/NA3.2%20-%20Comparing%20IP%20and%20CLNP%20Addressing.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of the first part of that video.
+comment: 'In early 2020 I created the _[Comparing IP and CLNP Addressing](https://my.ipspace.net/bin/get/Net101/NA3.2%20-%20Comparing%20IP%20and%20CLNP%20Addressing.mp4?doccode=Net101)_
+  video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_.
+  This blog post is an edited transcript of the first part of that video.
+
+  '
+date: 2024-10-17 08:10:00+01:00
+networking-fundamentals_tag: osi
+series_title: Finding Adjacent Nodes
+tags:
+- networking fundamentals
+title: 'Comparing IP and CLNP: Finding Adjacent Nodes'
 ---
 Now that we know a bit more about [addresses in a networking stack](/2023/09/addresses-in-network-stack/) (read the whole series) and [why CLNP uses node addresses while TCP/IP uses interface addresses](/2024/02/interface-node-addresses/), let's see how they solve common addressing problems like finding adjacent nodes.
 

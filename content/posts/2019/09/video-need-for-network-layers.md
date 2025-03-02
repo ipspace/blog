@@ -7,6 +7,7 @@ tags:
 title: 'Video: The Need for Network Layers'
 url: /2019/09/video-need-for-network-layers/
 video_tag: net101
+networking-fundamentals_tag: v_c
 ---
 After identifying some of the challenges every network solution must address ([part 1](/2019/08/video-networking-challenges/), [part 2](/2019/08/video-introducing-transmission/), [part 3](/2019/09/video-beyond-two-nodes/)) we tried to tackle an interesting question: "*how do you implement this whole spaghetti mess in a somewhat-reliable and structured way?*"
 

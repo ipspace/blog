@@ -7,6 +7,7 @@ tags:
 title: 'Video: The Network Is Not Reliable'
 url: /2020/02/video-network-is-not-reliable/
 video_tag: net101
+networking-fundamentals_tag: v_f
 ---
 After [introducing the fallacies of distributed computing](/2020/01/video-fallacies-of-distributed-computing/) in the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar, I focused on the first one: [the network is (not) reliable](https://my.ipspace.net/bin/get/Net101/F2.1%20-%20Network%20Is%20%28Not%29%20Reliable.mp4?doccode=Net101).
 

@@ -6,6 +6,7 @@ tags:
 - video
 title: 'Video: High-Level Technology Guidelines'
 video_tag: netbiz
+networking-fundamentals_tag: v_b
 ---
 I concluded the _[Focus on Business Challenges First](https://my.ipspace.net/bin/list?id=NetBiz#BF)_ presentation (part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar) with a few technology guidelines starting with:
 

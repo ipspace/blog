@@ -4,6 +4,7 @@ date: 2023-10-27 08:57:00
 tags: [ networking fundamentals ]
 comment: |
   In early 2020 I created the _[Early Data Link Layer Addressing Mechanisms](https://my.ipspace.net/bin/get/Net101/NA2.1%20-%20Early%20Data%20Link%20Layer%20Addressing%20Mechanisms.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of that video.
+networking-fundamentals_tag: addr
 ---
 After covering the [theoretical part of network addressing](/2023/09/names-addresses-routes/) ([part 2](/2023/09/addresses-in-network-stack/), [part 3](/2023/09/need-source-ip-address-in-packet-header/)), let's go into some practical examples. I'll start with data link layer and then move on to networking and higher layers.
 

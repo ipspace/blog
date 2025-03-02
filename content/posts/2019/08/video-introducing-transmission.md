@@ -7,6 +7,7 @@ tags:
 title: 'Video: Introducing Transmission Technologies'
 url: /2019/08/video-introducing-transmission/
 video_tag: net101
+networking-fundamentals_tag: v_c
 ---
 After [discussing the challenges one encounters even in the simplest networking scenario](/2019/08/video-networking-challenges/) connecting two computers with a cable, we took a short diversion into an exciting complication: what if the two computers are far apart and we can't pull a cable between them?
 

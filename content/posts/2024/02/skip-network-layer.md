@@ -4,6 +4,7 @@ date: 2024-02-12 10:52:00+0100
 tags: [ networking fundamentals ]
 comment: |
   In early 2020 I created the _[Network Layer Addressing](https://my.ipspace.net/bin/get/Net101/NA3.1%20-%20Network%20Layer%20Addressing.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of the first part of that video.
+networking-fundamentals_tag: addr
 ---
 I mentioned that [you don't need node addresses when dealing with only two entities](/2023/09/addresses-in-network-stack/). Now and then, someone tries to extend this concept and suggests that the network layer addressing isn’t needed if the solution is local. For instance, if we have a solution that is supposed to run only on a single Ethernet segment, we don’t need network layer addressing because we already have data link layer addresses required for Ethernet to work (see also: [ATAoE](/2010/09/ataoe-for-converged-data-center/)).
 

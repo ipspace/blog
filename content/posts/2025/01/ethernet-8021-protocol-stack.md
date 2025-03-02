@@ -1,7 +1,10 @@
 ---
-title: "The Ethernet/802.1 Protocol Stack"
-date: 2025-01-22 08:28:00+0100
-tags: [ LAN ]
+date: 2025-01-22 08:28:00+01:00
+series:
+- ethernet
+tags:
+- LAN
+title: The Ethernet/802.1 Protocol Stack
 ---
 The believers in the [There Be Four Layers](https://blog.ipspace.net/2019/09/response-osi-model-is-lie/#2501) religion think everything below IP is just a blob of stuff dealing with physical things:
 

@@ -1,7 +1,10 @@
 ---
-title: "Feedback: Business Aspects of Networking"
-date: 2021-11-08 07:33:00
-tags: [ networking fundamentals ]
+date: 2021-11-08 07:33:00+00:00
+networking-fundamentals_tag: notag
+series_title: Business Aspects of Networking
+tags:
+- networking fundamentals
+title: 'Feedback: Business Aspects of Networking'
 ---
 Every other blue moon someone asks me to do a not-so-technical presentation at an event, and being a firm believer in frugality I turn most of them into live webinar sessions collected under the *[Business Aspects of Networking](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)* umbrella.
 

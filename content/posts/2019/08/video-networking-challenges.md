@@ -1,12 +1,13 @@
 ---
 date: 2019-08-23 08:41:00+02:00
-series_title: Networking Challenges
+series_title: Overview of Networking Challenges
 tags:
 - networking fundamentals
 - video
 title: 'Video: Networking Challenges'
 url: /2019/08/video-networking-challenges/
 video_tag: net101
+networking-fundamentals_tag: v_c
 ---
 Whenever discussing a complex topic, it's worth adhering to two principles: (A) identify the challenges you're trying to solve, and (B) start as simple as you can and add complexity later.
 

@@ -1,6 +1,7 @@
 ---
 date: 2022-02-04 07:50:00+00:00
-series_title: The Way Forward
+networking-fundamentals_tag: v_l
+networking-fundamentals_title: The Way Forward
 tags:
 - networking fundamentals
 - video

@@ -7,6 +7,7 @@ tags:
 - video
 title: 'Video: Early Data-Link-Layer Addressing'
 video_tag: net101
+networking-fundamentals_tag: v_a
 ---
 After a [brief coverage of the theoretical aspects of network addressing](/2021/10/network-addressing-theory/), it's time to pay a brief visit to the [early data-link-layer addressing solutions](https://my.ipspace.net/bin/get/Net101/NA2.1%20-%20Early%20Data%20Link%20Layer%20Addressing%20Mechanisms.mp4?doccode=Net101), from _one address per datagram/frame_ (SDLC, HDLC) and _ignore this address_ (PPP) to _no address on P2P links_ (SLIP).
 

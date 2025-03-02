@@ -6,6 +6,7 @@ tags:
 - video
 title: 'Video: Introduction to Network Addressing'
 video_tag: net101
+networking-fundamentals_tag: v_a
 ---
 A friend of mine pointed out [this quote by John Shoch](https://www.rfc-editor.org/ien/ien19.txt) when I started preparing the [Network Stack Addressing slide deck](https://my.ipspace.net/bin/get/Net101/Network%20Stack%20Addressing.pdf?doccode=Net101) for my [How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work):
 

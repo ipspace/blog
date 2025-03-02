@@ -1,7 +1,11 @@
 ---
-title: "Chasing CRC Errors in a Data Center Fabric"
-date: 2020-12-02 07:13:00
-tags: [ switching, data center, networking fundamentals ]
+date: 2020-12-02 07:13:00+00:00
+networking-fundamentals_tag: deep
+tags:
+- switching
+- data center
+- networking fundamentals
+title: Chasing CRC Errors in a Data Center Fabric
 ---
 One of my readers encountered an interesting problem when upgrading a data center fabric to 100 Gbps leaf-to-spine links:
 
@@ -10,7 +14,7 @@ One of my readers encountered an interesting problem when upgrading a data cente
 * Nothing else has changed, so the culprit must have been the network upgrade.
 * A closer look at monitoring data revealed CRC errors on every leaf switch. Obviously something was badly wrong with the whole batch of SFPs.
 
-Fortunately my reader took a closer look at the data before they requested a wholesale replacement... and spotted an interesting pattern:
+Fortunately, my reader took a closer look at the data before they requested a wholesale replacement... and spotted an interesting pattern:
 <!--more-->
 
 * All leaf switches _apart from one_ had _input_ CRC errors on _one of the uplinks_ but not the other. What if there was a problem with the spine switch?

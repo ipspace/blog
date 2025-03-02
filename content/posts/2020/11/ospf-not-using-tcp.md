@@ -1,5 +1,6 @@
 ---
 date: 2020-11-18 07:53:00+00:00
+networking-fundamentals_tag: deep
 ospf_tag: details
 tags:
 - OSPF

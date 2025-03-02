@@ -6,6 +6,7 @@ tags:
 - video
 title: 'Video: Network Address Assignments'
 video_tag: net101
+networking-fundamentals_tag: v_a
 ---
 The last part of the [Network Addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR) section of _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar covered other addressing-related topics starting with [address assignment mechanisms](https://my.ipspace.net/bin/get/Net101/NA4.1%20-%20Address%20Assignments.mp4?doccode=Net101).
 

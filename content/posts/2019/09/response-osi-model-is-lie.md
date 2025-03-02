@@ -1,8 +1,10 @@
 ---
 date: 2019-09-10 09:23:00+02:00
+networking-fundamentals_tag: rant
 tags:
 - Internet
 - CLNP
+- networking fundamentals
 title: 'Response: The OSI Model Is a Lie'
 url: /2019/09/response-osi-model-is-lie/
 ---

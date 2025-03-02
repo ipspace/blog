@@ -1,8 +1,10 @@
 ---
-title: "Everything Is a Graph"
-date: 2021-04-26 09:55:00
+date: 2021-04-26 09:55:00+00:00
 lastmod: 2021-05-01 17:44:00+02:00
-tags: [ networking fundamentals ]
+networking-fundamentals_tag: graph
+tags:
+- networking fundamentals
+title: Everything Is a Graph
 ---
 One of the viewers of [Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor)'s excellent *‌[Graph Algorithms in Networks](https://www.ipspace.net/Graph_Algorithms_in_Networks)* webinar sent me this feedback:
 

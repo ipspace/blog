@@ -2,6 +2,7 @@
 title: "Feedback: How Networks Really Work"
 date: 2020-05-12 06:15:00
 tags: [ networking fundamentals ]
+networking-fundamentals_tag: notag
 ---
 In early April 2020 I ran another live session in my [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar. It was supposed to be an easy one, explaining the concepts of packet forwarding and routing protocols... but of course I decided to cover most solutions we've encountered in the last 50 years, ranging from Virtual Circuits and Source Route Bridging to Segment Routing (which, when you think about it, is just slightly better SRB over IPv6), so I never got to routing protocols.
 

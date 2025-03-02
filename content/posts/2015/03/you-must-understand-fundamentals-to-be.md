@@ -6,6 +6,8 @@ tags:
 - networking fundamentals
 title: You Must Understand the Fundamentals to Be Successful
 url: /2015/03/you-must-understand-fundamentals-to-be/
+weight: 1000
+networking-fundamentals_tag: important
 ---
 I was speaking with a participant of an SDN event in Zurich after the presentations, and he made an interesting comment: whenever he experienced serious troubleshooting problems in his career, it was due to lack of understanding of networking fundamentals.
 

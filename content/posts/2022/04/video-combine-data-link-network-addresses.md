@@ -6,6 +6,7 @@ tags:
 - networking fundamentals
 title: 'Video: Combining Data-Link- and Network Layer Addresses'
 video_tag: net101
+networking-fundamentals_tag: v_a
 ---
 The previous videos in the _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar described some interesting details of data-link layer addresses and network layer addresses. Now for the final bit: how do we map an adjacent network address into a per-interface data link layer address? 
 

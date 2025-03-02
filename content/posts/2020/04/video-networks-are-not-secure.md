@@ -7,6 +7,7 @@ tags:
 - video
 title: 'Video: Networks Are (Not) Secure'
 video_tag: net101
+networking-fundamentals_tag: v_f
 ---
 Way too many people still believe in Security Fairy (the mythical entity that makes your application magically secure), fueling the whole industry of security researchers who happily create [excruciatingly detailed talks of how you can use whatever security oversight to wreak havoc](/2018/11/omg-vxlan-is-still-insecure/) (even when the [limitations of a technology are clearly spelled out in an RFC](https://tools.ietf.org/html/rfc7348#section-7)).
 

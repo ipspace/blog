@@ -7,6 +7,7 @@ tags:
 title: 'Video: Retransmissions and Flow Control in Computer Networks'
 url: /2019/10/video-retransmissions-and-flow-control/
 video_tag: net101
+networking-fundamentals_tag: v_c
 ---
 [Grouping the features needed in a networking stack in a bunch of layered modules](/2019/09/video-need-for-network-layers/) is a great idea. Unfortunately, you could place several essential features like error recovery, retransmission, and flow control in several different layers, from the *data link layer* dealing with individual network segments, to the *transport layer* dealing with reliable end-to-end transmissions.
 

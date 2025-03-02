@@ -2,8 +2,10 @@
 title: "When You Find Yourself on Mount Stupid"
 date: 2022-06-14 06:20:00
 tags: [ networking fundamentals ]
+networking-fundamentals_tag: important
+weight: 90
 ---
-The early October 2021 Facebook outage generated a predictable phenomenon -- couch epidemiologists became experts in little-known [Bridging the Gap Protocol](https://twitter.com/ACM_IMC2021/status/1445725066403196928) (BGP), including its Introvert and Extrovert variants. Unfortunately, I also witnessed several unexpected trips to [Mount Stupid](https://www.smbc-comics.com/?id=2475) by people who should have known better.
+The early October 2021 Facebook outage generated a predictable phenomenon -- couch epidemiologists became experts in little-known [Bridging the Gap Protocol](https://x.com/ACM_IMC2021/status/1445725066403196928) (BGP), including its Introvert and Extrovert variants. Unfortunately, I also witnessed several unexpected trips to [Mount Stupid](https://www.smbc-comics.com/?id=2475) by people who should have known better.
 
 To set the record straight: everyone's been there, and the more vocal you tend to be on social media (including mailing lists), the more probable it is that you'll take a wrong turn and end there. What matters is how gracefully you descend and what you've learned on the way back.
 <!--more-->

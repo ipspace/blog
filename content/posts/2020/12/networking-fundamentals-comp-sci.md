@@ -2,6 +2,8 @@
 title: "Learning Networking Fundamentals at University?"
 date: 2020-12-10 07:43:00
 tags: [ networking fundamentals ]
+networking-fundamentals_tag: important
+weight: 900
 ---
 One of my readers sent me this interesting question:
 

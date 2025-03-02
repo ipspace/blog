@@ -7,6 +7,7 @@ tags:
 - video
 title: 'Video: Internet Has More than One Administrator'
 video_tag: net101
+networking-fundamentals_tag: v_f
 ---
 It's incredible how many people assume that The Internet is _a thing_. In reality, it's a mishmash of interconnected independent operators running mostly on goodwill, misplaced trust in other people's competence, and (sometimes) pure dumb luck. 
 
