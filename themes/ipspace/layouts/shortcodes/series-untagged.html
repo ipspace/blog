@@ -2,6 +2,9 @@
 {{ $showseries := .Get "showseries" }}
 {{ $format := or (.Get "format") "2006-01" }}
 {{ .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) "eq" nil) }}
+{{ if (.Get "noseries") }}
+{{ .Page.Scratch.Set "pages" (where (.Page.Scratch.Get "pages") "Params.series" "eq" nil) }}
+{{ end }}
 {{ if (.Page.Scratch.Get "pages")|len }}
 {{   if (.Get "title") }}
 <h3>{{ .Get "title" }}</h3>
