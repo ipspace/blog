@@ -9,6 +9,7 @@ tags:
 - video
 title: 'Video: Getting a Packet Across a Network'
 video_tag: net101
+networking-fundamentals_tag: v_s
 ---
 After (hopefully) [agreeing on what routing, bridging, and switching are](/2020/09/video-bridging-routing-switching/), let's focus on the first important topic in this area: how do we get a packet across the network? Yet again, there are three fundamentally different technologies:
 

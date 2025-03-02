@@ -6,6 +6,8 @@ tags:
 - video
 title: 'Lessons Learned: Technology Still Matters'
 video_tag: netbiz
+networking-fundamentals_tag: v_l
+networking-fundamentals_title: "Technology Still Matters"
 ---
 In June 2020, a friend asked me to do a short presentation on lessons learned during my 35 years as a networking engineer. It went reasonably well, so I decided to [turn it into a webinar](https://my.ipspace.net/bin/list?id=NetBiz#LL), starting with _regardless of what the [disruptive marketers](/2019/10/the-cost-of-disruptiveness-and/) tell you, technology still matters._
 

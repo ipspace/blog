@@ -8,6 +8,7 @@ tags:
 - video
 title: 'Video: Finding Paths Across the Network'
 video_tag: net101
+networking-fundamentals_tag: v_s
 ---
 Regardless of the [technology used to get packets across the network](/2021/01/video-multi-layer-switching-tunneling/), someone has to know **how** to get from sender to receiver(s), and as always, you have multiple options:
 

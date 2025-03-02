@@ -6,6 +6,8 @@ tags:
 - video
 title: 'Lessons Learned: Fundamentals Haven''t Changed'
 video_tag: netbiz
+networking-fundamentals_tag: v_l
+networking-fundamentals_title: "Fundamentals Haven't Changed"
 ---
 Here's another bitter pill to swallow if you desperately want to [believe in the magic powers of unicorn dust](/2016/01/the-sad-state-of-enterprise-networking/): [laws of physics](/2019/11/stretched-vlans-and-failing-firewall/) and [networking fundamentals](https://www.ipspace.net/How_Networks_Really_Work) haven't changed (see also: RFC 1925 Rule 11). 
 

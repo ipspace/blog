@@ -2,6 +2,7 @@
 title: "Review Questions: Switching, Bridging and Routing"
 date: 2020-08-27 06:11:00
 tags: [ networking fundamentals ]
+networking-fundamentals_tag: v_s
 ---
 One of the most annoying part in every training content development project was the ubiquitous question somewhere at the end of the process: "_and now we'd need a few review questions_". I'm positive anyone ever involved in a similar project can feel the pain that question causes...
 

@@ -1,6 +1,6 @@
 ---
 date: 2020-09-25 06:49:00+00:00
-series_title: Bridging, Routing, Switching
+series_title: What Are Bridging, Routing, and Switching?
 tags:
 - networking fundamentals
 - switching
@@ -9,6 +9,7 @@ tags:
 - video
 title: 'Video: Bridging, Routing, Switching'
 video_tag: net101
+networking-fundamentals_tag: v_s
 ---
 If you're working solely with IP-based networks, you're likely assuming that hop-by-hop destination-only forwarding is the only packet forwarding paradigm that makes sense. That is not true; even today's networks use a variety of forwarding mechanisms, most of them called some variant of *routing* or *switching*.
 

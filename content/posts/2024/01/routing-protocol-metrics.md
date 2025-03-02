@@ -1,7 +1,10 @@
 ---
-title: "On Routing Protocol Metrics"
-date: 2024-01-08 07:38:00+0100
-tags: [ IP routing, networking fundamentals ]
+date: 2024-01-08 07:38:00+01:00
+networking-fundamentals_tag: deep
+tags:
+- IP routing
+- networking fundamentals
+title: On Routing Protocol Metrics
 ---
 This LinkedIn snippet just came in from the _someone is not exactly right on the Internet_ department:
 

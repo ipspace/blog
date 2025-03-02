@@ -7,6 +7,7 @@ tags:
 title: 'Video: Beyond Two Nodes'
 url: /2019/09/video-beyond-two-nodes/
 video_tag: net101
+networking-fundamentals_tag: v_c
 ---
 In the introductory videos of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar I described the [mandatory elements of any networking solution](/2019/08/video-networking-challenges/) and [additional challenges you have to solve when you can't pull a cable between the adjacent nodes](/2019/08/video-introducing-transmission/).
 

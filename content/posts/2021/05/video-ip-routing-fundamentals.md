@@ -7,6 +7,7 @@ tags:
 - video
 title: 'Video: IP Routing Fundamentals'
 video_tag: net101
+networking-fundamentals_tag: v_s
 ---
 A few weeks ago we covered [transparent bridging fundamentals](/2021/04/video-transparent-bridging-fundamentals/), now it's time to recap IP routing fundamentals... and then we'll be ready to compare the two.
 

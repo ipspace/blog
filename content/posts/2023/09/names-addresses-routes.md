@@ -1,9 +1,10 @@
 ---
-title: "Names, Addresses and Routes"
+title: "Names, Addresses, and Routes"
 comment: |
   In early 2020 I created the _[Network Address Introduction](https://my.ipspace.net/bin/get/Net101/NA1.1%20-%20Network%20Addressing%20Introduction.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of the first part of that video.
 date: 2023-09-19 05:56:00
 tags: [ networking fundamentals ]
+networking-fundamentals_tag: addr
 ---
 It always helps to figure out the challenges of a problem you're planning to solve, and to have a well-defined terminology. This blog post will mention a few challenges we might encounter while addressing various layers of the [networking stack](/2019/09/on-usability-of-osi-layered-networking/), from data-link layer and all the way up to the application layer, and introduce the concepts of *names*, *addresses* and *routes*.
 

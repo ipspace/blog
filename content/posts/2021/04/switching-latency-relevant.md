@@ -1,8 +1,12 @@
 ---
-title: "Fundamentals: Is Switching Latency Relevant?"
-date: 2021-04-15 07:47:00
-tags: [ switching, networking fundamentals ]
+date: 2021-04-15 07:47:00+00:00
 lastmod: 2021-05-01 18:19:00+02:00
+networking-fundamentals_tag: deep
+series_title: Is Switching Latency Relevant?
+tags:
+- switching
+- networking fundamentals
+title: 'Fundamentals: Is Switching Latency Relevant?'
 ---
 One of my readers wondered whether it makes sense to buy low-latency switches from Cisco or Juniper instead of switches based on merchant silicon like Trident-3 or Jericho (regardless of whether they are running NX-OS, Junos, EOS, or Linux).
 

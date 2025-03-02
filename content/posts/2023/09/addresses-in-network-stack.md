@@ -4,6 +4,7 @@ comment: |
   In early 2020 I created the _[Network Address Introduction](https://my.ipspace.net/bin/get/Net101/NA1.1%20-%20Network%20Addressing%20Introduction.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of the second part of that video.
 date: 2023-09-20 05:56:00
 tags: [ networking fundamentals ]
+networking-fundamentals_tag: addr
 ---
 After discussing [names, addresses and routes](/2023/09/names-addresses-routes/), it's time for the next question: what kinds of addresses do we need to make things work?
 

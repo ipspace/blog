@@ -2,6 +2,8 @@
 title: "Video: Multi-Layer Switching and Tunneling"
 date: 2021-01-15 07:38:00
 tags: [ networking, networking fundamentals ]
+networking-fundamentals_tag: v_s
+series_title: "Multi-Layer Switching and Tunneling"
 ---
 After [discussing the technology options one has when trying to get a packet across the network](/2020/11/video-getting-packet-across-network/), we dived deep into two interesting topics:
 

@@ -1,7 +1,10 @@
 ---
-title: "Routing Protocols: Use the Best Tool for the Job"
-date: 2021-06-03 07:00:00
-tags: [ IP routing, networking fundamentals ]
+date: 2021-06-03 07:00:00+00:00
+networking-fundamentals_tag: deep
+tags:
+- IP routing
+- networking fundamentals
+title: 'Routing Protocols: Use the Best Tool for the Job'
 ---
 When I wrote about my sample OSPF+BGP hands-on lab on LinkedIn, someone couldn't resist asking:
 

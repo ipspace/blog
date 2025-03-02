@@ -3,6 +3,8 @@ date: 2009-12-07 06:38:00.004000+01:00
 tags:
 - switching
 - LAN
+- networking fundamentals
+networking-fundamentals_tag: rant
 title: Lies, damned lies and product marketing
 url: /2009/12/lies-damned-lies-and-product-marketing/
 ---

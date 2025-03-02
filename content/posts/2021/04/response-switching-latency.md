@@ -1,7 +1,10 @@
 ---
-title: "Response: Is Switching Latency Relevant?"
-date: 2021-04-21 08:20:00
-tags: [ switching, networking fundamentals ]
+date: 2021-04-21 08:20:00+00:00
+networking-fundamentals_tag: deep
+tags:
+- switching
+- networking fundamentals
+title: 'Response: Is Switching Latency Relevant?'
 ---
 Minh Ha left another extensive comment on my *[Is Switching Latency Relevant](/2021/04/switching-latency-relevant/)* blog post. As is usual the case, it's well worth reading, so I'm making sure it doesn't stay in the small print (this time interspersed with a few comments of mine in gray boxes)
 

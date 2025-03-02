@@ -7,6 +7,7 @@ tags:
 title: 'Video: Breaking the End-to-End Principle'
 url: /2019/11/video-breaking-end-to-end-principle/
 video_tag: net101
+networking-fundamentals_tag: v_c
 ---
 Original TCP/IP and OSI network stacks had [relatively clean layered architecture](/2019/11/video-putting-networking-layers-together/) (forgetting the [battle scars](/2019/09/response-osi-model-is-lie/) for the moment) and relied on end-to-end principle to keep the network core simple.
 

@@ -7,6 +7,7 @@ tags:
 - video
 title: 'Video: Transparent Bridging Fundamentals'
 video_tag: net101
+networking-fundamentals_tag: v_s
 ---
 Years ago I wrote a series of blog posts comparing transparent bridging and IP routing, and creating [How Networks Really Work](https://www.ipspace.net/Net101) materials seemed like a perfect opportunity to make that information more structured, starting with [Transparent Bridging Fundamentals](https://my.ipspace.net/bin/get/Net101/BR1.1%20-%20Transparent%20Bridging%20Fundamentals.mp4?doccode=Net101).
 

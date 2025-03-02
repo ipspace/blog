@@ -7,6 +7,7 @@ tags:
 - video
 title: 'Video: Routing Protocols Overview'
 video_tag: net101
+networking-fundamentals_tag: v_r
 ---
 After discussing [network addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR) and [switching, routing, and bridging](https://my.ipspace.net/bin/list?id=Net101#SWITCH) in the *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar, it was high time for a deep dive into routing protocols, starting (as always) with an [overview](https://my.ipspace.net/bin/get/Net101/RP1%20-%20Routing%20Protocols%20Overview.mp4?doccode=Net101).
 

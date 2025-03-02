@@ -4,6 +4,7 @@ date: 2023-11-06 07:06:00
 tags: [ networking fundamentals ]
 comment: |
   In early 2020 I created the _[Local Area Network Addressing](https://my.ipspace.net/bin/get/Net101/NA2.2%20-%20Local%20Area%20Network%20Addressing.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of the first part of that video.
+networking-fundamentals_tag: addr
 ---
 Whenever we talk about LAN data-link-layer addressing, most engineers automatically switch to the "*must be like Ethernet*" mentality, assuming all data-link-layer LAN framing must somehow resemble Ethernet frames.
 

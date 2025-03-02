@@ -1,7 +1,10 @@
 ---
-title: "Was IPv6 Really the Worst Decision Ever?"
-date: 2022-09-06 07:17:00
-tags: [ IPv6, networking fundamentals ]
+date: 2022-09-06 07:17:00+00:00
+networking-fundamentals_tag: rant
+tags:
+- IPv6
+- networking fundamentals
+title: Was IPv6 Really the Worst Decision Ever?
 ---
 A few weeks ago, Daniel Dib tweeted a slide from Radia Perlman's presentation in which she claimed IPv6 was the worst decision ever as we could have adopted CLNP in 1992. I had similar thoughts on the topic a few years ago, and over tons of discussions, blog posts, and creating the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar slowly realized it wouldn't have mattered.
 

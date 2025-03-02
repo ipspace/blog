@@ -6,6 +6,7 @@ tags:
 - video
 title: 'Video: Network Address Scopes'
 video_tag: net101
+networking-fundamentals_tag: v_a
 ---
 When defining network addresses in [IEN 19](https://www.rfc-editor.org/ien/ien19.txt) John Shoch said:
 

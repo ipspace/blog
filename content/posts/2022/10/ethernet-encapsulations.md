@@ -1,7 +1,10 @@
 ---
-title: "History of Ethernet Encapsulations"
-date: 2022-10-26 07:43:00
-tags: [ LAN ]
+date: 2022-10-26 07:43:00+00:00
+series:
+- ethernet
+tags:
+- LAN
+title: History of Ethernet Encapsulations
 ---
 Henk Smit [conscientiously pointed out a major omission](/2022/09/from-bits-to-applications/#1356) I made when summarizing [Peter Paluch's excellent description](/2022/09/from-bits-to-applications/) of how bits get parsed in network headers:
 

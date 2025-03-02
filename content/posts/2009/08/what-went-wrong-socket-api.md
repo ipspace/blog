@@ -5,6 +5,8 @@ tags:
 - networking fundamentals
 title: 'What Went Wrong: the Socket API'
 url: /2009/08/what-went-wrong-socket-api/
+networking-fundamentals_tag: history
+series_title: "The Awful Socket API"
 ---
 You might think that the [lack of a decent session layer in the TCP/IP protocol suite](/2009/08/what-went-wrong-tcpip-lacks-session/) is the main culprit for our reliance on IP multihoming and [related explosion of the IP routing tables](/2009/06/internet-anarchy-ill-advertise-whatever/). Unfortunately, we have an even bigger problem: the [Berkeley Socket API](http://en.wikipedia.org/wiki/Berkeley_sockets), which is around 40 years old and used in almost all TCP/IP software implementations  and clients (including high-level scripting languages like PERL or Python).
 <!--more-->
