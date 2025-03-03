@@ -56,6 +56,8 @@ To reach a node, you need a unique network address per node, not per node's inte
 
 It's worth noting that the "address-per-node" paradigm is not gone even in the world of IP/Ethernet. You'll find it in Ethernet bridging (bridges have a single node-wide MAC address), and we commonly use loopback IP interfaces when we want to make an IP address of a multi-interface IP device (often known as a router) stable.
 
+{{<next-in-series page="/posts/2021/05/fundamentals-interface-node-addresses.md" />}}
+
 ### More to Explore
 
 If you find this blog post interesting (or you wouldn't get this far), you might like the [Network Addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR) part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar.

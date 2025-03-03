@@ -74,6 +74,8 @@ Wonder how they solved the dial-up challenge? With the "*we have an infinite num
 
 You know, your phone might decide to change its IPv6 address, and it wouldn't be fair to give it less than a gazillion options to choose from. Some people went as far as suggesting we should give more than one /64 prefix to every dial-up connection (/48, anyone?) because it would look horrible to use the proxy-ARP (now proxy-ND) tricks from the 1980s to implement tethering.
 
+{{<next-in-series page="/posts/2021/05/routing-unnumbered-interfaces.md" />}}
+
 ### Even More Details
 
 * Want to explore the world of network addressing? Watch [this part](https://my.ipspace.net/bin/list?id=Net101#ADDR) of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar.

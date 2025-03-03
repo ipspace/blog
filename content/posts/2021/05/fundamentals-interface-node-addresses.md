@@ -71,6 +71,8 @@ You'll find more details in:
 * [Why Would I Use BGP and not OSPF between Servers and the Network?](https://blog.ipspace.net/2016/09/why-would-i-use-bgp-and-not-ospf/)
 * [Virtual Appliance Routing – Network Engineer’s Survival Guide](https://blog.ipspace.net/2013/08/virtual-appliance-routing-network/)
 
+{{<next-in-series page="/posts/2021/05/fundamentals-unnumbered-ip-interfaces.md" />}}
+
 ### More to Explore
 
 Why don't you watch the [Network Addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR) part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar to get even more details?

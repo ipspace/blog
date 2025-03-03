@@ -128,7 +128,7 @@ Is anyone using such a nasty hack in real life? Sure -- that's how you establish
 
 {{<figure src="/2021/05/Addr-BGP-Unnumbered-Azure.png" caption="EBGP routing with Azure Virtual Network Gateway over an unnumbered IPsec tunnel">}}
 
-### Want to See BGP Work? Here It Is...
+### Want to See BGP Work? Here It Is... {#bgp}
 
 I started with the initial configuration of our two-router network (static routes for remote loopback interfaces pointing to GRE tunnel) and configured BGP:
 
@@ -176,6 +176,8 @@ As you can see, BGP needs next hops to be happy, and the next hop is recursively
 You might think that we don't have the same challenges in IPv6. After all, IPv6 always assigns a link-local address (LLA) to an interface, and we can use the LLA of the downstream router as the next hop, right?
 
 That trick helps you build the outgoing layer-2 header -- there's a well-defined way to take the downstream IPv6 LLA, do a Neighbor Discovery (ND) cache lookup, and get layer-2 information -- but it doesn't help you identify the outgoing interface. After all, link-local addresses use the same prefix on all interfaces. You still need routes pointing to interfaces, not just IPv6 next-hops.
+
+{{<next-in-series page="/posts/2021/06/unnumbered-ethernet-interfaces.md" />}}
 
 ### Want to Know More?
 

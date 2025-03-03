@@ -129,6 +129,8 @@ Finally, you REALLY SHOULD read the [Unnumbered Links In OSPF](https://lostintra
 
 [^TLDF]: Too Lazy, Didn't Follow
 
+{{<next-in-series page="/posts/2022/01/isis-unnumbered.md" />}}
+
 ### Revision History
 
 2023-08-22
