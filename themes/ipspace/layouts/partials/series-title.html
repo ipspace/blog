@@ -1,0 +1,10 @@
+{{/* Creates an article title considering "series_title" flag */}}
+{{ $term := or (.Page.Scratch.Get "series") .Page.Data.Term }}
+<a href="{{ .Permalink }}">
+  {{ with (index .Params (printf "%s_title" $term)) }}{{ . }}
+  {{ else }}
+    {{ with .Params.series_title }}{{ . }}
+    {{ else }}{{ .Title }}
+    {{ end }}
+  {{ end }}
+</a>

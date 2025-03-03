@@ -6,6 +6,8 @@ tags:
 - IP routing
 - networking fundamentals
 title: Unnumbered Ethernet Interfaces
+short_summary: |
+  Unnumbered IPv4 interfaces were traditionally available for point-to-point (and dial-up) links. Can we make them work with Ethernet- or VLAN interfaces?
 ---
 Imagine an Internet Service Provider offering Ethernet-based Internet access (aka everyone using fiber access, excluding people believing in [Russian dolls](/2008/10/internet-access-russian-dolls/)). If they know how to spell security, they might be nervous about connecting numerous customers to the same multi-access network, but it seems they have only two ways to solve this challenge:
 

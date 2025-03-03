@@ -7,6 +7,8 @@ tags:
 - bridging
 - networking fundamentals
 title: 'Back to Basics: Do We Need Interface Addresses?'
+short_summary: |
+  In the world of ubiquitous Ethernet and IP, it's common to think that one needs addresses in packet headers in every layer of the protocol stack. However, that's just one option and not exactly the best one in many scenarios.
 ---
 In the world of ubiquitous Ethernet and IP, it's common to think that one needs addresses in packet headers in every layer of the protocol stack. We have MAC addresses, IP addresses, and TCP/UDP port numbers... and low-level addresses are assigned to individual interfaces, not nodes.
 

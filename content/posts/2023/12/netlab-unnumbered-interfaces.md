@@ -4,6 +4,8 @@ date: 2023-12-18 08:23:00+0100
 series: unnumbered-interfaces
 tags: [ netlab ]
 netlab_tag: use
+short_summary: |
+  Back to _netlab_: it supports IS-IS and OSPFv2 on unnumbered interfaces on almost a dozen platforms. It's time to kick the tires and figure out how unnumbered IPv4 interfaces work on your favorite platform.
 ---
 A while ago, [Chris Parker](https://www.networkfuntimes.com/about/) published a nice blog post explaining how to [configure unnumbered interfaces with IS-IS in Junos](https://www.networkfuntimes.com/is-is-and-unnumbered-ethernet-interfaces-in-junos/). It's well worth reading, but like my [Unnumbered Ethernet Interfaces](/2021/06/unnumbered-ethernet-interfaces/) blog post, it only covers one network operating system. What if you want to do something similar on another platform?
 
@@ -29,4 +31,4 @@ Best of all, you need absolutely no license to run *netlab* or any of the underl
 
 Unfortunately, you will have to deal with the networking vendors that make you jump through the hoops to get the VM images or containers[^HM] and invest some time in building Vagrant boxes because those same vendors can't be bothered to add another step to the build process.
 
-[^HM]: Notable exceptions: downloading Cumulus Linux, FRR,  Nokia SR Linux, and VyOS requires no extra effort. Junos vEvolved is free to download, but you must build a Vagrant box. Downloading Arista vEOS/cEOS and Cisco Nexus OS requires registration.
+[^HM]: Notable exceptions: downloading FRR, Nokia SR Linux, and VyOS requires no extra effort. Junos VMs are free to download, but you must build a Vagrant box. Downloading Arista vEOS/cEOS, Cumulus Linux, and Cisco Nexus OS requires registration.

@@ -8,6 +8,8 @@ tags:
 - IP routing
 - networking fundamentals
 title: Unnumbered Ethernet Interfaces, DHCP Edition
+short_summary: |
+  We can make unnumbered Ethernet interfaces work with creative use of static routes pointing to interfaces (not next hops), but how does that work in designs where the clients attached to an unnumbered Ethernet interface use DHCP?
 ---
 Last week we explored the [basics of unnumbered IPv4 Ethernet interfaces](/2021/06/unnumbered-ethernet-interfaces/), and how you could use them to save IPv4 address space in routed access networks. I also mentioned that you could simplify the head-end router configuration if you're using DHCP instead of per-host static routes.
 

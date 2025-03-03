@@ -7,6 +7,8 @@ series:
 tags:
 - OSPF
 title: Running OSPF over Unnumbered Ethernet Interfaces
+short_summary: |
+  Can we run OSPFv2 over unnumbered point-to-point links? Yes, that's been defined in the very early OSPFv2 RFCs. But what does it take to make OSPFv2 work over unnumbered *Ethernet* interfaces?
 ---
 Remember the *unnumbered IP interfaces* saga? Let's conclude with the final challenge: can we run link-state routing protocols (OSPF or IS-IS) over unnumbered interfaces?
 

@@ -7,6 +7,8 @@ tags:
 - IP routing
 - networking fundamentals
 title: 'Back to Basics: Unnumbered IPv4 Interfaces'
+short_summary: |
+  The decision to use interface addresses in IPv4 caused interesting problems in dial-up scenarios, resulting in numerous implementations of _unnumbered IPv4 interfaces_.
 ---
 In the [previous blog post](/2021/05/fundamentals-interface-node-addresses/) in [this series](/series/unnumbered-interfaces/), we explored some of the reasons IP uses per-interface (and not per-node) IP addresses. That model worked well when routers had few interfaces and mostly routed between a few LAN segments (often large subnets of a Class A network assigned to an academic institution) and a few WAN uplinks. In those days, the WAN networks were frequently implemented with non-IP technologies like Frame Relay or ATM (with an occasional pinch of X.25).
 

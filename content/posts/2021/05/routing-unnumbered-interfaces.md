@@ -12,6 +12,8 @@ tags:
 - OSPF
 - BGP
 title: Packet Forwarding and Routing over Unnumbered Interfaces
+short_summary: |
+  IP routes usually require a next-hop IPv4 address. How does that work in designs where the interfaces do not have IPv4 addresses or where the interface addresses of adjacent routers are not in the same subnet?
 ---
 In the previous blog posts in [this series](/series/unnumbered-interfaces/), we explored whether we [need addresses on point-to-point links](/2021/05/fundamentals-need-interface-addresses/) (TL&DR: no), whether it's better to have [interface or node addresses](/2021/05/fundamentals-interface-node-addresses/) (TL&DR: it depends), and why we got [unnumbered IPv4 interfaces](/2021/05/fundamentals-unnumbered-ip-interfaces/). Now let's see how IP routing works over unnumbered interfaces.
 

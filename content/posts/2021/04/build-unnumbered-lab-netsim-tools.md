@@ -8,6 +8,8 @@ tags:
 - IP routing
 - netlab
 title: Building Unnumbered Ethernet Lab with netlab
+short_summary: |
+  Want to try out unnumbered Ethernet interfaces on a [dozen different platforms](https://netlab.tools/platforms/#platform-initial-addresses)? This is how you can easily build your lab with _[netlab](https://netlab.tools/)_.
 ---
 Last week I described the new features [added to netsim-tools release 0.4](https://netlab.tools/release/0.4/), including support for [unnumbered interfaces](https://netlab.tools/addressing/#unnumbered-interface-support) and [OSPF routing](https://netlab.tools/module/ospf/). Now let's see how I used them to build a multi-vendor lab to test which platforms could be made to interoperate when running OSPF over unnumbered Ethernet interfaces.
 

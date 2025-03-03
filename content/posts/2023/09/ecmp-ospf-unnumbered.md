@@ -10,6 +10,8 @@ tags:
 - load balancing
 - netlab
 title: OSPF ECMP with Unnumbered IPv4 Interfaces
+short_summary: |
+  Can we do equal-cost multipathing over a set of unnumbered point-to-point links? Of course, that worked since the early days of OSPFv2.
 ---
 The [OSPF and ARP on Unnumbered IPv4 Interfaces](/2023/08/unnumbered-ospf-arp/) triggered an [interesting consideration](/2023/08/unnumbered-ospf-arp/#1903): does ECMP work across parallel unnumbered links?
 
