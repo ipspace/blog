@@ -102,6 +102,8 @@ OK, now we know it works 👍
 
 Long story short: use IS-IS 😁
 
+{{<next-in-series page="/posts/2022/11/bgp-unnumbered-duct-tape.md" />}}
+
 ## Addendum: NXOS Quirks
 
 Cisco NXOS is different. Not only does it need an incredible amount of time to boot, it doesn't like multi-access unnumbered IPv4 links... but you can still persuade it to use them (sort of).

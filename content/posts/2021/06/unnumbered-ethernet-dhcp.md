@@ -111,6 +111,8 @@ Sending 5, 100-byte ICMP Echos to 10.0.0.1, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
 ```
 
+{{<next-in-series page="/posts/2022/01/ospf-unnumbered.md" />}}
+
 ## Repeatability Matters
 
 Want to check my lab results? The final router configurations are on GitHub.
