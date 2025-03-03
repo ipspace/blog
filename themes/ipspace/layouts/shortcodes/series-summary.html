@@ -1,0 +1,20 @@
+{{ $term := .Page.Data.Term }}
+{{ $date := .Get "date" }}
+{{ .Page.Scratch.Set "pages" .Page.Pages }}
+{{ if not (.Get "reverse") }}
+{{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}
+{{ end }}
+{{ if (.Page.Scratch.Get "pages")|len }}
+<dl>
+  {{ range (.Page.Scratch.Get "pages") }}
+  <dt>{{ partial "series-title.html" . }}{{ if $date }} ({{ .Date.Format "2006-01-01" }}){{ end }}</dt>
+  <dd>
+    {{ with .Params.short_summary }}
+      {{ .|markdownify }}
+    {{ else }}
+      {{ .Summary }}
+    {{ end }}
+  </dd>
+  {{   end }}
+</dl>
+{{ end }}
