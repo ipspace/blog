@@ -6,6 +6,9 @@ pre_scroll: True
 dcbgp_tag: cl
 series:
 - dcbgp
+- unnumbered-interfaces
+short_summary: |
+  We could always run BGP across unnumbered links if we used an IGP to propagate the loopback addresses of adjacent nodes. Recently, many vendors started supporting another solution: run EBGP over IPv6 LLA and exchange IPv4 prefixes over that EBGP session using the next-hop encoding specified in [RFC 5549](https://www.rfc-editor.org/rfc/rfc5549.html). How exactly does that work?
 ---
 Every time I mention unnumbered BGP sessions in a webinar, someone inevitably asks "_and how exactly does that work?_" I always replied "_gee, that's a blog post I should write one of these days,_" and although some readers might find it long overdue, here it is ;)
 

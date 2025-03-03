@@ -5,6 +5,8 @@ series:
 tags:
 - IS-IS
 title: Running IS-IS over Unnumbered Ethernet Interfaces
+short_summary: |
+  OSPFv2 can run over unnumbered point-to-point links. Some IS-IS implementations are better than that and can run over unnumbered multi-access segments (for example, Carrier Ethernet E-LAN service).
 ---
 Last time we figured out that we [cannot run OSPF over unnumbered interfaces](/2022/01/ospf-unnumbered/) that are not point-to-point links because OSPF makes assumptions about interface IP addresses. IS-IS makes no such assumptions; IPv4 and IPv6 prefixes are just a bunch of TLVs exchanged between routers over a [dedicated layer-3 protocol](/2009/06/is-is-is-not-running-over-clnp/) with ridiculously long network addresses. 
 

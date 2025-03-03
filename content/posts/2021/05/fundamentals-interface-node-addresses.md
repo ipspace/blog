@@ -8,6 +8,8 @@ tags:
 - networking fundamentals
 title: 'Back to Basics: The History of IP Interface Addresses'
 lastmod: 2024-08-13 07:26:00+02:00
+short_summary: |
+  This blog post describes some of the history behind the decision to use interface (not node) addresses in IPv4.
 ---
 In the [previous blog post](/2021/05/fundamentals-need-interface-addresses/) in [this series](/series/unnumbered-interfaces/), we figured out that you might not need link-layer addresses on point-to-point links. We also started exploring whether you need network-layer addresses on individual interfaces but didn't get very far. We'll fix that today and discover the secrets behind IP address-per-interface design.
 

@@ -6,6 +6,8 @@ tags:
 - ARP
 - OSPF
 title: OSPF and ARP on Unnumbered IPv4 Interfaces
+short_summary: |
+  Time for a deep dive: how do OSPFv2 and ARP interact to make routing work over unnumbered IPv4 interfaces?
 ---
 After figuring out [ARP details](/2023/08/arp-details/), describing how [routers use ARP to resolve entries in the IP routing table](/2023/08/arp-static-routes/), and considering what we already know about [OSPF on unnumbered IPv4 interfaces](/2022/01/ospf-unnumbered/), we're finally ready to answer Daniel's question:
 
