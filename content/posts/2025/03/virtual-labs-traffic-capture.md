@@ -119,6 +119,8 @@ tcpdump: listening on virbr1, link-type EN10MB (Ethernet), snapshot length 26214
 
 You're right. It is. That's why _netlab_ provides a convenient wrapper around the **virsh**/**brctl**/**tcpdump** sequence. **netlab capture** command takes a node name and an interface name (using the names used by network devices), finds the Linux interface associated with the VM interface, and starts the **tcpdump** process.
 
+{{<note info>}}[Add the Edgeshark tool to _netlab_ topology](https://netlab.tools/extool/edgeshark/) if you're looking for a GUI interface displaying the Linux interfaces available for traffic capture with Wireshark.{{</note>}}
+
 In our scenario, we could simply use **netlab capture a eth1** and add the **tcpdump** parameters:
 
 {{<cc>}}Capturing traffic on the Ethernet interface of node A{{</cc>}}
@@ -255,7 +257,7 @@ As described in [Point-to-Point Links in Virtual Labs](/2025/02/virtual-labs-p2p
 
 As the containers are no longer connected to a Linux bridge, we cannot capture the traffic on a connecting segment. The endpoints of the vEth pairs are also not visible in the "global" network namespace, but we already know the trick to use: use **ip netns exec** to execute **tcpdump** within the network namespace.
 
-{{<note info>}}[Containerlab documentation](https://containerlab.dev/) includes [even more details](https://containerlab.dev/manual/wireshark/), including the trick you can use to transport traffic captured on a remote host over an SSH session.{{</note>}}
+{{<note info>}}[Containerlab documentation](https://containerlab.dev/) includes [even more details](https://containerlab.dev/manual/wireshark/), including the trick you can use to transport traffic captured on a remote host over an SSH session. There's also [Edgeshark](https://netlab.tools/extool/edgeshark/) for people preferring a GUI interface.{{</note>}}
 
 ### What About Libvirt Point-to-Point UDP Tunnels
 
@@ -268,3 +270,8 @@ In theory, one could:
 * Read the modified `.pcap` file with **tcpdump** or **wireshark**
 
 This approach works but does not display the packets in real time. If you have a better idea, please leave a comment.
+
+### Revision History
+
+2025-03-04
+: Added pointers to Edgeshark based on the [comment](https://blog.ipspace.net/2025/03/virtual-labs-traffic-capture/#cv2-2551) by Jaap de Vos
