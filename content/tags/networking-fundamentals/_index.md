@@ -3,7 +3,7 @@ title: Networking Fundamentals
 minimal_sidebar: true
 layout: custom
 ---
-I firmly believe that you cannot be a good networking engineer[^CLI] without a firm grasp of the networking fundamentals, and I couldn't resist pointing that out a few times:
+I firmly believe that you cannot be a good networking engineer[^CLI] without a firm grasp of the networking fundamentals, and I couldn't resist pointing that out a few times (see also [certifications-related posts](/tag/certifications/)):
 
 {{<series-listing tag="important" weight="yes">}}
 
