@@ -1,6 +1,6 @@
 ---
 title: "Linux Bridge MTU Hell"
-date: 2025-03-10 08:11:00+0100
+date: 2025-03-11 08:11:00+0100
 draft: True
 tags: [ virtualization, switching ]
 ---

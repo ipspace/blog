@@ -119,7 +119,10 @@ tcpdump: listening on virbr1, link-type EN10MB (Ethernet), snapshot length 26214
 
 You're right. It is. That's why _netlab_ provides a convenient wrapper around the **virsh**/**brctl**/**tcpdump** sequence. **netlab capture** command takes a node name and an interface name (using the names used by network devices), finds the Linux interface associated with the VM interface, and starts the **tcpdump** process.
 
-{{<note info>}}[Add the Edgeshark tool to _netlab_ topology](https://netlab.tools/extool/edgeshark/) if you're looking for a GUI interface displaying the Linux interfaces available for traffic capture with Wireshark.{{</note>}}
+{{<note info>}}[Add the Edgeshark tool to _netlab_ topology](https://netlab.tools/extool/edgeshark/) if you're looking for a GUI interface displaying the Linux interfaces available for traffic capture with Wireshark.
+
+**Warning:** Edgeshark tool definition is broken in _netlab_ release 1.9.3 and 1.9.4. Use an older release (using, for example, `pip3 install --upgrade networklab==1.9.2.post1`) or [run _netlab_ from the Git _dev_ branch](https://netlab.tools/install/clone/). I'll try to push out a new release in the next few days.
+{{</note>}}
 
 In our scenario, we could simply use **netlab capture a eth1** and add the **tcpdump** parameters:
 
@@ -275,3 +278,4 @@ This approach works but does not display the packets in real time. If you have a
 
 2025-03-04
 : Added pointers to Edgeshark based on the [comment](https://blog.ipspace.net/2025/03/virtual-labs-traffic-capture/#cv2-2551) by Jaap de Vos
+: Edgeshark tool definition is broken in netlab release 1.9.4. Added a _downgrade netlab_ note.
