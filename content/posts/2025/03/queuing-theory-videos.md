@@ -1,7 +1,7 @@
 ---
 title: "Public Videos: Queuing Theory"
-date: 2025-03-07 09:04:00+0200
-expiryDate: 2025-06-07 00:00:00
+date: 2025-03-14 09:04:00+0200
+expiryDate: 2025-06-14 00:00:00
 tags: [  ]
 ---
 ![](/2024/05/dalle-graph-math.jpeg)
