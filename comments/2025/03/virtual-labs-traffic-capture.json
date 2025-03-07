@@ -29,6 +29,15 @@
                "pub": "2025-03-06T19:41:19",
                "ref": "2556",
                "type": "comment"
+            },
+            {
+               "date": "07 March 2025 10:28",
+               "html": "<p>I have just tested it on a still supported Ubuntu LTS, it seemed to &quot;work&quot; in general. ;-)</p>\n\n<p>I&#39;d expect buffering in the pipeline to be a problem for <em>real-time</em> output.</p>\n\n<p>There are two <code>tcpdump</code> options that should help when added to the start of the pipeline: <code>--immediate-mode</code> and <code>-U, --packet-buffered</code>.</p>\n\n<p>The next possible problem is <code>editcap</code>. I did not see any buffer control options in its man page, but one can try to use <code>stdbuf -i0 -o0 editcap &amp;hellip;</code> to remove any buffering from its input and output streams.</p>\n\n<p>The last (<code>tcpdump</code>) command in the pipeline already uses a buffer control option, <code>-l</code>.</p>\n\n<p>I did not test this, just wanted to provide pointers. ;-)</p>\n",
+               "id": "2559",
+               "name": "Erik Auerswald",
+               "pub": "2025-03-07T10:28:30",
+               "ref": "2557",
+               "type": "comment"
             }
          ],
          "date": "06 March 2025 04:17",
