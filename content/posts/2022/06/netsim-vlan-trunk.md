@@ -18,7 +18,7 @@ Like in the previous example, we'll use *[groups](/2021/11/netsim-groups-deploym
 ```
 provider: clab
 
-nodes: [ h1, h2, h3, h4 s1, s2 ]
+nodes: [ h1, h2, h3, h4, s1, s2 ]
 
 groups:
   hosts:
