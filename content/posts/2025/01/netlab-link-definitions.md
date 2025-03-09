@@ -1,6 +1,5 @@
 ---
-title: "Concise Link Descriptions in netlab Topologies (Part 1)"
-series_title: Concise Link Descriptions (Part 1)
+title: "Concise Link Descriptions in netlab Topologies"
 date: 2025-01-20 08:22:00+0100
 tags: [ netlab ]
 netlab_tag: guidelines
