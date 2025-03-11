@@ -7,8 +7,10 @@ tags:
 - IP routing
 - networking fundamentals
 title: How Routers Became Bridges
+short_summary: |
+  Network terminology was easy in the 1980s: bridges forwarded frames between Ethernet segments based on MAC addresses, and routers forwarded network layer packets between network segments. That nirvana couldn't last long; eventually, a big enough customer told Cisco: "_I don't want to buy another box if I already have your too-expensive router. I want your router to be a bridge._"
 ---
-Network terminology was easy in the 1980s: bridges forwarded frames between Ethernet segments based on MAC addresses, and routers forwarded network layer packets between network segments. That nirvana couldn't last long; eventually, a big-enough customer told Cisco: "_I don't want to buy another box if I already have your too-expensive router. I want your router to be a bridge._"
+Network terminology was easy in the 1980s: bridges forwarded frames between Ethernet segments based on MAC addresses, and routers forwarded network layer packets between network segments. That nirvana couldn't last long; eventually, a big enough customer told Cisco: "_I don't want to buy another box if I already have your too-expensive router. I want your router to be a bridge._"
 
 Turning a router into a bridge is easier than going the other way round[^RB]: add MAC table and dynamic MAC learning, and spend an evening implementing STP.
 <!--more-->
