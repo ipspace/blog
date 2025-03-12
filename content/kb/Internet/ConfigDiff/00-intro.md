@@ -4,7 +4,7 @@ minimal_sidebar: true
 title: Identify Changes in Router Configurations
 toc_title: Introduction
 tags: [ network management ]
-date: 2025-03-12 07:41:00+0100
+date: 2025-03-12 07:51:00+0100
 index: true
 alt_section: posts
 url: /kb/Internet/ConfigDiff/
