@@ -14,6 +14,32 @@
             </div>
             <div class="comment-content"><p>great bit! I just had great fun discovering that MTU is apparently only applied on egress?! Which also means that, contrary to my previous belief, a packet bigger than the MTU on an ingress port will not cause a packet too big message to be sent back. Which means trouble when the egress interface can not reach the sender of the packet. But that&#39;s only a theoretical scenario, right? Right...</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2564">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2564" href="#2564">12 March 2025 07:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Technically, a packet too big on ingress should be dropped (as it could not fit into the input buffer), but of course, that&#39;s not how Linux bridges work; they are just shuffling pointers to packet buffers.</p>
+
+<p>Anyway, the bridge SHOULD NOT send the PTB message anyway (or mess with the packets), and in my case, it COULD NOT because it had no IP address.</p>
+
+<p>Finally, there&#39;s nothing the egress interface could do -- it never saw the packet anyway.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
