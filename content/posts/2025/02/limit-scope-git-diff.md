@@ -55,11 +55,15 @@ index 3b5b00fb8..47cf36480 100644
    validate: true
 ```
 
-I knew there must be a weird Git nerd knob that would limit the **git diff**, and of course there is [the `-G` flag](https://git-scm.com/docs/git-diff). It specifies a regular expression that is used to select *interesting* diffs.
+I knew there must be a weird Git nerd knob that would limit the **git diff**, and of course, there is [the `-G` flag](https://git-scm.com/docs/git-diff). It specifies a regular expression that is used to select *interesting* diffs.
 
-All I had to do was to use `git diff **/*yaml '-Gtrue|false'`[^ER] and I got changes from all files where a line containing **true** or **false** changed. Unfortunately, **git diff** still displays _all_ changes in that file. For example, the BGP local preference test failed, but I got the printout of changes in all BGP policy tests:
+{{<note info>}}
+There's also the `-I` flag that specifies the changes that should be ignored. For example, I could use `git diff -I _version -I _timestamp **/*yaml` to ignore changes to the `_version` and `_timestamp` fields.
+{{</note>}}
 
-[^ER]: Explanation for the need of quotes around the `-G` flag is left as an exercise for the reader.
+All I had to do was to use `git diff '-Gtrue|false' **/*yaml `[^ER], and I got changes from all files where a line containing **true** or **false** changed. Unfortunately, **git diff** still displays _all_ changes in that file. For example, the BGP local preference test failed, but I got the printout of changes in all BGP policy tests:
+
+[^ER]: Explanation for the need for quotes around the `-G` flag is left as an exercise for the reader.
 
 ```
 $ git diff '-Gtrue|false' **/*yaml
@@ -166,4 +170,7 @@ frr/clab/isis/results.yaml
 frr/clab/routing/results.yaml
 ```
 
-Next step: figure out what changed between FRR release 10.0.1 (used in _netlab_ release 1.9.4) and 10.2.1 (the latest FRR release) and fix the configuration templates.
+### Revision History
+
+2025-03-13
+: Add the `-I` flag
