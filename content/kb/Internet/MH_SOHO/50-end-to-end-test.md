@@ -17,12 +17,12 @@ ip sla 100
 ip sla schedule 100 life forever start-time now
 ```
 
-In most cases, that’s all you have to do. As the ICMP echoes sent to the central site come from an IP address belonging to ISP A (the IP address configured on Serial 0/0/0 in the example), it’s highly unlikely that you would get a return packet if the ISP A has problems. However, the return packet might still reach your router under rare circumstances (misconfigured access lists or one-way connectivity in ISP A). The results are astonishing:
+In most cases, that’s all you have to do. As the ICMP echoes sent to the central site come from an IP address belonging to ISP A (the IP address configured on Serial 0/0/0 in the example), it’s improbable that you would get a return packet if ISP A has problems. However, the return packet might still reach your router under rare circumstances (misconfigured access lists or one-way connectivity in ISP A). The results are astonishing:
 
-* As the pings through ISP A (primary default route) fail, the router removes the primary default route and the backup default route through ISP B is installed.
-* Pings are now sent from an IP address belonging to ISP A on a path going through ISP B.
-* If there is a return path from the central site to the IP address sending the ICMP packets, the central site will yet again appear reachable and the primary default route will be reinstalled (resulting in connectivity loss).
-* Due to renewed connectivity loss, the router will oscillate between the two default routes.
+* When the pings through ISP A (the primary default route) fail, the router removes the primary default route and installs the backup default route through ISP B.
+* Pings are now sent from an IP address belonging to ISP A onto a path going through ISP B.
+* If there is a return path from the central site to the IP address sending the ICMP packets, the central site will again appear reachable, and the primary default route will be reinstalled (resulting in connectivity loss).
+* Due to renewed connectivity loss, the router keeps oscillating between the two default routes.
 
 {{<cc>}}Oscillating routing{{</cc>}}
 ```
@@ -52,7 +52,7 @@ route-map LocalPolicy permit 10
  set interface Serial0/0/0
 ```
 
-If you want to, you can extend the concepts presented in this section even further. For example, if the central site is not reachable through either ISP (it might be down), it could make more sense to retain ISP A as the primary ISP. You would thus need to track the central site’s availability through both ISPs and configure a reliable static default route for both of them (the backup one with a higher administrative distance, of course) with a third (last-resort) default route pointing to ISP A. The complete configuration is included in the next listingand its interpretation is left as an exercise for the reader.
+If you want to, you can extend the concepts presented in this section even further. For example, if the central site is not reachable through either ISP (it might be down), retaining ISP A as the primary ISP could make more sense. You would thus need to track the central site’s availability through both ISPs and configure a reliable static default route for both of them (the backup one with a higher administrative distance, of course) with a third (last-resort) default route pointing to ISP A. The complete configuration is included in the following listing, and its interpretation is left as an exercise for the reader.
 
 {{<cc>}}GW router tracking central site availability through both ISPs{{</cc>}}
 ```
