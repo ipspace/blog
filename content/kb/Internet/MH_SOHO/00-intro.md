@@ -5,7 +5,7 @@ title: Small-Site Multihoming
 toc_title: Introduction
 url: /kb/Internet/MH_SOHO/
 tags: [ Internet ]
-date: 2025-03-21 07:52:00+0100
+date: 2025-03-21 07:30:00+0100
 alt_section: posts
 index: true
 summary: |
