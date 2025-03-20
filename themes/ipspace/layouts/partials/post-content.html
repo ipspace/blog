@@ -3,9 +3,13 @@
   <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
     {{ partial "post-header.html" . }}
     <div class='post__content' itemprop='articleBody'>
-      {{ $truncated := and .Truncated (not $full) }}
+      {{ $truncated := and (or .Truncated .Params.summary) (not $full) }}
       {{ if $truncated }}
-        {{ .Summary }}
+        {{ if .Params.summary }}
+          {{ .Params.summary|markdownify }}
+        {{ else }}
+          {{ .Summary }}
+        {{ end }}
       {{ else }}
         {{ if and $full .Truncated (and .File (eq .File.Ext "html")) }}
           {{ .Summary }}
