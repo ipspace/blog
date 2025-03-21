@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>4 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -103,6 +103,30 @@ You will never know the internals of ASICs anyway unless you sign an NDA.</p>
             <div class="comment-content">per-ce label allocation mode is actually supported in IOS-XE through the following configuration:<br />
 
 <p>mpls label mode &#123;vrf vrf-name | all-vrfs&#125; protocol &#123;bgp-vpnv4 | bgp-vpnv6 | all-afs&#125; &#123;per-ce&#125;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2572">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Blake</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2572" href="#2572">22 March 2025 12:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Great stuff Ivan.
+Totally agree with Thomas on unique RDs per PE.  I just have JunOS auto-generate type 1 RDs based on the PE loopback, which has the added bonus of not having to configure it manually for each VRF.  https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/statement/route-distinguisher-id-edit-routing-options.html</p>
+
+<p>Here are some other &quot;fun&quot; JunOS L3VPN PE protection/multipath tidbits I&#39;ve learned recently:</p>
+
+<p>PE-CE link protection <em>requires</em> vrf-table-label as of JunOS 12.3.
+https://www.juniper.net/documentation/us/en/software/junos/vpn-l3/topics/topic-map/l3-vpns-pe-link-protection.html
+I tried it in the lab without it, &amp; it causes a circular VPN label generation ping-pong fight between the PEs...  (bug or feature?)</p>
+
+<p>chained-composite-nexthop and vpn-unequal-cost equal-external-internal nerd knobs are mutually exclusive:
+https://www.juniper.net/documentation/us/en/software/junos/vpn-l3/topics/topic-map/l3-vpns-load-balancing.html</p>
 </div>
           </div>
         </li>
