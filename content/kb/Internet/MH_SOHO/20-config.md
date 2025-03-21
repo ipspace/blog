@@ -67,6 +67,10 @@ ip route 0.0.0.0 0.0.0.0 Serial0/0/1 251 name ISP_B
 {{<note>}}It’s possible (with CEF switching using per-destination load sharing) to use two default routes in a 1-to-1 load-balancing setup.
 {{</note>}}
 
+{{<note warn>}}
+Static routes pointing to Ethernet interfaces should always have a next hop ([more details](/2009/10/follow-up-interface-default-route/)). If you use this article as a blueprint for deployment with Ethernet uplinks, please add relevant next hops to the **ip route** commands.
+{{</note>}}
+
 The simplistic static routing we used represents a major availability issue: if you cannot reliably detect the link failure on the link toward ISP-A, the default static route toward ISP-B will never be used.
 
 While you can almost always detect leased-line or cable failure (due to loss of carrier signal) and usually detect Frame-Relay failures through Local Management Interface (LMI) messages or end-to-end keepalives, it’s almost impossible to detect layer-2 failures in PPPoE (ADSL) or Metro Ethernet access layers. In these scenarios, the primary default route will never disappear (even though the next-hop router is no longer reachable), making static multi-homing impossible. This problem is solved, however, in the Cisco IOS Release 12.3(8)T (integrated in release 12.4) with static routes tied to IP SLA measurements.
