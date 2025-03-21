@@ -10,7 +10,7 @@ tags:
 title: Small Site Multihoming Tutorial
 url: /2009/05/small-site-multihoming-tutorial/
 ---
-In 2007 and 2008 I wrote several articles covering small-site multihoming (a site connected to two ISPs without having its own public address space or running BGP).
+In 2007 and 2008, I wrote several articles covering small-site multihoming (a site connected to two ISPs without having its own public address space or running BGP).
 
 ### Basics
 
@@ -22,13 +22,9 @@ These requirements are viable for central sites of enterprise networks or high-a
 
 Connecting a small site to multiple service providers can be extremely easy – you get two upstream links and two provider-assigned (PA) IP addresses (either static or dynamically assigned). Since each ISP will give you only a single IP address, you have to use private IP addresses on the LAN side of the router and perform Network Address Translation (NAT) on the gateway router.
 
-{{<figure src="/2009/05/SOHO_Multihoming_Addressing.png" caption="IP addressing in a multihomed small site">}}
+{{<figure src="/kb/Internet/MH_SOHO/MultihomedSOHO_1.jpg" caption="IP addressing in a multihomed small site" width="500">}}
 
-As most ISPs will not be willing to run a dynamic routing protocol with small sites, you have to configure static default routing on your end. Reliable static routing (static routes tied to IP SLA measurements) should be used to ensure failure detection of any component between your router and the core of the Service Provider network.
-
-{{<figure src="/2009/05/SOHO_Multihoming_Routing.png" caption="Static routing in a multihomed small site">}}
-
-{{<jump>}}[Read more](https://learning.nil.com/tips-and-tricks/technical-articles/show/small-site-multi-homing/){{</jump>}}
+{{<jump>}}[Read more](/kb/Internet/MH_SOHO/){{</jump>}}
 
 ### Redundant Small-Site Multihoming
 
@@ -36,7 +32,7 @@ A redundant remote site is even simpler to implement. The addressing and routing
 
 OSPF should be used as the intra-site routing protocol as its default route origination mechanisms require no route redistribution.
 
-{{<figure src="/2009/05/SOHO_Redundant_Routing.png" caption="Default routing in a redundant multihomed site">}}
+{{<figure src="/2009/05/SOHO_Redundant_Routing.png" caption="Default routing in a redundant multihomed site" width="500">}}
 
 {{<jump>}}[Read more](https://learning.nil.com/tips-and-tricks/technical-articles/show/redundant-small-site-multi-homing/){{</jump>}}
 
@@ -46,15 +42,15 @@ If you want to deploy high-availability public servers within your network, you 
 
 However, if you want to deploy local mail server within your LAN or you have a special application that simply cannot be hosted anywhere else and you’re willing to accept less-than-perfect reliability and complex design, it’s possible to deploy servers in a small-site multihoming environment.
 
-{{<figure src="/2009/05/SOHO_Servers.png" caption="Servers in multi homed small site">}}
+{{<figure src="/2009/05/SOHO_Servers.png" caption="Servers in multi homed small site" width="500">}}
 
 {{<jump>}}[Read more](https://learning.nil.com/tips-and-tricks/technical-articles/show/servers-in-small-site-multi-homing/){{</jump>}}
 
-{{<note update>}}The following paragraph has been added when I updated the article in November 2020{{</note>}}
+{{<note update>}}The following section has been added when I updated the article in November 2020{{</note>}}
 
 ### From IPv4 to IPv6
 
-Implementing a similar architecture in IPv6 is still a Mission Impossible, and although there have been many promises how wonderful new architectures (like [Homenet](https://datatracker.ietf.org/wg/homenet/about/)) will solve the problem, [not much has been done in more than a decade](/2015/11/theres-problem-with-ipv6-multihoming/); the only viable solution is still Network Prefix Translation. For more details, read these blog posts:
+Implementing a similar architecture in IPv6 is still a Mission Impossible, and although there have been many promises of how wonderful new architectures (like [Homenet](https://datatracker.ietf.org/wg/homenet/about/)) will solve the problem, [not much has been done in more than a decade](/2015/11/theres-problem-with-ipv6-multihoming/); the only viable solution is still Network Prefix Translation. For more details, read these blog posts:
 
 * [Lack of IPv6 multihoming: the elephant in the room?](/2009/05/lack-of-ipv6-multihoming-elephant-in/)
 * [Small-site multihoming in IPv6: mission impossible?](/2010/12/small-site-multihoming-in-ipv6-mission/)
@@ -64,6 +60,10 @@ Implementing a similar architecture in IPv6 is still a Mission Impossible, and a
 * [Are Provider-Independent IPv6 prefixes really global?](/2012/01/are-provider-independent-ipv6-prefixes/)
 * [IPv6 addressing: how wrong can you get it?](/2010/11/ipv6-addressing-how-wrong-can-you-get/)
 
+### Revision History
 
+2020-11-20
+: Added IPv6 information
 
-
+2025-03-20
+: Migrated the [Small Site Multihoming](/kb/Internet/MH_SOHO/) article
