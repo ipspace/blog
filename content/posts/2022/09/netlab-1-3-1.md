@@ -1,6 +1,6 @@
 ---
 date: 2022-09-19 07:08:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: BGP local-as, FRR and Cumulus Data Plane Enhancements (Release 1.3.1)
 tags:
 - netlab

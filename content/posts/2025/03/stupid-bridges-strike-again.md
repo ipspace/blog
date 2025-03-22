@@ -1,6 +1,6 @@
 ---
 title: "IPv6 and the Revenge of the Stupid Bridges"
-date: 2025-03-24 08:08:00+0100
+date: 2025-03-25 08:08:00+0100
 tags: [ bridging, IPv6, netlab ]
 netlab_tag: quirks
 ---

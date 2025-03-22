@@ -1,6 +1,6 @@
 ---
 date: 2023-01-16 07:26:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: Cisco IOS XRv, MPLS on FRR (Release 1.4.3)
 tags:
 - netlab

@@ -1,6 +1,6 @@
 ---
 date: 2022-11-28 07:12:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: Cisco ASAv (Release 1.4.1)
 tags:
 - netlab

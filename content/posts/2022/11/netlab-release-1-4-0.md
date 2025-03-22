@@ -1,6 +1,6 @@
 ---
 date: 2022-11-07 07:41:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: EVPN Asymmetric IRB, Anycast Gateways, VRRP (Release 1.4.0)
 tags:
 - netlab
