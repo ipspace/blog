@@ -1,6 +1,6 @@
 ---
 date: 2023-01-09 07:20:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: Juniper vMX and Junos/CSR1000v Features (Release 1.4.2)
 tags:
 - netlab

@@ -1,6 +1,6 @@
 ---
 title: "netlab 1.9.5: New Cumulus Linux(NVUE) and Junos Features"
-series_title: "New Cumulus Linux(NVUE) and Junos Features"
+series_title: "New Cumulus Linux(NVUE) and Junos Features (Release 1.9.5)"
 date: 2025-03-07 07:52:00+01:00
 tags: [ netlab ]
 netlab_tag: release

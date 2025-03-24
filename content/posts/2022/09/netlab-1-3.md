@@ -1,6 +1,6 @@
 ---
 date: 2022-09-05 07:05:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: VXLAN and EVPN (Release 1.3)
 tags:
 - netlab

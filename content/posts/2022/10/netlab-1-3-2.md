@@ -1,6 +1,6 @@
 ---
 date: 2022-10-10 06:22:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: Mikrotik RouterOS 7, Additional EVPN Platforms (Release 1.3.2)
 tags:
 - netlab
