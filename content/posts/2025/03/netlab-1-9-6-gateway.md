@@ -1,7 +1,7 @@
 ---
 title: "netlab 1.9.6: Static Routes to Default Gateways"
 series_title: "Static Routes to Default Gateways (Release 1.9.6)"
-date: 2025-03-24 08:25:00+01:00
+date: 2025-03-25 08:25:00+01:00
 tags: [ netlab ]
 netlab_tag: release
 ---

@@ -1,8 +1,9 @@
 ---
 title: "IPv6 and the Revenge of the Stupid Bridges"
-date: 2025-03-25 08:08:00+0100
+date: 2025-03-24 08:08:00+0100
 tags: [ bridging, IPv6, netlab ]
 netlab_tag: quirks
+lastmod: 2025-03-24 12:40:00+0100
 ---
 _This blog post describes another "OMG, this cannot possibly be true" scenario discovered during the [netlab](https://netlab.tools/) VRRP [integration testing](https://tests.netlab.tools/)._
 
@@ -66,7 +67,7 @@ VLAN  Name                             Status    Ports
 1     default                          active    Et1, Et2
 ```
 
-**Long story short:** Without additional configuration, Arista EOS VMs and containers act like stupid bridges: all interfaces are enabled and in VLAN 1. Unfortunately, it's not just Arista. Cisco IOSv L2 and Cisco IOL L2 images are no better.
+**Long story short:** Containerlab deploys [minimal initial configuration](https://github.com/srl-labs/containerlab/blob/main/nodes/ceos/ceos.cfg) on Arista EOS containers, and [netlab does the same for Arista EOS virtual machines](https://github.com/ipspace/netlab/blob/dev/netsim/install/libvirt/eos.txt). Neither of these configurations specifies the default behavior of new interfaces, so once they appear, they are enabled and in VLAN 1. Cisco IOSv L2 and Cisco IOL L2 images exhibit similar behavior, probably for similar reasons.
 
 ### Reverse-Engineering the Mishap
 
@@ -84,4 +85,13 @@ We fixed this anomaly in netlab release 1.9.4 by adding an extra *normalization*
 
 Years ago, I tried to persuade security-minded networking engineers that we don't need separate (physical) *inside* and *outside* switches in a DMZ because VLANs provide sufficient isolation.
 
-While doing that, I was also stupid enough to say, "_I don't believe any decent switch vendor would start their devices as stupid bridges, directly linking inside, DMZ, and outside VLAN if the switch has no initial configuration._" I might have been wrong; what's your experience with physical switches?
+While doing that, I was also stupid enough to say, "_I don't believe any decent switch vendor would start their devices as stupid bridges, directly linking inside, DMZ, and outside VLAN if the switch has no initial configuration._"
+
+According to the [comment by Keanu](https://blog.ipspace.net/2025/03/stupid-bridges-strike-again/#2577), that's true on Arista EOS switches. When they boot without a startup configuration, they put interfaces in *routed* mode and start ZTP.
+
+Unfortunately, Erik Auerswald [claims to have had](https://blog.ipspace.net/2025/03/stupid-bridges-strike-again/#2575) a much more disappointing experience, so the ancient recommendation is as valid as ever: don't trust the documentation; test results are what really counts.
+
+### Revision History
+
+2025-03-24
+: The observed behavior was caused by Arista EOS containers and VMs having minimal startup configuration that did not specify the default interface state.
