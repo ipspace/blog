@@ -8,8 +8,15 @@ minimal_sidebar: True
 ### Open-Source Projects
 
 * [netlab](https://netlab.tools/): an infrastructure-as-code virtual networking lab management tool ([repository](https://github.com/ipspace/netlab), [documentation](https://netlab.tools/))
-* [Open-source BGP configuration labs](https://bgplab.github.io/bgplab/) ([repository](https://github.com/bgplab/bgplab), [documentation](https://bgplab.github.io/bgplab/))
+* [Open-source BGP configuration labs](https://bgplabs.net) ([repository](https://github.com/bgplab/bgplab), [documentation](https://bgplabs.net))
+* [Open-source IS-IS configuration labs](https://isis.bgplabs.net) ([repository](https://github.com/bgplab/isis), [documentation](https://isis.bgplabs.net))
 * [netlab examples](https://github.com/ipspace/netlab-examples)
+
+### Other Lab Exercises
+
+* [Networking in public cloud deployments](https://ipspace.github.io/cloud-labs/) lab exercises ([repository](https://github.com/ipspace/cloud-labs))
+* [Network automation hands-on lab exercises](https://ipspace.github.io/netops-labs/) ([repository](https://github.com/ipspace/netops-labs))
+* [Data center design assignments](https://ipspace.github.io/dc-labs/) ([repository](https://github.com/ipspace/dc-labs))
 
 ### Companion Material for ipSpace.net Webinars and Courses
 
