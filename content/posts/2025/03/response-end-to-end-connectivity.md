@@ -9,11 +9,13 @@ Bob left a [lengthy comment](https://blog.ipspace.net/2025/03/rise-of-nat/#2571)
 
 Let's start with the early Internet. It had no peer-to-peer applications. It connected a few large computers (mainframes) that could act as servers but also allowed terminal-based user access and thus ran per-user clients.
 <!--more-->
-The client/server dichotomy became more evident as we started connecting low-end machines (IBM PCs and the like) to IP networks. The low-end machines did not have enough resources to be (reasonably good) servers[^IBMAT], and once you could run applications on your personal computer and drag an email into a trash bin, terminal access quickly seemed bizarrely outmoded. Even though every device was an IP host, the split into *primarily clients* and *mostly servers* IP hosts happened without any pressure from the network side.
+The client/server dichotomy became more evident as we started connecting low-end machines (IBM PCs and the like) to IP networks. The low-end machines did not have enough resources to be (reasonably good) servers[^IBMAT], and once you could run Internet applications on your personal computer and drag an email into a trash bin, terminal access quickly seemed bizarrely outmoded. Even though every device was an IP host, the split into *primarily clients* and *mostly servers* IP hosts happened without any pressure from the network side.
 
 [^IBMAT]: [Typical personal computers in those days](https://en.wikipedia.org/wiki/IBM_Personal_Computer) had a 4.77 MHz CPU, 640 KB of RAM, and 10 MB disks. However, apart from a few niche applications like Minecraft, very few people run publicly accessible servers on laptops with 4 GHz CPUs, 16 GB of RAM, and 1TB of disk space.
 
-Of course, we always had people running web- and SMTP servers in their basements, but they were always a tiny (but very vocal) minority.
+Of course, we always had people running web- and SMTP servers[^SMD] in their basements, but they were always a tiny (but very vocal) minority.
+
+[^SMD]: We ran sendmail with UUCP on an MS-DOS machine with 640K or RAM as the core country-wide email node for a while, but that's not something for the faint-hearted.
 
 It's also worth mentioning that all networking technologies[^IWAT] (apart from IBM SNA) available in the early 1990s used a single address space and provided any-to-any end-to-end connectivity. IP wasn't either unique or better than the others; it just happened to have a big enough address space and a global address allocation mechanism. The sacred cow of any-to-any connectivity was created primarily as an argument for the almost infinite advantage of IPv6[^RO] after we had no other option but to start using NAT.
 
