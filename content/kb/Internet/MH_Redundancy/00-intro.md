@@ -5,13 +5,13 @@ title: Redundant Small Site Multihoming
 toc_title: Introduction
 url: /kb/Internet/MH_Redundancy/
 tags: [ Internet ]
-date: 2025-04-04 07:34:00+0100
+date: 2025-04-11 07:34:00+0100
 alt_section: posts
 index: true
 ---
 The original *[Small Site Multihoming](/kb/Internet/MH_SOHO/)* article has generated lots of responses, most of them being questions about redundant implementation of the same principles. In this article, we’ll thus extend the small site multi-homing design with a set of redundant routers. The final design will still retain the administrative simplicity of the original solution – with no need to own public IP address space, autonomous system number or to run Border Gateway Protocol (BGP).
 <!--more-->
-{{<note migrated>}}This article was written in 2007 and has been updated and republished on ipSpace.net in April 2025. The printouts were taken on an old release of Cisco IOS that still used serial interfaces, but I don't expect to see much change in the recent IOS/XE releases.{{</note>}}
+{{<note migrated>}}This article was written in 2007 and has been updated and republished on ipSpace.net in April 2025. The printouts were taken on an old release of Cisco IOS that still used serial interfaces.{{</note>}}
 
 The basic design of a redundant multihomed small site is very similar to the one described in IP Corner article *[Small Site Multihoming](/kb/Internet/MH_SOHO/)* (I would strongly suggest you read that article before this one). The public IP addresses used by the site are still within the address space of the two service providers, and the private IP addresses are used within the site. Each gateway router performs independent Network Address Translation (NAT) from the private IP addresses to the public IP address pool (or a single IP address) assigned by the ISP.
 
