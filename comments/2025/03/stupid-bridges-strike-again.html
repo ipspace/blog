@@ -99,6 +99,26 @@ And it&#39;s not limited to switches per-se, also routers, firewalls or any othe
         </li>
       </div>
       <div>
+        <li class="comment" id="2588">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2588" href="#2588">28 March 2025 12:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Our initial fix was to configure all ports in routed mode, but this allocates an internal vlan to each port:</p>
+
+<p>r#show vlan internal usage 
+1006  Ethernet1
+1007  Ethernet2</p>
+
+<p>Some user topologies that were designed to use this VLAN range subsequently failed to deploy. We settled on disabling the ports as a first step, rather than configuring them as routed ports</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
         <li class="comment" id="2579">
           <div class="comment-block">
             <div class="comment-header">
