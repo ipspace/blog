@@ -36,7 +36,9 @@ route-map ISP_A permit 10
  match interface Serial0/0/0
 ```
 
-{{<note>}}To increase the overall reliability, the DHCP server is running on both gateway routers. Use the **ip dhcp excluded-addresses** configuration commands to ensure the routers always allocate addresses from non-overlapping pools.
+{{<note>}}
+* To increase the overall reliability, the DHCP server is running on both gateway routers. Use the **ip dhcp excluded-addresses** configuration commands to ensure the routers always allocate addresses from non-overlapping pools.
+* The router configurations contain serial interfaces that should be replaced with Ethernet interfaces in modern deployments.
 {{</note>}}
 
 To implement reliable static routes on both gateway routers, you have to configure:
@@ -49,6 +51,10 @@ To implement reliable static routes on both gateway routers, you have to configu
 The relevant parts of GW-A configuration are included in the next list (the detailed description of the configuration and monitoring commands related to reliable static routing is available in the [Small Site Multihoming](/kb/Internet/MH_SOHO/) article).
 
 The only major difference between GW-A and GW-B is the default route configuration, where you would use a high administrative on the backup router (GW-B in our example) to make the default route floating; if Internet connectivity on GW-A is operational, the default route received through the routing protocol should override the static default route.
+
+{{<note warn>}}
+Static routes pointing to Ethernet interfaces should always have a next hop ([more details](/2009/10/follow-up-interface-default-route/)). If you use this article as a blueprint for deployment with Ethernet uplinks, please add relevant next hops to the **ip route** commands.
+{{</note>}}
 
 {{<cc>}}Basic multihomed default routing setup{{</cc>}}
 ```
