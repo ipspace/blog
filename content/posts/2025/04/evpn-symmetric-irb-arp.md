@@ -7,7 +7,7 @@ evpn_tag: details
 ---
 _Whenever I claimed that EVPN is The SIP of Networking, vendor engineers quickly told me that "EVPN interoperability is a solved problem" and that they run regular multi-vendor interoperability labs to iron out the quirks. As it turns out, things aren't as rosy in real life; it's still helpful to have an EVPN equivalent of the DTMF tone generators handy._
 
-I encountered a particularly nasty quirk when running the _netlab_ EVPN symmetric IRB integration test with an anycast gateway between Juniper vSwitch/Nokia SR Linux and FRR container  ([the usual smallprint](/quirks)).
+I encountered a particularly nasty quirk when running the _netlab_ EVPN symmetric IRB integration test with an anycast gateway between Juniper vSwitch/Nokia SR Linux and FRR container  (note: it could be that we messed up the configurations; [the usual smallprint](/quirks) applies).
 
 {{<figure src="/2025/04/evpn-symmetric-irb.png" caption="Lab topology">}}
 
