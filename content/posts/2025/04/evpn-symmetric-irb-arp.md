@@ -275,6 +275,8 @@ Arista EOS and most other EVPN implementations:
 aa:c1:ab:2e:b3:3f (oui Unknown) > Broadcast, ethertype ARP (0x0806), length 42: Ethernet (len 6), IPv4 (len 4), Request who-has 172.16.0.254 tell 172.16.0.5, length 28
 ```
 
+* Use the already cached ARP entry when sending the ICMP reply.
+
 {{<cc>}}S1 does not send an ARP request before delivering the ICMP reply{{</cc>}}
 ```
 10:51:58.580115 aa:c1:ab:37:3b:e7 (oui Unknown) > 52:dc:ca:fe:01:01 (oui Unknown), ethertype IPv4 (0x0800), length 148: (tos 0x0, ttl 64, id 20913, offset 0, flags [none], proto UDP (17), length 134)
@@ -288,7 +290,7 @@ aa:c1:ab:2e:b3:3f (oui Unknown) > Broadcast, ethertype ARP (0x0806), length 42: 
     172.16.1.6 > 172.16.0.5: ICMP echo reply, id 12, seq 0, length 64
 ```
 
-* Advertise the IP address of H2 the moment they see its first ARP request.
+* Advertise the IP addresses of adjacent hosts the moment they see their ARP requests.
 
 {{<cc>}}EVPN type-2 route advertised by Arista EOS after H2 starts pinging H3{{</cc>}}
 ```
