@@ -4,7 +4,7 @@ url: /quirks/index.html
 minimal_sidebar: True
 ---
 One of the interesting _netlab_ use cases is the ability to explore how different vendors implement the same functionality.
-For that to work, we try to [configure network devices](https://github.com/ipspace/netlab/tree/dev/netsim/ansible/templates)[^CPR] to maximize interoperability with devices from other vendors. We might miss some details, but as the average vendor investment in helping us get things right (so far) has been close to zero, I don't think they have a right to complain ;)
+For that to work, we try to [configure network devices](https://github.com/ipspace/netlab/tree/dev/netsim/ansible/templates) to maximize interoperability with devices from other vendors. We might miss some details, but as the average vendor investment in helping us get things right (so far) has been close to zero, I don't think they have a right to complain ;)
 
 We also want to ensure the device configurations we created work as expected, so we run [hundreds of integration tests](https://tests.netlab.tools/). We run integration tests between devices from different vendors whenever possible, using FRR or Arista EOS containers as the probe device. There are a few reasons we're using these devices as probes:
 
