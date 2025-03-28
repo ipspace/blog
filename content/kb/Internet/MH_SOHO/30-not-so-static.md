@@ -4,7 +4,11 @@ minimal_sidebar: true
 title: Not-so-Very-Static Routes
 alt_section: posts
 ---
-Numerous network devices can combine static routes with Bidirectional Forwarding Detection (BFD) and remove them from the routing table if the BFD session with the next-hop router fails. Unfortunately, that works only if the upstream network supports BFD on its customer-facing interfaces; we need a more generic solution that does not rely on the functionality of the upstream router. 
+Numerous network devices can combine static routes with Bidirectional Forwarding Detection (BFD) and remove them from the routing table if the BFD session with the next-hop router fails. Unfortunately, that works only if the upstream network supports BFD on its customer-facing interfaces[^UBFD]; we need a more generic solution that does not rely on the functionality of the upstream router[^ECHO].
+
+[^UBFD]: An [RFC published in March 2025](https://www.rfc-editor.org/rfc/rfc9747.html) specifies yet another twist in the BFD saga: the ability to run BFD with yourself without the BFD control session with the next-hop router.
+
+[^ECHO]: So far, I haven't found a router from a major vendor that would implement the most straightforward idea: send a packet to yourself using the MAC address of the next-hop router. Instead, they love to start a quest to boil the ocean with solutions like BFD and then modify them further with things like *Unaffiliated BFD*.
 
 Cisco IOS includes *Enhanced Object Tracking* functionality, which, together with *Reliable Static Routing Using Object Tracking*, solves the "Is the next hop reachable?" problem without relying on the adjacent router's cooperation.
 
@@ -104,5 +108,6 @@ L        192.168.0.1/32 is directly connected, GigabitEthernet0/1
 
 2025-03-31
 : * Mentioned BFD as an alternative to IP SLA
+  * Mentioned RFC 9747 as a potential BFD-based solution if the upstream router doesn't want to participate in BFD (HT: Erik Auerswald)
   * Recreated the router configurations and printouts with IOSv release 15.6(1)T.
-  * Added the command to shut down the PE_A interface when using _netlab_ 
+  * Added the command to shut down the PE_A interface when using _netlab_
