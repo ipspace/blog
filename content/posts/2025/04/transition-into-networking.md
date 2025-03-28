@@ -14,9 +14,11 @@ I keep answering a variant of this question every other year or so ([2019](https
 The basics never change:
 
 * Cloud networking and automation are becoming table stakes.
-* Understanding how networking works (layer-2 technologies, ARP/ND, IP forwarding, routing protocols, etc.) never hurt anyone.
+* Understanding how networking works (layer-2 technologies, ARP/ND, IP forwarding, routing protocols, etc.) never hurt anyone[^ITD].
 * Certifications are inevitably a money-generating exercise (for the certification vendors, not yourself) and a vendor marketing tool. Unfortunately, they are also one of the first filters an HR department uses to reduce the 10.000 LinkedIn submissions to a somewhat manageable number.
 * Certifications can also help you stay on track if you keep their ultimate goal in mind and follow them for the journey, not to cheat your way to the end goal.
+
+[^ITD]: Not surprisingly, networking is not the only IT discipline in which knowing the fundamentals might be a better long-term decision than mastering the latest SDN gimmick. [The Frontend Treadmill](https://polotek.net/posts/the-frontend-treadmill) by Marco Rogers makes the same argument from the web developer's perspective.
 
 However, while that might give you some ideas about what to study, the reality is that we all have to pay the bills, so it's worth exploring what your target market is looking for:
 
