@@ -48,7 +48,7 @@ def check_duplicate_date(path,date):
       if pdate and pdate.date() == date.date():
         reportError("Publication date %s overlaps with %s" % (date.date(),entry),path)
 
-def check_file(path,listing):
+def check_file(path: str,listing: bool, post: bool):
   if VERBOSE:
     print("Reading file %s" % path)
 
@@ -74,12 +74,13 @@ def check_file(path,listing):
     if not(frontmatter.get('title')):
       reportError("Title is missing",path)
 
-    if listing:
+    if listing:                         # No further check on series or tags index pages
       return
 
     date = frontmatter.get('date')
     if not(date):
-      reportError("Date or Draft field missing",path)
+      if post:                          # Report missing date only on posts
+        reportError("Date or Draft field missing",path)
     else:
       if date.hour > 10:
         print("Warning: %s scheduled for afternoon publication on %s" % (path,date.strftime("%c")))
@@ -89,7 +90,10 @@ def check_file(path,listing):
       else:
         reportError("Expected path prefix %s" % pathprefix,path)
 
-    tags = frontmatter.get('tags')
+    tags = frontmatter.get('tags',None)
+    if tags is None and not post:       # It's OK not to have tags on non-posts markdown files
+      return
+
     if not isinstance(tags,list):
       reportError("Tags are missing or not a list",path)
       return
@@ -106,7 +110,8 @@ args = parseCLI()
 
 for entry in args.files:
   listing = 'series' in entry or 'tags' in entry
-  check_file(entry,listing)
+  post = '/posts/' in entry
+  check_file(entry,listing,post)
 
 if ERRORS:
   sys.exit(1)
