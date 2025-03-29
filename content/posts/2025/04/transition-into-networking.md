@@ -16,9 +16,11 @@ The basics never change:
 * Cloud networking and automation are becoming table stakes.
 * Understanding how networking works (layer-2 technologies, ARP/ND, IP forwarding, routing protocols, etc.) never hurt anyone[^ITD].
 * Certifications are inevitably a money-generating exercise (for the certification vendors, not yourself) and a vendor marketing tool. Unfortunately, they are also one of the first filters an HR department uses to reduce the 10.000 LinkedIn submissions to a somewhat manageable number.
-* Certifications can also help you stay on track if you keep their ultimate goal in mind and follow them for the journey, not to cheat your way to the end goal.
+* Certifications can also help you stay on track if you keep their ultimate goal in mind and follow them for the journey, not to cheat your way to the end goal[^CJ].
 
 [^ITD]: Not surprisingly, networking is not the only IT discipline in which knowing the fundamentals might be a better long-term decision than mastering the latest SDN gimmick. [The Frontend Treadmill](https://polotek.net/posts/the-frontend-treadmill) by Marco Rogers makes the same argument from the web developer's perspective.
+
+[^CJ]: See also: [Lessons from a Network Engineering Journey](https://www.bitsinflight.com/lessons-from-a-network-engineering-journey/) by [Jason Gintert](https://www.bitsinflight.com/about/)
 
 However, while that might give you some ideas about what to study, the reality is that we all have to pay the bills, so it's worth exploring what your target market is looking for:
 
@@ -33,6 +35,8 @@ Next:
 
 Finally, how do you find out how people run their networks? Use the other networking ;) Attend local meetups and conferences, and try to engage with the engineers from the organizations you find interesting. Everyone loves to explain the tricky parts of what they're doing and yammer about their challenges ;))
 
-Last but not least, while honing your skills, document your experiences to boost your online presence[^YC], and use any speaking opportunity to talk about relevant challenges you encountered. The jobs you get through a personal invitation to a chat or an interview are usually better than the ones you apply for through an online job posting website.
+Last but not least, while honing your skills, document your experiences to boost your online presence[^YC], and use any speaking opportunity to talk about relevant challenges you encountered. The jobs you get through a personal invitation to a chat or an interview are usually better than the ones you apply for through an online job posting website[^PN].
 
 [^YC]: Keep this goal in mind. Your content should *boost your online presence*, not attract more Thought Leaders to LinkedIn or help Medium reach their monetization-of-other-people-work goals.
+
+[^PN]: See also: *Five Critical Lessons Learned* section from the [Lessons from a Network Engineering Journey](https://www.bitsinflight.com/lessons-from-a-network-engineering-journey/)
