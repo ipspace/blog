@@ -26,5 +26,3 @@ The above list is the absolute minimum you need to get a running lab. You could 
 For more details, watch the *[Why Do We Need Another Labbing Tool](https://my.ipspace.net/bin/get/NetTools/N1%20-%20Why%20Do%20We%20Need%20Another%20Labbing%20Tool.mp4?doccode=NetTools)* video I recorded in September 2022 as part of [Network Automation Tools webinar](https://www.ipspace.net/Network_Automation_Tools).
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetTools/N1%20-%20Why%20Do%20We%20Need%20Another%20Labbing%20Tool.mp4?doccode=NetTools){{</jump>}}
-
-{{<note info >}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video and [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription) to watch the rest of the webinar.{{</note>}}
