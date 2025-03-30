@@ -9,7 +9,7 @@ Let's look at another part of the [lengthy comment Bob left](https://blog.ipspac
 
 Cleaning up the acronym list first: DHT is unlike the others and [has nothing to do with NAT](https://en.wikipedia.org/wiki/Distributed_hash_table).
 <!--more-->
-Now that we're left with three acronyms let's try to figure out what they do:
+Now that we're left with three acronyms, let's try to figure out what they do:
 
 * [STUN](https://en.wikipedia.org/wiki/STUN) detects NAT devices in the forwarding path and uses clever tricks to create the NAT translations that can ultimately be used to reach a peer node behind another NAT device.
 * STUN does not work with all [types of NAT](https://en.wikipedia.org/wiki/Network_address_translation#Methods_of_translation). In particular, it does not work with symmetric NAT (NAT using 5-tuple NAT translations -- what you'd see on Cisco IOS). [TURN](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) tries to fix that.
@@ -23,7 +23,7 @@ Wouldn't it be better if, instead of the above mess, the host could tell the NAT
 
 Why do we need STUN/TURN/ICE if we have a (supposedly) working solution? It often comes down to *I don't want to deal with those uncouth people from the IT basement* (aka "networking engineers"), a [well-known strategy used by the likes of Novell and VMware](https://blog.ipspace.net/2019/10/the-cost-of-disruptiveness-and/), or to *I want to make this work even though some stupid security people think it should be blocked* (see also: [using Signal to plan bomb strikes](https://en.wikipedia.org/wiki/United_States_government_group_chat_leak)).
 
-I never said NAT is a great solution (it's not), but it's still a [necessary evil](/2025/03/response-end-to-end-connectivity/) (even in the [IPv6 world](/2011/12/we-just-might-need-nat66/)) that has to be dealt with. There are standard ways to do it, and fortunately, we have tons of libraries you can use to get the job done without going into the details. A quick search for "Python [STUN|TURN|ICE] NAT" resulted in a half-dozen GitHub/PyPi projects. Ideally, we'd have a single library that everyone uses to get the job done (like OpenSSL [^NAGA] and OpenSSH), but maybe we're not at that stage yet.
+I never said NAT is a great solution (it's not), but it's still a [necessary evil](/2025/03/response-end-to-end-connectivity/) (even in the [IPv6 world](/2011/12/we-just-might-need-nat66/)) that has to be dealt with. There are standard ways to do it, and fortunately, we have tons of libraries you can use to get the job done without going into the details. A quick search for "Python [STUN|TURN|ICE] NAT" resulted in a half-dozen GitHub/PyPi projects. Ideally, we'd have a single library that everyone uses to get the job done (like OpenSSL[^NAGA] and OpenSSH), but maybe we're not at that stage yet.
 
 [^NAGA]: In other news, that's [not always a good idea](https://en.wikipedia.org/wiki/OpenSSL#Notable_vulnerabilities).
 
@@ -47,11 +47,11 @@ Oh, but dealing with firewalls is so much simpler in the IPv6 world:
 
 > Firewall hole punching only involves STUN, and that's it. We move on with our lives.
 
-I might be missing something here[^LCF], but this smells like a Deja-Moo to me. STUN works if a firewall matches return traffic solely on destination IP addresses and ports, but if it insists on matching the full 5-tuple[^GFW], it's functionally equivalent to symmetric NAT, and you might need something better than STUN to punch holes into its security policy.
+Sort of[^LCF]. Decent stateful firewalls match on the full 5-tuple, which is functionally equivalent to symmetric NAT, but don't change the UDP port numbers when packets traverse them (making them equivalent to *‌port-restricted cone NAT*), so it's easier to discover what hole your peer punched in their firewall.
+
+On a more practical note, even the Cisco router between me and the global Internet seems to be using *port-restricted cone NAT*, and I don't remember when a VoIP call or a video conferencing app would not work. Yes, things are unnecessarily complex (from the perspective of IPv6 fans), but they work. It seems the NAT-induced complexity is still not expensive enough to make migration to IPv6 cost-effective.
 
 [^LCF]: As always, leave a comment with enough technical details, and I'll fix the blog post.
-
-[^GFW]: Like all decent firewalls do
 
 However, to be fair, CG-NAT in the IPv4 world does introduce a whole new level of evilness not present in the IPv6 world. For example, if two devices in the same CG-NAT cone[^INS] want to communicate but happen to use a server outside of the NAT cone[^OUT] to find their respective IP addresses, the traffic has to go through the NAT device (hairpinning).
 
