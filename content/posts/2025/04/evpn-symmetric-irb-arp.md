@@ -7,27 +7,33 @@ evpn_tag: details
 ---
 _Whenever I claimed that EVPN is The SIP of Networking, vendor engineers quickly told me that "EVPN interoperability is a solved problem" and that they run regular multi-vendor interoperability labs to iron out the quirks. As it turns out, things aren't as rosy in real life; it's still helpful to have an EVPN equivalent of the DTMF tone generators handy._
 
-I encountered a particularly nasty quirk when running the _netlab_ EVPN symmetric IRB integration test with an anycast gateway between Juniper vSwitch/Nokia SR Linux and FRR container  (note: it could be that we messed up the configurations; [the usual smallprint](/quirks) applies).
+I encountered a particularly nasty quirk when running the _netlab_ [EVPN integration test](https://tests.netlab.tools/_html/coverage.evpn) using [symmetric IRB with an anycast gateway](https://github.com/ipspace/netlab/blob/dev/tests/integration/evpn/03-vxlan-symmetric-irb.yml) between Nokia SR Linux (or Juniper vSwitch) and FRR container.
 
 {{<figure src="/2025/04/evpn-symmetric-irb.png" caption="Lab topology">}}
+<!--more-->
+{{<long-quote>}}
+I'm not picking on any one implementation, and it could be that we messed up the configurations ([the usual smallprint](/quirks) applies).
+
+It's just that EVPN has many moving parts, and the vendor defaults are different enough that things might not work without a significant effort to find just the right combination of nerd knob settings. If this sounds like SIP gateways to you, you're not alone 😉
+
+Finally, I used SR Linux for my testing because it boots much faster than the vjunos-switch container. Time becomes a precious commodity as one ages.
+{{</long-quote>}}
 
 The network topology was as simple as I could make it:
-<!--more-->
-* Two switches are running VXLAN with EVPN control plane.
+
+* Two switches use VXLAN encapsulation with the EVPN control plane.
 * The **red** VLAN is stretched across both switches.
 * The **blue** and the **green** VLAN are attached to a single switch (to trigger the various IRB packet flows)
 * The **red** VLAN has an anycast gateway configured on both switches, with all hosts using it for static routes.
 * All three VLANs are in the same VRF.
-* The actual lab topology includes a probe device -- out-of-they-way participant in the EVPN control plane I used to generate debugging printouts.
+* The [lab topology](https://github.com/ipspace/netlab-examples/blob/master/EVPN/symmetric-irb/topology.yml) includes a probe device -- an out-of-they-way participant in the EVPN control plane I used to generate debugging printouts.
 
 After the two switches establish OSPF and IBGP adjacencies and exchange EVPN routes, the hosts should be able to ping each other, right? It doesn't always work that way. This is what I experienced when running FRR on S2 and SR Linux (or vJunos-switch) on S1:
 
 * H1 can ping H2 and H4.
 * H2 cannot ping H3 *until it pings the default gateway*
 
-Sounds crazy? Here are the printouts generated in an SR Linux/FRR lab[^MFV]. Everything works when S2 runs SR Linux or Arista EOS.
-
-[^MFV]: Because I no longer have the patience to wait for the vjunos-switch container to boot.
+Sounds crazy? Here are the printouts generated in an SR Linux/FRR lab. Everything works when S2 runs SR Linux or Arista EOS.
 
 {{<cc>}}Pings from H1{{</cc>}}
 ```
@@ -116,7 +122,7 @@ Next step: the VXLAN link between S1 and S2. That's where my troubleshooting too
 02:00:ca:fe:00:ff (oui Unknown) > Broadcast, ethertype ARP (0x0806), length 42: Ethernet (len 6), IPv4 (len 4), Request who-has 172.16.0.5 tell 172.16.0.254, length 28
 ```
 
-Time to check whether H2 responds to the ARP request. It does 🤔
+It's time to check whether H2 responds to the ARP request. It does 🤔
 
 {{<cc>}}tcpdump of traffic sent and received by H2{{</cc>}}
 ```
@@ -180,7 +186,7 @@ We know the following packets are sent when H2 tries to ping H3:
 What could possibly change when H2 pings the anycast gateway? Here's the sequence of events that ping triggers:
 
 * H2 already has the MAC address of the anycast gateway in its ARP cache
-* H2 sends an ICMP request to the anycast gateway IP address using the anycast gateway MAC address.
+* H2 sends an ICMP request to the anycast gateway IP address using the MAC address from its ARP cache.
 * The packet is (as before) intercepted by S2.
 * S2 replies to the ICMP request but might not have the MAC address of H2 in its ARP cache (it never had to send a packet to H2).
 * **S2 sends an ARP request to H2 and receives an ARP reply**
@@ -188,7 +194,7 @@ What could possibly change when H2 pings the anycast gateway? Here's the sequenc
 
 However, the packets never got past S2, right? As we don't believe in switch entanglement and spooky action at a distance, the only other explanation is *the propagation of some relevant information from S2 to S1*, and we know the relevant information is propagated in EVPN routing updates.
 
-Time to log into the probe device to see what happens when H2 pings anycast gateway on S2. Not surprisingly, S2 does send an update once H2 starts pinging the anycast gateway:
+Let's log into the probe device to see what happens when H2 pings anycast gateway on S2. Not surprisingly, S2 does send an update once H2 starts pinging the anycast gateway:
 
 {{<cc>}}EVPN update received by the probe router after the H2→anycast ping{{</cc>}}
 ```
@@ -198,7 +204,7 @@ Time to log into the probe device to see what happens when H2 pings anycast gate
       label 101000/5042 l2vpn evpn
 ```
 
-Time to go back to square one. We'll reload the lab (starting with clean ARP tables and a minimum number of EVPN routes) and inspect the route details for the EVPN type-2 routes with RD 10.0.0.2:1000.
+It's time to start from scratch and carefully observe the sequence of events. I reloaded the lab (starting with clean ARP tables and a minimum number of EVPN routes) and inspected the ARP cache on S2 and route details for the EVPN type-2 routes for the **red** VLAN advertised by S2 (RD 10.0.0.2:1000).
 
 Here are the results:
 
@@ -245,7 +251,7 @@ h2 (172.16.0.5) at aa:c1:ab:4e:b2:95 [ether]  on varp-40000
 ethernet-1-1.s1 (10.1.0.1) at 1a:c7:05:ff:00:01 [ether]  on eth1
 ```
 
-* The ARP entry from the VLAN1000 interface is converted into EVPN type-2 route and advertised to S1 and probe device. The updated route has an IP address attached to it and a VNI label saying _you can use that for the transit VNI in customer VRF_
+* The ARP entry from the VLAN1000 interface is converted into an EVPN type-2 route and advertised to S1 and the probe device. The updated route has an IP address attached to it and a VNI label saying _You can use that for the transit VNI in customer VRF_
 
 {{<cc>}}Updated EVPN route for the IP/MAC address of H2{{</cc>}}
 ```
@@ -290,7 +296,7 @@ aa:c1:ab:2e:b3:3f (oui Unknown) > Broadcast, ethertype ARP (0x0806), length 42: 
     172.16.1.6 > 172.16.0.5: ICMP echo reply, id 12, seq 0, length 64
 ```
 
-* Advertise the IP addresses of adjacent hosts the moment they see their ARP requests.
+* Advertise the IP addresses of adjacent hosts the moment they receive their ARP requests.
 
 {{<cc>}}EVPN type-2 route advertised by Arista EOS after H2 starts pinging H3{{</cc>}}
 ```
@@ -304,3 +310,16 @@ Paths: (1 available, best #1)
       Extended Community: RT:65000:1 RT:65000:1000 ET:8 Rmac:00:1c:73:a0:3b:b1
       Last update: Fri Mar 28 11:04:34 2025
 ```
+
+### Long Story Short
+
+I encountered a perfect storm of misaligned nerd knobs in the symmetric IRB integration test:
+
+* FRR would receive an ARP request for the anycast gateway but associate the ARP entry only with the virtual ARP (not VLAN) interface.
+* FRR would advertise the MAC address learned by the VLAN bridge into EVPN but not the IP address from the virtual ARP interface ARP entry.
+* SR Linux would not create an ARP entry from the ARP request for one of its IP addresses (the anycast gateway) when the ARP request arrived through VXLAN. It assumed the ingress node would send an updated EVPN type-2 route with the IP address attached to it[^CRSR].
+* SR Linux would send ARP requests from the MAC address of the anycast gateway, not from its router MAC address.
+
+Can this be fixed? Probably (comments appreciated). Were we smart enough to figure out how to fix it? No. Is that good or bad news? You tell me ;)
+
+[^CRSR]: That might be why centralized routing on SR Linux does not work without proxy ARP support on the ingress layer-2 switches.
