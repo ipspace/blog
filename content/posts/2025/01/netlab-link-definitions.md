@@ -43,8 +43,6 @@ links:
 - [ r-2, r-3 ]
 ```
 
-I find the hyphen-separated list of nodes easier to read, and I plan to add a way to [redefine the separator](https://github.com/ipspace/netlab/issues/1755). Wouldn't it be nice to be able to define a link as `R-1↔R-2` ;)
-
 The moment you have to define *link attributes*, you can no longer use the shorthand formats, but even there, you have two options:
 
 * You can specify nodes attached to the link as dictionary keys. For example, this is how you would describe the same triangle of links while setting the OSPF area on each link:
