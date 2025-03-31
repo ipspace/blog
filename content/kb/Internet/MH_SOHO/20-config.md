@@ -2,7 +2,7 @@
 kb_section: MH_SOHO
 minimal_sidebar: true
 title: Configuring Small Multi-Homed Site
-date: 2025-03-31 06:30:00+0200
+date: 2025-03-31 07:30:00+0200
 alt_section: posts
 summary: |
   The resurrected [Small Site Multihoming](/kb/Internet/MH_SOHO/) article used Cisco IOS configuration commands from 2007 (when the original article was published), including point-to-point serial interfaces and static routes pointing to interfaces.
