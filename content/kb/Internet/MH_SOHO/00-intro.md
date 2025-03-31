@@ -16,7 +16,8 @@ summary: |
 Unless your network operates under extreme security considerations or in places without Internet access, your management has probably already asked you to lower your Wide Area Network (WAN) costs by migrating from a traditional leased line or frame-relay-based network to an Internet or MPLS VPN-based transport while retaining or even increasing network reliability. These conflicting requirements might force you to make all your sites multi-homed (connected to more than one Internet Service Provider, or ISP).
 <!--more-->
 {{<note migrated>}}
-This article was written in 2007 and has been updated and republished on ipSpace.net in March 2025. The printouts were taken on an old release of Cisco IOS that still used serial interfaces, but I don't expect much change in the recent IOS/XE releases.
+* This article was written in 2007 and has been updated and republished on ipSpace.net in March 2025.
+* The configurations were regenerated in a _netlab_-created lab topology using Ethernet uplinks with Cisco IOSv release 15.6(1)T.
 {{</note>}}
 
 Multi-homing requirements aren’t new; for example, every decent e-commerce solution should be multi-homed. However, most solutions you’ll find with extensive help from Google require:
@@ -33,3 +34,4 @@ In this article, you’ll learn how to:
 * detect failures in the ISP networks and adjust the outbound routing accordingly;
 * increase overall availability of your sites with Service Level Agreement (SLA) monitoring;
 * log all relevant changes in the remote site connectivity.
+

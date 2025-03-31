@@ -1,7 +1,7 @@
 ---
 title: "Public Videos: EVPN Fundamentals"
-date: 2025-03-31 08:36:00+0200
-expiryDate: 2025-06-30 00:00:00
+date: 2025-04-07 08:36:00+0200
+expiryDate: 2025-07-07 00:00:00
 tags: [  ]
 ---
 ![](/2025/01/dalle-leaf-spine-design.png)
