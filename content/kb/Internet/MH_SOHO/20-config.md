@@ -63,7 +63,11 @@ route-map ISP_B permit 10
  match interface GigabitEthernet0/3
 ```
 
-{{<note info>}}Having two **route-maps** matching outgoing interfaces (the **match interface** statement in a NAT **route-map** matches outgoing interface) is the only way to configure per-interface NAT pools in Cisco IOS.{{</note>}}
+{{<note info>}}
+* Having two **route-maps** matching outgoing interfaces (the **match interface** statement in a NAT **route-map** matches outgoing interface) is the only way to configure per-interface NAT pools in Cisco IOS.
+* Using NAT Virtual Interface (NVI) might work better in complex scenarios, including hairpinning of NAT traffic.
+* You should use Endpoint-Independent Mapping to make life easier for peer-to-peer applications like video calls. It seems IOS-XE uses EIM-NAT by default; use **[ip nat service enable-sym-port](https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/217599-understand-nat-to-enable-peer-to-peer-co.html)** on IOS Classic.
+{{</note>}}
 
 Most ISPs will not be willing to run a dynamic routing protocol with small sites, so you must configure static default routing on your router. As shown in the following printout, you would almost always prefer one provider over the other (therefore, one default route would have a lower administrative distance).
 
