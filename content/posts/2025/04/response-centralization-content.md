@@ -10,6 +10,8 @@ Back to Bob:
 
 I have to disagree. NAT traversal is a solved problem, and tons of working video conferencing solutions prove it can be solved reliably. We're back to [square one](/2025/03/response-end-to-end-connectivity/): mass-market Internet is so heavily unbalanced because it's easier for everyone to use servers-as-a-service (aka "websites" or "cloud") than to deploy their bespoke infrastructure. Just look at all the great networking engineers publishing their hard work on LinkedIn or Medium instead of spending an hour or two (= one or two orders of magnitude less than what they invested in the content) to set up their blog using free (and often open-source) solutions.
 
+https://vivekhaldar.com/articles/the-case-against-local-llms
+
 Fortunately, I can point you to several engineers who took the jump into the unknown, emerged unscathed, and documented their experience (comments with further pointers are most welcome):
 
 * [Scott Lowe](https://blog.scottlowe.org/2015/01/05/blog-migration-complete/)

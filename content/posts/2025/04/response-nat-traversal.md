@@ -49,7 +49,9 @@ Oh, but dealing with firewalls is so much simpler in the IPv6 world:
 
 Sort of[^LCF]. Decent stateful firewalls match on the full 5-tuple, which is functionally equivalent to symmetric NAT, but don't change the UDP port numbers when packets traverse them (making them equivalent to *‌port-restricted cone NAT*), so it's easier to discover what hole your peer punched in their firewall.
 
-On a more practical note, even the Cisco router between me and the global Internet seems to be using *port-restricted cone NAT*, and I don't remember when a VoIP call or a video conferencing app would not work. Yes, things are unnecessarily complex (from the perspective of IPv6 fans), but they work. It seems the NAT-induced complexity is still not expensive enough to make migration to IPv6 cost-effective.
+On a more practical note, even the Cisco router[^IOS] between me and the global Internet seems to be using *port-restricted cone NAT* (another term for the same behavior seems to be *Endpoint-Independent Mapping* -- EIM), and I don't remember when a VoIP call or a video conferencing app would not work. Yes, things are unnecessarily complex (from the perspective of IPv6 fans), but they work. It seems the NAT-induced complexity is still not expensive enough to make migration to IPv6 cost-effective.
+
+[^IOS]: EIM-NAT seems to be the default on Cisco IOS XE and [requires a nerd knob on Cisco IOS Classic](https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/217599-understand-nat-to-enable-peer-to-peer-co.html).
 
 [^LCF]: As always, leave a comment with enough technical details, and I'll fix the blog post.
 
