@@ -87,3 +87,43 @@ However, we're faking an IBGP session between two autonomous systems *with no un
 {{<next-in-series page="/posts/2025/04/xxx.md">}}
 But wait, there's more. We've only scratched the surface of the iBGP local-as complexity. In a few days, we'll explore what happens if you use this abhorrent mechanism to connect two large autonomous systems.
 {{</next-in-series>}}
+
+### Reference Information
+
+Initial topology addressing:
+
+| Node/Interface | IPv4 Address | IPv6 Address | Description |
+|----------------|-------------:|-------------:|-------------|
+| **dut** |  10.0.0.1/32 |  | Loopback |
+| Ethernet1 | 10.1.0.1/30 |  | dut -> x1 |
+| Ethernet2 | 10.1.0.5/30 |  | dut -> x2 |
+| **x1** |  172.42.1.1/24 |  | Loopback |
+| eth1 | 10.1.0.2/30 |  | x1 -> dut |
+| **x2** |  172.42.2.1/24 |  | Loopback |
+| eth1 | 10.1.0.6/30 |  | x2 -> dut |
+{.fmtTable}
+
+Initial topology BGP AS numbers:
+
+| Node/ASN | Router ID | Advertised prefixes |
+|----------|----------:|--------------------:|
+| **AS65000** ||
+| dut | 10.0.0.1 | 172.42.42.0/24 <br>10.0.0.1/32 |
+| **AS65100** ||
+| x1 | 172.42.1.1 | 172.42.1.0/24 |
+| **AS65101** ||
+| x2 | 172.42.2.1 | 172.42.2.0/24 |
+{.fmtTable}
+
+Initial topology BGP sessions:
+
+| Node | Router ID/<br />Neighbor | Router AS/<br />Neighbor AS | Neighbor IPv4 | Local AS |
+|------|------------------|---------------------:|--------------:|---------:|
+| **dut** | 10.0.0.1 | 65000 |
+| | x1 | 65100 | 10.1.0.2 | 65002 |
+| | x2 | 65101 | 10.1.0.6 | 65101 |
+| **x1** | 172.42.1.1 | 65100 |
+| | dut | 65002 | 10.1.0.1 |  |
+| **x2** | 172.42.2.1 | 65101 |
+| | dut | 65101 | 10.1.0.5 |  |
+{.fmtTable}
