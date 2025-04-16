@@ -6,9 +6,11 @@ netlab_tag: quirks
 ---
 _The amount of weird stuff we [discover in netlab integration tests](/tag/netlab#quirks) is astounding, or maybe I have a knack for looking into the wrong dark corners (my wife would definitely agree with that). Today's special: when having two next hops kills a static route._
 
+**TL&DR:** default ARP settings on a multi-subnet Linux host are [less than optimal](/2025/04/static-routes-arp/#sysctl).
+
 We use these principles when creating [_netlab_ integration tests](https://tests.netlab.tools/):
 
-* The should contain a single device-under-test and a bunch of attached probes.
+* They should contain a single device-under-test and a bunch of attached probes.
 * They should test a single feature.
 * They should not rely on the device-under-test. All validation has to be done on probes.
 
@@ -114,7 +116,7 @@ PING 10.1.0.1 (10.1.0.1) from 10.0.0.2: 56 data bytes
 round-trip min/avg/max = 0.437/0.567/0.775 ms
 ```
 
-This is clearly a gigantic WTAF moment, but fortunately, I [experienced similar stuff before](/2025/04/evpn-symmetric-irb-arp/) and immediately suspected we had to warm the ARP cache on one of the devices. Next step: a packet capture on the link the ICMP request should be traversing. It might make your jaw drop 😳
+This is clearly a gigantic WTAF moment, but fortunately, I [experienced similar stuff before](/2025/04/evpn-symmetric-irb-arp/) and immediately suspected we had to warm the ARP cache on one of the devices. Next step: A packet capture on the link that the ICMP request should be traversing. It might make your jaw drop 😳
 
 {{<cc>}}Weird ARP requests sent by the Linux node{{</cc>}}
 ```
@@ -220,3 +222,7 @@ ge-0-0-0.0.dut (10.1.0.1) at <incomplete>  on eth1
 ```
 
 Ultimately, my incredible "luck" (I chose the wrong interface to ping) created this perfect storm, and I don't want to tell you how much time we wasted chasing this particular gremlin.
+
+### Of Course, There's a sysctl Hack {#sysctl}
+
+A few days after I wrote this blog post, Stefano Sasso encountered the same weird behavior when testing static routes on VyOS. This time, he [found the nerd knob to tweak](https://github.com/ipspace/netlab/issues/2157) to make Linux behave like a reasonable multi-subnet device. We [added that setting to the Linux and FRR initial configuration script](https://github.com/ipspace/netlab/pull/2159), hoping we won't encounter yet another even weirder variant in the future.
