@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -20,6 +20,24 @@ static routes are created to anycast service IP on each VM, configured on switch
 you want to use BFD to track next hop reach-ability...</p>
 
 <p>Running a routing protocol with a neighbor connected via MLAG is also interesting. (peer routing)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2607">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">kr</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2607" href="#2607">18 April 2025 11:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>question:
+One might think (based on the active-active forwarding discussion) that you have to synchronize ARP entries due to misdirected ARP replies &ndash; S1 sends an ARP request to A, but A replies over the A-S2 link &ndash; but that doesn&rsquo;t make sense.</p>
+
+<p>Ans:Thats because when S1 send ARP reply, forwarding(L3 decision) might have been still on A-S1 link, but mlag hash would have been resolved to use A-S2 link. So, now, at S2, because S2 knows that DMAC is of S1, it must send that that ARP reply packet  over ISL Link to S1, otherwise, traffic will be dropped.
+hope that is clear.</p>
 </div>
           </div>
         </li>
