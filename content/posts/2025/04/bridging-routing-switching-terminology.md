@@ -5,22 +5,22 @@ tags:
 - Networking fundamentals
 title: Switching, Routing, and Bridging Terminology
 series_title: Terminology
+comment: |
+  In September 2020, I created the _[Switching, Routing, and Bridging Terminology](https://my.ipspace.net/bin/get/Net101/SW1%20-%20Terminology.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is a Whisper transcript edited/summarized by ChatGPT and polished by Yours Truly ;)
+  
+  While I'm positive ChatGPT did a great job structuring the transcript and removing my verbal meandering, I wonder how far we got down the slippery slope toward AI slop. Your comments are highly appreciated. Thank you!
 ---
-_In September 2020, I created the _[Switching, Routing, and Bridging Terminology](https://my.ipspace.net/bin/get/Net101/SW1%20-%20Terminology.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of that video generated (mostly) with Whisper and ChatGPT._
+After discussing [networking layers](https://my.ipspace.net/bin/list?id=Net101#LAYERS) and [addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR), it's time to focus on moving packets across a network. Vendors love to use ill-defined terms like _switching_ instead of _forwarding_, _routing_, or _bridging_, so let’s start with the terminology.
 
----
-
-In [this part](https://my.ipspace.net/bin/list?id=Net101#SWITCH) of the *[How Networks Really Work](https://my.ipspace.net/bin/list?id=Net101)* webinar, we'll focus on moving packets across a network. Many terms are used to describe this process -- forwarding, switching, routing, and bridging -- so let’s start with the terminology.
-
-To recap: if you have many devices across a wide area, connecting everything with a single cable is impossible. We need devices in the network -- typically with multiple interfaces -- that perform packet forwarding between end nodes.
+Connecting all relevant devices to a single cable would indubitably simplify any networking stack, but unfortunately, we're almost never that lucky. We need devices in the network (typically with multiple interfaces) that perform packet forwarding between end nodes.
 <!--more-->
 When we discussed [networking layers](https://my.ipspace.net/bin/list?id=Net101#LAYERS), I mentioned devices like hubs, repeaters, or media converters. These simply convert bits between different physical media, like copper and fiber.
+
+{{<figure src="/2025/04/rbs-terminology-layers.png">}}
 
 Next, we have devices that arguably [*shouldn’t* exist](/2010/07/bridges-kludge-that-shouldnt-exist/): bridges. They connect end nodes at the data link layer. But remember, the data link layer is meant to connect *adjacent* nodes. Once you insert a bridge, the nodes are no longer adjacent.
 
 Finally, we have routers -- Layer 3 devices that operate at the network layer. Theoretically, any large network (your home Wi-Fi, a corporate LAN, or the global Internet) should use routers to interconnect segments.
-
-{{<figure src="/2025/04/rbs-terminology-layers.png">}}
 
 Now that we know which devices can perform packet forwarding, let's focus on two big questions:
 
