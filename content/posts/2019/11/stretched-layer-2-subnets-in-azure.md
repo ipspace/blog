@@ -18,6 +18,7 @@ As I know a little bit about how networking works within Azure, and I've seen so
 <!--more-->
 > Have you heard that Ivanov won a thousand in a game of chess?\
 > Sure thing. But it was Rabinovich, not Ivanov. It was a game of poker, not a game of chess. It was ten thousand and not one thousand. And, well, he lost, not won.
+{#joke}
 
 In this particular case, it's not layer-2 subnet but IP addresses, and it's not new, but just a productized solution that people were implementing for years, and it comes with all the usual caveats that I've been talking about for a decade.
 
