@@ -2,12 +2,17 @@
 ai_tag: kick
 title: "ChatGPT on BGP Routing Security"
 date: 2023-03-30 06:27:00
+lastmod: 2025-04-25 15:29:00+02:00
 tags: [ BGP, security, AI ]
 ---
 I wanted to include a few examples of BGP bugs causing widespread disruption in the [Network Security Fallacies](https://my.ipspace.net/bin/list?id=Net101#NETSEC) presentation. I tried to find what happened when [someone announced beacon prefixes with unknown optional transitive attributes](https://labs.ripe.net/author/erik/ripe-ncc-and-duke-university-bgp-experiment/) (which should have been passed without complaints but weren't) without knowing *when* it happened or *who* did it.
 
 Trying to find the answer on Google proved to be a Mission Impossible -- regardless of how I structured my query, I got tons of results that seemed relevant to a subset of the search words but nowhere near what I was looking for. Maybe I would get luckier with a tool that's supposed to have ingested all the world's knowledge and seems to (according to overexcited claims) understand what it's talking about.
 <!--more-->
+{{<note update>}}
+I retried the same query [two years later](#2025). While ChatGPT got better and got direct access to the Internet in the meantime, it still makes up stuff.
+{{</note>}}
+
 Here's my first attempt ([original query](/2023/03/chatgpt-bgp-1.png)):
 
 > When did someone testing the propagation of an unknown BGP attribute cause Internet-wide disruption?
@@ -72,8 +77,20 @@ Even better, it found the exact incident I was looking for after the second quer
 
 ### Lesson Learned
 
-Large language models still seem to be little more than stochastic parrots regardless of how well they perform on standardized tests[^ST], but you can get great results if you use them to implement smarter search or as a [front-end to another knowledge-based service](https://writings.stephenwolfram.com/2023/03/chatgpt-gets-its-wolfram-superpowers/).
+Large language models still seem to be little more than stochastic parrots, regardless of how well they perform on standardized tests[^ST], but you can get great results if you use them to implement smarter search or as a [front-end to another knowledge-based service](https://writings.stephenwolfram.com/2023/03/chatgpt-gets-its-wolfram-superpowers/).
 
-Obviously that approach wouldn't make VCs happy -- imagine you have to admit that instead of the first stepping stone toward Artificial General Intelligence you created a better user interface ;)
+Obviously, that approach wouldn't make VCs happy -- imagine you have to admit that instead of the first stepping stone toward Artificial General Intelligence, you created a better user interface ;)
 
 [^ST]: Or maybe that just validates the opinion many people have about standardized tests ;)
+
+### Repeating the Experiment in 2025 {#2025}
+
+I ran the same query in 2025 and got the [following response](https://chatgpt.com/share/680b8ea6-ab58-8000-964e-163bdcabf371):
+
+{{<figure src="/2023/03/chatgpt-bgp-2025-1.png">}}
+
+The vague and detail-less answer is a red flag in itself. Furthermore, I couldn't remember an outage affecting multiple Tier-1 providers in February 2024, so I asked for corroborating sources. I got another pile of generic nonsense with a link to [Cloudflare Internet Disruption Summary article](https://blog.cloudflare.com/q1-2024-internet-disruption-summary) in which the only notable events on February 22nd, 2024, were [Russian airstrikes on Ukraine](https://blog.cloudflare.com/q1-2024-internet-disruption-summary/#ukraine) and an [AT&T configuration SNAFU](https://blog.cloudflare.com/q1-2024-internet-disruption-summary/#at-t-united-states).
+
+However, ChatGPT (when prompted for sources) also provided an alternate response (with the reassuring "which one do you prefer" question). This response mentioned an [incident on June 2nd, 2023](https://labs.ripe.net/author/emileaben/unknown-attribute-28-a-source-of-entropy-in-interdomain-routing/) (so ChatGPT changed its mind when asked for sources, always a comforting thought) that vaguely resembles the criteria, mainly [along the lines of an old Russian joke](/2019/11/stretched-layer-2-subnets-in-azure/#joke).
+
+{{<figure src="/2023/03/chatgpt-bgp-2025-2.png">}}
