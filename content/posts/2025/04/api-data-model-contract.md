@@ -35,7 +35,7 @@ One would understand that you have to break some eggs to make a better omelet, b
 * Prefix matching in a routing policy was specified with `/routing-policy/policy/entry/match/prefix-set`, now it's `/routing-policy/policy/entry/match/prefix/prefix-set`. WTA*?
 * BGP community propagation was specified per BGP neighbor; now it's set per address family. Many vendors [belatedly realized](https://blog.ipspace.net/2024/08/bgp-session-af-parameters/) (or not at all) that some BGP attribute handling should be configurable on the AF-level, but most of them retained backward-compatible syntax when they changed their mind. For example, configuring a parameter per neighbor would still be allowed and impact all address families.
 
-I would have hoped the customer's well-being would be valued higher than a puristic view of the data model, but I'm clearly misguided.
+I would have hoped the customer's well-being would be valued higher than a puristic view of the data model, but I'm clearly misguided. On the other hand, even Ansible, with its "_[we cut it three times and it's still too short](/2019/09/measure-twice-cut-once-ansible/)_" stunts, mastered the art of deprecating functionality. I really can't grasp why someone would feel the urge to abruptly break the data model instead of slowly deprecating old attributes.
 
 Then there are more fundamental changes to the data model. What was a single value could become a list. For example, SR Linux 24.7 introduced multiple routing policies per BGP neighbor, changing the `import-policy` and `export-policy` parameters from strings to lists. Even that's trivial to solve -- _netlab_ silently converts scalar values to lists because we don't want to force the customers to enclose stuff in square brackets for no good reason. Typical CLI configuration commands that previously accepted a single value could start accepting a list of values. XML also had no problems with the one-or-many dilemma[^XJ], which might explain why Junos happily takes a single value or a list of values for many configuration parameters.
 
@@ -47,7 +47,7 @@ But like breaking changes to the configuration data model wouldn't be enough, th
 
 [^DG]: Trying to downgrade the software after saving the device configuration with the new software release is an entirely different ballgame.
 
-Even assuming one cannot avoid breaking changes, there's a clean solution to all of the above: [API versioning](https://www.postman.com/api-platform/api-versioning/). The simplest solution would be to ask the customers to include the target software version in every configuration request and do the necessary translations behind the scenes. Why do you think Cisco IOS configuration starts with the **version** command?
+Even assuming one cannot avoid breaking changes, there's a clean solution to all of the above: [API](https://www.postman.com/api-platform/api-versioning/) or data model versioning. The simplest solution would be to ask the customers to include the target software version in every configuration request and do the necessary translations behind the scenes. Why do you think Cisco IOS configuration starts with the **version** command?
 
 ### What Could We Do?
 
