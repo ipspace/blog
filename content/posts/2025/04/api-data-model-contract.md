@@ -43,7 +43,10 @@ Then there are more fundamental changes to the data model. What was a single val
 
 However, you can't see those solutions if you drank too much YANG Kool-Aid. YANG is a strongly typed schema language and does not allow multiple data types for a single parameter. But even the YANG world has a solution: you can specify mutually exclusive parameters with the **choice** construct. In the above example, we could have `import-policy` taking a single value and `import-policy-list` taking a list of values.
 
-But like breaking changes to the configuration data model wouldn't be enough, there's more. If you save the configuration of a device running SR Linux release 24.10, and that configuration uses one of the changed data model parameters, you cannot load it on a device running SR Linux release 25.3. I've never seen a network device without that baseline level of backward compatibility[^DG].
+But like breaking changes to the configuration data model wouldn't be enough, there's more:
+
+* SR Linux uses the same data model for CLI configuration, which means that the breaking changes in the API/YANG data model also break the CLI configuration process.
+* If you save the configuration of a device running SR Linux release 24.10 (using `get /` from the **running** datastore), and that configuration uses one of the changed data model parameters, you cannot load it on a device running SR Linux release 25.3. I've never seen a network device without that baseline level of backward compatibility[^DG].
 
 [^DG]: Trying to downgrade the software after saving the device configuration with the new software release is an entirely different ballgame.
 
