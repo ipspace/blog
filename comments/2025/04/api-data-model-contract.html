@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -62,6 +62,31 @@ Cheers.</p>
               </span>
             </div>
             <div class="comment-content"><p>Good rant and to the point obviously from customer perspective. Noooooow, if on the other hand the customers would not camp for literally tens of years on regex scripts scraping screens lots of stuff could progress much faster as a little input from vendor&#39;s side (and yes, I know that XML parsing needs bit learning) ;-) </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2620">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Johannes</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2620" href="#2620">29 April 2025 12:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This is why I always test the relevant API endpoints and the responses in automated test series (e.g. using pyATS engine).</p>
+
+<p>There are other aspects, except a breaking API change, which could make this necessary (and I ran in all of them):</p>
+
+<ul>
+<li><p>Is the returned HTTP status code still the expected one (as applications might catch the codes for error handling or as a success indicator). Imagine you expect (in your code) a HTTP code 403 and the vendor changes it to 401 (or whatever).</p></li>
+<li><p>Is the API authentication still as expected? In my latest ISE testing I discovered, that Basic Auth didn&#39;t work for external AD users any more, for <strong>one</strong> specific API endpoint.</p></li>
+<li><p>Are the API response times for a specific endpoint still as expected?</p></li>
+<li><p>...</p></li>
+</ul>
+
+<p>So regardless if the vendor introduced (undocumented) breaking changes to the API, the API should be tested very intensively before a software update. Especially if the API is used for business critical applications. I heard rumors, that a bug fix release sometimes introduce new bugs :).</p>
 </div>
           </div>
         </li>

@@ -26,9 +26,17 @@
          "name": " Tony P",
          "pub": "2025-04-29T10:52:54",
          "type": "comment"
+      },
+      {
+         "date": "29 April 2025 12:04",
+         "html": "<p>This is why I always test the relevant API endpoints and the responses in automated test series (e.g. using pyATS engine).</p>\n\n<p>There are other aspects, except a breaking API change, which could make this necessary (and I ran in all of them):</p>\n\n<ul>\n<li><p>Is the returned HTTP status code still the expected one (as applications might catch the codes for error handling or as a success indicator). Imagine you expect (in your code) a HTTP code 403 and the vendor changes it to 401 (or whatever).</p></li>\n<li><p>Is the API authentication still as expected? In my latest ISE testing I discovered, that Basic Auth didn&#39;t work for external AD users any more, for <strong>one</strong> specific API endpoint.</p></li>\n<li><p>Are the API response times for a specific endpoint still as expected?</p></li>\n<li><p>...</p></li>\n</ul>\n\n<p>So regardless if the vendor introduced (undocumented) breaking changes to the API, the API should be tested very intensively before a software update. Especially if the API is used for business critical applications. I heard rumors, that a bug fix release sometimes introduce new bugs :).</p>\n",
+         "id": "2620",
+         "name": " Johannes",
+         "pub": "2025-04-29T12:04:09",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2025/04/api-data-model-contract.html"
 }
