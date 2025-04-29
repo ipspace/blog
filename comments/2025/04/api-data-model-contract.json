@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "29 April 2025 10:20",
+               "html": "<p>Thanks a million for the feedback!</p>\n\n<p>&gt; the router is well able to do it during the upgrade process</p>\n\n<p>... which makes it even worse. They <em>have</em> the solution but don&#39;t feel like they should make it available to external API consumers.</p>\n\n<p>&gt; I also think that YANG/NETCONF underestimated the importance of dealing with versioning.</p>\n\n<p>Yes. However, seasoned vendors like Juniper never experienced problems on such a scale -- they always knew they had to be very careful when making changes to the configuration data model.</p>\n\n<p>Finally, I have to work with SR Linux (not SR OS) through the Nokia SR Linux Ansible collection, which uses JSON-RPC, so there&#39;s no way to specify the version in the XML namespace :(</p>\n",
+               "id": "2617",
+               "name": " Ivan Pepelnjak",
+               "pub": "2025-04-29T10:20:16",
+               "ref": "2616",
+               "type": "comment"
+            }
+         ],
          "date": "29 April 2025 10:07",
          "html": "<p>Hi Ivan. I agree with your point on the necessity of backward compatibility, and yes, Nokia (NB: I workly work with their routers) puts that burden on the client. Being able to <code>get-config</code> a full XML configuration from version N and <code>edit-config</code> it to version N+1 would be a bless (and the router is well able to do it during the upgrade process...). You actually <em>can</em> include the YANG version in your request, by embeeding it to the xmlns model of your XML payload (never done that though).\nI also think that YANG/NETCONF underestimated the importance of dealing with versioning. gRPC/protobufs do it better. Like, including changelogs inside the YANG file in the age of git?? Come on. Even back in 2010 (first YANG RFC, 6020), versioning tools were all over the place (maybe not at the IETF though).\nPS: here is a freely available web tool developed by Nokia to help you list the YANG changes between versions : https://yang.labctl.net/yang/SROS/.\nCheers.</p>\n",
          "id": "2616",
