@@ -36,6 +36,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "29 April 2025 05:56",
+               "html": "<p>&gt; Thanks for the rant ;)</p>\n\n<p>You&#39;re welcome ;))</p>\n\n<p>&gt; Having said that, I am inquiring internally if the transformation infrastructure can be made available to the north-bound interfaces, and if it can we will make sure to provide it. Thanks for flagging this.</p>\n\n<p>Thanks a million. However, as I pointed out in the blog post, all the changes that tripped the <em>netlab</em> development team could be easily avoided with a slightly more gradual approach to data model changes.</p>\n",
+               "id": "2622",
+               "name": "Ivan Pepelnjak",
+               "pub": "2025-04-29T17:56:16",
+               "ref": "2621",
+               "type": "comment"
+            }
+         ],
          "date": "29 April 2025 03:53",
          "html": "<p>Thanks for the rant ;)</p>\n\n<p>NBC changes suck, believe it or not both for a vendor and a customer, especially a customer. But sometimes they are unavoidable or have a very high cost of avoidance.\nThis does not excuse us from making them frequently, and we understand the cost, the pain, and everything you outlined.</p>\n\n<p>This is why we have a rigid restraint of only introducing NBC changes once a year, when we have our first release in the calendar year. A semver analogy would be that every year you have a bump in the major version where NBC changes can be made and expected.</p>\n\n<p>Having said that, I wanted to point out that SR Linux maintains a config transformation infrastructure that translates the config from vA.B.C to vA+N.x.z when either</p>\n\n<p>a) the node boots up and detects that the config it has on disk is provided with an older version\nb) the <code>tools system configuration update file &amp;lt;file&amp;gt;</code> command is executed</p>\n\n<p>This &quot;version&quot; is part of the config file in the json format and can be found in <code>._preamble</code> object.</p>\n\n<p>These transformation scripts take care of all the changes we introduce config-wise, so the previously singular import policies would be translated to a list of one element, and all other changes as well.\nSo, this backward compatibility &quot;at boot&quot; is guaranteed, and users who upgrade between releases won&#39;t have issues with it. But as you can see, it is <em>not</em> currently available to the north-bound management interfaces when you send payloads in an older format to the newer one.</p>\n\n<p>Having said that, I am inquiring internally if the transformation infrastructure can be made available to the north-bound interfaces, and if it can we will make sure to provide it. Thanks for flagging this.</p>\n\n<p>TLDR: Contrary to what you have said about the golf courses, I am pretty confident no other big vendor is as receptive to feedback on the management interfaces as we are.</p>\n",
          "id": "2621",
