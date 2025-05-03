@@ -228,7 +228,7 @@ The OSPF database on A2 still contains the summary LSAs created by A1 before the
 There is no way to flush those LSAs from the OSPF database. Resetting the OSPF process on A2 will remove them, but they will reappear as soon as the A2-S2 adjacency is reestablished and S2 tells A2 it has a few interesting LSAs to share ([more scary details](https://blog.ipspace.net/2020/10/redistributing-bgp-into-ospf/)).
 {{</note>}}
 
-### Reproducing the Results
+### Reproducing the Results {#netlab}
 
 I used the [following *netlab* topology](https://github.com/ipspace/netlab-examples/blob/master/OSPF/area-range/topology.yml) when writing this blog post. You can start it (immediately and free-of-charge) in a [GitHub Codespace container](/2024/07/netlab-examples-codespaces/) -- change the directory within the Codespace container to `OSPF/area-range` and execute **netlab up**. Have fun.
 
@@ -275,3 +275,5 @@ links:
 * The OSPF area of a node's loopback interface has to be specified in the node data (lines 8, 11, 14, 16, 18, and 20). The default OSPF area is zero (backbone), but I still specified it on A1 and A2 to make it more evident.
 * If the attached nodes have different OSPF areas, the link's OSPF area might have to be specified (lines 27, 30, and 33).
 * I used [link groups](https://netlab.tools/links/#link-groups) to set the same **ospf.area** on multiple links. The group names also nicely describe what the links do.
+
+{{<next-in-series page="/posts/2025/05/ospf-area-range-loop-prevention.md" />}}
