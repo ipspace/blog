@@ -219,7 +219,7 @@ Link ID         ADV Router      Age  Seq#       CkSum  Route
 192.168.0.0    10.0.0.4        3600 0x80000001 0x10c1 192.168.0.0/24
 ```
 
-However, even though the **area range** is now inactive (A2 has no information about prefixes within 192.168.0.0/24), A2 neither creates a discard route nor uses the backbone summary LSA for 192.168.0.0/24. Consequently, area 3 loses reachability with area 1.
+Even though the **area range** is now inactive (A2 has no information about prefixes within 192.168.0.0/24), A2 neither creates a discard route nor uses the backbone summary LSA for 192.168.0.0/24. Consequently, area 3 loses reachability with area 1.
 
 {{<cc>}}Best OSPF routes on A2 running FRRouting{{</cc>}}
 ```
@@ -234,6 +234,10 @@ N IA 10.0.0.5/32           [20] area: 0.0.0.0
 N    10.0.0.6/32           [10] area: 0.0.0.3
                            via 10.0.0.6, eth3
 ```
+
+However, after the router link states in the OSPF database on A2 age out, A2 generates the expected summary LSAs for the now-inactive area range. It looks like FRRouting OSPF implementation determines whether an area range is *active* based on the presence of LSAs in the OSPF database, not on whether (yet again quoting RFC 2328, this time [section 11.1](https://datatracker.ietf.org/doc/html/rfc2328#page-111)):
+
+> The range contains one or more networks **reachable** by intra-area paths.
 
 ### Reproducing the Results
 
