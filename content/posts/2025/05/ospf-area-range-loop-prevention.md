@@ -1,6 +1,6 @@
 ---
 title: "OSPF Loop Prevention with Area Range Summary LSAs"
-date: 2025-05-07 08:17:00+0200
+date: 2025-05-06 08:17:00+0200
 tags: [ OSPF ]
 ospf_tag: areas
 ---
