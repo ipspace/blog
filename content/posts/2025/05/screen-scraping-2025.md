@@ -13,7 +13,10 @@ He's right, particularly from Juniper's perspective; they were the first vendor 
 <!--more-->
 * Even the best vendors sometimes slip and create a **show** command that cannot produce JSON or XML output (because it's faster to sprinkle **printf** statements throughout the code than doing the right thing). In those cases, [screen scraping](https://blog.ipspace.net/kb/CiscoAutomation/050-scraping/) (collecting the results of a **show** command and trying to extract interesting bits of data from them) is the only way to go.
 * Many vendors added JSON/XML output as an afterthought, and numerous **show** commands still cannot generate outputs in one of those formats.
+* Vendors that generate JSON/XML "by hand" (instead of dumping a data structure that was used to generate the **show** printout) sometimes produce invalid JSON/XML data[^AWC].
 * There are still vendors that haven't gotten the "_JSON is the new SNMP_" memo ;)
+
+[^AWC]: It could be as bad as not quoting single and double quotes in interface descriptions.
 
 If you have to implement screen scraping for some devices, you might decide to do it for everything you have to work with as the least common denominator (and the least amount of headache).
 
