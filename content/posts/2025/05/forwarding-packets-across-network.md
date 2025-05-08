@@ -1,5 +1,5 @@
 ---
-date: 2025-05-09 08:20:00+02:00
+date: 2025-05-08 08:20:00+02:00
 networking-fundamentals_tag: switching
 tags:
 - Networking fundamentals
