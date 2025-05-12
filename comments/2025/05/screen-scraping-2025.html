@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -13,6 +13,40 @@
               </span>
             </div>
             <div class="comment-content"><p>That&#39;s why I absolutely love EOS, no need to use text_fsm or ntc_templates, just run the command, get output and json.load it :-)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2630">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bob</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2630" href="#2630">12 May 2025 05:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan. Thank you for another great article.</p>
+
+<p>I mostly agree with your main point: scripting a regex parser for a single use case will often be simpler to get the job done, but is not scalable to a complex network (with its various and changing vendors/hw/versions) and thus &quot;not the right thing&quot;. But I have to react on some of the more precise points you made.</p>
+
+<p>1/ XML and JSON are different in nature and both have pros and cons. I believe XML is better than JSON to serialize a complex router configuration, because its tree-like structure better maps a router configuration model, it supports namespaces (essential when dealing with native <em>and</em> IETF/openconfig models) and tag attributes: you can&#39;t even put metadata on a JSON object (&quot;dictionnary&quot;), unless by using a hack such as prepending a sub key/value with &quot;@&quot;.
+Anyway, you&#39;d rather use XML than JSON with NETCONF, because the former was the initial serialization language, while a serious support for the latter came only later (and for the known problems you mentionned) (NB: note an intrisic argument, but a pragmatic one).</p>
+
+<p>2/ Yes, if models are poorly structured/written and/or overly verbose, it will be a treasure hunt to find the proper request to get exactly the information you need (NB: no, chatgpt cannot do that, at least not for SROS), and yes it is easier to find it using show commands <strong>you already mastered</strong> and some regexes. You cannot work as comfortably with protocols and languages like NETCONF/XML/JSON/YANG than with show commands simply because the former were designed for machine-to-machine communication, while the latter is made for humans. You need tooling to work smartly with those automation things (parser, requester, explorers, request generator, etc.).</p>
+
+<p>3/ A show command does not always have a Model-Driven equivalent because it might be a compilation of diverse elements put on a table for an operator to read with his eyes and process with his brain. Cf. my previous remark on machine-to-machine.</p>
+
+<p>4/ Yes the IETF has biases, but HTTP/JSON/Python is not the only hammer out there ;-) Sure, HTTP/TLS could have been chosen instead of ssh. I guess people at the IETF (but also network engineer and techniciansi) were simply more familiar with ssh rather than HTTP, and back in 2006 (rfc4741) HTTP was not as ubiquitous as today. ssh still is ubiquitous for system and routers management though, and does not limit NETCONF.</p>
+
+<p>Alternatively, gRPC-based protocols such as gNMI (NETCONF competitor) are based on HTTP2/TLS, and work with the same YANG models. BTW, protobufs (gRPC serialization format) is <a href="https://protobuf.dev/">compared</a> to &quot;XML, but smaller, faster, and simpler&quot; and <em>not</em> JSON... food for thoughts. Don&#39;t even mention RESTCONF, the REST hammer is not suited for the job (bye bye transactions).</p>
+
+<p>5/ Yes, a vendor might make some breaking change to its YANG model while leaving its show command intact. That can be anticipated by reading the YANG changes (I agree that in some intricate models this is no simple task). The other way around, if the show command changes, good luck anticipating that: are you running some genAI to parse the vendor PDFs? it might not even be listed anywhere else than the developer post-it note.</p>
+
+<p>6/ Yes, NETCONF/YANG borrow from SNMP/MIBs, but overcome many of their limitations, see rfc3535 for reference.</p>
+
+<p>PS: Oops, sorry, made an extensive comment again... :-)
+PS2: answering on the NAT articles soon.</p>
 </div>
           </div>
         </li>
