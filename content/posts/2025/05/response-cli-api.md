@@ -19,8 +19,14 @@ The (3) you will have to do anyway even with structured API, when handling the c
 
 ---
 
+It looks like Cisco (having to deal with ancient codebase with **printf** statements sprinkled all over it) did something like what Andrew suggested at least once ([pyATS](https://developer.cisco.com/docs/pyats/parsing-device-output/#device-output-parsing)/[Genie](https://developer.cisco.com/docs/genie-docs/)) if not twice ([ConfD on Cisco IOS/XE](https://blog.ipspace.net/2017/04/netconf-agents-on-cisco-ios-xe-16x/)).
+
 Not surprisingly, Tony disagreed (probably based on his battle scars):
 
 ---
 
 Sorry, it's largely putting lipstick on you know what. It's _impossible_ to know as a vendor what kind of "smart regexes" some customer put in that can deal with "any change" until they can't. Because whatever the "smart regex" is it is still something that does fundamentally not understand the semantic structure of the underlying output. And having dealt with some of it it's about the third circle of hell to maintain such "super smart regexes" with backtracking and whatever else not ...
+
+---
+
+I have to agree with Tony: regexes suck, and I always prefer to work with structured data... if only the vendors wouldn't make it so cumbersome that [it's easier to deal with the pain of screen-scraping](/2025/05/screen-scraping-2025/).
