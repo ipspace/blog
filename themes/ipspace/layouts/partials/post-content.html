@@ -3,6 +3,14 @@
   <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
     {{ partial "post-header.html" . }}
     <div class='post__content' itemprop='articleBody'>
+      {{ if .Params.intro }}
+        {{ $intro_expires := time.AsTime (index .Params "intro_expires" | default "2100-01-01") }}
+        {{ if gt $intro_expires (time.Now) }}
+          <div class="long-quote" style="font-style: italic;">
+            {{ .Params.intro|markdownify }}
+          </div>
+        {{ end}}
+      {{ end }}
       {{ $truncated := and (or .Truncated .Params.summary) (not $full) }}
       {{ if $truncated }}
         {{ if .Params.summary }}
