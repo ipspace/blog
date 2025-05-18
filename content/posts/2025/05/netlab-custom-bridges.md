@@ -4,9 +4,6 @@ series_title: "Use Custom Bridges on Multi-Access Links"
 date: 2025-05-20 08:17:00+0200
 tags: [ netlab ]
 netlab_tag: guidelines
-intro: |
-  I'm writing a series of blog posts describing the new features in _netlab_ release 2.0. The regular rants will resume in a few days.
-intro_expires: 2025-05-24 09:17:00+0200
 ---
 _netlab_ uses [point-to-point links provided by the underlying virtualization software](/2025/02/virtual-labs-p2p-links/) to implement links with two nodes and [Linux bridges to implement links with more than two nodes connected to them](/2025/02/virtual-lab-links/). That's usually OK if you don't care about the bridge implementation details, but what if you'd like to use a bridge (or a layer-2 switch if you happen to be of marketing persuasion) you're familiar with?
 
