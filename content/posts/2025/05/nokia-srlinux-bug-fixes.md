@@ -3,7 +3,7 @@ title: "Amazing Speed of Bug Fixes in Nokia SR Linux"
 date: 2025-05-21 08:25:00+0200
 tags: [  ]
 ---
-A few weeks ago, I was [criticising Nokia's lackadaisical way of dealing with unnecessary changes in the SR Linux configuration data model](/2025/04/api-data-model-contract/), so it's only fair that I also publish a counterexample:
+A few weeks ago, I was [criticising Nokia's unnecessary changes to the SR Linux configuration data model](/2025/04/api-data-model-contract/), so it's only fair that I also publish a counterexample:
 
 * On April 12th, SR Linux failed one of the [_netlab_ integration tests](https://tests.netlab.tools/). We keep adding functionality to these tests as we discover edge cases we didn't test before, so sometimes a device that passed the test before might fail the modified version.
 * I [opened a netlab issue](https://github.com/ipspace/netlab/issues/2142), believing it might be a configuration error on our part.
