@@ -194,7 +194,7 @@ case "$1" in
     ;;
   title)
     URL=$(pbpaste)
-    FIXURL=$(echo $URL|sed -e 's#https?://(localhost:1313|blog.ipspace.net)##')
+    FIXURL=$(echo $URL|sed -E -e 's#https?://(localhost:1313|blog.ipspace.net)##')
     case "${2:-link}" in
       clip)
         $SCRIPT_DIR/url-to-title.sh $URL|pbcopy
@@ -202,6 +202,10 @@ case "$1" in
       link)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
         echo -n "[$TITLE]($FIXURL)"|pbcopy
+        ;;
+      url)
+        echo $FIXURL|pbcopy
+        echo $FIXURL copied to clipboard
         ;;
       md)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)

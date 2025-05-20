@@ -1,6 +1,6 @@
 ---
 title: "ChatGPT Strikes Again: IS-IS on Unnumbered Interfaces 🤦‍♂️"
-date: 2025-05-24 08:36:00+0200
+date: 2025-05-27 08:36:00+0200
 tags: [ AI ]
 ai_tag: kick
 ---
