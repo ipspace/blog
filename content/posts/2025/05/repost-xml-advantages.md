@@ -14,7 +14,7 @@ Having read [your newest rant around my rant](/2025/05/screen-scraping-2025/) ;-
 * XML output big? yeah.
 * JSON squishy syntax? yeah.
 * SSH prioritization? You didn't live it until you had a customer where a runaway python script generated 800+ XML netconf sessions pumping data ;-)
-
+<!--more-->
 So, all very correct what you say _however_ having lived all the dreams, I'm still very much for XML. Yes, XSLT and XML matching ain't for the faint of heart, but unless you properly account for the semantic structure of the data, a reliable, maintainable network automation is looking for a free lunch AFAIS.
 
 Which all boils down to the same underlying principle. You have complex problems, you need to hire smarter and smarter (well-educated) folks to deal with them. AI can help some, and the more structured the data, the more it can help, but complexity calls for general intelligence, something today only smart people bring to the table IME.
