@@ -1,6 +1,6 @@
 ---
 title: "Worth Reading: Practical Advice for Engineers"
-date: 2025-05-23 07:48:00+0200
+date: 2025-05-28 07:48:00+0200
 tags: [ worth reading ]
 ---
 Sean Goedecke published an interesting compilation of [practical advice for engineers](https://www.seangoedecke.com/in-these-troubled-times/). Not surprisingly, they include things like "_focus on fundamentals_" and "_spend your working time doing things that are valuable to the company and your career_" (OMG, does that really have to be said?).
