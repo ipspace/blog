@@ -35,7 +35,7 @@ links:
 **Notes:**
 
 * The **mybridge** device is running Arista EOS (line 13) using VLANs (line 14)
-* We have to define a VLAN we'll use to connect the hosts (lines 5-6) and put it into **mybridge** mode (line 7) to ensure the bridge device does not get an IP address on the VLAN interface.
+* We have to define a VLAN we'll use to connect the hosts (lines 5-6) and put it into **bridge** mode (line 7) to ensure the bridge device does not get an IP address on the VLAN interface.
 * Finally, we have to define two VLAN access links connecting H1 and H2 to the bridge (lines 17-20)
 
 Wouldn't it be better if we could just tell _netlab_ to use an Arista EOS node as a bridge to implement a link? That's precisely what you can do with [*bridge* nodes](https://netlab.tools/node-roles/#node-role-bridge) in [netlab release 2.0](https://netlab.tools/release/2.0/).
