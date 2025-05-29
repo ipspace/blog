@@ -6,7 +6,7 @@ netlab_tag: quirks
 ---
 _I thought I've [seen it all](/tag/netlab#quirks), but the networking vendors (and their lack of testing) never cease to amaze me. Today's special: ArubaCX software VXLAN implementation._
 
-We decided it's a good idea to rewrite the VXLAN integration tests to use one target device and one FRR container to test inter-vendor VXLAN interoperability. After all, what could possibly go wrong with a [simple encapsulation format](https://www.rfc-editor.org/rfc/rfc7348.html) that could be described on a single page?
+We decided it's a good idea to rewrite the [VXLAN integration tests](https://github.com/ipspace/netlab/tree/dev/tests/integration/vxlan) to use one target device and one FRR container to test inter-vendor VXLAN interoperability. After all, what could possibly go wrong with a [simple encapsulation format](https://www.rfc-editor.org/rfc/rfc7348.html) that could be described on a single page?
 
 Everything worked fine (as expected), except for the ArubaCX VM (running release Virtual.10.15.1005, build ID AOS-CX:Virtual.10.15.1005:9d92f5caa6b6:202502181604), which failed every single test.
 <!--more-->
