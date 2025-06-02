@@ -2,7 +2,7 @@
 date: 2025-05-08 08:20:00+02:00
 networking-fundamentals_tag: switching
 tags:
-- Networking fundamentals
+- networking fundamentals
 title: Forwarding Packets Across a Network
 comment: |
   In September 2020, I created the [Getting Packets Across the Network](https://my.ipspace.net/bin/get/Net101/SW2%20-%20Getting%20Packets%20Across%20the%20Network.mp4?doccode=Net101) video as part of the [How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work). This blog post is a Whisper transcript edited by ChatGPT and polished by Yours Truly ;)
@@ -86,3 +86,5 @@ Technologies using this model include:
 * CLNP (for the three people still running OSI to manage their SONET/SDH gear)
 * Transparent bridging
 * More advanced bridging protocols like Provider Backbone Bridging (PBB), TRILL, and SPB
+
+{{<next-in-series page="/posts/2025/05/multi-layer-switching-tunneling.html" />}}

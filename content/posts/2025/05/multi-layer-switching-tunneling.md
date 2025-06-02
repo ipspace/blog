@@ -2,7 +2,7 @@
 date: 2025-05-30 08:20:00+02:00
 networking-fundamentals_tag: switching
 tags:
-- Networking fundamentals
+- networking fundamentals
 title: Multi-Layer Switching and Tunneling
 comment: |
   In September 2020, I created the [Multi-Layer Switching and Tunneling](https://my.ipspace.net/bin/get/Net101/SW3%20-%20Multi-Layer%20Switching%20and%20Tunneling.mp4?doccode=Net101) video as part of the [How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work). This blog post is a Whisper transcript cleaned up by ChatGPT and edited by Yours Truly ;)
@@ -110,3 +110,5 @@ Key differences:
 -   The IP header isn’t examined at all.
 
 To summarize: in **virtual circuit-based forwarding**, routers swap the **circuit ID**, while in **IP routing**, they discard Layer 2 headers, do another network-layer lookup, and create a new Layer 2 header.
+
+{{<next-in-series page="/posts/2025/06/finding-paths-across-network.md" />}}

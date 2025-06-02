@@ -27,23 +27,35 @@ Regardless of how far down this page you'll get, these blog posts are a must-rea
 
 The rest of the fundamentals-related blog posts are collected on this page.
 
+{{<toc>}}
+
 [^CLI]: In the stricter sense, not in the "every CLI jockey is called an engineer these days" one
 
-### {{<plushy idea>}}Network Addressing
+## Network Addressing
 
-Addresses and routes are the basic concepts anyone dealing with a network must (eventually) grasp. These blog posts describe how we got a hierarchy of addresses:
+{{<plushy idea>}}Addresses and routes are the basic concepts anyone dealing with a network must (eventually) grasp. These blog posts describe how we got a hierarchy of addresses:
 
 {{<series-listing tag="addr">}}
 
-### {{<plushy master>}}Deep Dives
+I also compared the device addresses (used in OSI) and interface addresses (used in TCP/IP):
 
-These blog posts dive deeper into interesting topics:
+{{<series-listing tag="osi">}}
+
+## Bridging, Routing, and Switching
+
+There is a single reason we build computer networks (apart from job security): we want them to transport data between the attached endpoints. These blog posts describe some of the interesting details:
+
+{{<series-listing tag="switching">}}
+
+## Deep Dives
+
+{{<plushy master>}}These blog posts dive deeper into interesting topics:
 
 {{<series-listing tag="deep">}}
 
 If you like them, it's probably time you start exploring the [deep-dive series](#series) I already mentioned.
 
-### A Bit of a History
+## A Bit of a History
 
 These blog posts might help you figure out some less obvious details or give you a historical perspective on why networking technologies evolved to where we are right now:
 
@@ -53,13 +65,13 @@ If you want to dive deeper into historical technologies, you might enjoy the com
 
 {{<series-listing tag="osi">}}
 
-### {{<plushy angry>}}There Be Rants
+## There Be Rants
 
-Long-time readers know I can't resist a good rant:
+{{<plushy angry>}}Long-time readers know I can't resist a good rant:
 
 {{<series-listing tag="rant">}}
 
-### Everything Is a Graph
+## Everything Is a Graph
 
 You can represent every network as a graph of network devices (nodes) and links[^MAC]. Rachel Traylor covered the graph theory  in the (free) [Network Connectivity, Graph Theory, and Reliable Network Design](https://my.ipspace.net/bin/list?id=Graph) and [Graph Algorithms in Networks](https://my.ipspace.net/bin/list?id=Algorithms) webinars; these blog posts might provide some extra details:
 
@@ -67,9 +79,9 @@ You can represent every network as a graph of network devices (nodes) and links[
 
 [^MAC]: Multi-access networks are represented as pseudo-nodes
 
-### {{<plushy happy>}}Networking Fundamentals Videos
+## Networking Fundamentals Videos
 
-Finally, I published [dozens of videos describing the networking concepts](/2019/08/the-first-networking-fundamentals/) as part of the [How Networks Really Work webinar](https://my.ipspace.net/bin/list?id=Net101) that got at least [some minor positive feedback](/2020/05/feedback-how-networks-really-work/). The videos describe:
+{{<plushy happy>}}Finally, I published [dozens of videos describing the networking concepts](/2019/08/the-first-networking-fundamentals/) as part of the [How Networks Really Work webinar](https://my.ipspace.net/bin/list?id=Net101) that got at least [some minor positive feedback](/2020/05/feedback-how-networks-really-work/). The videos describe:
 
 **Business aspects of networking technologies**
 

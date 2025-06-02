@@ -2,7 +2,7 @@
 date: 2025-04-25 07:45:00+02:00
 networking-fundamentals_tag: switching
 tags:
-- Networking fundamentals
+- networking fundamentals
 title: Switching, Routing, and Bridging Terminology
 series_title: Terminology
 comment: |
@@ -96,3 +96,5 @@ In this webinar, I’ll try to use consistent terminology:
 
 **Q: Isn’t all switching capable of routing today?**  
 **A:** Not always. High-end data center switches often support full IP routing. But in campus or industrial environments, you’ll still find switches that need separate licenses for routing or only support bridging.
+
+{{<next-in-series page="/posts/2025/05/forwarding-packets-across-network.html" />}}
