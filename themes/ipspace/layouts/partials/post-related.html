@@ -10,7 +10,7 @@
       {{ with ($.Site.GetPage (printf "/tags/%s" ( . | urlize ))) }}
         <ul>
           {{ $scr.Set "relcnt" 0 }}
-          {{ range first 10 .Pages }}
+          {{ range first 10 .Pages.ByDate.Reverse }}
             {{ if not (in ($scr.Get "links") .Permalink) }}
               {{ $scr.Add "relcnt" 1 }}
               {{ if le ($scr.Get "relcnt") 6 }}
