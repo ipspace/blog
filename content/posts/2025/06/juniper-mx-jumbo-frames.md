@@ -1,6 +1,6 @@
 ---
 title: "Interesting: Juniper MX and Jumbo Frames"
-date: 2025-06-05 07:41:00+0200
+date: 2025-06-10 07:41:00+0200
 tags: [ worth reading ]
 ---
 Did you know that there's an Ethernet link between the Packet Forwarding Engine (PFE -- data plane) and Routing Engine (RE -- control plane) in every Juniper MX? That's why you have to run two VMs to emulate it (sometimes conveniently packed into one larger VM, proving RFC 1925 rule 6a).
