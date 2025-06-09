@@ -8,7 +8,7 @@ I got an interesting question from a reader. He listened to my podcast with Eric
 > Currently, I'm studying for the CCNP ENARSI exam, and would like to start posting my labs to LinkedIn, and perhaps even upload my lab topologies and configs to Git.
 
 That's a great idea. I would minimize the LinkedIn part[^FTT] and focus on Git:
-
+<!--more-->
 [^FTT]: If you're a regular reader, you probably know my thoughts on ~~feeding~~ financing the social media ~~trolls~~ juggernauts with your content.
 
 * Create a Git repo for your lab content and host it on GitHub (or any other similar service of your choice). While you're at it, add another one for your future website.
