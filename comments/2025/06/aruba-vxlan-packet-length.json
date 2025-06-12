@@ -1,0 +1,26 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "12 June 2025 05:54",
+               "html": "<p>Thanks for pointing that out. I have no idea whether the UDP checksum is valid (but you can download the pcaps and check), but we have a bigger mismatch between the Ethernet frame length and the IP/UDP packet/payload length (which is too large for the Ethernet frame in which it&#39;s sitting).</p>\n",
+               "id": "2663",
+               "name": " Ivan",
+               "pub": "2025-06-12T17:54:42",
+               "ref": "2662",
+               "type": "comment"
+            }
+         ],
+         "date": "12 June 2025 05:51",
+         "html": "<p>(disclaimer - I work for Arista) One thing to note is the RFC7348 says \n<pre>\r\nUDP Checksum: It SHOULD be transmitted as zero.  When a packet\r\n         is received with a UDP checksum of zero, it MUST be accepted\r\n         for decapsulation.  Optionally, if the encapsulating end point\r\n         includes a non-zero UDP checksum, it MUST be correctly\r\n         calculated across the entire packet including the IP header,\r\n         UDP header, VXLAN header, and encapsulated MAC frame.  When a\r\n         decapsulating end point receives a packet with a non-zero\r\n         checksum, it MAY choose to verify the checksum value.  If it\r\n         chooses to perform such verification, and the verification\r\n         fails, the packet MUST be dropped.  If the decapsulating\r\n         destination chooses not to perform the verification, or\r\n         performs it successfully, the packet MUST be accepted for\r\n         decapsulation.\r\n</pre>\nso perhaps if the packet is allowed by the &quot;firewall&quot; any vxlan implementation has to process it if there is no udp checksum (which looks to be the case in your packet capture).</p>\n",
+         "id": "2662",
+         "name": " Edmund R",
+         "pub": "2025-06-12T17:51:08",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2025/06/aruba-vxlan-packet-length.html"
+}

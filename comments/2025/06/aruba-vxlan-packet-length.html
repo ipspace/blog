@@ -1,0 +1,62 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2662">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Edmund R</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2662" href="#2662">12 June 2025 05:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>(disclaimer - I work for Arista) One thing to note is the RFC7348 says 
+<pre>
+UDP Checksum: It SHOULD be transmitted as zero.  When a packet
+         is received with a UDP checksum of zero, it MUST be accepted
+         for decapsulation.  Optionally, if the encapsulating end point
+         includes a non-zero UDP checksum, it MUST be correctly
+         calculated across the entire packet including the IP header,
+         UDP header, VXLAN header, and encapsulated MAC frame.  When a
+         decapsulating end point receives a packet with a non-zero
+         checksum, it MAY choose to verify the checksum value.  If it
+         chooses to perform such verification, and the verification
+         fails, the packet MUST be dropped.  If the decapsulating
+         destination chooses not to perform the verification, or
+         performs it successfully, the packet MUST be accepted for
+         decapsulation.
+</pre>
+so perhaps if the packet is allowed by the &quot;firewall&quot; any vxlan implementation has to process it if there is no udp checksum (which looks to be the case in your packet capture).</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2663">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2663" href="#2663">12 June 2025 05:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for pointing that out. I have no idea whether the UDP checksum is valid (but you can download the pcaps and check), but we have a bigger mismatch between the Ethernet frame length and the IP/UDP packet/payload length (which is too large for the Ethernet frame in which it&#39;s sitting).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
