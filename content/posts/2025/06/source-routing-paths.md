@@ -28,6 +28,23 @@ With that information, the controller can push path information to all nodes. Fo
 
 The traditional routing protocols (IS-IS or OSPF) are used to assign labels to nodes, and the PCE controller collects the topology information, calculates the end-to-end paths, and installs label stacks (or IPv6 headers) in the forwarding tables of the edge nodes (for more details, watch the [PCEP and BGP-LS Deep Dive](https://my.ipspace.net/bin/list?id=PCEP) webinar)
 
+### Virtual Circuit Establishment in the Old Days
+
+Before someone decided to call their contraption Software Defined, the devices now pretending to be *SDN controllers* were called **network management systems** (NMS). However, in most cases, the only interaction with those systems was an out-of-band management-plane protocol:
+
+* You’d fill out a form
+* You'd fax that form to your provider
+* There might be a contract to be negotiated and signed
+* Months later, someone at the NMS GUI would click through and provision your circuit. That’s how **Frame Relay** and **ATM** worked.
+
+Some networks allowed dynamic requests for circuits—these were called **switched virtual circuits**, as opposed to **permanent virtual circuits** set up by the NMS. Switched circuits existed in **X.25**, **ATM**, and still exist in **MPLS TE** today.
+
+But again, the same challenges apply:
+
+* Path failures must be detected.
+* Failures must be reported back to the NMS, which has to recalculate the paths
+* A large number of virtual circuits failing at once—say, due to a core link going down—can overwhelm the control plane.
+
 ### Source Route Bridging
 
 **Source route bridging** (the technology used to implement Token Ring networks) used *discovery frames*. Let's say X wants to communicate with Y but has no idea where Y is.
@@ -48,44 +65,18 @@ The discovery frame includes the full return path, so Y can reply to X using the
 
 The SRB sounds like a great idea, but it had no built-in mechanism to detect failures. If something failed along the path from X to Y, all the subsequent packets from X to Y would be dropped. Eventually, X would time out, panic, and start sending discovery frames again to locate Y and reestablish the path.
 
-### Segment Routing with MPLS
+### Segment Routing
 
-In **Segment Routing with MPLS** (SR/MPLS), all nodes participate in a core routing protocol like **OSPF** or **IS-IS**. Each node advertises its label. So, if you want to send packets from X to Y through A → C → D → E, you just collect the labels and prepend a label stack to the packet. Done.
+In a controller-less **Segment Routing** (SR), all nodes participate in a core routing protocol like **OSPF** or **IS-IS**. Each node advertises a node label (Segment Identifier -- SID) and optional interface and prefix labels. So, if you want to send packets from X to Y through A → C → D → E, you just collect the labels and prepend a label stack to the packet. Done.
 
-SR/MPLS is also quite effective in handling failures, as it relies on the underlying routing protocol to detect the failure and recalculate the underlying topology. X can then recalculate its label stack and adjust its path to something like A → B → E.
-
+SR is also quite effective in handling failures, as it relies on the underlying routing protocol to detect the failure and recalculate the underlying topology. X can then recalculate its label stack and adjust its path to something like A → B → E.
 
 ### MPLS Traffic Engineering (MPLS/TE)
 
-In **MPLS TE**, X uses a signaling protocol (RSVP) to establish a unidirectional virtual circuit (often referred to as a tunnel) to Y, using the information provided by an underlying routing protocol. Alternatively, a PCE controller can calculate the path from X to Y and tell X what path to use in its RSVP request.
+In **MPLS TE**, X uses a signaling protocol (RSVP) to establish a unidirectional virtual circuit (often referred to as a tunnel) to Y, using the information provided by an underlying routing protocol (most often IS-IS or OSPF with TE extensions). Alternatively, a PCE controller can calculate the path from X to Y and tell X what path to use in its RSVP request.
 
-If a link fails, the downstream node sends an error message: “Tunnel failed.” X then has to decide what to do next.
+If a link fails, the downstream node sends an error message: “Tunnel failed.” X then has to decide what to do next. X could recalculate the path or rely on a PCE SDN controller that must intervene and push new instructions to X. Until that happens, the network stalls—packets are lost or delayed.
 
-If there’s an SDN controller, it must intervene and push new instructions to X. Until that happens, the network stalls—packets are lost or delayed.
-
-In traditional MPLS TE, X reestablishes the tunnel by sending a new request. It typically works—unless you’re dealing with a large, aging network.
-
-That’s what happened (or so I was told) to an Asian service provider during an earthquake. Several core links failed, tearing down thousands of tunnels between nodes like C and D. That triggered thousands of error messages and caused all source nodes to panic and try to reestablish tunnels at once.
+In traditional MPLS TE, X reestablishes the tunnel by sending a new RSVP request. It typically works—unless you’re dealing with a large, overprovisioned network full of ~~spaghetti~~ tunnels. That’s what happened (or so I was told) to an Asian service provider during an earthquake. Several core links failed, tearing down thousands of tunnels between end nodes. That triggered thousands of error messages and caused all source nodes to panic, attempting to reestablish tunnels simultaneously.
 
 The resulting control plane overload caused nodes to crash or ignore the traffic. The network was effectively down for a day until things stabilized.
-
-So, in virtual circuit-based environments—especially when the source has to reestablish paths—core link failures can be a big deal.
-
-------------------------------------------------------------------------
-
-
-### Circuit Establishment in the Old Days
-
-Traditionally, virtual circuits were set up by a **network management system (NMS)**—not a controller per se. Usually, you’d fill out a form, fax it to your provider, wait for a contract, and months later, someone at the NMS GUI would click through and provision your circuit. That’s how **Frame Relay** and **ATM** worked.
-
-Some networks allowed dynamic requests for circuits—these were called **switched virtual circuits**, as opposed to **permanent virtual circuits** set up by the NMS. Switched circuits existed in **X.25**, **ATM**, and still exist in **MPLS TE** today.
-
-But again, the same challenges apply:
-
--   Path failures must be detected.
-
--   Failures must be reported back to the source.
-
--   A large number of virtual circuits failing at once—say, due to a core link going down—can overwhelm the control plane.
-
-------------------------------------------------------------------------
