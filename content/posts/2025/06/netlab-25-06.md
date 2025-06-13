@@ -34,6 +34,10 @@ While fixing old stuff, I also added a [few features](https://netlab.tools/relea
 * Inter-VRF route leaking in MPLS/VPN deployments (next step: I have to figure out how to do that on a standalone device)
 * Route import into BGP, OSPFv2, OSPFv3, and IS-IS
 
+{{<note info>}}
+Miguel Redondo Ferrero (via Roman Dodin) helped me figure out the intricacies of EVPN transit VNI configuration and the export of EVPN routes into PE-CE routing protocols. Thanks a million!
+{{</note>}}
+
 I must admit that I kind of liked working with SR-OS. Apart from a few conceptual quirks[^CQ], it's pretty fast, quite neat, and easy to work with (once you figure out configuration changes won't be applied until you do a **commit**). If only there were an easy way to get the VM image...
 
 [^CQ]: For example, global routing protocols are configured in _base **Router**_ instance while the user-facing interfaces these protocols are using are defined in Internet Edge Services instance.
