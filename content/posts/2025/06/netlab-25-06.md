@@ -15,7 +15,7 @@ Now for the new features:
 * [Redistribution](https://netlab.tools/module/routing_protocols/#routing-import) of [static routes](https://netlab.tools/module/routing/#generic-routing-static) into OSPF, IS-IS, RIPv2, RIPng, and BGP
 * Link aggregation on Junos.
 
-Unfortunately, instead of creating other cool features, I had to spend 90% of my time fixing the ancient ruins of Nokia SR-OS configuration templates. This is how the integration test report for Nokia SR-OS looked on May 25th:
+I hope you'll find these features useful, but also that at least someone will benefit from the time I spent fixing the ancient ruins of Nokia SR-OS configuration templates. This is how the integration test report for Nokia SR-OS looked on May 25th:
 
 {{<figure src="/2025/06/sros-report-initial.png">}}
 
@@ -38,9 +38,11 @@ While fixing old stuff, I also added a [few features](https://netlab.tools/relea
 Miguel Redondo Ferrero (via Roman Dodin) helped me figure out the intricacies of EVPN transit VNI configuration and the export of EVPN routes into PE-CE routing protocols. Thanks a million!
 {{</note>}}
 
-I must admit that I kind of liked working with SR-OS. Apart from a few conceptual quirks[^CQ], it's pretty fast, quite neat, and easy to work with (once you figure out configuration changes won't be applied until you do a **commit**). If only there were an easy way to get the VM image...
+I must admit that I kind of liked working with SR-OS. Apart from a few conceptual quirks[^CQ], it's pretty fast[^CA], quite neat, and easy to work with (once you figure out configuration changes won't be applied until you do a **commit**). If only there were an easy way to get the VM image...
 
 [^CQ]: For example, global routing protocols are configured in _base **Router**_ instance while the user-facing interfaces these protocols are using are defined in Internet Edge Services instance.
+
+[^CA]: Particularly considering the alternatives - Junos on vRouter-switch or the "you can go fix a five-course lunch, I'm booting" IOS XRd.
 
 ### Upgrading or Starting from Scratch?
 
