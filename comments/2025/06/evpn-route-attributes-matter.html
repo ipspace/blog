@@ -1,0 +1,39 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2671">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jorge Rabadan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2671" href="#2671">18 June 2025 04:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for sharing this. When an EVPN route is received with a label field in the NLRI, the BGP speaker must determine whether the route is intended for a VXLAN, MPLS, or SRv6-based service. This distinction is crucial because the interpretation of the label field depends on the encapsulation type: it may represent a 24-bit VNI (VXLAN), a 20-bit MPLS label, or a &quot;transposed&quot; function in SRv6.</p>
+
+<p>RFC 8365 explains that a receiving BGP speaker can identify the intended encapsulation in one of two ways:</p>
+
+<p>1.Through the BGP Encapsulation Extended Community (the standard method used in most implementations), or</p>
+
+<p>2.Via static configuration, which instructs the router to interpret all received EVPN routes using a predefined encapsulation.</p>
+
+<p>This is exactly how it works in both SROS and SR Linux:</p>
+
+<ul>
+<li><p>SR Linux uses default-received-encapsulation &lt;mpls|vxlan&gt;, with a default of vxlan.</p></li>
+<li><p>SROS uses def-recv-evpn-encap &lt;mpls|vxlan&gt;, with a default of mpls.</p></li>
+</ul>
+
+<p>Because the default encapsulations differ between the two NOSes, they will behave differently when the BGP Encapsulation Extended Community is missing and you don&#39;t change the defaults.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

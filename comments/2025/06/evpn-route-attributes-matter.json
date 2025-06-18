@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "18 June 2025 04:17",
+         "html": "<p>Thanks for sharing this. When an EVPN route is received with a label field in the NLRI, the BGP speaker must determine whether the route is intended for a VXLAN, MPLS, or SRv6-based service. This distinction is crucial because the interpretation of the label field depends on the encapsulation type: it may represent a 24-bit VNI (VXLAN), a 20-bit MPLS label, or a &quot;transposed&quot; function in SRv6.</p>\n\n<p>RFC 8365 explains that a receiving BGP speaker can identify the intended encapsulation in one of two ways:</p>\n\n<p>1.Through the BGP Encapsulation Extended Community (the standard method used in most implementations), or</p>\n\n<p>2.Via static configuration, which instructs the router to interpret all received EVPN routes using a predefined encapsulation.</p>\n\n<p>This is exactly how it works in both SROS and SR Linux:</p>\n\n<ul>\n<li><p>SR Linux uses default-received-encapsulation &lt;mpls|vxlan&gt;, with a default of vxlan.</p></li>\n<li><p>SROS uses def-recv-evpn-encap &lt;mpls|vxlan&gt;, with a default of mpls.</p></li>\n</ul>\n\n<p>Because the default encapsulations differ between the two NOSes, they will behave differently when the BGP Encapsulation Extended Community is missing and you don&#39;t change the defaults.</p>\n",
+         "id": "2671",
+         "name": " Jorge Rabadan",
+         "pub": "2025-06-18T16:17:27",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2025/06/evpn-route-attributes-matter.html"
+}
