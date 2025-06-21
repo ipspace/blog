@@ -13,6 +13,12 @@ However, when I ran the full integration tests for all platforms impacted by rel
 
 [^NT]: This time, the answer was "nothing" -- the device templates or the integration test haven't changed in months.
 
+{{<long-quote>}}
+**Update (2025-06-21)**: Three days after I published this blog post, [Nick Boulaine](https://github.com/nick-bouliane) contacted me and told me he chased down the bug and [submitted a PR](https://github.com/FRRouting/frr/pull/19065) fixing it. Great job!
+
+Obviously, it will take a bit longer for the PR to be integrated into the mainstream code and for the next FRR release to be released. I will keep you posted.
+{{</long-quote>}}
+
 Before diving into the details, here's a quick overview of the [lab topology](https://github.com/ipspace/netlab/blob/24325f608d123102fa90096ee66f21a796bdb7c0/tests/integration/evpn/13-vxlan-ebgp-allowas.yml):
 
 * VXLAN with EVPN control plane is used to extend a single VLAN between two leaf switches (L1, L2)
