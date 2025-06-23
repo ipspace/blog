@@ -1,7 +1,7 @@
 ---
 title: "Testing Network Automation Data Transformation"
 netlab_title: "netlab Data Transformation Testing"
-netlab_tag: overview
+netlab_tag: testing
 date: 2024-05-20 08:08:00+0200
 tags: [ automation, netlab ]
 series: [ cicd ]
