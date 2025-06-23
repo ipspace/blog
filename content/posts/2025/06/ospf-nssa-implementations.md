@@ -21,13 +21,18 @@ When we started developing the configuration templates for OSPF areas, I wrote a
 
 The test topology is (as always) [available on GitHub](https://github.com/ipspace/netlab/blob/9031a8031e1dc0be00d3d7cfd69c2782b647ae09/tests/integration/ospf/ospfv2/40-area-parameters.yml), and the test results are summarized in the [OSPFv2](https://tests.netlab.tools/_html/coverage.ospf.ospfv2) and [OSPFv3](https://tests.netlab.tools/_html/coverage.ospf.ospfv3) test results (*Area Parameters* somewhere close to the bottom of the page; click the *Device* link to get more details).
 
-As you can see from the test results, of the devices on which we implemented this functionality[^SPR], only Junos and the latest FRR release passed all the tests with flying colors. Meanwhile:
+As you can see from the test results, of the devices on which we implemented this functionality[^SPR], only Junos and the latest FRR release[^FRT] passed all the tests with flying colors. Meanwhile:
 
-* Cisco IOS (release 17.12) and Arista EOS (release 4.33.1F) do not support NSSA ranges
-* Aruba CX and SR Linux cannot configure the cost of the type-7 default route inserted into the NSSA area
-* Cumulus Linux 5.10 (the last public version) does not translate type-7 routes into type-5 routes due to a bug in the ancient FRR release it's using
-* Dell OS10 (release 10.5.6.6) does not support NSSA ranges (no big deal), but it gets confused when facing the "complex" setup described above and forgets to set the E bit on router LSA, making the translated type-5 LSAs useless.
+* Arista EOS (release 4.33.1F), Cisco IOS (release 17.12), Cumulus Linux 5.10 (the last public version), and Dell OS10 (release 10.5.6.6) do not support NSSA ranges
+* It's impossible to configure the cost of the type-7 default route inserted into the NSSA area on Aruba CX and SR Linux
+* There is no way to configure the range costs (for supported ranges) on ArubaCX or Dell OS10.
+
+But wait, there's more. Dell OS10 sometimes gets confused[^DC] when facing the "complex" setup described above and forgets to set the E bit on router LSA, making the translated type-5 LSAs useless.
 
 [^SPR]: Are you sad that your favorite platform is missing? What's stopping you from submitting a PR with another configuration template?
+
+[^FRT]: Most of the time. Sometimes it would not originate the type-5 LSAs created from NSSA ranges.
+
+[^DC]: To make things worse, that behavior is not deterministic and is somewhat hard to reproduce.
 
 As you can see, it's best not to trust vendors when they claim they support some functionality. I'm positive that all of the above vendors claim they support RFC 3101, and technically, they're not wrong; the devil is in the details, which are often caused by the weasely "should" wording in the RFCs.
