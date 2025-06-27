@@ -33,14 +33,15 @@ For example, to test the **[activation of OSPF on individual interfaces](https:/
 
 [^GTR]: Getting the timing just right is a bit of a challenge. Sometimes the first adjacency is established surprisingly fast, and the second one takes way longer. You should wait an extra 2-3 hello intervals to be on the safe side.
 
-While the above is the simplest possible test one can do, we don't start with it. It takes ridiculously long (if you have to run hundreds of tests on dozens of platforms) for OSPF to establish an adjacency on broadcast networks (the typical default setting); it's much faster to use point-to-point links[^P2PF]. Our first test is therefore **testing the configuration of OSPF network types**:
+While the above is the simplest possible test one can do, we don't start with it. It takes ridiculously long (if you have to run hundreds of tests on dozens of platforms) for OSPF to establish an adjacency on broadcast networks (the typical default setting) due to DR/BDR election; it's much faster to use point-to-point links[^P2PF]. Our first test is therefore **testing the configuration of OSPF network types**:
 
-* Configure one link (P1-DUT) as an OSPF broadcast network and another link (P2-DUT) as an OSPF point-to-point link.
+* Configure one link (X1-DUT) as an OSPF broadcast network and another link (X2-DUT) as an OSPF point-to-point link.
 * Wait for both adjacencies to be established.
+* Check the end-to-end path between X1 and X2.
 
 [^P2PF]: Most devices establish a point-to-point OSPF adjacency within a few seconds; sometimes, it's established before we even start the validation phase. The broadcast adjacency pretty consistently takes around 40 seconds. You can check the validation logs for individual devices for more details; click the device name on the [OSPFv2](https://tests.netlab.tools/_html/coverage.ospf.ospfv2)/[OSPFv3](https://tests.netlab.tools/_html/coverage.ospf.ospfv3) coverage report and then click the green checkmark in the *validated* column of the *01-network* row. View the validation results of other OSPF tests for additional data points; most of them verify the P2P adjacency as the initial step in the validation process.
 
-If a device passes the test, we know that (A) it can activate OSPF on interfaces (but we are not yet sure whether it does that correctly) and (B) that it sets the OSPF network type correctly (because a mismatch in OSPF network type prevents the adjacency from being established). After validating this baseline, we can use the OSPF point-to-point network type in all further OSPF tests, significantly reducing the overall validation time.
+If a device passes the test, we know that (A) it can activate OSPF on interfaces (but we are not yet sure whether it does that correctly) and (B) that it sets the OSPF network type correctly (because a mismatch in OSPF network type breaks the end-to-end path). After validating this baseline, we can use the OSPF point-to-point network type in all further OSPF tests, significantly reducing the overall validation time.
 
 You can probably guess how the other tests work:
 
@@ -50,3 +51,10 @@ You can probably guess how the other tests work:
 * The **OSPF timers** test configures small values for the hello/dead intervals on all devices in the lab and checks for OSPF adjacencies (a timer mismatch also stops the adjacency from forming).
 
 For even more details (or testing ideas), explore the [OSPFv2](https://github.com/ipspace/netlab/tree/dev/tests/integration/ospf/ospfv2) and [OSPFv3](https://github.com/ipspace/netlab/tree/dev/tests/integration/ospf/ospfv3) integration tests in the [netlab GitHub repository](https://github.com/ipspace/netlab).
+
+### Revision History
+
+2025-06-27
+: Erik Auerswald [quickly pointed out that](https://blog.ipspace.net/2025/06/testing-ospf-configurations/#2682) you can get a working OSPF adjacency even when there's a mismatch in the network types; the true test is the end-to-end path between the probes.
+
+  I [modified the integration tests accordingly](https://github.com/ipspace/netlab/commit/18dd5e91aef7d23798d25ee8d98cba8b5076a6e1) and updated the blog post. I also added an explanation for why it takes so much longer to establish an OSPF adjacency over broadcast networks (the hello timers are the same in both cases).
