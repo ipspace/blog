@@ -38,4 +38,4 @@ But wait, there's more:
 
 Rephrased into plain English: Even if you find a mismatch in circuit IDs (the only reason we have them in TLV 240), it's acceptable that you ignore it.
 
-Isn't that a great way to write standards? Everyone can claim compliance, regardless of the details of what they do. On a more realistic front, I [experienced](https://blog.ipspace.net/2015/02/rfc-7454-bgp-operations-and-security/) how the RFC sausage is made and decided to avoid that particular experience in the future (hint: [obstinate vendors](https://blog.ipspace.net/2021/10/ipv6-multiple-addresses-per-interface/) don't help).
+Isn't that a great way to write standards? Everyone can claim compliance, regardless of the details of what they do. On a more realistic front, I [experienced](https://blog.ipspace.net/2015/02/rfc-7454-bgp-operations-and-security/) how the RFC sausage is made, and understand why things sometimes have to be written that way to get the job done (hint: [obstinate vendors or individuals](https://blog.ipspace.net/2021/10/ipv6-multiple-addresses-per-interface/)).
