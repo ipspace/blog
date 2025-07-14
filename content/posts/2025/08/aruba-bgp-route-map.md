@@ -1,13 +1,19 @@
 ---
-title: "ArubaCX Thinks Twice Before Using a Route Map"
-date: 2025-07-18 07:58:00+0200
+title: "ArubaCX Decides When You're Done Changing a BGP Routing Policy"
+date: 2025-08-05 08:16:00+0200
 tags: [ netlab ]
 netlab_tag: quirks
 ---
-Here's another ArubaCX quirk discovered during the _netlab_ pre-release integration tests: it takes "forever" for a simple route map to be applied to outgoing BGP updates to change BGP MED.
+When I was cleaning the "[set BGP MED](https://github.com/ipspace/netlab/blob/5aae878dff0da1ffb256a33532e0748d9ba7df56/tests/integration/bgp.policy/31-med.yml)" integration test, I decided that once a BGP prefix is in the BGP table of the BGP peer, there's no need for a further wait before checking its MED value. After all:
 
-When I was cleaning the "[set BGP MED](https://github.com/ipspace/netlab/blob/5aae878dff0da1ffb256a33532e0748d9ba7df56/tests/integration/bgp.policy/31-med.yml)" integration test, I decided that once a BGP prefix is in the BGP table, there's no need for a further wait before checking its MED value. After all, we execute **do clear bgp \* soft out** at the end of most BGP policy configuration templates (only a few platforms are smart enough to discover the outbound BGP policy has changed on their own). That approach failed miserably with ArubaCX; it was time to investigate the details.
+* We configure an outbound routing policy to change MED;
+* We execute **do clear bgp \* soft out** at the end of most BGP policy configuration templates[^SRP]
+* The device under test should thus immediately (re)send the expected BGP prefix with the target MED.
+
+That approach failed miserably with ArubaCX; it was time to investigate the details.
 <!--more-->
+[^SRP]: Only a few platforms are smart enough to discover the outbound BGP policy has changed on their own
+
 I started the lab, turned on BGP update debugging on the FRRouting device adjacent to the ArubaCX VM, and let _netlab_ configure the devices. This is what it pushed to ArubaCX:
 
 ```
@@ -30,16 +36,7 @@ do clear bgp all * soft out
 do clear bgp all * soft in
 ```
 
-And this is what the FRRouting BGP daemon observed (with running commentaries)
-
-_netlab_ configured baseline BGP first:
-
-```
-2025-07-10 12:50:34.648 [INFO] bgpd: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00
-2025-07-10 12:50:34.648 [DEBG] bgpd: [G6NKK-8C6DV] end_config: VTY:0x7f767f397040, pending SET-CFG: 0
-```
-
-Fifteen seconds later, the BGP session with ArubaCX was established (that was at approximately the same time as _netlab_ configured BGP policy on ArubaCX):
+And this is what the FRRouting BGP daemon observed. First, the BGP session with ArubaCX was established (that was at approximately the same time as _netlab_ configured the BGP policy on ArubaCX):
 
 ```
 2025-07-10 12:50:48.068 [INFO] bgpd: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00
@@ -76,7 +73,19 @@ Twelve seconds later, ArubaCX woke up, realized it had a route map configured on
 2025-07-10 12:51:03.028 [DEBG] bgpd: [YCKEM-GB33T] 10.1.0.1(Unknown) rcvd 10.0.0.42/32 IPv4 unicast
 ```
 
-The updates were **not** triggered by the **do clear bgp all \* soft out** command. They happen so late that the validation test  (run immediately after the device configuration had completed) kept failing until I extended the wait time to 15 seconds (ten would probably do; I wanted to be on the safe side). Also, we set the **neighbor advertisement-interval** to one second (the behavior thus should not be caused by delayed updates), and I found no other timers to tweak.
+The updates were **not** triggered by the **do clear bgp all \* soft out** command (regular readers [already know why](/2025/07/aruba-bgp-soft-reconfiguration/)). They happen so late that the validation test  (run immediately after the device configuration had completed) kept failing until I extended the wait time to 15 seconds (ten would probably do; I wanted to be on the safe side). Also, we set the **neighbor advertisement-interval** to one second, so the behavior should not be caused by delayed updates, and I found no other timers to tweak.
 
-Even worse, when I executed **clear bgp all \* soft out** on ArubaCX, FRRouting noticed no incoming BGP updates. It looks like the **clear bgp all soft out** command is just eye-candy (note: hard-resetting the BGP sessions works).
+To recap:
 
+* Some platforms (Junos, SR-OS, Arista EOS, IOS-XR) allow you to edit a candidate device configuration and *commit* the changes once you're done. It's easy for these platforms to resend BGP updates when they figure out that the routing policies have changed in the candidate configuration.
+* Platforms that immediately apply changes to the running configuration usually don't dare to resend BGP updates after every tiny little change to the routing policy. That would be a nightmare; imagine generating BGP updates all the time you're fixing a prefix list by hand[^SBA].
+
+ArubaCX developers evidently decided to take a more "creative" approach: they obviously detect changes to routing policies and automatically resend the updates a while later. That wouldn't be such a bad idea if:
+
+* I could turn off that feature when I know I'm making plenty of changes.
+* I could tweak the wait timer.
+* I could send the modified BGP updates manually with the **clear bgp soft out** command.
+
+Sadly, I found no way to control that "feature," and the [outbound soft reconfiguration is a no-op](/2025/07/aruba-bgp-soft-reconfiguration/). The only thing missing is an overzealous product manager claiming they implemented AI-driven BGP policy changes.
+
+[^SBA]: Yeah, I know that should be automated, but like COBOL, manual changes will not go away any time soon.
