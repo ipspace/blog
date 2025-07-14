@@ -81,8 +81,16 @@ Now for a few fun facts:
 * **Is this a recent bug?** No, I reproduced it with ArubaCX release 10.13, which is over a year old.
 * **Why do most VRF tests work?** VRF route targets are relevant only when you're doing inter-VRF route leaking or running MPLS/VPN[^ERT]. They don't matter in simple single-device scenarios (and it looks like [the MPLS data plane doesn't work in ArubaCX VM anyway](https://community.arubanetworks.com/discussion/anyone-running-mpls-with-the-simulator))
 * **Why did ArubaCX pass the same test in the past?** Because we checked single-protocol VRFs. Recently, we discovered that our configuration template for another device failed when faced with dual-stack VRFs, so we changed several VRF tests to be dual-stacked.
+* **Does this happen only in ArubaCX VM?** Sadly, [David Williams confirmed](https://www.linkedin.com/feed/update/urn:li:activity:7349325567323725827?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7349325567323725827%2C7349403474645655552%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7349325567323725827%2C7349941121331998720%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287349403474645655552%2Curn%3Ali%3Aactivity%3A7349325567323725827%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287349941121331998720%2Curn%3Ali%3Aactivity%3A7349325567323725827%29) that the physical boxes experience the same behavior.
 * **Would this work with EVPN?** I have no idea, and I don't work for the HPE QA department, so don't expect me to run those tests[^RTY]. You might want to ask your SE a few pointed questions, though.
+* **Is there a workaround?** Sort of. You could use different route targets for IPv4 and IPv6 address families. That would *most probably work&trade;* (see also the previous bullet) for inter-VRF route leaking inside a single box, but you'll run into interesting interoperability challenges when trying to use the same trick in multi-vendor MPLS/VPN networks (the route targets were traditionally assigned to VRFs, not to address families).
 
 [^ERT]: ArubaCX configures EVPN route targets on the VRF level, not the VRF-AF level.
  
 [^RTY]: You could mix [this topology](https://github.com/ipspace/netlab/blob/dev/tests/integration/evpn/30-cs-bridging.yml) with [this one](https://github.com/ipspace/netlab/blob/dev/tests/integration/evpn/22-ospf-ce-router.yml) to test that. Just don't forget to add IPv6 to the mix.
+
+### Revision History
+
+2025-07-14
+: * The physical boxes experience the same problem
+  * Added the description of a potential workaround
