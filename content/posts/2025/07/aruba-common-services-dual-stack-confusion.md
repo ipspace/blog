@@ -72,17 +72,25 @@ Export route-target 65000:2 exists in same VRF
 
 WTA*? It's OK to enter the same *import* route target for IPv4 and IPv6, but not the same *export* route target? Don't these guys ever test their software?
 
-Anyway, one would hope that the error message would trigger an error in the **aoscx_config** Ansible module, right? Well, it doesn't. The problem was reported half a year ago, and [nothing happened](https://github.com/aruba/aoscx-ansible-collection/issues/123) (one has to love open-source issues 😎). Configuration errors are obviously not important.
+Anyway, one would hope the error message would trigger an error in the **aoscx_config** Ansible module, right? Well, it doesn't. The problem was reported half a year ago, and [nothing happened](https://github.com/aruba/aoscx-ansible-collection/issues/123) (one has to love open-source issues 😎). Configuration errors are obviously not significant.
 
-Back to the inter-VRF route leaking on ArubaCX. It works for an IPv4-only VRF and for an IPv6-only VRF, but fails miserably when you try to leak routes between dual-stack VRFs.
+Back to the inter-VRF route leaking on ArubaCX. It works for an IPv4-only VRF and an IPv6-only VRF, but fails miserably when you try to leak routes between dual-stack VRFs.
 
 Now for a few fun facts:
 
 * **Is this a recent bug?** No, I reproduced it with ArubaCX release 10.13, which is over a year old.
-* **Why do most VRF tests work?** VRF route targets are relevant only when you're doing inter-VRF route leaking, or when you're running MPLS/VPN[^ERT]. They don't matter in simple single-device scenarios (and it looks like [the MPLS data plane doesn't work in ArubaCX VM anyway](https://community.arubanetworks.com/discussion/anyone-running-mpls-with-the-simulator))
+* **Why do most VRF tests work?** VRF route targets are relevant only when you're doing inter-VRF route leaking or running MPLS/VPN[^ERT]. They don't matter in simple single-device scenarios (and it looks like [the MPLS data plane doesn't work in ArubaCX VM anyway](https://community.arubanetworks.com/discussion/anyone-running-mpls-with-the-simulator))
 * **Why did ArubaCX pass the same test in the past?** Because we checked single-protocol VRFs. Recently, we discovered that our configuration template for another device failed when faced with dual-stack VRFs, so we changed several VRF tests to be dual-stacked.
+* **Does this happen only in ArubaCX VM?** Sadly, [David Williams confirmed](https://www.linkedin.com/feed/update/urn:li:activity:7349325567323725827?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7349325567323725827%2C7349403474645655552%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7349325567323725827%2C7349941121331998720%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287349403474645655552%2Curn%3Ali%3Aactivity%3A7349325567323725827%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287349941121331998720%2Curn%3Ali%3Aactivity%3A7349325567323725827%29) that the physical boxes experience the same behavior.
 * **Would this work with EVPN?** I have no idea, and I don't work for the HPE QA department, so don't expect me to run those tests[^RTY]. You might want to ask your SE a few pointed questions, though.
+* **Is there a workaround?** Sort of. You could use different route targets for IPv4 and IPv6 address families. That would *most probably work&trade;* (see also the previous bullet) for inter-VRF route leaking inside a single box, but you'll run into interesting interoperability challenges when trying to use the same trick in multi-vendor MPLS/VPN networks (the route targets were traditionally assigned to VRFs, not to address families).
 
-[^ERT]: ArubaCX configures EVPN route targets on the VRF level, not on the VRF-AF level.
+[^ERT]: ArubaCX configures EVPN route targets on the VRF level, not the VRF-AF level.
  
 [^RTY]: You could mix [this topology](https://github.com/ipspace/netlab/blob/dev/tests/integration/evpn/30-cs-bridging.yml) with [this one](https://github.com/ipspace/netlab/blob/dev/tests/integration/evpn/22-ospf-ce-router.yml) to test that. Just don't forget to add IPv6 to the mix.
+
+### Revision History
+
+2025-07-14
+: * The physical boxes experience the same problem
+  * Added the description of a potential workaround
