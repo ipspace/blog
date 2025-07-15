@@ -1,6 +1,6 @@
 ---
 title: "ArubaCX: When BGP Soft Reconfiguration Becomes a No-Op"
-date: 2025-07-18 07:58:00+0200
+date: 2025-07-25 07:58:00+0200
 tags: [ netlab ]
 netlab_tag: quirks
 ---

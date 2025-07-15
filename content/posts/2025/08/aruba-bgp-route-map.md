@@ -1,6 +1,6 @@
 ---
 title: "ArubaCX Decides When You're Done Changing a BGP Routing Policy"
-date: 2025-08-05 08:16:00+0200
+date: 2025-08-22 08:16:00+0200
 tags: [ netlab ]
 netlab_tag: quirks
 ---
