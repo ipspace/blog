@@ -3,7 +3,7 @@ title: "Worth Reading: Rethinking Internet Backbone Architectures"
 date: 2021-05-16 08:03:00
 tags: [ design, Internet ]
 ---
-Johan Gustawsson wrote a lengthy blog post describing [Telia's approach to next-generation Internet backbone architecture](https://blog.teliacarrier.com/2021/04/29/rethinking-internet-backbone-architectures/)... and it's so refreshing seeing someone bringing to life what some of us have been preaching for ages:
+Johan Gustawsson wrote a lengthy blog post describing [Telia's approach to next-generation Internet backbone architecture](https://blog.arelion.com/2021/04/29/rethinking-internet-backbone-architectures/)... and it's so refreshing seeing someone bringing to life what some of us have been preaching for ages:
 
 * Simplify the network;
 * Stop cramming ever-more-complex services into the network;
