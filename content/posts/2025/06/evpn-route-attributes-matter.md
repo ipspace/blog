@@ -17,6 +17,8 @@ However, when I ran the full integration tests for all platforms impacted by rel
 **Update (2025-06-21)**: Three days after I published this blog post, [Nick Bouliane](https://github.com/nick-bouliane) contacted me and told me he chased down the bug and [submitted a PR](https://github.com/FRRouting/frr/pull/19065) fixing it. Great job!
 
 **Update (2025-06-26)**: Russ White reviewed the PR, and it took a few more days for it to be merged into the master branch. I don't think I've ever experienced a similar time-to-fix in networking software since the early 1990s, when someone within Cisco fixed an ARP issue that was crashing my router literally overnight.
+
+**Update (2025-08-06)**: New FRR releases (10.3.2 and 10.4.1) include the fix and work as expected. Less than two months from a bug report to a shipping release.
 {{</long-quote>}}
 
 Before diving into the details, here's a quick overview of the [lab topology](https://github.com/ipspace/netlab/blob/24325f608d123102fa90096ee66f21a796bdb7c0/tests/integration/evpn/13-vxlan-ebgp-allowas.yml):
