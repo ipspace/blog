@@ -1,5 +1,5 @@
 ---
-title: "iBGP Local-AS Details"
+title: "iBGP Local-AS Next Hop Requirements"
 date: 2025-04-08 08:08:00+0200
 tags: [ BGP ]
 ---
@@ -84,8 +84,8 @@ However, we're faking an IBGP session between two autonomous systems *with no un
 
 **Conclusion:** One **MUST** use **neighbor next-hop-self** to change the next hop on an iBGP local-as session.
 
-{{<next-in-series page="/posts/2025/04/xxx.md">}}
-But wait, there's more. We've only scratched the surface of the iBGP local-as complexity. In a few days, we'll explore what happens if you use this abhorrent mechanism to connect two large autonomous systems.
+{{<next-in-series page="/posts/2025/08/ibgp-local-as-rr.md">}}
+But wait, there's more. We've only scratched the surface of the iBGP local-as complexity. In the next blog post, we'll explore what happens if you use this abhorrent mechanism to connect two autonomous systems that have more than one router.
 {{</next-in-series>}}
 
 ### Reference Information
