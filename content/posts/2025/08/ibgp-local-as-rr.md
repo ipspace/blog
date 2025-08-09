@@ -9,7 +9,7 @@ That blog post used a simple topology with three routers. Now let's add a few mo
 <!--more-->
 {{<figure src="/2025/08/localas_ibgp_topo.png">}}
 
-The Device Under Test (DUT) in [our lab](https://github.com/ipspace/netlab/blob/dev/tests/integration/bgp/08-ibgp-localas.yml) has three BGP sessions:
+The Device Under Test (DUT) in [our lab](https://github.com/ipspace/netlab/blob/1ec68bbc90134d68ad27d0422747c5c92ae4e866/tests/integration/bgp/08-ibgp-localas.yml) has three BGP sessions:
 
 * A real IBGP session with X3
 * A real EBGP session with X1
