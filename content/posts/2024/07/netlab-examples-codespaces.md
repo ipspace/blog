@@ -18,3 +18,5 @@ I couldn't find a way to pass a different working directory to GitHub Codespaces
 * Have fun ;)
 
 Finally, when you're done, don't forget to shut down the lab (with **netlab down**) and [stop the GitHub codespace](https://bgplabs.net/4-codespaces/#cleanup-and-shutdown).
+
+You can run any network device implemented as a (real) container in GitHub Codespaces. FRRouting, SR Linux, and VyOS can be used immediately (they will be downloaded from an online Docker registry when you start the lab); you have to [install](/2024/07/arista-eos-codespaces/) Arista cEOS or Nokia SR-SIM.
