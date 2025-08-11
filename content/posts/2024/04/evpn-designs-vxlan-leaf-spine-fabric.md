@@ -95,7 +95,7 @@ I prefer using Arista cEOS containers on Ubuntu to run EVPN labs:
 * The cEOS containers consume approximately 1G of RAM per container. You can run a fabric with six switches on a 16GB laptop.
 * You don't need nested virtualization when using containers inside a VM.
 
-Using cEOS containers, you can run your tests on any x86 VM running on your laptop, your virtualization cluster[^VMW], or in a public cloud. Alternatively, if you want to [run EVPN labs on recent Apple laptops](/2024/03/netlab-bgp-apple-silicon/), use the FRR containers.
+Using cEOS containers, you can run your tests on any x86 VM running on your laptop, your virtualization cluster[^VMW], or in a public cloud. If you want to [run EVPN labs on recent Apple laptops](/2024/03/netlab-bgp-apple-silicon/), you can choose between Arista cEOS, FRRouting, or Nokia SR Linux containers (all three of them have an ARM image).
 
 You can also [start the lab in a GitHub Codespace](/2024/07/netlab-examples-codespaces/) (the directory is `EVPN/vxlan-fabric`); you'll still have to [import the Arista cEOS container](/2024/07/arista-eos-codespaces/), though.
 
@@ -112,11 +112,11 @@ export NETLAB_PROVIDER=libvirt
 
 [^VMW]: I wanted to write *your VMware cluster*, but I'm guessing that's not a popular option these days. I've heard good things about ProxMox, though.
 
-If you're new to _netlab_, use these simple steps to set up your lab in a Ubuntu VM running on your laptop. If you want something more complex, read the [netlab installation instructions](https://netlab.tools/install/).
+If you're new to _netlab_, follow these simple steps to set up your lab in an Ubuntu VM running on your laptop. If you want something more complex, read the [netlab installation instructions](https://netlab.tools/install/).
 
 * Download and install [multipass](https://multipass.run/)
 * [Install netlab, Ansible, Docker, and Containerlab](/2024/03/netlab-bgp-apple-silicon/).
-* If you're running on x86 hardware, [download and install the Arista cEOS container](https://netlab.tools/labs/ceos/). If you're running your Ubuntu VM on Apple silicon, tell _netlab_ you want to use FRR containers:
+* [Download and install the Arista cEOS container](https://netlab.tools/labs/ceos/). Alternatively, tell _netlab_ you want to use FRR containers:
 
 ```
 $ export NETLAB_DEVICE=frr
@@ -262,3 +262,8 @@ Unfortunately, I'm only too aware that some networking engineers hate simple sol
 [^VKA]: Or drank too much vendor Kool-Aid, or need to pad their resume, or (in a few cases) have a network extensive enough that they need more complex technologies to cope with its scale.
 
 {{<next-in-series page="/posts//2024/05/evpn-designs-ibgp-full-mesh.html"/>}}
+
+### Revision History
+
+2025-08-11
+: Arista EOS containers are available as ARM images and can be used on Apple silicon
