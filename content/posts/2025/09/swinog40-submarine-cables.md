@@ -1,5 +1,5 @@
 ---
-title: "Best of SwiNOG 40: Submarine Cables"
+title: "SwiNOG 40: Submarine Cables"
 date: 2025-09-03 07:33:00+0200
 tags: [ worth reading ]
 ---

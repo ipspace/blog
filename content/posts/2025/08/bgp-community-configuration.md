@@ -6,7 +6,7 @@ tags: [ BGP ]
 A large number of vendors claim to use *industry-standard CLI*, which means "*something that looks like Cisco IOS, but we can't say that in public*." The implementations of that "standard" are full of quirks; as I was [making fun of Cisco IOS last week](/2025/08/cisco-ios-community-propagation/), it's only fair to look at how others deal with BGP community propagation.
 
 _netlab_ has BGP configuration templates for [14 different platforms](https://netlab.tools/module/bgp/#platform-support)[^MD], including these implementations that look like Cisco IOS from a distance if you squint just right[^SH]: Arista EOS, Aruba CX, and FRRouting. You can check the [configuration templates](https://github.com/ipspace/netlab/tree/dev/netsim/ansible/templates/bgp) if you wish; here's the TC&DB[^TCDB] overview:
-
+<!--more-->
 [^MD]: Where a single *platform* could cover multiple devices. The Cisco IOS template is used on Cisco IOSv, IOSvL2, Cisco CSR 1000v, Cisco Catalyst 8000v, Cisco IOS-on-Linux (IOL), and IOL Layer-2, and the Junos template is used on vMX, vSRX, vPTX, vJunos-evolved, vJunos-switch, and vJunos-router.
 
 [^SH]: And happen to be short-sighted 😜
