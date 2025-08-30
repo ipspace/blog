@@ -1,0 +1,175 @@
+Finally, how do we discover paths in hop-by-hop forwarding? And there are, yet again, two options,
+static or dynamic. Static could be internal, like static routes, don't ever use them please. For
+example, someone could look at this diagram and say, well, to get from A to E, I will go through B,
+and configure A to use B as the next hop to get to Y. Obviously, this works great as long as everything
+is up and running, but if you lose this link, A still has a static route pointing to B, bad things
+happen. So there are situations where static routes are the most appropriate way to do things,
+there are very few situations where they are the best way of doing things. Or you can just offload
+the whole thing to an external SDN controller. This is, for example, how OpenFlow works. The SDN
+controller would have the topology of the network, do its calculation, and just put the forwarding
+tables into individual devices. You could consider the forwarding tables sort of static routes,
+but programmed straight into the hardware, if you do hardware-based switching. There are also people who
+think that it's a great idea to do static routes with an orchestration system. So every time you would
+have a topology change, the orchestration system would have to step in and recompute the topology,
+and install static routes. Don't. Then you have the dynamic path discovery, where the individual nodes
+in the network figure out by themselves where the endpoints are. And there are two paradigms here,
+flooding and learning, so-called transparent bridging, or routing protocols. In both cases,
+we have a few interesting challenges. We have to have fast failure detection, and that can be achieved
+with dynamic path discovery. It's a bit harder in controller-based operations, particularly in the
+crazy centralized control plane view of the world. Namely, there are two types of failures. The easy
+failures, like a cut cable. A cable is cut, there are no bits coming through, and layer one encoding
+protocol usually figures out that something is badly wrong. So for example, if you cut a fiber optic cable,
+there is no light coming through, and you know immediately that something is wrong. It takes you microseconds
+to figure out that something is wrong. The other option is that something might be wrong, but in not such an obvious way.
+For example, you might have a transceiver failure, or you might have a fiber optic cable that was twisted in a
+way that it corrupts every tenth bit. You will never discover this on the physical layer. Well, on fiber
+optics, you actually might, because there is a physical layer signaling protocol between the adjacent
+nodes on gigabit and 10 gig and higher speeds. But let's assume that you can't figure that out on the
+physical layer. So, someone has to test whether the neighbors are reachable, which means that C
+periodically has to send a packet to D, and D periodically has to send a packet to C, just to figure out whether
+they are still alive. This is what routing protocols would usually do with their hello messages. We even
+have dedicated protocols like BFD, bi-directional forwarding detection, or Cisco's UDLD, unidirectional
+link detection, that would periodically test whether the link can actually pass traffic. BFD can be
+really fast, and in some hardware-based implementation, you can get down to millisecond range, and in that way, you
+detect the failures in the network very fast. Now, let's say that someone believes in the centralized
+control plane dogma, and is deploying an SDN controller with OpenFlow. BFD is a control plane protocol,
+which means that the SDN controller must send a BFD packet to A, saying, well, could you please send this
+packet to C, and when C receives the packet, C goes like, this is a control plane packet, I don't know what to do with it,
+so I'll send it to the SDN controller. Now, you see, you have this loop that goes through the controller
+and two switches, and there's absolutely no way that you could get this done in a millisecond.
+So, the moment you offload the failure discovery to some external control plane, you will get way
+worse results than if you would be doing this locally. And fortunately, a lot of people building
+actual SDN-based networks have figured this out, and they have said, well, we don't care what academics
+say, we will do things our way, and implement something like BFD locally on the switches, and so
+stuff works in practice. In theory, the right way to do controller-based operation is to go through a
+controller, and that just doesn't work well. For more details, I did a webinar on OpenFlow a few years,
+years back, where I explained all these intricacies, if you're interested. Let's move on. Obviously,
+if you're using static routes, then no one in the network can adjust to topology changes, because
+everything is pre-configured, which means that with static routes, you would, yet again, need an SDN
+controller, or an orchestration system, or what have you, that would periodically figure out whether
+something is badly wrong and intervene. By the way, there is a pretty good use case for static routes,
+if you're not dealing with the transport network. So if you're assuming that IP works, and you're just
+connecting your stuff here and there, and there are some thingies here, and there are some thingies here,
+and you just need a static route pointing to this other guy for this thingies, this works beautifully,
+because you have offloaded the problem of actually figuring out the topology changes to someone else
+running the IP network. So if you're using someone else's network, and you don't have to deal with topology
+changes, because they took care of it, then static routing is a beautiful thing. You can figure it,
+as long as the IP address of the other end doesn't change, you're in business, everything works. Either
+you can reach the other end, or you can't reach the other end, in which case it is not your problem,
+because obviously the intervening network is broken. In flood and learn networks, as we'll see
+when we get to how they actually work, every time you get a topology change, you get this spike of
+flooded traffic, because everyone is relearning what's going on. And in routing protocol case,
+you will always have to do with two things, the convergence time and micro loops. The convergence
+time is the time it takes for a routing protocol to adjust to the new reality. So for example,
+I need an alternate path here. Let's say I have a path from B to C. For example, I have a network like
+this, and A thinks it has to go to B to get to E and Y. And now this link goes down. B detects the link
+is down almost immediately. But then it can do one of two things. It might know that the path through C is
+safe. And we'll go through what that means when we get to the routing protocols. In which case,
+B could immediately flip over and start using this path. And then it might have to send information to
+A saying, by the way, it's more expensive to go through me now because I have to go through C. And
+A would then say, well, yeah, you're right. This doesn't make sense. I'll go to C directly.
+So this is like the best possible option. The other option is that you don't have this link or that
+this link is really expensive or whatever. So this fails. And B sends an update to A saying, well,
+I lost my link to Y. And then A says, hmm, interesting. Huh? I don't know how to get to Y. You know what?
+C, I lost mine from my link to Y. And C would say, hmm, I actually have a better path through D and E.
+So you know what, A, you could use my path. And A would then tell B, you know what, B, you could use my
+path. And sometimes, particularly in link state protocols, you get to a really interesting point
+where the link fails. B says, hmm, the link has failed, recomputes the new topology, because in
+link state protocols, B knows about the whole network. So B knows immediately that it has to go through
+A, but it hasn't told A about the failure yet. So while B is already using A to forward the traffic,
+A has no idea that something has happened until B actually sends an update packet to A,
+at which point A would adjust its forwarding table and start using C. But in the meantime,
+A thinks that it can use B, B knows it has to use A, and you have this nice forwarding loop here.
+This is so-called micro-loop, because it happens only for a very short amount of time.
+Now let's go through how flooding and learning works first, and then we'll go through how routing
+protocols work. In flooding and learning, like we discussed before, in transparent bridging, there is
+no control plane protocol. So there is nothing going on between X and A, or E and Y,
+and honestly, there is very little going on between A, B, C, D and E. The only thing that spanning tree
+protocol is doing is it prevents forwarding loops. And we'll see why we need a spanning tree protocol.
+So the whole idea of transparent bridging is very simple. Emulate the cable. Emulate the one
+Ethernet cable that we used to have in the 1980s. Which means that if X is sending some traffic to
+everyone, then it must reach everyone. So X is sending a broadcast. A is forwarding the broadcast to
+B and C. B and C are forwarding the broadcast. And oops, Y will receive two copies of the broadcast.
+Bad idea. The only reason Y is receiving two copies is because we have a loop in the network.
+So let's cut the loop. Let's say that this link will be shut down. Now X will send a packet A, B, E and Y.
+We'll eventually see the packet. S will C and D. The moment a transparent bridge sees a packet from
+someone. It says, hmm, that's worth remembering. So the moment the packet from X traverses A, A says,
+ah, now I know where X is. The moment the packet traverses B, B says, oh, now I know where X is,
+and so on and so on. And let's say that the packet sent is actually an ARP request. So X is sending an
+ARP request saying, hey, Y, where are you? And what's your MAC address? So Y will, after receiving
+the ARP request, send an ARP reply. And in the ARP reply, it will be send to X, send from Y. And the
+moment E sees the ARP reply, it will say, oh, interesting. Now I know where Y is. Oh, and I
+know where X is because I've seen X before. I have to send the packets to B. And B, after receiving the
+packet will go like, oh, interesting. Now I know where Y is. And oh, by the way, I know where X is.
+I've seen it before, and sends the packets to X. So eventually, every switch will learn the location
+of every source node. But what happens if there is some topology change, or X and Y have been quiet
+for quite a while, and the network has forgotten where X and Y are? In that case, the only thing the
+network can do is, it can flood the traffic to everyone. So for example, this link is down,
+remember, we can't have loops. After five minutes, X and Y are still happy, the ARP caches are still
+there, the entries are still in the ARP caches, they just haven't communicated for five minutes.
+And the network has forgotten about X and Y. And then X sends another packet to Y, from X to Y.
+A obviously says, oh, okay, now I know where X is. But let's remember that. But it has no idea where Y is.
+So the only thing it can do is, it can send the packets to everyone, to B and to C. And so, because
+everyone is sending packets to everyone else, hoping that the links that cause loops are shut down,
+eventually, the packet will arrive to Y. It will also arrive to everyone else in the whole network,
+even though no one else is interested in that. And in some networks, you need just the right
+combination of who is the spanning tree root bridge and who is the active first hop router.
+Let's not go into there, that's like a CCIE level question that I can never explain properly. But I was
+speaking with someone who was running a data center network, and he was telling me that he continuously
+sees approximately one gigabit of flooded Unicast traffic, just because his network keeps forgetting
+where the MAC addresses are. Or if you have a network that is too large, and these switches only have
+tables of a certain size. Today, this is like a non-issue, because all the data center switches today
+have hundreds of thousands of entries in their forwarding tables. But there were days when we
+only had like 16,000 entries in a data center switch. And if you had more MAC addresses, the switch would
+just throw out some MAC addresses and insert the new ones in. And so you would continuously have plenty of
+flooded traffic going to everyone in the whole network, even though no one was interested in that
+traffic apart from the destination node. But this is what you get when you're trying to emulate a
+single cable with a network that is supposed to be totally transparent. And finally, in networks with
+proper control plane that don't use the controller, so in autonomous networks,
+we usually use something called a routing protocol to figure out how to get from anywhere to anywhere
+else. A typical routing protocol would have to do a number of things. It would have to discover the
+endpoints. In transparent bridging, we discover endpoints by listening to their traffic. I just explained
+that. In IP routing, we discover endpoints by static configuration. So for example, if on this particular
+link, I configure subnet 10100-24, then A knows that this whole prefix, everyone from 10101, from 1010254,
+is reachable over this link. And when we get in business of exchanging information, A can tell everyone
+else that this prefix is here. In CLMP, as I explained in the addressing section, actually the end systems
+would send an end system hello, advertising themselves, and the routers would collect that
+and propagate that information. So somehow, we discover the endpoints. Somehow, the routers have to
+discover the adjacent routers. So if we want to build this whole picture of what is reachable where,
+we better know who else is out there. And so, the very minimum A needs to know is, A needs to know
+that there is B, and A needs to know that there is C. And there are two ways of getting there.
+Either static configuration, the operator could say, well, on A, I will configure B and C as the
+neighbors, and on D, I will configure C and E as the neighbors. Or dynamic with a hello protocol.
+The problem with a hello protocol is that A has no idea what IP address B might have. So A, using a
+hello protocol, always has to send a local multicast packet to 224 dot something something something,
+so that everyone else on the same subnet, in our case only B, would receive that packet, look at that
+packet and say, well, I'm interested. For example, I'm running the same routing protocol, or no, I'm not
+interested. Once A and B find each other, they can start exchanging information. And A would tell B about
+X, and B, for example, might tell A that it knows where E is. And once E tells B about Y, B might tell A
+that it has heard from E that Y exists. So all the routers in the network would exchange
+some topology information. I can see these other guys. In distance vector protocols, effectively,
+they're not exchanging topology information, but they're just exchanging the endpoint, the reachability
+information. In link state protocols, they would exchange both the full topology information and
+the reachability information. So in the end, every router in the network knows where all the endpoints
+are. It might or might not know the network topology. That's the difference between different variants of
+routing protocols, and we'll discuss that in a future section. But regardless of how it gets the
+information, in the end, in the internal model of the routing protocol, there are all the available
+destinations and the ways to get to them. And then that can be transformed into the forwarding table.
+Job done. Well, actually, no. Just the first part of the job is done. Because now the routers have to
+continuously monitor whether the links are up, whether the adjacent nodes are up,
+whether the next hops are up. And whenever something is down, they have to start reporting
+that there has been a failure. And in some routing protocols, you can report failure explicitly.
+Like saying, I lost path to Y. In some routing protocols, you report the failure by being silent about Y.
+So for example, B might tell A that it can reach Y. And then, after this link is gone, B would stop
+telling A about Y. And A, after a while, would say, well, I haven't heard about Y from B for a long time,
+so I can only assume it's gone. Obviously, this is not a good idea because it takes a long time before A
+decides that maybe I should do something about that. So it's better that B immediately tells A that,
+hey, something bad happened. You know what? I lost path to Y. Then whenever a failure happens or something new
+wonderful happens, like there's a new link between B and D, for example, it needs to be reported.
+Everyone needs to adjust their state. And if needed, everyone needs to report their adjusted states to
+all the other neighbors. And that keeps going for as long as you're running your network. And the end
+result is that every single node in the network knows at any time, with some precision, how to reach
+any potential destination connected to the network. The beauty of this is, it's pretty stable.
+We might be discussing convergence times and things like that. But this is like orders of magnitude more
+stable than flooding and learning. It's continuously adjusted. And once you configure it, it just keeps
+running, obviously, until you hit a software bug or two.
