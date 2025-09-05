@@ -17,6 +17,32 @@ But could netlab do that or only between device to another device?</p>
 
 <p>So when I do it manually I probably would just use the bridge all those devices are connected to as master for my vxlan?</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2744">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2744" href="#2744">05 September 2025 12:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>There&#39;s nothing in <em>netlab</em> (yet) that would set up that connectivity automatically, and I never tried to use a macvlan device off a bridge, but it looks like that works for you, in which case build the VXLAN connectivity between those bridges and you&#39;re done (but you&#39;ll have to do it yourself).</p>
+
+<p>You could also start the (local part) of the lab in a way that the external-facing links are using Linux bridges (having three nodes attached to a link will do the trick), and then create VXLAN interface(s) and attach them to those bridges.</p>
+
+<p>In any case, plenty of &quot;manual&quot; work until we get https://github.com/ipspace/netlab/issues/1791 implemented</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>

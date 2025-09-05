@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "05 September 2025 12:12",
+               "html": "<p>There&#39;s nothing in <em>netlab</em> (yet) that would set up that connectivity automatically, and I never tried to use a macvlan device off a bridge, but it looks like that works for you, in which case build the VXLAN connectivity between those bridges and you&#39;re done (but you&#39;ll have to do it yourself).</p>\n\n<p>You could also start the (local part) of the lab in a way that the external-facing links are using Linux bridges (having three nodes attached to a link will do the trick), and then create VXLAN interface(s) and attach them to those bridges.</p>\n\n<p>In any case, plenty of &quot;manual&quot; work until we get https://github.com/ipspace/netlab/issues/1791 implemented</p>\n",
+               "id": "2744",
+               "name": " Ivan Pepelnjak",
+               "pub": "2025-09-05T12:12:00",
+               "ref": "2743",
+               "type": "comment"
+            }
+         ],
          "date": "05 September 2025 01:04",
          "html": "<p>Would this also work on bridges. For example I have devices connected to a bridge (currently macvlan) could I replace that with a vxlan to communicate to another containerlab host machine? I probably have to set the vxlans manually as I use only the netlab create command due to the big topo which is faster without ansible.\nBut could netlab do that or only between device to another device?</p>\n\n<p>So when I do it manually I probably would just use the bridge all those devices are connected to as master for my vxlan?</p>\n",
          "id": "2743",
