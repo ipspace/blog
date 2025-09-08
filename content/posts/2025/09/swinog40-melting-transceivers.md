@@ -1,6 +1,6 @@
 ---
 title: "SwiNOG 40: Reliability of High-Speed Transceivers"
-date: 2025-09-10 07:33:00+0200
+date: 2025-09-09 14:33:00+0200
 tags: [ worth reading ]
 ---
 Whenever you see Gerhard Stein and Thomas Weible from Flexoptix in a list of presenters, three things immediately become obvious:
