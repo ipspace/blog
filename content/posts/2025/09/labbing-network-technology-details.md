@@ -1,6 +1,6 @@
 ---
 title: "Labbing Network Technology Details with netlab"
-date: 2025-09-09 08:08:00
+date: 2025-09-10 08:08:00
 tags: [ Software Gone Wild, netlab, podcast ]
 netlab_tag: podcast
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_200-Labbing_Network_Technology_Details.mp3
