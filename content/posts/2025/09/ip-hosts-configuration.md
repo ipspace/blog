@@ -1,5 +1,5 @@
 ---
-title: "The Curious Case of 'ip hosts' Configuration Command"
+title: "The Curious Case of 'ip host' Configuration Command"
 date: 2025-09-11 09:51:00+0200
 tags: [ netlab ]
 netlab_tag: quirks
