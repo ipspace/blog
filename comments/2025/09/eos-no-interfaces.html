@@ -18,6 +18,46 @@
 
 <p>I do agree though that perhaps the error could be refined a little.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2749">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2749" href="#2749">18 September 2025 08:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The container and the VM always have a management interface (eth0 in a container) in a management VRF, but there are no other interfaces. Here&#39;s the printout from an Arista EOS container exhibiting this issue (running in containerlab using netlab-generated clab.yml file):</p>
+
+<pre>
+Connecting to clab-X-a using SSH port 22
+Last login: Thu Sep 18 18:04:53 2025 from 192.168.121.1
+a#bash
+
+Arista Networks EOS shell
+
+[admin@a ~]$ ip link
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: eth0@if2026: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP mode DEFAULT group default
+    link/ether 62:e1:46:67:11:13 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+3: lo0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 65535 qdisc noqueue state UP mode DEFAULT group default qlen 1000
+    link/ether 02:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+</pre>
+
+<p>To reproduce this in netlab, start a topology with no <strong>links</strong> element.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>

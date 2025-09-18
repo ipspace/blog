@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "18 September 2025 08:06",
+               "html": "<p>The container and the VM always have a management interface (eth0 in a container) in a management VRF, but there are no other interfaces. Here&#39;s the printout from an Arista EOS container exhibiting this issue (running in containerlab using netlab-generated clab.yml file):</p>\n\n<pre>\r\nConnecting to clab-X-a using SSH port 22\r\nLast login: Thu Sep 18 18:04:53 2025 from 192.168.121.1\r\na#bash\r\n\r\nArista Networks EOS shell\r\n\r\n[admin@a ~]$ ip link\r\n1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\r\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\r\n2: eth0@if2026: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP mode DEFAULT group default\r\n    link/ether 62:e1:46:67:11:13 brd ff:ff:ff:ff:ff:ff link-netnsid 0\r\n3: lo0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 65535 qdisc noqueue state UP mode DEFAULT group default qlen 1000\r\n    link/ether 02:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff\r\n</pre>\n\n<p>To reproduce this in netlab, start a topology with no <strong>links</strong> element.</p>\n",
+               "id": "2749",
+               "name": "Ivan Pepelnjak",
+               "pub": "2025-09-18T20:06:18",
+               "ref": "2748",
+               "type": "comment"
+            }
+         ],
          "date": "18 September 2025 07:56",
          "html": "<p>Ivan,  does the container in netlab have any dataplane interfaces? I can reliably reproduce this in a ceos-lab image running in gns3, as opposed to netlab, when i instantiate a container with 0 or 1 interfaces.  (e0 would be int ma0, with e1+ being dataplane ports.</p>\n\n<p>I believe this issue isn&#39;t with a vrf with no interfaces, it&#39;s that there are no interfaces at all so the container image doesn&#39;t spin up the virtual asic.</p>\n\n<p>I do agree though that perhaps the error could be refined a little.</p>\n",
          "id": "2748",
