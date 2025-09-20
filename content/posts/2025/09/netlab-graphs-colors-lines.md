@@ -144,4 +144,21 @@ For more details, explore other graph-related netlab articles and the documentat
 * [D2 styles](https://d2lang.com/tour/style/)
 * **[netlab graph](https://netlab.tools/netlab/graph/)** command
 
+### Kicking The (Free) Tires {#trygraphs}
 
+Want to try out the graphs? This is how you can create them in GitHub Codespaces:
+
+* [Start a codespace](https://github.com/codespaces/new/ipspace/netlab-examples) from the `netlab-examples` repository
+* When the codespace starts, execute **netlab install graph** in the terminal window
+* Change the directory to `graphs/colors-lines` with **cd graphs/colors-lines**
+
+Now you're ready to create and view the graphs:
+
+* Transform one of the YAML files in that directory with **netlab create -o pickle _topology_**.
+* Create a graph description file with **netlab graph**.
+* Create an SVG graph with **dot graph.dot -T svg -o graph.svg**, or a PNG graph with **dot graph.dot -T png -o graph.png**.
+* Start a web server in your codespace with **python3 -m http.server**. The GitHub Codespaces orchestration code automatically detects a new application port and asks whether you want to open it in your browser. If you do, a new browser tab will be connected to the in-container HTTP server.
+* Open **graph.svg** from the directory listing and enjoy the new graph.
+* Switch back to the devcontainer browser tab, open a new terminal window in it (you're running a web server in the original terminal window), modify the topology files, and repeat the above process to create modified graphs.
+
+Finally, don't forget to stop the codespace. You only get 60 free hours per month.
