@@ -6,14 +6,17 @@ tags: [ EVPN, design, netlab, vxlan ]
 netlab_tag: evpn_dg
 evpn_tag: designs
 pre_scroll: True
+lastmod: 2025-09-28 11:23:00+0200
 ---
 A _netlab_ user [wanted to explore](https://blog.ipspace.net/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#2654) a multi-site design where every site runs an independent EVPN fabric, and the inter-site link is either a layer-2 or a layer-3 interconnect (DCI). Let's start with the easiest scenario: a layer-3 DCI with a separate (virtual) link for every tenant (in the MPLS/VPN world, we'd call that Inter-AS Option A)
 
-{{<figure src="/2025/08/evpn-inter-as-topology.png">}}
+{{<figure src="/2025/08/evpn-inter-as-topology.png" caption="Lab topology">}}
 <!--more-->
 * The switches within a single site run OSPF, IBGP (full mesh), and EVPN.
 * The link between the sites belongs to a tenant VRF. You could also use a VLAN trunk in which every VLAN belongs to a different tenant VRF.
 * WAN edge routers (WA, WB) have a separate EBGP session in every tenant VRF. The routes exchanged over that session are propagated over intra-site EVPN as type-5 routes.
+
+{{<figure src="/2025/08/evpn-inter-as-bgp.png" caption="BGP sessions (VRF sessions are shown as dashed lines)">}}
 
 Here's the [_netlab_ topology](https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-a/topology.yml) we'll use to create this design (as always, it's [available on GitHub](https://github.com/ipspace/netlab-examples/tree/master/EVPN/inter-as-a)).
 
@@ -191,10 +194,12 @@ L>* 172.16.1.6/32 is directly connected, vlan1001, weight 1, 00:02:26
 Want to explore the EVPN behavior of your favorite devices? It's trivial:
 
 * Set up a _netlab_ environment ([example](https://blog.ipspace.net/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab), [installation guide](https://netlab.tools/install/), using [GitHub Codespaces](/2024/07/netlab-examples-codespaces/))
-* Download the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-a/topology.yml) into an empty directory
+* Download the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-a/topology.yml) into an empty directory or use `netlab up https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-a/topology.yml` ([more details](/2025/09/netlab-download-url/))
 * Execute `netlab up`, optionally adding  `-d _your_device_` and  `-p _provider_`. The lab topology uses FRRouting containers; to use Arista EOS containers, use `-d eos`, to use Aruba AOS-CX VMs, use `-d arubacx -p libvirt` ([more options](https://netlab.tools/module/evpn/)).
 
 ### Revision History
 
 2025-09-28
-: The changed order of nodes in the lab topology (needed to generate nice-looking graphs without tweaking the `graph.dot` file) resulted in changed IP addresses and router IDs.
+: * The changed order of nodes in the lab topology (needed to generate nice-looking graphs without tweaking the `graph.dot` file) resulted in changed IP addresses and router IDs.
+  * Add a diagram of BGP sessions
+  * Add the "netlab up with URL" command
