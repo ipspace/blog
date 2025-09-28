@@ -26,10 +26,10 @@ defaults.device: frr
 groups:
   _auto_create: True
   site_a:                     # Site A - core, leaf, wan edge
-    members: [ ca, la, wa ]
+    members: [ la, ca, wa ]
     bgp.as: 65001
   site_b:
-    members: [ cb, lb, wb ]   # Site B - core, leaf, wan edge
+    members: [ wb, cb, lb ]   # Site B - core, leaf, wan edge
     bgp.as: 65002
   hosts:
     members: [ ha, hb ]       # Hosts attached to leaf-A and leaf-B
@@ -82,26 +82,26 @@ EVPN type-5 prefix: [5]:[EthTag]:[IPlen]:[IP]
                     Extended Community
 Route Distinguisher: 65000:1
  *>i [5]:[0]:[24]:[172.16.0.0]
-                    10.0.0.2(la)             0    100      0 ?
-                    RT:65000:1 ET:8 Rmac:12:d1:a4:c6:f6:df
+                    10.0.0.1(la)             0    100      0 ?
+                    RT:65000:1 ET:8 Rmac:b6:c1:dc:de:ea:9b
  *>  [5]:[0]:[24]:[172.16.1.0]
                     10.0.0.3(wa)                           0 65002 ?
-                    ET:8 RT:65000:1 Rmac:2e:10:e1:c9:e4:2f
+                    ET:8 RT:65000:1 Rmac:72:8e:c8:29:ff:55
  *>  [5]:[0]:[30]:[10.1.0.16]
                     10.0.0.3(wa)             0         32768 ?
-                    ET:8 RT:65000:1 Rmac:2e:10:e1:c9:e4:2f
- *>  [5]:[0]:[32]:[172.16.1.5]
+                    ET:8 RT:65000:1 Rmac:72:8e:c8:29:ff:55
+ *>  [5]:[0]:[32]:[172.16.1.6]
                     10.0.0.3(wa)                           0 65002 i
-                    ET:8 RT:65000:1 Rmac:2e:10:e1:c9:e4:2f
-Route Distinguisher: 10.0.0.2:1000
- *>i [2]:[0]:[48]:[52:dc:ca:fd:02:00]:[32]:[172.16.0.2]
-                    10.0.0.2(la)                  100      0 i
-                    RT:65000:1 RT:65000:1000 ET:8 Rmac:12:d1:a4:c6:f6:df
- *>i [2]:[0]:[48]:[52:dc:ca:fd:02:00]:[128]:[fe80::50dc:caff:fefd:200]
-                    10.0.0.2(la)                  100      0 i
+                    ET:8 RT:65000:1 Rmac:72:8e:c8:29:ff:55
+Route Distinguisher: 10.0.0.1:1000
+ *>i [2]:[0]:[48]:[ca:f4:00:01:00:00]:[32]:[172.16.0.1]
+                    10.0.0.1(la)                  100      0 i
+                    RT:65000:1 RT:65000:1000 ET:8 Rmac:b6:c1:dc:de:ea:9b
+ *>i [2]:[0]:[48]:[ca:f4:00:01:00:00]:[128]:[fe80::c8f4:ff:fe01:0]
+                    10.0.0.1(la)                  100      0 i
                     RT:65000:1000 ET:8
- *>i [3]:[0]:[32]:[10.0.0.2]
-                    10.0.0.2(la)                  100      0 i
+ *>i [3]:[0]:[32]:[10.0.0.1]
+                    10.0.0.1(la)                  100      0 i
                     RT:65000:1000 ET:8
 
 Displayed 7 prefixes (7 paths)
@@ -123,12 +123,12 @@ Codes: K - kernel route, C - connected, L - local, S - static,
        t - trapped, o - offload failure
 
 IPv4 unicast VRF tenant:
-C>* 10.1.0.16/30 is directly connected, eth2, weight 1, 00:05:30
-L>* 10.1.0.17/32 is directly connected, eth2, weight 1, 00:05:30
-B>* 172.16.0.0/24 [200/0] via 10.0.0.2, tvni-100 onlink, weight 1, 00:05:16
-B>* 172.16.0.2/32 [200/0] via 10.0.0.2, tvni-100 onlink, weight 1, 00:05:16
-B>* 172.16.1.0/24 [20/0] via 10.1.0.18, eth2, weight 1, 00:05:16
-B>* 172.16.1.5/32 [20/0] via 10.1.0.18, eth2, weight 1, 00:05:16
+C>* 10.1.0.16/30 is directly connected, eth2, weight 1, 00:00:50
+L>* 10.1.0.17/32 is directly connected, eth2, weight 1, 00:00:50
+B>* 172.16.0.0/24 [200/0] via 10.0.0.1, tvni-100 onlink, weight 1, 00:00:37
+B>* 172.16.0.1/32 [200/0] via 10.0.0.1, tvni-100 onlink, weight 1, 00:00:37
+B>* 172.16.1.0/24 [20/0] via 10.1.0.18, eth2, weight 1, 00:00:37
+B>* 172.16.1.6/32 [20/0] via 10.1.0.18, eth2, weight 1, 00:00:37
 ```
 
 One of the three routes advertised into EVPN as type-5 routes by WA is the directly connected prefix (WA-WB) redistributed into BGP; the other two are BGP routes. Let's see where they came from:
@@ -147,10 +147,10 @@ RPKI validation codes: V valid, I invalid, N Not found
      Network          Next Hop            Metric LocPrf Weight Path
  *>  10.1.0.16/30     0.0.0.0(wa)              0         32768 ?
  *                    10.1.0.18(wb)            0             0 65002 ?
- *>i 172.16.0.0/24    10.0.0.2(la)<            0    100      0 ?
- *>i 172.16.0.2/32    10.0.0.2(la)<                 100      0 i
+ *>i 172.16.0.0/24    10.0.0.1(la)<            0    100      0 ?
+ *>i 172.16.0.1/32    10.0.0.1(la)<                 100      0 i
  *>  172.16.1.0/24    10.1.0.18(wb)                          0 65002 ?
- *>  172.16.1.5/32    10.1.0.18(wb)                          0 65002 i
+ *>  172.16.1.6/32    10.1.0.18(wb)                          0 65002 i
 ```
 
 The other two routes advertised by WA were received over the tenant (VRF) EBGP session from WB. Likewise, WA created VRF BGP routes from EVPN routes advertised by LA, and is propagating them to WB.
@@ -179,12 +179,11 @@ Codes: K - kernel route, C - connected, L - local, S - static,
        t - trapped, o - offload failure
 
 IPv4 unicast VRF tenant:
-B>* 10.1.0.16/30 [200/0] via 10.0.0.6, tvni-100 onlink, weight 1, 00:14:32
-B>* 172.16.0.0/24 [200/0] via 10.0.0.6, tvni-100 onlink, weight 1, 00:14:31
-B>* 172.16.0.2/32 [200/0] via 10.0.0.6, tvni-100 onlink, weight 1, 00:14:31
-B>* 172.16.0.7/32 [200/0] via 10.0.0.6, tvni-100 onlink, weight 1, 00:03:23
-C>* 172.16.1.0/24 is directly connected, vlan1001, weight 1, 00:14:44
-L>* 172.16.1.5/32 is directly connected, vlan1001, weight 1, 00:14:44
+B>* 10.1.0.16/30 [200/0] via 10.0.0.4, tvni-100 onlink, weight 1, 00:02:13
+B>* 172.16.0.0/24 [200/0] via 10.0.0.4, tvni-100 onlink, weight 1, 00:02:12
+B>* 172.16.0.1/32 [200/0] via 10.0.0.4, tvni-100 onlink, weight 1, 00:02:12
+C>* 172.16.1.0/24 is directly connected, vlan1001, weight 1, 00:02:26
+L>* 172.16.1.6/32 is directly connected, vlan1001, weight 1, 00:02:26
 ```
 
 ### Replication Is Crucial
@@ -194,3 +193,8 @@ Want to explore the EVPN behavior of your favorite devices? It's trivial:
 * Set up a _netlab_ environment ([example](https://blog.ipspace.net/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab), [installation guide](https://netlab.tools/install/), using [GitHub Codespaces](/2024/07/netlab-examples-codespaces/))
 * Download the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-a/topology.yml) into an empty directory
 * Execute `netlab up`, optionally adding  `-d _your_device_` and  `-p _provider_`. The lab topology uses FRRouting containers; to use Arista EOS containers, use `-d eos`, to use Aruba AOS-CX VMs, use `-d arubacx -p libvirt` ([more options](https://netlab.tools/module/evpn/)).
+
+### Revision History
+
+2025-09-28
+: The changed order of nodes in the lab topology (needed to generate nice-looking graphs without tweaking the `graph.dot` file) resulted in changed IP addresses and router IDs.
