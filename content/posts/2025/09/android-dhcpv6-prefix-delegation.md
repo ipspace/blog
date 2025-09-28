@@ -4,7 +4,11 @@ date: 2025-09-29 07:43:00+0200
 tags: [ netlab ]
 netlab_tag: graphs
 ---
-Here's the latest episode of the hilarious[^WFAD] "DHCPv6 on Android" [soap opera](/2021/10/dhcpv6-matters/): in a 720-degree turnaround, Android will support DHCPv6, but only for *prefix delegation purposes*. Yes, you got it right, in a year or two, every phone might want to have a dedicated /64 prefix assigned to it *on WiFi segments*[^MPFX].
+_I'm too old to be fighting with windmills, but sometimes I have to get a rant off my chest. This one was triggered by the latest episode of the hilarious[^WFAD] "DHCPv6 on Android" [soap opera](/2021/10/dhcpv6-matters/)_
+
+---
+
+In a 720-degree turnaround, Android 11 supports DHCPv6, but only for *prefix delegation purposes*. Yes, you got it right, in a year or two, every phone might want to have a dedicated /64 prefix assigned to it *on WiFi segments*[^MPFX].
 
 [^WFAD]: If you're privileged enough to watch it from a distance.
 
@@ -13,7 +17,7 @@ Here's the latest episode of the hilarious[^WFAD] "DHCPv6 on Android" [soap oper
 Want more details? Well, there's a [high-level overview](https://android-developers.googleblog.com/2025/09/simplifying-advanced-networking-with.html) published on the Android Developers blog and a corresponding message sent to the [v6ops mailing list](https://mailarchive.ietf.org/arch/msg/v6ops/Sq5TadeSsMQ-0uEWrdem3A1wDh0/). Let's see how much sense that makes.
 <!--more-->
 {{<note warn>}}
-Before moving on, I can't resist pointing out that this announcement came from the same person who was for decades opposed to ever having the DHCPv6 client on Android and made [all sorts of ridiculous excuses](/2021/10/ipv6-multiple-addresses-per-interface/) to justify his position.
+If you're new to the DHCPv6-on-Android soap opera, please note that the blog post was authored by the same person who has been opposed to ever having the DHCPv6 client on Android for over a decade and made [all sorts of ridiculous excuses](/2021/10/ipv6-multiple-addresses-per-interface/) to justify his position.
 {{</note>}}
 
 So, here's the gist of that blog post:
@@ -28,9 +32,9 @@ And then there's this gem:
 
 > Additionally, we’ve heard feedback from some users and network operators that they desire more control over the IPv6 addresses used by Android devices. Until now, Android only supported SLAAC, which does not allow networks to assign predictable IPv6 addresses, and makes it more difficult to track the mapping between IPv6 addresses and the devices using them. This has limited the availability of IPv6 on Android devices on some networks.
 
-Imagine the audacity of the lead crusader against DHCPv6 clients repeating the claims he's been hearing from frustrated network operators for decades as an argument for *why IPv6 hasn't solved the problem yet*. If the Android IPv6 team cared, they could have solved the problem ages ago. If this isn't the pinnacle of hypocrisy, I don't know what is.
+Imagine the audacity of the lead crusader against DHCPv6 clients repeating the claims he's been hearing from frustrated network operators for decades as an argument for *why IPv6 hasn't solved the problem yet*. If the Android Core Networking team actually cared about users' and operators' concerns, they could have solved the problem ages ago. If this isn't the pinnacle of hypocrisy, I don't know what is.
 
-So, what's the solution to all these insurmountable problems? It's a DHCPv6 client on Android (SURPRISE !!!), but not to get controlled IPv6 addresses, but to request a whole /64 prefix *for every Android device*. WTAF? Why would anyone need that?
+So, what's the solution to all these insurmountable problems? It's a DHCPv6 client on Android (SURPRISE !!!), but not to get controlled IPv6 addresses, but to request a whole /64 prefix *for every Android device*. Why would anyone need that?
 
 Here are the arguments from the blog post:
 
@@ -40,12 +44,12 @@ Here are the arguments from the blog post:
 
 [^MAI]: Can you, please, try to find an example that isn't so obviously mocking your audience's intelligence?
 
-Without going into too many details, instead of using a reasonable number of IPv6 addresses on a WiFi network, the "solution"[^ISOFAP] offered by the Android IPv6 team expects the network to allocate a /64 prefix to every Android device.
+Without going into too many details, instead of using a reasonable number of IPv6 addresses on a WiFi network, the "solution"[^ISOFAP] offered by the Android Core Networking team expects the network to allocate a /64 prefix to every Android device.
 
 [^ISOFAP]: ... in search of a problem
 
 {{<note>}}
-Just in case you're wondering why the Android team wants to get a /64 prefix for every node: they want to be able to run virtual machines that would get their IPv6 addresses with SLAAC. You don't have to believe me, it's all [documented in RFC 9663](https://datatracker.ietf.org/doc/html/rfc9663#name-prefix-length-consideration).
+Just in case you're wondering why the Android Core Networking wants to get a /64 prefix for every node: they want to be able to run virtual machines inside Android that would get their IPv6 addresses with SLAAC. You don't have to take my word for it, it's all [documented in RFC 9663](https://datatracker.ietf.org/doc/html/rfc9663#name-prefix-length-consideration).
 {{</note>}}
 
 But the "new" approach reduces the ND cache, right? Isn't that a good thing? Not so fast. Delegating a prefix to a device uses an ND entry and a routing table entry. Low-cost edge switches have always had fewer routing table entries (that use more expensive TCAM or similar hardware) than ND entries (that use simple hash tables). Depending on the hardware you use, going from multiple on-link addresses to prefix-per-host might exhaust the forwarding resources even sooner.
@@ -54,8 +58,8 @@ Even worse, the "delegated prefix" approach requires the edge switches to keep t
 
 **To recap:** 
 
-* The Android IPv6 team has yet again chosen to make their lives as simple as possible[^AWSP] while offloading all the hard work onto everyone else.
-* They implemented the DHCPv6 client on Android in the most useless way for people who just want to run their networks in a bit more controlled way. However, I'm pretty sure they will claim "*they listened to the network operators and implemented DHCPv6 to help them track network devices*"
+* The Android Core Networking team has yet again chosen to make their lives as simple as possible[^AWSP] while offloading all the complexity and hard work onto everyone else.
+* They implemented the DHCPv6 client on Android in the most useless way for people who just want to run their networks in a bit more controlled way. If they cared, they could have implemented address allocation (IA_NA) and prefix delegation (IA_PD). However, I'm pretty sure they will claim "*they listened to the network operators and implemented DHCPv6 to help them track network devices*"
 * When this gets rolled out and the developers start using it, expect complaints if your network won't support it.
 * To implement this, you'll likely have to request more IPv6 address space and rework your IPv6 addressing.
 
