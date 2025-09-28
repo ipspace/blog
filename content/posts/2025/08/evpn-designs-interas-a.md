@@ -19,6 +19,7 @@ A _netlab_ user [wanted to explore](https://blog.ipspace.net/2024/04/evpn-design
 {{<figure src="/2025/08/evpn-inter-as-bgp.png" caption="BGP sessions (VRF sessions are shown as dashed lines)">}}
 
 Here's the [_netlab_ topology](https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-a/topology.yml) we'll use to create this design (as always, it's [available on GitHub](https://github.com/ipspace/netlab-examples/tree/master/EVPN/inter-as-a)).
+{ #topo }
 
 {{<printout>}}
 module: [ ospf, bgp, vxlan, vlan, vrf, evpn ]

@@ -16,9 +16,14 @@ In a 720-degree turnaround, Android 11 supports DHCPv6, but only for *prefix del
 
 Want more details? Well, there's a [high-level overview](https://android-developers.googleblog.com/2025/09/simplifying-advanced-networking-with.html) published on the Android Developers blog and a corresponding message sent to the [v6ops mailing list](https://mailarchive.ietf.org/arch/msg/v6ops/Sq5TadeSsMQ-0uEWrdem3A1wDh0/). Let's see how much sense that makes.
 <!--more-->
-{{<note warn>}}
+{{<long-quote>}}
+[![](/2021/01/deja-moo.jpg)](/2021/01/deja-moo.jpg)
+{ .sideicon style="margin-top: 1em"}
+
 If you're new to the DHCPv6-on-Android soap opera, please note that the blog post was authored by the same person who has been opposed to ever having the DHCPv6 client on Android for over a decade and made [all sorts of ridiculous excuses](/2021/10/ipv6-multiple-addresses-per-interface/) to justify his position.
-{{</note>}}
+
+Also, I'm not saying that delegating a prefix to a host is a bad idea in principle. It's just that most "arguments" in the [feature announcement](https://android-developers.googleblog.com/2025/09/simplifying-advanced-networking-with.html) make no sense, including the concept of allocating a /64 prefix to a phone just so it could tether another device.
+{{</long-quote>}}
 
 So, here's the gist of that blog post:
 
@@ -39,7 +44,7 @@ So, what's the solution to all these insurmountable problems? It's a DHCPv6 clie
 Here are the arguments from the blog post:
 
 * In some future release, that **delegated prefix would be shared with wearable devices** or a hypothetical **tablet tethered to an Android phone connected to WiFi**[^MAI]. Let me point out that you don't need a delegated prefix for that. Mobile phones have supported tethering on IPv6 for ages; they simply extended the "outside" /64 prefix to the tethered network. There's no need for a different mechanism from WiFi to Bluetooth/USB. Also, my Apple Watch connects to WiFi directly (just saying).
-* This **realizes the potential of IPv6... without requiring NAT**. Meh. Allocating another "outside" IPv6 address with DHCPv6 IA_NA mechanisms gets you to the same goal. But even if you were using NAT in the Android device to hide tethered devices behind the same IPv6 address, there would be no need for keepalives because Android would have control over the expiration of the NAT sessions. The Android device would have to be active whenever that NAT session is used because it needs to forward packets anyway.
+* This **realizes the potential of IPv6... without requiring NAT**. Meh. Allocating another "outside" IPv6 address with DHCPv6 IA_NA mechanisms gets you to the same goal. But even if you were using NAT in the Android device to hide tethered devices behind the same IPv6 address, there would be no need for keepalives because Android would have control over the expiration of the NAT sessions. The Android device must be active whenever that NAT session is used because it needs to forward packets anyway.
 * Because the prefix is assigned by the network, network operators can use existing DHCPv6 logging infrastructure to **track which device is using which prefix**. Gee, thanks for the roses, but you don't need IA_PD for that. Get off your crusade horse, implement a DHCPv6 client doing IA_NA like any other IPv6 implementation, and stop gaslighting us.
 
 [^MAI]: Can you, please, try to find an example that isn't so obviously mocking your audience's intelligence?
@@ -49,7 +54,7 @@ Without going into too many details, instead of using a reasonable number of IPv
 [^ISOFAP]: ... in search of a problem
 
 {{<note>}}
-Just in case you're wondering why the Android Core Networking wants to get a /64 prefix for every node: they want to be able to run virtual machines inside Android that would get their IPv6 addresses with SLAAC. You don't have to take my word for it, it's all [documented in RFC 9663](https://datatracker.ietf.org/doc/html/rfc9663#name-prefix-length-consideration).
+Just in case you're wondering why the Android Core Networking team wants to get a /64 prefix for every node: they want to be able to run virtual machines inside Android that would get their IPv6 addresses with SLAAC. You don't have to take my word for it; it's all [documented in RFC 9663](https://datatracker.ietf.org/doc/html/rfc9663#name-prefix-length-consideration).
 {{</note>}}
 
 But the "new" approach reduces the ND cache, right? Isn't that a good thing? Not so fast. Delegating a prefix to a device uses an ND entry and a routing table entry. Low-cost edge switches have always had fewer routing table entries (that use more expensive TCAM or similar hardware) than ND entries (that use simple hash tables). Depending on the hardware you use, going from multiple on-link addresses to prefix-per-host might exhaust the forwarding resources even sooner.
