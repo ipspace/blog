@@ -2,7 +2,7 @@
 title: "Changing Colors and Line Styles in netlab Graphs"
 date: 2025-09-22 07:38:00+0200
 tags: [ netlab ]
-netlab_tag: graphs
+netlab_tag: graph
 ---
 Last week, I explained how to [generate network topology graphs](/2021/09/netsim-tools-graphs/) (using GraphViz or D2 graphing engines) from a [_netlab_ lab topology](https://netlab.tools/topology-overview/). Let's see how we can make them look nicer (or at least more informative). We'll work with a simple [leaf-and-spine topology](https://github.com/ipspace/netlab-examples/blob/master/graphs/colors-lines/topology.yml) with four nodes[^4N]:
 
