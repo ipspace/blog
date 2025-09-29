@@ -2,7 +2,7 @@
 title: "Changing the Layout of netlab Topology Graphs"
 date: 2025-09-30 07:26:00+0200
 tags: [ netlab ]
-netlab_tag: graphs
+netlab_tag: graph
 ---
 After I published the updated [netlab topology graphs](/2021/09/netsim-tools-graphs/) article, [Samuel K. Lam](https://www.linkedin.com/in/samuel-k-lam/) quickly made a comment along the lines of *now we know how the [graph](/2023/06/bgp-leak-lab/) representing the following topology was made*, adding a nice ASCII art that illustrated the point I was trying to make much better than my graphs:
 

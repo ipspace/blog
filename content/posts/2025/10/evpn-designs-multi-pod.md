@@ -1,6 +1,6 @@
 ---
 title: "EVPN Designs: Multi-Pod Fabrics"
-series_title: "Multi-Pod Fabrics (Inter-AS Option C)"
+series_title: "Multi-Pod Fabrics"
 date: 2025-10-01 07:59:00+0200
 tags: [ EVPN, design, netlab, vxlan ]
 netlab_tag: evpn_dg

@@ -1,7 +1,7 @@
 ---
 date: 2021-09-20 07:07:00+00:00
-netlab_tag: overview
-series_title: Network Topology Graphs
+netlab_tag: graph
+series_title: Introduction to netlab Graphs
 tags:
 - netlab
 title: netlab Network Topology Graphs
