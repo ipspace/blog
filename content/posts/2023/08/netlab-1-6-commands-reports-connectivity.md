@@ -4,7 +4,7 @@ Connectivity"
 series_title: "New Commands, Reports, and External Connectivity (Release 1.6.0)"
 date: 2023-08-01 15:08:00
 tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
 ---
 *netlab* release 1.6.0 has (probably) [the longest release notes so far](https://netlab.tools/release/1.6/#release-1-6-0) as it contains so many user-visible new features including:
 

@@ -1,6 +1,6 @@
 ---
 date: 2023-05-02 06:43:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: Aruba CX, External Tools, Tunnel Interfaces (Release 1.5.2)
 tags:
 - netlab

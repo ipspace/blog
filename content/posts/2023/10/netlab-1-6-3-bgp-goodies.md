@@ -3,7 +3,7 @@ title: "netlab 1.6.3: BGP Nerd Knobs"
 series_title: "BGP Nerd Knobs (Release 1.6.3)"
 date: 2023-10-11 05:52:00
 tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
 ---
 *netlab* [release 1.6.3](https://netlab.tools/release/1.6/#release-1-6-3) added numerous BGP nerd knobs:
 

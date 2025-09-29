@@ -3,7 +3,7 @@ title: "netlab 1.6.2: More Reporting Goodies"
 series_title: "Improved Reports (Release 1.6.2)"
 date: 2023-10-05 06:19:00
 tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
 ---
 *netlab* [release 1.6.2](https://netlab.tools/release/1.6/#release-1-6-2) improved reporting capabilities:
 

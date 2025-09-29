@@ -3,7 +3,7 @@ title: "netlab 1.6.1: BGP Reports, Markdown Support"
 series_title: "BGP- and Markdown Reports (Release 1.6.1)"
 date: 2023-08-21 06:08:00
 tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
 ---
 We added just a few small features in *netlab* release 1.6.1[^HPO]:
 

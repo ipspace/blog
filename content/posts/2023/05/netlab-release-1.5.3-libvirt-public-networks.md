@@ -1,6 +1,6 @@
 ---
 date: 2023-05-15 07:56:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: libvirt Public Networks, containerlab 0.41.0 (Release 1.5.3)
 tags:
 - netlab
