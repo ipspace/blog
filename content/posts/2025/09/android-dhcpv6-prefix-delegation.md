@@ -1,8 +1,7 @@
 ---
 title: "Android Phones Might Ask for /64 Delegated Prefix"
 date: 2025-09-29 07:43:00+0200
-tags: [ netlab ]
-netlab_tag: graphs
+tags: [ IPv6, DHCP ]
 ---
 _I'm too old to be fighting with windmills, but sometimes I have to get a rant off my chest. This one was triggered by the latest episode of the hilarious[^WFAD] "DHCPv6 on Android" [soap opera](/2021/10/dhcpv6-matters/)_
 
