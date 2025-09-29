@@ -1,6 +1,6 @@
 ---
 date: 2023-04-04 06:24:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: VLAN and VRF Links (Release 1.5.1)
 tags:
 - netlab

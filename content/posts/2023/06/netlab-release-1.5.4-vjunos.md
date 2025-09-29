@@ -1,6 +1,6 @@
 ---
 date: 2023-06-12 06:14:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: New Junos Platforms (Release 1.5.4)
 tags:
 - netlab

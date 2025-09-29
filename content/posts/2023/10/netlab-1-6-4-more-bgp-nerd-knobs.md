@@ -3,7 +3,7 @@ title: "netlab 1.6.4: Support for Multi-Lab Projects; More BGP Goodies"
 series_title: "Support for Multi-Lab Projects; More BGP Goodies (Release 1.6.4)"
 date: 2023-10-24 05:52:00
 tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
 ---
 Features in *netlab* [release 1.6.4](https://netlab.tools/release/1.6/#release-1-6-4) were driven primarily by the needs of my [BGP labs](https://bgplabs.net/) project:
 

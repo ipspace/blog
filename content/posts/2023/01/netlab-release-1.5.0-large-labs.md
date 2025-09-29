@@ -1,6 +1,6 @@
 ---
 date: 2023-01-30 07:24:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: Larger Lab Topologies (Release 1.5.0)
 tags:
 - netlab
