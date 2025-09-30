@@ -35,7 +35,7 @@ You can also use _netlab_ (potentially together with GitHub Codespaces) to build
 {{<plushy master>}}
 {{<series-listing tag="guidelines" weight="1">}}
 
-### Topology and Routing Protocol Graphs
+### Topology and Routing Protocol Graphs {#graph}
 {{<series-listing tag="graph">}}
 
 ### Using VRFs and VLANs
