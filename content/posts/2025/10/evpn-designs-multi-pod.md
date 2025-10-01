@@ -10,9 +10,8 @@ pre_scroll: True
 In the [EVPN Designs: Layer-3 Inter-AS Option A](/2025/08/evpn-designs-interas-a/), I described the simplest multi-site design in which the WAN edge routers exchange IP routes in individual VRFs, resulting in two isolated layer-2 fabrics connected with a layer-3 link.
 
 Today, let's explore a design that will excite the True Believers in end-to-end layer-2 networks: two EVPN fabrics connected with an EBGP session to form a unified, larger EVPN fabric. We'll use the same "physical" topology as the previous example; the only modification is that the WA-WB link is now part of the underlay IP network.
-
-{{<figure src="/2025/08/evpn-inter-as-topology.png" caption="Lab topology">}}
 <!--more-->
+{{<figure src="/2025/08/evpn-inter-as-topology.png" caption="Lab topology">}}
 
 This is how the EVPN/EBGP routing is set up:
 
