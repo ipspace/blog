@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -21,6 +21,43 @@
 <p>Now realistically, most big networks I know of tunnel wireless traffic to a central controller cluster, which helps if had a big &#39;ol &quot;reserved for future use&quot; in the top level of your address plan that you can devote to Android.</p>
 
 <p>My ranting aside, it really does necessitate that everyone re-examines address plans.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2758">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daryll Swer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2758" href="#2758">02 October 2025 05:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; IPv4 is bad for batteries because phones need to keep NAT sessions alive. To me, this makes as much sense as my usual quip that copy-paste makes rockets explode, but maybe I&rsquo;m missing something.</p>
+
+<p>This part is true, Ivan. Dating back to 2013 (or as early as 2011 IIRC, it&#39;s been a decade+ since I read it), there was a paper Cisco published (I can&#39;t find it now, but you may have better Google fu skills than me) that demonstrated/studied how CGNAT/NAT = battery expense due to NAT keep-alive traffic.</p>
+
+<p>I think rfc6269 and rfc6887 also talked about batteries.</p>
+
+<p>The apps running on the host keeps sending those packets every X seconds, which means a lot on mobile devices&#39; battery runtime. Keep in mind, the mobile phone can have like 200 apps, and maybe 20-50 do &ldquo;light&rdquo; background NAT keep-alive every X second. VoWiFi alone in my testing sends keep-alive every 5&ndash;10 seconds &mdash; this is insane.</p>
+
+<p>Anecdotally, I&#39;ve run a lot of &ldquo;tests&rdquo; in my home lab (I have physical transit, public routed v4/v6 blocks, no NAT aka NAT-only for testing) over the past 4&ndash;5 years. Go to sleep with iPhone at 100% battery (verified by CoconutBattery), wake up to 10% drain with NAT (no IPv6) vs wake up to 1-2% or 0% drain with NAT+native IPv6 or native IPv4+native IPv6.</p>
+
+<p>The &ldquo;fair&rdquo; compromise I found that worked best for real-world networking:
+1. IPv4 CGNAT/NAT with EIM-EIF (hairpin too, because TURN).
+2. Native IPv6.
+3. Move on with life.</p>
+
+<p>Yes, I&#39;m obsessed with battery life on mobile computing devices, off-topic, but I recommend every tech person to read everything here:
+https://batteryuniversity.com/</p>
+
+<p>Don&#39;t quote me on this one, just what I&#39;ve heard/seen: Regarding LTE/5G, I believe the general practice is a /64 link-prefix per PDP/PDU(I think this is 5G terminology) context/session, the UE then generates /128s using SLAAC. However, some Telcos may already be doing /64 ia_pd for a long time.</p>
+
+<p>Few folks in the consulting world have advocated for /63 ia_pd per UE in LTE/5G for a long-time, some I heard deployed this successfully in the past, but there&#39;s no public-facing docs or presentations/talks about this as far as I know.</p>
+
+<p>But I recently had a chance to talk to an MVNO, and I asked about IPv6, turns out 3GPP world is a mess and not every EPC software maker implemented IPv6 specs the same way, so in this instance, the IPv6 UE Pool &mdash; nobody knows what it means ia_na? ia_pd? SLAAC? Something magical? No idea &#x1F937;&zwj;&#x2642;&#xFE0F;
+I just advised them on future proofing the subnet plan and moved on with my life, don&#39;t have bandwidth to learn that world of networking.</p>
 </div>
           </div>
         </li>
