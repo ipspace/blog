@@ -132,6 +132,37 @@ I just advised them on future proofing the subnet plan and moved on with my life
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2762">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Scoopta</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2762" href="#2762">04 October 2025 01:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; How many realistic scenarios have you seen where a phone connected to a WiFi would offer a tethered IPv6 connection to... what? Over what?</p>
+
+<p>They don&#39;t do this now...at least android doesn&#39;t much to my disappointment. They SHOULD offer it and currently do not. I think it&#39;s because for SLAAC this requires an NDP proxy and technically the way this works on cellular is different from that but I&#39;m guessing.</p>
+
+<p>&gt; There&#39;s a reason my Apple Watch has a WiFi interface -- I can use it even when I&#39;m in another room than my phone.</p>
+
+<p>Why are you focused on smart watches? Those typically use a different system from tethering, at least on android. In fact my smart watch does some weird voodoo proxy non-sense and doesn&#39;t even count as a tether. I&#39;m mainly focusing on connecting devices to a phone and then using the phone as a sort of WiFi proxy. For example connecting my laptop to my phone while my phone is on WiFi.</p>
+
+<p>&gt; If you use different client identifiers for tethered devices, you&#39;ll get multiple addresses, right?</p>
+
+<p>Interesting point, what if they configure a policy such that each mac address can only have a single address? The reason I propose that is because if their goal is to restrict devices to 1 address then it becomes trivial to just use multiple DUIDs to bypass that restriction so it&#39;s not a very good way of enforcing that policy.</p>
+
+<p>&gt; You say policy, I say crusade ;) No other major vendor has a problem with running a DHCPv6 client using IA_NA on their IPv6 hosts.</p>
+
+<p>To be clear I&#39;m not entirely in support of android&#39;s &quot;crusade&quot; but I do see some concerns with DHCPv6. It&#39;s not that there&#39;s a problem with using IA_NA, it&#39;s more that it opens the door to less than ideal v6 deployments from a users perspective. With v4 (because of NAT) I can tether from my phone to other devices, I can&#39;t do that with v6 IA_NA if the network restricts addressing to 1 per device (or 2 for 464XLAT). The same goes for running virtual machines on a laptop which can be done with v4 NAT or with v6 using an NDP proxy with SLAAC. Basically I guess, TL;DR: I&#39;m not against DHCP IA_NA, I&#39;m against anything that has the potential to force people into using v6 NAT because NAT is the one thing I will crusade against.</p>
+
+<p>Aside about my smart watch because I find it interesting:
+I have a moto 360 android wear smartwatch. It assigns itself an IPv4 address to a Linux ifb interface. The watch does not get an IPv6 address at all even when on cellular. I don&#39;t know exactly how it works but there is no corresponding tether interface on the phone and the watch cannot emit ICMP. My assumption is it seems to be some form of userspace proxy to the android wearOS app. It&#39;s not using bluetooth tethering as that can be disabled while the watch still has internet and bluetooth tethering creates a pan interface with dual stack addressing that the watch doesn&#39;t need or use. I suppose I should do a bit more digging to try to understand what&#39;s going on as it&#39;s a really odd setup. This whole fiasco has been a nuisance for my personal network since the watch doesn&#39;t support WPA3 and my network is WPA3 only and v6 only so my watch has no internet at home. The bleeding edge is...sharp and bloody lol.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
