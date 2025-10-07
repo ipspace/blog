@@ -4,7 +4,7 @@
     <description>{{ .Params.description | transform.HTMLEscape | safeHTML }}</description>
     <title>{{ .Title | transform.HTMLEscape | safeHTML }}</title>
     <managingEditor>noemail@noemail.org (Ivan Pepelnjak)</managingEditor>
-    <pubDate>{{ now.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</pubDate>
+    <pubDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
     <generator>Hugo https://gohugo.io/</generator>
     <link>https://blog.ipspace.net/tag/software-gone-wild/</link>
     <language>en-us</language>
@@ -44,10 +44,10 @@
       <enclosure length="0" type="audio/mpeg" url="{{ . }}"/>
       {{ end -}}
       <author>devnull@ipspace.net (ipSpace.net)</author>
-      <itunes:explicit>no</itunes:explicit>
-      <itunes:subtitle>{{ .Summary | transform.HTMLEscape | safeHTML }}</itunes:subtitle>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:subtitle>{{ .Summary | plainify | truncate 250 | transform.HTMLEscape | safeHTML }}</itunes:subtitle>
       <itunes:author>ipSpace.net</itunes:author>
-      <itunes:summary>{{ .Summary | transform.HTMLEscape | safeHTML }}</itunes:summary>
+      <itunes:summary>{{ .Summary | plainify | transform.HTMLEscape | safeHTML }}</itunes:summary>
       {{- with .Params.itunes.keywords }}
       <itunes:keywords>{{ . }}</itunes:keywords>
       {{- end }}
