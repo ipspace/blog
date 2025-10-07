@@ -1,0 +1,42 @@
+{{ printf `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }}
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+
+    <title>{{ .Title | transform.HTMLEscape | safeHTML }}</title>
+    <managingEditor>noemail@noemail.org (Ivan Pepelnjak)</managingEditor>
+    <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    <generator>Hugo https://gohugo.io/</generator>
+    <link>https://blog.ipspace.net/tag/software-gone-wild/</link>
+    <atom:link href="{{ .Permalink }}" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <copyright>(C) ipSpace.net</copyright>
+    {{- $limit := (cond (le site.Config.Services.RSS.Limit 0) 65536 site.Config.Services.RSS.Limit) }}
+    {{- $feed_sections := site.Params.feedSections | default site.Params.mainSections -}}
+    {{/* Range through only the pages with a Type in $feed_sections. */}}
+    {{- $pages := where .RegularPages "Type" "in" $feed_sections -}}
+    {{- if (eq .Kind "home") }}
+    <description>blog.ipSpace.net: recent blog posts</description>
+      {{- $pages = where site.RegularPages "Type" "in" $feed_sections -}}
+    {{- else }}
+    <description>blog.ipSpace.net: recent posts in category {{ .Title }}</description>
+    {{- end -}}
+    {{/* Remove the pages that have the disable_feed parameter set to true. */}}
+    {{- $pages = where $pages ".Params.disable_feed" "!=" true -}}
+    {{- range first $limit $pages.ByDate.Reverse }}
+    <item>
+      {{- $page := . }}
+      <title>{{ .Title | transform.HTMLEscape | safeHTML }}</title>
+      <link>{{ .Permalink }}?utm_source=atom_feed</link>
+      {{ range .Params.tags -}}
+      <category>{{ . }}</category>
+      {{ end -}}
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid isPermaLink="false">{{ .Permalink }}</guid>
+      <description>{{ .Summary | transform.HTMLEscape | safeHTML }}</description>
+      {{ with .Params.media -}}
+      <enclosure length="0" type="audio/mpeg" url="{{ . }}"/>
+      {{ end -}}
+    </item>
+    {{- end }}
+  </channel>
+</rss>
