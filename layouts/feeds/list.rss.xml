@@ -1,5 +1,5 @@
 {{ printf `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }}
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <description>{{ .Params.description | transform.HTMLEscape | safeHTML }}</description>
     <title>{{ .Title | transform.HTMLEscape | safeHTML }}</title>
@@ -7,8 +7,9 @@
     <pubDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
     <generator>Hugo https://gohugo.io/</generator>
     <link>https://blog.ipspace.net/tag/software-gone-wild/</link>
+    <atom:link href="{{ .Permalink }}" rel="self" type="application/rss+xml" />
     <language>en-us</language>
-    <itunes:explicit>no</itunes:explicit>
+    <itunes:explicit>false</itunes:explicit>
     <copyright>(C) ipSpace.net</copyright>
     <itunes:image href="http://www.ipspace.net/images/ipspace-logo-800x600.png"/>
     {{- with .Params.itunes.keywords }}
@@ -17,10 +18,8 @@
     <itunes:summary>{{ .Params.itunes.summary }}</itunes:summary>
     {{- with .Params.subtitle }}
     <itunes:subtitle>{{ . }}</itunes:subtitle>
-    {{ end }}
-    <itunes:category text="Technology">
-      <itunes:category text="Podcasting"/>
-    </itunes:category>
+    {{ end -}}
+    <itunes:category text="Technology" />
     <itunes:author>ipSpace.net</itunes:author>
     <itunes:owner>
       <itunes:email>devnull@ipspace.net</itunes:email>
@@ -45,9 +44,9 @@
       {{ end -}}
       <author>devnull@ipspace.net (ipSpace.net)</author>
       <itunes:explicit>false</itunes:explicit>
-      <itunes:subtitle>{{ .Summary | plainify | truncate 250 | transform.HTMLEscape | safeHTML }}</itunes:subtitle>
+      <itunes:subtitle>{{ .Summary | transform.HTMLUnescape | plainify | truncate 240 | transform.HTMLEscape | safeHTML }}</itunes:subtitle>
       <itunes:author>ipSpace.net</itunes:author>
-      <itunes:summary>{{ .Summary | plainify | transform.HTMLEscape | safeHTML }}</itunes:summary>
+      <itunes:summary>{{ .Summary | transform.HTMLUnescape | plainify | transform.HTMLEscape | safeHTML }}</itunes:summary>
       {{- with .Params.itunes.keywords }}
       <itunes:keywords>{{ . }}</itunes:keywords>
       {{- end }}
