@@ -1,0 +1,94 @@
+{{ printf `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }} {{/* ref: https://validator.w3.org/feed/docs/atom.html */}}
+<feed xmlns="http://www.w3.org/2005/Atom"{{ with site.LanguageCode }} xml:lang="{{ . }}"{{ end }}>
+    <generator uri="https://gohugo.io/" version="{{ hugo.Version }}">Hugo</generator>
+    {{ printf `<title type="html"><![CDATA[%s]]></title>` .Title | safeHTML }}
+    {{ with (or (.Param "subtitle") (.Param "tagline")) }}
+        {{ printf `<subtitle type="html"><![CDATA[%s]]></subtitle>` . | safeHTML }}
+    {{ end }}
+    {{ $output_formats := .OutputFormats }}
+    {{ range $output_formats -}}
+        {{- $rel := (or (and (eq "atom" (.Name | lower)) "self") "alternate") -}}
+        {{ with $output_formats.Get .Name }}
+            {{ printf `<link href=%q rel=%q type=%q title=%q />` .Permalink $rel .MediaType.Type .Name | safeHTML }}
+        {{- end -}}
+    {{- end }}
+    <updated>{{ now.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
+    {{ with site.Copyright }}
+        {{- $copyright := replace . "{year}" now.Year -}} {{/* In case the site.copyright uses a special string "{year}" */}}
+        {{- $copyright = replace $copyright "&copy;" "©" -}}
+        <rights>{{ $copyright | plainify }}</rights>
+    {{- end }}
+    {{ with .Param "feed" }}
+        {{/* For this to work, the $icon file should be present in the assets/ directory */}}
+        {{- $icon := .icon | default "icon.svg" -}}
+        {{- with resources.Get $icon -}}
+            <icon>{{ (. | fingerprint).Permalink }}</icon>
+        {{- end }}
+
+        {{/* For this to work, the $logo file should be present in the assets/ directory */}}
+        {{- $logo := .logo | default "logo.svg" -}}
+        {{- with resources.Get $logo -}}
+            <logo>{{ (. | fingerprint).Permalink }}</logo>
+        {{- end }}
+    {{ end }}
+    {{ with site.Author.name -}}
+        <author>
+            <name>{{ . }}</name>
+            {{ with site.Author.email }}
+                <email>{{ . }}</email>
+            {{ end -}}
+        </author>
+    {{- end }}
+    {{ with site.Params.id }}
+        <id>{{ . | plainify }}</id>
+    {{ else }}
+        <id>{{ .Permalink }}</id>
+    {{ end }}
+    {{- $pages := where site.Pages "Params.tags" "intersect" (slice .Params.feed_category) -}}
+    {{/* Remove the pages that have the disable_feed parameter set to true. */}}
+    {{- $pages = where $pages ".Params.disable_feed" "!=" true -}}
+    {{- range $pages }}
+        {{ $page := . }}
+        <entry>
+            {{ printf `<title type="html"><![CDATA[%s]]></title>` .Title | safeHTML }}
+            <link href="{{ .Permalink }}?utm_source=atom_feed" rel="alternate" type="text/html" />
+            {{ with .Params.id }}
+                <id>{{ . | plainify }}</id>
+            {{ else }}
+                <id>{{ .Permalink }}</id>
+            {{ end }}
+            {{ with .Params.author -}}
+                {{- range . -}} <!-- Assuming the author front-matter to be a list -->
+                    <author>
+                        <name>{{ . }}</name>
+                    </author>
+                {{- end -}}
+            {{- end }}
+            <published>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</published>
+            <updated>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
+            {{ with $page.Params.media }}
+              <link rel="enclosure" type="audio/mpeg" href="{{ . }}" />
+            {{ end }}
+            {{ $content := .Content }}
+            {{ $more    := "" }}
+            {{ $morefmt := "<div class='jump-link'><a href='%s'>Read more &hellip;</a></div>" }}
+            {{ if .Description }}
+              {{ $content = .Description }}
+              {{ $more    = printf $morefmt .Permalink }}
+            {{ else if .Truncated }}
+              {{ $content = .Summary }}
+              {{ $more    = printf $morefmt .Permalink }}
+            {{ end }}
+            {{ printf `<content type="html"><![CDATA[%s%s]]></content>` $content $more | safeHTML }}
+            {{ with $page.Params.tags }}
+                {{ $taxo_list := . }} <!-- $taxo_list will be the tags/categories list -->
+                {{ with site.GetPage (printf "/%s" "tags") }}
+                    {{ $taxonomy_page := . }}
+                    {{ range $taxo_list }} <!-- Below, assuming pretty URLs -->
+                        <category term="{{ . }}" />
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        </entry>
+    {{ end }}
+</feed>

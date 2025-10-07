@@ -1,0 +1,57 @@
+{{ printf `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }}
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+  <channel>
+    <description>{{ .Params.description }}</description>
+    <title>{{ .Title }}</title>
+    <managingEditor>noemail@noemail.org (Ivan Pepelnjak)</managingEditor>
+    <pubDate>{{ now.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</pubDate>
+    <generator>Hugo https://gohugo.io/</generator>
+    <link>https://blog.ipspace.net/tag/software-gone-wild/</link>
+    <language>en-us</language>
+    <itunes:explicit>no</itunes:explicit>
+    <copyright>(C) ipSpace.net</copyright>
+    <itunes:image href="http://www.ipspace.net/images/ipspace-logo-800x600.png"/>
+    {{- with .Params.itunes.keywords }}
+    <itunes:keywords>{{ . }}</itunes:keywords>
+    {{ end }}
+    <itunes:summary>{{ .Params.itunes.summary }}</itunes:summary>
+    {{- with .Params.subtitle }}
+    <itunes:subtitle>{{ . }}</itunes:subtitle>
+    {{ end }}
+    <itunes:category text="Technology">
+      <itunes:category text="Podcasting"/>
+    </itunes:category>
+    <itunes:author>ipSpace.net</itunes:author>
+    <itunes:owner>
+      <itunes:email>devnull@ipspace.net</itunes:email>
+      <itunes:name>ipSpace.net</itunes:name>
+    </itunes:owner>
+    {{- $pages := where site.Pages "Params.tags" "intersect" (slice .Params.feed_category) -}}
+    {{/* Remove the pages that have the disable_feed parameter set to true. */}}
+    {{- $pages = where $pages ".Params.disable_feed" "!=" true -}}
+    {{- range $pages }}
+    <item>
+      {{- $page := . }}
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}?utm_source=atom_feed</link>
+      {{ range .Params.tags -}}
+      <category>{{ . }}</category>
+      {{ end -}}
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid isPermaLink="false">{{ .Permalink }}</guid>
+      <description>{{ .Summary }}</description>
+      {{ with .Params.media -}}
+      <enclosure length="0" type="audio/mpeg" url="{{ . }}"/>
+      {{ end -}}
+      <author>devnull@ipspace.net (ipSpace.net)</author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle>{{ .Summary }}</itunes:subtitle>
+      <itunes:author>ipSpace.net</itunes:author>
+      <itunes:summary>{{ .Summary }}</itunes:summary>
+      {{- with .Params.itunes.keywords }}
+      <itunes:keywords>{{ . }}</itunes:keywords>
+      {{- end }}
+    </item>
+    {{- end }}
+  </channel>
+</rss>
