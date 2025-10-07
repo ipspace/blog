@@ -1,6 +1,6 @@
 ---
 title: "Working for a Vendor with David Gee"
-date: 2025-10-08 08:23:00
+date: 2025-10-07 08:23:00
 tags: [ Software Gone Wild, netlab, podcast ]
 netlab_tag: podcast
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_201-Working_for_a_Vendor_with_David_Gee.mp3
