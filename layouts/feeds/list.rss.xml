@@ -1,8 +1,8 @@
 {{ printf `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }}
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
-    <description>{{ .Params.description }}</description>
-    <title>{{ .Title }}</title>
+    <description>{{ .Params.description | transform.HTMLEscape | safeHTML }}</description>
+    <title>{{ .Title | transform.HTMLEscape | safeHTML }}</title>
     <managingEditor>noemail@noemail.org (Ivan Pepelnjak)</managingEditor>
     <pubDate>{{ now.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</pubDate>
     <generator>Hugo https://gohugo.io/</generator>
@@ -32,22 +32,22 @@
     {{- range $pages }}
     <item>
       {{- $page := . }}
-      <title>{{ .Title }}</title>
+      <title>{{ .Title | transform.HTMLEscape | safeHTML }}</title>
       <link>{{ .Permalink }}?utm_source=atom_feed</link>
       {{ range .Params.tags -}}
       <category>{{ . }}</category>
       {{ end -}}
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
       <guid isPermaLink="false">{{ .Permalink }}</guid>
-      <description>{{ .Summary }}</description>
+      <description>{{ .Summary | transform.HTMLEscape | safeHTML }}</description>
       {{ with .Params.media -}}
       <enclosure length="0" type="audio/mpeg" url="{{ . }}"/>
       {{ end -}}
       <author>devnull@ipspace.net (ipSpace.net)</author>
       <itunes:explicit>no</itunes:explicit>
-      <itunes:subtitle>{{ .Summary }}</itunes:subtitle>
+      <itunes:subtitle>{{ .Summary | transform.HTMLEscape | safeHTML }}</itunes:subtitle>
       <itunes:author>ipSpace.net</itunes:author>
-      <itunes:summary>{{ .Summary }}</itunes:summary>
+      <itunes:summary>{{ .Summary | transform.HTMLEscape | safeHTML }}</itunes:summary>
       {{- with .Params.itunes.keywords }}
       <itunes:keywords>{{ . }}</itunes:keywords>
       {{- end }}
