@@ -1,6 +1,6 @@
 ---
 title: "Troubleshooting Multi-Pod EVPN"
-date: 2025-10-08 08:27:00+0200
+date: 2025-10-09 08:27:00+0200
 tags: [ EVPN ]
 evpn_tag: details
 ---
