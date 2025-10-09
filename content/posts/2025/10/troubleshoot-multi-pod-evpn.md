@@ -26,7 +26,7 @@ Troubleshooting a VXLAN underlay problem is pure IP connectivity troubleshooting
 
 Once you ~~hope~~ know the underlay works as expected, it's time to troubleshoot the EVPN/VXLAN part. It's time for another bifurcation:
 
-* Is the ingress PE-device receiving the expected EVPN routes from the egress PE-device? For example, does it get the type-3 routes to set up the ingress replication? Does it get the type-1 routes for the remote MAC address?
+* Is the ingress PE-device receiving the expected EVPN routes from the egress PE-device? For example, does it get the type-3 routes to set up the ingress replication? Does it get the type-2 routes for the remote MAC address?
 * Are the contents of the EVPN routes correct?
 
 If the EVPN routes are not propagated between PE-devices, you have a BGP route propagation problem. Check the BGP sessions and the address families activated on those sessions.
