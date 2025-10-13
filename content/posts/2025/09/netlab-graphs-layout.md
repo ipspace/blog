@@ -1,6 +1,7 @@
 ---
 title: "Changing the Layout of netlab Topology Graphs"
 date: 2025-09-30 07:26:00+0200
+lastmod: 2025-10-13 09:17:00+02:00
 tags: [ netlab ]
 netlab_tag: graph
 ---
@@ -79,7 +80,10 @@ The result is probably as close as one can get to an ideal diagram with an auto-
 
 {{<figure src="/2025/09/bl-rank.png" caption="Using GraphViz ranks to create layers of autonomous systems">}}
 
-However, wouldn't it be nice if we didn't have to tweak the **graph.dot** file? Couldn't _netlab_ provide that functionality? Glad you asked (or at least got to here 😉). The **graph.rank** attribute is coming in _netlab_ release 25.10[^ABAJ]. Here's how you could use it to generate an almost-perfect graph without rearranging the links ([complete topology file](https://github.com/ipspace/netlab-examples/blob/master/BGP/Route-Leaks/graph-rank.yml)):
+However, wouldn't it be nice if we didn't have to tweak the **graph.dot** file? Couldn't _netlab_ provide that functionality? Glad you asked (or at least got to here 😉).
+
+We added the **graph.rank** attribute in _netlab_ release 25.10. Here's how you could use it to generate an almost-perfect graph without rearranging the links ([complete topology file](https://github.com/ipspace/netlab-examples/blob/master/BGP/Route-Leaks/graph-rank.yml)):
+{ #rank }
 
 {{<cc>}}Addition to the original topology file{{</cc>}}
 ```
@@ -97,8 +101,11 @@ The **graph.rank** node attribute does two things:
 * It generates the **rank=same** directives in the GraphViz graph description file.
 * It rearranges the order of nodes in edge (link) descriptions (this works for GraphViz and D2 graph descriptions).
 
-[^ABAJ]: If you're reading this before release 25.10 ships: I know I'm almost as bad as Juniper's Data Center BU that published the "_this is how VXLAN works on Juniper switches_" video on YouTube as soon as they got it to work in an engineering image. However, there are two tiny differences: you can [already run the new code](https://netlab.tools/install/clone/) without begging your SE, and the feature will ship in weeks, not months.
-
 ### Kicking The (Free) Tires
 
 Want to try out these examples? Use the procedure I described in the [Changing Colors and Line Styles in netlab Graphs](/2025/09/netlab-graphs-colors-lines/#trygraphs) blog post using the examples from the `BGP/Route-Leaks` directory.
+
+### Revision History
+
+2025-10-13
+: The **graph.rank** node attribute is implemented in release 25.10

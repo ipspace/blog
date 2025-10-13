@@ -22,6 +22,7 @@ This is how the EVPN/EBGP routing is set up:
 {{<figure src="/2025/10/evpn-multi-pod-bgp.png" caption="BGP sessions (IBGP sessions are brown, EBGP sessions are red)">}}
 
 The [_netlab_ topology](https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-multi-pod/topology.yml) we'll use to create this design is very similar to the one we used in the previous example. Here are the changes between the two:
+{ #topo }
 
 {{<printout>}}
 --- ../inter-as-a/topology.yml
