@@ -194,7 +194,7 @@ L>* 172.16.1.6/32 is directly connected, vlan1001, weight 1, 00:02:26
 
 Want to explore the EVPN behavior of your favorite devices? It's trivial:
 
-* Set up a _netlab_ environment ([example](https://blog.ipspace.net/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab), [installation guide](https://netlab.tools/install/), using [GitHub Codespaces](/2024/07/netlab-examples-codespaces/))
+* Set up a _netlab_ environment ([example](https://blog.ipspace.net/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab), [installation guide](https://netlab.tools/install/), using [GitHub Codespaces](/2024/07/netlab-examples-codespaces/) with [Arista cEOS containers](https://blog.ipspace.net/2024/07/arista-eos-codespaces/))
 * Download the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-a/topology.yml) into an empty directory or use `netlab up https://github.com/ipspace/netlab-examples/blob/master/EVPN/inter-as-a/topology.yml` ([more details](/2025/09/netlab-download-url/))
 * Execute `netlab up`, optionally adding  `-d _your_device_` and  `-p _provider_`. The lab topology uses FRRouting containers; to use Arista EOS containers, use `-d eos`, to use Aruba AOS-CX VMs, use `-d arubacx -p libvirt` ([more options](https://netlab.tools/module/evpn/)).
 
