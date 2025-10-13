@@ -1,8 +1,7 @@
 ---
 title: "Working for a Vendor with David Gee"
 date: 2025-10-07 08:23:00+02:00
-tags: [ Software Gone Wild, netlab, podcast ]
-netlab_tag: podcast
+tags: [ Software Gone Wild, podcast ]
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_201-Working_for_a_Vendor_with_David_Gee.mp3
 ---
 When I first met David Gee, he worked for a large system integrator. A few years later, he moved to a networking vendor, worked for a few of them, then for a software vendor, and finally decided to start his own system integration business.
