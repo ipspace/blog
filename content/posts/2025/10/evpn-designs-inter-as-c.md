@@ -10,7 +10,7 @@ pre_scroll: True
 In the [multi-pod EVPN design](/2025/10/evpn-designs-multi-pod/), I described a simple way to merge two EVPN fabrics into a single end-to-end fabric. Here are a few highlights of that design:
 
 * Each fabric is running OSPF and IBGP, with core (spine) devices being route reflectors
-* There's an EBGP session between the WAN edge routers (sometimes called border leafs)
+* There's an EBGP session between the WAN edge routers (sometimes called border leaf switches)
 * Every BGP session carries IPv4 (underlay) and EVPN (overlay) routes.
 
 In that design, the WAN edge routers have to support EVPN (at least in the control plane) and carry all EVPN routes for both fabrics. Today, we'll change the design to use simpler WAN edge routers that support only IP forwarding.
