@@ -14,18 +14,24 @@ You could use this functionality to include configuration files for Linux contai
 To use this functionality, you have to
 
 * Add the **[files](https://netlab.tools/plugins/files/)** plugin to the lab topology [`plugin`](https://netlab.tools/plugins/) list
-* Add the **files** dictionary (or list) to the lab topology specifying file paths and their contents.
+* Add the **files** dictionary (or list) to the lab topology [specifying file paths and their contents](https://netlab.tools/plugins/files/#creating-extra-files).
 
 The **files** plugin creates the specified files during the **netlab create** or **netlab up** process. The **netlab down** command removes them when used it is with the `--cleanup` flag.
 
-I use the **files** plugin to create a *bash* script that can be used to create graphs in the sample [physical topology](https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/topo.yml), [BGP](https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/bgp.yml), [IS-IS](https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/isis.yml) and [VLAN](https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/vlan.yml) graphs lab topologies. For example, you could execute **netlab create https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/isis.yml** (in an empty directory) to:
+I use the **files** plugin to create a *bash* script that can be used to create graphs in the sample [physical topology](https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/topo.yml), [BGP](https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/bgp.yml), [IS-IS](https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/isis.yml) and [VLAN](https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/vlan.yml) graphs lab topologies. For example, you could execute...
+
+```
+netlab create https://github.com/ipspace/netlab/blob/master/tests/platform-integration/graph/isis.yml
+```
+
+... in an empty directory to:
 
 * Download the sample IS-IS topology from GitHub
 * Transform the lab topology into a snapshot file
 * Create the **make.sh** file which can then be executed with **bash make.sh** to create the sample IS-IS graphs.
 
 {{<note warn>}}
-The **files** plugin does not check the paths of the created files. Check any third-party lab topology before using it, and thoroughly check scripts downloaded from the Internet before executing them.
+The **files** plugin does not check the paths of the created files (yeah, [I know that's not a good idea](https://github.com/ipspace/netlab/issues/2750)). Check any third-party lab topology before using it, and thoroughly check scripts downloaded from the Internet before executing them.
 {{</note>}}
 
 Want another example? How about using the **files** dictionary to create a custom report? Let's keep it simple and create a report that will include device type and image for all nodes in the current lab topology:
