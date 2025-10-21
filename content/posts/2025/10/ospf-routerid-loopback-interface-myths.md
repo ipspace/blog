@@ -28,7 +28,7 @@ However, compared to what we have to deal with today, the initial implementation
 
 1. Initially, Cisco would pick the highest IP address of any interface configured on the box as the router ID.
 2. Even worse, they would change the router ID if that interface went down, resulting in a temporary loss of a router node for no good reason.
-3. Losing a transit router just because an interface flapped eventually bothered enough customers to trigger a change in behavior. They figured out that using a loopback interface IPv4 address as a router ID makes for more stable networks, so the above rule #1 was changed into 'the highest loopback IPv4 address, or the highest IPv4 address if the device has no loopbacks'
+3. Losing a transit router just because an interface flapped eventually bothered enough customers to trigger a change in the router ID selection algorithm. They figured out that using a loopback interface IPv4 address as a router ID makes for more stable networks, so the above rule #1 was changed into 'the highest loopback IPv4 address, or the highest IPv4 address if the device has no loopbacks'
 4. Years later[^120T], we got the **router-id** command.
 
 [^120T]: [In release 12.0T](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/command/iro-cr-book/ospf-i1.html#wp4220238026) according to Cisco IOS OSPF command reference.
