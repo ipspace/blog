@@ -1,7 +1,7 @@
 ---
 title: "Public Videos: Graph Algorithms in Networks (Part 1)"
 date: 2025-10-22 08:09:00+0200
-expiryDate: 2026-01-22 00:00:00
+expiryDate: 2026-01-22 00:00:00+0100
 tags: [  ]
 ---
 ![](/2024/05/dalle-graph-math.jpeg)
