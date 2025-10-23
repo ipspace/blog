@@ -1,7 +1,7 @@
 ---
 title: "Lab: Drain Traffic From an IS-IS Node Before Starting Maintenance"
 series_title: "Drain Traffic From an IS-IS Node Before Starting Maintenance"
-date: 2025-10-24 07:09:00+02:00
+date: 2025-10-23 07:09:00+02:00
 tags: [ IS-IS, netlab ]
 netlab_tag: ignore
 ISIS_tag: lab
