@@ -5,7 +5,7 @@ minimal_sidebar: true
 layout: custom
 ---
 {{<quote source="ChatGPT trying (and failing) to explain EVPN">}}
-EVPN, or Ethernet Virtual Private Network, is like a smart system that helps computers and devices in a network talk to each other better. It's like having a super organized mail system where each computer has its own address, and EVPN makes sure messages get to the right place quickly and safely. So, it's kind of like a traffic manager for information on a computer network, making everything run smoothly and securely.{{</quote>}}
+EVPN, or Ethernet Virtual Private Network, is like a smart system that helps computers and devices in a network talk to each other better. It's like having a super-organized mail system where each computer has its own address, and EVPN makes sure messages get to the right place quickly and safely. So, it's kind of like a traffic manager for information on a computer network, making everything run smoothly and securely.{{</quote>}}
 
 ### {{<plushy confused>}}What Is EVPN? {#101}
 
@@ -38,6 +38,12 @@ There are tons of tiny little things that can go wrong when you try to deploy EV
 While EVPN is often used with VXLAN today, it was designed to work with the MPLS data plane, resulting in a few quirks:
 
 {{<series-listing tag="mpls">}}
+
+### Getting Your Hands Dirty
+
+I launched a series of free and open-source [VXLAN/EVPN labs](https://evpn.bgplabs.net/) in late 2025; this is how far I got:
+
+{{<series-listing tag="labs">}}
 
 ### {{<plushy angry>}}EVPN Rants {#rants}
 
