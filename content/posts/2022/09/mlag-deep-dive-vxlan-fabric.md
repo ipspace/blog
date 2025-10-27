@@ -8,10 +8,10 @@ series:
 - anycast
 tags:
 - switching
-- vxlan
+- VXLAN
 title: Combining MLAG Clusters with VXLAN Fabric
 ---
-In the previous MLAG Deep Dive blog posts we discussed the innards of a standalone MLAG cluster. Now let's see what happens when we connect such a cluster to a VXLAN fabric -- we'll use our standard MLAG topology and add a VXLAN transport underlay to it with another switch connected to the other end of the underlay network.
+In the previous MLAG Deep Dive blog posts, we discussed the innards of a standalone MLAG cluster. Now let's see what happens when we connect such a cluster to a VXLAN fabric -- we'll use our standard MLAG topology and add a VXLAN transport underlay to it with another switch connected to the other end of the underlay network.
 
 {{<figure src="/2022/09/MLAG-VXLAN-topology.jpg" caption="MLAG cluster connected to a VXLAN fabric">}}
 <!--more-->
