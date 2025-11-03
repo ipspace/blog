@@ -4,7 +4,7 @@ date: 2024-10-23 08:38:00+0200
 tags: [ MPLS VPN, EVPN ]
 evpn_tag: mpls
 ---
-Long long time ago[^LLTA], in an ancient town far far away[^ROME], an old-school networking Jeddi[^TT] was driving us toward a convent[^TS] where we had an SDN workshop[^SDN]. While we were stuck in the morning traffic jam, an enthusiastic engineer sitting beside me wanted to know my opinion about per-prefix and per-VRF MPLS/VPN label allocation.
+Long, long time ago[^LLTA], in an ancient town far, far away[^ROME], an old-school networking Jedi[^TT] was driving us toward a convent[^TS] where we had an SDN workshop[^SDN]. While we were stuck in the morning traffic jam, an enthusiastic engineer sitting beside me wanted to know my opinion about per-prefix and per-VRF MPLS/VPN label allocation.
 
 At that time, I had lived in a comfortable Cisco IOS bubble for way too long, so my answer was along the lines of "Say what???" Nicola Modena[^NM] quickly expanded my horizons, and I said, "Gee, I have to write a blog post about that!" As you can see, it took me over a decade.
 <!--more-->
@@ -19,7 +19,7 @@ At that time, I had lived in a comfortable Cisco IOS bubble for way too long, so
  
 ### The Basics
 
-As you probably know, MPLS/VPN uses VPNv4/VPNv6 address families to advertise VPN prefixes. An MPLS label must be attached to every prefix an egress PE-router advertises to enable the ingress PE-router to build an MPLS label stack that the egress router will understand. However, the MPLS/VPN labels have local significance, and as long as there's a label attached to every prefix, nobody cares what they are.
+As you probably know, MPLS/VPN uses VPNv4/VPNv6 address families to advertise VPN prefixes. An MPLS label must be attached to every prefix an egress PE router advertises to enable the ingress PE router to build an MPLS label stack that the egress router will understand. However, the MPLS/VPN labels have local significance, and as long as there's a label attached to every prefix, nobody cares what they are.
 
 That gives the egress PE router the freedom to allocate labels to prefixes in any way it wishes. It could allocate a separate label for every prefix (per-prefix allocation) or a single label for the whole VRF (per-VRF allocation). Some implementations also have a third option: use the same label for all prefixes with the same next hop.
 
@@ -39,13 +39,15 @@ Anyway, why do we have so many options? As is often the case, vendor are solving
 
 In the early days of MPLS, the labels were cheap (MPLS LFIB is a simple lookup table), but it was challenging (or time-consuming) to do multiple lookups on a single packet. MPLS labels pointing to a next-hop entry that contains an outgoing interface and a layer-2 header were a perfect solution.
 
-A few years later, hardware could do two lookups without a significant performance penalty, and per-VRF labels became a viable alternative. They are particularly popular with vendors that have to deal with hardware with limited LFIB size. Some had to get creative[^TCAM], and some probably just wanted to save a few cents[^L3FIB].
+A few years later, hardware could do two lookups without a significant performance penalty, and per-VRF labels became a viable alternative. They are particularly popular with vendors that have to deal with hardware with a limited LFIB size. Some had to get creative[^TCAM], and some probably just wanted to save a few cents[^L3FIB].
 
 [^TCAM]: According to rumors, you had to burn expensive TCAM usually used for ACLs to implement MPLS in some data center switching ASICs.
 
 [^L3FIB]: Considering the relative complexity of longest-prefix matches and label lookups, it's a bit hard to understand why someone would design a switching ASIC with a layer-3 forwarding table significantly larger than the LFIB. In the worst case, you could combine the LFIB and MAC address tables.
 
 Finally, you could argue (in an angels-dancing-on-a-pin fashion) about the impact of label allocation policy on route churn[^RC]. It seems that those arguments could stay in the realm of academics and vendor marketing departments[^LCD]; the real-life impact is probably negligible unless you have tons of routes and a very peculiar network design.
+
+{{<next-in-series page="/posts//2025/11/one-arm-hub-spoke-vpn-arista-eos.md" />}}
 
 [^RC]: Hint: what happens if you have multiple CE-routers advertising the same prefix and one of the links (or CE-routers) fails? Sometimes, you can pretend nothing happened; in others, you must advertise a different prefix because the label has changed.
 
