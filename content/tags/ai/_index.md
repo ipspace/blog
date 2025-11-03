@@ -49,7 +49,11 @@ These are not bad either:
 * [Why OpenAI is the new AWS](https://redmonk.com/jgovernor/2023/04/13/the-great-flowering-why-openai-is-the-new-aws-and-the-new-kingmakers-still-matter/)
 * [Overemployed Hustlers Exploit ChatGPT To Take On Even More Full-Time Jobs](https://www.vice.com/en/article/v7begx/overemployed-hustlers-exploit-chatgpt-to-take-on-even-more-full-time-jobs)
 
-Finally, a few real-life uses of large language models:
+Finally, a few real-life uses of large language models I mentioned:
+
+{{<series-listing tag="uses">}}
+
+And the use cases I stumbled upon:
 
 * [An Exploration of Embeddings and Vector Databases](http://toonk.io/diving-into-ai-an-exploration-of-embeddings-and-vector-databases/)
 * [How GPT and LLMs will affect documentation](https://built.fm/p/how-gpt-and-llms-will-affect-documentation)
