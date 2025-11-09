@@ -55,7 +55,9 @@ You can also use _netlab_ (potentially together with GitHub Codespaces) to build
 
 For more information, explore the [Open-Source BGP Configuration Labs](https://bgplabs.net/) project.
 
-{{<series-listing tag="evpn_dg" title="Exploring EVPN Fabric Designs">}}
+### Exploring EVPN Fabric Designs
+
+{{<series-listing tag="evpn_dg">}}
 
 ### Testing _netlab_ Core and Configuration Templates
 
