@@ -71,12 +71,12 @@ Do I have to mention that people aren't naturally good at multitasking, and that
 Little did I know that I stumbled upon at least four broken processes:
 
 1. I used PayPal to buy my ticket, so Swiss Airlines did not have my credit card information on file. They could have warned me that using PayPal to pay for a rebookable ticket is not the best idea, but it seems that collecting money in any way possible is more important.
-2. The person rebooking me obviously did not know that Swiss had no credit card information on file. Letting a support person fly blind is sometimes not a good idea.
+2. The person rebooking me obviously did not know that Swiss Airlines had no credit card information on file. Letting a support person fly blind is usually not a good idea.
 3. I was therefore left in a state of a rebooked flight with no valid ticket, but apart from confusing information (some pages would show the old departure date, some the new one), I had no indication that there was a problem
 4. My flight was in limbo for a few days, but nobody felt the need to contact me and tell me I had a problem.
 
 {{<long-quote>}}
-When I was still running my own business, I had a cron job that would scan the outstanding items, like upcoming webinars, and send me a warning if they were in an unexpected state. Obviously, such a convoluted solution never occurred to whoever is writing airline software.
+When I was still running my own webinar business, I had a cron job that would scan the outstanding items, like upcoming webinars, and send me a warning if they were in an unexpected state. Obviously, such a convoluted solution never occurred to whoever is writing airline software.
 {{</long-quote>}}
 
 ### What, No Boarding Pass?
@@ -99,7 +99,15 @@ The Switzerland support number turned out to be *web support* (what else might o
 
 The next five-minute phone call was what I would have needed three days earlier: the operator found my booking, told me what the fare difference was, took my credit card number, processed it (I heard the comforting *ping* on my phone), and told me he'd send me an email confirmation (I got it) and pass the information to the ticketing department that would (finally!!!) send me a new ticket.
 
-That last bit never happened. While I was able to check in and get my boarding pass, I still don't have the updated ticket.
+That last bit never happened. While I got the *travel documents* that looked exactly like the printouts I was getting from my travel agent in the 1990s (including a fixed font emulating the teletype look)[^X25], and was able to check in and get my boarding pass, I still don't have the updated ticket.
+
+[^X25]: If I didn't know better, it would be easy to believe they're still using punched cards in the background. But who knows, maybe the transaction did run over an emulated X.25 network?
+
+{{<long-quote>}}
+I tried to download a passenger receipt and an updated ticket from the swiss.com website a few days later. The "updated" ticket fetched using my booking reference did not include the rebooked flight, and the passenger receipt did not include the fare difference I paid.
+
+One has to wonder what happened to my return flight (with this new information, I consider myself lucky that I managed to be on it), and what black hole my money disappeared into. Also, the Swiss had a reputation for being precise. Obviously, that does not apply to their airline ticketing department.
+{{</long-quote>}}
 
 ### Adding Insult to Injury
 
@@ -107,7 +115,7 @@ Like the three-day saga wouldn't be bad enough, a check-in crew from hell was wa
 
 Fortunately, I got processed by the said elderly gentleman. He very efficiently handled my luggage and produced the boarding pass in no time, and the never-ending saga was finally over.
 
-[^NSP]: If I remember the airline colors correctly, they wore Lufthansa uniforms, so not a Swiss problem.
+[^NSP]: If I remember the airline colors correctly, they wore Lufthansa uniforms, so not a Swiss Airlines problem.
 
 ### The Enshittification Results
 
@@ -116,4 +124,4 @@ To recap:
 * Due to the inability of Swiss Airlines' online services to process a simple rebooking request, I needed a 5-minute phone call with an operator to rebook my flight, take credit card information, and generate a new ticket.
 * Instead of being able to make that phone call, I was fighting with a broken online chat system. I interacted with three people (two of whom were clearly multitasking and overloaded) without ever reaching the expected end-state (a new ticket), and wasted hours trying to complete a simple task.
 
-Another clear win for the AI consultants.
+Another clear win for the paperclip pushers and AI consultants.
