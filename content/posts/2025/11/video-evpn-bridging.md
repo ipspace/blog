@@ -3,7 +3,7 @@ title: "Public Videos: Bridging with EVPN"
 date: 2025-11-21 08:09:00+0200
 expiryDate: 2026-02-22 00:00:00+0100
 tags: [ evpn ]
-evpn_tag:
+evpn_tag: video
 ---
 ![](/2024/03/dalle-evpn-fabric.jpg)
 { .sideicon }
