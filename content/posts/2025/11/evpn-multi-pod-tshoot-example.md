@@ -8,7 +8,7 @@ netlab_title: "Multi-Pod EVPN Troubleshooting (Part 1)"
 ---
 Last month, I wrote about the [specifics of troubleshooting](/2025/10/troubleshoot-multi-pod-evpn/) [multi-pod EVPN designs](/2025/10/evpn-designs-multi-pod/). Today, I'd like to start a journey through an example in which (channeling my inner CCIE preparation lab instructor) I broke as many things as I could think of.
 
-Here's the lab topology we'll use (and as usual, the corresponding _netlab_ topology file and device configurations are on GitHub). Our network has two sites (pods), each with a spine switch, a leaf switch, and a host attached to the leaf switch. The inter-pod link is connected to the spine switches to minimize the number of devices.
+Here's the lab topology we'll use (and as usual, the corresponding [_netlab_ topology file](https://github.com/ipspace/netlab-examples/blob/master/EVPN/tshoot-multi-pod/topology.yml) and [device configurations](https://github.com/ipspace/netlab-examples/tree/master/EVPN/tshoot-multi-pod/config) are on GitHub). Our network has two sites (pods), each with a spine switch, a leaf switch, and a host attached to the leaf switch. The inter-pod link is connected to the spine switches to minimize the number of devices.
 <!--more-->
 {{<figure src="/2025/11/evpn-tshoot-topo.png">}}
 
