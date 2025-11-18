@@ -1,6 +1,6 @@
 ---
 title: "Technical Writing: Lower Your Expectations"
-date: 2025-11-27 07:24:00+0100
+date: 2025-12-04 07:24:00+0100
 tags: [ worth reading ]
 ---
 [Sean Goedecke](https://www.linkedin.com/in/sean-goedecke-5495a7137/) published [an excellent set of recommendations for good technical writing](https://www.seangoedecke.com/technical-communication/), including:
