@@ -1,10 +1,9 @@
 ---
-title: "Example: Multi-Pod EVPN Troubleshooting (Part 1)"
+title: "Multi-Pod EVPN Troubleshooting: Fixing Next Hops"
 date: 2025-11-18 08:27:00+0200
 tags: [ EVPN, netlab ]
 evpn_tag: details
 netlab_tag: evpn_dg
-netlab_title: "Multi-Pod EVPN Troubleshooting (Part 1)"
 ---
 Last month, I wrote about the [specifics of troubleshooting](/2025/10/troubleshoot-multi-pod-evpn/) [multi-pod EVPN designs](/2025/10/evpn-designs-multi-pod/). Today, I'd like to start a journey through an example in which (channeling my inner CCIE preparation lab instructor) I broke as many things as I could think of.
 
@@ -175,7 +174,7 @@ BGP routing table entry for imet 10.0.0.4, Route Distinguisher: 10.0.0.4:1000
       PMSI Tunnel: Ingress Replication, MPLS Label: 101000, Leaf Information Required: false, Tunnel ID: 10.0.0.4
 ```
 
-However, the IMET route advertised by LB is still not recognized as a valid remote VTEP on LA:
+However, the IMET route advertised by LB is still not recognized as a valid remote VTEP on LA. We still have a problem or two ahead of us.
 
 {{<cc>}}Remote VTEPs on LA{{</cc>}}
 ```
@@ -188,6 +187,6 @@ VTEP       Tunnel Type(s)
 Total number of remote VTEPS:  0
 ```
 
-{{<next-in-series page="/posts/2025/11/evpn-multi-pod-tshoot-part-2.md">}}
+{{<next-in-series page="/posts/2025/11/evpn-multi-pod-tshoot-rt.md">}}
 What could possibly be wrong now? We'll figure it out in the next blog post in this series.
 {{</next-in-series>}}
