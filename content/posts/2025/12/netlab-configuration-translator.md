@@ -1,6 +1,6 @@
 ---
 title: "netlab as the Universal Configuration Translator"
-date: 2025-11-28 07:30:00+0100
+date: 2025-12-01 07:30:00+0100
 tags: [ netlab ]
 netlab_tag: overview
 ---
