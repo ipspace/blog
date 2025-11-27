@@ -39,6 +39,31 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2807">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">BOGDAN GOLAB</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2807" href="#2807">27 November 2025 08:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I work for Tetra &amp; Astro business (kind a mobile networks targeted for public safety). </p>
+
+<ol>
+<li><p>Moving multicast source.  I would try from two router topology where router a is an RP router for PIM-SM mode. So you need to enable this capability on a router A and in simple case you need to point out this RP service on a router B. Establish multicast communication from LAN segment attached to the router B and receivers connected to a router B. Once working start to generated multicast from a source attached to B. Preserve multicast group (and stop sourcing multicast from a a segment attached to A). This scenario reflects moving source (kinda BTS roaming where BTS is packetizing audio from a mobile radio).
+I know it&#39;s complex scenario but real in some kind of networks.</p></li>
+<li><p>Single router corner cases. In this scenario FHR = LHR. It resembles the second part of the excercise 1. Why interesting? Because you cannot see PIM-REG encap packets as the host sourcing multicast is directly connected to the RP. Still thinking about PIM-SM here.</p></li>
+<li><p>Add redundancy. Dual routers potentially delivering multicast for a segment. Test cases when DR crashes. Sniff how many packets are lost. The networks I work with need to re-converge within max 1.5sec. Seems to be easy. But not for budget-constrained solutions.</p></li>
+</ol>
+
+<p>The scenarios about at his basic level can be configured but enabling PIM-SM, static RP config + PIM Anycast for the redundancy purpose.</p>
+
+<p>I know it is pretty unique purpose but challenging.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
