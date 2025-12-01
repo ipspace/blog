@@ -1,5 +1,5 @@
 ---
-title: "Multi-Pod EVPN Troubleshooting (Part 2)"
+title: "Multi-Pod EVPN Troubleshooting (Route Targets)"
 date: 2025-11-25 07:49:00+0200
 tags: [ EVPN, netlab ]
 evpn_tag: details
@@ -159,6 +159,6 @@ VTEP       Learned Via       MAC Address Learning       Tunnel Type(s)
 Total number of remote VTEPS:  0
 ```
 
-{{<next-in-series page="/posts/2025/11/evpn-multi-pod-tshoot-part-2.md">}}
+{{<next-in-series page="/posts/2025/12/evpn-multi-pod-tshoot-xc.md">}}
 What could possibly be wrong now? We'll figure it out in the next blog post in this series.
 {{</next-in-series>}}
