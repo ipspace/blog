@@ -1,7 +1,7 @@
 ---
 title: "Running netlab and BGP Labs on Apple Silicon"
 date: 2024-03-18 08:01:00+0100
-lastmod: 2024-05-17 11:25:00+0200
+lastmod: 2025-12-05 19:33:00+0100
 netlab_tag: use
 tags: [ netlab, BGP ]
 ---
@@ -25,6 +25,10 @@ $ sudo apt-get update
 $ sudo apt install python3-pip
 $ pip3 install networklab
 ```
+
+{{<note warn>}}
+Recent versions of **pip3** (starting with Ubuntu 22.04 or 24.04) are paranoid about breaking throwaway VMs. Adding `--break-system-packages` parameter to **pip3** usually solves the problem.
+{{</note>}}
 
 * Pip3 creates the `~/.local/bin` directory, which is not yet in the PATH. Logout (`exit` or Ctrl-D) and reconnect to the Ubuntu VM (yet again, using `multipass shell`)
 * Use `netlab install` to install Ubuntu tools, Containerlab, and Ansible
@@ -50,13 +54,13 @@ $ netlab install ubuntu containerlab ansible
 % multipass set local.primary.memory=8G
 ```
 
-* The multipass instance [does not have the Linux kernel drivers](https://netlab.tools/caveats/#frr) we need for FRR management VRF and MPLS forwarding. Log into the Ubuntu instance and install the missing generic Linux drivers:
+* The multipass instance [might not have the Linux kernel drivers](https://netlab.tools/caveats/#frr) we need for the FRR management VRF and MPLS forwarding. If VRF, VXLAN, or MPLS labs fail, log into the Ubuntu instance and install the missing generic Linux drivers:
 
 ```
 sudo apt install linux-generic
 ```
 
-* Log out of the VM, restart it, and log in:
+* Just to be on the safe side, log out of the VM, restart it, and log in:
 
 ```
 % multipass restart primary
@@ -71,8 +75,4 @@ $ netlab test clab
 
 You're ready to run labs using FRR containers on your Apple laptop. Install [BGP labs](https://bgplabs.net/1-setup/#setting-up-the-labs) and have fun ;)
 
-{{<next-in-series page="/posts/2024/09/srlinux-arm-apple-silicon.html">}}
-Coming up next: running SR Linux containers on ARM/Apple silicon.
-{{</next-in-series>}}
-
-{{<note info>}}Arista started shipping the ARM image of the cEOS container, and someone [made Cisco IOL container work on a Mac](https://www-packetswitch-co-uk.cdn.ampproject.org/c/s/www.packetswitch.co.uk/running-containerlab-in-macos-cisco-iol-ceos-2/amp/).{{</note>}}
+You can also [use Arista cEOS containers](/2025/02/arista-ceos-arm-apple-silicon/) or [Nokia SR Linux containers](/2024/09/srlinux-arm-apple-silicon/) instead of FRR containers, and someone even [made Cisco IOL container work on a Mac](https://www-packetswitch-co-uk.cdn.ampproject.org/c/s/www.packetswitch.co.uk/running-containerlab-in-macos-cisco-iol-ceos-2/amp/).
