@@ -6,7 +6,7 @@ pre_scroll: True
 ---
 If you're brand-new to Python and Ansible, you might be a bit reluctant to install a bunch of packages and Ansible collections on your production laptop to start building your automation skills. The usual recommendation I make to get past that hurdle is to create a Ubuntu virtual machine that can be destroyed every time to mess it up.
 
-Creating a virtual machine is trivial on Linux and MacOS with Intel CPU (install VirtualBox and Vagrant). The same toolset no longer works on newer Macs with M1 CPU (VMware Fusion is in tech preview, so we're getting there), but there's an amazingly simple alternative: Multipass by Canonical.
+Creating a virtual machine is trivial on Linux and macOS with Intel CPU (install VirtualBox and Vagrant). The same toolset no longer works on newer Macs with M1 CPU (VMware Fusion is in tech preview, so we're getting there), but there's an amazingly simple alternative: Multipass by Canonical.
 <!--more-->
 {{<note info>}}[lima](https://github.com/lima-vm/lima/blob/master/examples/default.yaml) is another option ([more details](https://jvns.ca/blog/2023/07/10/lima--a-nice-way-to-run-linux-vms-on-mac/) by Julia Evans), and it seems to be able to run x86 VM on an ARM CPU. I never tested it though so YMMV.{{</note>}}
 
