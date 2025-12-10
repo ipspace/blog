@@ -1,7 +1,7 @@
 ---
 title: "Using netlab for Classroom Training with Sander Steffann"
 date: 2025-11-14 07:17:00+01:00
-tags: [ Software Gone Wild, podcast ]
+tags: [ Software Gone Wild, podcast, netlab ]
 netlab_tag: podcast
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_202-Using_netlab_for_Training.mp3
 ---
