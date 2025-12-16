@@ -54,7 +54,7 @@ For whatever reason, using the **ipaddr** filter throws an error. You have to us
 
 For extra fun, the change (if it was intentional) is not mentioned in the [Ansible 12 Porting Guide](https://docs.ansible.com/ansible/devel/porting_guides/porting_guide_12.html#porting-guide-for-v12-1-0) (or maybe I missed it, I only searched that page for `.utils`).
 
-### The Showstopper: Using Templates in Device Configuration Modules
+### The Showstopper: Using Templates in Device Configuration Modules {#configs}
 
 Since days immemorial, device configuration modules (for example, **ios_config** or **eos_config**) have accepted a Jinja2 template in the **src** parameter and rendered the template before pushing the configuration to the device (that's also what the documentation claims).
 

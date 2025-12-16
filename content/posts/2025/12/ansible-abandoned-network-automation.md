@@ -1,0 +1,32 @@
+---
+title: "Has Ansible Team Abandoned Network Automation?"
+date: 2025-12-16 08:28:00+0100
+tags: [ Ansible ]
+---
+A month ago, I described how Ansible release 12 [broke the network device configuration modules](/2025/11/ansible-12-different/#configs), the little engines ([that could](https://en.wikipedia.org/wiki/The_Little_Engine_That_Could)) that brought us from the dark days of copy-and-paste into the more-survivable land of configuration templates.
+
+Three releases later (they just released 13.1), the same bug is still there (at least it was on a fresh Python virtual environment install I made on a Ubuntu 24.04 server on December 13th, 2025), making all ***device*\_config** modules unusable (without changing your Ansible playbooks) for configuration templating. Even worse:
+<!--more-->
+* The documentation of network modules (for example, **arista.eos.eos_config**) hasn't changed and still claims one can use Jinja2 template file as the **src** parameter.
+* I found no issues in either the Ansible core GitHub repo or the Arista collection repo complaining about this unwanted behavior.
+
+What could that mean? Here are a few ideas from the end-user perspective:
+
+* Nobody is brave enough to try pushing through the [Ansible Windows Vista](/2025/11/ansible-12-different/) moment.
+* Nobody cares enough to complain about yet another minor detail in a product that is ~~broken~~ different from previous releases in so many other ways.
+* Nobody uses configuration templates anymore; all the cool kids drink the Intent Kool-Aid.
+* The oldtimers have working installations using old versions of the products; the newbies will try to replicate something they found on the Internet, decide they're [too stupid to make it work](https://blog.ipspace.net/2024/05/too-stupid-to-make-it-work/), and hopefully move to another solution.
+* Worst case, people trying to enter the Network Automation land will decide it's simpler to stay a CLI jockey than to deal with broken bloatware and useless documentation.
+
+OK, and what could a devious mind conclude about the viability of Ansible for network automation projects:
+
+* It's evident nobody is testing even the most common network configuration modules, otherwise such a blatant bug couldn't survive four releases (each of them having [multiple pre-release versions](https://pypi.org/project/ansible/#history)) 
+* Even worse, the "lack of templating" behavior seems to be caused by something shared by many networking modules. Even that code hasn't been tested.
+
+Before you tell me that the paid Ansible product works (and I'm pretty sure it does), the attitude of releasing a product that's useless for a particular well-publicized use case is no better than Juniper releasing a vJunos-something VM with a [broken DHCP server on its management interface](https://blog.ipspace.net/2023/10/vjunos-declines-dhcp-address/). One of the hoped-for side effects of releasing free stuff is to enhance uptake and grow the sales funnel; releasing broken stuff tends to have the opposite effect.
+
+Making things worse, many Ansible network automation collections are abandonware. One has to look no further than the [**nokia.grpc** collection](https://github.com/nokia/ansible-networking-collections)[^NGR] that was last updated four years ago and still has [open issues from 2020](https://github.com/nokia/ansible-networking-collections/issues), including the [Please Update the Collection](https://github.com/nokia/ansible-networking-collections/issues/30) one from 2023 saying "the SR OS collection hasn't been updated in three years"
+
+[^NGR]: You could say I'm picking on Nokia. I might be, but someone decided to make _netlab_ dependent on those collections, so I care about them more than some other random stuff.
+
+Draw your own conclusions :(
