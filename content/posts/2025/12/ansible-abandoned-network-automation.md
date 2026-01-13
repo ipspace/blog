@@ -1,9 +1,14 @@
 ---
 title: "Has Ansible Team Abandoned Network Automation?"
 date: 2025-12-16 08:28:00+0100
+lastmod: 2026-01-13 18:17:00+0100
 tags: [ Ansible ]
 ---
 A month ago, I described how Ansible release 12 [broke the network device configuration modules](/2025/11/ansible-12-different/#configs), the little engines ([that could](https://en.wikipedia.org/wiki/The_Little_Engine_That_Could)) that brought us from the dark days of copy-and-paste into the more-survivable land of configuration templates.
+
+{{<note update>}}
+In the meantime, the Ansible networking team [fixed](https://github.com/ansible-collections/ansible.netcommon/pull/743) the **ansible.netcommon** collection, but (according to that PR) the ability to process templated configurations directly in the network configuration modules is scheduled to disappear in January 2028. I moved on; _netlab_ is now [generating device configurations outside of Ansible](https://netlab.tools/release/26.01/#release-26-01-breaking).
+{{</note>}}
 
 Three releases later (they just released 13.1), the same bug is still there (at least it was on a fresh Python virtual environment install I made on a Ubuntu 24.04 server on December 13th, 2025), making all ***device*\_config** modules unusable (without changing your Ansible playbooks) for configuration templating. Even worse:
 <!--more-->
@@ -30,3 +35,8 @@ Making things worse, many Ansible network automation collections are abandonware
 [^NGR]: You could say I'm picking on Nokia. I might be, but someone decided to make _netlab_ dependent on those collections, so I care about them more than some other random stuff.
 
 Draw your own conclusions :(
+
+### Revision History
+
+2026-01-13
+: The [PR fixing the bug](https://github.com/ansible-collections/ansible.netcommon/pull/743) has been merged on January 12th, 2026, and will eventually appear in **ansible.netcommon** collection. However, it's interesting to note that the [potential breakage was first documented in April 2025](https://github.com/ansible-collections/ansible.netcommon/issues/698) (HT: [Tony Bourke](https://blog.ipspace.net/2025/12/ansible-abandoned-network-automation/#2830)), and the issue was closed without anyone ever testing the basic templating functionality.
