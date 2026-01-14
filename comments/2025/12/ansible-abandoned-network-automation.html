@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -374,6 +374,30 @@ I <em><em>must</em></em> learn a fundamentally new way to configure my routers a
 <p>It would be enormously helpful if, like most other projects over the last 60 years, the MAJOR version number changed every time there was a breaking change, instead of semi-randomly on any given update.</p>
 
 <p>In short, &quot;move fast and break things&quot; may work in the software world, but the entire philosophy is incompatible with production networks supporting 100k&#39;s of users.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2849">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Sean Cavanaugh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2849" href="#2849">14 January 2026 07:05</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I think this is a very reasonable frustration, and it is important to separate the upstream Ansible community project from Ansible Automation Platform as a product.</p>
+
+<p>The Ansible community project moves quickly by design. Collections, modules, and plugins evolve independently and often at different speeds, driven by vendors and individual maintainers. If you track the latest community releases, you are intentionally opting into that velocity, which can result in churn and occasional breakage.</p>
+
+<p>Ansible Automation Platform is intentionally different. It is a curated, enterprise product with a fixed and fully tested set of collections, long support lifecycles, backward compatibility guarantees within a major release, and a clear deprecation and migration process. Most customers pin to a specific AAP release and do not consume upstream changes unless they explicitly choose to.</p>
+
+<p>This is also why the bug being discussed did not actually affect the product. It only existed in the upstream community project. The issue appeared in Ansible Core 2.19, which is newer than what we currently ship to customers in Ansible Automation Platform. Because customers were not yet exposed to that version, it did not surface through normal product usage and was something we missed upstream before it was discovered.</p>
+
+<p>That distinction matters. This is not a case of the product breaking production networks. It is an example of upstream moving faster than the supported platform, which is exactly why the product exists in the first place.</p>
+
+<p>On the broader point about relearning tools, I agree that production networks cannot operate on a move fast and break things model. Ansible Automation Platform is explicitly designed to avoid that philosophy. It exists to let network teams focus on building and operating stable networks while innovation continues upstream at a pace that does not disrupt production environments.</p>
 </div>
           </div>
         </li>
