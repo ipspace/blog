@@ -8,7 +8,7 @@ One of my readers attempted to implement a multi-vendor multicast VPN over MPLS 
 > How is a GRE tunnel different compared to an MPLS LSP? I feel like conceptually, they kind of do the same thing. They just tunnel traffic by wrapping it with another header (one being IP/GRE, the other being MPLS).
 
 Instead of going down the "how many angels are dancing on this pin" rabbit hole (also known as "[Is MPLS tunneling?](https://packetpushers.net/podcasts/heavy-networking/hn102-a-layer-of-indirection-is-mpls-tunneling/)"), let's focus on the fundamental differences between GRE/IPsec/VXLAN tunnels and MPLS paths.
-
+<!--more-->
 * Tunnels (IP-over-IP, IPv6-over-IPv4, GRE, IPsec, VXLAN...) were designed to connect discontiguous bits of an overlay network across an underlay network *without the underlay network ever seeing the packets*
 * MPLS paths were designed to be a better *packet forwarding mechanism inside the same network*.
 
