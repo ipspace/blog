@@ -50,7 +50,7 @@ I would usually recommend running EBGP between your network and a third-party ap
 -   IBGP sounds more complex (you need route reflectors), but it's usually perfectly OK to advertise the default route to the virtual appliance ... or you might decide to use DHCP-based default routing in which case you don't have to send any information to the virtual appliance.
 -   IBGP allows you to use MED and local preference to influence route selection if necessary.
 
-[^BME]: Running direct EBGP sessions between bare-metal VMware NSX-T edge nodes and adjacent ToR switches is obvious perfectly fine
+[^BME]: Running direct EBGP sessions between bare-metal VMware NSX-T edge nodes and adjacent ToR switches is obviously perfectly fine
 
 [^IBGPS]: OTOH, some virtual appliances or virtual network edge nodes might not support IBGP. Sometimes [you just can't win](https://wiki.c2.com/?YouJustCantWin).
 
@@ -59,16 +59,6 @@ I would usually recommend running EBGP between your network and a third-party ap
 You wouldn't want just any VM that happens to be connected directly to a physical VLAN to have BGP connectivity to your route servers, would you? Use MD5 authentication on dynamic BGP sessions.
 
 Likewise, you probably don't want to accept routes at face value from untrusted nodes. Filter BGP updates received from virtual appliances, and accept only prefixes from specific address range assigned to virtual appliances having specific subnet size (for example, /64 in IPv6 world or /32 to /29 in IPv4 world).
-
-### Need More Information?
-
-* [VMware NSX Technical Deep Dive](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive) webinar includes a deep dive into BGP routing between NSX-T edge nodes and physical fabric.
-* [Amazon Web Services Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) webinar describes BGP routing between AWS and external destinations as well as BGP routing between AWS transit gateways and virtual appliances.
-* [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) describes BGP routing between Microsoft Azure and external destinations as well as BGP routing between Azure Route Server (or Virtual WAN) and virtual appliances.
-
-### Need Help with Your Network Design?
-
-Check out my [BGP case studies](https://www.ipspace.net/ExpertExpress_Case_Studies) that you get with the [yearly subscription](http://www.ipspace.net/Subscription).
 
 ### Revision History
 
