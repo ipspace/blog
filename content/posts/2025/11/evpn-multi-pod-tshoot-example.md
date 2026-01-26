@@ -1,8 +1,9 @@
 ---
 title: "Multi-Pod EVPN Troubleshooting: Fixing Next Hops"
+series_title: "Multi-Pod EVPN: Fixing Next Hops"
 date: 2025-11-18 08:27:00+0200
 tags: [ EVPN, netlab ]
-evpn_tag: details
+evpn_tag: tshoot
 netlab_tag: evpn_dg
 ---
 Last month, I wrote about the [specifics of troubleshooting](/2025/10/troubleshoot-multi-pod-evpn/) [multi-pod EVPN designs](/2025/10/evpn-designs-multi-pod/). Today, I'd like to start a journey through an example in which (channeling my inner CCIE preparation lab instructor) I broke as many things as I could think of.

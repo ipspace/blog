@@ -33,6 +33,10 @@ There are tons of tiny little things that can go wrong when you try to deploy EV
 
 {{<series-listing tag="details">}}
 
+### Troubleshooting EVPN {#tshoot}
+
+{{<series-listing tag="tshoot">}}
+
 ### {{<plushy idea>}}Beyond VXLAN {#mpls}
 
 While EVPN is often used with VXLAN today, it was designed to work with the MPLS data plane, resulting in a few quirks:

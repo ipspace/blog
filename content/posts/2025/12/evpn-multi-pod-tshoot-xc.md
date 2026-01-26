@@ -1,8 +1,9 @@
 ---
-title: "Multi-Pod EVPN Troubleshooting (Part 3)"
+title: "Multi-Pod EVPN Troubleshooting: Extended BGP Communities"
+series_title: "Multi-Pod EVPN: Extended BGP Communities"
 date: 2025-12-02 07:47:00+0200
 tags: [ EVPN, netlab ]
-evpn_tag: details
+evpn_tag: tshoot
 netlab_tag: evpn_dg
 ---
 Last week, we [fixed the mismatched route targets](/2025/11/evpn-multi-pod-tshoot-rt/) in our sample [multi-pod EVPN fabric](/2025/10/evpn-designs-multi-pod/). With that fixed, every PE device should see every other PE device as a remote VTEP for ingress replication purposes. We got that to work on Site-A (AS 65001), but not on Site-B (AS 65002); let's see what else is broken.
