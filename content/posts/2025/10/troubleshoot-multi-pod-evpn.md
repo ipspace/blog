@@ -1,8 +1,8 @@
 ---
-title: "Troubleshooting Multi-Pod EVPN"
+title: "Troubleshooting Multi-Pod EVPN: Overview"
 date: 2025-10-09 08:27:00+0200
 tags: [ EVPN ]
-evpn_tag: details
+evpn_tag: tshoot
 ---
 An engineer reading my multi-pod EVPN article asked an interesting question:
 

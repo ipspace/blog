@@ -1,8 +1,9 @@
 ---
-title: "Multi-Pod EVPN Troubleshooting (Route Targets)"
+title: "Multi-Pod EVPN Troubleshooting: Route Targets"
+series_title: "Multi-Pod EVPN: Route Targets"
 date: 2025-11-25 07:49:00+0200
 tags: [ EVPN, netlab ]
-evpn_tag: details
+evpn_tag: tshoot
 netlab_tag: evpn_dg
 ---
 Last week, we [fixed the incorrect BGP next hops](/2025/11/evpn-multi-pod-tshoot-example/) in our sample [multi-pod EVPN fabric](/2025/10/evpn-designs-multi-pod/). With that fixed, every PE device should see every other PE device as a remote VTEP for ingress replication purposes. However, that's not the case; let's see why and fix it.
