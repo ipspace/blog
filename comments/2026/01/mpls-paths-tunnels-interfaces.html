@@ -69,6 +69,37 @@ lookup engine.
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2863">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2863" href="#2863">28 January 2026 05:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Label switching is routed in the old telephony network. You had the DCN and a network management node that calculated the various network paths. Then it loaded the routing tables into the telephony switches. The trunks had local labels that were used in those routing tables. This is the root of label switching solutions.</p>
+
+<p>Then we had the Synchronous Transfer Network (STM). Sonet/SDH and PDH in a hierarchy. ATM was just introducing a data plane with statistical multiplexing. But the logic was the same for some time as it was in telephony switches. </p>
+
+<p>In 1996 I had to build a network for the JENC conference from ATM equipment provided by 7 (!) different vendors. All my university colleagues escaped this challenge, so I had to build this metropolitan area network over Budapest with my 5th grade students.
+From those 7 vendors only one supported SVCs. All the others had only PVCs with static routing tables that had to be entered manually.</p>
+
+<p>When these telco vendors were forced to come up with some IP based solutions, they were quite happy to use label switching, since it was so similar to their previous voice and STM/ATM architectures. They just had to add a different control plane.</p>
+
+<p>Remember the Cisco acquired Stratacom ATM switches having a separate node as a PNNI controller for SVCs. The basic switch was still PVC based ATM with simple label switching.</p>
+
+<p>For the switch vendors label switching made it possible to create very simple core switches. BGP free was the selling term. The core switches could focus on forwarding performance using hardware acceleration and you could ignore the complexities of the usual MPLS/VPN IP control plane. </p>
+
+<p>But as the hardware improved, the original advantage of fast label lookups versus slow full IP address lookups and smaller memory needs faded away. </p>
+
+<p>After some years my colleagues even split the telco network into two parallel networks: a multi-service segment that is complicated, MPLS based, expensive, limited capacity and another separate cheap and simple, high-capacity flat IP network for public internet services without labels, MPLS and VPNs. This architecture practically killed the business case for the DT preferred Terrastream. It was so much simpler and cheaper...</p>
+
+<p>BTW, SDN with Openflow was just a recast of the old telephony network. PCE is another such revival...</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
