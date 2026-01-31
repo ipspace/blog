@@ -20,7 +20,7 @@ I used a [very large topology](https://github.com/ipspace/netlab/blob/e2c169a097
 | **containerlab deploy** | 39 seconds | < 1 second |
 | **netlab initial** | 2 minutes 20 seconds | ~ 12 minutes |
 | **containerlab destroy** | 37 seconds | < 1 second |
-{ .fmtTable }
+{ .fmtTable #results }
 
 **Notes:**
 
