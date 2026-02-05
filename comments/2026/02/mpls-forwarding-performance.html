@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>4 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -92,6 +92,829 @@ Not sure when exactly PNNI was invented &amp; implemented and who came up with i
               </span>
             </div>
             <div class="comment-content"><p>It&#39;s been a few years, but yeah, I&#39;m pretty sure it was Yakov who was behind Tag Switching.  I&#39;ve also seen a lot of people claiming that MPLS didn&#39;t provide faster forwarding, because it is all done in hardware. However, longest match required 4 lookups in the m-trie that was a 16-8-8 stride with the adjacency table being the 4th in CEF. A single exact match lookup on a label was much faster. In the end, if the forwarding ASIC is fast enough to run wire rate while still performing the 4 lookups, then it becomes moot.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2878">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> mc36</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2878" href="#2878">05 February 2026 11:21</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>i&#39;m just leaving this software forwarding results herehere.... doing stuff in hardware have power consumption differences, first a dataplane (12w) with mpls, then the same with acls and no mpls at 132...</p>
+
+<p>mc36@noti:/safe/misc/native$ ./p4emu_bench.sh
+--------------------------- benchmarking ipv4 packets
+code=42192, int=4, long=8, ptr=8, order=lsb, arch=x86_64, openssl version: OpenSSL 3.5.5 27 Jan 2026
+input=1514, rounds=50000000, output=1514, packets=50000000, bytes=75700000000, time=1.877838
+pps=26626365.000602, 26.626365 mpps, bps=322498532887.288513, 322.498533 gbps
+--------------------------- benchmarking ipv6 packets
+code=42192, int=4, long=8, ptr=8, order=lsb, arch=x86_64, openssl version: OpenSSL 3.5.5 27 Jan 2026
+input=1514, rounds=50000000, output=1514, packets=50000000, bytes=75700000000, time=2.135136
+pps=23417712.033332, 23.417712 mpps, bps=283635328147.715149, 283.635328 gbps
+--------------------------- benchmarking vlan packets
+code=42192, int=4, long=8, ptr=8, order=lsb, arch=x86_64, openssl version: OpenSSL 3.5.5 27 Jan 2026
+input=1518, rounds=50000000, output=1514, packets=50000000, bytes=75700000000, time=2.161812
+pps=23128745.700366, 23.128746 mpps, bps=280135367922.835144, 280.135368 gbps
+--------------------------- benchmarking pppoe packets
+code=42192, int=4, long=8, ptr=8, order=lsb, arch=x86_64, openssl version: OpenSSL 3.5.5 27 Jan 2026
+input=1522, rounds=50000000, output=1514, packets=50000000, bytes=75700000000, time=2.222202
+pps=22500204.751863, 22.500205 mpps, bps=272522479954.567627, 272.522480 gbps
+--------------------------- benchmarking mpls packets
+code=42192, int=4, long=8, ptr=8, order=lsb, arch=x86_64, openssl version: OpenSSL 3.5.5 27 Jan 2026
+input=1518, rounds=50000000, output=1518, packets=50000000, bytes=75900000000, time=1.360383
+pps=36754355.207320, 36.754355 mpps, bps=446344889637.697632, 446.344890 gbps</p>
+
+<p>+-----------------------------------------------------------+
+|  Compiler version: 9.13.4
+|  Created: Thu Feb  5 17:14:29 2026
+|  Run ID: 90424320bf0040b8
++-----------------------------------------------------------+</p>
+
+<h2 id="ingressmaufeaturesbystage">ingress MAU Features by Stage</h2>
+
+<p>|   Stage  |   Exact  |  Ternary |   Statistics   |      Meter     |    Selector    |    Stateful    |   Dependency   |</p>
+
+<h2 id="numberlpforwredmaxwordstoprevious">|  Number  |          |          |                |   LPF or WRED  |   (max words)  |                |   to Previous  |</h2>
+
+<p>|     0    |    Yes   |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     1    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     2    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     3    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     4    |    Yes   |    No    |       Yes      |       No       |     No (0)     |       No       |      match     |
+|     5    |    Yes   |    No    |       Yes      |       No       |     No (0)     |       No       |     action     |
+|     6    |    No    |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     7    |    Yes   |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     8    |    Yes   |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     9    |    Yes   |    Yes   |       Yes      |       No       |     Yes (1)    |       Yes      |      match     |
+|    10    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |</p>
+
+<h2 id="nonononono0noconcurrent">|    11    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |</h2>
+
+<h2 id="egressmaufeaturesbystage">egress MAU Features by Stage</h2>
+
+<p>|   Stage  |   Exact  |  Ternary |   Statistics   |      Meter     |    Selector    |    Stateful    |   Dependency   |</p>
+
+<h2 id="numberlpforwredmaxwordstoprevious">|  Number  |          |          |                |   LPF or WRED  |   (max words)  |                |   to Previous  |</h2>
+
+<p>|     0    |    Yes   |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     1    |    No    |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     2    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     3    |    Yes   |    Yes   |       Yes      |       No       |     No (0)     |       No       |      match     |
+|     4    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     5    |    No    |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     6    |    No    |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     7    |    No    |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     8    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |
+|     9    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |
+|    10    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |</p>
+
+<h2 id="nonononono0noconcurrent">|    11    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |</h2>
+
+<h2 id="ingressmaulatency">ingress MAU Latency</h2>
+
+<p>|   Stage  |   Clock  |   Predication  |   Dependency   |   Cycles Add   |</p>
+
+<h2 id="numbercyclescycletoprevioustolatency">|  Number  |  Cycles  |      Cycle     |   to Previous  |   to Latency   |</h2>
+
+<p>|     0    |    22    |       13       |      match     |       22       |
+|     1    |    20    |       11       |      match     |       20       |
+|     2    |    20    |       11       |      match     |       20       |
+|     3    |    20    |       11       |      match     |       20       |
+|     4    |    20    |       11       |      match     |       20       |
+|     5    |    20    |       11       |     action     |        2       |
+|     6    |    22    |       13       |      match     |       22       |
+|     7    |    22    |       13       |      match     |       22       |
+|     8    |    22    |       13       |      match     |       22       |
+|     9    |    30    |       13       |      match     |       30       |
+|    10    |    30    |       13       |   concurrent   |        1       |</p>
+
+<h2 id="concurrent1">|    11    |    30    |       13       |   concurrent   |        1       |</h2>
+
+<p>Total latency for ingress: 206</p>
+
+<h2 id="egressmaulatency">egress MAU Latency</h2>
+
+<p>|   Stage  |   Clock  |   Predication  |   Dependency   |   Cycles Add   |</p>
+
+<h2 id="numbercyclescycletoprevioustolatency">|  Number  |  Cycles  |      Cycle     |   to Previous  |   to Latency   |</h2>
+
+<p>|     0    |    22    |       13       |      match     |       22       |
+|     1    |    20    |       11       |      match     |       20       |
+|     2    |    20    |       11       |      match     |       20       |
+|     3    |    22    |       13       |      match     |       22       |
+|     4    |    20    |       11       |      match     |       20       |
+|     5    |    20    |       11       |      match     |       20       |
+|     6    |    20    |       11       |      match     |       20       |
+|     7    |    20    |       11       |      match     |       20       |
+|     8    |    20    |       11       |   concurrent   |        1       |
+|     9    |    20    |       11       |   concurrent   |        1       |
+|    10    |    20    |       11       |   concurrent   |        1       |</p>
+
+<h2 id="concurrent1">|    11    |    20    |       11       |   concurrent   |        1       |</h2>
+
+<p>Total latency for egress: 172</p>
+
+<h2 id="worstcaseingresstableflow">Worst case ingress table flow</h2>
+
+<h2 id="stgtablenamerunweightprcnt">|Stg|                           Table Name                           |  Run |Weight| Prcnt|</h2>
+
+<table>
+<col />
+<col />
+<col />
+<thead>
+<tr>
+	<th>0</th>
+	<th>ig_ctl.ig_ctl_vlan_in.tbl_vlan_in</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>4.00%</th>
+</tr>
+<tr>
+	<th>0</th>
+	<th>tbl_ig_ctl137</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>0</th>
+	<th>tbl_ig_ctl143</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>1</th>
+	<th>ig_ctl.ig_ctl_vrf.tbl_vrf</th>
+	<th>No</th>
+	<th>31.63</th>
+	<th>5.00%</th>
+</tr>
+<tr>
+	<th>2</th>
+	<th>ig_ctl.ig_ctl_mpls.tbl_mpls_fib</th>
+	<th>No</th>
+	<th>31.63</th>
+	<th>5.00%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>ig_ctl.ig_ctl_mpls.tbl_mpls_fib_decap</th>
+	<th>No</th>
+	<th>31.63</th>
+	<th>5.00%</th>
+</tr>
+<tr>
+	<th>4</th>
+	<th>ig_ctl.ig_ctl_bridge.tbl_bridge_learn</th>
+	<th>No</th>
+	<th>53.58</th>
+	<th>8.47%</th>
+</tr>
+<tr>
+	<th>5</th>
+	<th>ig_ctl.ig_ctl_bridge.tbl_bridge_target</th>
+	<th>No</th>
+	<th>59.91</th>
+	<th>9.47%</th>
+</tr>
+<tr>
+	<th>6</th>
+	<th>tbl_ig_ctl_bridge539</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>6</th>
+	<th>tbl_ig_ctl_bridge572</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>7</th>
+	<th>ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_host</th>
+	<th>No</th>
+	<th>56.94</th>
+	<th>9.00%</th>
+</tr>
+<tr>
+	<th>7</th>
+	<th>ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_lpm</th>
+	<th>No</th>
+	<th>117.61</th>
+	<th>18.59%</th>
+</tr>
+<tr>
+	<th>7</th>
+	<th>tbl_ig_ctl_ipv4l145</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>7</th>
+	<th>tbl_ig_ctl_ipv6l169</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>cond-41</th>
+	<th>No</th>
+	<th>0.00</th>
+	<th>0.00%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>cond-46</th>
+	<th>No</th>
+	<th>0.00</th>
+	<th>0.00%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>ig_ctl.ig_ctl_outport.tbl_nexthop</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>4.00%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>ig_ctl.ig_ctl_outport.tbl_vlan_out</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>ig_ctl.ig_ctl_pkt_pre_emit.tbl_pkt_pre_emit</th>
+	<th>No</th>
+	<th>19.45</th>
+	<th>3.07%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>tbl_ig_ctl212</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>tbl_ig_ctl_bundle_calc_ipv4_hashes_hash1_do_hash</th>
+	<th>No</th>
+	<th>0.00</th>
+	<th>0.00%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>tbl_ig_ctl_rewrites32</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>8</th>
+	<th>tbl_ig_ctl_rewrites33</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>cond-47</th>
+	<th>No</th>
+	<th>0.00</th>
+	<th>0.00%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>cond-49</th>
+	<th>No</th>
+	<th>0.00</th>
+	<th>0.00%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>cond-51</th>
+	<th>No</th>
+	<th>0.00</th>
+	<th>0.00%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>ig_ctl.ig_ctl_bundle.tbl_nexthop_bundle</th>
+	<th>No</th>
+	<th>53.62</th>
+	<th>8.48%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>ingresshdr.ipv4.hdr_checksum_encode_update_condition_1_ingress</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>tbl_ig_ctl_rewrites40</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>tbl_ig_ctl_rewrites72</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>tbl_ig_ctl_rewrites_act_set_drop_1</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>1.00%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>tbl_ig_ctl_vlan_in62</th>
+	<th>No</th>
+	<th>43.65</th>
+	<th>6.90%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td><h2 id="tot632.53100"></td>
+	<td>Tot</td>
+	<td> </td>
+	<td> </td>
+	<td>632.53</td>
+	<td>100%</td>
+	<td></h2></td>
+</tr>
+</tbody>
+</table>
+
+<p>Worst case power for ingress: 9.63 W</p>
+
+<h2 id="worstcaseegresstableflow">Worst case egress table flow</h2>
+
+<h2 id="stgtablenamerunweightprcnt">|Stg|                           Table Name                           |  Run |Weight| Prcnt|</h2>
+
+<table>
+<col />
+<col />
+<col />
+<thead>
+<tr>
+	<th>0</th>
+	<th>eg_ctl.eg_ctl_outport.tbl_nexthop</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>13.38%</th>
+</tr>
+<tr>
+	<th>0</th>
+	<th>tbl_eg_ctl102</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>3.34%</th>
+</tr>
+<tr>
+	<th>0</th>
+	<th>tbl_eg_ctl49</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>3.34%</th>
+</tr>
+<tr>
+	<th>0</th>
+	<th>tbl_eg_ctl65</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>3.34%</th>
+</tr>
+<tr>
+	<th>2</th>
+	<th>eg_ctl.eg_ctl_nexthop.tbl_nexthop</th>
+	<th>No</th>
+	<th>63.27</th>
+	<th>33.45%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>cond-57</th>
+	<th>No</th>
+	<th>0.00</th>
+	<th>0.00%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>eg_ctl.eg_ctl_vlan_out.tbl_vlan_out</th>
+	<th>No</th>
+	<th>31.63</th>
+	<th>16.72%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>tbl_eg_ctl_nexthop1115</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>3.34%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>tbl_eg_ctl_vlan_out68</th>
+	<th>No</th>
+	<th>43.65</th>
+	<th>23.07%</th>
+</tr>
+<tr>
+	<th>4</th>
+	<th>eg_ctl.eg_ctl_hairpin.tbl_hairpin</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>13.38%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td><h2 id="tot189.17100"></td>
+	<td>Tot</td>
+	<td> </td>
+	<td> </td>
+	<td>189.17</td>
+	<td>100%</td>
+	<td></h2></td>
+</tr>
+</tbody>
+</table>
+
+<p>Worst case power for egress: 2.88 W</p>
+
+<p>Total worst case power (4 pipes) : 12.51 W
+Total worst case power (per pipe) : 3.13 W
+Input packets per second load : 100%</p>
+
+<hr />
+
+<p>+-----------------------------------------------------------+
+|  Compiler version: 9.13.4
+|  Created: Thu Feb  5 17:17:28 2026
+|  Run ID: 4034d778067b44f3
++-----------------------------------------------------------+</p>
+
+<h2 id="ingressmaufeaturesbystage">ingress MAU Features by Stage</h2>
+
+<p>|   Stage  |   Exact  |  Ternary |   Statistics   |      Meter     |    Selector    |    Stateful    |   Dependency   |</p>
+
+<h2 id="numberlpforwredmaxwordstoprevious">|  Number  |          |          |                |   LPF or WRED  |   (max words)  |                |   to Previous  |</h2>
+
+<p>|     0    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     1    |    Yes   |    Yes   |       Yes      |       No       |     No (0)     |       No       |      match     |
+|     2    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |     action     |
+|     3    |    Yes   |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     4    |    Yes   |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     5    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |     action     |
+|     6    |    Yes   |    Yes   |       Yes      |       No       |     No (0)     |       No       |      match     |
+|     7    |    No    |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     8    |    Yes   |    No    |       No       |       No       |     Yes (1)    |       Yes      |      match     |
+|     9    |    Yes   |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|    10    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |</p>
+
+<h2 id="nonononono0noconcurrent">|    11    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |</h2>
+
+<h2 id="egressmaufeaturesbystage">egress MAU Features by Stage</h2>
+
+<p>|   Stage  |   Exact  |  Ternary |   Statistics   |      Meter     |    Selector    |    Stateful    |   Dependency   |</p>
+
+<h2 id="numberlpforwredmaxwordstoprevious">|  Number  |          |          |                |   LPF or WRED  |   (max words)  |                |   to Previous  |</h2>
+
+<p>|     0    |    Yes   |    Yes   |       No       |       No       |     No (0)     |       No       |      match     |
+|     1    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     2    |    Yes   |    Yes   |       Yes      |       No       |     No (0)     |       No       |      match     |
+|     3    |    Yes   |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     4    |    No    |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     5    |    No    |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     6    |    No    |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     7    |    No    |    No    |       No       |       No       |     No (0)     |       No       |      match     |
+|     8    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |
+|     9    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |
+|    10    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |</p>
+
+<h2 id="nonononono0noconcurrent">|    11    |    No    |    No    |       No       |       No       |     No (0)     |       No       |   concurrent   |</h2>
+
+<h2 id="ingressmaulatency">ingress MAU Latency</h2>
+
+<p>|   Stage  |   Clock  |   Predication  |   Dependency   |   Cycles Add   |</p>
+
+<h2 id="numbercyclescycletoprevioustolatency">|  Number  |  Cycles  |      Cycle     |   to Previous  |   to Latency   |</h2>
+
+<p>|     0    |    20    |       11       |      match     |       20       |
+|     1    |    22    |       13       |      match     |       22       |
+|     2    |    22    |       13       |     action     |        2       |
+|     3    |    22    |       13       |      match     |       22       |
+|     4    |    22    |       13       |      match     |       22       |
+|     5    |    22    |       13       |     action     |        2       |
+|     6    |    22    |       13       |      match     |       22       |
+|     7    |    22    |       13       |      match     |       22       |
+|     8    |    30    |       13       |      match     |       30       |
+|     9    |    22    |       13       |      match     |       22       |
+|    10    |    22    |       13       |   concurrent   |        1       |</p>
+
+<h2 id="concurrent1">|    11    |    22    |       13       |   concurrent   |        1       |</h2>
+
+<p>Total latency for ingress: 192</p>
+
+<h2 id="egressmaulatency">egress MAU Latency</h2>
+
+<p>|   Stage  |   Clock  |   Predication  |   Dependency   |   Cycles Add   |</p>
+
+<h2 id="numbercyclescycletoprevioustolatency">|  Number  |  Cycles  |      Cycle     |   to Previous  |   to Latency   |</h2>
+
+<p>|     0    |    22    |       13       |      match     |       22       |
+|     1    |    20    |       11       |      match     |       20       |
+|     2    |    22    |       13       |      match     |       22       |
+|     3    |    20    |       11       |      match     |       20       |
+|     4    |    20    |       11       |      match     |       20       |
+|     5    |    20    |       11       |      match     |       20       |
+|     6    |    20    |       11       |      match     |       20       |
+|     7    |    20    |       11       |      match     |       20       |
+|     8    |    20    |       11       |   concurrent   |        1       |
+|     9    |    20    |       11       |   concurrent   |        1       |
+|    10    |    20    |       11       |   concurrent   |        1       |</p>
+
+<h2 id="concurrent1">|    11    |    20    |       11       |   concurrent   |        1       |</h2>
+
+<p>Total latency for egress: 172</p>
+
+<h2 id="worstcaseingresstableflow">Worst case ingress table flow</h2>
+
+<h2 id="stgtablenamerunweightprcnt">|Stg|                           Table Name                           |  Run |Weight| Prcnt|</h2>
+
+<table>
+<col />
+<col />
+<col />
+<thead>
+<tr>
+	<th>0</th>
+	<th>ig_ctl.ig_ctl_vlan_in.tbl_vlan_in</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>3.50%</th>
+</tr>
+<tr>
+	<th>1</th>
+	<th>ig_ctl.ig_ctl_acl_in.tbl_ipv4_acl</th>
+	<th>No</th>
+	<th>57.00</th>
+	<th>7.88%</th>
+</tr>
+<tr>
+	<th>1</th>
+	<th>ig_ctl.ig_ctl_acl_in.tbl_ipv6_acl</th>
+	<th>No</th>
+	<th>83.24</th>
+	<th>11.51%</th>
+</tr>
+<tr>
+	<th>1</th>
+	<th>tbl_ig_ctl137</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>0.87%</th>
+</tr>
+<tr>
+	<th>1</th>
+	<th>tbl_ig_ctl143</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>0.87%</th>
+</tr>
+<tr>
+	<th>1</th>
+	<th>tbl_ig_ctl_vlan_in62</th>
+	<th>No</th>
+	<th>43.65</th>
+	<th>6.03%</th>
+</tr>
+<tr>
+	<th>2</th>
+	<th>ig_ctl.ig_ctl_vrf.tbl_vrf</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>3.50%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_host</th>
+	<th>No</th>
+	<th>50.62</th>
+	<th>7.00%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_lpm</th>
+	<th>No</th>
+	<th>111.28</th>
+	<th>15.38%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>tbl_ig_ctl_ipv4l145</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>0.87%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>tbl_ig_ctl_ipv6l169</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>0.87%</th>
+</tr>
+<tr>
+	<th>4</th>
+	<th>cond-37</th>
+	<th>No</th>
+	<th>0.00</th>
+	<th>0.00%</th>
+</tr>
+<tr>
+	<th>4</th>
+	<th>ig_ctl.ig_ctl_outport.tbl_vlan_out</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>3.50%</th>
+</tr>
+<tr>
+	<th>4</th>
+	<th>ig_ctl.ig_ctl_pkt_pre_emit.tbl_pkt_pre_emit</th>
+	<th>No</th>
+	<th>13.12</th>
+	<th>1.81%</th>
+</tr>
+<tr>
+	<th>5</th>
+	<th>ig_ctl.ig_ctl_outport.tbl_nexthop</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>3.50%</th>
+</tr>
+<tr>
+	<th>6</th>
+	<th>ig_ctl.ig_ctl_acl_out.tbl_ipv4_acl</th>
+	<th>No</th>
+	<th>57.00</th>
+	<th>7.88%</th>
+</tr>
+<tr>
+	<th>6</th>
+	<th>ig_ctl.ig_ctl_acl_out.tbl_ipv6_acl</th>
+	<th>No</th>
+	<th>83.24</th>
+	<th>11.51%</th>
+</tr>
+<tr>
+	<th>6</th>
+	<th>tbl_ig_ctl212</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>0.87%</th>
+</tr>
+<tr>
+	<th>7</th>
+	<th>ig_ctl.ig_ctl_copp.tbl_ipv4_copp</th>
+	<th>No</th>
+	<th>32.57</th>
+	<th>4.50%</th>
+</tr>
+<tr>
+	<th>7</th>
+	<th>ig_ctl.ig_ctl_copp.tbl_ipv6_copp</th>
+	<th>No</th>
+	<th>58.81</th>
+	<th>8.13%</th>
+</tr>
+<tr>
+	<th>9</th>
+	<th>ingresshdr.ipv4.hdr_checksum_encode_update_condition_1_ingress</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>0.87%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td><h2 id="tot723.38100"></td>
+	<td>Tot</td>
+	<td> </td>
+	<td> </td>
+	<td>723.38</td>
+	<td>100%</td>
+	<td></h2></td>
+</tr>
+</tbody>
+</table>
+
+<p>Worst case power for ingress: 11.01 W</p>
+
+<h2 id="worstcaseegresstableflow">Worst case egress table flow</h2>
+
+<h2 id="stgtablenamerunweightprcnt">|Stg|                           Table Name                           |  Run |Weight| Prcnt|</h2>
+
+<table>
+<col />
+<col />
+<col />
+<thead>
+<tr>
+	<th>0</th>
+	<th>eg_ctl.eg_ctl_nexthop.tbl_nexthop</th>
+	<th>No</th>
+	<th>31.63</th>
+	<th>20.92%</th>
+</tr>
+<tr>
+	<th>0</th>
+	<th>eg_ctl.eg_ctl_outport.tbl_nexthop</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>16.74%</th>
+</tr>
+<tr>
+	<th>0</th>
+	<th>tbl_eg_ctl49</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>4.18%</th>
+</tr>
+<tr>
+	<th>0</th>
+	<th>tbl_eg_ctl65</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>4.18%</th>
+</tr>
+<tr>
+	<th>1</th>
+	<th>eg_ctl.eg_ctl_vlan_out.tbl_vlan_out</th>
+	<th>No</th>
+	<th>31.63</th>
+	<th>20.92%</th>
+</tr>
+<tr>
+	<th>2</th>
+	<th>tbl_eg_ctl102</th>
+	<th>No</th>
+	<th>6.33</th>
+	<th>4.18%</th>
+</tr>
+<tr>
+	<th>2</th>
+	<th>tbl_eg_ctl_vlan_out68</th>
+	<th>No</th>
+	<th>43.65</th>
+	<th>28.87%</th>
+</tr>
+<tr>
+	<th>3</th>
+	<th>eg_ctl.eg_ctl_hairpin.tbl_hairpin</th>
+	<th>No</th>
+	<th>25.31</th>
+	<th>16.74%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td><h2 id="tot151.21100"></td>
+	<td>Tot</td>
+	<td> </td>
+	<td> </td>
+	<td>151.21</td>
+	<td>100%</td>
+	<td></h2></td>
+</tr>
+</tbody>
+</table>
+
+<p>Worst case power for egress: 2.30 W</p>
+
+<p>Total worst case power (4 pipes) : 13.32 W
+Total worst case power (per pipe) : 3.33 W
+Input packets per second load : 100%</p>
 </div>
           </div>
         </li>
