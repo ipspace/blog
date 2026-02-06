@@ -19,10 +19,8 @@ To qualify that, you have to understand how "fast" routers were in those days:
 
 * AGS+ had a 533 Mbps backplane (Cbus, [source](https://designated-router.com/ciscos-first-router-revisiting-the-venerable-ags-in-2021/))
 * Cisco 7000 was just a better implementation of the same concepts, and it looks like the CxBus had the same speed as the original Cbus (based on [this source](https://newsroom.cisco.com/c/r/newsroom/en/us/a/y1995/m08/cisco-7500-series-boosts-routing-muscle-for-large-evolving-corporate-networks.html)).
-* Cisco 7500, launched in 1995, had CyBus with 2.1 Gbps[^CY]
+* Cisco 7500, launched in 1995, had CyBus providing 1.067 Gbps. The entry-level model (7505) had a single bus; higher-end models (7507/7513) had dual-CyBus backplanes, yielding 2.1 Gbps of forwarding performance [^CY].
 * Line cards were laughable (by today's standards). The fastest linecard had two Fast Ethernet ports (200 Mbps or 400 Mbps of marketing bandwidth).
-
-[^CY]: I have a vague recollection that it had multiple buses, but couldn't find any supporting information, apart from the fact that Cisco 7505 had 1 Gbps of forwarding bandwidth while the higher-end models (7505/7513) had two. Comments welcome.
 
 On the other hand, Cisco's LightStream 1010 ATM switch (also launched in 1995) had 5 Gbps of bandwidth ([source](https://newsroom.cisco.com/c/r/newsroom/en/us/a/y1995/m11/cisco-lightstream-1010-next-generation-workgroup-campus-atm-switch-first-to-offer-standard-atm-routing-and-traffic-management.html)). Keep in mind that although LS1010 was an excellent product, it was a late-to-market me-too entry-level switch. Other ATM switches had even higher performance.
 
@@ -58,3 +56,8 @@ MPLS/VPN was the first such service (and the first time most people heard of MPL
 [^FR]: Of course there's an [RFC](https://datatracker.ietf.org/doc/html/rfc3034) for that crazy idea
 
 [^YR]: ChatGPT claims the idea is usually credited to Yakov Rekhter. That sounds about right.
+
+### Revision History
+
+2026-02-06
+: Fixed the CyBus section based on a comment by Emanuele and LinkedIn comments.
