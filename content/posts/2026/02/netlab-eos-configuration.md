@@ -65,7 +65,7 @@ Believing in the *eat your own dogfood* BS, I enabled it a few weeks ago, and ha
 
 **TL&DR:** You bet!
 
-The best I could do on my server was a 20-node Arista cEOS fabric[^BUSY] (four spines, 16 leaves) running OSPF, BGP, and EVPN with VLAN/VXLAN configured on the leaves. This is the gist of the lab topology:
+The best I could do on my server was a 20-node Arista cEOS fabric[^BUSY] (four spines, 16 leaves) running OSPF, BGP, and EVPN with VLAN/VXLAN configured on the leaves. This is the gist of the [lab topology](https://github.com/ipspace/netlab/blob/b3359562d72e87d42b3b5b69f401761b258a19bd/tests/platform-integration/large/x-medium-fabric.yml):
 
 [^BUSY]: That fabric already resulted in a peak 5-second *load average* above 130 when the containers were starting. Not exactly a comfy place to be.
 
