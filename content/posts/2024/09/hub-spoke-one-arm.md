@@ -1,6 +1,7 @@
 ---
 title: "One-Arm Hub-and-Spoke VPN with MPLS/VPN"
 date: 2024-09-24 08:15:00+0200
+lastmod: 2025-11-11 07:13:00+0100
 tags: [ netlab, design ]
 netlab_tag: mpls
 series: hub_spoke_vpn
@@ -188,7 +189,7 @@ Internet  172.16.2.5             46   aac1.ab11.8cb3  ARPA   GigabitEthernet0/2
 
 ### Per-Prefix or Per-VRF Labels
 
-Now for the bad news: the trick described in this blog works only when PE_H allocates MPLS labels to *individual prefixes*. Some devices (including Arista EOS) don't do that but assign labels to VRFs. This is the route PE_H running Arista EOS advertises to PE_A:
+Now for the bad news: the trick described in this blog works only when PE_H allocates MPLS labels to *individual prefixes*. Some devices (including Arista EOS) don't do that but assign labels to VRFs. This is the route PE_H running Arista EOS advertises to PE_A (but you can [fix that behavior](/2025/11/one-arm-hub-spoke-vpn-arista-eos/) on Arista EOS release 4.34.2F):
 
 {{<cc>}}Default route in VRF S_1 as advertised by PE_H running Arista EOS{{</cc>}}
 ```
@@ -234,19 +235,20 @@ Finally, a quick detour. If you use VXLAN transport with the EVPN control plane,
 
 ### Try It Out
 
-Want to try it out yourself? Unfortunately, you cannot do it in [GitHub Codespaces](https://blog.ipspace.net/2024/07/netlab-examples-codespaces/):
+Want to try it out yourself? Here's how you can do it in [GitHub Codespaces](https://blog.ipspace.net/2024/07/netlab-examples-codespaces/):
 
-* You cannot run virtual machines in GitHub Codespaces. Junos, IOS, or IOS XR are out.
-* FRRouting or VyOS containers use Linux MPLS drivers; you cannot load them in GitHub Codespaces.
-* Arista cEOS has a user-mode MPLS data plane but does not support per-prefix label allocation.
-* SR Linux requires a license to run MPLS.
+* Download Arista cEOS container release 4.34.2F or later. [Import the cEOS container](/2024/07/arista-eos-codespaces/) into your codespace.
+* Change directory to `MPLS/hub-spoke-one-arm` and execute `netlab up -d eos -p clab`
+* After the lab has started, do the traceroute to verify that the spoke-to-spoke traffic never reaches CE_HUB.
+* Configure label allocation for default route on PE_H with `netlab config deflabel -l pe_h` ([here's why](/2025/11/one-arm-hub-spoke-vpn-arista-eos/))
+* Now, the traceroute from CE_S1 to CE_S2 should go through CE_HUB.
 
-Anyway, if you want to try the lab without investing in installing vendor VMs, you can use FRRouting containers:
+If you want to try the lab without investing in installing vendor VMs or containers, you can use FRRouting containers (but not on GitHub Codespaces because FRRouting containers rely on host MPLS drivers):
 
 * [Install _netlab_ into a Ubuntu VM](https://netlab.tools/install/ubuntu-vm/) ([FRRouting works on Apple silicon](/2024/03/netlab-bgp-apple-silicon/)).
 * Copy the [topology file](https://github.com/ipspace/netlab-examples/blob/master/MPLS/hub-spoke-one-arm/topology.yml) into an empty directory.
 * Execute **netlab up -p clab -d frr**.
-* Configure **‌label vpn export allocation-mode per-nexthop** within the **‌address-family ipv4** of the **‌router bgp 65000 vrf hub** configuration of PE_H.
+* Configure **‌label vpn export allocation-mode per-nexthop** within the **‌address-family ipv4** of the **‌router bgp 65000 vrf hub** configuration of PE_H or execute `netlab config deflabel -l pe_h`.
 
 The only bits you would be missing with this setup would be the intermediate routers in the **traceroute** output; it looks like Linux cannot forward the ICMP TTL-exceeded packets along an MPLS path (I may be missing something, in which case please leave a comment).
 
@@ -261,3 +263,8 @@ traceroute to ce_s2 (10.0.0.7), 30 hops max, 46 byte packets
  5  *  *  *
  6  ce_s2 (10.0.0.7)  0.032 ms  0.001 ms  0.001 ms
 ```
+
+### Revision History
+
+2025-11-11
+: Arista EOS release 4.34.2F supports label allocation to the default route.
