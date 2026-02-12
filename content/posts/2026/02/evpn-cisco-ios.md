@@ -8,7 +8,7 @@ After reading the [L2 Vxlan On Catalyst](https://michaelbecze.github.io/blog/202
 
 Starting with the trivial hiccups:
 <!--more-->
-* Use software release 17.16.01a or later. It looks like you can configure EVPN-with-VXLAN in some prior releases, but it doesn't work (well?)
+* Use software release 17.16.01a or later. It looks like you can configure EVPN-with-VXLAN on Cisco IOS/XE virtual machines in some prior releases, but it doesn't work (well?). Cisco IOS/XE running on physical hardware [seems to be more reliable](#2884).
 * I was able to make EVPN with VXLAN work on Catalyst 8000v, Cisco IOL, and Cisco IOL layer-2 image. The CSR image is not new enough (IOS/XE 17.13 supports EVPN over MPLS but not over VXLAN)
 * Catalyst 8000v and CSR can do VXLAN with static ingress replication. The exact same configuration is accepted by Cisco IOL, but does not work.
 
@@ -41,4 +41,9 @@ But wait, it only gets better if you want to be a member of the Kool GIFEE crowd
 
 On the positive side, once you figure things out, even the crazy [EBGP-over-EBGP](/2024/10/evpn-designs-ebgp-ebgp/) and [IBGP-over-EBGP](/2024/11/evpn-designs-ibgp-ebgp/) scenarios work flawlessly.
 
-Finally, I haven't mustered the courage yet to try out the *transit VNI* and *symmetrical IRB*. I find the idea of configuring a full-blown VLAN for the transit VNI instead of a single command within the BGP IP VRF configuration a bit disgusting. More to come...
+Finally, I haven't mustered the courage yet to try out the *transit VNI* and *symmetrical IRB*. I find the idea of configuring a full-blown VLAN for the transit VNI rather than having a single command within the BGP IP VRF configuration a bit disgusting. More to come...
+
+### Revision History
+
+2026-02-12
+: Added a pointer to a comment claiming EVPN/VXLAN runs in release 16.12 on ASR1K.
