@@ -18,6 +18,16 @@ $ source ./nlt/bin/activate
 $ pip3 install networklab
 ```
 
+{{<note info>}}
+If you feel adventurous and don't mind running a script downloaded from a random website through **sh**, use the phenomenal **[uvx.sh](https://uvx.sh/)** service to install *netlab* (visit uvx.sh to find out the corresponding Windows command):
+
+```
+$ curl -LsSf uvx.sh/networklab/install.sh | sh
+```
+
+Compared to what [we had to deal with](https://xkcd.com/1987/), UVX is condensed [PFM](https://idioms.thefreedictionary.com/P.F.M).
+{{</note>}}
+
 * Even better, [open the *netlab-examples* repository as a GitHub Codespace](/2024/07/netlab-examples-codespaces/).
 * Find the most appropriate lab topology in [netlab examples](https://github.com/ipspace/netlab-examples), [integration tests](https://github.com/ipspace/netlab/tree/dev/tests/integration), [BGP labs](https://github.com/bgplab/bgplab), [IS-IS labs](https://github.com/bgplab/isis), or [EVPN/VXLAN](https://github.com/bgplab/evpn) labs[^SL]. You could also [try to cajole your AI buddy](/2025/05/chatgpt-netlab-topology/) into creating a working netlab topology[^WBP].
 * Copy the topology URL
