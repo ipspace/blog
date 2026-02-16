@@ -25,7 +25,7 @@ If you feel adventurous and don't mind running a script downloaded from a random
 $ curl -LsSf uvx.sh/networklab/install.sh | sh
 ```
 
-Compared to what [we had to deal with](https://xkcd.com/1987/), UVX is condensed [PFM](https://idioms.thefreedictionary.com/P.F.M).
+Compared to what [we had to deal with](https://xkcd.com/1987/), UVX is condensed [PFM](https://idioms.thefreedictionary.com/P.F.M.).
 {{</note>}}
 
 * Even better, [open the *netlab-examples* repository as a GitHub Codespace](/2024/07/netlab-examples-codespaces/).
