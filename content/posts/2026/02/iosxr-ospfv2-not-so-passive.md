@@ -10,7 +10,9 @@ What's wrong with me? Why do I have to uncover another weirdness  every single t
 
 However, when I ran the *OSPFv2 passive interface* [integration test](https://github.com/ipspace/netlab/blob/5aae878dff0da1ffb256a33532e0748d9ba7df56/tests/integration/ospf/ospfv2/04-passive.yml) with an IOS/XR container, it kept failing with *neighbor is in Init state* (the first and only time I ever encountered such an error after testing over two dozen platforms).
 <!--more-->
-This is the IOS/XR configuration applied to the offending interface. It should work, right?
+This is the IOS/XR configuration applied to the offending interface[^NP2P]. It should work, right?
+
+[^NP2P]: Don't fixate on the "network point-to-point" bit. I observed the same behavior without it, but left it in the printout because that's how the interface was configured when I performed the packet capture.
 
 ```
 router ospf 1
