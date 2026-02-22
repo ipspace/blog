@@ -2,7 +2,7 @@
 title: "Explore Configurations of Unfamiliar Devices with netlab"
 date: 2026-02-16 08:28:00+0100
 tags: [ netlab ]
-netlab_tag: use
+netlab_tag: overview
 ---
 Apart from IP multicast and QoS, _netlab_ can configure [commonly used networking technologies](https://netlab.tools/platforms/#supported-configuration-modules) across [dozens of devices](https://netlab.tools/platforms/#supported-virtual-network-devices) from most networking vendors. Why don't you use all that embedded knowledge (supported by [hundreds of integration tests](https://release.netlab.tools/)) to help you configure unfamiliar devices?
 

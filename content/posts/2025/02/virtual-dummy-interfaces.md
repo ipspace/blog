@@ -2,7 +2,7 @@
 title: "Stub Networks in Virtual Labs"
 date: 2025-02-25 07:55:00+0100
 tags: [ virtualization, netlab ]
-netlab_tag: use
+netlab_tag: details
 ---
 The previous blog posts described how virtualization products create [LAN segments](/2025/02/virtual-lab-links/) and [point-to-point links](/2025/02/virtual-labs-p2p-links/). 
 

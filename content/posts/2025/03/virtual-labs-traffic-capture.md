@@ -2,7 +2,7 @@
 title: "Capturing Traffic in Virtual Networking Labs"
 date: 2025-03-04 07:43:00+0100
 tags: [ virtualization, netlab ]
-netlab_tag: use
+netlab_tag: guidelines
 ---
 When I announced the [Stub Networks in Virtual Labs](/2025/02/virtual-dummy-interfaces/) blog post on LinkedIn, I claimed it was *the last chapter in the "links in virtual labs" saga*. I was wrong; here comes the fourth part of the *virtual links* trilogy -- capturing "on the wire" traffic in virtual networking labs.
 
