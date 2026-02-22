@@ -2,7 +2,7 @@
 title: "Fast Arista cEOS Container Configuration"
 date: 2026-02-09 07:23:00+0100
 tags: [ netlab ]
-netlab_tag: quirks
+netlab_tag: details
 ---
 After the enormous speedup I achieved with the [FRR containers](/2026/02/netlab-frr-configuration/), I tried to do something similar with the Arista cEOS ones. After all, Arista's pretty open about running its software on standard Linux, so it should be possible to map host-side configuration files into container-side scripts and execute them, right?
 

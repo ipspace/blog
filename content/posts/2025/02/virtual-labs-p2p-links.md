@@ -2,7 +2,7 @@
 title: "Point-to-Point Links in Virtual Labs"
 date: 2025-02-12 07:55:00+0100
 tags: [ virtualization, netlab ]
-netlab_tag: use
+netlab_tag: details
 ---
 In the [previous blog post](/2025/02/virtual-lab-links/), I described the usual mechanisms used to connect virtual machines or containers in a virtual lab, and the drawbacks of using Linux bridges to connect virtual network devices.
 

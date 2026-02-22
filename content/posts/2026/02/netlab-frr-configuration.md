@@ -2,7 +2,7 @@
 title: "Fast FRR Container Configuration"
 date: 2026-02-02 07:47:00+0100
 tags: [ netlab ]
-netlab_tag: quirks
+netlab_tag: details
 ---
 After creating the infrastructure that [generates the device configuration files within _netlab_](/2026/01/netlab-faster-without-ansible) (not in an Ansible playbook), it was time to try to apply it to something else, not just Linux containers. FRR containers were the obvious next target.
 

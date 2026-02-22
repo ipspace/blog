@@ -2,7 +2,7 @@
 title: "How Moving Away from Ansible Made netlab Faster"
 date: 2026-01-19 07:36:00+0100
 tags: [ netlab ]
-netlab_tag: quirks
+netlab_tag: details
 ---
 **TL&DR:** Of course, the title is clickbait. While the differences are amazing, you won't notice them in small topologies or when using [bloatware that takes minutes to boot](/2023/02/virtual-device-boot-times/).
 

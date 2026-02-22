@@ -63,6 +63,10 @@ For more information, explore the [Open-Source BGP Configuration Labs](https://b
 
 {{<series-listing tag="testing">}}
 
+### Implementation Details
+
+{{<series-listing tag="details">}}
+
 ## Customizing and Extending *netlab*
 {{<plushy master>}}
 {{<series-listing tag="extend">}}
