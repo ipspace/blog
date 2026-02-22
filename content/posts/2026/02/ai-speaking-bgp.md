@@ -11,12 +11,16 @@ There was this post about [AI agents speaking BGP](https://www.linkedin.com/post
 The proof-of-concept (so the post author) has two components:
 <!--more-->
 * A natural-language interface to BGP information (makes sense)
-* A vibe-coded (so claims the author) BGP daemon.
+* A vibe-coded (so claims the author) BGP daemon with a socket interface returning information on BGP neighbors, received and sent routes.
 
-That second part made me facepalm. We have several high-quality open-source BGP implementations[^OSB], and at least FRRouting (I haven't tested the others) can produce the required information in easy-to-consume (for machines) JSON format, in case you think that's easier to work with than text printouts[^JSB]. Adding a REST API in front of that (should one be so inclined) is a piece of cake.
+That second part made me facepalm. We have several high-quality open-source BGP implementations[^OSB], and at least FRRouting (I haven't tested the others) can produce the required information in easy-to-consume (for machines) JSON format, in case you think that's easier to work with than text printouts[^JSB]. Adding a REST API in front of that[^RA] or a translation layer[^LLMP] is a piece of cake. Want to have a science project? Skip the intermediate layers and write your own output module that processes the information directly from the BGP table. 
 
 [^OSB]: Plenty of IXPs are using one of them, and the Internet must be up and running, or you wouldn't be reading this.
 
 [^JSB]: Some people disagree because of the inevitable bloat caused by text-to-JSON expansion.
 
-Wouldn't it be better to use a well-maintained, field-tested, pretty scalable implementation and pair it with something that adds value (natural language interface) instead of trying to prove you can reinvent a rough approximation of a wheel? Why do people feel they have to do that?
+[^RA]: Because everything needs to have a REST API to be useful ;)
+
+[^LLMP]: In case you think the LLM you're using can work better with data formatted some other way.
+
+Anyway, wouldn't it be better to use a well-maintained, field-tested, pretty scalable implementation and pair it with something that adds value (natural language interface) instead of trying to prove you can reinvent a rough approximation of a wheel? Why do people feel they have to do that?
