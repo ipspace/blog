@@ -8,7 +8,7 @@ netlab_tag: quirks
 Imagine you want to deploy a BGP route reflector for MPLS 6PE or L3VPN service. Both services run over MPLS LSPs, use IPv4 BGP sessions, and use IPv4 next hops for BGP routes. There's absolutely no reason to need IPv6 routing on a node that handles solely the control-plane activity (it never appears as a BGP next hop anywhere), right? Cisco IOS disagrees, as I discovered when running [route reflector integration tests](https://tests.netlab.tools/_html/coverage.mpls) for _netlab_ [6PE and (MPLS) L3VPN functionality](https://netlab.tools/module/mpls/).
 
 Most platforms failed those tests because we forgot to configure **route-reflector-clients** in labeled IPv6 and VPNv4/VPNv6 address families[^EOSRR]. That was easy to fix, but the IOS-based devices were still failing the tests, with nothing in the toolchain ever complaining about configuration problems.
-
+<!--more-->
 [^EOSRR]: Arista EOS was one of the few exceptions because it configures BGP route reflector clients in the (academically speaking) [suboptimal layer](/2022/10/arista-route-reflector-woes/) in the BGP configuration hierarchy.
 
 Looking more closely at what was going on, I discovered something weird: BGP **ipv6 labeled-unicast** and **vpnv6** address families appeared to be configured without a hitch with Ansible's **ios_config** module, but they did not subsequently appear in the BGP configuration.
