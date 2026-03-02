@@ -1,6 +1,6 @@
 ---
 date: 2022-01-24 07:36:00+00:00
-netlab_tag: use
+netlab_tag: mpls
 tags:
 - traffic engineering
 - netlab
