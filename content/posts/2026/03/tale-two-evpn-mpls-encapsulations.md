@@ -14,7 +14,7 @@ I decided it was high time to create [EVPN/MPLS](https://github.com/ipspace/netl
 * Attach some hosts to the two PE-devices (we're testing two MAC-VRFs in the [final version of the test](https://github.com/ipspace/netlab/blob/dev/tests/integration/evpn/51-mpls-bridging.yml))
 * After validating everything that can reasonably be validated (OSPF session, IBGP session, EVPN AF on IBGP session), do the end-to-end pings and hope for the best.
 
-This is the graph netlab created from the lab topology:
+This is the graph netlab created from the [lab topology](/2026/03/tale-two-evpn-mpls-encapsulations/#topo):
 <!--more-->
 {{<figure src="/2026/03/evpn-mpls-topo.png">}}
 
@@ -109,3 +109,50 @@ As the PE device advertises the same MPLS label for ingress replication to all p
 I honestly don't care who's right; if only there had been a nerd knob on either platform that would allow me to adapt it to the other perspective on how the RFC should be read. Alas, I had no luck finding it.
 
 Every time I bring up some "EVPN is SIP of networking" scenario, I hear from the vendors claiming how much EVPN interoperability testing they're doing. While that might be comforting to hear, it didn't help me much; I'm obviously too stupid to make EVPN/MPLS MAC-VRFs work between Arista EOS and Cisco IOS/XE. Please leave a comment if I missed something.
+
+### Reference Information {#topo}
+
+I used the following _netlab_ topology to create the lab:
+
+```
+---
+mpls.ldp: True
+evpn.transport: mpls
+evpn.vlans: [ red ]
+defaults.device: iol
+provider: clab
+
+groups:
+  _auto_create: True
+  hosts:
+    members: [ h1, h2 ]
+    device: linux
+    provider: clab
+  switches:
+    members: [ dut, s2 ]
+    module: [ vlan, mpls, ospf, bgp, evpn ]
+    graph.rank: 1
+  core:
+    members: [ p ]
+    module: [ ospf, mpls ]
+    device: frr
+    provider: clab
+    graph.rank: 1
+  x_switches:
+    members: [ s2 ]
+    device: eos
+    provider: clab
+
+bgp.as: 65000
+
+vlans:
+  red:
+    mode: bridge
+    prefix:
+      ipv4: 172.31.1.0/24
+    links: [ dut-h1, s2-h2 ]
+
+links:
+- interfaces: [ dut, p ]
+- interfaces: [ p, s2 ]
+```
