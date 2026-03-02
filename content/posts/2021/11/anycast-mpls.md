@@ -2,7 +2,7 @@
 anycast_tag: lab
 date: 2021-11-17 07:24:00+00:00
 lastmod: 2022-02-16 16:15:00
-netlab_tag: use
+netlab_tag: mpls
 pre_scroll: true
 series:
 - anycast

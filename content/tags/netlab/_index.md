@@ -44,6 +44,9 @@ You can also use _netlab_ (potentially together with GitHub Codespaces) to build
 ### Using VXLAN and EVPN
 {{<series-listing tag="vxlan_evpn">}}
 
+### Using MPLS and Segment Routing
+{{<series-listing tag="mpls" weight="1">}}
+
 ## Use Cases and Tutorials
 ### Interesting Use Cases {.hidetitle}
 {{<plushy happy>}}

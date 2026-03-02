@@ -1,7 +1,8 @@
 ---
 date: 2022-04-28 06:30:00+00:00
-netlab_tag: vlan_vrf
+netlab_tag: mpls
 pre_scroll: true
+series_weight: 1000
 tags:
 - MPLS VPN
 - netlab

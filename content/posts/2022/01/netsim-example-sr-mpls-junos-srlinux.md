@@ -1,7 +1,7 @@
 ---
 date: 2022-01-31 07:36:00+00:00
 lastmod: 2022-01-31 19:26:00
-netlab_tag: use
+netlab_tag: mpls
 tags:
 - traffic engineering
 - MPLS
