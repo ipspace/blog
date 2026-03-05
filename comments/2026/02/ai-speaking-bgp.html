@@ -53,6 +53,32 @@ Last I heard, Nokia SR-OS has an awesome BMP implementation ....</p>
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2907">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2907" href="#2907">05 March 2026 09:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; I&#39;d be looking for something that can produce responses to ad-hoc queries</p>
+
+<p>In the case of BMP, it is not the router that answers these queries. It is the &quot;BMP Collector&quot; that should be doing the answering to those queries.</p>
+
+<p>With BMP the design is this: <br />
+A router sends all incoming routes to a BMP Collector. <br />
+The BMP Collector is some piece of software, running on a Unix box somewhere. <br />
+It receives all the routes, all the stats, and all the peer up/down events from one or more routers. <br />
+The BMP Collector stores all that information (in RAM, or on disk).  </p>
+
+<p>Then you can ask the BMP Collector (who now has all the BGP data of all the peers, all the routers, all the routes) about all the events and details you want. The BMP Collector will burn the cpu-cycles to do the queries, run the summaries, calculate averages, find specific routes and events, etc.  </p>
+
+<p>The whole goal of BMP is that you don&#39;t have to burn expensive resources on the router. On a router you only spend bandwidth to send the data to the Collector. The expensive stuff is done of a cheap Unix box.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
