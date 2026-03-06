@@ -108,6 +108,12 @@ As the PE device advertises the same MPLS label for ingress replication to all p
 
 I honestly don't care who's right; if only there had been a nerd knob on either platform that would allow me to adapt it to the other perspective on how the RFC should be read. Alas, I had no luck finding it.
 
+{{<note info>}}
+According to a [comment by Sebastian Schrader](https://blog.ipspace.net/2026/03/tale-two-evpn-mpls-encapsulations/#2903), you can configure Arista EOS not to use the pseudowire control word on EVPN LSPs.
+
+Unfortunately, that command is not available on the cEOS container release 4.35.2F (no surprise there, why should they implement every single nerd knob in the software packet forwarding pipeline), so I can't test it.
+{{</note>}}
+
 Every time I bring up some "EVPN is SIP of networking" scenario, I hear from the vendors claiming how much EVPN interoperability testing they're doing. While that might be comforting to hear, it didn't help me much; I'm obviously too stupid to make EVPN/MPLS MAC-VRFs work between Arista EOS and Cisco IOS/XE. Please leave a comment if I missed something.
 
 ### Reference Information {#topo}
