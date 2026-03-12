@@ -76,7 +76,7 @@ links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 
 ### Smoke Test
 
-Let's inspect the routing tables first (hint: **[netlab connect](https://netlab.tools/netlab/connect/)** is an easy way to connect to lab devices without bothering with their IP addresses or /etc/hosts file). 
+Let's inspect the routing tables first (hint: **[netlab connect](https://netlab.tools/netlab/connect/)** is an easy way to connect to lab devices without worrying about their IP addresses or the `/etc/hosts` file).
 
 Here's the routing table entry for 10.0.0.42 on L2:
 
@@ -96,7 +96,7 @@ s1>show ip route detail | section 10.0.0.42
                                 via 10.1.0.9, Ethernet3 s1 -> l3
 ```
 
-What about MPLS forwarding table? Here's the LFIB entry for 10.0.0.42 or S1. Please note that a single incoming label maps into two outgoing labels, interfaces, and next hops. 
+What about the MPLS forwarding table? Here's the LFIB entry for 10.0.0.42 on S1. Please note that a single incoming label maps into two outgoing labels, interfaces, and next hops.
 
 {{<cc>}}Anycast MPLS entry on S1{{</cc>}}
 ```
@@ -124,9 +124,9 @@ l2>show mpls lfib route detail | section 10.0.0.42
                  interface Ethernet3
 ```
 
-The final test (**traceroute** from L1 to anycast IP address) failed on Arista cEOS or vEOS. The data plane implementation of Arista's virtual devices seems to be a bit limited: even though there are several next hops in the EOS routing table and LFIB, I couldn't find a nerd knob to force more than one entry into the Linux routing table (which is used for packet forwarding).
+The final test (**traceroute** from L1 to anycast IP address) failed on Arista cEOS or vEOS prior to release 4.35.2F, but [seems to work](/2026/03/ecmp-arista-ceos/) with cEOS 4.35.2F. The data-plane implementation in earlier Arista cEOS releases was somewhat limited: even though there were several next hops in the EOS routing table and LFIB, they were not used for packet forwarding.
 
-However, if you repeat the same tests on Cisco IOS with **ip cef load-sharing algorithm include-ports source destination** configured, you'll see **traceroute** printouts ending on different anycast nodes:
+However, if you repeat the same tests on Cisco IOS with **ip cef load-sharing algorithm include-ports source destination** configured, you'll see **traceroute** printouts ending on different anycast nodes. The printouts also include the MPLS label stack, proving that ECMP toward anycast IPv4 destinations works for labeled IPv4 packets.
 
 {{<cc>}}Cisco IOS traceroute from L1 to anycast IP{{</cc>}}
 ```
@@ -200,11 +200,15 @@ If you want to use your own infrastructure:
 
 Next:
  
-* [Download Arista vEOS image and build a Vagrant box](https://netlab.tools/labs/eos/)
+* [Download Arista vEOS image and build a Vagrant box](https://netlab.tools/labs/eos/) or [use Arista cEOS containers](https://netlab.tools/labs/ceos/).
 * Download the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) into an empty directory
-* Execute **netlab up**
+* Execute **netlab up** to start the lab with virtual machines or **netlab up -p clab** to use containers.
 
 ### Revision History
+
+2026-03-12
+: ECMP works with Arista cEOS release 4.35.2F
+: Minor (polishing) edits
 
 2024-10-20
 : Added GitHub Codespaces instructions
