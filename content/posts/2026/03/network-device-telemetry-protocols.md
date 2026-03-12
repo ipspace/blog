@@ -6,6 +6,6 @@ media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_
 ---
 Whenever I'm [ranting about vendors changing their data models or APIs](/2025/04/api-data-model-contract/) with every other release, there is inevitably a vendor engineer chiming in, [saying](https://blog.ipspace.net/2025/04/api-data-model-contract/#2619), "Life would be so much better if the customers wouldn't insist on doing screen scraping for the last 50 years."
 
-In theory, that's correct. We have NETCONF, gNMI, XML, JSON, protobufs, and a few other attempts at reinventing that wheel. In theory, the problem of fetching telemetry from network devices has been solved. In practice, there's a tiny gap between theory and practice, and in Episode 205 of Software Gone Wild, I'm exploring that gap with [Dinesh Dutt](https://www.stardustsystems.net/team), who is unlucky enough to have become the world's foremost expert on crappy network telemetry.
+While some of that screen scraping is pure inertia, we sometimes have good reasons to do it rather than use protocols like NETCONF, gNMI, or protobufs. In Episode 205 of Software Gone Wild, I'm discussing some of those reasons and exploring the gap between vendor theory and reality with [Dinesh Dutt](https://www.stardustsystems.net/team), who is unlucky enough to have become the world's foremost expert on crappy network telemetry.
 
 {{<jump>}}[Listen to the podcast](http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_205-Network_Device_Telemetry_Protocols.mp3){{</jump>}}
