@@ -5,7 +5,7 @@ lastmod: 2025-10-13 09:17:00+02:00
 tags: [ netlab ]
 netlab_tag: graph
 ---
-A netlab user wanted to create a topology graph from a simple topology connecting a few devices to a multi-access link. I don't have his exact topology, so we'll use this one (skipping the details like setting device types)
+A netlab user wanted to [create a nice-looking topology graph](https://github.com/ipspace/netlab/issues/3197) from a simple topology connecting a few devices to a broadcast (multi-access) link. I don't have his exact topology, so we'll use this one (skipping the details like setting device types)
 
 ```
 nodes: [ r1, r2, h1, h2 ]
