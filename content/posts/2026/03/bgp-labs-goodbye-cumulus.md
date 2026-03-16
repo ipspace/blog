@@ -1,8 +1,9 @@
 ---
-title: "BGP Labs: Goodbye Cumulus Linux"
+title: "BGP Labs: Goodbye, Cumulus Linux"
 date: 2026-03-18 07:30:00+02:00
 tags: [ BGP, netlab ]
-netlab_tag: ignore
+netlab_tag: bgplab
+netlab_title: Goodbye, Cumulus Linux
 BGP_tag: lab
 ---
 When I [started the Online BGP Labs project](https://bgplabs.net/99-about/) in mid-2023, Cumulus Linux still seemed like a good platform to use. You could run devices as virtual machines (we were still supporting VirtualBox) or in containers (containerlab was improving with every release), and it looked more polished than bare-bones FRRouting.
