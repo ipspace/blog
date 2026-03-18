@@ -71,7 +71,7 @@ $ cd $(netlab status -i default --format json | jq .dir -r)
 * However, that's clumsy, so let's define an alias:
 
 ```
-$ alias goback="cd $(netlab status -i default --format json | jq .dir -r)"
+$ alias goback='cd $(netlab status -i default --format json | jq .dir -r)'
 ```
 
 * After storing that alias in **.bash_aliases** script (or wherever your preferred shell keeps them), you can log in, execute **goback**, and you're ready to work.
