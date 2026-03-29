@@ -1,6 +1,7 @@
 ---
 title: "Cumulus Linux (As We Know It) Is Gone"
 date: 2025-06-02 08:36:00+0200
+lastmod: 2026-03-29 18:20:00+0200
 tags: [ data center ]
 ---
 A reader of my blog pointed out the following minutiae hidden at the very bottom of the [Cumulus Linux 5.13 What's New](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-513/Whats-New/) document:
@@ -10,6 +11,12 @@ A reader of my blog pointed out the following minutiae hidden at the very bottom
 And what is [NVIDIA AIR](https://docs.nvidia.com/networking-ethernet-software/nvidia-air/)?
 <!--more-->
 > NVIDIA Air is a cloud-hosted, data center simulation platform that behaves like a real-world production environment. Use NVIDIA Air to create a digital twin of your IT infrastructure.
+
+{{<note update>}}
+**Update 2026-03-29**: One of my readers sent me an email claiming that "*NVIDIA has decided to 'publish' Cumulus VX images again. The newer images (released after their 'We don't release VX images anymore') are only accessible with a support contract.*"
+
+That would make them even worse than Cisco (most other vendors offer easier-to-access images, and even Cisco lets you download NXOS without a support contract). Why am I not surprised?
+{{</note>}}
 
 Why would one want to use it? The only reason I can find is the [ASIC emulation](https://www.nvidia.com/en-us/networking/ethernet-switching/air/#features):
 
@@ -28,3 +35,8 @@ It's not like we wouldn't have precedents for that phenomenal idea. Juniper atte
 [^FPW]: It could be a free image or a product like CML. The image could be free to download or protected by a regwall. It doesn't matter; you can download and use it.
 
 It's sad to see how far the [noble ideas of the original Cumulus Networks team](https://blog.ipspace.net/2015/08/video-what-is-cumulus-linux-all-about/) have fallen. Maybe [what Linus Torvalds said about NVIDIA](https://www.youtube.com/watch?v=tQIdxbWhHSM) before he became politically correct wasn't so far off the mark :(
+
+### Revision History
+
+2026-03-29
+: Newer Cumulus VX images are supposedly accessible to NVIDIA customers with support contracts.
