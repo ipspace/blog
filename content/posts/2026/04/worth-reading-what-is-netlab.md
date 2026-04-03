@@ -1,6 +1,6 @@
 ---
 title: "What is Netlab and Why Network Engineers Should Care"
-date: 2026-04-22 08:55:00+0200
+date: 2026-04-14 08:55:00+0200
 tags: [ netlab, worth reading ]
 netlab_tag: overview
 ---
