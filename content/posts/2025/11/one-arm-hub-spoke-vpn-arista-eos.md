@@ -5,7 +5,7 @@ tags: [ netlab, design ]
 netlab_tag: mpls
 series: hub_spoke_vpn
 ---
-In September 2024, I described how you can build [One-Arm Hub-and-Spoke VPN with MPLS/VPN](/2024/09/hub-spoke-one-arm/). In that blog post, I mentioned that the solution doesn't work on Arista EOS because it allocates MPLS labels to whole VRFs ([per-VRF label allocation](/2024/10/mpls-vpn-prefix-vrf-labels/)).
+In September 2024, I described how you can build [One-Arm Hub-and-Spoke VPN with MPLS/VPN](/2024/09/hub-spoke-one-arm/). In that blog post, I mentioned that the solution doesn't work on Arista EOS because it allocates MPLS labels to whole VRFs ([per-VRF label allocation](/2024/10/mpls-vpn-prefix-vrf-labels/)) (the original post has been updated).
 
 In early September, I received an email from [Daniel Blažek](https://www.linkedin.com/in/danielblazek18/) telling me that Arista fixed this particular annoyance in the EOS release 4.34.2F. It still uses per-VRF label allocation, but now, you can assign a different label *to the default route*. Let's see how that works with our [one-arm hub-and-spoke topology](https://github.com/ipspace/netlab-examples/blob/master/MPLS/hub-spoke-one-arm/topology.yml):
 <!--more-->
