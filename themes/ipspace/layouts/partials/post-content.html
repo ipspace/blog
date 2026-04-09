@@ -37,7 +37,7 @@
       {{ $url := urls.Parse .Permalink }}
       {{ $plink := .Permalink }}
       {{ $cpath := printf "%s.html" (strings.TrimSuffix "/" $url.Path) }}
-      {{ with index .Site.Data.comment_count $cpath }}
+      {{ with index hugo.Data.comment_count $cpath }}
         <a class="post__comment-link" href="{{ $plink }}#comments">
           <svg class="post__comments-icon">
             <use xlink:href="#icon-comments"></use>
