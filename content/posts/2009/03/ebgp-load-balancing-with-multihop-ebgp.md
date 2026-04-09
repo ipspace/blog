@@ -5,7 +5,7 @@ tags:
 - load balancing
 title: EBGP Load Balancing with a Multihop EBGP Session
 url: /2009/03/ebgp-load-balancing-with-multihop-ebgp/
-lastmod: 2020-12-29 07:37
+lastmod: 2020-12-29 07:37:00
 ---
 Multihop EBGP sessions are the traditional way to implement EBGP load balancing on parallel links. EBGP session is established between loopback interfaces of adjacent routers (see the next diagram; initial router configurations are included at the bottom of the article) and static routes (or an extra instance of a dynamic routing protocol) are used to achieve connectivity between loopback interfaces (BGP next-hops). The load balancing is an automatic result of the recursive route lookup of BGP next hops.
 
