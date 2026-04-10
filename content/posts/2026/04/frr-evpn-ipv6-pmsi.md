@@ -44,6 +44,12 @@ BGP routing table entry for imet 2001:db8:0:2::1, Route Distinguisher: 10.0.0.2:
 
 As you can see from the printout, Arista EOS uses an IPv6 address as the PMSI Tunnel ID (2001:db8:0:1::1) while FRRouting uses an IPv4 address (0.0.0.0) even though the next hop of the EVPN route (the VTEP IP address) is an IPv6 address. That's still OK (at least Arista EOS recognizes that), but FRRouting barks at an EVPN route with an IPv6 next hop *and an IPv6 PMSI Tunnel ID* and rejects it.
 
+{{<note update>}}
+Donald Sharp [fixed the bug](https://github.com/FRRouting/frr/pull/21488) in less than 48 hours, and I was able to test that the fix works in minutes. The last time I got a similar response from a traditional networking vendor was in the early 1990s.
+
+Thanks a million, great job!
+{{</note>}}
+
 ### What Exactly Is the PMSI Tunnel Attribute
 
 The PMSI Tunnel attribute (defined in RFC 6514) is used *with IMET (type 3) EVPN routes* to tell EVPN neighbors which BUM replication the device uses. The usual values you'd see in an EVPN/VXLAN environment are 3/4 (for multicast replication) or 6 (for ingress replication) (valid values can be found in an [IANA registry](https://www.iana.org/assignments/bgp-parameters/bgp-parameters.xhtml#pmsi-tunnel-types)).
@@ -116,3 +122,8 @@ links: [ swe-swf ]
 ```
 
 Finally, a note to the great engineers developing FRRouting: in the days of free-to-download network devices running as VMs or containers, please run interoperability tests on new features. In some cases, _netlab_ might be able to help and generate the required device configurations on non-FRR devices.
+
+### Revision History
+
+2026-04-10
+: The FRRouting bug [has been fixed](https://github.com/FRRouting/frr/pull/21488)
