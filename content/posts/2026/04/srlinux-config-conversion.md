@@ -1,6 +1,7 @@
 ---
 title: "SR Linux Configuration Conversion Tool"
 date: 2026-04-02 08:35:00+0200
+lastmod: 2026-04-11 18:28:00+0200
 tags: [ automation ]
 ---
 A year ago, I was complaining about [SR Linux breaking its configuration data model with a new software release](https://blog.ipspace.net/2025/04/api-data-model-contract/). At that time, I was promised it would only happen once a year, and, like clockwork, that moment arrived with the SR Linux release 26.03.
@@ -9,12 +10,10 @@ However, this year [Miguel Redondo](https://www.linkedin.com/in/michelredondo/) 
 <!--more-->
 Like it's so often the case in IT (and everywhere else), that tool is standing on the shoulders of giants (and tons of right decisions Nokia made in the past):
 
-* Like any other decent network operating system, SR Linux can convert configurations when upgrading to a new software release[^CTP].
+* Like any other decent network operating system, SR Linux can convert configurations when upgrading to a new software release.
 * Unlike most network operating systems, SR Linux container images are available for a hassle-free download, making it trivial to start any SR Linux release.
 * Containerlab can start containers, specify startup configurations for most supported devices, and save the current configurations for true containers.
 * SR Linux is willing to work with imaginary interfaces (for most network devices, you'd have to start the containers with just the right number of interfaces)
-
-[^CTP]: Life would be much easier if they were to make the conversion tool public, but I guess that's stretching the wish list a bit too far.
 
 The "configuration conversion" job is thus as easy as:
 
@@ -30,5 +29,11 @@ Assuming you have integration tests that cover every feature you use in the devi
 
 If you're brave enough (and have enough tokens and the right setup), you could even ask an AI model to do it for you.
 
+But wait, it gets better. As Roman Dodin pointed out in his [LinkedIn comment](https://www.linkedin.com/feed/update/urn:li:activity:7445359550687424512/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7445359550687424512%2C7446674960405774336%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287446674960405774336%2Curn%3Ali%3Aactivity%3A7445359550687424512%29), the configuration upgrade scripts are written in Python and easily accessible in the container image as **srlinux.transform.transformations** module. As it's pretty trivial to access files within a Docker container, you could start two SR Linux containers, fetch the upgrade scripts, and do a **diff** on them to get a definitive answer (even better than release notes) on what exactly has changed between software releases.
+
 While I still hate frivolous changes in data models made mostly for aesthetic purity, knowing that vendor engineers care enough about open-source developers to make their lives easier takes a lot of that annoyance away. If only there were more vendors like Nokia...
 
+### Revision History
+
+2026-04-11
+: Added information about Python upgrade scripts
