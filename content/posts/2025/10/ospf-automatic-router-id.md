@@ -3,19 +3,26 @@ title: "OMG: Automatic OSPFv3 Router ID on Cisco IOS"
 date: 2025-10-28 07:52:00+0100
 tags: [ OSPF ]
 ospf_tag: rant
+lastmod: 2026-04-14 17:55:00+02:00
 ---
 Found this incredible gem[^NGD] hidden in the Usage Guidelines for the [OSPFv3 **router-id** configuration command](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/command/ipv6-cr-book/ipv6-r1.html#wp4240068693) part of the [Cisco IOS IPv6 reference guide](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/command/ipv6-cr-book/ipv6-r1.html).
 
 The whole paragraph seems hallucinated[^SH], but that couldn't be because the page was supposedly last updated in 2019, and LLMs weren't good enough to write well-structured nonsense at that time:
 
-[^SH]: I doubt anyone will bother fixing that old document, but just in case, I [took a screenshot](/2025/10/ospfv3-router-id.jpg) in October 2025.
+{{<note update>}}
+**2026-04-14**: The [**router-id** description](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/command/ipv6-cr-book/ipv6-r1.html#wp2597958094) in the Cisco IOS IPv6 Reference Guide has been fixed. Thank you!
+
+It's so nice to see we can make the world a better place (one snark at a time).
+{{</note>}}
+<!--more-->
+[^SH]: ~~I doubt anyone will bother fixing that old document~~ (I was wrong). Anyway, if you want to enjoy the old version, I [took a screenshot](/2025/10/ospfv3-router-id.jpg) in October 2025.
 
 [^NGD]: Proving yet again that the [vendor documentation quality](/2025/10/shoddy-documentation/) has been going down the drain for ages.
 
 > OSPFv3 is backward-compatible with OSPF version 2.
 
 No, it is not.
-<!--more-->
+
 > In OSPFv3 and OSPF version 2, the router uses the 32-bit IPv4 address to select the router ID for an OSPFv3 process.
 
 Sort of, but let's not be picky. We have bigger fish to fry.
@@ -47,3 +54,8 @@ r#show ipv6 ospf interface
 And this is the second correct sentence in that paragraph.
 
 Now, the next time you ask your new LLM friend for an opinion, consider that companies like OpenAI train their models on (~~stolen~~ borrowed) content of this quality.
+
+### Release History
+
+2026-04-14
+: The **router-id** description in the Cisco IOS IPv6 Reference Guide has been corrected.

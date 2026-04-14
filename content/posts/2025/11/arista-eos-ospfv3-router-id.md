@@ -3,13 +3,18 @@ title: "OSPFv3 Router ID Documentation on Arista EOS"
 date: 2025-11-27 07:27:00+0100
 tags: [ OSPF ]
 ospf_tag: rant
+lastmod: 2026-04-14 17:55:00+02:00
 ---
 When I published a blog post [making fun of the ridiculously incorrect Cisco IOS/XE OSPFv3 documentation](/2025/10/ospf-automatic-router-id/), an engineer working for Cisco quickly sent me an email saying, "Well, the other vendors are not much better."
 
 Let's see how well Arista EOS is doing; this is their description of the **router-id** command (taken from EOS 4.35.0F documentation; unchanged for at least a dozen releases):
 
-{{<figure src="/2025/11/arista-eos-ospfv3-router-id.png">}}
+{{<note update>}}
+**2026-04-14**: The EOS documentation has been fixed around release 4.36.0F. Thanks a million!
+{{</note>}}
 <!--more-->
+{{<figure src="/2025/11/arista-eos-ospfv3-router-id.png">}}
+
 Not too bad, apart from a few "minor" details. They should emphasize:
 
 * The router ID selection algorithm uses IPv4 (not IPv6) addresses
@@ -39,3 +44,8 @@ dut#show ipv6 ospf 1
 * Likewise, Arista EOS does not complain when you remove the last IPv4 address (that was used for OSPFv3 router ID) from the device.
 
 Needless to say, when you reboot a box that has a running OSPFv3 process (for historical reasons) but no valid means of restarting it (because it no longer has IPv4 addresses or a configured **router-id**), you might end up with a bricked network.
+
+### Release History
+
+2026-04-14
+: The EOS documentation has been fixed
