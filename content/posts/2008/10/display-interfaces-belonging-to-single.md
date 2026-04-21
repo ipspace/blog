@@ -9,7 +9,7 @@ url: /2008/10/display-interfaces-belonging-to-single/
 I'm constantly receiving interesting OSPF-related queries -- the many hidden details of the OSPF specs result in slightly unexpected behavior and constant amazement of engineers studying OSPF. During this week, I'll focus on a few intriguing OSPF details.
 
 Let's start with an easy one: you can use the **show ip ospf interface brief** command to display the OSPF interface status (including the interface area, OSPF cost, link type, and router status on broadcast links). Unfortunately, this command does not allow you to specify the OSPF process ID and displays interfaces belonging to all OSPF processes (if you run multiple OSPF processes on the router).
-:::
+<!--more-->
 Here is a sample printout taken from a router running OSPF processes #2 and #13:
 
 {{<cc>}}The printout contains interfaces from multiple OSPF processes{{</cc>}}
