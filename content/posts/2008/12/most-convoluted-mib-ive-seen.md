@@ -8,7 +8,7 @@ lastmod: 2020-11-17 11:51:00
 Jared Valentine sent me a really interesting problem: he would like to [detect voice traffic and start shaping TCP traffic for the duration of the voice call](http://www.xmission.com/~hidden/aatqos/). The ideal solution would be an EEM applet reacting to the changes in the CISCO-CLASS-BASED-QOS-MIB; one of its tables contains the amount of traffic for each class configured in a service policy.
 
 The MIB navigation looks simple: you just read the values from the `cbQosClassMapStats` table, indexed by policy ID and class ID. The real problem is finding the correct index values. I could walk the MIB manually with a MIB browser or **snmp\_getnext** TCL calls, but this approach is obviously not scalable, so I wrote a script that walks through the `cbQosServicePolicy`, `cbQosObjects`, `cbQosPolicyMapCfg` and `cbQosClassMapCfg` tables and prints the index values you need.
-
+<!--more-->
 {{<ct3_rescue>}}
 
 This script traverses the Class-based QoS MIB and displays service policies and classes attached to individual interfaces. The policy index and class index values are printed next to the policy/class name to help the operator fetch the desired SNMP variable from the statistics tables of the CISCO-CLASS-BASED-QOS-MIB.

@@ -9,7 +9,7 @@ lastmod: 2020-11-17 11:16:00
 When you have to monitor which processes consume router's CPU over a period of time, a Tcl script that emulates the Unix **top** command</a> might come handy. The following Tcl script continuously displays top 20 Cisco IOS processes and refreshes the update every 5 seconds.
 
 {{<ct3_rescue>}}
-
+<!--more-->
 ### Installation
 
 -   Download the source file into *flash:top.tcl*.
