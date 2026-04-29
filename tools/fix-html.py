@@ -14,7 +14,7 @@ def parseCLI():
   parser.add_argument('-v',dest='verbose',action='store_true')
   return parser.parse_args()
 
-BLOCK_TAG: list = ['p','div','blockquote','pre','h1','h2','h3','h4','table','ul','ol']
+BLOCK_TAG: list = ['p','div','blockquote','pre','h1','h2','h3','h4','table','ul','ol','style']
 VERBOSE: bool = False
 
 def dom_get_tag(de: typing.Union[bs4.element.PageElement,bs4.element.Tag]) -> str:
