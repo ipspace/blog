@@ -7,14 +7,12 @@ tags:
 title: Use HTTP to Store Router Configurations on Web Server
 url: /2006/08/use-http-to-store-router/
 ---
-
-<div><span class="254580013-21082006">It's been possible for a long  time to use HTTP to download information from a web server to a router. In IOS release 12.3(2)T, integrated in 12.4 release, Cisco has introduced the ability to store local information (for  example, router configurations) on a web server. To use this feature, configure  the username and password giving you write access to the web server  with:</span></div>
+<p><span class="254580013-21082006">It's been possible for a long  time to use HTTP to download information from a web server to a router. In IOS release 12.3(2)T, integrated in 12.4 release, Cisco has introduced the ability to store local information (for  example, router configurations) on a web server. To use this feature, configure  the username and password giving you write access to the web server  with:</span></p>
 <blockquote dir="ltr" style="MARGIN-RIGHT: 0px"> <div><span class="254580013-21082006"><font face="Courier New" size="2">ip    http client username <em>web-user</em><br/>ip http client password    <em>secret-password</em></font></span></div>
 </blockquote>
-<div dir="ltr"><span class="254580013-21082006"><span class="254580013-21082006">After the username  and password have been configured, you can use <strong>copy running http:  </strong>to copy router's configuration to a web server.<blockquote dir="ltr" style="MARGIN-RIGHT: 0px"><strong>Note:</strong>    on the web server, you have to configure the target virtual directory for    <em>write </em>access (default: disabled) and allow file-system write access    to the underlying physical directory for the target    user.</blockquote>
+<p dir="ltr"><span class="254580013-21082006"><span class="254580013-21082006">After the username  and password have been configured, you can use <strong>copy running http:  </strong>to copy router's configuration to a web server.<blockquote dir="ltr" style="MARGIN-RIGHT: 0px"><strong>Note:</strong>    on the web server, you have to configure the target virtual directory for    <em>write </em>access (default: disabled) and allow file-system write access    to the underlying physical directory for the target    user.</blockquote>
 <div><span class="254580013-21082006">Alternatively, you  can specify the username and password in the URL using the <strong>copy running  http://user:password@host/file </strong>syntax.</span></div>
 <blockquote dir="ltr" style="MARGIN-RIGHT: 0px"> <div><span class="254580013-21082006"><font face="Courier New" size="2">router#<strong>copy    running http://student:lab@192.168.0.2/router-config<br/></strong>Address or    name of remote host [192.168.0.2]?<br/>Destination filename    [router]?<br/>Storing http://student:lab@192.168.0.2/router-config !!<br/>4231    bytes copied in 0.864 secs (4897 bytes/sec)</font></span></div>
 <div><span class="254580013-21082006"><font face="Georgia">router#</font></span></div>
 </blockquote>
-</span></span></div>
-
+</span></span></p>
