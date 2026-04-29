@@ -23,7 +23,7 @@ interface Serial 0
 !
 router ospf 1
 ```
-
+<!--more-->
 {{<cc>}}R2 configuration{{</cc>}}
 ```
 hostname R2

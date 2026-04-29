@@ -4,10 +4,8 @@
 import re
 import os
 import argparse
-import yaml
 import common
 import typing
-import textwrap
 import bs4
 
 def parseCLI():
@@ -17,14 +15,23 @@ def parseCLI():
   return parser.parse_args()
 
 BLOCK_TAG: list = ['p','div','blockquote','pre','h1','h2','h3','h4','table','ul','ol']
+VERBOSE: bool = False
 
-def dom_get_tag(de: bs4.element.PageElement) -> str:
+def dom_get_tag(de: typing.Union[bs4.element.PageElement,bs4.element.Tag]) -> str:
+  if isinstance(de,bs4.element.Tag):
+    return de.name
   if isinstance(de,bs4.element.Comment):
     return 'comment'
   if isinstance(de,bs4.element.NavigableString):
     return 'string'
   
-  return de.name
+  return ''  
+
+def dom_get_class(de: bs4.element.Tag) -> str:
+  c_val = de.attrs.get('class')
+  if not c_val:
+    return ''
+  return c_val[0]
 
 def starts_with_markup(oh: str) -> bool:
   for kw in BLOCK_TAG:
@@ -33,14 +40,13 @@ def starts_with_markup(oh: str) -> bool:
 
   return False
 
-def fix_html_markup(oh: str, verbose: bool = False) -> str:
-  dom = bs4.BeautifulSoup(oh.strip(),'html.parser')
+def fix_dom_contents(dom: bs4.element.Tag) -> str:
   result = ''
   in_para = False
   in_br = False
   for de in dom.contents:
     dtag = dom_get_tag(de)
-    if verbose:
+    if VERBOSE:
       print(f'{dtag}: {str(de)}')
     if dtag == 'comment':
       if str(de) == 'more' and in_para:
@@ -73,23 +79,33 @@ def fix_html_markup(oh: str, verbose: bool = False) -> str:
     result += '</p>\n'
   return result
 
+def fix_html_markup(oh: str) -> str:
+  dom = bs4.BeautifulSoup(oh.strip(),'html.parser')
+  return fix_dom_contents(dom)
+
 def div_to_p(oh: str) -> str:
   dom = bs4.BeautifulSoup(oh.strip(),'html.parser')
   result = ''
   for de in dom.contents:
     dtag = dom_get_tag(de)
-    if dtag != 'div':
+    if dtag != 'div' or not isinstance(de,bs4.element.Tag):
       result += str(de)
       continue
 
-    c_val = de.attrs.get('class')
-    if not c_val or c_val[0] < 'a':
+    c_val = dom_get_class(de)
+    if VERBOSE:
+      print(f'div class: {c_val}')
+    if c_val < 'a':
       de.name = 'p'
+    elif c_val == 'bloggerBody':
+      result += fix_dom_contents(de)
+      continue
+
     result += str(de)
 
   return result
 
-def fix_html_file(fname: str, verbose: bool = False) -> typing.Optional[str]:
+def fix_html_file(fname: str) -> typing.Optional[str]:
   if not(os.path.isfile(fname)):
     raise RuntimeError(f'File does not exist: {fname}')
 
@@ -108,11 +124,11 @@ def fix_html_file(fname: str, verbose: bool = False) -> typing.Optional[str]:
     raise RuntimeError(f'Cannot get HTML text from {fname}')
 
   if starts_with_markup(old_html):
-    if '<!--more' in old_html:
+    if '<!--more' in old_html and 'bloggerBody' not in old_html:
       return None
     fix_html = div_to_p(old_html)
   else:
-    fix_html = fix_html_markup(old_html,verbose)
+    fix_html = fix_html_markup(old_html)
 
   if fix_html == old_html:
     return None
@@ -126,9 +142,11 @@ def fix_html_file(fname: str, verbose: bool = False) -> typing.Optional[str]:
     return fname
 
 def main() -> None:
+  global VERBOSE
   args = parseCLI()
+  VERBOSE = bool(args.verbose)
   for fname in args.files:
-    if fix_html_file(fname,bool(args.verbose)):
+    if fix_html_file(fname):
       print(f"... fixed {fname}")
 
 main()
