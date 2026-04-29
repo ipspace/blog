@@ -82,7 +82,8 @@ def div_to_p(oh: str) -> str:
       result += str(de)
       continue
 
-    if de.attrs.get('class','ZZZ') < 'a':
+    c_val = de.attrs.get('class')
+    if not c_val or c_val[0] < 'a':
       de.name = 'p'
     result += str(de)
 
