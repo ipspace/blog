@@ -7,7 +7,7 @@ title: 'Follow-up: Load Balancers and Session Stickiness'
 url: /2017/04/follow-up-load-balancers-and-session_3.html
 ---
 
-<p><a name="_GoBack"></a>My <a href="/2017/03/why-do-we-need-session-stickiness-in/"><em>Why Do We Need Session Stickiness in Load Balancing</em></a> blog post generated numerous interesting comments and questions, so I decided to repost them and provide slightly longer answers to some of the questions.</p>
+<p>My <a href="/2017/03/why-do-we-need-session-stickiness-in/"><em>Why Do We Need Session Stickiness in Load Balancing</em></a> blog post generated numerous interesting comments and questions, so I decided to repost them and provide slightly longer answers to some of the questions.</p>
 <p class="warn">Warning: long wall of text ahead.<!--more--></p>
 <h4>Cool Stuff First</h4><p><a href="/2017/03/why-do-we-need-session-stickiness-in/#c3871384987072799817">Lukas Tribus</a> introduced me to <a href="http://git.haproxy.org/?p=haproxy.git;a=blob_plain;f=doc/proxy-protocol.txt;hb=HEAD">PROXY</a>, a protocol proposed by HAproxy team and now implemented by several major web servers. With PROXY a load balancer signals the original client’s IP address to the application server, and because that information is sent before the original client payload, the solution works even when you terminate SSL sessions on the web server, or when IPv6 clients are accessing IPv4 servers.</p>
 <p>Thank you!</p>
