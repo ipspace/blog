@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "29 April 2026 09:43",
+               "html": "<p>One of these days, I have to check how various implementations deal with ARP/MAC aging. I know that at least Cisco IOS keeps ARPing things it has in the ARP cache, so the cache never times out as long as the device is there (https://blog.ipspace.net/2007/06/ar/).</p>\n\n<p>As for RIB &amp; FIB entries, separate MAC and MAC/IP routes definitely consume twice the RIB memory, but there&#39;s no extra overhead on the hardware side -- you need MAC and ARP tables no matter what.</p>\n",
+               "id": "2946",
+               "name": " Ivan Pepelnjak",
+               "pub": "2026-04-29T21:43:23",
+               "ref": "2945",
+               "type": "comment"
+            }
+         ],
          "date": "29 April 2026 12:35",
          "html": "<p>Thanks for getting down to this level of detail Ivan, it&#39;s interesting to evaluate the tradeoff between table size &amp; </p>\n\n<p>Back in the bad old days of RSTP &amp; IRB, it was critical to ensure that ARP aging timers &amp; MAC aging timers were set to the same value on router-flavored switches in order to avoid unknown unicast flooding.</p>\n\n<p>EVPN handles BUM traffic a lot better, but I&#39;d imagine it&#39;s still good practice to align these two timers to avoid similar issues.  &amp; you can add IPv6 neighbor discovery stale timers to the list too...</p>\n\n<p>Also worth noting that this technique might double the number of EVPN RIB &amp; FIB <em>entries</em>, but MAC entries generally don&#39;t consume as many hardware resources as full type 5 routes so the overhead to add the additional MAC routes is lower than it may appear at first glance.</p>\n",
          "id": "2945",

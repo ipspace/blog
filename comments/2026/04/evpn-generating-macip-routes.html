@@ -20,6 +20,30 @@
 
 <p>Also worth noting that this technique might double the number of EVPN RIB &amp; FIB <em>entries</em>, but MAC entries generally don&#39;t consume as many hardware resources as full type 5 routes so the overhead to add the additional MAC routes is lower than it may appear at first glance.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2946">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2946" href="#2946">29 April 2026 09:43</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>One of these days, I have to check how various implementations deal with ARP/MAC aging. I know that at least Cisco IOS keeps ARPing things it has in the ARP cache, so the cache never times out as long as the device is there (https://blog.ipspace.net/2007/06/ar/).</p>
+
+<p>As for RIB &amp; FIB entries, separate MAC and MAC/IP routes definitely consume twice the RIB memory, but there&#39;s no extra overhead on the hardware side -- you need MAC and ARP tables no matter what.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
