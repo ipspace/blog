@@ -7,7 +7,7 @@ title: The Impact of ICMP Redirects
 url: /2016/10/the-impact-of-icmp-redirects/
 ---
 
-<p><a name="_GoBack"></a>One of my readers sent me an interesting question after reading my ICMP Redirects blog post:</p>
+<p>One of my readers sent me an interesting question after reading my ICMP Redirects blog post:</p>
 <blockquote class="cite">In Cisco IOS, when a packet is marked by IOS for ICMP redirect to a better gateway, that packet is being punted to the CPU, right?</blockquote>
 <p>It depends on the platform, but it’s going to hurt no matter what.<!--more--></p>
 <p>Regardless of how a networking device forwards packets (in software or hardware) the ICMP redirect is usually not sent from the fast path – the ICMP code has to grab a new packet buffer, create the packet, and send it to the original sender, and particularly the <em>grab a new packet buffer </em>operation is not well-suited to <em>let’s move the packets as fast as possible </em>mentality… unless of course you’ve pre-allocated plenty of buffers for ICMP replies, but even then the CPU cache misses would degrade the performance.</p>

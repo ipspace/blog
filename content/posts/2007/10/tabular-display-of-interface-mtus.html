@@ -7,9 +7,7 @@ tags: [ Tcl,IP routing ]
 <p>When I started exploring the details of MTU handling in Cisco IOS, I quickly got tired of analyzing various long printouts to extract the MTU sizes, so I wrote a Tcl script that display hardware, IP and MPLS MTUs in a tabular format. To install it on your router:</p>
 <ol><li><a href="http://www.zaplana.net/Articles/index.asp?load=tcl/displayMTU.tcl">Download it</a> from <a href="http://www.zaplana.net/Articles/index.asp?a=tcl">my web site</a> and copy it to your router's flash <a href="/2007/02/store-your-eem-tcl-policies-in-nvram/">or NVRAM</a>.</li>
 <li>Define an alias, for example <strong>alias exec mtu tclsh flash:displayMTU.tcl</strong>.</li>
-</ol><p>
-</p>
-<p>The script recognizes two parameters: the <strong>ip</strong> parameter displays only the interfaces that have IP configured and the <strong>mpls</strong> parameter displays only the MPLS-enabled interfaces.</p><p>
-</p>
+</ol>
+<p>The script recognizes two parameters: the <strong>ip</strong> parameter displays only the interfaces that have IP configured and the <strong>mpls</strong> parameter displays only the MPLS-enabled interfaces.</p>
 <!--more--><p>Here is a sample printout from one of my lab routers:</p>
 <pre class="code">R2#<strong>mtu</strong><br/>Interface            Hardware     IP   MPLS<br/>=========================================================<br/>FastEthernet0/0          1500          1600<br/>FastEthernet0/1          1500<br/>Serial1/0                1500   1500<br/>Serial1/1                1380   1380   1430<br/>Serial1/2                1500   1500<br/>Serial1/3                1500<br/>Loopback0                1514   1514<br/>Tunnel0                  1514   1476   1476<br/><br/>R2#<strong>mtu mpls</strong><br/>Interface            Hardware     IP   MPLS<br/>=========================================================<br/>FastEthernet0/0          1500          1600<br/>Serial1/1                1380   1380   1430<br/>Tunnel0                  1514   1476   1476</pre>

@@ -14,7 +14,7 @@ def parseCLI():
   parser.add_argument('-v',dest='verbose',action='store_true')
   return parser.parse_args()
 
-BLOCK_TAG: list = ['p','div','blockquote','pre','h1','h2','h3','h4','table','ul','ol']
+BLOCK_TAG: list = ['p','div','blockquote','pre','h1','h2','h3','h4','table','ul','ol','style']
 VERBOSE: bool = False
 
 def dom_get_tag(de: typing.Union[bs4.element.PageElement,bs4.element.Tag]) -> str:
@@ -48,11 +48,14 @@ def fix_dom_contents(dom: bs4.element.Tag) -> str:
     dtag = dom_get_tag(de)
     if VERBOSE:
       print(f'{dtag}: {str(de)}')
-    if dtag == 'comment':
+    if dtag == 'comment':                               # Recreate the comments
       if str(de) == 'more' and in_para:
         in_para = False
         result += "</p>\n"
       result += f'<!--{str(de)}-->'
+      continue
+    if dtag == 'string' and not str(de).strip():        # Skip newline-line strings
+      result += str(de)
       continue
     if dtag == 'br':
       if in_br:

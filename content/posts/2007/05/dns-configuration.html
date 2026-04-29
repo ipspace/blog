@@ -10,10 +10,8 @@ tags: [ DNS ]
 <li>Both lists are merged and combined <a href="/2007/05/dns-resolver-in-cisco-ios-is-auto/">with the IP addresses acquired from the DHCP reply messages</a> to get the final list of the DNS resolvers. You can inspect the final list with the <strong>show ip dns view default </strong>command.</li>
 <li>The DNS name servers from the DHCP replies never appear in the router configuration.</li>
 <li>If the same IP address is specified with the <strong>ip name-server </strong>and <strong>domain name-server </strong>command, only the global (<strong>ip name-server</strong>) command will appear in the router configuration.</li>
-</ul><p>
-</p>
-<p>The rules for DNS forwarders (the DNS servers the router uses to answer incoming DNS queries) are a bit different:</p><p>
-</p>
+</ul>
+<p>The rules for DNS forwarders (the DNS servers the router uses to answer incoming DNS queries) are a bit different:</p>
 <ul><li>The DNS view the current DNS query should use is determined based on <strong>view-list</strong> assigned to incoming interface (with the <strong>ip dns view-group</strong> interface configuration command) or the global view-list (specified with the <strong>ip dns server view-group</strong> global configuration command).</li>
 <li>The incoming query is (sequentially) sent to the IP addresses configured as <strong>dns forwarders </strong>in the selected view. No other DNS servers are used.</li>
 <li>If the selected view has no <strong>dns forwarders</strong>, but contains <strong>domain name-servers</strong>, they are used as forwarders.</li>
