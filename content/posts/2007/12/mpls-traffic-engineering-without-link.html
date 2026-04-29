@@ -8,6 +8,5 @@ tags: [ traffic engineering ]
 <p>I remember being involved in a situation years ago (around the 12.0T release) where someone wanted to use MPLS TE without IS-IS (which was the only supported protocol in those days) and somehow the solution was to set up tunnels using explicit paths, where you have to specify hop-by-hop IP addresses. When you think about it, it makes perfect sense: if you list every IP address in the path, there is no need for constraint-based path calculation (PCALC). However, as it turns out, the later additions to MPLS TE (loose source routing, address exclusion, inter-area MPLS TE, inter-AS MPLS TE) changed the IOS code sufficiently that even the hop-by-hop tunnels cannot be set up without operational OSPF or IS-IS:</p>
 <ul><li>In order to have MPLS TE running on a router, you need an MPLS TE router-id, and you can only specify that in OSPF or IS-IS routing protocol.</li>
 <li>Even though the hop-by-hop explicit path is static, the router wants to run PCALC for <em>every hop in the path</em>. If the next-hop IP address is not in the OSPF topology database, the router will not even try to set up the tunnel.</li>
-</ul><p>
-</p>
+</ul>
 <p>If you want to run MPLS TE in your network, you thus need to run OSPF or IS-IS, even though you might not want to use them for IP packet forwarding. For example, you could enable one of them only on the links actually used for MPLS TE and set the distance to 255 to prevent their routes from getting into the IP routing table (and I've tested it in the lab before writing this post).</p>

@@ -12,8 +12,6 @@ tags: [ DHCP,security ]
 <li>The workstation is assigned a public IP address (at this time, the workstation is connected directly to Internet and thus vulnerable).</li>
 <li>The router loads Cisco IOS and reinitializes the Ethernet interfaces. Bridging between internal and external interfaces is stopped.</li>
 <li>The router sends DHCP request on the outside interface, but the modem ignores it, as the MAC address of the DHCP request differs from the previously cached one.</li>
-</ol><p>
-</p>
-<p>In most cases, the cable modem has to be power-cycled to lose the cached MAC address.</p><p>
-</p>
+</ol>
+<p>In most cases, the cable modem has to be power-cycled to lose the cached MAC address.</p>
 <p class="note">This behavior can be observed only if the router and the cable modem are reset at the same time and the cable provider doesn't care much about MAC security and allows the modem to learn the MAC address. If you reset only the cable modem, the router is not bridging (no problem); if you reset just the router, the cable modem still caches the router's MAC address and ignores the DHCP request from the inside workstation(s).</p>

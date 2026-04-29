@@ -8,10 +8,8 @@ url: /2007/01/cef-punted-packets/
 ---
 <p>The packets that cannot be CEF-switched in a box with CEF switching enabled are <em>punted</em> to the next switching level (fast switching or process switching). The incoming packets can be punted for a number of reasons, for example:</p>
 <ul><li>If the destination is reachable over an interface that cannot use CEF-switching due to a feature not supported by CEF (for example, X.25 link), the packet has to be fast- or process-switched.</li>
-</ul><p>
-</p>
-<p class="info">These destinations are easily discovered by <a href="/2007/01/cef-punt-adjancency/">inspecting the punt adjacencies</a>.</p><p>
-</p>
+</ul>
+<p class="info">These destinations are easily discovered by <a href="/2007/01/cef-punt-adjancency/">inspecting the punt adjacencies</a>.</p>
 <ul><li>All packets destined for the router itself are process switched (thus punted).</li>
 <li>If the router needs to reply back to the source with an ICMP packet (redirect, unreachable ...), the reply can be generated only in the process-switching path.</li>
 <li>All packets with the IP options are punted to process switching.</li>

@@ -8,6 +8,5 @@ tags: [ Tcl ]
 <p>First you have to define the <em>wc</em> Tcl procedure:</p>
 <pre class="code">proc wc { cmd } { llength [split [exec $cmd] "\n" ] }</pre><p>You can define the procedure interactively in Tclsh (but then you have to do it every time you start Tclsh) or you could <a href="/2008/01/copy-text-files-into-router-flash/">store the code in a flash file</a> and execute the file every time the Tclsh is started with the <strong>scripting tcl init <em>filename</em></strong> global configuration command.</p>
 <p>Once the <em>wc</em> procedure is defined, execute <strong>wc { <em>IOS command</em> }</strong> in Tclsh and you'll get the line count. For example, to get the number of directly connected routes use</p>
-<pre class="code">wc { show ip route ¦ include ^C }</pre><p class="note">The <strong>include ^C</strong> filter includes all lines that start with letter C; in our case all directly connected routes</p><p>
-</p>
+<pre class="code">wc { show ip route ¦ include ^C }</pre><p class="note">The <strong>include ^C</strong> filter includes all lines that start with letter C; in our case all directly connected routes</p>
 <p>Obviously you could turn this idea into a <a href="/2007/08/example-tcl-script-with-command-line/">full-blown Tclsh script that would accept CLI arguments</a> … but I'll leave this as an exercise for the readers (you can probably tell I've been reading some academic literature lately :). However, if you find the time to write a more complete <em>wc</em> implementation on IOS, please do post the URL here.</p>

@@ -13,6 +13,5 @@ url: /2008/07/simple-cli-extensions-handling-special/
 <li><tt><strong>append cmd $argv</strong></tt> appends the command line arguments to the command;</li>
 <li><tt><strong>append cmd {<em>rest-of-command</em>}</strong></tt> appends the rest of the IOS exec command;</li>
 <li><tt><strong>puts [exec $cmd]</strong></tt> executes the command and prints the results.</li>
-</ol><p>
-</p>
+</ol>
 <p>For example, the following code will display the customers of a BGP AS specified in the command line (after being stored in a flash file and defined in an alias, of course):<pre class="code">set cmd {show ip bgp regexp _}<br/>append cmd $argv<br/>append cmd {_([0-9]+)(_\1)*$}<br/>puts [exec $cmd]</pre></p>

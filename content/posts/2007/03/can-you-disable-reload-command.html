@@ -8,7 +8,6 @@ tags: [ command line interface,EEM ]
 <ul><li>define an <a href="/2006/10/use-command-aliases-to-simplify-cisco/">alias</a> for the reload command that does something else. For example, <strong>alias exec reload show ip interface brief</strong>. While this would remind a careless operator, it would still not prevent someone using an abbreviation like <strong>relo</strong> to reload the device.</li>
 <li>Use TACACS+ command accounting and disable the reload command on the TACACS+ server. The benefit of this approach is that you can do it on user-by-user basis ... but of course you need TACACS+ server, RADIUS will not do.</li>
 <li>Disable the reload command with the <a href="/2006/11/cli-command-logging-without-tacacs/">Embedded Event Manager applet</a>.</li>
-</ul><p>
-</p>
+</ul>
 <!--more--><p>The applet to disable the reload command would be similar to this one:</p>
 <pre class="code">event manager applet NoReload<br/> event cli pattern "reload" sync no skip yes<br/> action 1.0 syslog priority errors msg "Cannot reload this router"</pre><p><strong>Note:</strong> this article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>
