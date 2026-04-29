@@ -7,11 +7,13 @@ tags:
 title: The self zone in zone-based firewall configuration
 url: /2007/05/self-zone-in-zone-based-firewall/
 ---
-One of my readers <a href="/2006/11/deploying-zone-based-firewalls/#c8603236615876079489">made an interesting observation</a> when faced with configuring zone-based firewall on Cisco IOS: „My main issue is a confusion between when to use self and when to use in/outside.“<br/><br/>The rules are simple:<ul><li>Whenever you filter traffic <em>transiting</em> the router, you control it with a <strong>zone-pair</strong> specifying an inside and an ouside zone.</li>
+<p>One of my readers <a href="/2006/11/deploying-zone-based-firewalls/#c8603236615876079489">made an interesting observation</a> when faced with configuring zone-based firewall on Cisco IOS: „My main issue is a confusion between when to use self and when to use in/outside.“</p>
+<p>The rules are simple:</p>
+<!--more-->
+<ul><li>Whenever you filter traffic <em>transiting</em> the router, you control it with a <strong>zone-pair</strong> specifying an inside and an ouside zone.</li>
 <li>The <strong>self</strong> zone controls traffic <em>sent to the router itself</em> or <em>originated by the router</em>.</li>
 <li>Unless you specify a <strong>zone-pair</strong> combining <strong>self</strong> zone with another zone, all traffic from that zone  sent to the router itself is allowed (the router is not protected)</li>
 <li>To control traffic that the router can send into a zone use a <strong>zone-pair</strong> from <strong>self</strong> to another zone. Use <strong>inspect</strong> in the service-policy to allow the return traffic.</li>
 <li>To filter the traffic that the router can accept, use a <strong>zone-pair</strong> from another zone to <strong>self</strong>. Only the packets accepted by this <strong>zone-pair</strong>'s <strong>service-policy</strong> will be accepted by the router.</li>
-</ul>
-More information about the self zone (as well as other aspects of zone-based firewall configuration) can be found in my digital book <a href="http://www.amazon.com/gp/product/B000P28WP8?ie=UTF8&amp;tag=cisioshinandt-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B000P28WP8">Deploying Zone-Based Firewalls</a> published by <a href="http://www.ciscopress.com/index.asp?rl=1">Cisco Press</a>.
-
+</ul><p>
+More information about the self zone (as well as other aspects of zone-based firewall configuration) can be found in my digital book <a href="http://www.amazon.com/gp/product/B000P28WP8?ie=UTF8&amp;tag=cisioshinandt-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B000P28WP8">Deploying Zone-Based Firewalls</a> published by <a href="http://www.ciscopress.com/index.asp?rl=1">Cisco Press</a>.</p>
