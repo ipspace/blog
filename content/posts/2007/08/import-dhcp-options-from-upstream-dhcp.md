@@ -8,9 +8,9 @@ url: /2007/08/import-dhcp-options-from-upstream-dhcp/
 If your router gets its IP address from an upstream DHCP server, it can automatically import the other DHCP options (DNS server, WINS server, domain prefix etc.) into its DHCP pools. For example, if you use a router to connect to a cable or MAN Ethernet ISP (see the following figure), you can use the DHCP option import to minimize your router configuration (and make it fail safe from any changes in the ISP network).
 
 {{<figure src="/2007/08/DHCPImport.jpg">}}
-
-To configure the DHCP option import, use the **import all** DHCP pool configuration command. You cannot select which options you want to import, but you can override them with other DHCP pool configuration commands.
 <!--more-->
+To configure the DHCP option import, use the **import all** DHCP pool configuration command. You cannot select which options you want to import, but you can override them with other DHCP pool configuration commands.
+
 {{<note>}}The import only happens when a DHCP reply is received. To force an immediate import, use the **renew dhcp *interface*** exec-level command.{{</note>}}
 
 The sample configuration for the above network topology is included below:
