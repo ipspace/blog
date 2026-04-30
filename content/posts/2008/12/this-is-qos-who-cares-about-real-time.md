@@ -3,7 +3,6 @@ date: 2008-12-11 06:42:00+01:00
 tags:
 - network management
 - Tcl
-- you've asked for it
 - QoS
 title: This is QoS; Who Cares about Real-Time Response?
 url: /2008/12/this-is-qos-who-cares-about-real-time/

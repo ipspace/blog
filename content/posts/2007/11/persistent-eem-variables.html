@@ -17,4 +17,3 @@ If all this sounds a bit strange, don't worry; here's a working example:</p>
 <pre>if { [ lindex $getLastCnt 0 ] == "data" } {<br/>  set lastCnt [ lindex $getLastCnt 1 ]<br/>}</pre><p>Increase the counter and generate a syslog message</p>
 <pre>incr lastCnt<br/>action_syslog priority info msg "Show command was executed $lastCnt times"</pre><p>Save the new value of the counter to be retrieved by the next invocation of the same policy.</p>
 <pre>appl_setinfo key "showCounter" data $lastCnt</pre></div>
-<p class="more">This article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>

@@ -1,13 +1,12 @@
 ---
-date: 2007-01-17T13:10:00.000+01:00
+date: 2007-01-17 13:10:00+01:00
 tags:
 - access control
 - network management
-- you've asked for it
 title: Reload the router from an interim privilege level
 url: /2007/01/reload-router-from-interim-privilege/
 ---
 <p>While you wouldn't usually want non-privileged user to reload a Cisco IOS-based router, you might also not appreciate the need to give the network operator level-15 access (which includes configuration privileges) just to reload the box. The solution is the <strong>privilege</strong> configuration command. To lower the privilege level of the reload command, configure <strong>privilege exec level <em>desired-level</em> reload</strong>.</p>
 <!--more--><p>For example, after configuring ...</p>
 <pre class="code">privilege exec level 4 reload<br/>enable secret level 4 mypassword</pre><p>... an operator can reload the box with the following commands:</p>
-<pre class="code">Rtr&gt;<strong>enable 4</strong><br/>Password:<br/>Rtr#<strong>reload</strong><br/>System configuration has been modified. Save? [yes/no]: <strong>n</strong><br/>Proceed with reload? [confirm]<strong>y</strong><br/>14:11:13: %SYS-5-RELOAD: Reload requested by console.</pre><p><strong>Note:</strong> this article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>
+<pre class="code">Rtr&gt;<strong>enable 4</strong><br/>Password:<br/>Rtr#<strong>reload</strong><br/>System configuration has been modified. Save? [yes/no]: <strong>n</strong><br/>Proceed with reload? [confirm]<strong>y</strong><br/>14:11:13: %SYS-5-RELOAD: Reload requested by console.</pre>
