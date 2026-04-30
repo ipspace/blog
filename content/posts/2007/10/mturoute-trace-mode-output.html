@@ -14,4 +14,3 @@ tags: [ IP routing ]
 <!--more-->
 <p>A sample trace-mode printout is included below:</p>
 <pre class="code">$ <strong>mturoute -t 10.0.3.3</strong><br/>mturoute to 10.0.3.3, 30 hops max, variable sized packets<br/>* ICMP Fragmentation is not permitted. *<br/>* Maximum payload is 10000 bytes. *<br/> 1  --+---+++-+++-++  host: 10.0.0.1  max: 1500 bytes<br/> 2  --.u+---.u+.u+---u+.u+.u+  host: 10.2.0.2  max: 1476 bytes<br/> 3  --+---+-+++++++  host: 10.0.3.3  max: 1472 bytes</pre><p>The second hop in the printout has an inbound access-list that blocks incoming ICMP packets. The mturoute thus reports receiving ICMP unreachable ('u') as well as ping timeouts ('.') as not every incoming packet is replied to due to ICMP rate-limiting in Cisco IOS.</p>
-<p class="note"><span>Note: </span>This article is part of <a href="/2007/01/youve-asked-for-it-series/">You've asked for it</a> <a href="/tag/youve-asked-for-it/">series</a>.</p>
