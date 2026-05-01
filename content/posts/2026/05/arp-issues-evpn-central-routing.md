@@ -1,7 +1,7 @@
 ---
 title: "ARP Issues in EVPN Centralized Routing Design"
 subtitle: "TL&DR: SIP of Networking Was an Understatement 🤦‍♂️"
-date: 2026-05-04 07:45:00+0200
+date: 2026-05-05 07:45:00+0200
 tags: [ evpn ]
 evpn_tag: details
 ---

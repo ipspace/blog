@@ -12,7 +12,7 @@ minimal_sidebar: True
 * [Open-source IS-IS configuration labs](https://isis.bgplabs.net) ([repository](https://github.com/bgplab/isis), [documentation](https://isis.bgplabs.net))
 * [Open-source VXLAN/EVPN configuration labs](https://evpn.bgplabs.net) ([repository](https://github.com/bgplab/evpn), [documentation](https://evpn.bgplabs.net))
 * [netlab examples](https://github.com/ipspace/netlab-examples)
-* [SR-MPLS example] (https://github.com/ipspace/SR-workshop)
+* [SR-MPLS examples](https://github.com/ipspace/SR-workshop)
 
 ### Other Lab Exercises
 
