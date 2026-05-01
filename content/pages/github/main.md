@@ -10,7 +10,9 @@ minimal_sidebar: True
 * [netlab](https://netlab.tools/): an infrastructure-as-code virtual networking lab management tool ([repository](https://github.com/ipspace/netlab), [documentation](https://netlab.tools/))
 * [Open-source BGP configuration labs](https://bgplabs.net) ([repository](https://github.com/bgplab/bgplab), [documentation](https://bgplabs.net))
 * [Open-source IS-IS configuration labs](https://isis.bgplabs.net) ([repository](https://github.com/bgplab/isis), [documentation](https://isis.bgplabs.net))
+* [Open-source VXLAN/EVPN configuration labs](https://evpn.bgplabs.net) ([repository](https://github.com/bgplab/evpn), [documentation](https://evpn.bgplabs.net))
 * [netlab examples](https://github.com/ipspace/netlab-examples)
+* [SR-MPLS example] (https://github.com/ipspace/SR-workshop)
 
 ### Other Lab Exercises
 
@@ -28,3 +30,4 @@ minimal_sidebar: True
 ### Sample Solutions
 
 * [Deploy MPLS/VPN Infrastructure and Services](https://github.com/ipspace/MPLS-infrastructure)
+* [Deploy VLAN Services](https://github.com/ipspace/VLAN-service)
