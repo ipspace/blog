@@ -1,12 +1,13 @@
 ---
 date: 2017-08-29 09:01:00+02:00
 ospf_tag: mp
+sr-mpls_tag: ldp
 tags:
 - MPLS
 - OSPF
 - BGP
 - IP routing
-- segment routing
+- SR-MPLS
 title: Synchronizing BGP and OSPF (or OSPF and LDP)
 url: /2017/08/synchronizing-bgp-and-ospf-or-ospf-and/
 ---

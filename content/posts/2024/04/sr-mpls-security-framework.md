@@ -1,7 +1,9 @@
 ---
 title: "SR/MPLS Security Framework"
 date: 2024-04-09 09:10:00+0200
-tags: [ segment routing, MPLS, security ]
+tags: [ SR-MPLS, security ]
+sr-mpls_tag: intro
+series_weight: 100
 ---
 A long-time friend sent me this question:
 

@@ -1,7 +1,10 @@
 ---
 title: "SR-MPLS or SRv6 for Greenfield Networks"
 date: 2022-09-22 07:05:00
-tags: [ MPLS, segment routing]
+tags: [ SR-MPLS, SRv6 ]
+sr-mpls_tag: intro
+series_weight: 900
+srv6_tag: intro
 ---
 Here's an [interesting question](https://twitter.com/ccurtis584/status/1563950747120979968) randomly appearing in my Twitter feed:
 

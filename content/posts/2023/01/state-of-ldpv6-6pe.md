@@ -2,7 +2,9 @@
 title: "State of LDPv6 and 6PE"
 date: 2023-01-12 07:11:00
 lastmod: 2023-06-13 16:00:00
-tags: [ IPv6, MPLS, segment routing ]
+tags: [ IPv6, MPLS, SR-MPLS ]
+sr-mpls_tag: intro
+series_weight: 50
 ---
 One of my readers successfully deployed LDPv6 in their production network:
 

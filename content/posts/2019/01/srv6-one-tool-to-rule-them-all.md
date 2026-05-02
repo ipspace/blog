@@ -1,9 +1,9 @@
 ---
 date: 2019-01-31 08:46:00+01:00
 tags:
-- IPv6
-- segment routing
+- SRv6
 title: 'SRv6: One Tool to Rule Them All'
+srv6_tag: intro
 url: /2019/01/srv6-one-tool-to-rule-them-all/
 ---
 I got some interesting feedback from one of my readers on Segment Routing with IPv6 extension headers:

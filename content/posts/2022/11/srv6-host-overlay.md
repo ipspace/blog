@@ -1,7 +1,8 @@
 ---
 title: "SRv6 as a Host-to-Host Overlay"
 date: 2022-11-08 07:38:00
-tags: [ segment routing, IPv6 ]
+tags: [ SRv6 ]
+srv6_tag: rant
 ---
 During the [discussion](https://www.linkedin.com/posts/ivanpepelnjak_on-applicability-of-mpls-segment-routing-activity-6988028852761427968-0Qeq/) of the [On Applicability of MPLS Segment Routing (SR-MPLS)](/2022/10/applicability-sr-mpls/) blog post on LinkedIn someone made an off-the-cuff remark that...
 
