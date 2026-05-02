@@ -4,7 +4,7 @@ import re
 def parse_tags(tags):
   or_list = []
   for t_and in tags.split(','):
-    or_list.append(t_and.split('+'))
+    or_list.append([t.replace('_',' ') for t in t_and.split('+')])
   return or_list
 
 def match_tags(taglist,matchlist):
