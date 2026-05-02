@@ -1,11 +1,12 @@
 ---
 date: 2018-12-10 09:17:00+01:00
 tags:
-- MPLS
-- IPv6
-- segment routing
+- SR-MPLS
+- SRv6
 title: Segment Routing Anyone?
 url: /2018/12/segment-routing-anyone/
+sr-mpls_tag: intro
+srv6_tag: rant
 ---
 One of my readers listened to a podcast where a \$vendor described how they found another use case for ~~source routing~~ IPv6 segment routing (SR): 5G networks... and wondered whether SR made a comeback or is about to.
 
@@ -15,12 +16,12 @@ Considering that mobile network backhauls use tunnels of some sort anyway, using
 
 ### Quick Diversion Into SR 101...
 
-Keep in mind the networking vendors managed to squeeze two completely different technologies under the Segment Routing umbrella:
+Keep in mind that the networking vendors managed to squeeze two completely different technologies under the Segment Routing umbrella:
 
--   MPLS labels stacks,
+-   MPLS label stacks,
 -   IPv6 extension headers.
 
-You can use segment routing with MPLS label stacks on existing hardware (the only limit is the stack size on ingress node), while IPv6 SR needs either new hardware or [NPUs](https://en.wikipedia.org/wiki/Network_processor).
+You can use segment routing with MPLS label stacks on existing hardware (the only limit is the stack size on the ingress node), while IPv6 SR needs either new hardware or [NPUs](https://en.wikipedia.org/wiki/Network_processor).
 
 At least the MPLS version of Segment Routing uses new control-plane extensions to existing routing protocols (IS-IS, OSPF, BGP) to distribute labels for prefixes (including nodes when prefix = loopback interface), or adjacencies (read: interfaces unless you're using shared LANs).
 

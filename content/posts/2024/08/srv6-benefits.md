@@ -1,7 +1,9 @@
 ---
 title: "Repost: The Benefits of SRv6"
+series_title: "The Benefits of SRv6"
 date: 2024-08-26 07:44:00+0200
-tags: [ segment routing, IPv6 ]
+tags: [ SRv6 ]
+srv6_tag: intro
 ---
 _I love bashing SRv6, so it's only fair to post a (technical) counterview, this time coming as a [comment from Henk Smit](https://blog.ipspace.net/2024/07/bgp-evpn-vxlan-srv6/#2343)._
 

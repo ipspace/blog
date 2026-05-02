@@ -1,10 +1,12 @@
 ---
 date: 2026-03-02 10:39:01+00:00
 netlab_tag: mpls
+sr-mpls_tag: lab
 pre_scroll: true
 series_weight: 900
 tags:
 - MPLS VPN
+- SR-MPLS
 - netlab
 title: "netlab: Using L3VPN (MPLS/VPN) with SR-MPLS Core"
 series_title: Using L3VPN (MPLS/VPN) with SR-MPLS Core

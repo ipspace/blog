@@ -4,10 +4,10 @@ dcbgp_tag: relevant
 series:
 - dcbgp
 tags:
-- segment routing
 - BGP
-- MPLS
+- SR-MPLS
 title: BGP-Free MPLS Core with Segment Routing
+sr-mpls_tag: lab
 ---
 After I [created the Segment Routing lab](/2021/05/segment-routing-ids-mpls-labels/) to test the relationship between Node Segment ID (SID) and MPLS labels, I was just a minor step away from testing [BGP-free core](/2012/01/bgp-free-service-provider-core-in/) with [SR-MPLS](/2011/11/ldp-igp-synchronization-in-mpls/).
 

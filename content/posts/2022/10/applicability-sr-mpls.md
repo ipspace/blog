@@ -1,7 +1,9 @@
 ---
 title: "On Applicability of MPLS Segment Routing (SR-MPLS)"
 date: 2022-10-18 06:28:00
-tags: [ segment routing, MPLS ]
+tags: [ SR-MPLS ]
+sr-mpls_tag: intro
+series_weight: 800
 lastmod: 2022-10-20 13:54:00
 ---
 Whenever I compare MPLS-based Segment Routing (SR-MPLS) with it's distant IPv6-based cousin (SRv6), someone invariably mentions the specter of large label stacks that some hardware cannot handle, for example:

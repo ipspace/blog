@@ -2,7 +2,8 @@
 title: "Scalability Aspects of SR-MPLS"
 date: 2022-11-02 07:37:00
 lastmod: 2022-11-03 09:35:00
-tags: [ segment routing, MPLS ]
+tags: [ SR-MPLS ]
+sr-mpls_tag: details
 ---
 Henk Smit left a [wonderful comment discussing various scalability aspects of SR-MPLS](/2022/09/greenfield-sr-mpls-srv6/#1397). Let's go through the points he made:
 
