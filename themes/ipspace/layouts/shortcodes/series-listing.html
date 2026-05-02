@@ -21,7 +21,7 @@
 {{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}
 {{ end }}
 {{ if (.Get "weight") }}
-{{   .Page.Scratch.Set "pages" (sort (.Page.Scratch.Get "pages") "Params.series_weight" "desc") }}
+{{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").ByParam "series_weight").Reverse }}
 {{ end }}
 {{ if (.Get "title") }}
 {{   if (len (.Page.Scratch.Get "pages")) }}
