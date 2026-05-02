@@ -1,9 +1,10 @@
 ---
-title: "netlab 2.0.0: Hosts, Bridges, and SRv6"
-series_title: "Hosts, Bridges, and SRv6 (Release 2.0.0)"
 date: 2025-05-12 08:05:00+01:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Hosts, Bridges, and SRv6 (Release 2.0.0)
+tags:
+- netlab
+title: 'netlab 2.0.0: Hosts, Bridges, and SRv6'
 ---
 [_netlab_ release 2.0.0](https://netlab.tools/release/2.0/#release-2-0-0) is out. I spent the whole week fixing bugs and running integration tests, so I'm too brain-dead to go into the details. These are the major features we added (more about them in a few days; the details are in the [release notes](https://netlab.tools/release/2.0/#release-2-0-0)):
 

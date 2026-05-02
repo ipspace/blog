@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.9.5: New Cumulus Linux(NVUE) and Junos Features"
-series_title: "New Cumulus Linux(NVUE) and Junos Features (Release 1.9.5)"
 date: 2025-03-07 07:52:00+01:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: New Cumulus Linux(NVUE) and Junos Features (Release 1.9.5)
+tags:
+- netlab
+title: 'netlab 1.9.5: New Cumulus Linux(NVUE) and Junos Features'
 ---
 [Jeroen van Bemmel](https://github.com/jbemmel) and [Stefano Sasso](https://github.com/ssasso) contributed tons of new device features for the [_netlab_ release 1.9.5](https://netlab.tools/release/1.9/#release-1-9-5):
 

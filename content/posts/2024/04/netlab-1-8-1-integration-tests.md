@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.8.1: VRF OSPFv3, Integration Tests"
-series_title: "VRF OSPFv3, Integration Tests (Release 1.8.1)"
 date: 2024-04-08 11:25:00+02:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: VRF OSPFv3, Integration Tests (Release 1.8.1)
+tags:
+- netlab
+title: 'netlab 1.8.1: VRF OSPFv3, Integration Tests'
 ---
 [_netlab_ release 1.8.1](https://netlab.tools/release/1.8/#release-1-8-1) added a interesting few features, including:
 

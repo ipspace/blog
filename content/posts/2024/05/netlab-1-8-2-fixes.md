@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.8.2: Bug Fixes, Usability Improvements"
-series_title: "Bug Fixes, Usability Improvements (Release 1.8.2)"
 date: 2024-05-14 08:01:00+02:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Bug Fixes, Usability Improvements (Release 1.8.2)
+tags:
+- netlab
+title: 'netlab 1.8.2: Bug Fixes, Usability Improvements'
 ---
 [_netlab_ release 1.8.2](https://netlab.tools/release/1.8/#release-1-8-2) contains dozens of bug fixes and minor tweaks to device configuration templates. We also added a few safeguards including:
 

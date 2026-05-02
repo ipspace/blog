@@ -1,10 +1,11 @@
 ---
-title: "netlab 1.9.4: Bug fixes, VRRPv3 on Junos"
-series_title: "Bug fixes, VRRPv3 on Junos (Release 1.9.4)"
 date: 2025-01-31 08:33:00+01:00
 lastmod: 2025-02-03 09:04:00+01:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Bug fixes, VRRPv3 on Junos (Release 1.9.4)
+tags:
+- netlab
+title: 'netlab 1.9.4: Bug fixes, VRRPv3 on Junos'
 ---
 During the last three weeks, we were busy squashing bugs ([device configuration fixes](https://netlab.tools/release/1.9/#release-1-9-4-device-fixes), [other bug fixes](https://netlab.tools/release/1.9/#bug-fixes-1-9-4)). Some were recent; others were ancient pests uncovered by better integration tests. The end result: [_netlab_ release 1.9.4](https://netlab.tools/release/1.9/#release-1-9-4).
 

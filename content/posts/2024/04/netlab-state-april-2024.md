@@ -1,9 +1,10 @@
 ---
 title: "Presentation: Introduction to netlab"
+series_title: "Introduction to netlab (RIPE SEE)"
 date: 2024-04-23 08:14:00+0200
 lastmod: 2024-05-02 12:12:00+0200
 tags: [ netlab ]
-netlab_tag: overview
+netlab_tag: present
 ---
 On April 22nd, I had an Intro to _netlab_ presentation at the wonderful [RIPE SEE meeting in Athens](https://www.ripe.net/membership/meetings/regional-meetings/see/see-12/).
 

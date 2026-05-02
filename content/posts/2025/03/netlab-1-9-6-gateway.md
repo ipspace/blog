@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.9.6: Static Routes to Default Gateways"
-series_title: "Static Routes to Default Gateways (Release 1.9.6)"
 date: 2025-03-25 08:25:00+01:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Static Routes to Default Gateways (Release 1.9.6)
+tags:
+- netlab
+title: 'netlab 1.9.6: Static Routes to Default Gateways'
 ---
 Last week, I had to push out [_netlab_ release 1.9.6](https://netlab.tools/release/1.9/#release-1-9-6) to address a particularly nasty Python [dependency hell](https://xkcd.com/1987/) to make _netlab_ work (again) on Ubuntu 24.04 ([more details](/2025/03/netlab-1-9-6-gateway/#dep)). The release also brought these goodies (and a [bunch of bug fixes](https://netlab.tools/release/1.9/#bug-fixes-1-9-6)):
 
