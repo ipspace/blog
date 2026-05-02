@@ -2,7 +2,7 @@
 title: "netlab as the Universal Configuration Translator"
 date: 2025-12-01 07:30:00+0100
 tags: [ netlab ]
-netlab_tag: overview
+netlab_tag: read
 ---
 _[Dan Partelly](https://github.com/danpartelly), a heavy _netlab_ user (and an active [contributor](https://github.com/ipspace/netlab/graphs/contributors)), sent me this interesting perspective on how one might want to use _netlab_ without ever building a lab with it. All I added was a bit of AI-assisted editing; my comments are on a grey background._
 

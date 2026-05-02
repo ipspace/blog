@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.9.1: Packet Capture, Routing Improvements"
-series_title: "Packet Capture, Routing Improvements (Release 1.9.1)"
 date: 2024-10-07 07:42:00+02:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Packet Capture, Routing Improvements (Release 1.9.1)
+tags:
+- netlab
+title: 'netlab 1.9.1: Packet Capture, Routing Improvements'
 ---
 [_netlab_ release 1.9.1](https://netlab.tools/release/1.9/) brings [packet capture capabilities](https://netlab.tools/netlab/capture/) and numerous routing features:
 

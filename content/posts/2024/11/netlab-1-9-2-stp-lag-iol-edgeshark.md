@@ -1,9 +1,11 @@
 ---
-title: "netlab 1.9.2: STP, LAG, Cisco IOL, Edgeshark"
-series_title: "Spanning Tree, Link Aggregation, Cisco IOS-on-Linux, Edgeshark (Release 1.9.2)"
 date: 2024-11-04 08:13:00+02:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Spanning Tree, Link Aggregation, Cisco IOS-on-Linux, Edgeshark (Release
+  1.9.2)
+tags:
+- netlab
+title: 'netlab 1.9.2: STP, LAG, Cisco IOL, Edgeshark'
 ---
 While I was busy [fixing bugs](https://netlab.tools/release/1.9/#bug-fixes-in-release-1-9-2) in the [_netlab_ release 1.9.2](https://netlab.tools/release/1.9/), other contributors added exciting new features:
 

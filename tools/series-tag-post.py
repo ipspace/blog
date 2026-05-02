@@ -45,10 +45,10 @@ def series_tag_file(fname,args):
         return None
 
   old_yaml = yaml.dump(post,allow_unicode=True)
-  if args.tag:
-    common.set_series_tag(post,args.series or args.category,args.tag)
-  elif args.remove:
+  if args.remove:
     post['tags'] = [ t for t in post.get('tags',[]) if t != args.remove ]
+  elif args.tag or args.series or args.category:
+    common.set_series_tag(post,args.series or args.category,args.tag)
   else:
     print(f'Fatal: neither TAG nor REMOVE were set')
     sys.exit(1)

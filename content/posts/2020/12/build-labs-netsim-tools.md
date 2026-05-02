@@ -2,6 +2,7 @@
 date: 2020-12-17 07:26:00+00:00
 lastmod: 2022-02-15 14:10:00
 netlab_tag: overview
+series_weight: 90
 tags:
 - netlab
 title: Build Your Virtual Lab Faster with netlab

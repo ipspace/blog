@@ -3,7 +3,7 @@ title: "Worth Reading: Lab as Code (containerlab and netlab)"
 series_title: "Lab as Code (containerlab and netlab)"
 date: 2026-04-28 08:26:00+0200
 tags: [ netlab, worth reading ]
-netlab_tag: overview
+netlab_tag: read
 ---
 [@sjhloco](https://github.com/sjhloco) wrote an excellent in-depth description of how you can [use containerlab and netlab to manage your labs as code](https://theworldsgonemad.net/2025/lab-as-code-pt2/).
 

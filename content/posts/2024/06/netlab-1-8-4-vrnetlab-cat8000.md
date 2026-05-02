@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.8.4: vrnetlab Containers, Catalyst 8000v"
-series_title: "vrnetlab Containers, Catalyst 8000v (Release 1.8.4)"
 date: 2024-06-24 07:43:00+02:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: vrnetlab Containers, Catalyst 8000v (Release 1.8.4)
+tags:
+- netlab
+title: 'netlab 1.8.4: vrnetlab Containers, Catalyst 8000v'
 ---
 I don't think I ever created two _netlab_ releases in a week, but last week, I stumbled upon a motherlode of goodies, and it would be a shame not to make them available.
 

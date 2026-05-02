@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.8.0: Control-Plane Daemons, BIRD, dnsmasq"
-series_title: "Control-Plane Daemons, BIRD, dnsmasq (Release 1.8.0)"
 date: 2024-03-04 08:25:00+01:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Control-Plane Daemons, BIRD, dnsmasq (Release 1.8.0)
+tags:
+- netlab
+title: 'netlab 1.8.0: Control-Plane Daemons, BIRD, dnsmasq'
 ---
 I wanted to include open-source networking-related software into _netlab_ topologies since (at least) the days I was writing the [DHCP relaying saga](/series/dhcp-relay/). It turned out to be a bit more complex than I anticipated (more about that in another blog post), but I hope you'll find it useful. [_netlab_ release 1.8.0](https://netlab.tools/release/1.8/) includes [*dnsmasq* running as a DHCP server](https://netlab.tools/platforms/#platform-daemons) and BIRD [running OSPF and BGP](https://netlab.tools/caveats/#bird-internet-routing-daemon). ExaBGP and GoBGP are already on the wish list; if you have any other ideas, please start a GitHub discussion.
 

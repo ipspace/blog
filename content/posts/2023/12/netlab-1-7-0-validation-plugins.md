@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.7.0: Lab Validation, Fabrics, BGP Nerd Knobs"
-series_title: "Lab Validation, Fabrics, BGP Nerd Knobs (Release 1.7.0)"
-date: 2023-12-05 05:50:00
-tags: [ netlab ]
-netlab_tag: release
+date: 2023-12-05 05:50:00+00:00
+netlab_tag: archive
+series_title: Lab Validation, Fabrics, BGP Nerd Knobs (Release 1.7.0)
+tags:
+- netlab
+title: 'netlab 1.7.0: Lab Validation, Fabrics, BGP Nerd Knobs'
 ---
 It's been a while since the [last netlab release](/2023/10/netlab-1-6-4-more-bgp-nerd-knobs/). Most of that time was spent refactoring stuff that you don't care about, but you might like these features:
 

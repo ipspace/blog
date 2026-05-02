@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.9.0: Routing Policies, Default Routes, Route Redistribution"
-series_title: "Routing Policies, Default Routes, Route Redistribution (Release 1.9.0)"
 date: 2024-08-20 07:27:00+02:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Routing Policies, Default Routes, Route Redistribution (Release 1.9.0)
+tags:
+- netlab
+title: 'netlab 1.9.0: Routing Policies, Default Routes, Route Redistribution'
 ---
 [_netlab_ release 1.9.0](https://netlab.tools/release/1.9/) brings tons of new routing features:
 

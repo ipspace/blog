@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.7.1: Eye Candy"
-series_title: "Eye Candy (Release 1.7.1)"
 date: 2024-01-11 08:20:00+01:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: Eye Candy (Release 1.7.1)
+tags:
+- netlab
+title: 'netlab 1.7.1: Eye Candy'
 ---
 ![](/2024/01/xmas.jpg)
 {.sideicon}

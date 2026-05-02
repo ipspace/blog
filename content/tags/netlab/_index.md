@@ -5,9 +5,9 @@ layout: custom
 minimal_sidebar: true
 sidebar_box: NetOps
 ---
-The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help you be more proficient once you decide to drop GUI-based network simulators and build your labs using CLI and [infrastructure-as-code](/series/niac/) principles.
+The [_netlab_ tool](https://netlab.tools/) will help you be more proficient once you decide to drop GUI-based network simulators and build your labs using CLI and [infrastructure-as-code](/series/niac/) principles.
 
-You can also use _netlab_ (potentially together with GitHub Codespaces) to build online, easy-to-consume, hands-on training solutions. I used that approach to build the [BGP labs](https://bgplabs.net/) and [IS-IS labs](https://isis.bgplabs.net/).
+You can also use _netlab_ (potentially [together with GitHub Codespaces](#ghcs)) to build online, easy-to-consume, hands-on training solutions. I used that approach to build the [BGP labs](https://bgplabs.net/), [IS-IS labs](https://isis.bgplabs.net/), and [VXLAN/EVPN labs](https://evpn.bgplabs.net/).
 <!--more-->
 
 {{<toc>}}
@@ -18,15 +18,23 @@ You can also use _netlab_ (potentially together with GitHub Codespaces) to build
 {{<plushy confused>}}
 {{<series-listing tag="overview" weight="1">}}
 
+### What Others Are Saying
+
+{{<series-listing tag="read" weight="1">}}
+
 ### Getting Started Videos
 
 {{<series-listing tag="video" weight="1">}}
+
+### Presentations
+
+{{<series-listing tag="present">}}
 
 ### Podcasts
 
 {{<series-listing tag="podcast">}}
 
-### Running netlab in GitHub Codespaces
+### Running netlab in GitHub Codespaces {#ghcs}
 
 {{<series-listing tag="codespace">}}
 

@@ -1,9 +1,10 @@
 ---
-title: "netlab 1.8.3: RIPv2, BGP Route Servers"
-series_title: "RIPv2, BGP Route Servers, BGP Link Bandwidth (Release 1.8.3)"
 date: 2024-06-17 08:01:00+02:00
-tags: [ netlab ]
-netlab_tag: release
+netlab_tag: archive
+series_title: RIPv2, BGP Route Servers, BGP Link Bandwidth (Release 1.8.3)
+tags:
+- netlab
+title: 'netlab 1.8.3: RIPv2, BGP Route Servers'
 ---
 During the [ITNOG8](https://www.itnog.it/itnog8/) _netlab_ presentation, I jokingly said something along the lines "_all that's missing is RIPv2 and Babel_."  That's no longer true; someone asked me how hard it would be to add RIPv2 to _netlab_, and I said, "_give me a few days_ 😎"
 
