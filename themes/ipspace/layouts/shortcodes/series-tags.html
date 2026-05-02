@@ -1,0 +1,6 @@
+{{ $term := printf "%s_tag" .Page.Data.Term }}
+{{ $tlist := slice }}
+{{ range .Page.Pages }}
+  {{ $tlist = $tlist | append (index .Params $term) }}
+{{ end }}
+<p><b>Series/Category tags:</b> {{ sort $tlist | uniq }}</p>
