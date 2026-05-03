@@ -34,6 +34,7 @@ Also, you might want to explore why I claim SR-MPLS is better than LDP:
 
 * We [implemented SR-MPLS in _netlab_](https://netlab.tools/module/sr-mpls/). You can try it out on Arista EOS, Cisco IOS XE, Cisco IOS XR, FRRouting, Junos, Nokia SR OS, and Nokia SR Linux.
 * Browse [SR-MPLS workshop](https://github.com/ipspace/SR-workshop) for sample lab topologies.
-* Tiziano Tofoni covered SRv6 basics in his [ITNOG10 workshop](https://www.itnog.it/itnog10/files/TRaining_Segment%20Routing%20ITNOG%202026%20april%2020_signed.pdf)
+* Watch the [Segment Routing Introduction](https://my.ipspace.net/bin/list?id=SR101) videos by [Jeff Tantsura](https://datatracker.ietf.org/person/jefftant.ietf@gmail.com)
+* [Tiziano Tofoni](https://www.linkedin.com/in/tiziano-tofoni-1361759/) covered SR-MPLS basics and LDP-to-SR migration in his [ITNOG10 workshop](https://www.itnog.it/itnog10/files/TRaining_Segment%20Routing%20ITNOG%202026%20april%2020_signed.pdf)
 
 {{<series-listing title="Blog Posts I Forgot to Categorize" notag="yes">}}
