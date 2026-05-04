@@ -14,6 +14,6 @@ As much as I loved chatting with fellow networking engineers, I also found these
 * I was [finally able to listen](https://blog.ipspace.net/2026/04/itnog-10/) to the **Network Automation Framework** presentation, this time by Damien Garros.
 * The **Building a Vendor-Agnostic E2E Testing Ecosystem with Netlab** presentation described a crazy idea: a pytest harness that starts a virtual lab with _netlab_ to execute the tests.
 
-As always, you can find the presentations and the videos on the [SwiNOG 41 webpage]().
+As always, you can find the presentations and the videos on the [SwiNOG 41 webpage](https://www.swinog.ch/meetings/swinog41/).
 
 Last but definitely not least, SwiNOG decided to have two meetings a year. Together with the **Swiss Network User Group (CHNUG)** meetups (described by Severin Dellsperger in the last presentation), we'll have plenty of great reasons to come back to Switzerland.
