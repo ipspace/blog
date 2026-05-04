@@ -58,11 +58,15 @@ def check_file(path: str,listing: bool, post: bool):
     reportError("Markdown file is probably missing frontmatter",path)
     return
 
-  if "localhost:1313" in text.lower():
+  lc_text = text.lower()
+  if "localhost:1313" in lc_text:
     reportError("Localhost link",path)
 
-  if "wwwint.ipspace.net" in text.lower():
+  if "wwwint.ipspace.net" in lc_text:
     reportError("Link to internal web site",path)
+
+  if "()" in lc_text:
+    reportError("Potentially empty link",path)
 
   if frontmatter is None:
     reportError("Cannot find usable frontmatter",path)
