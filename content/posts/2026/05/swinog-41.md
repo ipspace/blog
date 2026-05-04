@@ -12,8 +12,8 @@ As much as I loved chatting with fellow networking engineers, I also found these
 * **What AI Can (and Can’t) Do** -- a practical (experience-based) view on the possibilities and limitations of AI (LLMs in particular) in networking by a developer of an [AI-based network operations tool](https://netfabric.ai/).
 * **Scaling Multi-Domain Fabrics with EVPN Gateways** -- while we covered the topic in [an ipSpace.net webinar](https://my.ipspace.net/bin/list?id=Clos#MULTISITE), it was nice to have an excellent refresher and Arista's view on the topic
 * I was [finally able to listen](https://blog.ipspace.net/2026/04/itnog-10/) to the **Network Automation Framework** presentation, this time by Damien Garros.
-* The **Building a Vendor-Agnostic E2E Testing Ecosystem with Netlab** presentation described a crazy idea: a pytest harness that starts a virtual lab with _netlab_ to execute the tests.
+* The **Building a Vendor-Agnostic E2E Testing Ecosystem with Netlab** presentation described a crazy idea: a pytest harness that starts a virtual lab with _netlab_ to execute the tests. I don't know about you, but I found it awesome ;)
 
-As always, you can find the presentations and the videos on the [SwiNOG 41 webpage]().
+As always, you can find the presentations and the videos on the [SwiNOG 41 webpage](https://www.swinog.ch/meetings/swinog41/).
 
 Last but definitely not least, SwiNOG decided to have two meetings a year. Together with the **Swiss Network User Group (CHNUG)** meetups (described by Severin Dellsperger in the last presentation), we'll have plenty of great reasons to come back to Switzerland.
