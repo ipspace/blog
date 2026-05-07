@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "07 May 2026 09:52",
+               "html": "<p>Agreed, Sebastian. </p>\n\n<p>The nice thing about the ARP timeout being lower than the MAC timeout is that an ARP reply will result in the MAC entry being refreshed. </p>\n\n<p>This helps reduce unknown unicast flooding for traffic destined to quiet hosts that don&#39;t initiate much traffic. </p>\n",
+               "id": "2956",
+               "name": "Joel Spaans",
+               "pub": "2026-05-07T21:52:49",
+               "ref": "2955",
+               "type": "comment"
+            }
+         ],
          "date": "07 May 2026 09:12",
          "html": "<p>Arista EOS had the advantage of being born later, so typically they picked better defaults, but in this particular case IMHO they botched it. Cisco had the same opportunity as Arista with NX-OS and there they picked much more reasonable defaults for the MAC/ARP/ND timeouts:</p>\n\n<pre>\r\n! Cisco NX-OS defaults:\r\nmac address-table aging-time 1800\r\nip arp timeout 1500\r\nipv6 adjacency-stale-timer 1380\r\n</pre>\n\n<p>Enabling IPv4 Unicast AFI/SAFI by default (<code>bgp default ipv4-unicast</code>) on every BGP peer is another case where Arista fumbled and copied outdated IOS behavior unfortunately.</p>\n",
          "id": "2955",
