@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -13,6 +13,48 @@
               </span>
             </div>
             <div class="comment-content"><p>Sounds like F5 auto last hop where packets are returned based on mac address but in larger scale.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2959">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2959" href="#2959">09 May 2026 04:11</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The way I read the Cloudflare blog post, they were looking for a solution
+to a specific problem.  I&#39;d assume they already had a per-customer
+Internet gateway with NAT that connected via tunnels to each site of the
+respective customer.  Then a (potential) customer wanted to use the same
+IP addresses in more than one of their sites.</p>
+
+<p>Common guidance when dealing with overlapping IP address spaces
+includes use of VRFs and NAT.  VRFs can be used to keep the address
+spaces separate, and NAT can be used to employ a combined address space
+with unique addresses for each customer site for the shared resources
+(in this case, the Internet gateway).  This would mean to introduce
+additional VRFs per site and additional NAT between the Internet gateway
+and the customer sites.</p>
+
+<p>Instead, they extended their existing solution by utilizing the existing
+stateful NAT towards the Internet (which includes connection tracking)
+and the special circumstance that each customer site is connected with
+a tunnel to the Internet gateway.  They replaced the routing lookup for
+return traffic with an additional entry in the connection information,
+i.e., the tunnel interface to send the return traffic.  This uses
+existing information, i.e., no additional information like address space
+mappings or new VRF IDs are needed.  They did not need to introduce
+per-site VRFs, and did not need additional per-site NAT.</p>
+
+<p>This solution works here because the customer already separates their
+overlapping IP address space (they use remote sites for this), each site
+already has a direct tunnel to the Internet gateway, and the Internet
+gateway already uses stateful NAT with connection tracking.  It also helps
+that Cloudflare implement their own packet forwarding infrastructure.</p>
 </div>
           </div>
         </li>

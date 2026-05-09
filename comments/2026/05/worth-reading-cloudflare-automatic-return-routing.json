@@ -7,9 +7,17 @@
          "name": " EK",
          "pub": "2026-05-06T16:14:08",
          "type": "comment"
+      },
+      {
+         "date": "09 May 2026 04:11",
+         "html": "<p>The way I read the Cloudflare blog post, they were looking for a solution\nto a specific problem.  I&#39;d assume they already had a per-customer\nInternet gateway with NAT that connected via tunnels to each site of the\nrespective customer.  Then a (potential) customer wanted to use the same\nIP addresses in more than one of their sites.</p>\n\n<p>Common guidance when dealing with overlapping IP address spaces\nincludes use of VRFs and NAT.  VRFs can be used to keep the address\nspaces separate, and NAT can be used to employ a combined address space\nwith unique addresses for each customer site for the shared resources\n(in this case, the Internet gateway).  This would mean to introduce\nadditional VRFs per site and additional NAT between the Internet gateway\nand the customer sites.</p>\n\n<p>Instead, they extended their existing solution by utilizing the existing\nstateful NAT towards the Internet (which includes connection tracking)\nand the special circumstance that each customer site is connected with\na tunnel to the Internet gateway.  They replaced the routing lookup for\nreturn traffic with an additional entry in the connection information,\ni.e., the tunnel interface to send the return traffic.  This uses\nexisting information, i.e., no additional information like address space\nmappings or new VRF IDs are needed.  They did not need to introduce\nper-site VRFs, and did not need additional per-site NAT.</p>\n\n<p>This solution works here because the customer already separates their\noverlapping IP address space (they use remote sites for this), each site\nalready has a direct tunnel to the Internet gateway, and the Internet\ngateway already uses stateful NAT with connection tracking.  It also helps\nthat Cloudflare implement their own packet forwarding infrastructure.</p>\n",
+         "id": "2959",
+         "name": "Erik Auerswald",
+         "pub": "2026-05-09T16:11:41",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2026/05/worth-reading-cloudflare-automatic-return-routing.html"
 }
