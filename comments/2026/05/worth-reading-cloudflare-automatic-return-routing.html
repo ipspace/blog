@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -55,6 +55,24 @@ overlapping IP address space (they use remote sites for this), each site
 already has a direct tunnel to the Internet gateway, and the Internet
 gateway already uses stateful NAT with connection tracking.  It also helps
 that Cloudflare implement their own packet forwarding infrastructure.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2960">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2960" href="#2960">10 May 2026 04:04</a>
+              </span>
+            </div>
+            <div class="comment-content">The many words of the Cloudflare blog post might hide the most important point: Cloudflare extended the functionality of this product not by adding complexity, but by *simplifying* the solution.<br />
+
+<p>They could have added (more) well-orchestrated inter-VRF NAT functionality to their existing solution to make the destination IP based routing lookup for return traffic work with overlapping site prefixes (no theoretical reason why this should fail).</p>
+
+<p>Instead, they removed the destination IP based routing lookup for return traffic. They removed per-site prefix information from the existing solution, because it is not necessary for the intended functionality. This enabled the solution to work with any site prefix, overlapping or not.</p>
 </div>
           </div>
         </li>
