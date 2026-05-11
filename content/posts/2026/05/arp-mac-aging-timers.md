@@ -27,8 +27,13 @@ Interestingly, the Host Requirements RFC (RFC 1122) mentions four mechanisms for
 
 MAC aging solves a completely different problem: it keeps the packet-forwarding infrastructure (the MAC address table) reasonably clean. Until EVPN, transparent bridging never had a control plane that could authoritatively tell the ~~switches~~ bridges where a MAC address is. It's also crucial not to have stale entries in the MAC address table; it's based on guesswork (dynamic MAC learning), and it's better to flood a unicast frame than to send it in the wrong direction. On the other hand, a low MAC aging timer increases the amount of flooded unicast traffic, which is clearly undesirable if your bridge connects two 10 Mbps segments[^FB].
 
-[^FB]: The first bridges had two 10-Base-T connections.
+[^FB]: The first bridges had two [10BASE5](https://en.wikipedia.org/wiki/10BASE5) connections.
 
 The 5-minute MAC aging timer is probably a compromise, and based on when the first bridges appeared[^FBD], one could reasonably guess that they chose a value lower than the time it takes to disconnect a workstation, move it to another room, and reconnect it 😜
 
 [^FBD]: According to [this article](https://spectrum.ieee.org/how-dec-engineers-saved-ethernet), we got the transparent bridge idea in "*one evening in 1983*" with the product (LANBridge 100) shipping in 1986. I also found [an IEEE article from 1988](https://ieeexplore.ieee.org/document/3231). Sadly, the DEBET product code for the LANBridge looks familiar, as do DEMPR and DESPR. I must be getting a bit old. Finally, if you're into ancient history, I found the [MicroVAX 2000 Networking Guide](https://manx-docs.org/collections/antonio/dec/netacug3.pdf) from 1988.
+
+### Revision History
+
+2026-05-11
+: The blog post claimed that the first bridges had two 10BASE-T connections -- an obvious nonsense considering when they shipped (10BASE-T shipped almost a decade later). Spotted by [Samuel K. Lam](https://www.linkedin.com/in/samuel-k-lam/) via [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7458039983652782080?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7458039983652782080%2C7458053269429555200%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287458053269429555200%2Curn%3Ali%3Aactivity%3A7458039983652782080%29).
