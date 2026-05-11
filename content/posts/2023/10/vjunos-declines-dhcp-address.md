@@ -1,8 +1,9 @@
 ---
 title: "Weird: vJunos Evolved 23.2R1.5 Declines DHCP Address"
 date: 2023-10-30 06:44:00
-tags: [ DHCP ]
+tags: [ DHCP, netlab ]
 pre_scroll: True
+netlab_tag: quirks
 ---
 It's time for a Halloween story: imagine the scary scenario in which a DHCP client asks for an address, gets it, and then immediately declines it. That's what I've been experiencing with vJunos Evolved release 23.2R1.15.
 
