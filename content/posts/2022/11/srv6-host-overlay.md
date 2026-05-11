@@ -3,6 +3,7 @@ title: "SRv6 as a Host-to-Host Overlay"
 date: 2022-11-08 07:38:00
 tags: [ SRv6 ]
 srv6_tag: rant
+lastmod: 2026-05-11 16:47:00+0200
 ---
 During the [discussion](https://www.linkedin.com/posts/ivanpepelnjak_on-applicability-of-mpls-segment-routing-activity-6988028852761427968-0Qeq/) of the [On Applicability of MPLS Segment Routing (SR-MPLS)](/2022/10/applicability-sr-mpls/) blog post on LinkedIn someone made an off-the-cuff remark that...
 
@@ -16,6 +17,14 @@ There are two well-known reasons one might want to use a host-to-host overlay:
 
 * Implement virtual networks
 * Implement service insertion
+
+{{<long-quote>}}
+According to a [comment](https://blog.ipspace.net/2022/11/srv6-host-overlay/#2963) by an Anonymous Friend of the Blog, hyperscalers and friends use SRv6 for host-based traffic engineering.
+
+Yeah, I missed that use case, but I doubt it's relevant to many readers of this blog. There is no need for that in most data center fabrics; no ready-to-use product does that, and the amount of prerequisite engineering (not to mention the ASIC requirements) is non-trivial. However, that's the least of your problems when you're ~~wasting~~ spending hundreds of billions of dollars on hardware. Also, there's sometimes a bit of a gap between what tech companies claim they do and what they do in most of their production.
+
+It's like claiming front and rear wings make perfect sense on cars because F1 cars use them.
+{{</long-quote>}}
 
 On the *virtual networks* front, we had GRE for decades. We got VXLAN almost a decade ago, and GENEVE a few years later. GRE and VXLAN address a specific use case -- GRE is primarily used for some-L3-over-IP transport[^NVGRE], while VXLAN excels when you have to transport Ethernet frames over IP.
 
@@ -60,6 +69,9 @@ As always, I might be missing something obvious, in which case I'd appreciate yo
 * AWS Gateway Load Balancer and AWS Transit Gateway Connect are part of _[Amazon Web Services Networking](https://www.ipspace.net/Amazon_Web_Services_Networking)_ webinar.
 * Azure Gateway Load Balancer will get a brief mention[^AGLB] in autumn 2022 update of _[Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking)_ webinar.
 
-All four webinars are part of [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/).
-
 [^AGLB]: The documentation is approximately two pages long and mostly says "_we're working with our integration partners to bring you the best possible experience_."
+
+### Revision History
+
+2026-05-11
+: According to an Anonymous Commenter, hyperscalers use SRv6 for host-based traffic engineering.
