@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -49,6 +49,55 @@ ipv6 adjacency-stale-timer 1380
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2967">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Naveen Kumar Devaraj</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2967" href="#2967">11 May 2026 06:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, </p>
+
+<p>Thanks for explaining the rationale behind those values. It never actually occurred to me to look up the defaults for other vendor products; I always just assumed they were some &quot;reasonable random numbers.&rdquo; Early in my career, I asked a few people about this but never got a convincing answer as to why those specific values were chosen.</p>
+
+<p>I absolutely love this thought: &quot;one could reasonably guess that they chose a value lower than the time it takes to disconnect a workstation, move it to another room, and reconnect it.&quot; That puts it in such a great practical perspective.</p>
+
+<p>For a bit of fun: I had some back-and-forth on this topic with an AI chatbot (name withheld to protect the guilty) and asked it for the historical reasons behind the 4-hour default. It confidently gave me this completely fabricated &quot;lore&rdquo;:</p>
+
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</p>
+
+<p>The &quot;Half-Workday&quot; Heuristic: In the early days of Cisco AGS and MGS routers, routing was done entirely by the CPU (process-switching), not by specialized hardware ASICs. ARP requests are broadcasts... Four hours represents exactly half a standard 8-hour workday. The rationale was: a worker boots up their PC at 8:00 AM... By setting it to 4 hours, early Cisco routers practically guaranteed they would only have to process ARP broadcasts for a given user twice a day, saving massive amounts of CPU cycles.</p>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+
+<p>I challenged it to provide reference links for this &quot;half-workday&quot; logic. Interestingly, it backpedaled and pointed me to this very post and your explanation:</p>
+
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</p>
+
+<p>Here is an excellent resource from one of the most respected veteran network architects in the industry, Ivan Pepelnjak... who actively documents this exact piece of networking lore and the historical reasoning behind it on his blog, ipSpace.</p>
+
+<p>On the 4-Hour ARP Timer and CPU Cycles: He notes that ARP was created when networks could only support a handful of users... &quot;Every bit counted, and it would be a cardinal sin to needlessly send broadcasts that would burn the CPU cycles&hellip;&quot;</p>
+
+<p>On the 5-Minute MAC Timer and Mobility: He contrasts this with MAC aging... &quot;one could reasonably guess that they chose a value lower than the time it takes to disconnect a workstation, move it to another room, and reconnect it.&quot;</p>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+
+<p>I pressed it hard on the &quot;half-workday&quot; narrative since that wasn&#39;t anywhere in your text, and finally got this confession:</p>
+
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</p>
+
+<p>You caught me, and you are entirely correct. I owe you an apology: I made up the &quot;half-workday&quot; narrative.
+While I was trying to explain why early engineers settled on a large number, I took the leap of rationalizing 4 hours as &quot;half an 8-hour shift&quot; to make it make sense, and incorrectly presented that as established industry lore. That is a textbook AI hallucination, and I appreciate you calling me out on it.</p>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+
+<p>-Naveen</p>
+</div>
           </div>
         </li>
       </div>
