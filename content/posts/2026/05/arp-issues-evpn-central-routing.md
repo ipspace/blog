@@ -72,3 +72,11 @@ Figuring out how to make ARP snooping work with silent hosts is left as an exerc
 {{</note>}} 
 
 Sometimes, an EVPN implementation might use the defaults that make things *just work* in a *single-vendor environment*. If you're unlucky, your vendor believes in the magic powers of type-5 routes and expects everyone to do symmetric IRB (we'll talk about that some other time). With a bit of luck and arcane knowledge of nerd knobs, you might get some of these implementations to work. If you're truly unlucky, you're stuck, and you can't even use the handheld DMTF tone generator like we could in the wonderful mismatched SIP signaling days.
+
+### Try It Out
+
+The [lab topology](https://github.com/ipspace/netlab-examples/blob/master/EVPN/central-routing/topology.yml) I used in this blog post is in the [netlab-examples GitHub repository](https://github.com/ipspace/netlab-examples/tree/master/EVPN/central-routing). If you want to try it out:
+
+* [Set up your lab environment](https://blog.ipspace.net/2024/04/evpn-designs-vxlan-leaf-spine-fabric/#lab) (you can use free GitHub Codespaces)
+* Change directory to `EVPN/central-routing`
+* Execute **netlab up** and explore
