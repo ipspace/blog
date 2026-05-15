@@ -7,7 +7,7 @@ evpn_tag: labs
 ---
 I postponed the discussion of ARP issues with EVPN anycast gateways to keep [yesterday's blog post](/2026/05/arp-issues-evpn-asymmetric-irb/) reasonably short. If you're impatient and want to try that out, I have [just the right lab exercise](https://evpn.bgplabs.net/evpn/4-asym-irb/) for you; you'll have to extend VLANs into end-to-end MAC-VRF instances and add IRB and anycast gateways:
 
-{{<figure src="https://evpn.bgplabs.net/evpn/topology-asym-irb.png" width="400">}}
+{{<figure src="https://evpn.bgplabs.net/evpn/topology-asymmetric-irb.png" width="400">}}
 
 {{<jump>}}[Explore the lab exercise](https://evpn.bgplabs.net/evpn/4-asym-irb/){{</jump>}}
 
