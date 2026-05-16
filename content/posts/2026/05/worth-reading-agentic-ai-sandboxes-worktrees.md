@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Agentic AI Setup: Sandboxes and Worktrees"
 series_title: "Agentic AI Setup: Sandboxes and Worktrees"
-date: 2026-05-19 07:22:00+0200
+date: 2026-05-20 07:22:00+0200
 tags: [ worth reading, AI ]
 ai_tag: read
 ---
