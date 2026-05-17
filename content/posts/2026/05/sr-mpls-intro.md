@@ -11,7 +11,7 @@ The [second demo](https://github.com/ipspace/SR-workshop/tree/main/1-intro/2-net
 <!--more-->
 [^FD]: The first demo showed the difference between _containerlab_ and _netlab_. More about that in another blog post.
 
-### Lab Topology
+### Lab Topology {#lab}
 
 As part of the presentation, I also wanted to explain how to build [_netlab_](https://netlab.tools/) [topology files](https://netlab.tools/topology-overview/) from zero to pretty complex scenarios. Reality (= lack of time) intervened, so let's fix it. Here's the [topology file](https://github.com/ipspace/SR-workshop/blob/main/1-intro/2-netlab/topology.yml) I used:
 
@@ -34,7 +34,7 @@ It would be hard to make it any easier; here's what it means:
 
 [^WAE]: For a very good reason: I can run the labs on an x86 server, in a GitHub Codespaces container, or on a MacBook Pro (on an ARM CPU). The only other device with comparable flexibility is SR Linux, but it requires a license to run SR-MPLS. Unfortunately, you cannot run MPLS on FRRouting containers in GitHub Codespaces because you cannot load the Linux drivers that the containers expect to use.
 
-### Exploring the SR-MPLS Setup
+### Exploring the SR-MPLS Setup {#results}
 
 The [workshop GitHub repository](https://github.com/ipspace/SR-workshop) includes the [installation guidelines](https://github.com/ipspace/SR-workshop/blob/main/docs/use.md); you might want to read them first.
 
