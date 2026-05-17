@@ -1,6 +1,8 @@
+{{ with (.Get "caption") }}<div class="code-caption">{{ . }}</div>{{ end }}
+{{ $hl := .Get "highlight" }}
 <pre class="printout"{{- with (.Get "start") -}} style="counter-set: line {{ . }}"{{- end -}}>
 {{- $range := split (trim .Inner "\n\r") "\n" -}}
 {{- range $range -}}
-<code>{{ printf "%s\n" . }}</code>
+<code>{{ if $hl }}{{ .|safeHTML }}{{ else }}{{ printf "%s\n" . }}{{ end }}</code>
 {{- end -}}
 </pre>
