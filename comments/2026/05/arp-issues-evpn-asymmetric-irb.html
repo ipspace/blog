@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -38,6 +38,59 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2984">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Sebastian Schrader</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2984" href="#2984">18 May 2026 01:53</a>
+              </span>
+            </div>
+            <div class="comment-content">Regarding your mystery:<br />
+
+<p>FRR <a href="https://github.com/FRRouting/frr/blob/frr-10.6.1/zebra/zebra_dplane.c#L5739-L5741">installs</a> type-2 routes into the Linux Kernel with the <code>NOARP</code> flag set:</p>
+
+<pre>
+	result = neigh_update_internal(
+		DPLANE_OP_NEIGH_INSTALL, ifp, (const void *)mac, AF_ETHERNET,
+		ip, 0, flags, DPLANE_NUD_NOARP, update_flags, 0);
+</pre>
+
+<p>The <code>arp</code> command from <code>net-tools</code> <a href="https://sourceforge.net/p/net-tools/code/ci/v2.10/tree/arp.c#l554">reads</a> the <code>/proc/net/snmp</code> file to display ARP entries:</p>
+
+<pre>
+#define _PATH_PROCNET_ARP		&quot;/proc/net/arp&quot;
+</pre>
+
+<pre>
+    /* Open the PROCps kernel table. */
+    if ((fp = fopen(_PATH_PROCNET_ARP, &quot;r&quot;)) == NULL) &#123;
+	perror(_PATH_PROCNET_ARP);
+	return (-1);
+    &#125;
+</pre>
+
+<p>The Linux Kernel <a href="https://elixir.bootlin.com/linux/v7.0.8/source/net/ipv4/arp.c#L1486">skips</a> all <code>NOARP</code> entries when emitting <code>/proc/net/snmp</code> and explains the rationale in a helpful comment:</p>
+
+<pre>
+static void *arp_seq_start(struct seq_file *seq, loff_t *pos)
+&#123;
+	/* Don&#39;t want to confuse &quot;arp -a&quot; w/ magic entries,
+	 * so we tell the generic iterator to skip NUD_NOARP.
+	 */
+	return neigh_seq_start(seq, pos, &amp;arp_tbl, NEIGH_SEQ_SKIP_NOARP);
+&#125;
+</pre>
+
+<p>The modern <code>ip</code> command from the <code>iproute2</code> suite uses the much more capable and sophisticated <code>rtnetlink</code> interface to interact with the Kernel.</p>
+
+<p>Best regards,
+Sebastian</p>
+</div>
           </div>
         </li>
       </div>

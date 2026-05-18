@@ -18,9 +18,17 @@
          "name": "Naveen Kumar Devaraj",
          "pub": "2026-05-15T21:33:56",
          "type": "comment"
+      },
+      {
+         "date": "18 May 2026 01:53",
+         "html": "Regarding your mystery:<br />\n\n<p>FRR <a href=\"https://github.com/FRRouting/frr/blob/frr-10.6.1/zebra/zebra_dplane.c#L5739-L5741\">installs</a> type-2 routes into the Linux Kernel with the <code>NOARP</code> flag set:</p>\n\n<pre>\r\n\tresult = neigh_update_internal(\r\n\t\tDPLANE_OP_NEIGH_INSTALL, ifp, (const void *)mac, AF_ETHERNET,\r\n\t\tip, 0, flags, DPLANE_NUD_NOARP, update_flags, 0);\r\n</pre>\n\n<p>The <code>arp</code> command from <code>net-tools</code> <a href=\"https://sourceforge.net/p/net-tools/code/ci/v2.10/tree/arp.c#l554\">reads</a> the <code>/proc/net/snmp</code> file to display ARP entries:</p>\n\n<pre>\r\n#define _PATH_PROCNET_ARP\t\t&quot;/proc/net/arp&quot;\r\n</pre>\n\n<pre>\r\n    /* Open the PROCps kernel table. */\r\n    if ((fp = fopen(_PATH_PROCNET_ARP, &quot;r&quot;)) == NULL) &#123;\r\n\tperror(_PATH_PROCNET_ARP);\r\n\treturn (-1);\r\n    &#125;\r\n</pre>\n\n<p>The Linux Kernel <a href=\"https://elixir.bootlin.com/linux/v7.0.8/source/net/ipv4/arp.c#L1486\">skips</a> all <code>NOARP</code> entries when emitting <code>/proc/net/snmp</code> and explains the rationale in a helpful comment:</p>\n\n<pre>\r\nstatic void *arp_seq_start(struct seq_file *seq, loff_t *pos)\r\n&#123;\r\n\t/* Don&#39;t want to confuse &quot;arp -a&quot; w/ magic entries,\r\n\t * so we tell the generic iterator to skip NUD_NOARP.\r\n\t */\r\n\treturn neigh_seq_start(seq, pos, &amp;arp_tbl, NEIGH_SEQ_SKIP_NOARP);\r\n&#125;\r\n</pre>\n\n<p>The modern <code>ip</code> command from the <code>iproute2</code> suite uses the much more capable and sophisticated <code>rtnetlink</code> interface to interact with the Kernel.</p>\n\n<p>Best regards,\nSebastian</p>\n",
+         "id": "2984",
+         "name": "Sebastian Schrader",
+         "pub": "2026-05-18T13:53:39",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2026/05/arp-issues-evpn-asymmetric-irb.html"
 }
