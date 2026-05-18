@@ -13,6 +13,8 @@ However, the latest _containerlab_ release (0.75.0) [stopped working on ancient 
 
 The *networklab* package in release 26.05 is thus defined to run on Python 3.10 and above. You might be able to continue using _netlab_ with Ubuntu 20.04 if you manage to install Python 3.10 on that system. If you decide to do that, disable the *containerlab* version check with `netlab defaults 'providers.clab.probe=[]'` to continue working with older *containerlab* releases that run on Ubuntu 20.04 (at least until *containerlab* developers fix [this issue](https://github.com/srl-labs/containerlab/issues/3182)).
 
+However, don't rush with upgrading your old ancient _netlab_ servers. We're still discovering quirks in Ubuntu 24.04 (primarily [different QEMU defaults](https://github.com/ipspace/netlab/pull/3406) and [edge cases](https://github.com/ipspace/netlab/issues/3403)) and ironing them out. On the other hand, we'd love to have more people reporting those quirks, so if you don't mind [opening an issue or two](https://github.com/ipspace/netlab/issues/new/choose), please do the upgrade ;)
+
 ### Upgrading or Starting from Scratch?
 
 * To upgrade your *netlab* installation, execute `pip3 install --upgrade networklab`.
