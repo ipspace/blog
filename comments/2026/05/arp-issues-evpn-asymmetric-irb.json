@@ -39,6 +39,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "19 May 2026 07:13",
+               "html": "<p>Thanks a million! It&#39;s always great to hear real-life feedback.</p>\n",
+               "id": "2990",
+               "name": "Ivan Pepelnjak",
+               "pub": "2026-05-19T19:13:21",
+               "ref": "2989",
+               "type": "comment"
+            }
+         ],
          "date": "19 May 2026 11:30",
          "html": "<p>Another great post, Ivan!</p>\n\n<p>The problem with missing ARP entries and BUM traffic in EVPN-VXLAN environments is real. People often read somewhere that EVPN-VXLAN helps you avoid BUM and assume it just goes away. But what I&#39;ve seen a couple of times is cloud and hosting providers packing 10-20 /24 subnets into a single VLAN/VNI and leaving half of the address space unused. Point a single IP scanner at that range, and the fabric drowns in BUM traffic - every probe to a non-existent host triggers an ARP that floods VXLAN-wide, constantly.</p>\n\n<p>And as you point out in the post, asymmetric IRB makes this particularly bad - the ingress PE has to ARP into the destination VLAN over VXLAN for every probe, so the flood fans out across every VTEP carrying that VNI. Symmetric IRB at least localizes the ARP to the egress PE. The real fix in most of those cases, though, is to move to a Type-5-only design with smaller L2 segments. But I suspect that&#39;s a post for another day ;)</p>\n\n<p>On the multi-vendor side, the ARP suppression default itself is a fantastic trap. I had to re-learn every time how to turn it on/off for each vendor - and in some cases even per OS version.</p>\n",
          "id": "2989",
