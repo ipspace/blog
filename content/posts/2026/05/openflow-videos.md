@@ -1,6 +1,6 @@
 ---
 title: "Public Videos: OpenFlow Deep Dive"
-date: 2026-05-22 08:02:00+0100
+date: 2026-05-22 08:02:00+0200
 expiryDate: 2026-08-22 00:00:00
 tags: [  ]
 ---
