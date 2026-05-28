@@ -207,6 +207,6 @@ The [workshop GitHub repository](https://github.com/ipspace/SR-workshop) include
 
 * [Start a GitHub Codespace](https://github.com/codespaces/new/ipspace/sr-workshop)
 * [Import an Arista cEOS container](https://blog.ipspace.net/2024/07/arista-eos-codespaces/) into it ([alternate step-by-step instructions](https://arista.my.site.com/AristaCommunity/s/article/cEOS-lab-in-Github-Codespaces))
-* Change directory to `1-intro/2-ds`
+* Change directory to `1-intro/3-ds`
 * Execute **netlab up**
 * Have fun
