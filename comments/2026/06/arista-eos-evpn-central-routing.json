@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "03 June 2026 03:51",
+         "html": "<p>Hi Ivan,</p>\n\n<p>Thanks for continuing to dive into the somewhat murky world of centralized IRB/SVI (I hesitate to use gateway carte blanche these days given all the GW functionality in RFC9014 and IPVPN-EVPN interworking)</p>\n\n<p>You are correct that the centralized IRB VTEP does not advertise on the MAC+IP in this configuration because, as you pointed out, it is learnt over VXLAN in the data-plane (realized by the timer being present in the arp entry; it&#39;s not persistent with a <code>-</code>). </p>\n\n<p>There are two options if you want to move this into the control plane:</p>\n\n<p>1) - As you mentioned enable arp snooping on the leaf.  Now a MAC+IP route is advertised with the L2 VNI form the leaf.   All remote TEPs now learn and install this ARP, including the centralized IRB TEP.  Inter-subnet routing is still on the centralized TEP.  Note the centralized TEP still does NOT re-advertise this MAC+IP with itself as the NH in this case.</p>\n\n<p>2) - More recently in the EVPN VXLAN Gateway development (yes GW :)), the central GW can now re-advertise ARP&#39;s learnt over the data-plane, setting itself as the next-hop for these type-2&#39;s.  This negates the need for arp snooping on the leafs. This is useful in environments where arp snooping is not available on the L2 only VTEPs.  In this configuration the centralized VTEP with IRB/SVI is also a GW for the L2 TEPs given it&#39;s changing the NH for the EVPN T2 MAC+IP routes. This capability is covered in detail in the following TOI: https://www.arista.com/en/support/toi/eos-4-36-0f/23960-centralized-routing-on-dci-gateway-for-l2-only-vteps</p>\n\n<p>As mentioned in other comments, this centralized deployment is the lesser chosen option, for all the reasons illustrated in these posts - i.e. there&#39;s a lot going on behind the scenes, and state is centralized, leading to larger blast radii.  That being said, over time, adding all of these enhancements has made the deployment option more flexible and robust..</p>\n\n<p>Thanks\nRussell</p>\n",
+         "id": "3002",
+         "name": " Russell Kelly",
+         "pub": "2026-06-03T15:51:57",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2026/06/arista-eos-evpn-central-routing.html"
+}
