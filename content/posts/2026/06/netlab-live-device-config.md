@@ -1,6 +1,6 @@
 ---
 title: "Using netlab to Configure Live Devices"
-date: 2026-06-08 08:02:00+0200
+date: 2026-06-11 08:02:00+0200
 tags: [ netlab ]
 netlab_tag: use
 ---

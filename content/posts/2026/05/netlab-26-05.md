@@ -23,7 +23,7 @@ Want more features? How about:
 - `graph.linkorder` and `graph.rank` are easier to use in topology graph definitions.
 - The [multilab plugin](https://netlab.tools/plugins/multilab/#plugin-multilab) now [serializes](https://netlab.tools/plugins/multilab/#multilab-mutex) concurrent **up** and **down** operations with a mutex lock.
 
-For more details, check the [release notes](https://netlab.tools/release/26.04/), particularly the [breaking changes](https://netlab.tools/release/26.05/#release-26-05-breaking).
+For more details, check the [release notes](https://netlab.tools/release/26.05/), particularly the [breaking changes](https://netlab.tools/release/26.05/#release-26-05-breaking).
 
 ### Upgrading or Starting from Scratch?
 
