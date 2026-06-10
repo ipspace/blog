@@ -1,0 +1,34 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="3006">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c3006" href="#3006">10 June 2026 04:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for this blog post, Ivan!</p>
+
+<p>Regarding the question of how they could get higher throughput than the optimal adapted Clos design without oversubscription: they did not.</p>
+
+<p>Sections 9.3 and 9.4 of the paper (including figures 13 and 14) state a 3:1 &quot;worst case&quot; oversubscription of the network connecting ToR routers for the higher throughput results. Not even all (simulated) traffic patterns showed higher throughput, some showed lower throughput instead. Section 9.4 does mention that the throughput of a &quot;fat tree&quot; without oversubscription is never worse than that of their quasi-random network (&quot;non-blocking fat trees do not strand capacity&quot;).</p>
+
+<p>The 3:1 oversubscription between ToR routers from figure 13 fits with the description of &quot;fat tree&quot; networks given in section 2 (including figure 1) of the paper.</p>
+
+<p>According to the paper, they did find a way to handle the cabling chaos of quasi-random connections required to build a data network that approximates a random network. They also found a method to make use of many of the possible paths in such a network with merchant silicon based hardware, and called it &quot;spraypoint routing&quot; (neither encapsulation nor virtual circuits needed, just two VRFs). [The &quot;spraying&quot; is described as hash-based flow spraying, not packet spraying.]</p>
+
+<p>I concur that this result does not really matter for enterprise-sized data centers. I&#39;d expect that operational problems during adds and removes of routers might negate the gains from having less routers.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
