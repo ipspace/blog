@@ -61,7 +61,7 @@ I could think of several relatively simple explanations for their results:
 {{<long-quote>}}
 I missed a crucial point in the paper: they need more uplinks on the leaf switches to achieve the same oversubscription ratio as a comparable leaf-and-spine fabric. From Section 2 of the paper: "_But an expander that is performance-equivalent to a fat tree may need more ToR uplinks (fabric-facing ports) because some uplink capacity is consumed by traffic relayed for other ToRs._"
 
-That requires more leaf switches, but a big enough fabric still uses fewer active elements (switches), resulting in lower power consumption. On the _cost reduction_ side, they're calculating savings from fewer fabric switches but do not mention the total cost of the fabric, including ShuffleBoxes.
+That requires more leaf switches, but a big enough fabric still uses fewer active elements (switches), resulting in lower power consumption. On the _cost reduction_ side, they're calculating savings from fewer fabric switches but do not mention the total cost of the fabric, including ShuffleBoxes, in the paper. However, the authors claim that the "27% lower cost" in the AWS blog post includes the entire cost of building and operating the fabric (= overall TCO reduction).
 
 Other than that (and unequal-cost multipathing), they use the same multipath transport protocol ([SRD](https://blog.ipspace.net/2022/12/quick-look-aws-srd/)) in both cases, but not any extra tricks like packet spraying.
 {{</long-quote>}}
@@ -75,3 +75,11 @@ Should we expect similar solutions in enterprise-sized data centers? Probably no
 On the other hand, if you build fabrics with tens of thousands of switches, you should definitely take a closer look. If you do, I'd love to hear your comments.
 
 [^HPA]: If you believe in the unlimited magic of novel approaches, please feel free to blame the HP acquisition.
+
+### Revision History
+
+2026-06-12
+: Added explanations by the authors of the AWS paper
+
+2026-06-15
+: Another author's explanation on the claimed cost savings
