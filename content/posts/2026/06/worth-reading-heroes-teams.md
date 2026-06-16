@@ -1,5 +1,5 @@
 ---
-title: "Worth Reading: Leading Intelligent Networks ~ "
+title: "Worth Reading: Leading Intelligent Networks"
 date: 2026-06-16 08:06:00+0200
 tags: [ worth reading ]
 ---
