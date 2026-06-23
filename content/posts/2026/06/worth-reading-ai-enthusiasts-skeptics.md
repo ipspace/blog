@@ -1,6 +1,6 @@
 ---
 title: "Worth Reading: AI Enthusiasts Against AI Skeptics"
-date: 2026-06-30 08:25:00+0200
+date: 2026-06-22 08:25:00+0200
 tags: [ worth reading, AI ]
 ai_tag: read
 ---
