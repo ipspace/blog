@@ -16,7 +16,7 @@ The BGP Finite State Machine (FSM) (at least the one [defined in RFC 4271](https
 [^TCPEST]: The router receives SYN/ACK confirmation for an outgoing TCP session or an ACK confirmation for an incoming TCP session.
 
 {{<note info>}}
-You will never see the Connect state on Cisco IOS. Cisco implemented BGP in the days of the (original) RFC 1105 when the [state machine](https://datatracker.ietf.org/doc/html/rfc1105#autoid-10) did not have Connect and Active states. The Connect state was [added in RFC 1163](https://datatracker.ietf.org/doc/html/rfc1163#autoid-20), but Cisco never changed the printouts.
+You will never see the Connect state on Cisco IOS. Cisco implemented BGP in the days of the (original) RFC 1105 when the [state machine](https://datatracker.ietf.org/doc/html/rfc1105#autoid-10) did not have Connect state. The Connect state was [added in RFC 1163](https://datatracker.ietf.org/doc/html/rfc1163#autoid-20), but Cisco never changed the printouts.
 
 To see the states of the recent BGP FSMs, use FRR or Arista EOS (the easiest ones to get started in a virtual lab).
 {{</note>}}
@@ -29,5 +29,12 @@ To get stuck in the Connect state for an observable amount of time, we need the 
 * Configure an IBGP neighbor (or a multi-hop EBGP neighbor) with a bogus IP address.
 * Break the end-to-end path between IBGP neighbors (for example, mess up an MPLS LSP)
 * Drop BGP packets with an ACL that does not generate ICMP unreachables.
+* Configure a discard static route for the BGP session's source IP address on the remote router.
 
 Next, sit back and enjoy watching the BGP Connect state ;)
+
+### Revision History
+
+2026-07-06
+: * RFC 1105 has BGP_Active state but no BGP_Connect state.
+  * Yet another mechanism to get the _Connect_ state is a discard static route.
