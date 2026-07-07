@@ -42,6 +42,93 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="3020">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Sakar</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c3020" href="#3020">07 July 2026 04:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>So, the debug command was &quot;debug ip bgp&quot; and you would see connect state in only one of the peer, depending upon who initiated the TCP connection. If the local router was the one who initiated the TCP connection, it would move from Idle-&gt;Active-&gt;OpenSent-&gt;OpenConfirm-&gt;Established and if remote router was the one who initiated the TCP connection, it would move from Idle-&gt;Connect-&gt;OpenSent-&gt;OpenConfirm-&gt;Established.</p>
+
+<p>I think RFC 4271 defines Active state as where BGP FSM is trying to acquire a peer by listening for, and accepting, a TCP connection. Either my understanding is wrong or Cisco has assigned their own definition to Active/Connect state.</p>
+
+<p>Log from 10.10.10.1:
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive open to 10.10.10.1
+*Jul  7 02:00:56.353: BGP: Fetched peer 10.10.10.2 from tcb
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive went from Idle to Connect
+*Jul  7 02:00:56.353: BGP: ses global 10.10.10.2 (0x7F1EF1A8B8A8:0) pas Setting open delay timer to 60 seconds.
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive rcv message type 1, length (excl. header) 38
+*Jul  7 02:00:56.353: BGP: ses global 10.10.10.2 (0x7F1EF1A8B8A8:0) pas Receive OPEN
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive rcv OPEN, version 4, holdtime 180 seconds
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive rcv OPEN w/ OPTION parameter len: 28
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive rcvd OPEN w/ optional parameter type 2 (Capability) len 6
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive OPEN has CAPABILITY code: 1, length 4
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive OPEN has MP_EXT CAP for afi/safi: 1/1
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive rcvd OPEN w/ optional parameter type 2 (Capability) len 2
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive OPEN has CAPABILITY code: 128, length 0
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive OPEN has ROUTE-REFRESH capability(old) for all address-families
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive rcvd OPEN w/ optional parameter type 2 (Capability) len 2
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive OPEN has CAPABILITY code: 2, length 0
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive OPEN has ROUTE-REFRESH capability(new) for all address-families
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive rcvd OPEN w/ optional parameter type 2 (Capability) len 2
+*Jul  7 02:00:56.353: BGP: 10.10.10.2 passive OPEN has CAPABILITY code: 70, length 0
+*Jul  7 02:00:56.353: BGP: ses global 10.10.10.2 (0x7F1EF1A8B8A8:0) pas Enhanced Refresh cap received in open message
+*Jul  7 02:00:56.354: BGP: 10.10.10.2 passive rcvd OPEN w/ optional parameter type 2 (Capability) len 6
+*Jul  7 02:00:56.354: BGP: 10.10.10.2 passive OPEN has CAPABILITY code: 65, length 4
+*Jul  7 02:00:56.354: BGP: 10.10.10.2 passive OPEN has 4-byte ASN CAP for: 200
+*Jul  7 02:00:56.354: BGP: 10.10.10.2 passive rcvd OPEN w/ remote AS 200, 4-byte remote AS 200
+*Jul  7 02:00:56.354: BGP: ses global 10.10.10.2 (0x7F1EF1A8B8A8:0) pas Adding topology IPv4 Unicast:base
+*Jul  7 02:00:56.354: BGP: ses global 10.10.10.2 (0x7F1EF1A8B8A8:0) pas Send OPEN
+*Jul  7 02:00:56.354: BGP: ses global 10.10.10.2 (0x7F1EF1A8B8A8:0) pas Building Enhanced Refresh capability
+*Jul  7 02:00:56.354: BGP: 10.10.10.2 passive went from Connect to OpenSent
+*Jul  7 02:00:56.354: BGP: 10.10.10.2 passive sending OPEN, version 4, my as: 100, holdtime 180 seconds, ID 1010101
+*Jul  7 02:00:56.354: BGP: 10.10.10.2 passive went from OpenSent to OpenConfirm
+*Jul  7 02:00:56.355: BGP: 10.10.10.2 passive went from OpenConfirm to Established
+*Jul  7 02:00:56.355: BGP: ses global 10.10.10.2 (0x7F1EF1A8B8A8:1) pas Assigned ID
+*Jul  7 02:00:56.355: BGP: nbr global 10.10.10.2 Stop Active Open timer as all topologies are allocated
+*Jul  7 02:00:56.355: BGP: ses global 10.10.10.2 (0x7F1EF1A8B8A8:1) Up
+*Jul  7 02:00:56.355: %BGP-5-ADJCHANGE: neighbor 10.10.10.2 Up</p>
+
+<p>Log from 10.10.10.2:
+*Jul  7 02:00:56.352: BGP: 10.10.10.1 active went from Idle to Active
+*Jul  7 02:00:56.352: BGP: 10.10.10.1 open active, local address 10.10.10.2
+*Jul  7 02:00:56.353: BGP: ses global 10.10.10.1 (0x7F10BA1F62A0:0) act Adding topology IPv4 Unicast:base
+*Jul  7 02:00:56.353: BGP: ses global 10.10.10.1 (0x7F10BA1F62A0:0) act Send OPEN
+*Jul  7 02:00:56.353: BGP: ses global 10.10.10.1 (0x7F10BA1F62A0:0) act Building Enhanced Refresh capability
+*Jul  7 02:00:56.353: BGP: 10.10.10.1 active went from Active to OpenSent
+*Jul  7 02:00:56.353: BGP: 10.10.10.1 active sending OPEN, version 4, my as: 200, holdtime 180 seconds, ID 2020202
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcv message type 1, length (excl. header) 38
+*Jul  7 02:00:56.354: BGP: ses global 10.10.10.1 (0x7F10BA1F62A0:0) act Receive OPEN
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcv OPEN, version 4, holdtime 180 seconds
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcv OPEN w/ OPTION parameter len: 28
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcvd OPEN w/ optional parameter type 2 (Capability) len 6
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has CAPABILITY code: 1, length 4
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has MP_EXT CAP for afi/safi: 1/1
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcvd OPEN w/ optional parameter type 2 (Capability) len 2
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has CAPABILITY code: 128, length 0
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has ROUTE-REFRESH capability(old) for all address-families
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcvd OPEN w/ optional parameter type 2 (Capability) len 2
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has CAPABILITY code: 2, length 0
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has ROUTE-REFRESH capability(new) for all address-families
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcvd OPEN w/ optional parameter type 2 (Capability) len 2
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has CAPABILITY code: 70, length 0
+*Jul  7 02:00:56.354: BGP: ses global 10.10.10.1 (0x7F10BA1F62A0:0) act Enhanced Refresh cap received in open message
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcvd OPEN w/ optional parameter type 2 (Capability) len 6
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has CAPABILITY code: 65, length 4
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active OPEN has 4-byte ASN CAP for: 100
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active rcvd OPEN w/ remote AS 100, 4-byte remote AS 100
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active went from OpenSent to OpenConfirm
+*Jul  7 02:00:56.354: BGP: 10.10.10.1 active went from OpenConfirm to Established
+*Jul  7 02:00:56.354: BGP: ses global 10.10.10.1 (0x7F10BA1F62A0:1) act Assigned ID
+*Jul  7 02:00:56.354: BGP: ses global 10.10.10.1 (0x7F10BA1F62A0:1) Up
+*Jul  7 02:00:56.354: %BGP-5-ADJCHANGE: neighbor 10.10.10.1 Up</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
