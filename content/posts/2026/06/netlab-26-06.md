@@ -1,6 +1,6 @@
 ---
 title: "netlab 26.06: OSPFv3 on FortiOS, MPLS/VPN on SR Linux"
-series_title: "OSPFv3 on FortiOS, MPLS/VPN on SR Linux"
+series_title: "OSPFv3 on FortiOS, MPLS/VPN on SR Linux (Release 26.06)"
 date: 2026-06-08 08:13:00+02:00
 tags: [ netlab ]
 netlab_tag: release
