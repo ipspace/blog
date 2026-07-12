@@ -1,6 +1,6 @@
 ---
 title: "netlab 26.05: BGP-free SRv6 Core, Junos Features"
-series_title: "BGP-free SRv6 Core, Junos Features (Release 26.04)"
+series_title: "BGP-free SRv6 Core, Junos Features (Release 26.05)"
 date: 2026-05-19 08:02:00+02:00
 tags: [ netlab ]
 netlab_tag: release
