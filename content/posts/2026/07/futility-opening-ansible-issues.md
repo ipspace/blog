@@ -16,3 +16,5 @@ Nothing wrong with that as a workaround, but an error message like "IPv6 routing
 [^BEIT]: That list includes "BGP: Error initializing topology". If someone knows how to get that one, please write a comment.
 
 Alas, nothing happened, and the issue was automatically closed months later. Maybe I'll [write a rant](/2026/07/ansible-config-content/) the next time 🤦‍♂️, that seems to produce better results 🤷‍♂️.
+
+**Update 2026-07-23:** A few hours after this blog post has been published, the issue was reopened, and it got fixed within another hour. I'll leave the decision whether that "ruined the blog post" as [Sander](https://blog.ipspace.net/2026/07/futility-opening-ansible-issues/#3036) claimed or proved my point 🤷‍♂️ to you.
