@@ -12,15 +12,22 @@ Artificial Intelligence (AI) and Machine Learning (ML) are the next big hype in 
 
 ### {{<plushy confused>}}How Real Is It?
 
-Like with the previous hype tsunamis I'll do my best to help you figure out the answers to the above questions with a hefty dose of skepticism and snark[^WTL], starting with:
+Like with the previous hype tsunamis, I'll do my best to help you figure out the answers to the above questions with a hefty dose of skepticism and snark[^WTL], starting with:
 
 {{<series-listing tag="opinion" weight="yes">}}
 
-[^WTL]: Please don't blame me for pointing out the ever-lasting validity of [Sturgeon's law](https://en.wikipedia.org/wiki/Sturgeon%27s_law). Contrary to what some people think, I'm not trying hard to pick up dismal examples of AI failures, I'm just good at looking in the wrong places. Also, I'm [too old to be wearing rosy glasses](https://blog.ipspace.net/2019/11/why-are-you-always-so-negative.html) and drinking Kool-Aid.
+[^WTL]: Please don't blame me for pointing out the ever-lasting validity of [Sturgeon's law](https://en.wikipedia.org/wiki/Sturgeon%27s_law). Contrary to what some people think, I'm not trying hard to pick up dismal examples of AI failures; I'm just good at looking in the wrong places. Also, I'm [too old to be wearing rosy glasses](https://blog.ipspace.net/2019/11/why-are-you-always-so-negative.html) and drinking Kool-Aid.
 
 I also decided to "kick the tires" and document my (often less-than-stellar) experience with the most-overhyped products:
 
 {{<series-listing tag="kick" weight="yes">}}
+
+Finally, if you're interested in looking behind the hype, I can highly recommend:
+
+* [Marcus on AI](https://garymarcus.substack.com/) by [Gary Marcus](https://en.wikipedia.org/wiki/Gary_Marcus) (given his CV, he should know a few things about AI)
+* [Where's Your Ed At](https://www.wheresyoured.at/), where [Ed Zitron](https://en.wikipedia.org/wiki/Ed_Zitron) analyzes the complete infeasibility of the current generative AI lemming run.
+* [Ludicity](https://ludic.mataroa.blog/) by [Nikhil Suresh](https://ludic.mataroa.blog/about-me/) is always super-snarky (I'm an amateur) and occasionally includes an AI rant like [this one](https://ludic.mataroa.blog/blog/ai-mania-is-eviscerating-global-decision-making/)
+* [Artificial Confidence](https://artificialconfidence.com/) by [Corey Quinn](https://www.linkedin.com/in/coquinn/) of the [Last Week in AWS](https://www.lastweekinaws.com/) fame.
 
 ### {{<plushy magic>}}AI/ML in Networking: The Good, the Bad and the Ugly
 
