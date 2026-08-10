@@ -1,6 +1,6 @@
 ---
 title: "Compress netlab Lab Topologies with Dot Notation"
-date: 2026-08-11 07:55:00+0200
+date: 2026-08-12 07:55:00+0200
 tags: [ netlab ]
 netlab_tag: guidelines
 ---
