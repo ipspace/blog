@@ -26,7 +26,7 @@ Also, you might want to explore why I claim SR-MPLS is better than LDP:
 
 {{<series-listing tag="ldp">}}
 
-### {{<plushy magic>}}Try It Out
+### {{<plushy magic>}}Try It Out {#try}
 
 {{<series-listing tag="lab">}}
 
