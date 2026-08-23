@@ -32,7 +32,7 @@ You can also use _netlab_ (potentially [together with GitHub Codespaces](#ghcs))
 
 ### Podcasts
 
-{{<series-listing tag="podcast">}}
+{{<series-listing tag="podcast" reverse="true">}}
 
 ### Running netlab in GitHub Codespaces {#ghcs}
 
