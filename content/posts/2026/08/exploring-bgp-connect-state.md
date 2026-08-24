@@ -19,7 +19,13 @@ Next option: what if I had an incoming ACL on R1 dropping incoming BGP packets? 
 
 There's always one more nerd knob: I disabled the ACL-generated ICMP messages with **no ip unreachables** interface command, and finally got to the stage where R1 and R2 had a half-baked TCP session. Guess what: IOS/XE claimed the neighbor was still Idle.
 
+{{<note>}}
+As is so often the case, my approach was overly complicated. As Sander [pointed out](https://blog.ipspace.net/2026/08/exploring-bgp-connect-state/#3050), a simple misconfigured static ARP entry would be more than good enough.
+{{</note>}}
+
 The only place where Cisco IOS/XE displays a Connect BGP state is in the **debug ip bgp** printout -- when the incoming TCP session on port 179 is *established*, the neighbor state goes from *Idle* to *Connect*, and when the BGP routing process decides to send the BGP OPEN message, the state goes from *Connect* to *OpenSent*. Not exactly what [RFC 4271 claims should happen](https://datatracker.ietf.org/doc/html/rfc4271#section-8).
+
+For way more details and the step-by-step walkthrough of the Cisco IOS BGP FSM, read the [excellent post](https://forwardingengine.com/post/bgp-fsm-cisco-ios-xe/) by Sakar Pudasaini.
 
 ### Kicking the Tires
 
