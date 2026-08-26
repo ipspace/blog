@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -15,6 +15,43 @@
             <div class="comment-content"><p>&gt; I wonder what HP marketing thinks about that ;) </p>
 
 <p>I think HP wouldn&#39;t care less ;) - HPE is not HP since more than 10 years :)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="3057">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Aleksey Popov</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c3057" href="#3057">26 August 2026 06:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I think it is useful to look at the exact RFC language here. RFC 5340 largely refers back to RFC 2328 for Database Description packet processing. In particular, RFC 2328 says:
+1) in 10.8.  Sending Database Description Packets
+&ldquo;      The Database Description packet&#39;s Interface MTU
+        field is set to the size of the largest IP datagram that can be
+        sent out the sending interface, without fragmentation.
+        [...] Interface MTU should be set to 0 in Database
+        Description packets sent over virtual links.&rdquo;</p>
+
+<p>2) in 10.6.  Receiving Database Description Packets
+&ldquo;       If the Interface MTU field in the Database Description packet
+        indicates an IP datagram size that is larger than the router can
+        accept on the receiving interface without fragmentation, the
+        Database Description packet is rejected.&rdquo;</p>
+
+<p>Part (1) is relatively straightforward for a physical interface. Part (2) is more interesting, because the rejection threshold specified by the RFC is not explicitly the local MTU; it is the largest datagram that the router can accept on the receiving interface without fragmentation. Many implementations appear to assume that this is equivalent to the interface MTU, which leads to the somewhat misleading statement that &ldquo;OSPF MTUs must match.&rdquo;</p>
+
+<p>Tunnel interfaces such as GRE make this more problematic. The MTU configured, calculated, or inferred independently at the two tunnel endpoints need not necessarily be identical, and it is not necessarily a reliable representation of the end-to-end tunnel path MTU or receive capability.
+If we nevertheless assume MRU = MTU, then strict application of the RFC receive rule means that unequal tunnel MTUs will prevent the adjacency from completing: the endpoint with the smaller MTU will reject the larger value advertised by its peer. Conversely, advertising zero in the DBD can never cause rejection by this particular RFC MTU test, since zero cannot exceed the receiving router&#39;s capability.</p>
+
+<p>That does not necessarily make advertising zero on a GRE interface compliant with the transmit-side definition&mdash;the RFC associates zero with OSPF virtual links&mdash;but it does make the behavior understandable as a way of avoiding an unreliable MTU comparison on a multi-hop tunnel.</p>
+
+<p>There is also a rejected erratum for RFC 5838 on exactly this subject. Acee Lindem commented:
+&ldquo;An OSPF virtual link and a tunnel (e.g., GRE tunnel) are totally different constructs. The vendor is incorrect in arguing that this text specifics operation over a GRE tunnel. Rather, they should be arguing that OSPF doesn&rsquo;t have any path MTU capabilities and since a tunnel can be multi-hop, OSPF doesn&rsquo;t know the MTU.&rdquo;
+https://mailarchive.ietf.org/arch/msg/lsr/vUyvzp5zohq3dgET31DEFm6Fhso/</p>
 </div>
           </div>
         </li>
