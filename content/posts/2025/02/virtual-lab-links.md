@@ -2,7 +2,7 @@
 title: "Links in Virtual Labs"
 date: 2025-02-03 08:27:00+0100
 tags: [ virtualization, netlab ]
-netlab_tag: use
+netlab_tag: details
 ---
 There are three major ways to connect network devices in the physical world:
 
