@@ -53,38 +53,6 @@ If we nevertheless assume MRU = MTU, then strict application of the RFC receive 
 &ldquo;An OSPF virtual link and a tunnel (e.g., GRE tunnel) are totally different constructs. The vendor is incorrect in arguing that this text specifics operation over a GRE tunnel. Rather, they should be arguing that OSPF doesn&rsquo;t have any path MTU capabilities and since a tunnel can be multi-hop, OSPF doesn&rsquo;t know the MTU.&rdquo;
 https://mailarchive.ietf.org/arch/msg/lsr/vUyvzp5zohq3dgET31DEFm6Fhso/</p>
 </div>
-              <div class="comment-replies">
-                <div class="comment-thread inline-thread">
-                  <span class="thread-count"><a>Replies</a></span>
-                    <ol>
-      <div>
-        <li class="comment" id="3058">
-          <div class="comment-block">
-            <div class="comment-header">
-              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
-              <span class="datetime secondary-text">
-                <a rel="nofollow" id="c3058" href="#3058">27 August 2026 08:07</a>
-              </span>
-            </div>
-            <div class="comment-content"><p>We can split hairs until cows come home, but it won&#39;t change the reality: everyone else&#39;s OSPFv3 implementation (that we tested so far) interoperates over GRE tunnels, and even Junos&#39; OSPFv2 implementation works as expected, even though the OSPFv3 RFC uses almost identical language to the OSPFv2 RFC.</p>
-
-<p>However, if you insist on quoting RFCs and reading them creatively, how about the Interface MTU field definition from section A.3.3:</p>
-
-<p>&gt; The size in bytes of the largest IPv6 datagram that can be sent out the associated interface without fragmentation.</p>
-
-<p>That means Junos cannot send LSAs of any length over the tunnel?</p>
-
-<p>As for the &quot;rejected erratum&quot; -- thanks a million for the link; one should read the whole thread to get a bigger picture of years-long complaints to a single vendor, rejected by their TAC as &quot;our implementation works according to the RFC&quot;. I won&#39;t even comment on how the proposed clarification was rejected on a technicality.</p>
-
-<p>On a more serious note, the Interface MTU field is in the OSPF DD packet to ensure we will have two-way communication, as OSPF packets cannot be fragmented, and requesting MTU == MRU is one of the sane assumptions to get there. Tunnel MTUs are usually configured based on the (administrative) knowledge of the underlying transport path, and hiding that information behind maximum MTU=0 is super counterproductive.</p>
-</div>
-          </div>
-        </li>
-      </div>
-  </ol>
-
-                </div>
-              </div>
           </div>
         </li>
       </div>
