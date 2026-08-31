@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -133,6 +133,26 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="3064">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Justus Mungard</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c3064" href="#3064">31 August 2026 11:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; ACL that does not generate ICMP unreachables.</p>
+
+<p>Probably not necessary, if you drop TCP segments <em>ingress on the connecting router</em>, I suppose - assuming that passive BGP speaker is configured on the other end. For instance by TCP port 179 or TCP established (ACK bit set) in ACL deny statement. You could also drop TCP SYN (local router must be active) and ACK inbound on connecting interface - should have the same effect.</p>
+
+<p>&gt; Configuring an EBGP neighbor with an invalid IP address also doesn&rsquo;t bring us much &ndash; the ARP/ND processing would fail pretty quickly, bringing down the TCP session.</p>
+
+<p>Another idea: bogus static ARP entry on the neighbor router, which responds with SYN, ACK?</p>
+</div>
           </div>
         </li>
       </div>

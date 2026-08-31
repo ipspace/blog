@@ -27,9 +27,17 @@
          "name": " Sakar",
          "pub": "2026-07-06T13:21:25",
          "type": "comment"
+      },
+      {
+         "date": "31 August 2026 11:13",
+         "html": "<p>&gt; ACL that does not generate ICMP unreachables.</p>\n\n<p>Probably not necessary, if you drop TCP segments <em>ingress on the connecting router</em>, I suppose - assuming that passive BGP speaker is configured on the other end. For instance by TCP port 179 or TCP established (ACK bit set) in ACL deny statement. You could also drop TCP SYN (local router must be active) and ACK inbound on connecting interface - should have the same effect.</p>\n\n<p>&gt; Configuring an EBGP neighbor with an invalid IP address also doesn&rsquo;t bring us much &ndash; the ARP/ND processing would fail pretty quickly, bringing down the TCP session.</p>\n\n<p>Another idea: bogus static ARP entry on the neighbor router, which responds with SYN, ACK?</p>\n",
+         "id": "3064",
+         "name": " Justus Mungard",
+         "pub": "2026-08-31T23:13:32",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2025/01/bgp-connect-state.html"
 }
