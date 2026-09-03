@@ -39,6 +39,7 @@ groups:
 Similarly, I used *[link groups](https://blog.ipspace.net/2023/05/netlab-link-groups/)* to apply consistent attributes to multiple links:
 
 {{<printout caption="Using link groups">}}
+links:
 - group: core
   members: [ pe1-p1, p1-pe2 ]
 - group: edge
