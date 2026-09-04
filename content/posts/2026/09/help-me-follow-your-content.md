@@ -17,6 +17,10 @@ LinkedIn is a bit better (it's the top referring site, responsible for ~6% of th
 
 Imagine my dismay when I found an [interesting blog post](https://vstaub.com/blog/the-future-of-network-engineering-is-bigger-than-networking/) published on the [owner's own website](https://vstaub.com/) (nice), powered by a pretty minimalistic HTML generator[^PA] (awesome), but without an RSS feed.
 
+{{<note update>}}
+2026-09-04 14:30 UTC: The RSS feed on the website that triggered this blog post appeared within a few hours (it's already added to my RSS reader). Thanks a million, great job!
+{{</note>}}
+
 [^PA]: Probably [this one](https://docs.astro.build/en/basics/layouts/)
 
 Even worse, there's no documented way to contact the [author](https://vstaub.com/about/) to tell him to add it to his site, and I refuse to go through the hassle of "_Add a LinkedIn contact just so you can send him a short message_".
