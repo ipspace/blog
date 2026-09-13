@@ -1,6 +1,6 @@
 ---
 date: 2022-02-10 07:45:00+00:00
-lastmod: 2022-02-15 14:37:00
+lastmod: 2026-09-13 12:58:00
 netlab_tag: overview
 tags:
 - netlab
@@ -8,26 +8,28 @@ title: Build Vagrant Boxes for Your Network Devices
 ---
 One of the toughest hurdles to overcome when building your own virtual networking lab is the slog of downloading VM images for your favorite network devices and building Vagrant boxes[^VB] in case you want to use them with Vagrant or [netlab](https://netlab.tools/).
 
-You can find box-building recipes on the Internet -- [codingpackets.com has a dozen of them](https://codingpackets.com/blog/tag/vagrant/) -- but they tend to be a bit convoluted and a smidge hard-to-follow the first time you're trying to build the boxes (trust me, I've been there).
+You can find box-building recipes on the Internet -- [codingpackets.com](https://codingpackets.com/blog#vagrant) has at least a dozen -- but they tend to be a bit convoluted and a smidge hard to follow the first time you're trying to build the boxes (trust me, I've been there).
 <!--more-->
-I finally had enough and built a simple scaffold for libvirt box-building. It takes the mundane parts out of the process:
+I finally had enough and built a simple scaffold for Vagrant box-building for the vagrant-libvirt provider. You still have to deal with vendors stonewalling the image-downloading process, but then the **[netlab libvirt package](https://netlab.tools/netlab/libvirt/#netlab-libvirt-package)** command takes the mundane parts out of the process:
 
-* Starting a VM (you still have to download the disk image though)
-* Killing the VM after you're done with initial configuration
-* Packing the VM disk as a Vagrant box and adding the desired metadata. 
+* It copies the VM image into a temporary directory (recent Linux distributions don't give KVM/libvirt access to your home directory)
+* When needed, it unpacks/converts the VM image (we support QCOW, OVA, ZIP, and ISO formats)
+* It starts a VM and kills it after you're done with initial configuration
+* It packs the modified VM disk image as a Vagrant box and adds the desired metadata.
 
-There are people out there who automated the whole process ([example](https://github.com/mweisel/cisco-nxos9kv-vagrant-libvirt)). I don't want to be a perpetual maintainer of ever-changing quirks -- you'll still have to do a few bits on your own with the help of as-simple-as-they-can-get instructions.
+While there are people brave enough to go for a fully automated process ([example](https://github.com/mweisel/cisco-nxos9kv-vagrant-libvirt)), I don't want to be a perpetual maintainer of ever-changing quirks -- you'll still have to do a few bits on your own with the help of as-simple-as-they-can-get instructions.
 
-The current netlab version can build [Arista vEOS](https://netlab.tools/labs/eos/), [Nexus 9300v](https://netlab.tools/labs/nxos/), [Cisco CSR](https://netlab.tools/labs/csr/), and [Juniper vSRX](https://netlab.tools/labs/vsrx/) boxes (you can always find the up-to-date list [here](https://netlab.tools/labs/libvirt/#building-your-own-boxes)). If you feel like contributing another box-building recipe please get in touch.
+The current netlab version can build [around two dozen Vagrant boxes](https://netlab.tools/labs/libvirt/#libvirt-build-boxes) (the up-to-date list is [here](https://netlab.tools/labs/libvirt/#libvirt-build-boxes)). If you feel like contributing another box-building recipe, please [submit a PR](https://netlab.tools/dev/guidelines/).
 
 **Other options:**
 
-* It seems like [vrnetlab project](https://github.com/vrnetlab/vrnetlab) automated building Docker containers for a number of platforms. You could build those, add them to *netlab*, and use the with *containerlab* platform.
+* You can use the [vrnetlab fork](https://github.com/srl-labs/vrnetlab) to build [VM-in-Docker containers](/2026/09/running-virtual-machines-in-containers/) for a number of platforms and [use them with *netlab*](https://netlab.tools/labs/clab/#clab-vrnetlab).
 * GNS3 is always an option for GUI enthusiasts.
 
-[^VB]: Cisco Nexus 9300v, Arista vEOS, and Cumulus VX are available as a Vagrant box for VirtualBox. Cumulus VX is also available as a Vagrant box for libvirt. YMMV.
-
 ### Release History
+
+2026-09-13
+: Cleaned up obsolete information, added more links/details
 
 2022-02-15
 : [*netsim-tools* release 1.1.3](https://netlab.tools/release/1.1/#new-functionality-in-release-1-1-3) added build recipes for Cisco CSR and Juniper vSRX.
