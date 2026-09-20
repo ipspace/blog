@@ -2,7 +2,7 @@
 title: "MPLS/VPN with SR-MPLS Core"
 date: 2026-09-15 07:45:00+0200
 tags: [ SR-MPLS, netlab ]
-sr-mpls_tag: lab
+sr-mpls_tag: ws
 netlab_tag: ignore
 ---
 As we discussed in the [BGP-Free Core with SR-MPLS](/2026/09/sr-mpls-bgp-free/) blog post, SR-MPLS works as a drop-in replacement for the traditional MPLS control plane. No wonder it works well (when properly implemented) with MPLS/VPN services -- the second "[fun](https://github.com/ipspace/SR-workshop/blob/main/2-fun)" scenario in my ITNOG10 [Segment Routing workshop](/2026/04/sr-mpls-workshop/). It uses the same topology as the BGP-Free Core scenario:

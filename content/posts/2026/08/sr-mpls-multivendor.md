@@ -2,7 +2,7 @@
 title: "Multivendor SR-MPLS"
 date: 2026-08-25 07:44:00+0200
 tags: [ SR-MPLS, netlab ]
-sr-mpls_tag: lab
+sr-mpls_tag: ws
 netlab_tag: ignore
 ---
 Summer is almost over, and it's time to resume regular programming with the next example from the [Segment Routing workshop](/2026/04/sr-mpls-workshop/) I had at ITNOG10: [multi-vendor SR-MPLS](https://github.com/ipspace/SR-workshop/tree/main/1-intro/6-multivendor). I used the same lab topology as in the [previous examples](/tag/sr-mpls/#try) but deployed Arista EOS on PE1, FRRouting on P, and SR Linux on PE2[^NL] 

@@ -2,7 +2,7 @@
 title: "EVPN with SR-MPLS Core"
 date: 2026-09-22 07:25:00+0200
 tags: [ SR-MPLS, netlab ]
-sr-mpls_tag: lab
+sr-mpls_tag: ws
 netlab_tag: ignore
 ---
 After a [long journey](/tag/sr-mpls/#try), we finally we got to the final scenario in my ITNOG10 [Segment Routing workshop](/2026/04/sr-mpls-workshop/): EVPN services over an SR-MPLS core.

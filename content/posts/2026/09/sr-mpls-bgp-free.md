@@ -2,7 +2,7 @@
 title: "BGP-Free Core with SR-MPLS"
 date: 2026-09-03 07:30:00+0200
 tags: [ SR-MPLS, netlab ]
-sr-mpls_tag: lab
+sr-mpls_tag: ws
 netlab_tag: ignore
 ---
 The beauty of SR-MPLS is that it's a drop-in replacement for the traditional (LDP- or RSVP-based) MPLS control plane. For example, you could replace LDP with [SR-MPLS](/2021/05/segment-routing-mpls-bgp-free-core/) in a network using MPLS to implement a [BGP-free transport core](/2012/01/bgp-free-service-provider-core-in/), and it just keeps working.
