@@ -28,7 +28,15 @@ Also, you might want to explore why I claim SR-MPLS is better than LDP:
 
 ### {{<plushy magic>}}Try It Out {#try}
 
-{{<series-listing tag="lab">}}
+These blog posts describe SR-MPLS scenarios I presented during the [ITNOG10 SR-MPLS workshop](/2026/04/sr-mpls-workshop/):
+
+{{<series-listing tag="ws">}}
+
+### More Lab Scenarios
+
+Want even more lab scenarios? Here they are:
+
+{{<series-listing tag="lab" weight="yes">}}
 
 ### More Information
 

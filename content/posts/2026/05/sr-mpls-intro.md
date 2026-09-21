@@ -2,7 +2,7 @@
 title: "Hands-On Introduction to SR-MPLS"
 date: 2026-05-13 08:16:00+0200
 tags: [ SR-MPLS, netlab ]
-sr-mpls_tag: lab
+sr-mpls_tag: ws
 netlab_tag: ignore
 ---
 The [second demo](https://github.com/ipspace/SR-workshop/tree/main/1-intro/2-netlab)[^FD] I did during the [Segment Routing workshop](/2026/04/sr-mpls-workshop/) @ ITNOG10 illustrated how easy it is to set up and explore a small SR-MPLS network with _netlab_. The lab topology described a small three-router network (you need three routers to see "true" labels besides the [penultimate-hop popping](/2011/07/penultimate-hop-popping-php-demystified/) ones):

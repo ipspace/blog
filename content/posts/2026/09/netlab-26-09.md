@@ -1,6 +1,6 @@
 ---
 title: "netlab 26.09: Syslog, More DNS, Netmiko"
-series_title: "Syslog, More DNS, Netmiko (Release 26.08)"
+series_title: "Syslog, More DNS, Netmiko (Release 26.09)"
 date: 2026-09-21 07:36:00+02:00
 tags: [ netlab ]
 netlab_tag: release

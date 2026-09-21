@@ -2,7 +2,7 @@
 title: "SR-MPLS over Unnumbered Interfaces"
 date: 2026-06-01 08:03:00+0200
 tags: [ SR-MPLS, netlab ]
-sr-mpls_tag: lab
+sr-mpls_tag: ws
 netlab_tag: ignore
 ---
 After the [simple SR-MPLS demo](/2026/05/sr-mpls-intro/) and the [dual-stack SR-MPLS setup](/2026/05/sr-mpls-dual-stack/), it was time for the next obvious question: Does SR-MPLS work over unnumbered IPv4 interfaces[^Uv6], assuming the implementation of the underlying routing protocol supports them? Of course it does; let's go through the details, using the same topology I used throughout the [Segment Routing workshop](/2026/04/sr-mpls-workshop/) @ ITNOG10.

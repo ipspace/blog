@@ -2,7 +2,7 @@
 title: "Dual-Stack SR-MPLS"
 date: 2026-05-21 08:16:00+0200
 tags: [ SR-MPLS, netlab ]
-sr-mpls_tag: lab
+sr-mpls_tag: ws
 netlab_tag: ignore
 ---
 After the [introduction to SR-MPLS demo](/2026/05/sr-mpls-intro/) I did during the [Segment Routing workshop](/2026/04/sr-mpls-workshop/) @ ITNOG10, we moved to dual-stack SR-MPLS -- can we assign node segment identifiers (SIDs) to IPv4 *and* IPv6 prefixes? The demo used the same three-router network as the previous one, with IPv4 SIDs starting at one and IPv6 SIDs starting at 101:

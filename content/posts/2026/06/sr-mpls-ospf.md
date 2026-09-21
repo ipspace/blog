@@ -2,7 +2,7 @@
 title: "SR-MPLS with OSPFv2"
 date: 2026-06-15 08:12:00+0200
 tags: [ SR-MPLS, netlab ]
-sr-mpls_tag: lab
+sr-mpls_tag: ws
 netlab_tag: ignore
 ---
 I started my part of the [Segment Routing workshop](/2026/04/sr-mpls-workshop/) @ ITNOG10 exploring SR-MPLS with IS-IS ([simple SR-MPLS](/2026/05/sr-mpls-intro/), [dual-stack SR-MPLS](/2026/05/sr-mpls-dual-stack/), [SR-MPLS over unnumbered IPv4 interfaces](/2026/06/sr-mpls-ospf/)). Next step: let's change the routing protocol to OSPF while using the same network topology:
