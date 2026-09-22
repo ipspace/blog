@@ -3,6 +3,7 @@ title: EVPN
 page_title: Ethernet VPN (EVPN)
 minimal_sidebar: true
 layout: custom
+sidebar_box: rb
 ---
 {{<quote source="ChatGPT trying (and failing) to explain EVPN">}}
 EVPN, or Ethernet Virtual Private Network, is like a smart system that helps computers and devices in a network talk to each other better. It's like having a super-organized mail system where each computer has its own address, and EVPN makes sure messages get to the right place quickly and safely. So, it's kind of like a traffic manager for information on a computer network, making everything run smoothly and securely.{{</quote>}}

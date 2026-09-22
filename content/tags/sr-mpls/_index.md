@@ -3,6 +3,7 @@ title: SR-MPLS
 page_title: Segment Routing with MPLS Labels (SR-MPLS)
 minimal_sidebar: true
 layout: custom
+sidebar_box: sw
 ---
 Segment Routing with MPLS Labels (SR-MPLS) is a major improvement over the traditional MPLS control plane (LDP or RSVP-TE). Instead of running two protocols (a routing protocol and a signaling protocol), SR-MPLS adds segment information to the IS-IS or OSPF topology database, avoiding the pesky IGP/LDP synchronization issues we've been fighting for decades.
 

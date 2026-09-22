@@ -3,6 +3,7 @@ title: DMVPN
 page_title: Dynamic Multipoint VPN (DMVPN)
 minimal_sidebar: true
 layout: custom
+sidebar_box: rb
 ---
 DMVPN is an old[^OLD] Cisco-proprietary technology that combines NHRP, IPsec, IKEv2 and multipoint GRE tunnels to build dynamically-provisioned multi-access VPNs.
 
