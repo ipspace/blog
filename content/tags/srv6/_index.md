@@ -3,6 +3,7 @@ title: SRv6
 page_title: Segment Routing over IPv6 (SRv6)
 minimal_sidebar: true
 layout: custom
+sidebar_box: sw
 ---
 Segment Routing over IPv6 (SRv6) is mostly a solution in search of a problem, reimplementing source routing with various forms of IPv6 extension headers. Not surprisingly, its vocal proponents sell it as the ultimate solution to all networking problems.
 

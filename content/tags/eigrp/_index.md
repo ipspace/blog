@@ -3,6 +3,7 @@ title: EIGRP
 page_title: Enhanced Interior Gateway Routing Protocol (EIGRP)
 minimal_sidebar: true
 layout: custom
+sidebar_box: rb
 ---
 EIGRP was the best choice for an interior gateway protocol in late 1990s -- it was fast, efficient, and easy to deploy. OSPF and IS-IS implementations improved in the intervening 30 years, slowly turning EIGRP into a forgotten technology.
 

@@ -3,6 +3,7 @@ title: OSPF
 page_title: Open Shortest-Path First (OSPF) Routing Protocol
 minimal_sidebar: true
 layout: custom
+sidebar_box: rb
 ---
 {{<quote source="ChatGPT explaining OSPF to a high-school kid">}}
 OSPF is like a traffic director for the internet. Imagine a city with many roads - OSPF helps routers (the traffic directors) figure out the best paths for data to travel from one place to another. It's like a smart GPS for computers, making sure information takes the shortest and fastest routes. OSPF routers talk to each other, share maps of the internet, and decide the best ways to send data. It's a cool system that keeps the internet running smoothly!
@@ -35,6 +36,8 @@ OSPF adjacencies are another fun troubleshooting topic:
 Want even more OSPF details? I documented way too many of them since I started blogging, including:
 
 {{<series-listing tag="details">}}
+
+I also managed to rescue a few [OSPF-related articles](/kb/tag/OSPF/) I published on other websites.
 
 ### {{<plushy magic>}}Deploying OSPF
 
