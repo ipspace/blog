@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "24 September 2026 04:47",
+               "html": "<p>Even if that were implemented perfectly (which would be a major change in the orchestration process and require synchronization between host and container processes), you&#39;d still have the challenge of creating a P2P link between two containers.</p>\n\n<p>Today, a P2P link is just a vEth cable between a pair of containers. With your approach, you&#39;d need some extra glue between two tap interfaces pulled out of the container namespaces.</p>\n",
+               "id": "3074",
+               "name": "Ivan Pepelnjak",
+               "pub": "2026-09-24T16:47:57",
+               "ref": "3073",
+               "type": "comment"
+            }
+         ],
          "date": "24 September 2026 02:42",
          "html": "<p>Seems all overly complicated to me. The host side of the virtual qemu interface (the tap interface) could just be moved out of the container&#39;s network namespace into the root network namespace after qemu has created the interface. No veth pairs with and tc redirect glue needed.</p>\n",
          "id": "3073",

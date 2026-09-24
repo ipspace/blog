@@ -14,6 +14,30 @@
             </div>
             <div class="comment-content"><p>Seems all overly complicated to me. The host side of the virtual qemu interface (the tap interface) could just be moved out of the container&#39;s network namespace into the root network namespace after qemu has created the interface. No veth pairs with and tc redirect glue needed.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="3074">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c3074" href="#3074">24 September 2026 04:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Even if that were implemented perfectly (which would be a major change in the orchestration process and require synchronization between host and container processes), you&#39;d still have the challenge of creating a P2P link between two containers.</p>
+
+<p>Today, a P2P link is just a vEth cable between a pair of containers. With your approach, you&#39;d need some extra glue between two tap interfaces pulled out of the container namespaces.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
