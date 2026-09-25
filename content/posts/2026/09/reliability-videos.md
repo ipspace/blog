@@ -7,7 +7,7 @@ tags: [  ]
 ![](/2026/09/chatgpt-reliability.png)
 { .sideicon }
 
-The 5-hour [Reliability Theory: Networking through a Systems Analysis Lens](https://my.ipspace.net/bin/list?id=Queuing)  webinar by [Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor) is now available without a valid ipSpace.net account. Enjoy!
+The 5-hour [Reliability Theory: Networking through a Systems Analysis Lens](https://my.ipspace.net/bin/list?id=Reliability)  webinar by [Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor) is now available without a valid ipSpace.net account. Enjoy!
 
 {{<jump>}}[Explore](https://my.ipspace.net/bin/list?id=Reliability){{</jump>}}
 
