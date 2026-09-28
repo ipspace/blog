@@ -1,7 +1,8 @@
 ---
 title: "BFD on IBGP Sessions? Why Exactly?"
-date: 2026-09-30 07:14:00+0200
+date: 2026-10-31 07:14:00+0200
 tags: [ BGP ]
+draft: True
 ---
 A friend of mine sent me an email with a weird observation:
 
