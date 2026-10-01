@@ -8,6 +8,7 @@ tags:
 - networking fundamentals
 title: VLAN Interfaces and Subinterfaces
 lastmod: 2025-03-11 13:48:00+01:00
+sidebar_diagram: /2022/09/vlan-interface.png
 ---
 Early bridges [implemented a single bridging domain across all ports](/2022/09/interfaces-ports/). Within a few years, we got multiple bridging domains within a single device (including [bridging implementation in Cisco IOS](/2022/09/routers-bridges-crb-irb/)). The capability to have multiple bridging domains stretched across several devices was still missing... until the modern-day Pandora opened the VLAN box and forever swamped us in the complexities of large-scale bridging.
 <!--more-->
