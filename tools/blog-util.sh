@@ -219,6 +219,10 @@ case "$1" in
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
         echo '*' "[$FIXURL $TITLE]"|pbcopy
         ;;
+      next)
+        PAGEURL=$(echo $FIXURL|sed -E -e 's#/$#.html#')
+        echo "{{<next-in-series page="'"'/posts${PAGEURL}'"'" />}}"|pbcopy
+        ;;
       yaml)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
         cat <<YAML|pbcopy

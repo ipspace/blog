@@ -35,3 +35,5 @@ What happens next depends on the routing protocol.
 On the other hand, the only way for an OSPF network to survive an unplanned device failure is to ensure that the OSPF Hello timeout doesn't expire before the failed device restarts. Should you wish to support this scenario, you'll have a ridiculously slow-converging network no matter what.
 
 **Summary**: Non-Stop Forwarding and fast convergence go together as well as oil and ~~water~~ bricks. You could have one or the other.
+
+{{<next-in-series page="/posts/2021/10/graceful-restart-bfd.html" />}}

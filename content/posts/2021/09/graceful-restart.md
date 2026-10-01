@@ -69,7 +69,9 @@ After a restarting device reestablishes its BGP adjacencies, it has to go throug
 * It's accepting BGP updates from the helper nodes but is not sending any updates of its own until it receives the *End-of-RIB marker* from all helper nodes[^4].
 * After the restarting device collects the BGP information from all adjacent devices, it selects the best BGP routes, populates routing and forwarding tables, and advertises its best routes to its neighbors. The Graceful Restart procedure is complete.
 
-Figuring out the tiny details of *what happens if there's been a change in the network during the device restart* is left as an exercise for an impatient reader; we'll talk about it in an upcoming blog post.
+Figuring out the tiny details of *what happens if there's been a change in the network during the device restart* is left as an exercise for an impatient reader; or you could cheat and read [this blog post](/2021/10/graceful-restart-convergence/).
+
+{{<next-in-series page="/posts/2021/10/graceful-restart-control-plane-protocols.html" />}}
 
 [^1]: BGP uses a new BGP capability to indicate the device supports Graceful Restart. OSPF uses an opaque LSA called Grace LSA.
 
