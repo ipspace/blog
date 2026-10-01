@@ -20,3 +20,6 @@ IF you do have an alternative path, but the device in question sends C=0, then i
 
 IF you do have an alternative path and the device in question proudly sends C=1, then you are lucky. Juniper MX is such an example, because they support "Distributed BFD" and "Inline BFD", both of which are implemented on the line cards and can survive Routing Engine reboot. So, any well-implemented Helper should now be able to distinguish between forwarding plane failure (BFD goes down => flush all routes) and control plane failure (BFD stays up => start helping GR as usual). Hence, BGP + GR + BFD_C=1 sounds like not a bad idea to me...
 
+---
+
+{{<next-in-series page="/posts/2021/10/big-picture-bfd-nsf-gr.html" />}}

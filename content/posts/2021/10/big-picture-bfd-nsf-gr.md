@@ -46,3 +46,5 @@ Not surprisingly, smart network designs (example: leaf-and-spine fabric designs 
 
 * NSF and GR on leaf switches to support hitless software upgrades.
 * Simple (non-redundant) control plane on spine switches with BFD between leaf- and spine switches.
+
+{{<next-in-series page="/posts/2024/01/bgp-graceful-restart-harmful.html" />}}

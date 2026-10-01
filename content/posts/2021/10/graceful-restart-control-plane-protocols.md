@@ -34,6 +34,8 @@ Most of these issues are gone when you add Stateful Switchover (SSO) capability 
 
 **Conclusion**: Using Non-Stop Forwarding and Graceful Restart in a non-redundant access network might be better than nothing. While you can make the routing protocols survive a device restart, other control plane protocols might fail unless you're using access routers with redundant internal architecture[^3].
 
+{{<next-in-series page="/posts/2021/10/graceful-restart-convergence.html" />}}
+
 [^1]: Arista EOS schedules LACP messages in advance when performing [Smart System Upgrade](https://www.arista.com/en/um-eos/eos-leaf-smart-system-upgrade-leaf-ssu) -- see the [Non-Stop Forwarding](/2021/09/non-stop-forwarding/) blog post for details. That trick doesn't work when a device crashes; the proof is left as an exercise for the reader.
 
 [^2]: Arista EOS Smart System Upgrade treats STP the same way it treats LACP. I'm positive there's a situation where you can get a nice forwarding loop due to the stale STP state in the restarting device.

@@ -37,3 +37,5 @@ I tried to find out the implementation details of *Graceful Restart* and BFD int
 * An Arista EOS document (behind a regwall) effectively saying "*Our Stateful Switchover is fast enough that a BFD session doesn't go down. You can therefore use BFD with BGP Graceful Restart*."
 
 Hands-on experience would be highly appreciated -- please write a comment!
+
+{{<next-in-series page="/posts/2021/10/repost-bfd-gr.html" />}}
