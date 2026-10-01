@@ -1,6 +1,6 @@
 ---
 title: "Worth Reading: Don't Fight the Users' Desire Paths"
-date: 2026-10-09 07:38:00+0200
+date: 2026-10-02 07:38:00+0200
 tags: [ worth reading ]
 ---
 [Chris Siebenmann](http://hawkwind.cs.toronto.edu:8001/chris.html) [publishes](https://utcc.utoronto.ca/~cks/space/blog/) articles written from an interesting perspective: he's a Unix herder at a university (based on my ancient, similar experience, that's usually worse than herding cats).
