@@ -8,6 +8,7 @@ tags:
 - networking fundamentals
 title: Router Interfaces and Switch Ports
 lastmod: 2025-03-11 10:49:00+01:00
+sidebar_diagram: /2022/09/layer-3-switch-interfaces-ports.png
 ---
 When I started implementing the [netlab VLAN module](https://netlab.tools/module/vlan/), I encountered (at least) three different ways of configuring physical interfaces and bridging domains even though the underlying packet forwarding operations (and sometimes even the forwarding hardware) are the same. That [confusopoly](https://en.wikipedia.org/wiki/Confusopoly) is guaranteed to make your head spin for years, and the only way to figure out what's going on behind the scenes is to go back to the fundamentals.
 <!--more-->

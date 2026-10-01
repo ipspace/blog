@@ -9,6 +9,7 @@ tags:
 - networking fundamentals
 short_summary: |
   When configuring layer-3 switches, we pretend that some interfaces connect to the internal bridge (the switch ports) while other interfaces connect to the internal router (the routed interfaces). However, that's not how the switch ASICs work; most switches have to do behind-the-scene magic to implement the ports+interfaces configuration model.
+sidebar_diagram: /2025/03/switch-internal-vlan-implementation.png
 ---
 In the [Router Interfaces and Switch Ports](/2022/09/interfaces-ports/) blog post, I described why we have *switch ports* and *routed interfaces* on layer-3 switches. Another blog post in the same series [described the conceptual architecture of a layer-3 switch](/2022/09/vlan-interfaces/):
 
