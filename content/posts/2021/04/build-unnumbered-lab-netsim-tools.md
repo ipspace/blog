@@ -11,20 +11,19 @@ title: Building Unnumbered Ethernet Lab with netlab
 short_summary: |
   Want to try out unnumbered Ethernet interfaces on a [dozen different platforms](https://netlab.tools/platforms/#platform-initial-addresses)? This is how you can easily build your lab with _[netlab](https://netlab.tools/)_.
 ---
-Last week I described the new features [added to netsim-tools release 0.4](https://netlab.tools/release/0.4/), including support for [unnumbered interfaces](https://netlab.tools/addressing/#unnumbered-interface-support) and [OSPF routing](https://netlab.tools/module/ospf/). Now let's see how I used them to build a multi-vendor lab to test which platforms could be made to interoperate when running OSPF over unnumbered Ethernet interfaces.
+Last week I described the new features [added to netsim-tools release 0.4](https://netlab.tools/release/0.4/), including support for [unnumbered interfaces](https://netlab.tools/addressing/#unnumbered-interface-support) and [OSPF routing](https://netlab.tools/module/ospf/). Now let's see how I used them to build a multi-vendor lab to test which platforms could interoperate when running OSPF over unnumbered Ethernet interfaces.
 
-{{<note info>}}
-* This blog post has been updated to use the new **netlab** CLI introduced in *netsim-tools* release 0.8 and new IPAM features introduced in release 1.0
-* *netsim-tools* project [has been renamed to *netlab*](/2022/08/netsim-netlab/).
-{{</note>}}
+First, I needed to make P2P links within the lab unnumbered. Setting the **unnumbered** attribute on the built-in **p2p** pool is good enough (for more details, read the [addressing tutorial](https://netlab.tools/example/addressing-tutorial/)):
 <!--more-->
-First I needed to make P2P links within the lab unnumbered. Setting **unnumbered** attribute on the built-in **p2p** pool is good enough (for more details read the [addressing tutorial](https://netlab.tools/example/addressing-tutorial/)):
-
 ```
 addressing:
   p2p:
     unnumbered: true
 ```
+
+{{<note info>}}
+The **unnumbered** attribute [still works](https://netlab.tools/addressing/#unnumbered-interface-support), but enables IPv4 or IPv6 on the interface based on the address families configured on the node's loopback address. It's [much better](https://netlab.tools/example/addressing-tutorial/#unnumbered-links) to use `ipv4: true` for unnumbered IPv4 interfaces and `ipv6: true` for LLA-only interfaces.
+{{</note>}}
 
 I wanted to run OSPF on all devices in the lab:
 
@@ -32,7 +31,7 @@ I wanted to run OSPF on all devices in the lab:
 module: [ ospf ]
 ```
 
-I built Vagrant/libvirt boxes for four different platforms (Arista vEOS 4.25.0, Cisco IOS XE 16.06.01, Cisco Nexus 9000v NXOS 9.3(6), Juniper vSRX 3.0 Junos 20.3R1.8), so I needed four nodes in my lab network. As each node uses a different Vagrant box, I couldn't use default device type:
+I built Vagrant/libvirt boxes for four different platforms (Arista vEOS 4.25.0, Cisco IOS XE 16.06.01, Cisco Nexus 9000v NXOS 9.3(6), Juniper vSRX 3.0 Junos 20.3R1.8), so I needed four nodes in my lab network. As each node uses a different Vagrant box, I couldn't use the default device type:
 
 ```
 nodes:
@@ -64,8 +63,8 @@ links:
 ## Next Steps
 
 * [Install *netlab*](https://netlab.tools/install/) and a lab virtualization provider of your choice.
-* Create Vagrant and Ansible configuration files, start the lab, and configure it with a single command: **netlab up**. [Here's the log file](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/config.log) in case you'd like to see how it worked.
-* Wait for the network devices to boot. Write this blog post while waiting for Nexus 9300v and vSRX to boot. At least the *libvirt* provider starts them in parallel (as opposed to *virtualbox* provider that starts them in sequence).
+* Create configuration files, start the lab, and configure it with a single command: **netlab up**. [Here's the log file](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/config.log) in case you'd like to see how it worked.
+* Wait for the network devices to boot. Write this blog post while waiting for Nexus 9300v and vSRX to boot. At least the *libvirt* provider starts them in parallel (unlike the *virtualbox* provider, which starts them in sequence).
 * Use **netlab connect** to connect to lab devices and inspect the results.
 * Destroy the lab with **netlab down**.
 
@@ -85,13 +84,16 @@ A quick search found an Arista EOS support article describing the **interface un
 [Directory with all relevant lab files](https://github.com/ipspace/netlab-examples/tree/master/routing/unnumbered) including:
 
 * [Network topology](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/topology.yml)
-* [Vagranfile](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/Vagrantfile) (imagine copy-pasting it together manually)
+* [Vagrantfile](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/Vagrantfile) (imagine copy-pasting it together manually)
 * [Configuration deployment log file](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/config.log)
 * [Final device configurations](https://github.com/ipspace/netlab-examples/tree/master/routing/unnumbered/config)
 
 You might also want to watch the *[Using OSPF in Leaf-and-Spine Fabrics](https://my.ipspace.net/bin/list?id=Clos#L3_SINGLE)* videos that inspired me to run this test.
 
 ### Revision History
+
+2026-10-01
+: You could use `ipv4: True` and `ipv6: True` instead of `unnumbered: True` for fine-grained control of address families.
 
 2022-08-27
 : *netsim-tools* has been renamed to *netlab*
