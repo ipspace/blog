@@ -7,14 +7,17 @@
 {{ if (.Page.Scratch.Get "pages")|len }}
 <dl>
   {{ range (.Page.Scratch.Get "pages") }}
+    {{ with .Params.sidebar_diagram }}
+  <img src="{{ . }}" class="plushy">
+    {{ end }}
   <dt>{{ partial "series-title.html" . }}{{ if $date }} ({{ .Date.Format "2006-01-01" }}){{ end }}</dt>
-  <dd>
+  <dd{{ with .Params.sidebar_diagram }} class="along-plushy"{{ end }}>
     {{ with .Params.short_summary }}
       {{ .|markdownify }}
     {{ else }}
       {{ .Summary }}
     {{ end }}
-  </dd>
+  </dd><p style="clear: both;" />
   {{   end }}
 </dl>
 {{ end }}
