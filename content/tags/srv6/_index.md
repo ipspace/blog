@@ -25,7 +25,7 @@ Quite a few people (myself included) came to the conclusion that SRv6 makes litt
 
 Here's what I figured out when developing _netlab_ SRv6 configuration templates:
 
-{{<series-listing tag="config">}}
+{{<series-listing tag="config" weight="yes">}}
 
 ### Potential Use Cases
 
@@ -39,8 +39,8 @@ Still want to try out SRv6?
 
 ### {{<plushy master>}}More Information
 
-* We [implemented SRv6 in _netlab_](https://netlab.tools/module/srv6/). You can try it out on Cisco IOS XE, Cisco IOS XR, and FRRouting.
-* Browse [_netlab_ SRv6 integration tests](https://github.com/ipspace/netlab/tree/dev/tests/integration/srv6) for sample lab topologies.
+* We [implemented SRv6 in _netlab_](https://netlab.tools/module/srv6/). You can try it out on Cisco IOS XE, Cisco IOS XR, FRRouting, Junos, and Nokia SR Linux.
+* Browse [_netlab_ SRv6 integration tests](https://github.com/ipspace/netlab/tree/dev/tests/integration/srv6) and [SRv6 examples](https://github.com/ipspace/srv6-examples) for sample lab topologies.
 * Watch the [Segment Routing Introduction](https://my.ipspace.net/bin/list?id=SR101) videos by [Jeff Tantsura](https://datatracker.ietf.org/person/jefftant.ietf@gmail.com)
 * [Tiziano Tofoni](https://www.linkedin.com/in/tiziano-tofoni-1361759/) covered SRv6 basics in his [ITNOG10 workshop presentation](https://www.itnog.it/itnog10/files/TRaining_Segment%20Routing%20ITNOG%202026%20april%2020_signed.pdf)
 * [@eldananivas](https://github.com/eldaninavas) collected numerous SRv6-related links into an [open-source SRv6 knowledge base](https://srv6.md/).
