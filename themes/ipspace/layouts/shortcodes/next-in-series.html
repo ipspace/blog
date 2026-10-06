@@ -1,4 +1,6 @@
 {{ $next := .Get "page" }}
+{{ $next := compare.Conditional (strings.HasPrefix $next "/") $next (print "/" $next) }}
+{{ $next := compare.Conditional (strings.HasPrefix $next "/posts") $next (print "/posts" $next) }}
 {{ with ($.Site.GetPage $next) }}
 {{   $title := default .Title .Params.series_title }}
 <p style='text-align: right; margin: 2em 0;'>Next: <a href="{{ .Permalink }}">{{ $title }}</a> <a class="btn" style="margin-left: 3em; color: white;" href="{{ .Permalink }}" title="{{ $title }}">Continue</a></p>

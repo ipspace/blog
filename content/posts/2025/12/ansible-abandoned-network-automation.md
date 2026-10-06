@@ -43,6 +43,8 @@ Draw your own conclusions :(
 * [Christophe Fauveau](https://www.linkedin.com/in/cfauveau/) agrees that [network automation should become a first-class Ansible citizen](https://www.linkedin.com/posts/cfauveau_has-ansible-team-abandoned-network-automation-activity-7416750440819830786-xc_B/)
 * [Sean Cavanaugh](https://www.linkedin.com/in/seanecavanaugh/) described why (in his opinion) the [whole thing is not a big deal](https://www.linkedin.com/feed/update/urn:li:activity:7406731770064355329?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7406731770064355329%2C7417311906153234432%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287417311906153234432%2Curn%3Ali%3Aactivity%3A7406731770064355329%29) ([standalone article](https://www.linkedin.com/posts/seanecavanaugh_ansible-activity-7417317909238022145-OHWx)) and why [they haven't caught the bug in months](https://www.linkedin.com/feed/update/urn:li:activity:7417317909238022145?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7417317909238022145%2C7417650705567571968%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7417317909238022145%2C7417657140204462080%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287417650705567571968%2Curn%3Ali%3Aactivity%3A7417317909238022145%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287417657140204462080%2Curn%3Ali%3Aactivity%3A7417317909238022145%29). I think we'll have to agree to disagree.
 
+{{<next-in-series page="2025/12/underscores-strike-again/" />}}
+
 ### Revision History
 
 2026-01-16

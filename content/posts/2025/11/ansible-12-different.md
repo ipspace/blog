@@ -71,3 +71,5 @@ I understand why the Ansible team decided to bite the bullet and have their own 
 [^WLV]: If you're too young to know what I'm talking about and care about the early history of IT, I can highly recommend the episodes the Acquired podcast did on Microsoft ([part 1](https://www.acquired.fm/episodes/microsoft), [part 2](https://www.acquired.fm/episodes/microsoft-volume-ii), the [Steve Ballmer interview](https://www.acquired.fm/episodes/the-steve-ballmer-interview))
 
 Just the things I discovered so far turn all your Ansible playbooks into ticking time bombs. Can you be sure you found all instances of the non-bool **when** conditions? I [was](https://github.com/ipspace/netlab/pull/2764)... and was [already proven wrong](https://github.com/ipspace/netlab/commit/9de223afbe15ed04dd570901f1be0ab26eaf20cd).
+
+{{<next-in-series page="/posts/2025/12/ansible-abandoned-network-automation.md" />}}
