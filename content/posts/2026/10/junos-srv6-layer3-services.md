@@ -4,10 +4,12 @@ date: 2026-10-14 08:15:00+0200
 tags: [ SRv6 ]
 srv6_tag: config
 ---
-Now that we know what we need to make layer-3 services ([BGP-free core](/2012/01/bgp-free-service-provider-core-in/) transporting IPv4 and IPv6 traffic) [work with SRv6](/2026/10/srv6-bgp-free-core/), let's go through the steps needed to configure them on Junos, continuing from the [baseline SRv6 with IS-IS configuration](/2026/09/srv6-junos/) (and again relying on the excellent [SRv6 Micro-SID (uSID) Basics](https://community.juniper.net/blogs/krzysztof-szarkowicz/2025/09/30/srv6-micro-sid-basics) article by [Krzysztof Szarkowicz](https://www.ipspace.net/Author:Krzysztof_Grzegorz_Szarkowicz)).
+Now that we know what we need to make layer-3 services ([BGP-free core](/2012/01/bgp-free-service-provider-core-in/) transporting IPv4 and IPv6 traffic) [work with SRv6](/2026/10/srv6-bgp-free-core/), let's go through the steps needed to configure them on Junos, continuing from the [baseline SRv6 with IS-IS configuration](/2026/09/srv6-junos/) (and again relying on the excellent SRv6 Micro-SID (uSID) Basics article[^GF] by [Krzysztof Szarkowicz](https://www.ipspace.net/Author:Krzysztof_Grzegorz_Szarkowicz)).
 
 In the [BGP-Free Network Core with SRv6](/2026/10/srv6-bgp-free-core/), we identified the components we need (assuming IBGP+IGP design):
 <!--more-->
+[^GF]: The last time I checked, HPE marketing decided to redirect all Juniper community pages to the generic New HPE Networking Community starting page (what could possibly go wrong, right?). If your GoogleFu is strong enough, you might still be able to find it.
+
 * IPv6 routing tables with SRv6 locators (the [IS-IS + locator configuration](/2026/09/srv6-junos/) should give us that)
 * IBGP sessions between IPv6 endpoints (out of scope, but you can find plenty of stuff on the Internet)
 * [*extended nexthop* capability](/2022/01/bgp-af-nerd-knobs/) negotiated between IBGP neighbors

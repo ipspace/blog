@@ -6,8 +6,10 @@ srv6_tag: config
 ---
 I wanted to make my [SRv6 lab examples](https://github.com/ipspace/srv6-examples) usable with more platforms. Adding _netlab_ Junos SRv6 support (included in the 26.10 release) was relatively easy; here's what I learned while working on the [pull request](https://github.com/ipspace/netlab/pull/3889):
 <!--more-->
-* I decided to use micro-SIDs and used the excellent [SRv6 Micro-SID (uSID) Basics](https://community.juniper.net/blogs/krzysztof-szarkowicz/2025/09/30/srv6-micro-sid-basics) article by [Krzysztof Szarkowicz](https://www.ipspace.net/Author:Krzysztof_Grzegorz_Szarkowicz) (of the [EVPN-with-MPLS](https://my.ipspace.net/bin/list?id=EVPN#SP) fame) as the starting point.
+* I decided to use micro-SIDs and used the excellent SRv6 Micro-SID (uSID) Basics article[^CJN] by [Krzysztof Szarkowicz](https://www.ipspace.net/Author:Krzysztof_Grzegorz_Szarkowicz) (of the [EVPN-with-MPLS](https://my.ipspace.net/bin/list?id=EVPN#SP) fame) as the starting point.
 * Krzysztof recommended using SRv6 **block** configuration. I was too lazy to calculate it from the SRv6 locator (which was already part of the data structure), so I used only the **locator** configuration. Everything worked fine without SRv6 **block** anyway (but maybe I'm missing something important).
+
+[^CJN]: The article was published on community.juniper.net, and a few days after this blog post was published, someone in HPE marketing managed to bork that website; the last time I checked, the original link either ended on a generic HPE webpage or returned a DNS server error. I don't care whether it's a temporary glitch or not (it's not the first time someone has had a DNS problem with that domain); if HPE doesn't like inbound traffic, we can fix that.
 
 {{<printout caption="SRv6 uSID locator configuration on Junos">}}
 routing-options {
