@@ -84,3 +84,5 @@ h4               Script:   initial,routing
 {{</ascii>}}
 
 Finally, I prefer SSH-based configuration over hacks like the [FastCLI scripts](https://blog.ipspace.net/2026/02/netlab-eos-configuration/) that netlab can use with Arista EOS containers. The performance difference isn't huge, and we can use the same method with virtual machines and containers.
+
+{{<next-in-series page="2026/10/netmiko-ansible-script-performance/" />}}
