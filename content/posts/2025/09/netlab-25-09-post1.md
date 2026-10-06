@@ -25,6 +25,8 @@ I'm suspecting [this](https://github.com/ansible/ansible/blob/ca99cc7e555443ee21
 
 _netlab_ heavily uses `_` prefixed attributes for internal data that is not checked against the lab topology schema. The _netlab_ data transformation code computes some of those attributes, which are later used in the device configuration templates. Sometimes these attributes are not defined, so we're using the `|default()` filter on them, and that seems to trigger Jinja2 templating errors. Every use of `_` prefixed attribute with Ansible release 12.0 is thus a ticking bomb.
 
+{{<next-in-series page="/posts/2025/11/ansible-12-different.html"/>}}
+
 ### What's Next?
 
 Here are my early ideas on what to do next (they will probably change as we discuss them):
