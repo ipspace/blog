@@ -1,6 +1,6 @@
 ---
 title: "Netmiko vs Ansible: Does It Matter?"
-date: 2026-10-08 08:10:00+0200
+date: 2026-10-09 08:10:00+0200
 tags: [ netlab ]
 netlab_tag: details
 ---
