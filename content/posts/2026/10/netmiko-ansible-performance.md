@@ -8,6 +8,10 @@ We launched [device configuration with Netmiko](https://netlab.tools/platforms/#
 
 **TL&DR:** Yes, it does.
 <!--more-->
+{{<note>}}
+You can't fairly compare these two tools; Netmiko does one thing (handling SSH sessions and downloading device configurations), while Ansible tries to be everything for everyone. It's like comparing a chainsaw to a Swiss Army knife. However, since netlab only needs configuration downloads, it made sense (to me) to compare performance on that task.
+{{</note>}}
+
 I did a very unscientific test:
 
 * I started an EVPN lab because there's plenty to configure there ([configuration normalization](https://blog.ipspace.net/2025/03/stupid-bridges-strike-again/), initial configuration, VLANs, OSPF, BGP, VRFs, VXLAN, EVPN)
