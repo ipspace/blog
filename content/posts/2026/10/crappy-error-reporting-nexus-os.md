@@ -1,6 +1,6 @@
 ---
 title: "Crappy Configuration Errors: Cisco Nexus OS Edition"
-date: 2026-10-20 07:33:00+0200
+date: 2026-10-21 07:33:00+0200
 tags: [ automation ]
 ---
 **TL&DR:** Programmers writing Cisco Nexus OS code should have known better. They didn't (care?).
