@@ -1,6 +1,6 @@
 ---
 title: "BFD on IBGP Sessions? Why Exactly?"
-date: 2026-10-31 07:14:00+0200
+date: 2026-11-06 07:14:00+0200
 tags: [ BGP ]
 draft: True
 ---
