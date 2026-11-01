@@ -3,13 +3,14 @@ title: "Testing OpenEIGRP with netlab"
 date: 2026-10-20 07:21:00+0200
 tags: [ EIGRP ]
 eigrp_tag: deploy
+lastmod: 2026-11-01 10:58:00+0100
 ---
 When [Donnie Savage](https://www.linkedin.com/in/diivious/) announced the [open beta](https://www.linkedin.com/posts/diivious_openeigrp-eigrp-routing-share-7513434052499062784-HD7G/?highlightedUpdateUrn=urn%3Ali%3Aactivity%3A7516520255838371840&highlightedUpdateType=SOCIAL_SHARE&origin=SOCIAL_SHARE&utm_source=share&utm_medium=member_desktop&rcm=ACoAAAF0NisBME_cExE6SWQqx9fCT6lHPXgRxA4) of [OpenEIGRP](https://github.com/diivious/eigrp),  I quickly asked him whether it would be possible to get an easy-to-use container with OpenEIGRP integrated with other FRR daemons (and its CLI).
 
 Donnie delivered ;) -- you can download a [ready-to-use container](https://github.com/diivious/eigrp/pkgs/container/openeigrp-frr) and try its EIGRP features. Let's see how you can make that process even simpler with netlab:
 <!--more-->
 {{<note warning>}}
-OpenEIGRP is still in beta, and Donnie created the container repository a few days ago. Things might change (please write a comment if you notice a change), and if they do, I plan to update this blog post.
+OpenEIGRP is still in beta. Things might change (please comment if you notice a change), and if they do, I plan to update this blog post (see Revision History at the bottom).
 {{</note>}}
 
 Here's a simple topology (also [available on GitHub](https://github.com/ipspace/netlab-examples/tree/master/EIGRP/OpenEIGRP)) to get two OpenEIGRP containers (pretending to be FRRouting containers) up and running:
@@ -19,7 +20,7 @@ provider: clab
 
 defaults:
   device: frr
-  devices.frr.clab.image: ghcr.io/diivious/openeigrp-frr:0.2.0
+  devices.frr.clab.image: ghcr.io/diivious/openeigrp-frr:0.5.0
 
 nodes:
   r1:
@@ -91,7 +92,7 @@ Does OpenEIGRP interoperate with Cisco IOS/XE? Let's change the device types in 
 provider: clab
 
 defaults:
-  devices.frr.clab.image: ghcr.io/diivious/openeigrp-frr:0.2.0
+  devices.frr.clab.image: ghcr.io/diivious/openeigrp-frr:0.5.0
 
 nodes:
   r1:
@@ -109,4 +110,11 @@ links: [ r1-r2 ]
 * The device type is set on individual nodes (lines 9 and 11)
 * We have to enable the EIGRP daemon on the FRRouting node (line 8) and the EIGRP module on the Cisco IOL node (line 12)
 
-When I started the lab with the 0.2.0 OpenEIGRP release, I immediately got an EIGRP adjacency, but no routes were exchanged. My EIGRP is too rusty to figure out what's going on 🤷🏻‍♂️.
+When I started the lab with the 0.2.0 OpenEIGRP release, I immediately got an EIGRP adjacency, but no routes were exchanged. OpenEIGRP release 0.5.0 changed that; the EIGRP routes are now exchanged between the FRR/OpenEIGRP container and Cisco IOS/XE 🎉🎉
+
+### Revision History
+
+2026-11-01
+: * EIGRP container release changed to 0.5.0. Donnie plans to introduce the `:latest` tag soon.
+  * OpenEIGRP release 0.5.0 interoperates with Cisco IOS/XE.
+
