@@ -6,6 +6,10 @@ netsim_tag: quirks
 ---
 In February 2007, I published a (long gone) article describing the drawbacks of the Cisco IOS **configure replace** command. It was pretty bad at the time, but has improved significantly since. Alas, after 20 years, it still can't cope with simple stuff that routers generate on their own.
 
+{{<note warn>}}
+A reader [pointed out](https://blog.ipspace.net/2026/11/cisco-ios-crypto-replace/#3105) that the behavior described in this blog post is "[documented](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/syst-mgmt/b-system-management/m_cm-config-rollback-0.html)". I guess someone within Cisco thinks that writing "_we can't do basic configuration management if you use another basic feature_" makes it OK. Wouldn't be the [first time](/2017/04/lets-drop-some-random-commands-shall-we/).
+{{</note>}}
+
 I was reimplementing the _netlab_ "[reload configuration](https://netlab.tools/netlab/up/#reloading-saved-configurations)" functionality with Netmiko, and things seemed to work until I got random errors in the integration tests. Those tests are really trivial:
 <!--more-->
 1. Start the lab, configure OSPF on the tested device.
@@ -114,3 +118,8 @@ no enrollment pkcs12
 ```
 
 It's obvious that the **configure replace** command has no idea what to do with the **crypto pki** commands. I completely understand why this never showed up in Cisco's internal tests (you wait a bit longer and there's no issue), but you could have your own PKI trustpoints, and it's ridiculous that we still don't have a *reliable* "replace configuration" functionality in Cisco IOS XE.
+
+### Revision History
+
+2026-11-20
+: It turns out that Cisco is well aware of how broken **configure replace** is 🤦‍♂️. Updated the blog post.
