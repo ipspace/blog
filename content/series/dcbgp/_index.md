@@ -37,6 +37,7 @@ The designers of Cumulus Linux preferred the EBGP-only data center design, and a
 {{<series-listing tag="cl" year="needed">}}
 
 Some vendors love making your life overly complex, inventing ridiculous architectures like running IBGP (EVPN) over EBGP (IP routing). Here are a few choice ~~rants~~ blog posts on that topic:
+{#rant}
 
 {{<series-listing tag="rant" year="needed">}}
 
