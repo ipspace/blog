@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -19,6 +19,28 @@
 <p>Fun times when a few years ago I was tasked with fully automating PKI enrollment of Cisco routers for a customer. At first this &quot;configuration replace&quot; feature seemed like a nice idea, until I actually tried it, miserably failed, finally found the aforementioned Cisco doc, and ended up with good old &quot;copy cfgfile startup-config&quot; + reload. </p>
 
 <p>Configuration management on IOS(-XE) seems absolutely broken.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="3110">
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Chris Marget</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c3110" href="#3110">23 November 2026 02:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan!</p>
+
+<p>~15 years ago I ran into similar disappointing/broken behavior with config rollback.</p>
+
+<p>I got the same &quot;aborted after 5 passes&quot; message, but not due to PKI. This instance was trying to revert some timer command with &quot;no&quot;.</p>
+
+<p>Problem was this command couldn&#39;t be backed out that way. Restoring the default behavior required the operator to set the default value.</p>
+
+<p>I was astounded at the time to learn that the underlying engine boiled down to diff + sed &#39;s/^/no /&#39;, and I concluded that I could never trust it.</p>
 </div>
           </div>
         </li>
