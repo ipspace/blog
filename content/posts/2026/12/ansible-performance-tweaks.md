@@ -1,6 +1,6 @@
 ---
 title: "Ansible Performance Tweaks"
-date: 2026-11-30 11:33:00+0100
+date: 2026-12-15 11:33:00+0100
 tags: [ ansible ]
 draft: True
 ---
