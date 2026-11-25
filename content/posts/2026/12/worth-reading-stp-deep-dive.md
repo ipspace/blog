@@ -1,6 +1,6 @@
 ---
 title: "Worth Reading: Spanning Tree Deep Dive (Part 1)"
-date: 2026-11-27 07:58:00+0100
+date: 2026-12-10 07:58:00+0100
 tags: [ worth reading ]
 ---
 [Tony Mattke](https://routerjockey.com/about/) wrote a wonderful (and super-long 🤷🏻‍♂️) blog post describing the [intricacies of the Spanning Tree Protocol (STP)](https://routerjockey.com/spanning-tree-deep-dive/).
