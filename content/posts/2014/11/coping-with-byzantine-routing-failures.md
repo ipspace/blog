@@ -11,6 +11,8 @@ tags:
 - high availability
 title: Coping with Byzantine Routing Failures
 url: /2014/11/coping-with-byzantine-routing-failures/
+series: vagg
+vagg_tag: basics
 ---
 One of my readers sent me an interesting challenge:
 

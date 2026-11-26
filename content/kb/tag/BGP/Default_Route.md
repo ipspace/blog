@@ -4,9 +4,10 @@ minimal_sidebar: true
 pre_scroll: true
 title: Default Routes in BGP
 url: /kb/tag/BGP/Default_Route/
-series: bgp-essentials
+series: [ bgp-essentials, vagg ]
 date: "2007-11-15 06:23:00"
 tags: [ BGP ]
+vagg_tag: default
 ---
 The primary mission of Border Gateway Protocol (BGP) (transport of Internet routing between ISPs) has influenced the implementation of BGP default route origination, advertisements and propagation. This article describes the functionality and caveats of BGP default routing. All router configurations and printouts are taken from a sample network illustrated in the following diagram:
 

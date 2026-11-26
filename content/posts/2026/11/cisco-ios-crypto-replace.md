@@ -1,8 +1,8 @@
 ---
 title: "Cisco IOS XE 'configure replace' Breaks on 'crypto pki' Commands"
 date: 2026-11-19 08:08:00+0100
-tags: [ netsim ]
-netsim_tag: quirks
+tags: [ netlab ]
+netlab_tag: quirks
 ---
 In February 2007, I published a (long gone) article describing the drawbacks of the Cisco IOS **configure replace** command. It was pretty bad at the time, but has improved significantly since. Alas, after 20 years, it still can't cope with simple stuff that routers generate on their own.
 

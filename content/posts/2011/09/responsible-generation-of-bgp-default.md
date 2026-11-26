@@ -4,6 +4,8 @@ tags:
 - BGP
 title: Responsible Generation of BGP Default Route
 url: /2011/09/responsible-generation-of-bgp-default/
+series: vagg
+vagg_tag: default
 ---
 Chris sent me the following question a while ago:
 

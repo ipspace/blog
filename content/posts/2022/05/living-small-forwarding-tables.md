@@ -2,6 +2,8 @@
 title: "Living with Small Forwarding Tables"
 date: 2022-05-09 06:46:00
 tags: [ IP routing, switching ]
+series: vagg
+vagg_tag: basics
 ---
 A friend of mine working for a mid-sized networking vendor sent me an intriguing  question:
 
