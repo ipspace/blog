@@ -9,4 +9,4 @@ I was chatting with a seasoned traditional networking engineer with little Linux
 
 I know I'm not good at writing intro-to-something content or creating *this is how it's done* videos, but I'm sure there must be something covering *netlab* out there.
 
-I searched for additional content (OK, I asked AI to do it for me ;) and updated the tutorials page with new links ([preview](https://67673944.netlab.pages.dev/tutorials/); updated [documentation page](https://netlab.tools/tutorials/) coming out with the 26.12 release). If you're aware of anything I've missed, please leave a comment or email me.
+I searched for additional content (OK, I asked AI to do it for me ;) and updated the tutorials page with new links ([preview](https://67673944.netlab.pages.dev/tutorials/); updated [documentation page](https://netlab.tools/tutorials/) coming out with the 26.12 release). If you're aware of anything I've missed, please leave a comment, email me, or (the best option) open a PR or edit the [file](https://github.com/ipspace/netlab/blob/dev/docs/tutorials.md) using the GitHub web interface.

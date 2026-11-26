@@ -3,7 +3,7 @@ title: "Default Routes or Full BGP Table for Internet Access?"
 date: 2026-12-03 08:32:00+0100
 tags: [ BGP, Internet ]
 ---
-_**TL&DR:** While I love getting questions and answering them, please do your research first. Searching for information has never been easier._
+_**TL&DR:** Searching for information has never been easier; LLMs made the Internet search usable again. What they'll find in search results and who'll write the new content is a more interesting question, though 🤷🏻‍♂️_
 
 I got the following question from one of my readers (edited and shortened for clarity):
 
