@@ -5,6 +5,8 @@ series:
 tags:
 - IP routing
 title: 'Fast Failover: The Challenge'
+short_summary: |
+  Before we get into the details, let's look at why rapid convergence after a link or node failure is hard, and what challenges we might encounter.
 ---
 Sometimes you're asked to design a network that will reroute around a failure in milliseconds. Is that feasible? Maybe. Is it simple? Absolutely not. 
 
