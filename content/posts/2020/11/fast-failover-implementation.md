@@ -5,6 +5,8 @@ series:
 tags:
 - IP routing
 title: 'Fast Failover: Hardware and Software Implementations'
+short_summary: |
+  The previous blog posts in this series described fast failover challenges, detection mechanisms, and topologies that can make fast failover a hard problem. It's time to discuss some details of hardware and software implementations.
 ---
 In previous blog posts in this series we discussed whether it [makes sense to invest into fast failover network designs](/2020/11/fast-failover-challenge/), the [topologies you can use in such designs](/2020/11/fast-failover-topologies/), and the [fault detection techniques](/2020/11/detecting-network-failure/). I also hinted at different fast failover implementations; this blog post focuses on some of them.
 
